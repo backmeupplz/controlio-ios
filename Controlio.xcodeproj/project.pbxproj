@@ -12,6 +12,9 @@
 		B39290D61B092B6B001FF219 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B39290D51B092B6B001FF219 /* Images.xcassets */; };
 		B39290D91B092B6B001FF219 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B39290D71B092B6B001FF219 /* LaunchScreen.xib */; };
 		B39290E51B092B6B001FF219 /* ControlioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39290E41B092B6B001FF219 /* ControlioTests.swift */; };
+		B39290F31B093DC2001FF219 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39290F21B093DC2001FF219 /* LoginViewController.swift */; };
+		B39290F71B094062001FF219 /* PurpleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39290F61B094062001FF219 /* PurpleButton.swift */; };
+		B39290F91B09488A001FF219 /* ProjectListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39290F81B09488A001FF219 /* ProjectListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +37,9 @@
 		B39290DE1B092B6B001FF219 /* ControlioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ControlioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B39290E31B092B6B001FF219 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B39290E41B092B6B001FF219 /* ControlioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlioTests.swift; sourceTree = "<group>"; };
+		B39290F21B093DC2001FF219 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B39290F61B094062001FF219 /* PurpleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurpleButton.swift; sourceTree = "<group>"; };
+		B39290F81B09488A001FF219 /* ProjectListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +128,7 @@
 		B39290EF1B092B7B001FF219 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B39290F61B094062001FF219 /* PurpleButton.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -137,6 +144,8 @@
 		B39290F11B092B86001FF219 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B39290F21B093DC2001FF219 /* LoginViewController.swift */,
+				B39290F81B09488A001FF219 /* ProjectListViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -241,6 +250,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B39290F91B09488A001FF219 /* ProjectListViewController.swift in Sources */,
+				B39290F31B093DC2001FF219 /* LoginViewController.swift in Sources */,
+				B39290F71B094062001FF219 /* PurpleButton.swift in Sources */,
 				B39290CF1B092B6B001FF219 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -439,6 +451,7 @@
 				B39290EA1B092B6B001FF219 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B39290EB1B092B6B001FF219 /* Build configuration list for PBXNativeTarget "ControlioTests" */ = {
 			isa = XCConfigurationList;
@@ -447,6 +460,7 @@
 				B39290ED1B092B6B001FF219 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
