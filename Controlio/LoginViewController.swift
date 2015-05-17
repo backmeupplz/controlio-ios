@@ -19,7 +19,7 @@ class LoginViewController: UIViewController {
     // MARK: - IBActions -
     
     @IBAction func loginTouched(sender: AnyObject) {
-        self.tryLogin()
+        tryLogin()
     }
     
     // MARK: - View Controller Life Cycle -
@@ -27,18 +27,18 @@ class LoginViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController!.setNavigationBarHidden(true, animated: true)
+        navigationController!.setNavigationBarHidden(true, animated: true)
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
-        self.navigationController!.setNavigationBarHidden(false, animated: true)
+        navigationController!.setNavigationBarHidden(false, animated: true)
     }
     
     // MARK: - General Methods -
     
     func tryLogin() {
-        self.performSegueWithIdentifier("SegueToMain", sender: self)
+        performSegueWithIdentifier("SegueToMain", sender: self)
     }
 }

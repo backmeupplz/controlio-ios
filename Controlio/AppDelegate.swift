@@ -10,12 +10,23 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
+    // MARK: - Variables -
+    
     var window: UIWindow?
 
+    // MARK: - App Life Cycle -
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        setupAnalytics()
         
         return true
+    }
+    
+    // MARK: - General Methods -
+    
+    func setupAnalytics() {
+        GAI.sharedInstance().trackerWithTrackingId(googleTrackingID)
     }
 }
 

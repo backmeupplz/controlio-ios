@@ -15,6 +15,8 @@
 		B39290F31B093DC2001FF219 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39290F21B093DC2001FF219 /* LoginViewController.swift */; };
 		B39290F71B094062001FF219 /* PurpleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39290F61B094062001FF219 /* PurpleButton.swift */; };
 		B39290F91B09488A001FF219 /* ProjectListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39290F81B09488A001FF219 /* ProjectListViewController.swift */; };
+		B39290FF1B094B46001FF219 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39290FE1B094B46001FF219 /* Constants.swift */; };
+		E15070CD274183703E71261B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F533840C6249D084EB9669F4 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3086F95D1E3C3D238BD84E4C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		B39290C91B092B6B001FF219 /* Controlio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Controlio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B39290CD1B092B6B001FF219 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B39290CE1B092B6B001FF219 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -40,6 +43,10 @@
 		B39290F21B093DC2001FF219 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B39290F61B094062001FF219 /* PurpleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurpleButton.swift; sourceTree = "<group>"; };
 		B39290F81B09488A001FF219 /* ProjectListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectListViewController.swift; sourceTree = "<group>"; };
+		B39290FA1B094AE9001FF219 /* Controlio-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Controlio-Bridging-Header.h"; sourceTree = "<group>"; };
+		B39290FE1B094B46001FF219 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F48E98BCCC1929EC1FABB71F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		F533840C6249D084EB9669F4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E15070CD274183703E71261B /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,12 +68,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0CBCEF1A65BA233BDD92ED3B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F533840C6249D084EB9669F4 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		85D31268C1C4EE973D8BC30C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3086F95D1E3C3D238BD84E4C /* Pods.debug.xcconfig */,
+				F48E98BCCC1929EC1FABB71F /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		B39290C01B092B6A001FF219 = {
 			isa = PBXGroup;
 			children = (
 				B39290CB1B092B6B001FF219 /* Controlio */,
 				B39290E11B092B6B001FF219 /* ControlioTests */,
 				B39290CA1B092B6B001FF219 /* Products */,
+				85D31268C1C4EE973D8BC30C /* Pods */,
+				0CBCEF1A65BA233BDD92ED3B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,6 +108,7 @@
 		B39290CB1B092B6B001FF219 /* Controlio */ = {
 			isa = PBXGroup;
 			children = (
+				B39290FE1B094B46001FF219 /* Constants.swift */,
 				B39290EE1B092B77001FF219 /* UI */,
 				B39290F11B092B86001FF219 /* Controller */,
 				B39290F01B092B82001FF219 /* Model */,
@@ -93,6 +121,7 @@
 		B39290CC1B092B6B001FF219 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B39290FA1B094AE9001FF219 /* Controlio-Bridging-Header.h */,
 				B39290D51B092B6B001FF219 /* Images.xcassets */,
 				B39290CD1B092B6B001FF219 /* Info.plist */,
 			);
@@ -157,9 +186,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B39290E81B092B6B001FF219 /* Build configuration list for PBXNativeTarget "Controlio" */;
 			buildPhases = (
+				CC594420E97366986CB0755E /* Check Pods Manifest.lock */,
 				B39290C51B092B6A001FF219 /* Sources */,
 				B39290C61B092B6A001FF219 /* Frameworks */,
 				B39290C71B092B6A001FF219 /* Resources */,
+				ADC79269856BEFCC4973E1BB /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -245,11 +276,45 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		ADC79269856BEFCC4973E1BB /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CC594420E97366986CB0755E /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B39290C51B092B6A001FF219 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B39290FF1B094B46001FF219 /* Constants.swift in Sources */,
 				B39290F91B09488A001FF219 /* ProjectListViewController.swift in Sources */,
 				B39290F31B093DC2001FF219 /* LoginViewController.swift in Sources */,
 				B39290F71B094062001FF219 /* PurpleButton.swift in Sources */,
@@ -380,21 +445,28 @@
 		};
 		B39290E91B092B6B001FF219 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3086F95D1E3C3D238BD84E4C /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Controlio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Controlio/Controlio-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		B39290EA1B092B6B001FF219 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F48E98BCCC1929EC1FABB71F /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Controlio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Controlio/Controlio-Bridging-Header.h";
 			};
 			name = Release;
 		};
