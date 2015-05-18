@@ -1,5 +1,5 @@
 //
-//  PurpleButton.swift
+//  BorderedView.swift
 //  Controlio
 //
 //  Created by Nikita Kolmogorov on 17/05/15.
@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 @IBDesignable
-class PurpleButton: UIButton {
+class BorderedView: UIView {
     
     // MARK: - Variables -
     

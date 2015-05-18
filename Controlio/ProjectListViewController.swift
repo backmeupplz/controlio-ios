@@ -11,13 +11,36 @@ import UIKit
 
 class ProjectListViewController: UITableViewController {
     
+    // MARK: - Variables -
+    
+    var tableData = [ProjectObject]()
+    
     // MARK: - View Controller Life Cycle -
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        populateFakeData()
+    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         navigationItem.setHidesBackButton(true, animated: false)
         addRightButton()
+        configureTableView()
+    }
+    
+    // MARK: - UITableViewDataSource -
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tableData.count
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCellWithIdentifier("ProjectCell") as! ProjectCell
+        cell.object = tableData[indexPath.row]
+        return cell
     }
     
     // MARK: - General Methods -
@@ -45,5 +68,26 @@ class ProjectListViewController: UITableViewController {
     
     func logout() {
         self.navigationController?.popToRootViewControllerAnimated(true)
+    }
+    
+    func configureTableView() {
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 237.0
+    }
+    
+    // MARK: - Debug -
+    
+    func populateFakeData() {
+        for index in 0...20 {
+            var obj = ProjectObject()
+            
+            obj.identificator = index
+            obj.lastImage = NSURL(string: "https://i.ytimg.com/vi/YWNWi-ZWL3c/maxresdefault.jpg")
+            obj.titleMessage = "Some title #\(index)"
+            obj.timestamp = Int(NSDate().timeIntervalSince1970)
+            obj.lastMessage = "Some message #\(index)"
+            
+            tableData.append(obj)
+        }
     }
 }

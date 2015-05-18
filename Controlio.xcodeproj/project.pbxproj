@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1177918565D4698A83595D02 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B61E20F3A2CD024B4177990A /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		B32364FB1B0953FF002D068C /* ProjectObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32364FA1B0953FF002D068C /* ProjectObject.swift */; };
+		B32364FF1B09555A002D068C /* ProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32364FE1B09555A002D068C /* ProjectCell.swift */; };
+		B32365011B0958ED002D068C /* BorderedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32365001B0958ED002D068C /* BorderedView.swift */; };
+		B32365031B096A09002D068C /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32365021B096A09002D068C /* ServerManager.swift */; };
 		B39290CF1B092B6B001FF219 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39290CE1B092B6B001FF219 /* AppDelegate.swift */; };
 		B39290D41B092B6B001FF219 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B39290D21B092B6B001FF219 /* Main.storyboard */; };
 		B39290D61B092B6B001FF219 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B39290D51B092B6B001FF219 /* Images.xcassets */; };
@@ -16,7 +21,6 @@
 		B39290F71B094062001FF219 /* PurpleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39290F61B094062001FF219 /* PurpleButton.swift */; };
 		B39290F91B09488A001FF219 /* ProjectListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39290F81B09488A001FF219 /* ProjectListViewController.swift */; };
 		B39290FF1B094B46001FF219 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39290FE1B094B46001FF219 /* Constants.swift */; };
-		E15070CD274183703E71261B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F533840C6249D084EB9669F4 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +35,10 @@
 
 /* Begin PBXFileReference section */
 		3086F95D1E3C3D238BD84E4C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		B32364FA1B0953FF002D068C /* ProjectObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectObject.swift; sourceTree = "<group>"; };
+		B32364FE1B09555A002D068C /* ProjectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCell.swift; sourceTree = "<group>"; };
+		B32365001B0958ED002D068C /* BorderedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderedView.swift; sourceTree = "<group>"; };
+		B32365021B096A09002D068C /* ServerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerManager.swift; sourceTree = "<group>"; };
 		B39290C91B092B6B001FF219 /* Controlio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Controlio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B39290CD1B092B6B001FF219 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B39290CE1B092B6B001FF219 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -43,10 +51,9 @@
 		B39290F21B093DC2001FF219 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B39290F61B094062001FF219 /* PurpleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurpleButton.swift; sourceTree = "<group>"; };
 		B39290F81B09488A001FF219 /* ProjectListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectListViewController.swift; sourceTree = "<group>"; };
-		B39290FA1B094AE9001FF219 /* Controlio-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Controlio-Bridging-Header.h"; sourceTree = "<group>"; };
 		B39290FE1B094B46001FF219 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B61E20F3A2CD024B4177990A /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F48E98BCCC1929EC1FABB71F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		F533840C6249D084EB9669F4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E15070CD274183703E71261B /* libPods.a in Frameworks */,
+				1177918565D4698A83595D02 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,7 +78,7 @@
 		0CBCEF1A65BA233BDD92ED3B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F533840C6249D084EB9669F4 /* libPods.a */,
+				B61E20F3A2CD024B4177990A /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -121,7 +128,6 @@
 		B39290CC1B092B6B001FF219 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B39290FA1B094AE9001FF219 /* Controlio-Bridging-Header.h */,
 				B39290D51B092B6B001FF219 /* Images.xcassets */,
 				B39290CD1B092B6B001FF219 /* Info.plist */,
 			);
@@ -158,6 +164,8 @@
 			isa = PBXGroup;
 			children = (
 				B39290F61B094062001FF219 /* PurpleButton.swift */,
+				B32364FE1B09555A002D068C /* ProjectCell.swift */,
+				B32365001B0958ED002D068C /* BorderedView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -166,6 +174,8 @@
 			isa = PBXGroup;
 			children = (
 				B39290CE1B092B6B001FF219 /* AppDelegate.swift */,
+				B32364FA1B0953FF002D068C /* ProjectObject.swift */,
+				B32365021B096A09002D068C /* ServerManager.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -191,6 +201,7 @@
 				B39290C61B092B6A001FF219 /* Frameworks */,
 				B39290C71B092B6A001FF219 /* Resources */,
 				ADC79269856BEFCC4973E1BB /* Copy Pods Resources */,
+				5E27E1F58A4F3D92E614FC7E /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -277,6 +288,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		5E27E1F58A4F3D92E614FC7E /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		ADC79269856BEFCC4973E1BB /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -317,8 +343,12 @@
 				B39290FF1B094B46001FF219 /* Constants.swift in Sources */,
 				B39290F91B09488A001FF219 /* ProjectListViewController.swift in Sources */,
 				B39290F31B093DC2001FF219 /* LoginViewController.swift in Sources */,
+				B32364FF1B09555A002D068C /* ProjectCell.swift in Sources */,
 				B39290F71B094062001FF219 /* PurpleButton.swift in Sources */,
+				B32364FB1B0953FF002D068C /* ProjectObject.swift in Sources */,
 				B39290CF1B092B6B001FF219 /* AppDelegate.swift in Sources */,
+				B32365031B096A09002D068C /* ServerManager.swift in Sources */,
+				B32365011B0958ED002D068C /* BorderedView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,7 +482,6 @@
 				INFOPLIST_FILE = Controlio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Controlio/Controlio-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -466,7 +495,6 @@
 				INFOPLIST_FILE = Controlio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Controlio/Controlio-Bridging-Header.h";
 			};
 			name = Release;
 		};

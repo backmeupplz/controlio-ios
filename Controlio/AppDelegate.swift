@@ -7,6 +7,7 @@
 //
 
 import UIKit
+//import GoogleAnalytics_iOS_SDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - General Methods -
     
     func setupAnalytics() {
-        GAI.sharedInstance().trackerWithTrackingId(googleTrackingID)
+//        GAI.sharedInstance().trackerWithTrackingId(googleTrackingID)
     }
 }
 
