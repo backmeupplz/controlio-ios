@@ -32,7 +32,7 @@ class ProjectCell: UITableViewCell {
     func configure() {
         alpha = CGFloat(0)
         lastImageView.sd_setImageWithURL(object.lastImage, completed: { (image, error, type, url) -> Void in
-            if (type == .None) {
+            if (type != .Memory) {
                 UIView.animateWithDuration(0.5, animations: { () -> Void in
                     self.alpha = CGFloat(1)
                 })
@@ -45,4 +45,3 @@ class ProjectCell: UITableViewCell {
         statusLabel.text = object.lastMessage
     }
 }
-

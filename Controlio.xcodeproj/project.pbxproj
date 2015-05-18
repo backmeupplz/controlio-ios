@@ -21,6 +21,7 @@
 		B39290F71B094062001FF219 /* PurpleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39290F61B094062001FF219 /* PurpleButton.swift */; };
 		B39290F91B09488A001FF219 /* ProjectListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39290F81B09488A001FF219 /* ProjectListViewController.swift */; };
 		B39290FF1B094B46001FF219 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39290FE1B094B46001FF219 /* Constants.swift */; };
+		B3E925271B0A9C25005E04AA /* StatusesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E925261B0A9C25005E04AA /* StatusesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		B39290F61B094062001FF219 /* PurpleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurpleButton.swift; sourceTree = "<group>"; };
 		B39290F81B09488A001FF219 /* ProjectListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectListViewController.swift; sourceTree = "<group>"; };
 		B39290FE1B094B46001FF219 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B3E925261B0A9C25005E04AA /* StatusesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusesViewController.swift; sourceTree = "<group>"; };
 		B61E20F3A2CD024B4177990A /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F48E98BCCC1929EC1FABB71F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -185,6 +187,7 @@
 			children = (
 				B39290F21B093DC2001FF219 /* LoginViewController.swift */,
 				B39290F81B09488A001FF219 /* ProjectListViewController.swift */,
+				B3E925261B0A9C25005E04AA /* StatusesViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				B32364FF1B09555A002D068C /* ProjectCell.swift in Sources */,
 				B39290F71B094062001FF219 /* PurpleButton.swift in Sources */,
 				B32364FB1B0953FF002D068C /* ProjectObject.swift in Sources */,
+				B3E925271B0A9C25005E04AA /* StatusesViewController.swift in Sources */,
 				B39290CF1B092B6B001FF219 /* AppDelegate.swift in Sources */,
 				B32365031B096A09002D068C /* ServerManager.swift in Sources */,
 				B32365011B0958ED002D068C /* BorderedView.swift in Sources */,

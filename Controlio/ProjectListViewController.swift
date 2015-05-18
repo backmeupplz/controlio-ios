@@ -15,6 +15,12 @@ class ProjectListViewController: UITableViewController {
     
     var tableData = [ProjectObject]()
     
+    // MARK: - IBActions -
+    
+    @IBAction func rightBarButtonTouched(sender: AnyObject) {
+        showLogoutAlert()
+    }
+    
     // MARK: - View Controller Life Cycle -
     
     override func viewDidLoad() {
@@ -27,7 +33,6 @@ class ProjectListViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         navigationItem.setHidesBackButton(true, animated: false)
-        addRightButton()
         configureTableView()
     }
     
@@ -45,12 +50,7 @@ class ProjectListViewController: UITableViewController {
     
     // MARK: - General Methods -
     
-    func addRightButton() {
-        let refreshButton = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "rightButtonTouched")
-        navigationItem.rightBarButtonItem = refreshButton
-    }
-    
-    func rightButtonTouched() {
+    func showLogoutAlert() {
         var alert = UIAlertController(title: "Точно выходим?", message: "Придется опять залогиниться", preferredStyle: .Alert)
         
         let cancelAction = UIAlertAction(title: "Нет", style: .Cancel) { action -> Void in
