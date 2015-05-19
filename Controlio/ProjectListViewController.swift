@@ -88,13 +88,11 @@ class ProjectListViewController: UITableViewController {
     func populateFakeData() {
         for index in 0...20 {
             var obj = ProjectObject()
-            
             obj.identificator = index
             obj.lastImage = NSURL(string: "https://i.ytimg.com/vi/YWNWi-ZWL3c/maxresdefault.jpg")
             obj.titleMessage = "Some title #\(index)"
             obj.timestamp = Int(NSDate().timeIntervalSince1970)
             obj.lastMessage = "Some message #\(index)"
-            
             tableData.append(obj)
         }
     }
