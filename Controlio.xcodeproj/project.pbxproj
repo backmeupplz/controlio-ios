@@ -12,6 +12,9 @@
 		B32364FF1B09555A002D068C /* ProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32364FE1B09555A002D068C /* ProjectCell.swift */; };
 		B32365011B0958ED002D068C /* BorderedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32365001B0958ED002D068C /* BorderedView.swift */; };
 		B32365031B096A09002D068C /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32365021B096A09002D068C /* ServerManager.swift */; };
+		B36D9A9C1B0AF034009495BF /* ProjectInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36D9A9B1B0AF034009495BF /* ProjectInfoViewController.swift */; };
+		B36D9A9E1B0AF461009495BF /* RoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36D9A9D1B0AF461009495BF /* RoundImageView.swift */; };
+		B36D9AA01B0AF914009495BF /* ProjectDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36D9A9F1B0AF914009495BF /* ProjectDescriptionCell.swift */; };
 		B39290CF1B092B6B001FF219 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39290CE1B092B6B001FF219 /* AppDelegate.swift */; };
 		B39290D41B092B6B001FF219 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B39290D21B092B6B001FF219 /* Main.storyboard */; };
 		B39290D61B092B6B001FF219 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B39290D51B092B6B001FF219 /* Images.xcassets */; };
@@ -40,6 +43,9 @@
 		B32364FE1B09555A002D068C /* ProjectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCell.swift; sourceTree = "<group>"; };
 		B32365001B0958ED002D068C /* BorderedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderedView.swift; sourceTree = "<group>"; };
 		B32365021B096A09002D068C /* ServerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerManager.swift; sourceTree = "<group>"; };
+		B36D9A9B1B0AF034009495BF /* ProjectInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectInfoViewController.swift; sourceTree = "<group>"; };
+		B36D9A9D1B0AF461009495BF /* RoundImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundImageView.swift; sourceTree = "<group>"; };
+		B36D9A9F1B0AF914009495BF /* ProjectDescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDescriptionCell.swift; sourceTree = "<group>"; };
 		B39290C91B092B6B001FF219 /* Controlio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Controlio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B39290CD1B092B6B001FF219 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B39290CE1B092B6B001FF219 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -168,6 +174,8 @@
 				B39290F61B094062001FF219 /* PurpleButton.swift */,
 				B32364FE1B09555A002D068C /* ProjectCell.swift */,
 				B32365001B0958ED002D068C /* BorderedView.swift */,
+				B36D9A9D1B0AF461009495BF /* RoundImageView.swift */,
+				B36D9A9F1B0AF914009495BF /* ProjectDescriptionCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -188,6 +196,7 @@
 				B39290F21B093DC2001FF219 /* LoginViewController.swift */,
 				B39290F81B09488A001FF219 /* ProjectListViewController.swift */,
 				B3E925261B0A9C25005E04AA /* StatusesViewController.swift */,
+				B36D9A9B1B0AF034009495BF /* ProjectInfoViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -348,8 +357,11 @@
 				B39290F31B093DC2001FF219 /* LoginViewController.swift in Sources */,
 				B32364FF1B09555A002D068C /* ProjectCell.swift in Sources */,
 				B39290F71B094062001FF219 /* PurpleButton.swift in Sources */,
+				B36D9A9E1B0AF461009495BF /* RoundImageView.swift in Sources */,
 				B32364FB1B0953FF002D068C /* ProjectObject.swift in Sources */,
 				B3E925271B0A9C25005E04AA /* StatusesViewController.swift in Sources */,
+				B36D9A9C1B0AF034009495BF /* ProjectInfoViewController.swift in Sources */,
+				B36D9AA01B0AF914009495BF /* ProjectDescriptionCell.swift in Sources */,
 				B39290CF1B092B6B001FF219 /* AppDelegate.swift in Sources */,
 				B32365031B096A09002D068C /* ServerManager.swift in Sources */,
 				B32365011B0958ED002D068C /* BorderedView.swift in Sources */,

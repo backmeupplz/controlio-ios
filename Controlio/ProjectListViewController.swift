@@ -75,6 +75,14 @@ class ProjectListViewController: UITableViewController {
         tableView.estimatedRowHeight = 237.0
     }
     
+    // MARK: - Segues -
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var dest = segue.destinationViewController as! StatusesViewController
+        let unwrappedSender = sender as! ProjectCell
+        dest.object = unwrappedSender.object
+    }
+    
     // MARK: - Debug -
     
     func populateFakeData() {

@@ -1,5 +1,5 @@
 //
-//  StatusesViewController.swift
+//  ProjectInfoViewController.swift
 //  Controlio
 //
 //  Created by Nikita Kolmogorov on 18/05/15.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class StatusesViewController : UITableViewController {
+class ProjectInfoViewController: UITableViewController {
     
     // MARK: - Public Variables -
     
@@ -26,24 +26,19 @@ class StatusesViewController : UITableViewController {
     // MARK: - UITableViewDataSource -
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return 1
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        var cell = tableView.dequeueReusableCellWithIdentifier("ProjectDescriptionCell") as! ProjectDescriptionCell
+        cell.object = object
+        return cell
     }
     
     // MARK: - General Methods -
     
     func configureTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 237.0
-    }
-    
-    // MARK: - Segues -
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var dest = segue.destinationViewController as! ProjectInfoViewController
-        dest.object = object
+        tableView.estimatedRowHeight = 464.0
     }
 }
