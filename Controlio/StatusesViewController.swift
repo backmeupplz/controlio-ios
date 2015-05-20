@@ -48,6 +48,10 @@ class StatusesViewController : UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if (indexPath.row >= tableData.count-1) {
+            loadMoreData()
+        }
+        
         var object = tableData[indexPath.row] as StatusObject
         var cell = tableView.dequeueReusableCellWithIdentifier("StatusCell\(object.type.simpleDescription())") as! StatusCell
         
@@ -77,7 +81,7 @@ class StatusesViewController : UITableViewController {
                 obj.text = "Артемий Андреевич Лебедев – наш человек! Съел горстку печалий и больше не ест :3 Подписывайтесь на tema.livejournal.ru"
                 
                 var att = [NSURL]()
-                for inde in 0...0 {
+                for inde in 0...100 {
                     att.append(NSURL(string: "https://pp.vk.me/c623428/v623428806/230e6/FFhZXh0DlZc.jpg")!)
                 }
                 obj.attachements = att
@@ -93,6 +97,10 @@ class StatusesViewController : UITableViewController {
     
     func refresh(sender: AnyObject?) {
         refreshControl!.endRefreshing()
+    }
+    
+    func loadMoreData() {
+        println("load more data!")
     }
     
     // MARK: - Segues -

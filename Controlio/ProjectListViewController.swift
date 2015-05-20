@@ -51,6 +51,10 @@ class ProjectListViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if (indexPath.row >= tableData.count-1) {
+            loadMoreData()
+        }
+        
         var cell = tableView.dequeueReusableCellWithIdentifier("ProjectCell") as! ProjectCell
         cell.object = tableData[indexPath.row]
         return cell
@@ -90,6 +94,10 @@ class ProjectListViewController: UITableViewController {
     
     func refresh(sender: AnyObject?) {
         refreshControl!.endRefreshing()
+    }
+    
+    func loadMoreData() {
+        println("load more data!")
     }
     
     // MARK: - Segues -
