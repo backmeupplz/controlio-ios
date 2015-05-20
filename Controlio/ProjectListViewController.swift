@@ -95,6 +95,7 @@ class ProjectListViewController: UITableViewController {
             obj.timestamp = Int(NSDate().timeIntervalSince1970)
             obj.message = "Some message #\(index)"
             obj.info = "This is one of the best project we've had our hands on!"
+            obj.status = "Тесты"
             
             var manager = ManagerObject()
             manager.image = NSURL(string: "https://pp.vk.me/c608619/v608619806/8f47/Vv-VLk2JbCU.jpg")

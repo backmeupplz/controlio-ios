@@ -24,6 +24,7 @@ class ProjectObject {
     }
     var message: String!
     var info: String!
+    var status: String!
     
     var manager: ManagerObject!
 }

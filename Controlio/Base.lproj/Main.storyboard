@@ -146,6 +146,27 @@
                                                         <constraint firstAttribute="height" constant="123" id="Zxl-zc-DRa"/>
                                                     </constraints>
                                                 </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="he6-he-Ede" customClass="BorderedView" customModule="Controlio" customModuleProvider="target">
+                                                    <rect key="frame" x="446" y="8" width="128" height="25"/>
+                                                    <color key="backgroundColor" red="0.078431372550000003" green="0.78039215689999997" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="25" id="hcn-zl-ZPD"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="4"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Проект начат" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eo2-6o-pTj">
+                                                    <rect key="frame" x="456" y="10" width="108" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="gTd-Bw-Q2d"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ремонт двигателя BMW 130i" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9iM-SG-5D5">
                                                     <rect key="frame" x="8" y="131" width="568" height="29"/>
                                                     <constraints>
@@ -173,16 +194,21 @@
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
+                                                <constraint firstItem="eo2-6o-pTj" firstAttribute="width" secondItem="he6-he-Ede" secondAttribute="width" constant="-20" id="0Rh-vP-mz5"/>
                                                 <constraint firstItem="djj-V4-eRl" firstAttribute="leading" secondItem="LJR-3B-fCh" secondAttribute="leading" constant="8" id="3iq-fe-5qD"/>
                                                 <constraint firstAttribute="trailing" secondItem="9iM-SG-5D5" secondAttribute="trailing" constant="8" id="4Hz-FM-Lme"/>
+                                                <constraint firstItem="eo2-6o-pTj" firstAttribute="top" secondItem="LJR-3B-fCh" secondAttribute="top" constant="10" id="BnO-nX-SZm"/>
                                                 <constraint firstAttribute="trailing" secondItem="7lb-YD-exz" secondAttribute="trailing" id="HZP-Wx-Hd7"/>
                                                 <constraint firstItem="9iM-SG-5D5" firstAttribute="top" secondItem="7lb-YD-exz" secondAttribute="bottom" constant="8" id="Hdy-0r-7Eb"/>
                                                 <constraint firstItem="7lb-YD-exz" firstAttribute="leading" secondItem="LJR-3B-fCh" secondAttribute="leading" id="LRq-AH-dVi"/>
+                                                <constraint firstAttribute="trailing" secondItem="eo2-6o-pTj" secondAttribute="trailing" constant="20" id="N1i-7G-R9B"/>
                                                 <constraint firstItem="9iM-SG-5D5" firstAttribute="leading" secondItem="LJR-3B-fCh" secondAttribute="leading" constant="8" id="SKk-ob-Ude"/>
                                                 <constraint firstItem="eKO-EE-t76" firstAttribute="leading" secondItem="LJR-3B-fCh" secondAttribute="leading" constant="8" id="TYl-XI-D8A"/>
                                                 <constraint firstItem="djj-V4-eRl" firstAttribute="top" secondItem="eKO-EE-t76" secondAttribute="bottom" constant="1" id="V0a-BF-7Pl"/>
                                                 <constraint firstAttribute="trailing" secondItem="djj-V4-eRl" secondAttribute="trailing" constant="8" id="aCv-4Q-BDr"/>
+                                                <constraint firstItem="eo2-6o-pTj" firstAttribute="centerX" secondItem="he6-he-Ede" secondAttribute="centerX" id="aeX-rJ-E1O"/>
                                                 <constraint firstAttribute="bottom" secondItem="djj-V4-eRl" secondAttribute="bottom" constant="9" id="bls-ES-qel"/>
+                                                <constraint firstItem="he6-he-Ede" firstAttribute="top" secondItem="LJR-3B-fCh" secondAttribute="top" constant="8" id="jJn-IJ-1jd"/>
                                                 <constraint firstItem="eKO-EE-t76" firstAttribute="top" secondItem="9iM-SG-5D5" secondAttribute="bottom" id="qqV-k4-qQH"/>
                                                 <constraint firstItem="7lb-YD-exz" firstAttribute="top" secondItem="LJR-3B-fCh" secondAttribute="top" id="sLD-K8-Ux4"/>
                                                 <constraint firstAttribute="trailing" secondItem="eKO-EE-t76" secondAttribute="trailing" constant="8" id="u3y-KC-fJp"/>
@@ -216,7 +242,8 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="lastImageView" destination="7lb-YD-exz" id="0dZ-6P-EMp"/>
-                                    <outlet property="statusLabel" destination="djj-V4-eRl" id="fxr-Hn-ODI"/>
+                                    <outlet property="messageLabel" destination="djj-V4-eRl" id="4AL-CA-va9"/>
+                                    <outlet property="statusLabel" destination="eo2-6o-pTj" id="fPg-eQ-Lrv"/>
                                     <outlet property="timestampLabel" destination="eKO-EE-t76" id="hgN-8m-vJH"/>
                                     <outlet property="titleMessageLabel" destination="9iM-SG-5D5" id="oFy-jP-EeS"/>
                                     <segue destination="Ncd-FA-n4t" kind="show" id="gy1-jO-ABw"/>
@@ -238,7 +265,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Jt-5t-hN4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1818.5" y="434.5"/>
+            <point key="canvasLocation" x="1818" y="434"/>
         </scene>
         <!--Statuses View Controller-->
         <scene sceneID="6tp-Xc-Wx4">
@@ -449,12 +476,12 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ремонт двигателя BMW 130I" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RKF-F6-IPJ">
-                                            <rect key="frame" x="8" y="122" width="584" height="21"/>
+                                            <rect key="frame" x="8" y="130" width="584" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="lWe-PR-t4Z"/>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="tVw-x9-OyJ"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                             <variation key="default">
@@ -464,7 +491,7 @@
                                             </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Aq-JA-9sI">
-                                            <rect key="frame" x="8" y="151" width="584" height="188"/>
+                                            <rect key="frame" x="8" y="159" width="584" height="172"/>
                                             <string key="text">BMW N52 является шестицилиндровым поршневым двигателем DOHC с двумя верхними распределительными валами. Он производился в период с 2004 по 2011 год в качестве замены двигателей серии M54. По сравнению со своим предшественником M54, в этом двигателе реализована технология газораспределения Valvetronic с возможностью изменения хода поршня в зависимости от числа оборотов двигателя и DUAL-Vanos (динамический контроль за распредвалами впускных и выпускных клапанов).</string>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -584,7 +611,7 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="2b2-oH-hMj" secondAttribute="trailing" constant="13" id="FVC-iv-34t"/>
                                         <constraint firstItem="9Aq-JA-9sI" firstAttribute="trailing" secondItem="mL6-sD-atw" secondAttribute="trailingMargin" id="FYN-tq-uW7"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="88j-sF-v2v" secondAttribute="trailing" constant="13" id="H3F-7J-o9H"/>
-                                        <constraint firstItem="pQT-lv-rmk" firstAttribute="top" secondItem="9Aq-JA-9sI" secondAttribute="bottom" constant="8" id="HZn-2K-z3S"/>
+                                        <constraint firstItem="pQT-lv-rmk" firstAttribute="top" secondItem="9Aq-JA-9sI" secondAttribute="bottom" constant="16" id="HZn-2K-z3S"/>
                                         <constraint firstItem="RKF-F6-IPJ" firstAttribute="top" secondItem="EI7-Vl-72O" secondAttribute="bottom" constant="8" id="Kcc-PO-aQP"/>
                                         <constraint firstAttribute="trailing" secondItem="EI7-Vl-72O" secondAttribute="trailing" id="Kjo-4p-buM"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="EI7-Vl-72O" secondAttribute="trailing" constant="-8" id="Lw2-D4-lNI"/>
@@ -609,8 +636,9 @@
                                         <constraint firstItem="88j-sF-v2v" firstAttribute="leading" secondItem="UGy-zb-3Ft" secondAttribute="trailing" constant="18" id="jVI-2M-1iF"/>
                                         <constraint firstItem="88j-sF-v2v" firstAttribute="top" secondItem="5MP-6r-Plf" secondAttribute="bottom" constant="10" id="lfW-m4-EfH"/>
                                         <constraint firstItem="RKF-F6-IPJ" firstAttribute="trailing" secondItem="mL6-sD-atw" secondAttribute="trailingMargin" id="mUq-fC-TX1"/>
-                                        <constraint firstItem="UGy-zb-3Ft" firstAttribute="top" secondItem="9Aq-JA-9sI" secondAttribute="bottom" constant="8" id="nUr-ZF-bMu"/>
+                                        <constraint firstItem="UGy-zb-3Ft" firstAttribute="top" secondItem="9Aq-JA-9sI" secondAttribute="bottom" constant="16" id="nUr-ZF-bMu"/>
                                         <constraint firstItem="CbZ-8o-pow" firstAttribute="leading" secondItem="mL6-sD-atw" secondAttribute="leading" constant="115" id="ndT-6T-9YT"/>
+                                        <constraint firstItem="RKF-F6-IPJ" firstAttribute="top" secondItem="EI7-Vl-72O" secondAttribute="bottom" constant="16" id="ndt-tY-Ctm"/>
                                         <constraint firstItem="5MP-6r-Plf" firstAttribute="leading" secondItem="UGy-zb-3Ft" secondAttribute="trailing" constant="18" id="okT-nm-TCR"/>
                                         <constraint firstItem="2b2-oH-hMj" firstAttribute="top" secondItem="88j-sF-v2v" secondAttribute="bottom" constant="8" id="scg-7T-pRU"/>
                                         <constraint firstItem="2b2-oH-hMj" firstAttribute="leading" secondItem="mL6-sD-atw" secondAttribute="leading" constant="115" id="txV-sR-Rma"/>
@@ -625,6 +653,7 @@
                                         <mask key="constraints">
                                             <exclude reference="Lw2-D4-lNI"/>
                                             <exclude reference="yjw-ru-Xd0"/>
+                                            <exclude reference="DS8-M4-RK8"/>
                                             <exclude reference="Kcc-PO-aQP"/>
                                             <exclude reference="mUq-fC-TX1"/>
                                             <exclude reference="w7Z-lw-fMo"/>

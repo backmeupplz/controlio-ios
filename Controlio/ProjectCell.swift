@@ -15,9 +15,10 @@ class ProjectCell: UITableViewCell {
     // MARK: - IBOutlets -
     
     @IBOutlet weak var lastImageView: UIImageView!
+    @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var titleMessageLabel: UILabel!
     @IBOutlet weak var timestampLabel: UILabel!
-    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var messageLabel: UILabel!
     
     // MARK: - Public Variables -
     
@@ -33,6 +34,7 @@ class ProjectCell: UITableViewCell {
         lastImageView.loadURL(object.image)
         titleMessageLabel.text = object.title
         timestampLabel.text = object.timestampString
-        statusLabel.text = object.message
+        messageLabel.text = object.message
+        statusLabel.text = object.status
     }
 }
