@@ -336,6 +336,71 @@
                                     <outlet property="statusLabel" destination="Clb-c5-LBS" id="fc7-BN-eed"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StatusCellStatusWithImage" rowHeight="103" id="zrd-Nt-7RP" customClass="StatusCell" customModule="Controlio" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zrd-Nt-7RP" id="OMA-9D-F2m">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4pe-cX-eb5" customClass="BorderedView" customModule="Controlio" customModuleProvider="target">
+                                            <rect key="frame" x="8" y="8" width="584" height="87"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0eP-dO-9MF" customClass="RoundImageView" customModule="Controlio" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="16" width="55" height="55"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="55" id="J9u-BH-nE4"/>
+                                                        <constraint firstAttribute="width" constant="55" id="KQn-pI-L9E"/>
+                                                        <constraint firstAttribute="height" constant="55" id="MOq-Zp-V6b"/>
+                                                        <constraint firstAttribute="height" constant="55" id="lXF-AF-wj6"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="KQn-pI-L9E"/>
+                                                            <exclude reference="MOq-Zp-V6b"/>
+                                                        </mask>
+                                                    </variation>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Статус" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITj-t1-SPO">
+                                                    <rect key="frame" x="87" y="16" width="481" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="ITj-t1-SPO" firstAttribute="top" secondItem="4pe-cX-eb5" secondAttribute="top" constant="16" id="17g-SR-tpd"/>
+                                                <constraint firstAttribute="trailing" secondItem="ITj-t1-SPO" secondAttribute="trailing" constant="16" id="448-b0-dyt"/>
+                                                <constraint firstItem="ITj-t1-SPO" firstAttribute="leading" secondItem="0eP-dO-9MF" secondAttribute="trailing" constant="16" id="4wl-RB-u1K"/>
+                                                <constraint firstAttribute="bottom" secondItem="ITj-t1-SPO" secondAttribute="bottom" priority="750" constant="16" id="OqI-Yd-lbD"/>
+                                                <constraint firstItem="0eP-dO-9MF" firstAttribute="leading" secondItem="4pe-cX-eb5" secondAttribute="leading" constant="16" id="XOu-24-KpE"/>
+                                                <constraint firstItem="0eP-dO-9MF" firstAttribute="top" secondItem="4pe-cX-eb5" secondAttribute="top" constant="16" id="ds2-t3-d4f"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="87" id="ite-Jm-jlo"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="9"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="OqI-Yd-lbD"/>
+                                                </mask>
+                                            </variation>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.90196078430000004" green="0.92941176469999998" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="4pe-cX-eb5" secondAttribute="bottom" constant="8" id="JcN-G4-SjT"/>
+                                        <constraint firstItem="4pe-cX-eb5" firstAttribute="top" secondItem="OMA-9D-F2m" secondAttribute="top" constant="8" id="gFi-xI-Q45"/>
+                                        <constraint firstItem="4pe-cX-eb5" firstAttribute="leading" secondItem="OMA-9D-F2m" secondAttribute="leading" constant="8" id="spq-w8-dq5"/>
+                                        <constraint firstAttribute="trailing" secondItem="4pe-cX-eb5" secondAttribute="trailing" constant="8" id="xgu-3i-G5F"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="managerImageView" destination="0eP-dO-9MF" id="yWU-Zz-d0h"/>
+                                    <outlet property="statusLabel" destination="ITj-t1-SPO" id="Ity-8f-GD8"/>
+                                </connections>
+                            </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StatusCellTime" rowHeight="37" id="aFA-M4-K4g" customClass="StatusCell" customModule="Controlio" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aFA-M4-K4g" id="szZ-7g-fw3">
