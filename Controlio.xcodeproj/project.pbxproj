@@ -25,6 +25,10 @@
 		B39290F91B09488A001FF219 /* ProjectListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39290F81B09488A001FF219 /* ProjectListViewController.swift */; };
 		B39290FF1B094B46001FF219 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39290FE1B094B46001FF219 /* Constants.swift */; };
 		B3E925271B0A9C25005E04AA /* StatusesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E925261B0A9C25005E04AA /* StatusesViewController.swift */; };
+		B3F3C9FB1B0BFA62006FC4B9 /* ManagerObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F3C9FA1B0BFA62006FC4B9 /* ManagerObject.swift */; };
+		B3F3C9FD1B0BFC3D006FC4B9 /* UIImageView+BeautifulWebImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F3C9FC1B0BFC3D006FC4B9 /* UIImageView+BeautifulWebImage.swift */; };
+		B3F3C9FF1B0C1474006FC4B9 /* StatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F3C9FE1B0C1474006FC4B9 /* StatusCell.swift */; };
+		B3F3CA011B0C18B0006FC4B9 /* StatusObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F3CA001B0C18B0006FC4B9 /* StatusObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +64,10 @@
 		B39290F81B09488A001FF219 /* ProjectListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectListViewController.swift; sourceTree = "<group>"; };
 		B39290FE1B094B46001FF219 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B3E925261B0A9C25005E04AA /* StatusesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusesViewController.swift; sourceTree = "<group>"; };
+		B3F3C9FA1B0BFA62006FC4B9 /* ManagerObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerObject.swift; sourceTree = "<group>"; };
+		B3F3C9FC1B0BFC3D006FC4B9 /* UIImageView+BeautifulWebImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+BeautifulWebImage.swift"; sourceTree = "<group>"; };
+		B3F3C9FE1B0C1474006FC4B9 /* StatusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusCell.swift; sourceTree = "<group>"; };
+		B3F3CA001B0C18B0006FC4B9 /* StatusObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusObject.swift; sourceTree = "<group>"; };
 		B61E20F3A2CD024B4177990A /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F48E98BCCC1929EC1FABB71F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -171,11 +179,10 @@
 		B39290EF1B092B7B001FF219 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B3F3CA021B0C1DA5006FC4B9 /* Cells */,
 				B39290F61B094062001FF219 /* PurpleButton.swift */,
-				B32364FE1B09555A002D068C /* ProjectCell.swift */,
 				B32365001B0958ED002D068C /* BorderedView.swift */,
 				B36D9A9D1B0AF461009495BF /* RoundImageView.swift */,
-				B36D9A9F1B0AF914009495BF /* ProjectDescriptionCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -183,9 +190,10 @@
 		B39290F01B092B82001FF219 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B3F3CA031B0C1DB0006FC4B9 /* Objects */,
 				B39290CE1B092B6B001FF219 /* AppDelegate.swift */,
-				B32364FA1B0953FF002D068C /* ProjectObject.swift */,
 				B32365021B096A09002D068C /* ServerManager.swift */,
+				B3F3C9FC1B0BFC3D006FC4B9 /* UIImageView+BeautifulWebImage.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -199,6 +207,26 @@
 				B36D9A9B1B0AF034009495BF /* ProjectInfoViewController.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		B3F3CA021B0C1DA5006FC4B9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B32364FE1B09555A002D068C /* ProjectCell.swift */,
+				B36D9A9F1B0AF914009495BF /* ProjectDescriptionCell.swift */,
+				B3F3C9FE1B0C1474006FC4B9 /* StatusCell.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		B3F3CA031B0C1DB0006FC4B9 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				B32364FA1B0953FF002D068C /* ProjectObject.swift */,
+				B3F3C9FA1B0BFA62006FC4B9 /* ManagerObject.swift */,
+				B3F3CA001B0C18B0006FC4B9 /* StatusObject.swift */,
+			);
+			name = Objects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -352,19 +380,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3F3C9FB1B0BFA62006FC4B9 /* ManagerObject.swift in Sources */,
 				B39290FF1B094B46001FF219 /* Constants.swift in Sources */,
 				B39290F91B09488A001FF219 /* ProjectListViewController.swift in Sources */,
 				B39290F31B093DC2001FF219 /* LoginViewController.swift in Sources */,
 				B32364FF1B09555A002D068C /* ProjectCell.swift in Sources */,
 				B39290F71B094062001FF219 /* PurpleButton.swift in Sources */,
 				B36D9A9E1B0AF461009495BF /* RoundImageView.swift in Sources */,
+				B3F3C9FD1B0BFC3D006FC4B9 /* UIImageView+BeautifulWebImage.swift in Sources */,
 				B32364FB1B0953FF002D068C /* ProjectObject.swift in Sources */,
 				B3E925271B0A9C25005E04AA /* StatusesViewController.swift in Sources */,
 				B36D9A9C1B0AF034009495BF /* ProjectInfoViewController.swift in Sources */,
 				B36D9AA01B0AF914009495BF /* ProjectDescriptionCell.swift in Sources */,
 				B39290CF1B092B6B001FF219 /* AppDelegate.swift in Sources */,
+				B3F3CA011B0C18B0006FC4B9 /* StatusObject.swift in Sources */,
 				B32365031B096A09002D068C /* ServerManager.swift in Sources */,
 				B32365011B0958ED002D068C /* BorderedView.swift in Sources */,
+				B3F3C9FF1B0C1474006FC4B9 /* StatusCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

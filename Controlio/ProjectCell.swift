@@ -30,18 +30,9 @@ class ProjectCell: UITableViewCell {
     // MARK: - General Methods -
     
     func configure() {
-        lastImageView.alpha = CGFloat(0)
-        lastImageView.sd_setImageWithURL(object.lastImage, completed: { (image, error, type, url) -> Void in
-            if (type != .Memory) {
-                UIView.animateWithDuration(0.5, animations: { () -> Void in
-                    self.lastImageView.alpha = CGFloat(1)
-                })
-            } else {
-                self.lastImageView.alpha = CGFloat(1)
-            }
-        })
-        titleMessageLabel.text = object.titleMessage
+        lastImageView.loadURL(object.image)
+        titleMessageLabel.text = object.title
         timestampLabel.text = object.timestampString
-        statusLabel.text = object.lastMessage
+        statusLabel.text = object.message
     }
 }

@@ -88,11 +88,23 @@ class ProjectListViewController: UITableViewController {
     func populateFakeData() {
         for index in 0...20 {
             var obj = ProjectObject()
+            
             obj.identificator = index
-            obj.lastImage = NSURL(string: "https://i.ytimg.com/vi/YWNWi-ZWL3c/maxresdefault.jpg")
-            obj.titleMessage = "Some title #\(index)"
+            obj.image = NSURL(string: "https://i.ytimg.com/vi/YWNWi-ZWL3c/maxresdefault.jpg")
+            obj.title = "Some title #\(index)"
             obj.timestamp = Int(NSDate().timeIntervalSince1970)
-            obj.lastMessage = "Some message #\(index)"
+            obj.message = "Some message #\(index)"
+            obj.info = "This is one of the best project we've had our hands on!"
+            
+            var manager = ManagerObject()
+            manager.image = NSURL(string: "https://pp.vk.me/c608619/v608619806/8f47/Vv-VLk2JbCU.jpg")
+            manager.name = "Nikita Kolmogorov"
+            manager.telephone = "+1 778 288 1444"
+            manager.email = "nikita@borodutch.com"
+            manager.website = "www.borodutch.com"
+            
+            obj.manager = manager
+            
             tableData.append(obj)
         }
     }

@@ -10,8 +10,8 @@ import Foundation
 
 class ProjectObject {
     var identificator: Int!
-    var lastImage: NSURL?
-    var titleMessage: String!
+    var image: NSURL?
+    var title: String!
     var timestamp: Int!
     var timestampString: String! {
         get {
@@ -22,5 +22,8 @@ class ProjectObject {
             return formatter.stringFromDate(date)
         }
     }
-    var lastMessage: String!
+    var message: String!
+    var info: String!
+    
+    var manager: ManagerObject!
 }

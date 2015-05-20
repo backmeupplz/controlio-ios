@@ -15,7 +15,17 @@ class StatusesViewController : UITableViewController {
     
     var object: ProjectObject!
     
+    // MARK: - Variables -
+    
+    var tableData = [StatusObject]()
+    
     // MARK: - View Controller Life Cycle -
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        populateFakeData()
+    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -26,18 +36,40 @@ class StatusesViewController : UITableViewController {
     // MARK: - UITableViewDataSource -
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return tableData.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        var object = tableData[indexPath.row] as StatusObject
+        var cell = tableView.dequeueReusableCellWithIdentifier("StatusCell\(object.type.simpleDescription())") as! StatusCell
+        
+        cell.manager = self.object.manager
+        cell.object = object
+        return cell
     }
     
     // MARK: - General Methods -
     
     func configureTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 237.0
+        tableView.estimatedRowHeight = 103.0
+    }
+    
+    func populateFakeData() {
+        for index in 0...20 {
+            var obj = StatusObject()
+            if (index % 3 == 0) {
+                obj.type = .TypeChange
+                obj.text = "Начали проект!"
+            } else if (index % 2 == 0) {
+                obj.type = .Time
+                obj.text = "21 мая 2015"
+            } else {
+                obj.type = .Status
+                obj.text = "Артемий Андреевич Лебедев – наш человек! Съел горстку печалий и больше не ест :3 Подписывайтесь на tema.livejournal.ru"
+            }
+            tableData.append(obj)
+        }
     }
     
     // MARK: - Segues -

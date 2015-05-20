@@ -49,22 +49,14 @@ class ProjectDescriptionCell: UITableViewCell {
     // MARK: - General Methods -
     
     func setup() {
-        if (object.lastImage != nil) {
-            imageView(mainImageView, putURL: object.lastImage!)
-            imageView(managerImageView, putURL: object.lastImage!)
-        }
-    }
-    
-    func imageView(imageView: UIImageView, putURL: NSURL) {
-        imageView.alpha = CGFloat(0)
-        imageView.sd_setImageWithURL(putURL, completed: { (image, error, type, url) -> Void in
-            if (type != .Memory) {
-                UIView.animateWithDuration(0.5, animations: { () -> Void in
-                    imageView.alpha = CGFloat(1)
-                })
-            } else {
-                imageView.alpha = CGFloat(1)
-            }
-        })
+        mainImageView.loadURL(object.image)
+        titleLabel.text = object.title
+        infoLabel.text = object.info
+        
+        managerImageView.loadURL(object.manager.image)
+        managerName.text = object.manager.name
+        managerPhoneButton.setTitle(object.manager.telephone, forState:.Normal)
+        managerEmailButton.setTitle(object.manager.email, forState:.Normal)
+        managerWebsiteButton.setTitle(object.manager.website, forState:.Normal)
     }
 }
