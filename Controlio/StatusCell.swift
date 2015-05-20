@@ -46,7 +46,7 @@ class StatusCell: UITableViewCell {
         self.managerImageView.backgroundColor = UIColor.redColor()
         
         for index in 0...attachements.count-1 {
-            if (index > 8) {
+            if (index > 2) {
                 break
             }
             var imageView = UIImageView()
@@ -65,57 +65,36 @@ class StatusCell: UITableViewCell {
                 make.height.equalTo()(imageView.mas_width)
             }
             
-            // Width (equal for every view)
-            if (index != 0) {
-                imageView.mas_makeConstraints{ make in
-                    make.width.equalTo()(prevView.mas_width)
-                }
-            }
-            
             // Last image bottom space
-            if (index == attachements.count-1 || index == 8) {
+            if (index == 0) {
                 imageView.mas_makeConstraints{ make in
                     make.bottom.equalTo()(self.borderedView.mas_bottom).offset()(-16)
-                }
-            }
-            
-            // X and Y coordinates + (offsets)
-            switch index {
-            case 0:
-                imageView.mas_makeConstraints{ make in
                     make.left.equalTo()(self.statusLabel.mas_left)
                     make.top.equalTo()(self.statusLabel.mas_bottom).offset()(16)
                     if (attachements.count == 1) {
                         make.right.equalTo()(self.borderedView.mas_right).offset()(-16)
                     }
                 }
-            case 1, 4, 7:
+            } else if (index == 1) {
                 imageView.mas_makeConstraints{ make in
                     make.left.equalTo()(prevView.mas_right).offset()(8)
                     make.top.equalTo()(prevView.mas_top)
-                    if (attachements.count == 2 && index == 1) {
+                    make.width.equalTo()(prevView.mas_width)
+                    if (attachements.count == 2) {
                         make.right.equalTo()(self.borderedView.mas_right).offset()(-16)
                     }
                 }
-            case 2, 5, 8:
+            } else if (index == 2) {
                 imageView.mas_makeConstraints{ make in
                     make.left.equalTo()(prevView.mas_right).offset()(8)
                     make.top.equalTo()(prevView.mas_top)
                     make.right.equalTo()(self.borderedView.mas_right).offset()(-16)
+                    make.width.equalTo()(prevView.mas_width)
                 }
-            case 3, 6:
-                imageView.mas_makeConstraints{ make in
-                    make.left.equalTo()(self.statusLabel.mas_left)
-                    make.top.equalTo()(prevView.mas_bottom).offset()(8)
+                if (attachements.count > 3) {
+                    addPlusLabelToView(imageView)
                 }
-            default:
-                break
             }
-            
-            if (attachements.count > 9 && index == 8) {
-                addPlusLabelToView(imageView)
-            }
-            
             addButtonToView(imageView, index: index)
             
             // Set previous view
@@ -128,7 +107,7 @@ class StatusCell: UITableViewCell {
         self.borderedView.addSubview(label)
         label.backgroundColor = UIColor(white: 0.0, alpha: 0.75)
         label.textColor = UIColor.whiteColor()
-        label.text = "+\(object.attachements!.count-9)"
+        label.text = "+\(object.attachements!.count-3)"
         label.mas_makeConstraints{ make in
             make.edges.equalTo()(view)
         }
@@ -152,12 +131,3 @@ class StatusCell: UITableViewCell {
         println("Touched image #\(index)")
     }
 }
-
-
-
-
-
-
-
-
-
