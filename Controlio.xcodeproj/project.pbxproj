@@ -52,6 +52,7 @@
 		B36D9A9D1B0AF461009495BF /* RoundImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundImageView.swift; sourceTree = "<group>"; };
 		B36D9A9F1B0AF914009495BF /* ProjectDescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDescriptionCell.swift; sourceTree = "<group>"; };
 		B37223481B0C552D00D0E324 /* UIImageView+Bordered.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Bordered.swift"; sourceTree = "<group>"; };
+		B372234A1B0C776F00D0E324 /* Controlio-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Controlio-Bridging-Header.h"; sourceTree = "<group>"; };
 		B39290C91B092B6B001FF219 /* Controlio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Controlio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B39290CD1B092B6B001FF219 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B39290CE1B092B6B001FF219 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -146,6 +147,7 @@
 		B39290CC1B092B6B001FF219 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B372234A1B0C776F00D0E324 /* Controlio-Bridging-Header.h */,
 				B39290D51B092B6B001FF219 /* Images.xcassets */,
 				B39290CD1B092B6B001FF219 /* Info.plist */,
 			);
@@ -534,6 +536,7 @@
 				INFOPLIST_FILE = Controlio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Controlio/Controlio-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -547,6 +550,7 @@
 				INFOPLIST_FILE = Controlio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Controlio/Controlio-Bridging-Header.h";
 			};
 			name = Release;
 		};

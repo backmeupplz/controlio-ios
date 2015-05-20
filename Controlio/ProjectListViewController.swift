@@ -32,8 +32,15 @@ class ProjectListViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.title = "Controlio"
         navigationItem.setHidesBackButton(true, animated: false)
         configureTableView()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.title = ""
+        
+        super.viewWillDisappear(animated)
     }
     
     // MARK: - UITableViewDataSource -

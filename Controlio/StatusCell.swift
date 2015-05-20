@@ -116,6 +116,8 @@ class StatusCell: UITableViewCell {
                 addPlusLabelToView(imageView)
             }
             
+            addButtonToView(imageView, index: index)
+            
             // Set previous view
             prevView = imageView
         }
@@ -134,4 +136,28 @@ class StatusCell: UITableViewCell {
         label.layer.cornerRadius = 6.0
         label.layer.masksToBounds = true
     }
+    
+    func addButtonToView(view: UIView, index: Int) {
+        var button = UIButton()
+        self.borderedView.addSubview(button)
+        button.mas_makeConstraints{ make in
+            make.edges.equalTo()(view)
+        }
+        button.tag = index
+        button.addTarget(self, action: "openAttachment:", forControlEvents: .TouchUpInside)
+    }
+    
+    func openAttachment(sender: UIButton) {
+        var index = sender.tag
+        println("Touched image #\(index)")
+    }
 }
+
+
+
+
+
+
+
+
+
