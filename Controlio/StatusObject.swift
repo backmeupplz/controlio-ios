@@ -30,5 +30,5 @@ enum StatusType {
 class StatusObject {
     var type: StatusType!
     var text: String!
-    var attachements: [String]?
+    var attachements: [NSURL]?
 }

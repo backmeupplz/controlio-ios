@@ -65,8 +65,14 @@ class StatusesViewController : UITableViewController {
                 obj.type = .Time
                 obj.text = "21 мая 2015"
             } else {
-                obj.type = .Status
+                obj.type = StatusType.StatusWithImage
                 obj.text = "Артемий Андреевич Лебедев – наш человек! Съел горстку печалий и больше не ест :3 Подписывайтесь на tema.livejournal.ru"
+                
+                var att = [NSURL]()
+                for inde in 0...0 {
+                    att.append(NSURL(string: "https://pp.vk.me/c623428/v623428806/230e6/FFhZXh0DlZc.jpg")!)
+                }
+                obj.attachements = att
             }
             tableData.append(obj)
         }

@@ -332,6 +332,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="borderedView" destination="6KQ-Ks-xuK" id="cm5-e0-jUU"/>
                                     <outlet property="managerImageView" destination="5nG-f9-yaz" id="dot-OM-Ayb"/>
                                     <outlet property="statusLabel" destination="Clb-c5-LBS" id="fc7-BN-eed"/>
                                 </connections>
@@ -383,6 +384,7 @@
                                             </userDefinedRuntimeAttributes>
                                             <variation key="default">
                                                 <mask key="constraints">
+                                                    <exclude reference="ite-Jm-jlo"/>
                                                     <exclude reference="OqI-Yd-lbD"/>
                                                 </mask>
                                             </variation>
@@ -397,6 +399,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="borderedView" destination="4pe-cX-eb5" id="L94-8l-RZ9"/>
                                     <outlet property="managerImageView" destination="0eP-dO-9MF" id="yWU-Zz-d0h"/>
                                     <outlet property="statusLabel" destination="ITj-t1-SPO" id="Ity-8f-GD8"/>
                                 </connections>
