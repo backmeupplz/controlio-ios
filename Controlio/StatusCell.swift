@@ -49,15 +49,14 @@ class StatusCell: UITableViewCell {
             if (index > 2) {
                 break
             }
+            
+            // Setup image view
             var imageView = UIImageView()
             imageView.contentMode = UIViewContentMode.ScaleAspectFill
             imageView.backgroundColor = UIColor.redColor()
             imageView.cornerRadius = 6.0
             var attachment = attachements[index] as NSURL
-            
-            // Setup image
             imageView.loadURL(attachment)
-            
             self.borderedView.addSubview(imageView)
             
             // Height (equal to width)
