@@ -83,6 +83,13 @@
                                             <action selector="loginTouched:" destination="6QB-UK-VGG" eventType="touchUpInside" id="6UJ-cE-FRQ"/>
                                         </connections>
                                     </button>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="kb3-3s-oHd">
+                                        <rect key="frame" x="257" y="281" width="37" height="37"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="37" id="8s7-3M-Goo"/>
+                                            <constraint firstAttribute="height" constant="37" id="Fer-ev-Kov"/>
+                                        </constraints>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -95,8 +102,10 @@
                                     <constraint firstItem="9KU-m2-lxO" firstAttribute="top" secondItem="0Ol-4L-VEg" secondAttribute="bottom" constant="35" id="Xcb-AE-QaF"/>
                                     <constraint firstItem="2Wf-ax-Ab8" firstAttribute="leading" secondItem="DpK-LC-Qim" secondAttribute="leading" constant="126" id="bSR-rn-QIp"/>
                                     <constraint firstAttribute="height" constant="451" id="cRh-oU-nDX"/>
+                                    <constraint firstItem="kb3-3s-oHd" firstAttribute="leading" secondItem="2Wf-ax-Ab8" secondAttribute="trailing" constant="8" id="dk9-qs-ets"/>
                                     <constraint firstItem="9KU-m2-lxO" firstAttribute="leading" secondItem="DpK-LC-Qim" secondAttribute="leading" constant="73" id="hyj-Xr-V9Q"/>
                                     <constraint firstItem="e0e-0l-iRT" firstAttribute="leading" secondItem="DpK-LC-Qim" secondAttribute="leading" constant="134" id="ssP-ui-MsX"/>
+                                    <constraint firstItem="kb3-3s-oHd" firstAttribute="top" secondItem="0dl-fv-m0A" secondAttribute="bottom" constant="40" id="t9B-HZ-QT4"/>
                                     <constraint firstItem="0dl-fv-m0A" firstAttribute="top" secondItem="9KU-m2-lxO" secondAttribute="bottom" constant="8" id="vaK-jv-qcp"/>
                                 </constraints>
                             </view>
@@ -113,8 +122,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="v4e-NZ-Tjg"/>
                     <connections>
+                        <outlet property="loginButton" destination="2Wf-ax-Ab8" id="Cu4-c2-DLA"/>
                         <outlet property="loginTextField" destination="9KU-m2-lxO" id="Des-Zy-na6"/>
                         <outlet property="passwordTextField" destination="0dl-fv-m0A" id="UF3-vb-9I5"/>
+                        <outlet property="spinner" destination="kb3-3s-oHd" id="AJu-Or-TaX"/>
                         <segue destination="wov-zY-9ON" kind="show" identifier="SegueToMain" id="OUq-Ar-eC7"/>
                     </connections>
                 </viewController>

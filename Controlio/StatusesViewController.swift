@@ -24,6 +24,7 @@ class StatusesViewController : UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.setupRefreshControl()
         populateFakeData()
     }
     
@@ -83,6 +84,15 @@ class StatusesViewController : UITableViewController {
             }
             tableData.append(obj)
         }
+    }
+    
+    func setupRefreshControl() {
+        refreshControl = UIRefreshControl()
+        refreshControl!.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+    }
+    
+    func refresh(sender: AnyObject?) {
+        refreshControl!.endRefreshing()
     }
     
     // MARK: - Segues -

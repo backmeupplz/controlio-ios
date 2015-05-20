@@ -27,6 +27,7 @@ class ProjectListViewController: UITableViewController {
         super.viewDidLoad()
         
         populateFakeData()
+        setupRefreshControl()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -80,6 +81,15 @@ class ProjectListViewController: UITableViewController {
     func configureTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 237.0
+    }
+    
+    func setupRefreshControl() {
+        refreshControl = UIRefreshControl()
+        refreshControl!.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+    }
+    
+    func refresh(sender: AnyObject?) {
+        refreshControl!.endRefreshing()
     }
     
     // MARK: - Segues -

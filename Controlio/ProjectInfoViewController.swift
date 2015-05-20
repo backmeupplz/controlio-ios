@@ -17,6 +17,12 @@ class ProjectInfoViewController: UITableViewController {
     
     // MARK: - View Controller Life Cycle -
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupRefreshControl()
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -47,5 +53,14 @@ class ProjectInfoViewController: UITableViewController {
     func configureTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 464.0
+    }
+    
+    func setupRefreshControl() {
+        refreshControl = UIRefreshControl()
+        refreshControl!.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+    }
+    
+    func refresh(sender: AnyObject?) {
+        refreshControl!.endRefreshing()
     }
 }

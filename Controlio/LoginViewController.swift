@@ -15,6 +15,8 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     // MARK: - IBActions -
     
@@ -39,6 +41,21 @@ class LoginViewController: UIViewController {
     // MARK: - General Methods -
     
     func tryLogin() {
-        performSegueWithIdentifier("SegueToMain", sender: self)
+        startServerProcess(true)
+        ServerManager.sharedInstance.auth(loginTextField.text,
+            password: passwordTextField.text,
+            completion:{ (error: NSError?) in
+                if (error == nil) {
+                    self.performSegueWithIdentifier("SegueToMain", sender: self)
+                }
+                self.startServerProcess(false)
+        })
+    }
+    
+    func startServerProcess(start: Bool) {
+        spinner.hidden = !start
+        loginTextField.enabled = !start
+        passwordTextField.enabled = !start
+        loginButton.enabled = !start
     }
 }
