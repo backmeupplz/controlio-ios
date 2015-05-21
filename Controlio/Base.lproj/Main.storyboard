@@ -563,25 +563,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="GaN-2n-ZLk">
-                        <barButtonItem key="rightBarButtonItem" id="bwE-rF-xPw">
-                            <view key="customView" contentMode="scaleToFill" id="G7m-CV-Qy2">
-                                <rect key="frame" x="0.0" y="0.0" width="133" height="33"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="LJx-9c-wIr">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="n2s-YO-B3W">
+                                <rect key="frame" x="451" y="7" width="22" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AJ6-fR-VoM">
-                                        <rect key="frame" x="111" y="6" width="22" height="22"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="jdn-3q-NQY" kind="show" id="n8k-Zi-ee0"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="jdn-3q-NQY" kind="show" id="L9t-qE-lOd"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>

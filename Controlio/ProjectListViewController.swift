@@ -26,6 +26,7 @@ class ProjectListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Controlio"
         populateFakeData()
         setupRefreshControl()
     }
@@ -33,15 +34,10 @@ class ProjectListViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        title = "Controlio"
+        let backItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = backItem
         navigationItem.setHidesBackButton(true, animated: false)
         configureTableView()
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        title = ""
-        
-        super.viewWillDisappear(animated)
     }
     
     // MARK: - UITableViewDataSource -
