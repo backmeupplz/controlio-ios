@@ -179,9 +179,10 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ремонт двигателя BMW 130i" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9iM-SG-5D5">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ремонт двигателя BMW 130i" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="568" translatesAutoresizingMaskIntoConstraints="NO" id="9iM-SG-5D5">
                                                     <rect key="frame" x="8" y="139" width="568" height="24"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="height" constant="24" id="hcM-ow-7zp"/>
                                                         <constraint firstAttribute="height" constant="24" id="nnm-yL-gxL"/>
                                                         <constraint firstAttribute="height" constant="29" id="xdL-5C-f7I"/>
                                                     </constraints>
@@ -199,6 +200,7 @@
                                                     <rect key="frame" x="8" y="171" width="568" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="4Ll-Mj-uTv"/>
+                                                        <constraint firstAttribute="height" constant="18" id="kuF-ZD-vZt"/>
                                                         <constraint firstAttribute="height" constant="18" id="o0W-Vh-4DY"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
@@ -220,6 +222,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="eKO-EE-t76" secondAttribute="trailing" constant="8" id="08k-Jv-IhO"/>
                                                 <constraint firstItem="eo2-6o-pTj" firstAttribute="width" secondItem="he6-he-Ede" secondAttribute="width" constant="-20" id="0Rh-vP-mz5"/>
                                                 <constraint firstItem="djj-V4-eRl" firstAttribute="leading" secondItem="LJR-3B-fCh" secondAttribute="leading" constant="8" id="3iq-fe-5qD"/>
                                                 <constraint firstAttribute="trailing" secondItem="9iM-SG-5D5" secondAttribute="trailing" constant="8" id="4Hz-FM-Lme"/>
@@ -228,31 +231,34 @@
                                                 <constraint firstAttribute="trailing" secondItem="eKO-EE-t76" secondAttribute="trailing" constant="8" id="Ayk-bs-zyW"/>
                                                 <constraint firstItem="eo2-6o-pTj" firstAttribute="top" secondItem="LJR-3B-fCh" secondAttribute="top" constant="10" id="BnO-nX-SZm"/>
                                                 <constraint firstItem="9iM-SG-5D5" firstAttribute="leading" secondItem="LJR-3B-fCh" secondAttribute="leading" constant="8" id="DJV-ZC-3en"/>
+                                                <constraint firstItem="djj-V4-eRl" firstAttribute="leading" secondItem="LJR-3B-fCh" secondAttribute="leading" constant="8" id="Dtu-e9-Hdh"/>
                                                 <constraint firstAttribute="trailing" secondItem="djj-V4-eRl" secondAttribute="trailing" constant="8" id="Ghk-hF-ywR"/>
                                                 <constraint firstAttribute="trailing" secondItem="7lb-YD-exz" secondAttribute="trailing" id="HZP-Wx-Hd7"/>
                                                 <constraint firstItem="9iM-SG-5D5" firstAttribute="top" secondItem="7lb-YD-exz" secondAttribute="bottom" constant="8" id="Hdy-0r-7Eb"/>
+                                                <constraint firstItem="eKO-EE-t76" firstAttribute="top" secondItem="9iM-SG-5D5" secondAttribute="bottom" constant="8" id="ITz-6a-TB0"/>
                                                 <constraint firstItem="eKO-EE-t76" firstAttribute="top" secondItem="9iM-SG-5D5" secondAttribute="bottom" constant="8" id="J6v-Vi-lYx"/>
+                                                <constraint firstItem="9iM-SG-5D5" firstAttribute="top" secondItem="7lb-YD-exz" secondAttribute="bottom" constant="16" id="JeQ-Us-fXx"/>
                                                 <constraint firstAttribute="trailing" secondItem="9iM-SG-5D5" secondAttribute="trailing" constant="8" id="KQy-6I-bEL"/>
                                                 <constraint firstItem="7lb-YD-exz" firstAttribute="leading" secondItem="LJR-3B-fCh" secondAttribute="leading" id="LRq-AH-dVi"/>
                                                 <constraint firstAttribute="trailing" secondItem="eo2-6o-pTj" secondAttribute="trailing" constant="20" id="N1i-7G-R9B"/>
                                                 <constraint firstItem="eKO-EE-t76" firstAttribute="leading" secondItem="LJR-3B-fCh" secondAttribute="leading" constant="8" id="PD5-ca-PWn"/>
-                                                <constraint firstItem="eKO-EE-t76" firstAttribute="leading" secondItem="LJR-3B-fCh" secondAttribute="leading" constant="8" id="PEk-GL-ajW"/>
                                                 <constraint firstItem="9iM-SG-5D5" firstAttribute="top" secondItem="7lb-YD-exz" secondAttribute="bottom" constant="8" id="QqE-bg-Ywc"/>
-                                                <constraint firstItem="djj-V4-eRl" firstAttribute="top" secondItem="eKO-EE-t76" secondAttribute="bottom" constant="8" id="SHa-ad-S2x"/>
                                                 <constraint firstItem="9iM-SG-5D5" firstAttribute="leading" secondItem="LJR-3B-fCh" secondAttribute="leading" constant="8" id="SKk-ob-Ude"/>
                                                 <constraint firstItem="djj-V4-eRl" firstAttribute="leading" secondItem="LJR-3B-fCh" secondAttribute="leading" constant="8" id="Snq-d0-Qj9"/>
                                                 <constraint firstItem="eKO-EE-t76" firstAttribute="leading" secondItem="LJR-3B-fCh" secondAttribute="leading" constant="8" id="TYl-XI-D8A"/>
                                                 <constraint firstItem="djj-V4-eRl" firstAttribute="top" secondItem="eKO-EE-t76" secondAttribute="bottom" constant="1" id="V0a-BF-7Pl"/>
+                                                <constraint firstAttribute="trailing" secondItem="9iM-SG-5D5" secondAttribute="trailing" constant="8" id="WoJ-id-TXR"/>
                                                 <constraint firstItem="eKO-EE-t76" firstAttribute="top" secondItem="9iM-SG-5D5" secondAttribute="bottom" constant="16" id="Z0y-Y2-IUZ"/>
                                                 <constraint firstAttribute="trailing" secondItem="djj-V4-eRl" secondAttribute="trailing" constant="8" id="aCv-4Q-BDr"/>
-                                                <constraint firstAttribute="bottom" secondItem="djj-V4-eRl" secondAttribute="bottom" constant="16" id="aG4-22-Umv"/>
                                                 <constraint firstItem="eo2-6o-pTj" firstAttribute="centerX" secondItem="he6-he-Ede" secondAttribute="centerX" id="aeX-rJ-E1O"/>
                                                 <constraint firstAttribute="bottom" secondItem="djj-V4-eRl" secondAttribute="bottom" constant="8" id="bls-ES-qel"/>
-                                                <constraint firstItem="djj-V4-eRl" firstAttribute="leading" secondItem="LJR-3B-fCh" secondAttribute="leading" constant="8" id="dMd-Xo-5jw"/>
-                                                <constraint firstAttribute="trailing" secondItem="eKO-EE-t76" secondAttribute="trailing" constant="8" id="gpM-4Y-pPD"/>
+                                                <constraint firstItem="djj-V4-eRl" firstAttribute="top" secondItem="eKO-EE-t76" secondAttribute="bottom" constant="8" id="hnS-Br-Kh1"/>
                                                 <constraint firstItem="he6-he-Ede" firstAttribute="top" secondItem="LJR-3B-fCh" secondAttribute="top" constant="8" id="jJn-IJ-1jd"/>
+                                                <constraint firstItem="9iM-SG-5D5" firstAttribute="leading" secondItem="LJR-3B-fCh" secondAttribute="leading" constant="8" id="juE-I9-4yo"/>
+                                                <constraint firstAttribute="trailing" secondItem="djj-V4-eRl" secondAttribute="trailing" constant="8" id="jxA-9x-P3O"/>
+                                                <constraint firstAttribute="bottom" secondItem="djj-V4-eRl" secondAttribute="bottom" constant="16" id="kam-60-fZf"/>
+                                                <constraint firstItem="eKO-EE-t76" firstAttribute="leading" secondItem="LJR-3B-fCh" secondAttribute="leading" constant="8" id="lZ1-zv-jCh"/>
                                                 <constraint firstItem="djj-V4-eRl" firstAttribute="top" secondItem="eKO-EE-t76" secondAttribute="bottom" constant="8" id="nDa-6u-R5h"/>
-                                                <constraint firstAttribute="trailing" secondItem="djj-V4-eRl" secondAttribute="trailing" constant="8" id="qFu-Zi-nCp"/>
                                                 <constraint firstItem="eKO-EE-t76" firstAttribute="top" secondItem="9iM-SG-5D5" secondAttribute="bottom" constant="16" id="qqV-k4-qQH"/>
                                                 <constraint firstItem="9iM-SG-5D5" firstAttribute="leading" secondItem="LJR-3B-fCh" secondAttribute="leading" constant="8" id="r3b-NH-5dy"/>
                                                 <constraint firstAttribute="bottom" secondItem="djj-V4-eRl" secondAttribute="bottom" constant="16" id="ruU-Bt-cfg"/>
@@ -267,12 +273,16 @@
                                             <variation key="default">
                                                 <mask key="constraints">
                                                     <exclude reference="4Hz-FM-Lme"/>
+                                                    <exclude reference="56Z-8k-Xkj"/>
                                                     <exclude reference="AkA-H6-y1r"/>
                                                     <exclude reference="DJV-ZC-3en"/>
                                                     <exclude reference="Hdy-0r-7Eb"/>
+                                                    <exclude reference="KQy-6I-bEL"/>
                                                     <exclude reference="QqE-bg-Ywc"/>
                                                     <exclude reference="SKk-ob-Ude"/>
+                                                    <exclude reference="r3b-NH-5dy"/>
                                                     <exclude reference="Ayk-bs-zyW"/>
+                                                    <exclude reference="J6v-Vi-lYx"/>
                                                     <exclude reference="PD5-ca-PWn"/>
                                                     <exclude reference="TYl-XI-D8A"/>
                                                     <exclude reference="Z0y-Y2-IUZ"/>
@@ -621,7 +631,7 @@
                                                 </mask>
                                             </variation>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Aq-JA-9sI">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="584" translatesAutoresizingMaskIntoConstraints="NO" id="9Aq-JA-9sI">
                                             <rect key="frame" x="8" y="199" width="584" height="61"/>
                                             <string key="text">BMW N52 является шестицилиндровым поршневым двигателем DOHC с двумя верхними распределительными валами. Он производился в период с 2004 по 2011 год в качестве замены других.</string>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
