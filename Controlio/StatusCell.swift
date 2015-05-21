@@ -18,6 +18,10 @@ class StatusCell: UITableViewCell {
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var borderedView: UIView!
     
+    var imageView1: UIImageView!
+    var imageView2: UIImageView!
+    var imageView3: UIImageView!
+    
     // MARK: - Public Variables -
     
     var manager: ManagerObject!
@@ -40,23 +44,40 @@ class StatusCell: UITableViewCell {
     }
     
     func setupImages() {
-        var imageView1 = addImageViewWithIndex(0)
+        removePrevViews()
+        
+        imageView1 = addImageViewWithIndex(0)
         addConstraintsToImageView1(imageView1)
         addButtonToView(imageView1, index: 0)
         
         if (object.attachements!.count > 1) {
-            var imageView2 = addImageViewWithIndex(1)
+            imageView2 = addImageViewWithIndex(1)
             addConstraintsToImageView2(imageView2, imageView1: imageView1)
             addButtonToView(imageView2, index: 1)
             
             if (self.object.attachements!.count > 2) {
-                var imageView3 = addImageViewWithIndex(2)
+                imageView3 = addImageViewWithIndex(2)
                 addConstraintsToImageView3(imageView3, imageView2: imageView2)
                 if (object.attachements!.count > 3) {
                     addPlusLabelToView(imageView3)
                 }
                 addButtonToView(imageView3, index: 2)
             }
+        }
+    }
+    
+    func removePrevViews() {
+        if (imageView1 != nil) {
+            imageView1.removeConstraints(imageView1.constraints())
+            imageView1.removeFromSuperview()
+        }
+        if (imageView2 != nil) {
+            imageView2.removeConstraints(imageView2.constraints())
+            imageView2.removeFromSuperview()
+        }
+        if (imageView3 != nil) {
+            imageView3.removeConstraints(imageView3.constraints())
+            imageView3.removeFromSuperview()
         }
     }
     

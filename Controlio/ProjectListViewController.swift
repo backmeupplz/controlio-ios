@@ -45,7 +45,7 @@ class ProjectListViewController: UITableViewController {
             self.downloadMoreObjects()
         }
         
-        var cell = tableView.dequeueReusableCellWithIdentifier("ProjectCell") as! ProjectCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("ProjectCell", forIndexPath: indexPath) as! ProjectCell
         cell.object = tableData[indexPath.row]
         return cell
     }
