@@ -24,7 +24,6 @@ class StatusesViewController : UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = object.title
         setupRefreshControl()
         populateFakeData()
     }
@@ -32,7 +31,14 @@ class StatusesViewController : UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        title = object.title
         configureTableView()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        title = ""
+        
+        super.viewWillDisappear(animated)
     }
     
     // MARK: - UITableViewDataSource -

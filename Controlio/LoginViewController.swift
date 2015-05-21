@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - IBOutlets -
     
@@ -36,6 +36,13 @@ class LoginViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         navigationController!.setNavigationBarHidden(false, animated: true)
+    }
+    
+    // MARK: - UITextFieldDelegate -
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     // MARK: - General Methods -

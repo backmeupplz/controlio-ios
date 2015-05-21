@@ -33,13 +33,13 @@ class ProjectListViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.title = "Controlio"
+        title = "Controlio"
         navigationItem.setHidesBackButton(true, animated: false)
         configureTableView()
     }
     
     override func viewWillDisappear(animated: Bool) {
-        self.title = ""
+        title = ""
         
         super.viewWillDisappear(animated)
     }
