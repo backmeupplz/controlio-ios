@@ -13,31 +13,25 @@ class ProjectListViewController: UITableViewController {
     
     // MARK: - Variables -
     
-    var tableData = [ProjectObject]()
-    
-    // MARK: - IBActions -
-    
-    @IBAction func rightBarButtonTouched(sender: AnyObject) {
-        showLogoutAlert()
+    var tableData = [ProjectObject]() {
+        didSet {
+            tableView.reloadData()
+            tableView.layoutSubviews()
+            refreshControl?.endRefreshing()
+        }
     }
+    
+    var noMoreData: Bool = false
     
     // MARK: - View Controller Life Cycle -
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Controlio"
-        loadMoreData()
-        setupRefreshControl()
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        let backItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
-        navigationItem.backBarButtonItem = backItem
-        navigationItem.setHidesBackButton(true, animated: false)
+        setupNavBar()
         configureTableView()
+        setupRefreshControl()
+        updateData()
     }
     
     // MARK: - UITableViewDataSource -
@@ -47,8 +41,8 @@ class ProjectListViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if (indexPath.row >= tableData.count-1) {
-//            loadMoreData()
+        if (!noMoreData && isLastCellAtIndexPath(indexPath)) {
+            self.downloadMoreObjects()
         }
         
         var cell = tableView.dequeueReusableCellWithIdentifier("ProjectCell") as! ProjectCell
@@ -56,7 +50,34 @@ class ProjectListViewController: UITableViewController {
         return cell
     }
     
+    // MARK: - IBActions -
+    
+    @IBAction func rightBarButtonTouched(sender: AnyObject) {
+        showLogoutAlert()
+    }
+    
     // MARK: - General Methods -
+    
+    func setupNavBar() {
+        title = "Controlio"
+        let backItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = backItem
+        navigationItem.setHidesBackButton(true, animated: false)
+    }
+    
+    func configureTableView() {
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 237.0
+    }
+    
+    func setupRefreshControl() {
+        refreshControl = UIRefreshControl()
+        refreshControl!.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+    }
+    
+    func refresh(sender: AnyObject?) {
+        updateData()
+    }
     
     func showLogoutAlert() {
         var alert = UIAlertController(title: "Точно выходим?", message: "Придется опять залогиниться", preferredStyle: .Alert)
@@ -79,37 +100,45 @@ class ProjectListViewController: UITableViewController {
         ServerManager.sharedInstance.logout()
     }
     
-    func configureTableView() {
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 237.0
-    }
+    // MARK: - Table Data -
     
-    func setupRefreshControl() {
-        refreshControl = UIRefreshControl()
-        refreshControl!.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
-    }
-    
-    func refresh(sender: AnyObject?) {
+    func updateData() {
         ServerManager.sharedInstance.getProjects(0, count: 20, completion: { (error, objects) -> () in
             if (error == nil) {
                 self.tableData = objects!
-                self.tableView.reloadData()
-                self.tableView.layoutSubviews()
+            } else {
+                self.refreshControl!.endRefreshing()
             }
-            self.refreshControl!.endRefreshing()
+            self.noMoreData = false
         })
     }
     
-    func loadMoreData() {
-        ServerManager.sharedInstance.getProjects(tableData.count, count: 20, completion: { (error, objects) -> () in
+    func downloadMoreObjects() {
+        getDataWithOffset(tableData.count, count: 20)
+    }
+    
+    func getDataWithOffset(offset: Int, count: Int) {
+        ServerManager.sharedInstance.getProjects(offset, count: count, completion: { (error, objects) -> () in
             if (error == nil) {
-                var temp = objects!
-                temp += self.tableData
-                self.tableData = temp
+                self.addDataObjects(objects!, offset: offset)
             }
-            self.tableView.reloadData()
-            self.tableView.layoutSubviews()
         })
+    }
+    
+    func addDataObjects(objects: [ProjectObject], offset: Int) {
+        if (offset == 0) {
+            noMoreData = false
+            tableData = objects
+        } else {
+            if (objects.count > 0) {
+                tableData += objects
+            }
+            noMoreData = objects.count == 0
+        }
+    }
+    
+    func isLastCellAtIndexPath(indexPath: NSIndexPath) -> Bool {
+        return tableData.count > 0 && indexPath.row == tableData.count - 1;
     }
     
     // MARK: - Segues -

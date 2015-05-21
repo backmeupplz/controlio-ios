@@ -17,16 +17,25 @@ class StatusesViewController : UITableViewController {
     
     // MARK: - Variables -
     
-    var tableData = [StatusObject]()
+    var tableData = [StatusObject]() {
+        didSet {
+            tableView.reloadData()
+            tableView.layoutSubviews()
+            refreshControl?.endRefreshing()
+        }
+    }
+    
+    var noMoreData: Bool = false
     
     // MARK: - View Controller Life Cycle -
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = object.title
-        loadMoreData()
+        setupNavBar()
+        configureTableView()
         setupRefreshControl()
+        updateData()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -44,8 +53,8 @@ class StatusesViewController : UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if (indexPath.row >= tableData.count-1) {
-//            loadMoreData()
+        if (!noMoreData && isLastCellAtIndexPath(indexPath)) {
+            self.downloadMoreObjects()
         }
         
         var object = tableData[indexPath.row] as StatusObject
@@ -58,9 +67,15 @@ class StatusesViewController : UITableViewController {
     
     // MARK: - General Methods -
     
+    func setupNavBar() {
+        title = object.title
+        let backItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = backItem
+    }
+    
     func configureTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 103.0
+        tableView.estimatedRowHeight = 237.0
     }
     
     func setupRefreshControl() {
@@ -69,26 +84,46 @@ class StatusesViewController : UITableViewController {
     }
     
     func refresh(sender: AnyObject?) {
-        ServerManager.sharedInstance.getStatuses(object.identificator, offset: 0, count: 20) { (error, objects) -> () in
+        updateData()
+    }
+    
+    func updateData() {
+        ServerManager.sharedInstance.getStatuses(object.identificator, offset: 0, count: 20, completion: { (error, objects) -> () in
             if (error == nil) {
                 self.tableData = objects!
-                self.tableView.reloadData()
-                self.tableView.layoutSubviews()
+            } else {
+                self.refreshControl!.endRefreshing()
             }
-            self.refreshControl!.endRefreshing()
+            self.noMoreData = false
+        })
+    }
+    
+    func downloadMoreObjects() {
+        getDataWithOffset(tableData.count, count: 20)
+    }
+    
+    func getDataWithOffset(offset: Int, count: Int) {
+        ServerManager.sharedInstance.getStatuses(object.identificator, offset: offset, count: count, completion: { (error, objects) -> () in
+            if (error == nil) {
+                self.addDataObjects(objects!, offset: offset)
+            }
+        })
+    }
+    
+    func addDataObjects(objects: [StatusObject], offset: Int) {
+        if (offset == 0) {
+            noMoreData = false
+            tableData = objects
+        } else {
+            if (objects.count > 0) {
+                tableData += objects
+            }
+            noMoreData = objects.count == 0
         }
     }
     
-    func loadMoreData() {
-        ServerManager.sharedInstance.getStatuses(object.identificator, offset: tableData.count, count: 20) { (error, objects) -> () in
-            if (error == nil) {
-                var temp = objects!
-                temp += self.tableData
-                self.tableData = temp
-            }
-            self.tableView.reloadData()
-            self.tableView.layoutSubviews()
-        }
+    func isLastCellAtIndexPath(indexPath: NSIndexPath) -> Bool {
+        return tableData.count > 0 && indexPath.row == tableData.count - 1;
     }
     
     // MARK: - Segues -
