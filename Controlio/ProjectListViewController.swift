@@ -125,9 +125,9 @@ class ProjectListViewController: UITableViewController {
             var manager = ManagerObject()
             manager.image = NSURL(string: "https://pp.vk.me/c608619/v608619806/8f47/Vv-VLk2JbCU.jpg")
             manager.name = "Nikita Kolmogorov"
-            manager.telephone = "+1 778 288 1444"
+            manager.telephone = "+17782881444"
             manager.email = "nikita@borodutch.com"
-            manager.website = "www.borodutch.com"
+            manager.website = "http://www.borodutch.com"
             
             obj.manager = manager
             

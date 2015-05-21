@@ -31,21 +31,6 @@ class ProjectDescriptionCell: UITableViewCell {
     @IBOutlet weak var managerEmailButton: UIButton!
     @IBOutlet weak var managerWebsiteButton: UIButton!
     
-    // MARK: - IBActions -
-    
-    @IBAction func managerPhoneTouched(sender: UIButton) {
-        //        UIApplication.sharedApplication().openURL(NSURL(string:"tel://\(sender.titleLabel!.text)")!);
-        println("call: \(sender.titleLabel!.text!)")
-    }
-    
-    @IBAction func managerEmailTouched(sender: UIButton) {
-        println("email: \(sender.titleLabel!.text!)")
-    }
-    
-    @IBAction func managerWebsiteTouched(sender: UIButton) {
-        println("website: \(sender.titleLabel!.text!)")
-    }
-    
     // MARK: - General Methods -
     
     func setup() {

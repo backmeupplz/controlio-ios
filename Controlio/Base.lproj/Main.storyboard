@@ -695,7 +695,7 @@
                                                 </mask>
                                             </variation>
                                             <connections>
-                                                <action selector="managerPhoneTouched:" destination="pAv-eJ-g6E" eventType="touchUpInside" id="tYI-S4-Fap"/>
+                                                <action selector="managerPhoneTouched:" destination="jdn-3q-NQY" eventType="touchUpInside" id="MTm-WZ-Lkn"/>
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2b2-oH-hMj">
@@ -715,7 +715,7 @@
                                                 </mask>
                                             </variation>
                                             <connections>
-                                                <action selector="managerEmailTouched:" destination="pAv-eJ-g6E" eventType="touchUpInside" id="HBo-YC-cwE"/>
+                                                <action selector="managerEmailTouched:" destination="jdn-3q-NQY" eventType="touchUpInside" id="b26-ZW-OCK"/>
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CbZ-8o-pow">
@@ -735,7 +735,7 @@
                                                 </mask>
                                             </variation>
                                             <connections>
-                                                <action selector="managerWebsiteTouched:" destination="pAv-eJ-g6E" eventType="touchUpInside" id="PUb-uK-KZp"/>
+                                                <action selector="managerWebsiteTouched:" destination="jdn-3q-NQY" eventType="touchUpInside" id="RNy-8x-z0Y"/>
                                             </connections>
                                         </button>
                                     </subviews>
