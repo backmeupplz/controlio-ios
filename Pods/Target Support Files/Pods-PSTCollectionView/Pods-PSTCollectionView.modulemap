@@ -1,0 +1,6 @@
+framework module PSTCollectionView {
+  umbrella header "Pods-PSTCollectionView-umbrella.h"
+
+  export *
+  module * { export * }
+}

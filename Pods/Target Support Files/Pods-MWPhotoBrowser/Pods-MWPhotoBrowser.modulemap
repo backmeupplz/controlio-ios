@@ -1,0 +1,6 @@
+framework module MWPhotoBrowser {
+  umbrella header "Pods-MWPhotoBrowser-umbrella.h"
+
+  export *
+  module * { export * }
+}
