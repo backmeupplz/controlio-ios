@@ -20,20 +20,14 @@ class ProjectInfoViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = object.title
         setupRefreshControl()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.title = object.title
         configureTableView()
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        self.title = ""
-        
-        super.viewWillDisappear(animated)
     }
     
     // MARK: - UITableViewDataSource -

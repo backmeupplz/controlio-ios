@@ -40,64 +40,67 @@ class StatusCell: UITableViewCell {
     }
     
     func setupImages() {
-        var prevView = borderedView
+        var imageView1 = addImageViewWithIndex(0)
+        addConstraintsToImageView1(imageView1)
+        addButtonToView(imageView1, index: 0)
+        
+        if (object.attachements!.count > 1) {
+            var imageView2 = addImageViewWithIndex(1)
+            addConstraintsToImageView2(imageView2, imageView1: imageView1)
+            addButtonToView(imageView2, index: 1)
+            
+            if (self.object.attachements!.count > 2) {
+                var imageView3 = addImageViewWithIndex(2)
+                addConstraintsToImageView3(imageView3, imageView2: imageView2)
+                if (object.attachements!.count > 3) {
+                    addPlusLabelToView(imageView3)
+                }
+                addButtonToView(imageView3, index: 2)
+            }
+        }
+    }
+    
+    func addImageViewWithIndex(index: Int) -> UIImageView {
         var attachements = object.attachements as [NSURL]!
-        
-        self.managerImageView.backgroundColor = UIColor.redColor()
-        
-        for index in 0...attachements.count-1 {
-            if (index > 2) {
-                break
+        var imageView = UIImageView()
+        imageView.contentMode = UIViewContentMode.ScaleAspectFill
+        imageView.cornerRadius = 6.0
+        imageView.loadURL(attachements[index])
+        borderedView.addSubview(imageView)
+        return imageView
+    }
+    
+    func addConstraintsToImageView1(imageView: UIImageView) {
+        imageView.mas_makeConstraints{ make in
+            make.height.equalTo()(imageView.mas_width)
+            make.left.equalTo()(self.statusLabel.mas_left)
+            make.top.equalTo()(self.statusLabel.mas_bottom).offset()(16)
+            make.bottom.equalTo()(self.borderedView.mas_bottom).offset()(-16)
+            if (self.object.attachements!.count == 1) {
+                make.right.equalTo()(self.borderedView.mas_right).offset()(-16)
             }
-            
-            // Setup image view
-            var imageView = UIImageView()
-            imageView.contentMode = UIViewContentMode.ScaleAspectFill
-            imageView.backgroundColor = UIColor.redColor()
-            imageView.cornerRadius = 6.0
-            var attachment = attachements[index] as NSURL
-            imageView.loadURL(attachment)
-            self.borderedView.addSubview(imageView)
-            
-            // Height (equal to width)
-            imageView.mas_makeConstraints{make in
-                make.height.equalTo()(imageView.mas_width)
+        }
+    }
+    
+    func addConstraintsToImageView2(imageView: UIImageView, imageView1: UIImageView) {
+        imageView.mas_makeConstraints{ make in
+            make.height.equalTo()(imageView.mas_width)
+            make.left.equalTo()(imageView1.mas_right).offset()(8)
+            make.top.equalTo()(imageView1.mas_top)
+            make.width.equalTo()(imageView1.mas_width)
+            if (self.object.attachements!.count == 2) {
+                make.right.equalTo()(self.borderedView.mas_right).offset()(-16)
             }
-            
-            // Last image bottom space
-            if (index == 0) {
-                imageView.mas_makeConstraints{ make in
-                    make.bottom.equalTo()(self.borderedView.mas_bottom).offset()(-16)
-                    make.left.equalTo()(self.statusLabel.mas_left)
-                    make.top.equalTo()(self.statusLabel.mas_bottom).offset()(16)
-                    if (attachements.count == 1) {
-                        make.right.equalTo()(self.borderedView.mas_right).offset()(-16)
-                    }
-                }
-            } else if (index == 1) {
-                imageView.mas_makeConstraints{ make in
-                    make.left.equalTo()(prevView.mas_right).offset()(8)
-                    make.top.equalTo()(prevView.mas_top)
-                    make.width.equalTo()(prevView.mas_width)
-                    if (attachements.count == 2) {
-                        make.right.equalTo()(self.borderedView.mas_right).offset()(-16)
-                    }
-                }
-            } else if (index == 2) {
-                imageView.mas_makeConstraints{ make in
-                    make.left.equalTo()(prevView.mas_right).offset()(8)
-                    make.top.equalTo()(prevView.mas_top)
-                    make.right.equalTo()(self.borderedView.mas_right).offset()(-16)
-                    make.width.equalTo()(prevView.mas_width)
-                }
-                if (attachements.count > 3) {
-                    addPlusLabelToView(imageView)
-                }
-            }
-            addButtonToView(imageView, index: index)
-            
-            // Set previous view
-            prevView = imageView
+        }
+    }
+    
+    func addConstraintsToImageView3(imageView: UIImageView, imageView2: UIImageView) {
+        imageView.mas_makeConstraints{ make in
+            make.height.equalTo()(imageView.mas_width)
+            make.left.equalTo()(imageView2.mas_right).offset()(8)
+            make.top.equalTo()(imageView2.mas_top)
+            make.right.equalTo()(self.borderedView.mas_right).offset()(-16)
+            make.width.equalTo()(imageView2.mas_width)
         }
     }
     
