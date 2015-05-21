@@ -46,9 +46,7 @@ class ServerManager {
     }
     
     func getProjects(offset: Int, count: Int, completion:(NSError?, [ProjectObject]?)->()) {
-        
-        var params = self.appendToken(["offset": offset, "count": count]) as! [String: AnyObject]
-        
+        var params = self.appendToken(["offset": offset, "count": count])
         Alamofire.request(.POST, "http://dev.zachot.me/boro/ios/project", parameters: params)
             .responseJSON { (request, response, json, error) in
                 if (error == nil) {
@@ -61,13 +59,27 @@ class ServerManager {
         }
     }
     
+    func getStatuses(projectid: Int, offset: Int, count: Int, completion:(NSError?, [StatusObject]?)->()) {
+        var params = self.appendToken(["project": projectid, "offset": offset, "count": count])
+        Alamofire.request(.POST, "http://dev.zachot.me/boro/ios/posts", parameters: params)
+            .responseJSON { (request, response, json, error) in
+                if (error == nil) {
+                    let js = JSON(json!)
+                    completion(nil,self.convertJsonToStatusObjects(js))
+                } else {
+                    self.showError(error!)
+                    completion(error, nil)
+                }
+        }
+    }
+    
     // MARK: - Private Methods -
 
-    func appendToken(params: NSDictionary) -> NSDictionary {
+    func appendToken(params: [String: AnyObject]) -> [String: AnyObject] {
         if (token == nil) {
             return params
         } else {
-            var temp = params as! [String : AnyObject]
+            var temp = params
             temp["access_token"] = token!
             return temp
         }
@@ -93,6 +105,14 @@ class ServerManager {
         var result = [ProjectObject]()
         for jsonObject in json.arrayValue {
             result.append(ProjectObject.convertJsonToObject(jsonObject))
+        }
+        return result
+    }
+    
+    func convertJsonToStatusObjects(json: JSON) -> [StatusObject] {
+        var result = [StatusObject]()
+        for jsonObject in json.arrayValue {
+            result.append(StatusObject.convertJsonToObject(jsonObject))
         }
         return result
     }

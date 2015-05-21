@@ -40,13 +40,7 @@ class ProjectObject {
         obj.info = json["description"].string
         obj.status = json["status"].string
         
-        var manager = ManagerObject()
-        manager.image = json["manager"]["image"].URL
-        manager.name = json["manager"]["name"].string
-        manager.telephone = json["manager"]["telephone"].string
-        manager.email = json["manager"]["email"].string
-        manager.website = json["website"].string
-        obj.manager = manager
+        obj.manager = ManagerObject.convertJsonToObject(json["manager"])
         
         return obj
     }

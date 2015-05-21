@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 enum StatusType {
     case Status
@@ -28,7 +29,44 @@ enum StatusType {
 }
 
 class StatusObject {
+    var timestamp: Int!
     var type: StatusType!
     var text: String!
     var attachements: [NSURL]?
+    
+    class func convertJsonToObject(json: JSON) -> StatusObject {
+        var status = StatusObject()
+        
+        // Timestamp
+        status.timestamp = json["create_date_utc"].int
+        
+        if (json["text"].string == nil) {
+            // Text
+            status.text = json["status"].string
+            // Type
+            status.type = .TypeChange
+        } else {
+            // Text
+            status.text = json["text"].string
+            
+            if (json["attachments"].array?.count > 0) {
+                // Type
+                status.type = .StatusWithImage
+                
+                // Attachments
+                var temp = [NSURL]()
+                var attachments = json["attachments"].array
+                for attach in attachments! {
+                    temp.append(attach.URL!)
+                }
+                status.attachements = temp
+            } else {
+                // Type
+                status.type = .Status
+            }
+        }
+
+        return status
+    }
 }
+

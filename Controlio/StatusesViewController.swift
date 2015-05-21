@@ -25,8 +25,8 @@ class StatusesViewController : UITableViewController {
         super.viewDidLoad()
         
         title = object.title
+        loadMoreData()
         setupRefreshControl()
-        populateFakeData()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -45,7 +45,7 @@ class StatusesViewController : UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if (indexPath.row >= tableData.count-1) {
-            loadMoreData()
+//            loadMoreData()
         }
         
         var object = tableData[indexPath.row] as StatusObject
@@ -63,40 +63,32 @@ class StatusesViewController : UITableViewController {
         tableView.estimatedRowHeight = 103.0
     }
     
-    func populateFakeData() {
-        for index in 0...20 {
-            var obj = StatusObject()
-            if (index % 3 == 0) {
-                obj.type = .TypeChange
-                obj.text = "Начали проект!"
-            } else if (index % 2 == 0) {
-                obj.type = .Time
-                obj.text = "21 мая 2015"
-            } else {
-                obj.type = StatusType.StatusWithImage
-                obj.text = "Артемий Андреевич Лебедев – наш человек! Съел горстку печалий и больше не ест :3 Подписывайтесь на tema.livejournal.ru"
-                
-                var att = [NSURL]()
-                for inde in 0...3 {
-                    att.append(NSURL(string: "https://pp.vk.me/c623428/v623428806/230e6/FFhZXh0DlZc.jpg")!)
-                }
-                obj.attachements = att
-            }
-            tableData.append(obj)
-        }
-    }
-    
     func setupRefreshControl() {
         refreshControl = UIRefreshControl()
         refreshControl!.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
     }
     
     func refresh(sender: AnyObject?) {
-        refreshControl!.endRefreshing()
+        ServerManager.sharedInstance.getStatuses(object.identificator, offset: tableData.count, count: 20) { (error, objects) -> () in
+            if (error == nil) {
+                self.tableData = objects!
+                self.tableView.reloadData()
+                self.tableView.layoutSubviews()
+            }
+            self.refreshControl!.endRefreshing()
+        }
     }
     
     func loadMoreData() {
-        println("load more data!")
+        ServerManager.sharedInstance.getStatuses(object.identificator, offset: tableData.count, count: 20) { (error, objects) -> () in
+            if (error == nil) {
+                var temp = objects!
+                temp += self.tableData
+                self.tableData = temp
+            }
+            self.tableView.reloadData()
+            self.tableView.layoutSubviews()
+        }
     }
     
     // MARK: - Segues -

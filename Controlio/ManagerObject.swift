@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class ManagerObject {
     var image: NSURL?
@@ -14,4 +15,14 @@ class ManagerObject {
     var telephone: String!
     var email: String!
     var website: String!
+    
+    class func convertJsonToObject(json: JSON) -> ManagerObject {
+        var manager = ManagerObject()
+        manager.image = json["image"].URL
+        manager.name = json["name"].string
+        manager.telephone = json["telephone"].string
+        manager.email = json["email"].string
+        manager.website = json["website"].string
+        return manager
+    }
 }
