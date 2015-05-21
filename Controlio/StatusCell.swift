@@ -9,8 +9,9 @@
 import Foundation
 import UIKit
 import Masonry
+import MWPhotoBrowser
 
-class StatusCell: UITableViewCell {
+class StatusCell: UITableViewCell, MWPhotoBrowserDelegate {
     
     // MARK: - IBOutlets -
     
@@ -18,9 +19,13 @@ class StatusCell: UITableViewCell {
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var borderedView: UIView!
     
+    weak var delegate: StatusesViewController!
+    
     var imageView1: UIImageView!
     var imageView2: UIImageView!
     var imageView3: UIImageView!
+    
+    var photos: [MWPhoto]!
     
     // MARK: - Public Variables -
     
@@ -28,6 +33,20 @@ class StatusCell: UITableViewCell {
     var object: StatusObject! {
         didSet {
             configure()
+        }
+    }
+    
+    // MARK: - MWPhotoBrowserDelegate -
+    
+    func numberOfPhotosInPhotoBrowser(photoBrowser: MWPhotoBrowser!) -> UInt {
+        return UInt(photos.count)
+    }
+    
+    func photoBrowser(photoBrowser: MWPhotoBrowser!, photoAtIndex index: UInt) -> MWPhotoProtocol! {
+        if (Int(index) < photos.count) {
+            return photos[Int(index)];
+        } else {
+            return nil;
         }
     }
     
@@ -150,7 +169,24 @@ class StatusCell: UITableViewCell {
     }
     
     func openAttachment(sender: UIButton) {
-        var index = sender.tag
-        println("Touched image #\(index)")
+        var index: Int = sender.tag
+        
+        var attachements = object.attachements!
+        photos = [MWPhoto]()
+        for attach in attachements {
+            photos.append(MWPhoto(URL: attach))
+        }
+        
+        var browser = MWPhotoBrowser(delegate: self)
+        browser.displayActionButton = true
+        browser.displayNavArrows = true
+        browser.displaySelectionButtons = true
+        browser.zoomPhotosToFill = false
+        browser.alwaysShowControls = false
+        browser.enableGrid = true
+        browser.startOnGrid = false
+        browser.setCurrentPhotoIndex(UInt(index))
+        
+        delegate.navigationController?.pushViewController(browser, animated: true)
     }
 }

@@ -62,6 +62,7 @@ class StatusesViewController : UITableViewController {
         
         cell.manager = self.object.manager
         cell.object = object
+        cell.delegate = self
         return cell
     }
     
