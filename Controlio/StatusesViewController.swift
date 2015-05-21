@@ -69,7 +69,7 @@ class StatusesViewController : UITableViewController {
     }
     
     func refresh(sender: AnyObject?) {
-        ServerManager.sharedInstance.getStatuses(object.identificator, offset: tableData.count, count: 20) { (error, objects) -> () in
+        ServerManager.sharedInstance.getStatuses(object.identificator, offset: 0, count: 20) { (error, objects) -> () in
             if (error == nil) {
                 self.tableData = objects!
                 self.tableView.reloadData()

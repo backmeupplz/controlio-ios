@@ -34,6 +34,20 @@ class StatusObject {
     var text: String!
     var attachements: [NSURL]?
     
+    class func timeStatus(timestamp: Int) -> StatusObject {
+        var status = StatusObject()
+        status.type = .Time
+        status.timestamp = timestamp
+        
+        var date = NSDate(timeIntervalSince1970: NSTimeInterval(status.timestamp))
+        var formatter = NSDateFormatter()
+        formatter.dateStyle = NSDateFormatterStyle.LongStyle
+        formatter.timeStyle = .NoStyle
+        status.text = formatter.stringFromDate(date)
+        
+        return status
+    }
+    
     class func convertJsonToObject(json: JSON) -> StatusObject {
         var status = StatusObject()
         

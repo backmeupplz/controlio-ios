@@ -111,8 +111,17 @@ class ServerManager {
     
     func convertJsonToStatusObjects(json: JSON) -> [StatusObject] {
         var result = [StatusObject]()
+        var previousTimestamp: Int?
         for jsonObject in json.arrayValue {
-            result.append(StatusObject.convertJsonToObject(jsonObject))
+            var status = StatusObject.convertJsonToObject(jsonObject)
+            var timestamp = status.timestamp - (status.timestamp % (60*60*24))
+            if (previousTimestamp == nil) {
+                result.append(StatusObject.timeStatus(timestamp))
+            } else if (previousTimestamp != timestamp) {
+                result.append(StatusObject.timeStatus(timestamp))
+            }
+            result.append(status)
+            previousTimestamp = timestamp
         }
         return result
     }
