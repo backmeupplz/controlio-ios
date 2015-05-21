@@ -9,3 +9,4 @@
 import Foundation
 
 let googleTrackingID = "UA-43367175-12"
+let UDToken = "UDToken"

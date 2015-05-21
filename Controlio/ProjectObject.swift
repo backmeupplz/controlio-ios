@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class ProjectObject {
     var identificator: Int!
@@ -27,4 +28,26 @@ class ProjectObject {
     var status: String!
     
     var manager: ManagerObject!
+    
+    class func convertJsonToObject(json: JSON) -> ProjectObject {
+        var obj = ProjectObject()
+        
+        obj.identificator = json["id"].int
+        obj.image = json["thumbnail"].URL
+        obj.title = json["title"].string
+        obj.timestamp = json["create_date_utc"].int
+        obj.message = json["last_post"]["text"].string
+        obj.info = json["description"].string
+        obj.status = json["status"].string
+        
+        var manager = ManagerObject()
+        manager.image = json["manager"]["image"].URL
+        manager.name = json["manager"]["name"].string
+        manager.telephone = json["manager"]["telephone"].string
+        manager.email = json["manager"]["email"].string
+        manager.website = json["website"].string
+        obj.manager = manager
+        
+        return obj
+    }
 }

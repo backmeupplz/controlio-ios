@@ -16,6 +16,7 @@
 		B36D9A9E1B0AF461009495BF /* RoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36D9A9D1B0AF461009495BF /* RoundImageView.swift */; };
 		B36D9AA01B0AF914009495BF /* ProjectDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36D9A9F1B0AF914009495BF /* ProjectDescriptionCell.swift */; };
 		B37223491B0C552D00D0E324 /* UIImageView+Bordered.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37223481B0C552D00D0E324 /* UIImageView+Bordered.swift */; };
+		B372971D1B0DB0D8007A039A /* PushNoAnimationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B372971C1B0DB0D8007A039A /* PushNoAnimationSegue.swift */; };
 		B39290CF1B092B6B001FF219 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39290CE1B092B6B001FF219 /* AppDelegate.swift */; };
 		B39290D41B092B6B001FF219 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B39290D21B092B6B001FF219 /* Main.storyboard */; };
 		B39290D61B092B6B001FF219 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B39290D51B092B6B001FF219 /* Images.xcassets */; };
@@ -53,6 +54,7 @@
 		B36D9A9F1B0AF914009495BF /* ProjectDescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDescriptionCell.swift; sourceTree = "<group>"; };
 		B37223481B0C552D00D0E324 /* UIImageView+Bordered.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Bordered.swift"; sourceTree = "<group>"; };
 		B372234A1B0C776F00D0E324 /* Controlio-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Controlio-Bridging-Header.h"; sourceTree = "<group>"; };
+		B372971C1B0DB0D8007A039A /* PushNoAnimationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNoAnimationSegue.swift; sourceTree = "<group>"; };
 		B39290C91B092B6B001FF219 /* Controlio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Controlio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B39290CD1B092B6B001FF219 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B39290CE1B092B6B001FF219 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				B3F3CA031B0C1DB0006FC4B9 /* Objects */,
 				B39290CE1B092B6B001FF219 /* AppDelegate.swift */,
 				B32365021B096A09002D068C /* ServerManager.swift */,
+				B372971C1B0DB0D8007A039A /* PushNoAnimationSegue.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				B36D9A9E1B0AF461009495BF /* RoundImageView.swift in Sources */,
 				B3F3C9FD1B0BFC3D006FC4B9 /* UIImageView+BeautifulWebImage.swift in Sources */,
 				B32364FB1B0953FF002D068C /* ProjectObject.swift in Sources */,
+				B372971D1B0DB0D8007A039A /* PushNoAnimationSegue.swift in Sources */,
 				B3E925271B0A9C25005E04AA /* StatusesViewController.swift in Sources */,
 				B36D9A9C1B0AF034009495BF /* ProjectInfoViewController.swift in Sources */,
 				B36D9AA01B0AF914009495BF /* ProjectDescriptionCell.swift in Sources */,

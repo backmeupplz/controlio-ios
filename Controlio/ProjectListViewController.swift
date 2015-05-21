@@ -27,7 +27,7 @@ class ProjectListViewController: UITableViewController {
         super.viewDidLoad()
         
         title = "Controlio"
-        populateFakeData()
+        loadMoreData()
         setupRefreshControl()
     }
     
@@ -48,7 +48,7 @@ class ProjectListViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if (indexPath.row >= tableData.count-1) {
-            loadMoreData()
+//            loadMoreData()
         }
         
         var cell = tableView.dequeueReusableCellWithIdentifier("ProjectCell") as! ProjectCell
@@ -76,6 +76,7 @@ class ProjectListViewController: UITableViewController {
     
     func logout() {
         self.navigationController?.popToRootViewControllerAnimated(true)
+        ServerManager.sharedInstance.logout()
     }
     
     func configureTableView() {
@@ -89,11 +90,26 @@ class ProjectListViewController: UITableViewController {
     }
     
     func refresh(sender: AnyObject?) {
-        refreshControl!.endRefreshing()
+        ServerManager.sharedInstance.getProjects(0, count: 20, completion: { (error, objects) -> () in
+            if (error == nil) {
+                self.tableData = objects!
+                self.tableView.reloadData()
+                self.tableView.layoutSubviews()
+            }
+            self.refreshControl!.endRefreshing()
+        })
     }
     
     func loadMoreData() {
-        println("load more data!")
+        ServerManager.sharedInstance.getProjects(tableData.count, count: 20, completion: { (error, objects) -> () in
+            if (error == nil) {
+                var temp = objects!
+                temp += self.tableData
+                self.tableData = temp
+            }
+            self.tableView.reloadData()
+            self.tableView.layoutSubviews()
+        })
     }
     
     // MARK: - Segues -
@@ -102,32 +118,5 @@ class ProjectListViewController: UITableViewController {
         var dest = segue.destinationViewController as! StatusesViewController
         let unwrappedSender = sender as! ProjectCell
         dest.object = unwrappedSender.object
-    }
-    
-    // MARK: - Debug -
-    
-    func populateFakeData() {
-        for index in 0...20 {
-            var obj = ProjectObject()
-            
-            obj.identificator = index
-            obj.image = NSURL(string: "https://i.ytimg.com/vi/YWNWi-ZWL3c/maxresdefault.jpg")
-            obj.title = "Some title #\(index)"
-            obj.timestamp = Int(NSDate().timeIntervalSince1970)
-            obj.message = "Some message #\(index)"
-            obj.info = "This is one of the best project we've had our hands on!"
-            obj.status = "Тесты"
-            
-            var manager = ManagerObject()
-            manager.image = NSURL(string: "https://pp.vk.me/c608619/v608619806/8f47/Vv-VLk2JbCU.jpg")
-            manager.name = "Nikita Kolmogorov"
-            manager.telephone = "+17782881444"
-            manager.email = "nikita@borodutch.com"
-            manager.website = "http://www.borodutch.com"
-            
-            obj.manager = manager
-            
-            tableData.append(obj)
-        }
     }
 }

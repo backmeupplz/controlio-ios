@@ -26,6 +26,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - View Controller Life Cycle -
     
+    override func viewDidLoad() {
+        var token = NSUserDefaults.standardUserDefaults().objectForKey(UDToken) as? String
+        if (token != nil) {
+            ServerManager.sharedInstance.token = token
+            self.performSegueWithIdentifier("SegueToMainWithoutAnimation", sender: self)
+        }
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
