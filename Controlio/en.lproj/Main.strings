@@ -1,0 +1,63 @@
+
+/* Class = "UILabel"; text = "Controlio"; ObjectID = "0Ol-4L-VEg"; */
+"0Ol-4L-VEg.text" = "Controlio";
+
+/* Class = "UITextField"; placeholder = "Пароль"; ObjectID = "0dl-fv-m0A"; */
+"0dl-fv-m0A.placeholder" = "Password";
+
+/* Class = "UIButton"; normalTitle = "Войти"; ObjectID = "2Wf-ax-Ab8"; */
+"2Wf-ax-Ab8.normalTitle" = "Login";
+
+/* Class = "UIButton"; normalTitle = "kd@borodutch.com"; ObjectID = "2b2-oH-hMj"; */
+"2b2-oH-hMj.normalTitle" = "";
+
+/* Class = "UILabel"; text = "Кирилл Дорош"; ObjectID = "5MP-6r-Plf"; */
+"5MP-6r-Plf.text" = "";
+
+/* Class = "UIButton"; normalTitle = "+7 963 085 90 44"; ObjectID = "88j-sF-v2v"; */
+"88j-sF-v2v.normalTitle" = "";
+
+/* Class = "UILabel"; text = "BMW N52 является шестицилиндровым поршневым двигателем DOHC с двумя верхними распределительными валами. Он производился в период с 2004 по 2011 год в качестве замены других."; ObjectID = "9Aq-JA-9sI"; */
+"9Aq-JA-9sI.text" = "";
+
+/* Class = "UITextField"; placeholder = "Логин"; ObjectID = "9KU-m2-lxO"; */
+"9KU-m2-lxO.placeholder" = "Username";
+
+/* Class = "UILabel"; text = "Ремонт двигателя BMW 130i"; ObjectID = "9iM-SG-5D5"; */
+"9iM-SG-5D5.text" = "";
+
+/* Class = "UILabel"; text = "20 мая 2015"; ObjectID = "AG7-bx-Fz8"; */
+"AG7-bx-Fz8.text" = "";
+
+/* Class = "UILabel"; text = "Проект начат"; ObjectID = "Af5-fD-G0L"; */
+"Af5-fD-G0L.text" = "";
+
+/* Class = "UIButton"; normalTitle = "www.borodutch.com"; ObjectID = "CbZ-8o-pow"; */
+"CbZ-8o-pow.normalTitle" = "";
+
+/* Class = "UILabel"; text = "Статус"; ObjectID = "Clb-c5-LBS"; */
+"Clb-c5-LBS.text" = "";
+
+/* Class = "UILabel"; text = "Статус"; ObjectID = "ITj-t1-SPO"; */
+"ITj-t1-SPO.text" = "";
+
+/* Class = "UILabel"; text = "Ремонт двигателя BMW 130I"; ObjectID = "RKF-F6-IPJ"; */
+"RKF-F6-IPJ.text" = "";
+
+/* Class = "UILabel"; text = "Тут статус"; ObjectID = "djj-V4-eRl"; */
+"djj-V4-eRl.text" = "";
+
+/* Class = "UILabel"; text = "Сегодня"; ObjectID = "eKO-EE-t76"; */
+"eKO-EE-t76.text" = "";
+
+/* Class = "UILabel"; text = "Проект начат"; ObjectID = "eo2-6o-pTj"; */
+"eo2-6o-pTj.text" = "";
+
+/* Class = "UILabel"; text = "Личный менеджер"; ObjectID = "pQT-lv-rmk"; */
+"pQT-lv-rmk.text" = "Personal manager";
+
+/* Class = "UILabel"; text = "Текущий статус заказа"; ObjectID = "qT4-ug-DGY"; */
+"qT4-ug-DGY.text" = "Status changed to:";
+
+/* Class = "UITableViewController"; title = "Controlio"; ObjectID = "wov-zY-9ON"; */
+"wov-zY-9ON.title" = "Controlio";

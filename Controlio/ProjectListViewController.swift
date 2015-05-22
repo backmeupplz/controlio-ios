@@ -80,14 +80,15 @@ class ProjectListViewController: UITableViewController {
     }
     
     func showLogoutAlert() {
-        var alert = UIAlertController(title: "Точно выходим?", message: "Придется опять залогиниться", preferredStyle: .Alert)
+        var alert = UIAlertController(title: NSLocalizedString("Точно выходим?", comment:""), message: NSLocalizedString("Придется опять залогиниться", comment:""), preferredStyle: .Alert)
         
-        let cancelAction = UIAlertAction(title: "Нет", style: .Cancel) { action -> Void in
+        
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Нет", comment:""), style: .Cancel) { action -> Void in
             
         }
         alert.addAction(cancelAction)
         
-        let logoutAction: UIAlertAction = UIAlertAction(title: "Пока-пока", style: .Default) { action -> Void in
+        let logoutAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("Пока-пока", comment:""), style: .Default) { action -> Void in
             self.logout()
         }
         alert.addAction(logoutAction)

@@ -86,14 +86,14 @@ class ServerManager {
     }
     
     func showError(error: NSError) {
-        var alert = UIAlertController(title: "Ошибочка", message: error.localizedDescription, preferredStyle: .Alert)
+        var alert = UIAlertController(title: NSLocalizedString("Ошибочка", comment:""), message: error.localizedDescription, preferredStyle: .Alert)
         
-        let cancelAction = UIAlertAction(title: "Ясно!", style: .Cancel) { action -> Void in
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Ясно!", comment:""), style: .Cancel) { action -> Void in
             
         }
         alert.addAction(cancelAction)
         
-        let logoutAction: UIAlertAction = UIAlertAction(title: "Отправить отчет разработчикам", style: .Default) { action -> Void in
+        let logoutAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("Отправить отчет разработчикам", comment:""), style: .Default) { action -> Void in
             
         }
         alert.addAction(logoutAction)
