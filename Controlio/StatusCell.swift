@@ -22,8 +22,14 @@ class StatusCell: UITableViewCell, MWPhotoBrowserDelegate {
     weak var delegate: StatusesViewController!
     
     var imageView1: UIImageView!
-    var imageView2: UIImageView!
-    var imageView3: UIImageView!
+    var imageView2: UIImageView?
+    var imageView3: UIImageView?
+    
+    var plusLabel: UILabel?
+    
+    var button1: UIButton!
+    var button2: UIButton?
+    var button3: UIButton?
     
     var photos: [MWPhoto]!
     
@@ -71,16 +77,16 @@ class StatusCell: UITableViewCell, MWPhotoBrowserDelegate {
         
         if (object.attachements!.count > 1) {
             imageView2 = addImageViewWithIndex(1)
-            addConstraintsToImageView2(imageView2, imageView1: imageView1)
-            addButtonToView(imageView2, index: 1)
+            addConstraintsToImageView2(imageView2!, imageView1: imageView1)
+            addButtonToView(imageView2!, index: 1)
             
             if (self.object.attachements!.count > 2) {
                 imageView3 = addImageViewWithIndex(2)
-                addConstraintsToImageView3(imageView3, imageView2: imageView2)
+                addConstraintsToImageView3(imageView3!, imageView2: imageView2!)
                 if (object.attachements!.count > 3) {
-                    addPlusLabelToView(imageView3)
+                    addPlusLabelToView(imageView3!)
                 }
-                addButtonToView(imageView3, index: 2)
+                addButtonToView(imageView3!, index: 2)
             }
         }
     }
@@ -91,12 +97,28 @@ class StatusCell: UITableViewCell, MWPhotoBrowserDelegate {
             imageView1.removeFromSuperview()
         }
         if (imageView2 != nil) {
-            imageView2.removeConstraints(imageView2.constraints())
-            imageView2.removeFromSuperview()
+            imageView2!.removeConstraints(imageView2!.constraints())
+            imageView2!.removeFromSuperview()
         }
         if (imageView3 != nil) {
-            imageView3.removeConstraints(imageView3.constraints())
-            imageView3.removeFromSuperview()
+            imageView3!.removeConstraints(imageView3!.constraints())
+            imageView3!.removeFromSuperview()
+        }
+        if (plusLabel != nil) {
+            plusLabel!.removeConstraints(plusLabel!.constraints())
+            plusLabel!.removeFromSuperview()
+        }
+        if (button1 != nil) {
+            button1!.removeConstraints(button1!.constraints())
+            button1!.removeFromSuperview()
+        }
+        if (button2 != nil) {
+            button2!.removeConstraints(button2!.constraints())
+            button2!.removeFromSuperview()
+        }
+        if (button3 != nil) {
+            button3!.removeConstraints(button3!.constraints())
+            button3!.removeFromSuperview()
         }
     }
     
@@ -156,6 +178,8 @@ class StatusCell: UITableViewCell, MWPhotoBrowserDelegate {
         label.textAlignment = NSTextAlignment.Center
         label.layer.cornerRadius = 6.0
         label.layer.masksToBounds = true
+        
+        plusLabel = label
     }
     
     func addButtonToView(view: UIView, index: Int) {
@@ -166,6 +190,17 @@ class StatusCell: UITableViewCell, MWPhotoBrowserDelegate {
         }
         button.tag = index
         button.addTarget(self, action: "openAttachment:", forControlEvents: .TouchUpInside)
+        
+        switch index {
+        case 0:
+            button1 = button
+        case 1:
+            button2 = button
+        case 2:
+            button3 = button
+        default:
+            break;
+        }
     }
     
     func openAttachment(sender: UIButton) {
