@@ -95,30 +95,37 @@ class StatusCell: UITableViewCell, MWPhotoBrowserDelegate {
         if (imageView1 != nil) {
             imageView1.removeConstraints(imageView1.constraints())
             imageView1.removeFromSuperview()
+            imageView1 = nil
         }
         if (imageView2 != nil) {
             imageView2!.removeConstraints(imageView2!.constraints())
             imageView2!.removeFromSuperview()
+            imageView2 = nil
         }
         if (imageView3 != nil) {
             imageView3!.removeConstraints(imageView3!.constraints())
             imageView3!.removeFromSuperview()
+            imageView3 = nil
         }
         if (plusLabel != nil) {
             plusLabel!.removeConstraints(plusLabel!.constraints())
             plusLabel!.removeFromSuperview()
+            plusLabel = nil
         }
         if (button1 != nil) {
             button1!.removeConstraints(button1!.constraints())
             button1!.removeFromSuperview()
+            button1 = nil
         }
         if (button2 != nil) {
             button2!.removeConstraints(button2!.constraints())
             button2!.removeFromSuperview()
+            button2 = nil
         }
         if (button3 != nil) {
             button3!.removeConstraints(button3!.constraints())
             button3!.removeFromSuperview()
+            button3 = nil
         }
     }
     
