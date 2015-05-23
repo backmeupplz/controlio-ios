@@ -89,7 +89,7 @@ class StatusesViewController : UITableViewController {
     }
     
     func updateData() {
-        ServerManager.sharedInstance.getStatuses(object.identificator, offset: 0, count: 3, completion: { (error, objects) -> () in
+        ServerManager.sharedInstance.getStatuses(object.identificator, offset: 0, count: 20, completion: { (error, objects) -> () in
             if (error == nil) {
                 self.tableData = objects!
             } else {
@@ -100,7 +100,7 @@ class StatusesViewController : UITableViewController {
     }
     
     func downloadMoreObjects() {
-        getDataWithOffset(getRealTableDataCount(), count: 3)
+        getDataWithOffset(getRealTableDataCount(), count: 20)
     }
     
     func getDataWithOffset(offset: Int, count: Int) {

@@ -23,12 +23,8 @@ class ProjectInfoViewController: UITableViewController, MFMailComposeViewControl
         
         self.title = object.title
         setupRefreshControl()
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
         configureTableView()
+        
         let backItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
         navigationItem.backBarButtonItem = backItem
     }
