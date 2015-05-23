@@ -29,7 +29,7 @@ class ServerManager {
     // MARK: - Public Methods -
     
     func auth(login: String, password: String, completion:(NSError?)->()) {
-        Alamofire.request(.POST, "http://dev.zachot.me/boro/ios/auth", parameters: ["login": login, "password": password])
+        Alamofire.request(.POST, serverURL+"auth", parameters: ["login": login, "password": password])
             .responseJSON { (request, response, json, error) in
                 if (error == nil) {
                     let js = JSON(json!)
@@ -47,7 +47,7 @@ class ServerManager {
     
     func getProjects(offset: Int, count: Int, completion:(NSError?, [ProjectObject]?)->()) {
         var params = self.appendToken(["offset": offset, "count": count])
-        Alamofire.request(.POST, "http://dev.zachot.me/boro/ios/project", parameters: params)
+        Alamofire.request(.POST, serverURL+"project", parameters: params)
             .responseJSON { (request, response, json, error) in
                 if (error == nil) {
                     let js = JSON(json!)
@@ -61,7 +61,7 @@ class ServerManager {
     
     func getStatuses(projectid: Int, offset: Int, count: Int, completion:(NSError?, [StatusObject]?)->()) {
         var params = self.appendToken(["project": projectid, "offset": offset, "count": count])
-        Alamofire.request(.POST, "http://dev.zachot.me/boro/ios/posts", parameters: params)
+        Alamofire.request(.POST, serverURL+"posts", parameters: params)
             .responseJSON { (request, response, json, error) in
                 if (error == nil) {
                     let js = JSON(json!)

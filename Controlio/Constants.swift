@@ -10,3 +10,4 @@ import Foundation
 
 let googleTrackingID = "UA-43367175-12"
 let UDToken = "UDToken"
+let serverURL = "http://controlio.co/ios/"
