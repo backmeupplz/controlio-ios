@@ -89,7 +89,7 @@ class StatusesViewController : UITableViewController {
     }
     
     func updateData() {
-        ServerManager.sharedInstance.getStatuses(object.identificator, offset: 0, count: 20, completion: { (error, objects) -> () in
+        ServerManager.sharedInstance.getStatuses(object.identificator, offset: 0, count: 3, completion: { (error, objects) -> () in
             if (error == nil) {
                 self.tableData = objects!
             } else {
@@ -100,7 +100,7 @@ class StatusesViewController : UITableViewController {
     }
     
     func downloadMoreObjects() {
-        getDataWithOffset(tableData.count, count: 20)
+        getDataWithOffset(getRealTableDataCount(), count: 3)
     }
     
     func getDataWithOffset(offset: Int, count: Int) {
@@ -125,6 +125,18 @@ class StatusesViewController : UITableViewController {
     
     func isLastCellAtIndexPath(indexPath: NSIndexPath) -> Bool {
         return tableData.count > 0 && indexPath.row == tableData.count - 1;
+    }
+    
+    func getRealTableDataCount() -> Int {
+        var i = 0
+        
+        for status in tableData {
+            if (status.type != .Time) {
+                i++
+            }
+        }
+        
+        return i
     }
     
     // MARK: - Segues -
