@@ -49,15 +49,20 @@ class StatusesViewController : UITableViewController {
     // MARK: - UITableViewDataSource -
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableData.count
+        return tableData.count + 2
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        if (indexPath.row == 0 || indexPath.row == tableData.count + 1) {
+            return tableView.dequeueReusableCellWithIdentifier("Placeholder") as! UITableViewCell
+        }
+        
         if (!noMoreData && isLastCellAtIndexPath(indexPath)) {
             self.downloadMoreObjects()
         }
         
-        var object = tableData[indexPath.row] as StatusObject
+        var object = tableData[indexPath.row-1] as StatusObject
         var cell = tableView.dequeueReusableCellWithIdentifier("StatusCell\(object.type.simpleDescription())", forIndexPath: indexPath) as! StatusCell
         
         cell.manager = self.object.manager
@@ -124,7 +129,7 @@ class StatusesViewController : UITableViewController {
     }
     
     func isLastCellAtIndexPath(indexPath: NSIndexPath) -> Bool {
-        return tableData.count > 0 && indexPath.row == tableData.count - 1;
+        return tableData.count > 0 && indexPath.row-1 == tableData.count - 1;
     }
     
     func getRealTableDataCount() -> Int {

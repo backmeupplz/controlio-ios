@@ -31,13 +31,30 @@ class ServerManager {
     func auth(login: String, password: String, completion:(NSError?)->()) {
         Alamofire.request(.POST, serverURL+"auth", parameters: ["login": login, "password": password])
             .responseJSON { (request, response, json, error) in
+                var err = error
                 if (error == nil) {
                     let js = JSON(json!)
-                    self.token = js["access_token"].string
+                    
+                    if (js["error"].bool == true) {
+                        var code: Int = js["code"].int!
+                        switch code {
+                        case 0:
+                            self.showErrorMessage(NSLocalizedString("No login or password specified", comment: ""))
+                        case 1:
+                            self.showErrorMessage(NSLocalizedString("Wrong login", comment: ""))
+                        case 2:
+                            self.showErrorMessage(NSLocalizedString("Wrong password", comment: ""))
+                        default:
+                            break
+                        }
+                        err = NSError()
+                    } else {
+                        self.token = js["access_token"].string
+                    }
                 } else {
-                    self.showError(error!)
+                    self.showError(err!)
                 }
-                completion(error)
+                completion(err)
         }
     }
     
@@ -86,7 +103,11 @@ class ServerManager {
     }
     
     func showError(error: NSError) {
-        var alert = UIAlertController(title: NSLocalizedString("Ошибочка", comment:""), message: error.localizedDescription, preferredStyle: .Alert)
+        showErrorMessage(error.localizedDescription)
+    }
+    
+    func showErrorMessage(error: String) {
+        var alert = UIAlertController(title: NSLocalizedString("Ошибочка", comment:""), message: error, preferredStyle: .Alert)
         
         let cancelAction = UIAlertAction(title: NSLocalizedString("Ясно!", comment:""), style: .Cancel) { action -> Void in
             

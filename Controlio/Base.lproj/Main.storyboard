@@ -116,8 +116,8 @@
                             <constraint firstItem="tkK-RS-zz3" firstAttribute="top" secondItem="bAj-ZV-QjX" secondAttribute="bottom" id="Vep-31-W48"/>
                             <constraint firstAttribute="centerY" secondItem="DpK-LC-Qim" secondAttribute="centerY" id="hrI-G1-DQl"/>
                             <constraint firstAttribute="centerX" secondItem="DpK-LC-Qim" secondAttribute="centerX" id="hyS-k3-StV"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="bAj-ZV-QjX" secondAttribute="trailing" constant="-16" id="qiF-R7-Xjo"/>
-                            <constraint firstItem="bAj-ZV-QjX" firstAttribute="leading" secondItem="ulU-cS-wg6" secondAttribute="leadingMargin" constant="-16" id="yzL-oh-xLS"/>
+                            <constraint firstAttribute="trailing" secondItem="bAj-ZV-QjX" secondAttribute="trailing" id="qiF-R7-Xjo"/>
+                            <constraint firstItem="bAj-ZV-QjX" firstAttribute="leading" secondItem="ulU-cS-wg6" secondAttribute="leading" id="yzL-oh-xLS"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="v4e-NZ-Tjg"/>
@@ -510,6 +510,28 @@
                                 <connections>
                                     <outlet property="statusLabel" destination="AG7-bx-Fz8" id="5AU-di-xtA"/>
                                 </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Placeholder" rowHeight="8" id="U0Y-Kl-0ib">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U0Y-Kl-0ib" id="b27-Lq-Fmm">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tRr-CG-mlR">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="8"/>
+                                            <color key="backgroundColor" red="0.90196078431372551" green="0.92941176470588238" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="8" id="zdb-72-Zcl"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.90196078430000004" green="0.92941176469999998" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="tRr-CG-mlR" secondAttribute="trailing" id="0SK-qu-NsH"/>
+                                        <constraint firstAttribute="bottom" secondItem="tRr-CG-mlR" secondAttribute="bottom" id="DBV-ki-8mm"/>
+                                        <constraint firstItem="tRr-CG-mlR" firstAttribute="top" secondItem="b27-Lq-Fmm" secondAttribute="top" id="NXn-sH-kZq"/>
+                                        <constraint firstItem="tRr-CG-mlR" firstAttribute="leading" secondItem="b27-Lq-Fmm" secondAttribute="leading" id="tjb-VY-eMr"/>
+                                    </constraints>
+                                </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StatusCellTypeChange" rowHeight="68" id="3ay-Tv-yLG" customClass="StatusCell" customModule="Controlio" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
