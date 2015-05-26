@@ -14,7 +14,7 @@ class ProjectCell: UITableViewCell {
     
     // MARK: - IBOutlets -
     
-    @IBOutlet weak var lastImageView: UIImageView!
+    @IBOutlet weak var lastImageView: ParallaxImageView!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var titleMessageLabel: UILabel!
     @IBOutlet weak var timestampLabel: UILabel!

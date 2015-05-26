@@ -1,7 +1,7 @@
 /*!
  @header    GAI.h
  @abstract  Google Analytics iOS SDK Header
- @version   3.11
+ @version   3.12
  @copyright Copyright 2013 Google Inc. All rights reserved.
  */
 

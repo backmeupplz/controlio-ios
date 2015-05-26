@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1177918565D4698A83595D02 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B61E20F3A2CD024B4177990A /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		B31E7DDA1B1533280065F2E5 /* ParallaxImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31E7DD91B1533280065F2E5 /* ParallaxImageView.swift */; };
 		B32364FB1B0953FF002D068C /* ProjectObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32364FA1B0953FF002D068C /* ProjectObject.swift */; };
 		B32364FF1B09555A002D068C /* ProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32364FE1B09555A002D068C /* ProjectCell.swift */; };
 		B32365011B0958ED002D068C /* BorderedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32365001B0958ED002D068C /* BorderedView.swift */; };
@@ -46,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		3086F95D1E3C3D238BD84E4C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		B31E7DD91B1533280065F2E5 /* ParallaxImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParallaxImageView.swift; sourceTree = "<group>"; };
 		B32364FA1B0953FF002D068C /* ProjectObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectObject.swift; sourceTree = "<group>"; };
 		B32364FE1B09555A002D068C /* ProjectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCell.swift; sourceTree = "<group>"; };
 		B32365001B0958ED002D068C /* BorderedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderedView.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				B36D9A9D1B0AF461009495BF /* RoundImageView.swift */,
 				B3F3C9FC1B0BFC3D006FC4B9 /* UIImageView+BeautifulWebImage.swift */,
 				B37223481B0C552D00D0E324 /* UIImageView+Bordered.swift */,
+				B31E7DD91B1533280065F2E5 /* ParallaxImageView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				B39290F71B094062001FF219 /* PurpleButton.swift in Sources */,
 				B36D9A9E1B0AF461009495BF /* RoundImageView.swift in Sources */,
 				B3F3C9FD1B0BFC3D006FC4B9 /* UIImageView+BeautifulWebImage.swift in Sources */,
+				B31E7DDA1B1533280065F2E5 /* ParallaxImageView.swift in Sources */,
 				B32364FB1B0953FF002D068C /* ProjectObject.swift in Sources */,
 				B372971D1B0DB0D8007A039A /* PushNoAnimationSegue.swift in Sources */,
 				B3E925271B0A9C25005E04AA /* StatusesViewController.swift in Sources */,
@@ -562,12 +566,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Nikita Kolmogorov (ZSXG5FJ8JQ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nikita Kolmogorov (ZSXG5FJ8JQ)";
 				INFOPLIST_FILE = Controlio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "17978f54-bd18-4f37-9921-30726ade964b";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Controlio/Controlio-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -579,12 +583,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Nikita Kolmogorov (ZSXG5FJ8JQ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nikita Kolmogorov (ZSXG5FJ8JQ)";
 				INFOPLIST_FILE = Controlio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "17978f54-bd18-4f37-9921-30726ade964b";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Controlio/Controlio-Bridging-Header.h";
 			};
 			name = Release;

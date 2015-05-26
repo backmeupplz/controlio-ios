@@ -22,9 +22,9 @@ PODS:
     - AFNetworking/NSURLSession
   - Alamofire (1.2.2)
   - DACircularProgress (2.3.1)
-  - GoogleAnalytics-iOS-SDK (3.11):
-    - GoogleAnalytics-iOS-SDK/Core (= 3.11)
-  - GoogleAnalytics-iOS-SDK/Core (3.11)
+  - GoogleAnalytics-iOS-SDK (3.12):
+    - GoogleAnalytics-iOS-SDK/Core (= 3.12)
+  - GoogleAnalytics-iOS-SDK/Core (3.12)
   - IQKeyboardManager (3.2.3)
   - Masonry (0.6.1)
   - MBProgressHUD (0.9.1)
@@ -53,7 +53,7 @@ SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
   Alamofire: 11a6022f5089887d92ffb5a3014c97a0a915ab98
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
-  GoogleAnalytics-iOS-SDK: fb15cc7e3d01d06d531653f37443fda90274d53d
+  GoogleAnalytics-iOS-SDK: 0a3327a993b8ed2b8fe1c6c4a8dcf5b76d2237a8
   IQKeyboardManager: 6ca5c54e3776eb54af4c7caf515833f3cd761d59
   Masonry: 4972309f2f134de9dd312f4dc4a21359b50e6caa
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
