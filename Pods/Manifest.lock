@@ -25,7 +25,6 @@ PODS:
   - GoogleAnalytics-iOS-SDK (3.12):
     - GoogleAnalytics-iOS-SDK/Core (= 3.12)
   - GoogleAnalytics-iOS-SDK/Core (3.12)
-  - IQKeyboardManager (3.2.3)
   - Masonry (0.6.1)
   - MBProgressHUD (0.9.1)
   - MWPhotoBrowser (1.4.1):
@@ -43,7 +42,6 @@ DEPENDENCIES:
   - AFNetworking (~> 2.5)
   - Alamofire (~> 1.2)
   - GoogleAnalytics-iOS-SDK (~> 3.11)
-  - IQKeyboardManager
   - Masonry (~> 0.6)
   - MWPhotoBrowser
   - SDWebImage (~> 3.7)
@@ -54,7 +52,6 @@ SPEC CHECKSUMS:
   Alamofire: 11a6022f5089887d92ffb5a3014c97a0a915ab98
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   GoogleAnalytics-iOS-SDK: 0a3327a993b8ed2b8fe1c6c4a8dcf5b76d2237a8
-  IQKeyboardManager: 6ca5c54e3776eb54af4c7caf515833f3cd761d59
   Masonry: 4972309f2f134de9dd312f4dc4a21359b50e6caa
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   MWPhotoBrowser: 2531e682860d62b8a7ba8659de02eb9040e431e5

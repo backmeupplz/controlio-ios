@@ -9,11 +9,22 @@
 import Foundation
 import UIKit
 
+enum EdditingModeType {
+    case None
+    case Post
+    case Status
+}
+
 class StatusesViewController : UITableViewController {
     
     // MARK: - Public Variables -
     
     var object: ProjectObject!
+    var edditingMode: EdditingModeType = .None {
+        didSet {
+            configureEdittingMode()
+        }
+    }
     
     // MARK: - Variables -
     
@@ -26,6 +37,7 @@ class StatusesViewController : UITableViewController {
     }
     
     var noMoreData: Bool = false
+    var plusButton: UIBarButtonItem?
     
     // MARK: - View Controller Life Cycle -
     
@@ -36,6 +48,7 @@ class StatusesViewController : UITableViewController {
         configureTableView()
         setupRefreshControl()
         updateData()
+        addPlusButtonIfNeeded()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -46,6 +59,17 @@ class StatusesViewController : UITableViewController {
         configureTableView()
     }
     
+    // MARK: - AddStatusCellDelegate -
+    
+    func shouldDismissAddStatusCellDone() {
+        edditingMode = .None
+        updateData()
+    }
+    
+    func shouldDismissAddStatusCellCancel() {
+        edditingMode = .None
+    }
+    
     // MARK: - UITableViewDataSource -
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -54,7 +78,23 @@ class StatusesViewController : UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        if (indexPath.row == 0 || indexPath.row == tableData.count + 1) {
+        if (indexPath.row == 0) {
+            if (edditingMode == .Status) {
+                var cell = tableView.dequeueReusableCellWithIdentifier("AddStatusCell") as! AddStatusCell
+                cell.delegate = self
+                cell.object = self.object
+                return cell
+            } else if (edditingMode == .Post) {
+                var cell = tableView.dequeueReusableCellWithIdentifier("AddPostCell") as! AddStatusCell
+                cell.delegate = self
+                cell.object = self.object
+                return cell
+            } else {
+                return tableView.dequeueReusableCellWithIdentifier("Placeholder") as! UITableViewCell
+            }
+        }
+        
+        if (indexPath.row == tableData.count + 1) {
             return tableView.dequeueReusableCellWithIdentifier("Placeholder") as! UITableViewCell
         }
         
@@ -142,6 +182,49 @@ class StatusesViewController : UITableViewController {
         }
         
         return i
+    }
+    
+    func addPlusButtonIfNeeded() {
+        if (object.adminRights!) {
+            plusButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "plusTouched:")
+            navigationItem.rightBarButtonItems?.append(plusButton!)
+        }
+    }
+    
+    func plusTouched(sender: UIBarButtonItem) {
+        let alertController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
+            
+        }
+        alertController.addAction(cancelAction)
+        
+        let addStatusAction: UIAlertAction = UIAlertAction(title: "Add status", style: UIAlertActionStyle.Default) { action -> Void in
+            self.edditingMode = .Status
+        }
+        alertController.addAction(addStatusAction)
+        
+        let addPostAction: UIAlertAction = UIAlertAction(title: "Add post", style: UIAlertActionStyle.Default) { action -> Void in
+            self.edditingMode = .Post
+        }
+        alertController.addAction(addPostAction)
+        
+        alertController.popoverPresentationController?.barButtonItem = sender
+        var controller = UIApplication.sharedApplication().delegate?.window??.rootViewController
+        controller!.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func configureEdittingMode() {
+        plusButton?.enabled = edditingMode == .None
+        
+        tableView.beginUpdates()
+        if (edditingMode != .None) {
+            tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .Bottom)
+            tableView.scrollRectToVisible(CGRectMake(0, 0, 1, 1), animated: true)
+        } else {
+            tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .Right)
+        }
+        tableView.endUpdates()
     }
     
     // MARK: - Segues -

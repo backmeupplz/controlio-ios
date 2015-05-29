@@ -10,4 +10,3 @@ pod 'Masonry', '~> 0.6'
 pod "SwiftyJSON", ">= 2.2"
 pod 'SDWebImage', '~>3.7'
 pod 'MWPhotoBrowser'
-pod 'IQKeyboardManager'

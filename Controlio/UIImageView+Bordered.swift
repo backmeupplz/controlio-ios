@@ -9,11 +9,12 @@
 import Foundation
 import UIKit
 
+@IBDesignable
 extension UIImageView {
     
     // MARK: - Variables -
     
-    var cornerRadius: CGFloat {
+    @IBInspectable var cornerRadius: CGFloat {
         get {
             return layer.cornerRadius
         }

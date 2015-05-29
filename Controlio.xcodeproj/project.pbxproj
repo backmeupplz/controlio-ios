@@ -24,10 +24,12 @@
 		B39290D91B092B6B001FF219 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B39290D71B092B6B001FF219 /* LaunchScreen.xib */; };
 		B39290E51B092B6B001FF219 /* ControlioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39290E41B092B6B001FF219 /* ControlioTests.swift */; };
 		B39290F31B093DC2001FF219 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39290F21B093DC2001FF219 /* LoginViewController.swift */; };
-		B39290F71B094062001FF219 /* PurpleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39290F61B094062001FF219 /* PurpleButton.swift */; };
+		B39290F71B094062001FF219 /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39290F61B094062001FF219 /* BorderedButton.swift */; };
 		B39290F91B09488A001FF219 /* ProjectListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39290F81B09488A001FF219 /* ProjectListViewController.swift */; };
 		B39290FF1B094B46001FF219 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39290FE1B094B46001FF219 /* Constants.swift */; };
 		B39C6B331B0FE1E5000792DE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B39C6B311B0FE1E5000792DE /* Localizable.strings */; };
+		B3B0285F1B181596005BAC87 /* AddStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B0285E1B181596005BAC87 /* AddStatusCell.swift */; };
+		B3B028631B1821A2005BAC87 /* BorderedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B028621B1821A2005BAC87 /* BorderedTextView.swift */; };
 		B3E925271B0A9C25005E04AA /* StatusesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E925261B0A9C25005E04AA /* StatusesViewController.swift */; };
 		B3F3C9FB1B0BFA62006FC4B9 /* ManagerObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F3C9FA1B0BFA62006FC4B9 /* ManagerObject.swift */; };
 		B3F3C9FD1B0BFC3D006FC4B9 /* UIImageView+BeautifulWebImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F3C9FC1B0BFC3D006FC4B9 /* UIImageView+BeautifulWebImage.swift */; };
@@ -68,7 +70,7 @@
 		B39290E31B092B6B001FF219 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B39290E41B092B6B001FF219 /* ControlioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlioTests.swift; sourceTree = "<group>"; };
 		B39290F21B093DC2001FF219 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		B39290F61B094062001FF219 /* PurpleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurpleButton.swift; sourceTree = "<group>"; };
+		B39290F61B094062001FF219 /* BorderedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderedButton.swift; sourceTree = "<group>"; };
 		B39290F81B09488A001FF219 /* ProjectListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectListViewController.swift; sourceTree = "<group>"; };
 		B39290FE1B094B46001FF219 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B39C6B2C1B0FDC9E000792DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
@@ -78,6 +80,8 @@
 		B39C6B321B0FE1E5000792DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B39C6B341B0FE1EF000792DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B39C6B351B0FE1F0000792DE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B3B0285E1B181596005BAC87 /* AddStatusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddStatusCell.swift; sourceTree = "<group>"; };
+		B3B028621B1821A2005BAC87 /* BorderedTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderedTextView.swift; sourceTree = "<group>"; };
 		B3E925261B0A9C25005E04AA /* StatusesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusesViewController.swift; sourceTree = "<group>"; };
 		B3F3C9FA1B0BFA62006FC4B9 /* ManagerObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerObject.swift; sourceTree = "<group>"; };
 		B3F3C9FC1B0BFC3D006FC4B9 /* UIImageView+BeautifulWebImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+BeautifulWebImage.swift"; sourceTree = "<group>"; };
@@ -197,8 +201,9 @@
 			isa = PBXGroup;
 			children = (
 				B3F3CA021B0C1DA5006FC4B9 /* Cells */,
-				B39290F61B094062001FF219 /* PurpleButton.swift */,
+				B39290F61B094062001FF219 /* BorderedButton.swift */,
 				B32365001B0958ED002D068C /* BorderedView.swift */,
+				B3B028621B1821A2005BAC87 /* BorderedTextView.swift */,
 				B36D9A9D1B0AF461009495BF /* RoundImageView.swift */,
 				B3F3C9FC1B0BFC3D006FC4B9 /* UIImageView+BeautifulWebImage.swift */,
 				B37223481B0C552D00D0E324 /* UIImageView+Bordered.swift */,
@@ -235,6 +240,7 @@
 				B32364FE1B09555A002D068C /* ProjectCell.swift */,
 				B36D9A9F1B0AF914009495BF /* ProjectDescriptionCell.swift */,
 				B3F3C9FE1B0C1474006FC4B9 /* StatusCell.swift */,
+				B3B0285E1B181596005BAC87 /* AddStatusCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -408,9 +414,10 @@
 				B39290F31B093DC2001FF219 /* LoginViewController.swift in Sources */,
 				B32364FF1B09555A002D068C /* ProjectCell.swift in Sources */,
 				B37223491B0C552D00D0E324 /* UIImageView+Bordered.swift in Sources */,
-				B39290F71B094062001FF219 /* PurpleButton.swift in Sources */,
+				B39290F71B094062001FF219 /* BorderedButton.swift in Sources */,
 				B36D9A9E1B0AF461009495BF /* RoundImageView.swift in Sources */,
 				B3F3C9FD1B0BFC3D006FC4B9 /* UIImageView+BeautifulWebImage.swift in Sources */,
+				B3B0285F1B181596005BAC87 /* AddStatusCell.swift in Sources */,
 				B31E7DDA1B1533280065F2E5 /* ParallaxImageView.swift in Sources */,
 				B32364FB1B0953FF002D068C /* ProjectObject.swift in Sources */,
 				B372971D1B0DB0D8007A039A /* PushNoAnimationSegue.swift in Sources */,
@@ -419,6 +426,7 @@
 				B36D9AA01B0AF914009495BF /* ProjectDescriptionCell.swift in Sources */,
 				B39290CF1B092B6B001FF219 /* AppDelegate.swift in Sources */,
 				B3F3CA011B0C18B0006FC4B9 /* StatusObject.swift in Sources */,
+				B3B028631B1821A2005BAC87 /* BorderedTextView.swift in Sources */,
 				B32365031B096A09002D068C /* ServerManager.swift in Sources */,
 				B32365011B0958ED002D068C /* BorderedView.swift in Sources */,
 				B3F3C9FF1B0C1474006FC4B9 /* StatusCell.swift in Sources */,

@@ -90,6 +90,34 @@ class ServerManager {
         }
     }
     
+    func sendPost(projectid: Int, image: UIImage?, text: String, completion:NSError?->()) {
+        var params = self.appendToken(["project": projectid, "offset": 10, "count": 10])
+        Alamofire.request(.POST, serverURL+"posts", parameters: params)
+            .responseJSON { (request, response, json, error) in
+                if (error == nil) {
+                    let js = JSON(json!)
+                    completion(nil)
+                } else {
+                    self.showError(error!)
+                    completion(error)
+                }
+        }
+    }
+    
+    func sendStatus(projectid: Int, text: String, completion:NSError?->()) {
+        var params = self.appendToken(["project": projectid, "offset": 10, "count": 10])
+        Alamofire.request(.POST, serverURL+"posts", parameters: params)
+            .responseJSON { (request, response, json, error) in
+                if (error == nil) {
+                    let js = JSON(json!)
+                    completion(nil)
+                } else {
+                    self.showError(error!)
+                    completion(error)
+                }
+        }
+    }
+    
     // MARK: - Private Methods -
 
     func appendToken(params: [String: AnyObject]) -> [String: AnyObject] {

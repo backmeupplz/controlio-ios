@@ -29,6 +29,8 @@ class ProjectObject {
     
     var manager: ManagerObject!
     
+    var adminRights: Bool!
+    
     class func convertJsonToObject(json: JSON) -> ProjectObject {
         var obj = ProjectObject()
         
@@ -39,6 +41,7 @@ class ProjectObject {
         obj.message = json["last_post"]["text"].string
         obj.info = json["description"].string
         obj.status = json["status"].string
+        obj.adminRights = true
         
         obj.manager = ManagerObject.convertJsonToObject(json["manager"])
         
