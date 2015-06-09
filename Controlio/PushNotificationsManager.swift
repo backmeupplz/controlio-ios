@@ -33,7 +33,6 @@ class PushNotificationsManager {
     func logout() {
         if (pushToken != nil) {
             ServerManager.sharedInstance.deletePushTokenFromServer(pushToken!)
-            pushToken = nil
         }
     }
 }

@@ -59,8 +59,8 @@ class ServerManager {
     }
     
     func logout() {
-        token = nil
         PushNotificationsManager.sharedInstance.logout()
+        token = nil
     }
     
     func getProjects(offset: Int, count: Int, completion:(NSError?, [ProjectObject]?)->()) {
