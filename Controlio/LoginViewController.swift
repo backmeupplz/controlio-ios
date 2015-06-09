@@ -61,6 +61,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             password: passwordTextField.text,
             completion:{ (error: NSError?) in
                 if (error == nil) {
+                    PushNotificationsManager.sharedInstance.sendPushTokenToServer()
                     self.performSegueWithIdentifier("SegueToMain", sender: self)
                 }
                 self.startServerProcess(false)

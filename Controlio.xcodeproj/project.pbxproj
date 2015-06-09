@@ -30,6 +30,7 @@
 		B39C6B331B0FE1E5000792DE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B39C6B311B0FE1E5000792DE /* Localizable.strings */; };
 		B3B0285F1B181596005BAC87 /* AddStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B0285E1B181596005BAC87 /* AddStatusCell.swift */; };
 		B3B028631B1821A2005BAC87 /* BorderedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B028621B1821A2005BAC87 /* BorderedTextView.swift */; };
+		B3BDC6521B26345E00527E1F /* PushNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BDC6511B26345E00527E1F /* PushNotificationsManager.swift */; };
 		B3E925271B0A9C25005E04AA /* StatusesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E925261B0A9C25005E04AA /* StatusesViewController.swift */; };
 		B3F3C9FB1B0BFA62006FC4B9 /* ManagerObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F3C9FA1B0BFA62006FC4B9 /* ManagerObject.swift */; };
 		B3F3C9FD1B0BFC3D006FC4B9 /* UIImageView+BeautifulWebImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F3C9FC1B0BFC3D006FC4B9 /* UIImageView+BeautifulWebImage.swift */; };
@@ -82,6 +83,7 @@
 		B39C6B351B0FE1F0000792DE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B3B0285E1B181596005BAC87 /* AddStatusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddStatusCell.swift; sourceTree = "<group>"; };
 		B3B028621B1821A2005BAC87 /* BorderedTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderedTextView.swift; sourceTree = "<group>"; };
+		B3BDC6511B26345E00527E1F /* PushNotificationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationsManager.swift; sourceTree = "<group>"; };
 		B3E925261B0A9C25005E04AA /* StatusesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusesViewController.swift; sourceTree = "<group>"; };
 		B3F3C9FA1B0BFA62006FC4B9 /* ManagerObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerObject.swift; sourceTree = "<group>"; };
 		B3F3C9FC1B0BFC3D006FC4B9 /* UIImageView+BeautifulWebImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+BeautifulWebImage.swift"; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				B39290CE1B092B6B001FF219 /* AppDelegate.swift */,
 				B32365021B096A09002D068C /* ServerManager.swift */,
 				B372971C1B0DB0D8007A039A /* PushNoAnimationSegue.swift */,
+				B3BDC6511B26345E00527E1F /* PushNotificationsManager.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				TargetAttributes = {
 					B39290C81B092B6A001FF219 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 9VUB6L23QH;
 					};
 					B39290DD1B092B6B001FF219 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -420,6 +424,7 @@
 				B3B0285F1B181596005BAC87 /* AddStatusCell.swift in Sources */,
 				B31E7DDA1B1533280065F2E5 /* ParallaxImageView.swift in Sources */,
 				B32364FB1B0953FF002D068C /* ProjectObject.swift in Sources */,
+				B3BDC6521B26345E00527E1F /* PushNotificationsManager.swift in Sources */,
 				B372971D1B0DB0D8007A039A /* PushNoAnimationSegue.swift in Sources */,
 				B3E925271B0A9C25005E04AA /* StatusesViewController.swift in Sources */,
 				B36D9A9C1B0AF034009495BF /* ProjectInfoViewController.swift in Sources */,
@@ -574,12 +579,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Nikita Kolmogorov (ZSXG5FJ8JQ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nikita Kolmogorov (ZSXG5FJ8JQ)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				INFOPLIST_FILE = Controlio/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "17978f54-bd18-4f37-9921-30726ade964b";
 				SWIFT_OBJC_BRIDGING_HEADER = "Controlio/Controlio-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -591,12 +597,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Nikita Kolmogorov (ZSXG5FJ8JQ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nikita Kolmogorov (ZSXG5FJ8JQ)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				INFOPLIST_FILE = Controlio/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "17978f54-bd18-4f37-9921-30726ade964b";
 				SWIFT_OBJC_BRIDGING_HEADER = "Controlio/Controlio-Bridging-Header.h";
 			};
 			name = Release;

@@ -60,6 +60,7 @@ class ServerManager {
     
     func logout() {
         token = nil
+        PushNotificationsManager.sharedInstance.logout()
     }
     
     func getProjects(offset: Int, count: Int, completion:(NSError?, [ProjectObject]?)->()) {
@@ -116,6 +117,16 @@ class ServerManager {
                     completion(error)
                 }
         }
+    }
+    
+    func addPushTokenToServer(pushToken: String) {
+        var params = self.appendToken(["device_token": pushToken])
+        Alamofire.request(.POST, serverURL+"register-push-token", parameters: params)
+    }
+    
+    func deletePushTokenFromServer(pushToken: String) {
+        var params = self.appendToken(["device_token": pushToken])
+        Alamofire.request(.POST, serverURL+"remove-push-token", parameters: params)
     }
     
     // MARK: - Private Methods -

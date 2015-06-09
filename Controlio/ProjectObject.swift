@@ -41,7 +41,7 @@ class ProjectObject {
         obj.message = json["last_post"]["text"].string
         obj.info = json["description"].string
         obj.status = json["status"].string
-        obj.adminRights = true
+        obj.adminRights = false
         
         obj.manager = ManagerObject.convertJsonToObject(json["manager"])
         
