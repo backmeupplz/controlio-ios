@@ -222,7 +222,7 @@ class StatusCell: UITableViewCell, MWPhotoBrowserDelegate {
         var browser = MWPhotoBrowser(delegate: self)
         browser.displayActionButton = true
         browser.displayNavArrows = true
-        browser.displaySelectionButtons = true
+        browser.displaySelectionButtons = false
         browser.zoomPhotosToFill = false
         browser.alwaysShowControls = false
         browser.enableGrid = true
