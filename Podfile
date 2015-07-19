@@ -8,4 +8,4 @@ pod 'AFNetworking', '~> 2.5'
 pod 'Masonry', '~> 0.6'
 pod "SwiftyJSON", ">= 2.2"
 pod 'SDWebImage', '~>3.7'
-pod 'MWPhotoBrowser', '1.4.1'
+pod 'MWPhotoBrowser', :git => 'https://github.com/backmeupplz/MWPhotoBrowser.git'
