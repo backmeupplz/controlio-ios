@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import GoogleAnalytics_iOS_SDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - App Life Cycle -
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        setupAnalytics()
         registerForNotifications(application)
         checkStartNotifications(launchOptions)
         
@@ -46,10 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // MARK: - General Methods -
-    
-    func setupAnalytics() {
-//        GAI.sharedInstance().trackerWithTrackingId(googleTrackingID)
-    }
     
     func registerForNotifications(app: UIApplication) {
         let notificationTypes = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
