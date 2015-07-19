@@ -24,6 +24,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         tryLogin()
     }
     
+    @IBAction func testLogin(sender: AnyObject) {
+    }
+    
     // MARK: - View Controller Life Cycle -
     
     override func viewDidLoad() {
