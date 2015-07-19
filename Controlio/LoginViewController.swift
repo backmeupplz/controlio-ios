@@ -17,6 +17,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
+    @IBOutlet weak var demoLoginButton: UIButton!
     
     // MARK: - IBActions -
     
@@ -25,6 +26,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func testLogin(sender: AnyObject) {
+        showTestLoginAlert()
     }
     
     // MARK: - View Controller Life Cycle -
@@ -59,9 +61,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     // MARK: - General Methods -
     
     func tryLogin() {
-        startServerProcess(true)
-        ServerManager.sharedInstance.auth(loginTextField.text,
-            password: passwordTextField.text,
+        tryLoginWith(loginTextField.text, password: passwordTextField.text)
+    }
+    
+    func tryLoginWith(email: String, password: String) {
+        self.startServerProcess(true)
+        
+        ServerManager.sharedInstance.auth(email,
+            password: password,
             completion:{ (error: NSError?) in
                 if (error == nil) {
                     PushNotificationsManager.sharedInstance.sendPushTokenToServer()
@@ -76,5 +83,27 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         loginTextField.enabled = !start
         passwordTextField.enabled = !start
         loginButton.enabled = !start
+        demoLoginButton.enabled = !start
+    }
+    
+    func showTestLoginAlert() {
+        let actionSheetController: UIAlertController = UIAlertController(title: NSLocalizedString("What language do you prefer?", comment:""), message: nil, preferredStyle: .ActionSheet)
+        
+        let cancelAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("Cancel", comment:""), style: .Cancel) { action -> Void in
+            
+        }
+        actionSheetController.addAction(cancelAction)
+        
+        let englishAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("English", comment:""), style: .Default) { action -> Void in
+            self.tryLoginWith("controlio", password: "password")
+        }
+        actionSheetController.addAction(englishAction)
+        
+        let russianAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("Russian", comment:""), style: .Default) { action -> Void in
+            self.tryLoginWith("russian", password: "password")
+        }
+        actionSheetController.addAction(russianAction)
+        
+        self.presentViewController(actionSheetController, animated: true, completion: nil)
     }
 }

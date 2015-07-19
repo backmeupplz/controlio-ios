@@ -138,6 +138,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="v4e-NZ-Tjg"/>
                     <connections>
+                        <outlet property="demoLoginButton" destination="tOg-9b-YBU" id="Y38-vk-4B2"/>
                         <outlet property="loginButton" destination="2Wf-ax-Ab8" id="Cu4-c2-DLA"/>
                         <outlet property="loginTextField" destination="9KU-m2-lxO" id="Des-Zy-na6"/>
                         <outlet property="passwordTextField" destination="0dl-fv-m0A" id="UF3-vb-9I5"/>
