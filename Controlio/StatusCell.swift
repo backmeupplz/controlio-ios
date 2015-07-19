@@ -146,7 +146,7 @@ class StatusCell: UITableViewCell, MWPhotoBrowserDelegate {
             make.top.equalTo()(self.statusLabel.mas_bottom).offset()(16)
             make.bottom.equalTo()(self.borderedView.mas_bottom).offset()(-16)
             if (self.object.attachements!.count == 1) {
-                make.right.equalTo()(self.borderedView.mas_right).offset()(-16)
+                make.width.equalTo()(100)
             }
         }
     }
@@ -158,7 +158,7 @@ class StatusCell: UITableViewCell, MWPhotoBrowserDelegate {
             make.top.equalTo()(imageView1.mas_top)
             make.width.equalTo()(imageView1.mas_width)
             if (self.object.attachements!.count == 2) {
-                make.right.equalTo()(self.borderedView.mas_right).offset()(-16)
+                make.width.equalTo()(100)
             }
         }
     }
@@ -168,7 +168,7 @@ class StatusCell: UITableViewCell, MWPhotoBrowserDelegate {
             make.height.equalTo()(imageView.mas_width)
             make.left.equalTo()(imageView2.mas_right).offset()(8)
             make.top.equalTo()(imageView2.mas_top)
-            make.right.equalTo()(self.borderedView.mas_right).offset()(-16)
+            make.width.equalTo()(75)
             make.width.equalTo()(imageView2.mas_width)
         }
     }

@@ -353,7 +353,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Gu6-ya-kWn">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="iD2-1U-J3s">
+                        <barButtonItem key="rightBarButtonItem" image="settings" id="iD2-1U-J3s">
                             <connections>
                                 <action selector="rightBarButtonTouched:" destination="wov-zY-9ON" id="fb9-9d-otI"/>
                             </connections>
@@ -1105,6 +1105,7 @@
     <resources>
         <image name="bg" width="853" height="1514"/>
         <image name="logo" width="291" height="188"/>
+        <image name="settings" width="170" height="170"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="pQ5-97-1ON"/>
