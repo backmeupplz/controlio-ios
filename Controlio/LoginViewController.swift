@@ -48,6 +48,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.viewWillAppear(animated)
         
         navigationController!.setNavigationBarHidden(true, animated: true)
+        resetFields()
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -155,5 +156,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         alertController.addAction(loginAction)
         
         self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func resetFields() {
+        loginTextField.text = ""
+        passwordTextField.text = ""
     }
 }
