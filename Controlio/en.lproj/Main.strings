@@ -11,13 +11,16 @@
 /* Class = "UIButton"; normalTitle = "kd@borodutch.com"; ObjectID = "2b2-oH-hMj"; */
 "2b2-oH-hMj.normalTitle" = "kd@borodutch.com";
 
+/* Class = "UIButton"; normalTitle = "Забыли пароль?"; ObjectID = "3G0-DS-ahW"; */
+"3G0-DS-ahW.normalTitle" = "Forgot password?";
+
 /* Class = "UILabel"; text = "Кирилл Дорош"; ObjectID = "5MP-6r-Plf"; */
 "5MP-6r-Plf.text" = "Кирилл Дорош";
 
 /* Class = "UIButton"; normalTitle = "+7 963 085 90 44"; ObjectID = "88j-sF-v2v"; */
 "88j-sF-v2v.normalTitle" = "+7 963 085 90 44";
 
-/* Class = "UILabel"; text = "BMW N52 является шестицилиндровым поршневым двигателем DOHC с двумя верхними распределительными валами. Он производился в период с 2004 по 2011 год в качестве замены других."; ObjectID = "9Aq-JA-9sI"; */
+/* Class = "UILabel"; text = "BMW N52 является шестицилиндровым поршневым двигателем DOHC с двумя верхними распределительными валами. Он производился в период с c2004 по 2011 год в качестве замены других."; ObjectID = "9Aq-JA-9sI"; */
 "9Aq-JA-9sI.text" = "BMW N52 является шестицилиндровым поршневым двигателем DOHC с двумя верхними распределительными валами. Он производился в период с c2004 по 2011 год в качестве замены других.";
 
 /* Class = "UITextField"; placeholder = "Username"; ObjectID = "9KU-m2-lxO"; */
@@ -74,7 +77,7 @@
 /* Class = "UILabel"; text = "Status changed to:"; ObjectID = "qT4-ug-DGY"; */
 "qT4-ug-DGY.text" = "Status changed to:";
 
-/* Class = "UIButton"; normalTitle = "Или попробовать наши тестовые аккаунты"; ObjectID = "tOg-9b-YBU"; */
+/* Class = "UIButton"; normalTitle = "Or try our test accounts"; ObjectID = "tOg-9b-YBU"; */
 "tOg-9b-YBU.normalTitle" = "Or try our test accounts";
 
 /* Class = "UITableViewController"; title = "Controlio"; ObjectID = "wov-zY-9ON"; */

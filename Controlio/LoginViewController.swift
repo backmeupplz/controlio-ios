@@ -18,6 +18,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var demoLoginButton: UIButton!
+    @IBOutlet weak var forgotPassButton: UIButton!
     
     // MARK: - IBActions -
     
@@ -27,6 +28,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func testLogin(sender: AnyObject) {
         showTestLoginAlert()
+    }
+    
+    @IBAction func forgotPass(sender: AnyObject) {
+        resetPass()
     }
     
     // MARK: - View Controller Life Cycle -
@@ -78,12 +83,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         })
     }
     
+    func tryResetPassWith(email: String) {
+        self.startServerProcess(true)
+        
+        ServerManager.sharedInstance.resetPass(email, completion: { (error: NSError?) -> () in
+            self.startServerProcess(false)
+        })
+    }
+    
     func startServerProcess(start: Bool) {
         spinner.hidden = !start
         loginTextField.enabled = !start
         passwordTextField.enabled = !start
         loginButton.enabled = !start
         demoLoginButton.enabled = !start
+        forgotPassButton.enabled = !start
     }
     
     func showTestLoginAlert() {
@@ -105,5 +119,30 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         actionSheetController.addAction(russianAction)
         
         self.presentViewController(actionSheetController, animated: true, completion: nil)
+    }
+    
+    func resetPass() {
+        let alertController: UIAlertController = UIAlertController(title: NSLocalizedString("What was your login?", comment:""), message: nil, preferredStyle: .Alert)
+        
+        let cancelAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("Cancel", comment:""), style: .Cancel) { action -> Void in
+            
+        }
+        alertController.addAction(cancelAction)
+        
+        let loginAction = UIAlertAction(title: NSLocalizedString("Reset password", comment:""), style: .Default) { (_) in
+            let loginTextField = alertController.textFields![0] as! UITextField
+            self.tryResetPassWith(loginTextField.text)
+        }
+        loginAction.enabled = false
+        
+        alertController.addTextFieldWithConfigurationHandler { (textField) in
+            textField.placeholder = NSLocalizedString("Your login", comment:"")
+            NSNotificationCenter.defaultCenter().addObserverForName(UITextFieldTextDidChangeNotification, object: textField, queue: NSOperationQueue.mainQueue()) { (notification) in
+                loginAction.enabled = textField.text != ""
+            }
+        }
+        alertController.addAction(loginAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
 }

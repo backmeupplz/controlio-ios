@@ -11,6 +11,9 @@
 /* Class = "UIButton"; normalTitle = "kd@borodutch.com"; ObjectID = "2b2-oH-hMj"; */
 "2b2-oH-hMj.normalTitle" = "kd@borodutch.com";
 
+/* Class = "UIButton"; normalTitle = "Забыли пароль?"; ObjectID = "3G0-DS-ahW"; */
+"3G0-DS-ahW.normalTitle" = "Забыли пароль?";
+
 /* Class = "UILabel"; text = "Кирилл Дорош"; ObjectID = "5MP-6r-Plf"; */
 "5MP-6r-Plf.text" = "Кирилл Дорош";
 

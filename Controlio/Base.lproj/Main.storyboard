@@ -52,8 +52,41 @@
                                             <outlet property="delegate" destination="6QB-UK-VGG" id="Cpk-8n-fxb"/>
                                         </connections>
                                     </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Логин" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9KU-m2-lxO">
+                                        <rect key="frame" x="73" y="173" width="228" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="IdD-Q3-vPR"/>
+                                            <constraint firstAttribute="width" constant="228" id="Pcy-BF-n9Q"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="6QB-UK-VGG" id="eDo-IQ-CkX"/>
+                                        </connections>
+                                    </textField>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="kb3-3s-oHd">
+                                        <rect key="frame" x="257" y="278" width="37" height="37"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="37" id="8s7-3M-Goo"/>
+                                            <constraint firstAttribute="height" constant="37" id="Fer-ev-Kov"/>
+                                        </constraints>
+                                    </activityIndicatorView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tOg-9b-YBU">
+                                        <rect key="frame" x="17" y="324" width="340" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="340" id="PRl-lT-2AX"/>
+                                            <constraint firstAttribute="height" constant="31" id="aww-BL-xLc"/>
+                                        </constraints>
+                                        <state key="normal" title="Или попробовать наши тестовые аккаунты">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="testLogin:" destination="6QB-UK-VGG" eventType="touchUpInside" id="CwV-Q7-rF1"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Wf-ax-Ab8" customClass="BorderedButton" customModule="Controlio" customModuleProvider="target">
-                                        <rect key="frame" x="126" y="280" width="123" height="40"/>
+                                        <rect key="frame" x="126" y="277" width="123" height="40"/>
                                         <color key="backgroundColor" red="0.38823529411764707" green="0.36078431372549019" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="123" id="2Vw-rf-tPn"/>
@@ -71,37 +104,18 @@
                                             <action selector="loginTouched:" destination="6QB-UK-VGG" eventType="touchUpInside" id="6UJ-cE-FRQ"/>
                                         </connections>
                                     </button>
-                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="kb3-3s-oHd">
-                                        <rect key="frame" x="257" y="281" width="37" height="37"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3G0-DS-ahW">
+                                        <rect key="frame" x="17" y="352" width="340" height="31"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="37" id="8s7-3M-Goo"/>
-                                            <constraint firstAttribute="height" constant="37" id="Fer-ev-Kov"/>
+                                            <constraint firstAttribute="height" constant="31" id="5tN-2k-otu"/>
+                                            <constraint firstAttribute="width" constant="340" id="pP8-73-VfX"/>
                                         </constraints>
-                                    </activityIndicatorView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Логин" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9KU-m2-lxO">
-                                        <rect key="frame" x="73" y="173" width="228" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="IdD-Q3-vPR"/>
-                                            <constraint firstAttribute="width" constant="228" id="Pcy-BF-n9Q"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="6QB-UK-VGG" id="eDo-IQ-CkX"/>
-                                        </connections>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tOg-9b-YBU">
-                                        <rect key="frame" x="17" y="326" width="340" height="48"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="340" id="PRl-lT-2AX"/>
-                                            <constraint firstAttribute="height" constant="48" id="aww-BL-xLc"/>
-                                        </constraints>
-                                        <state key="normal" title="Или попробовать наши тестовые аккаунты">
+                                        <state key="normal" title="Забыли пароль?">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="testLogin:" destination="6QB-UK-VGG" eventType="touchUpInside" id="CwV-Q7-rF1"/>
+                                            <action selector="forgotPass:" destination="6QB-UK-VGG" eventType="touchUpInside" id="yNX-Y9-PWz"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -109,20 +123,22 @@
                                 <constraints>
                                     <constraint firstItem="0Ol-4L-VEg" firstAttribute="leading" secondItem="DpK-LC-Qim" secondAttribute="leading" constant="73" id="3ah-tW-kdz"/>
                                     <constraint firstItem="0Ol-4L-VEg" firstAttribute="top" secondItem="e0e-0l-iRT" secondAttribute="bottom" constant="8" id="65d-zb-6ea"/>
-                                    <constraint firstItem="2Wf-ax-Ab8" firstAttribute="top" secondItem="0dl-fv-m0A" secondAttribute="bottom" constant="39" id="BNw-aJ-TJ2"/>
-                                    <constraint firstItem="tOg-9b-YBU" firstAttribute="top" secondItem="2Wf-ax-Ab8" secondAttribute="bottom" constant="6" id="DXO-3U-B2X"/>
+                                    <constraint firstItem="kb3-3s-oHd" firstAttribute="leading" secondItem="2Wf-ax-Ab8" secondAttribute="trailing" constant="8" id="7aI-A8-CmF"/>
+                                    <constraint firstItem="tOg-9b-YBU" firstAttribute="top" secondItem="2Wf-ax-Ab8" secondAttribute="bottom" constant="7" id="HHQ-zx-nuG"/>
                                     <constraint firstItem="0dl-fv-m0A" firstAttribute="leading" secondItem="DpK-LC-Qim" secondAttribute="leading" constant="73" id="KEQ-RP-yLi"/>
                                     <constraint firstAttribute="width" constant="375" id="O6q-sW-WFw"/>
                                     <constraint firstItem="tOg-9b-YBU" firstAttribute="leading" secondItem="DpK-LC-Qim" secondAttribute="leading" constant="17" id="P90-yv-Hgi"/>
                                     <constraint firstItem="e0e-0l-iRT" firstAttribute="top" secondItem="DpK-LC-Qim" secondAttribute="top" constant="8" id="VHP-2f-TAE"/>
                                     <constraint firstItem="9KU-m2-lxO" firstAttribute="top" secondItem="0Ol-4L-VEg" secondAttribute="bottom" constant="35" id="Xcb-AE-QaF"/>
-                                    <constraint firstItem="2Wf-ax-Ab8" firstAttribute="leading" secondItem="DpK-LC-Qim" secondAttribute="leading" constant="126" id="bSR-rn-QIp"/>
                                     <constraint firstAttribute="height" constant="451" id="cRh-oU-nDX"/>
-                                    <constraint firstItem="kb3-3s-oHd" firstAttribute="leading" secondItem="2Wf-ax-Ab8" secondAttribute="trailing" constant="8" id="dk9-qs-ets"/>
                                     <constraint firstItem="9KU-m2-lxO" firstAttribute="leading" secondItem="DpK-LC-Qim" secondAttribute="leading" constant="73" id="hyj-Xr-V9Q"/>
+                                    <constraint firstItem="3G0-DS-ahW" firstAttribute="leading" secondItem="DpK-LC-Qim" secondAttribute="leading" constant="17" id="obg-zh-cHO"/>
+                                    <constraint firstItem="3G0-DS-ahW" firstAttribute="top" secondItem="2Wf-ax-Ab8" secondAttribute="bottom" constant="35" id="pzQ-EU-LcX"/>
                                     <constraint firstItem="e0e-0l-iRT" firstAttribute="leading" secondItem="DpK-LC-Qim" secondAttribute="leading" constant="134" id="ssP-ui-MsX"/>
-                                    <constraint firstItem="kb3-3s-oHd" firstAttribute="top" secondItem="0dl-fv-m0A" secondAttribute="bottom" constant="40" id="t9B-HZ-QT4"/>
+                                    <constraint firstItem="kb3-3s-oHd" firstAttribute="top" secondItem="0dl-fv-m0A" secondAttribute="bottom" constant="37" id="t9B-HZ-QT4"/>
                                     <constraint firstItem="0dl-fv-m0A" firstAttribute="top" secondItem="9KU-m2-lxO" secondAttribute="bottom" constant="8" id="vaK-jv-qcp"/>
+                                    <constraint firstAttribute="centerX" secondItem="2Wf-ax-Ab8" secondAttribute="centerX" id="vcA-d7-Rra"/>
+                                    <constraint firstItem="2Wf-ax-Ab8" firstAttribute="top" secondItem="0dl-fv-m0A" secondAttribute="bottom" constant="36" id="zh4-cb-gsN"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -139,6 +155,7 @@
                     <navigationItem key="navigationItem" id="v4e-NZ-Tjg"/>
                     <connections>
                         <outlet property="demoLoginButton" destination="tOg-9b-YBU" id="Y38-vk-4B2"/>
+                        <outlet property="forgotPassButton" destination="3G0-DS-ahW" id="UDN-vD-WhL"/>
                         <outlet property="loginButton" destination="2Wf-ax-Ab8" id="Cu4-c2-DLA"/>
                         <outlet property="loginTextField" destination="9KU-m2-lxO" id="Des-Zy-na6"/>
                         <outlet property="passwordTextField" destination="0dl-fv-m0A" id="UF3-vb-9I5"/>

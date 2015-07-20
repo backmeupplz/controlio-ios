@@ -58,6 +58,26 @@ class ServerManager {
         }
     }
     
+    func resetPass(login: String, completion:(NSError?)->()) {
+        Alamofire.request(.POST, serverURL+"reset-password", parameters: ["login": login])
+            .responseJSON { (request, response, json, error) in
+                var err = error
+                if (error == nil) {
+                    let js = JSON(json!)
+                    
+                    if (js["error"].bool == true) {
+                        self.showErrorMessage(NSLocalizedString("Unable to perform action", comment: ""))
+                        err = NSError()
+                    } else {
+                        self.showErrorMessage(NSLocalizedString("Check your email, we reset your password", comment: ""))
+                    }
+                } else {
+                    self.showError(err!)
+                }
+                completion(err)
+        }
+    }
+    
     func logout() {
         PushNotificationsManager.sharedInstance.logout()
         token = nil
