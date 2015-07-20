@@ -68,8 +68,6 @@ class ServerManager {
                     if (js["error"].bool == true) {
                         self.showErrorMessage(NSLocalizedString("Unable to perform action", comment: ""))
                         err = NSError()
-                    } else {
-                        self.showErrorMessage(NSLocalizedString("Check your email, we reset your password", comment: ""))
                     }
                 } else {
                     self.showError(err!)

@@ -88,6 +88,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         ServerManager.sharedInstance.resetPass(email, completion: { (error: NSError?) -> () in
             self.startServerProcess(false)
+            
+            if (error == nil) {
+                var alert = UIAlertController(title: NSLocalizedString("Check your email, we reset your password", comment:""), message: "", preferredStyle: .Alert)
+                
+                let cancelAction = UIAlertAction(title: NSLocalizedString("Ясно!", comment:""), style: .Cancel) { action -> Void in
+                    
+                }
+                alert.addAction(cancelAction)
+                
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
         })
     }
     
