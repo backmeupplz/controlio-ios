@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         registerForNotifications(application)
-        checkStartNotifications(launchOptions)
+        PushNotificationsManager.sharedInstance.appLaunchedWithOptions(launchOptions)
         
         return true
     }
@@ -43,6 +43,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.applicationIconBadgeNumber = 0
     }
     
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        PushNotificationsManager.sharedInstance.appReceivedRemoteNotification(userInfo)
+    }
+    
     // MARK: - General Methods -
     
     func registerForNotifications(app: UIApplication) {
@@ -51,16 +55,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         app.registerUserNotificationSettings(settings)
         app.registerForRemoteNotifications()
-    }
-    
-    func checkStartNotifications(launchOptions: [NSObject: AnyObject]?) {
-        if (launchOptions == nil) {
-            return
-        }
-        let localNotif = launchOptions![UIApplicationLaunchOptionsLocalNotificationKey] as? UILocalNotification
-        if (localNotif != nil) {
-            println(localNotif!.userInfo)
-        }
     }
 }
 

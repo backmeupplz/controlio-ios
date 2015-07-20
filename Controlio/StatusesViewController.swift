@@ -73,7 +73,7 @@ class StatusesViewController : UITableViewController {
     // MARK: - UITableViewDataSource -
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableData.count + 2
+        return edditingMode != .None ? tableData.count + 1 : tableData.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -89,20 +89,16 @@ class StatusesViewController : UITableViewController {
                 cell.delegate = self
                 cell.object = self.object
                 return cell
-            } else {
-                return tableView.dequeueReusableCellWithIdentifier("Placeholder") as! UITableViewCell
             }
-        }
-        
-        if (indexPath.row == tableData.count + 1) {
-            return tableView.dequeueReusableCellWithIdentifier("Placeholder") as! UITableViewCell
         }
         
         if (!noMoreData && isLastCellAtIndexPath(indexPath)) {
             self.downloadMoreObjects()
         }
         
-        var object = tableData[indexPath.row-1] as StatusObject
+        
+        
+        var object = tableData[edditingMode != .None ? indexPath.row-1 : indexPath.row] as StatusObject
         var cell = tableView.dequeueReusableCellWithIdentifier("StatusCell\(object.type.simpleDescription())", forIndexPath: indexPath) as! StatusCell
         
         cell.manager = self.object.manager
@@ -122,6 +118,7 @@ class StatusesViewController : UITableViewController {
     func configureTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 237.0
+        tableView.contentInset = UIEdgeInsetsMake(8, 0, 8, 0)
     }
     
     func setupRefreshControl() {

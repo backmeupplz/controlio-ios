@@ -32,6 +32,7 @@ class ProjectListViewController: UITableViewController {
         configureTableView()
         setupRefreshControl()
         updateData()
+        checkForProjectToShow()
     }
     
     // MARK: - UITableViewDataSource -
@@ -101,6 +102,14 @@ class ProjectListViewController: UITableViewController {
         ServerManager.sharedInstance.logout()
     }
     
+    func checkForProjectToShow() {
+        var proj: ProjectObject? = PushNotificationsManager.sharedInstance.projectToShow
+        if (proj != nil) {
+            self.performSegueWithIdentifier("SegueToReports", sender: proj)
+            PushNotificationsManager.sharedInstance.projectToShow = nil
+        }
+    }
+    
     // MARK: - Table Data -
     
     func updateData() {
@@ -142,11 +151,16 @@ class ProjectListViewController: UITableViewController {
         return tableData.count > 0 && indexPath.row == tableData.count - 1;
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var cell = tableView.cellForRowAtIndexPath(indexPath) as! ProjectCell
+        
+        self.performSegueWithIdentifier("SegueToReports", sender: cell.object)
+    }
+    
     // MARK: - Segues -
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         var dest = segue.destinationViewController as! StatusesViewController
-        let unwrappedSender = sender as! ProjectCell
-        dest.object = unwrappedSender.object
+        dest.object = sender as! ProjectObject
     }
 }
