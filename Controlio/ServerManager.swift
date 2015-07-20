@@ -76,6 +76,24 @@ class ServerManager {
         }
     }
     
+    func changePass(login: String, oldPass: String, newPass: String, completion:(NSError?)->()) {
+        Alamofire.request(.POST, serverURL+"change-password", parameters: ["login": login, "password": oldPass, "new_password": newPass])
+            .responseJSON { (request, response, json, error) in
+                var err = error
+                if (error == nil) {
+                    let js = JSON(json!)
+                    
+                    if (js["error"].bool == true) {
+                        self.showErrorMessage(NSLocalizedString("Unable to change password", comment: ""))
+                        err = NSError()
+                    }
+                } else {
+                    self.showError(err!)
+                }
+                completion(err)
+        }
+    }
+    
     func logout() {
         PushNotificationsManager.sharedInstance.logout()
         token = nil

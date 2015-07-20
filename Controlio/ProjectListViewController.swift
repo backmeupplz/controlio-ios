@@ -54,7 +54,7 @@ class ProjectListViewController: UITableViewController {
     // MARK: - IBActions -
     
     @IBAction func rightBarButtonTouched(sender: AnyObject) {
-        showLogoutAlert()
+        showSettingsAlert()
     }
     
     // MARK: - General Methods -
@@ -80,6 +80,28 @@ class ProjectListViewController: UITableViewController {
         updateData()
     }
     
+    func showSettingsAlert() {
+        var alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        
+        
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment:""), style: .Cancel) { action -> Void in
+            
+        }
+        alert.addAction(cancelAction)
+        
+        let logoutAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("Logout", comment:""), style: .Default) { action -> Void in
+            self.showLogoutAlert()
+        }
+        alert.addAction(logoutAction)
+        
+        let changePasswordAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("Change password", comment:""), style: .Default) { action -> Void in
+            self.showChangePasswordAlert()
+        }
+        alert.addAction(changePasswordAction)
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
     func showLogoutAlert() {
         var alert = UIAlertController(title: NSLocalizedString("Точно выходим?", comment:""), message: NSLocalizedString("Придется опять залогиниться", comment:""), preferredStyle: .Alert)
         
@@ -97,6 +119,40 @@ class ProjectListViewController: UITableViewController {
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
+    func showChangePasswordAlert() {
+        let alertController: UIAlertController = UIAlertController(title: NSLocalizedString("Change password", comment:""), message: nil, preferredStyle: .Alert)
+        
+        let cancelAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("Cancel", comment:""), style: .Cancel) { action -> Void in
+        }
+        alertController.addAction(cancelAction)
+        
+        let changePassAction = UIAlertAction(title: NSLocalizedString("Reset password", comment:""), style: .Default) { (_) in
+            let loginTextField = alertController.textFields![0] as! UITextField
+            let oldPasswordTextField = alertController.textFields![1] as! UITextField
+            let newPasswordTextField = alertController.textFields![2] as! UITextField
+            self.tryChangePassword(loginTextField.text, oldPassword: oldPasswordTextField.text, newPassword: newPasswordTextField.text)
+        }
+        
+        alertController.addTextFieldWithConfigurationHandler { (textField) in
+            textField.placeholder = NSLocalizedString("Your login", comment:"")
+            textField.keyboardType = .EmailAddress
+        }
+        
+        alertController.addTextFieldWithConfigurationHandler { (textField) in
+            textField.placeholder = NSLocalizedString("Current password", comment:"")
+            textField.secureTextEntry = true
+        }
+        
+        alertController.addTextFieldWithConfigurationHandler { (textField) in
+            textField.placeholder = NSLocalizedString("New password", comment:"")
+            textField.secureTextEntry = true
+        }
+        
+        alertController.addAction(changePassAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
     func logout() {
         self.navigationController?.popToRootViewControllerAnimated(true)
         ServerManager.sharedInstance.logout()
@@ -107,6 +163,21 @@ class ProjectListViewController: UITableViewController {
         if (proj != nil) {
             self.performSegueWithIdentifier("SegueToReports", sender: proj)
             PushNotificationsManager.sharedInstance.projectToShow = nil
+        }
+    }
+    
+    func tryChangePassword(login: String, oldPassword: String, newPassword: String) {
+        ServerManager.sharedInstance.changePass(login, oldPass: oldPassword, newPass: newPassword) { (error: NSError?) -> () in
+            if (error == nil) {
+                var alert = UIAlertController(title: NSLocalizedString("Password was successfully changed", comment:""), message: "", preferredStyle: .Alert)
+                
+                let cancelAction = UIAlertAction(title: NSLocalizedString("Ясно!", comment:""), style: .Cancel) { action -> Void in
+                    
+                }
+                alert.addAction(cancelAction)
+                
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
         }
     }
     
