@@ -106,6 +106,7 @@ class ServerManager {
                 if (error == nil) {
                     let js = JSON(json!)
                     completion(nil,self.convertJsonToProjectObjects(js))
+                    
                 } else {
                     self.showError(error!)
                     completion(error, nil)
@@ -198,16 +199,19 @@ class ServerManager {
     }
     
     func convertJsonToProjectObjects(json: JSON) -> [ProjectObject] {
+        
         var result = [ProjectObject]()
         for jsonObject in json.arrayValue {
             result.append(ProjectObject.convertJsonToObject(jsonObject))
         }
+        
         return result
     }
     
     func convertJsonToStatusObjects(json: JSON) -> [StatusObject] {
         var result = [StatusObject]()
         var previousTimestamp: Int?
+        
         for jsonObject in json.arrayValue {
             var status = StatusObject.convertJsonToObject(jsonObject)
             var timestamp = status.timestamp - (status.timestamp % (60*60*24))
@@ -219,6 +223,7 @@ class ServerManager {
             result.append(status)
             previousTimestamp = timestamp
         }
+        
         return result
     }
 }

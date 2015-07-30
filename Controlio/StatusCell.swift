@@ -59,12 +59,12 @@ class StatusCell: UITableViewCell, MWPhotoBrowserDelegate {
     // MARK: - General Methods -
     
     func configure() {
-        if (object.type == StatusType.Status || object.type == StatusType.StatusWithImage) {
-            managerImageView.loadURL(manager.image)
-        }
-        if (object.type == StatusType.StatusWithImage) {
-            setupImages()
-        }
+//        if (object.type == StatusType.Status || object.type == StatusType.StatusWithImage) {
+//            managerImageView.loadURL(manager.image)
+//        }
+//        if (object.type == StatusType.StatusWithImage) {
+//            setupImages()
+//        }
         statusLabel.text = object.text
     }
     

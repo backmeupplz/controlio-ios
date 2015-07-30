@@ -99,7 +99,7 @@ class StatusesViewController : UITableViewController {
         
         
         var object = tableData[edditingMode != .None ? indexPath.row-1 : indexPath.row] as StatusObject
-        var cell = tableView.dequeueReusableCellWithIdentifier("StatusCell\(object.type.simpleDescription())", forIndexPath: indexPath) as! StatusCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("StatusCell\(object.type.cellNameExtension())", forIndexPath: indexPath) as! StatusCell
         
         cell.manager = self.object.manager
         cell.object = object
@@ -134,6 +134,7 @@ class StatusesViewController : UITableViewController {
         ServerManager.sharedInstance.getStatuses(object.identificator, offset: 0, count: 20, completion: { (error, objects) -> () in
             if (error == nil) {
                 self.tableData = objects!
+                
             } else {
                 self.refreshControl!.endRefreshing()
             }
