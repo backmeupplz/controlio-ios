@@ -59,14 +59,21 @@ class StatusCell: UITableViewCell, MWPhotoBrowserDelegate {
     // MARK: - General Methods -
     
     func configure() {
-        if (object.type == StatusType.Post || object.type == StatusType.PostWithImage) {
+        
+        if (object.type == StatusType.Post || object.type == StatusType.PostWithImage || object.type == StatusType.RecoveredPost || object.type == StatusType.RecoveredPostWithImage) {
             managerImageView.loadURL(manager.image)
         }
-        if (object.type == StatusType.PostWithImage) {
+        if (object.type == StatusType.PostWithImage || object.type == StatusType.RecoveredPostWithImage) {
             setupImages()
         }
         if (statusLabel != nil) {
             statusLabel!.text = object.text
+        }
+        
+        if (object.type == StatusType.RecoveredPost || object.type == StatusType.RecoveredPostWithImage) {
+            borderedView.backgroundColor = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 232.0/255.0, alpha: 1.0)
+        } else if (object.type == StatusType.Post || object.type == StatusType.PostWithImage) {
+            borderedView.backgroundColor = UIColor.whiteColor()
         }
     }
     

@@ -209,6 +209,7 @@ class ServerManager {
     }
     
     func convertJsonToStatusObjects(json: JSON) -> [StatusObject] {
+        
         var result = [StatusObject]()
         var previousTimestamp: Int?
         
