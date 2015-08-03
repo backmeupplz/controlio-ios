@@ -50,6 +50,8 @@
 
 /* Begin PBXFileReference section */
 		3086F95D1E3C3D238BD84E4C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		B310D5DC1B6C1C4200A2F2EC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		B310D5DD1B6C1C4700A2F2EC /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		B31E7DD91B1533280065F2E5 /* ParallaxImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParallaxImageView.swift; sourceTree = "<group>"; };
 		B32364FA1B0953FF002D068C /* ProjectObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectObject.swift; sourceTree = "<group>"; };
 		B32364FE1B09555A002D068C /* ProjectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCell.swift; sourceTree = "<group>"; };
@@ -81,8 +83,6 @@
 		B39C6B351B0FE1F0000792DE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B3B0285E1B181596005BAC87 /* AddStatusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddStatusCell.swift; sourceTree = "<group>"; };
 		B3B028621B1821A2005BAC87 /* BorderedTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderedTextView.swift; sourceTree = "<group>"; };
-		B3B3392B1B5C888C0066D592 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
-		B3B3392C1B5C88900066D592 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		B3BDC6511B26345E00527E1F /* PushNotificationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationsManager.swift; sourceTree = "<group>"; };
 		B3E925261B0A9C25005E04AA /* StatusesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusesViewController.swift; sourceTree = "<group>"; };
 		B3F3C9FA1B0BFA62006FC4B9 /* ManagerObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerObject.swift; sourceTree = "<group>"; };
@@ -461,8 +461,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				B39290D31B092B6B001FF219 /* Base */,
-				B3B3392B1B5C888C0066D592 /* en */,
-				B3B3392C1B5C88900066D592 /* ru */,
+				B310D5DC1B6C1C4200A2F2EC /* en */,
+				B310D5DD1B6C1C4700A2F2EC /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

@@ -392,7 +392,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.90196078430000004" green="0.92941176469999998" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StatusCellStatus" rowHeight="103" id="yMs-bp-cpH" customClass="StatusCell" customModule="Controlio" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StatusCellPost" rowHeight="103" id="yMs-bp-cpH" customClass="StatusCell" customModule="Controlio" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yMs-bp-cpH" id="hSd-0o-I5n">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -453,7 +453,7 @@
                                     <outlet property="statusLabel" destination="Clb-c5-LBS" id="fc7-BN-eed"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StatusCellStatusWithImage" rowHeight="103" id="zrd-Nt-7RP" customClass="StatusCell" customModule="Controlio" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StatusCellPostWithImage" rowHeight="103" id="zrd-Nt-7RP" customClass="StatusCell" customModule="Controlio" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zrd-Nt-7RP" id="OMA-9D-F2m">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -816,7 +816,7 @@
                                     <outlet property="statusLabel" destination="AG7-bx-Fz8" id="5AU-di-xtA"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StatusCellTypeChange" rowHeight="68" id="3ay-Tv-yLG" customClass="StatusCell" customModule="Controlio" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StatusCellStatus" rowHeight="68" id="3ay-Tv-yLG" customClass="StatusCell" customModule="Controlio" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3ay-Tv-yLG" id="HnD-jx-hZZ">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -871,6 +871,135 @@
                                 <connections>
                                     <outlet property="statusLabel" destination="Af5-fD-G0L" id="VBR-yL-cgu"/>
                                 </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StatusCellReport" rowHeight="41" id="OKn-82-uPS" customClass="StatusCell" customModule="Controlio" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OKn-82-uPS" id="6Ba-f8-WhZ">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BkU-Ji-rDi" customClass="BorderedView" customModule="Controlio" customModuleProvider="target">
+                                            <rect key="frame" x="236" y="8" width="128" height="25"/>
+                                            <color key="backgroundColor" red="0.078431372550000003" green="0.78039215689999997" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="25" id="f5K-ps-1Au"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="4"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Проект начат" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UL0-Z7-na4">
+                                            <rect key="frame" x="246" y="10" width="108" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.90196078430000004" green="0.92941176469999998" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="UL0-Z7-na4" firstAttribute="centerY" secondItem="BkU-Ji-rDi" secondAttribute="centerY" id="5Mz-pY-8gt"/>
+                                        <constraint firstAttribute="bottom" secondItem="UL0-Z7-na4" secondAttribute="bottom" constant="10" id="8ff-KG-mtZ"/>
+                                        <constraint firstItem="BkU-Ji-rDi" firstAttribute="top" secondItem="6Ba-f8-WhZ" secondAttribute="top" constant="8" id="Bhm-nf-IIG"/>
+                                        <constraint firstAttribute="bottom" secondItem="BkU-Ji-rDi" secondAttribute="bottom" constant="8" id="CcR-e1-4YW"/>
+                                        <constraint firstAttribute="centerX" secondItem="BkU-Ji-rDi" secondAttribute="centerX" id="JdX-3p-YtV"/>
+                                        <constraint firstItem="BkU-Ji-rDi" firstAttribute="width" secondItem="UL0-Z7-na4" secondAttribute="width" constant="20" id="O5O-wc-kwL"/>
+                                        <constraint firstAttribute="centerX" secondItem="UL0-Z7-na4" secondAttribute="centerX" id="aff-D3-N0x"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="CcR-e1-4YW"/>
+                                            <exclude reference="8ff-KG-mtZ"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="statusLabel" destination="UL0-Z7-na4" id="5nj-u9-8K3"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StatusCellMissedPost" rowHeight="41" id="RoH-M6-rsl" customClass="StatusCell" customModule="Controlio" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RoH-M6-rsl" id="x4E-Dt-kqn">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XRV-li-FfP" customClass="BorderedView" customModule="Controlio" customModuleProvider="target">
+                                            <rect key="frame" x="35" y="8" width="531" height="25"/>
+                                            <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="25" id="pjO-5G-nhH"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="4"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Исполнитель пропустил отчет, но все еще может исправиться!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IJC-7m-Q06">
+                                            <rect key="frame" x="45" y="10" width="511" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.90196078430000004" green="0.92941176469999998" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="IJC-7m-Q06" secondAttribute="bottom" constant="10" id="1Wr-Rb-Qao"/>
+                                        <constraint firstItem="IJC-7m-Q06" firstAttribute="centerY" secondItem="XRV-li-FfP" secondAttribute="centerY" id="J4H-ee-ntc"/>
+                                        <constraint firstAttribute="bottom" secondItem="XRV-li-FfP" secondAttribute="bottom" constant="8" id="K0q-5v-fvf"/>
+                                        <constraint firstItem="XRV-li-FfP" firstAttribute="top" secondItem="x4E-Dt-kqn" secondAttribute="top" constant="8" id="Ow7-KY-iKr"/>
+                                        <constraint firstItem="XRV-li-FfP" firstAttribute="width" secondItem="IJC-7m-Q06" secondAttribute="width" constant="20" id="b1H-Zl-b9K"/>
+                                        <constraint firstAttribute="centerX" secondItem="IJC-7m-Q06" secondAttribute="centerX" id="eUO-9e-Cxe"/>
+                                        <constraint firstAttribute="centerX" secondItem="XRV-li-FfP" secondAttribute="centerX" id="mwU-Uo-Bo9"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="K0q-5v-fvf"/>
+                                            <exclude reference="1Wr-Rb-Qao"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StatusCellCompletelyMissedPost" rowHeight="41" id="hKm-h9-AdB" customClass="StatusCell" customModule="Controlio" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hKm-h9-AdB" id="tmF-9Z-Tbv">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Frm-5i-9Yp" customClass="BorderedView" customModule="Controlio" customModuleProvider="target">
+                                            <rect key="frame" x="111" y="8" width="379" height="25"/>
+                                            <color key="backgroundColor" red="0.96078431369999995" green="0.23921568630000001" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="25" id="Y0i-Gs-6du"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="4"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="К сожалению, исполнитель пропустил отчет" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cS-na-VEz">
+                                            <rect key="frame" x="121" y="10" width="359" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.90196078430000004" green="0.92941176469999998" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="Frm-5i-9Yp" firstAttribute="top" secondItem="tmF-9Z-Tbv" secondAttribute="top" constant="8" id="0Oy-tY-ZGt"/>
+                                        <constraint firstItem="Frm-5i-9Yp" firstAttribute="width" secondItem="1cS-na-VEz" secondAttribute="width" constant="20" id="7ZP-Rw-BTP"/>
+                                        <constraint firstAttribute="bottom" secondItem="Frm-5i-9Yp" secondAttribute="bottom" constant="8" id="Iu9-zb-FCK"/>
+                                        <constraint firstAttribute="centerX" secondItem="1cS-na-VEz" secondAttribute="centerX" id="Ole-uf-ocV"/>
+                                        <constraint firstItem="1cS-na-VEz" firstAttribute="centerY" secondItem="Frm-5i-9Yp" secondAttribute="centerY" id="rZY-5l-mUg"/>
+                                        <constraint firstAttribute="bottom" secondItem="1cS-na-VEz" secondAttribute="bottom" constant="10" id="uK5-Cw-xD3"/>
+                                        <constraint firstAttribute="centerX" secondItem="Frm-5i-9Yp" secondAttribute="centerX" id="uV3-WQ-BK6"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="Iu9-zb-FCK"/>
+                                            <exclude reference="uK5-Cw-xD3"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>

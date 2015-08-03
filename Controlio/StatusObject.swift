@@ -25,23 +25,23 @@ enum StatusType {
         switch self {
             
         case .Post:
-            return "Post"
+            return "Post" //
         case .PostWithImage:
-            return "PostWithImage"
+            return "PostWithImage" //
         case .RecoveredPost:
-            return "RecoveredPost"
+            return "Post"
         case .RecoveredPostWithImage:
-            return "RecoveredPostWithImage"
+            return "PostWithImage"
         case .MissedPost:
             return "MissedPost"
         case .CompletelyMissedPost:
             return "CompletelyMissedPost"
         case .Status:
-            return "Status"
+            return "Status" //
         case .ReportStart, .ReportChange, .ReportEnd:
-            return "Report"
+            return "Report" //
         case Time:
-            return "Time"
+            return "Time" //
         }
     }
 }

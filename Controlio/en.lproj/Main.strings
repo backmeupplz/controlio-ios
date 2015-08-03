@@ -5,13 +5,16 @@
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "0dl-fv-m0A"; */
 "0dl-fv-m0A.placeholder" = "Password";
 
+/* Class = "UILabel"; text = "К сожалению, исполнитель пропустил отчет"; ObjectID = "1cS-na-VEz"; */
+"1cS-na-VEz.text" = "Unfortunately, report deadline was missed";
+
 /* Class = "UIButton"; normalTitle = "Login"; ObjectID = "2Wf-ax-Ab8"; */
 "2Wf-ax-Ab8.normalTitle" = "Login";
 
 /* Class = "UIButton"; normalTitle = "kd@borodutch.com"; ObjectID = "2b2-oH-hMj"; */
 "2b2-oH-hMj.normalTitle" = "kd@borodutch.com";
 
-/* Class = "UIButton"; normalTitle = "Забыли пароль?"; ObjectID = "3G0-DS-ahW"; */
+/* Class = "UIButton"; normalTitle = "Forgot password?"; ObjectID = "3G0-DS-ahW"; */
 "3G0-DS-ahW.normalTitle" = "Forgot password?";
 
 /* Class = "UILabel"; text = "Кирилл Дорош"; ObjectID = "5MP-6r-Plf"; */
@@ -44,6 +47,9 @@
 /* Class = "UILabel"; text = "Статус"; ObjectID = "Clb-c5-LBS"; */
 "Clb-c5-LBS.text" = "Статус";
 
+/* Class = "UILabel"; text = "Исполнитель пропустил отчет, но все еще может исправиться!"; ObjectID = "IJC-7m-Q06"; */
+"IJC-7m-Q06.text" = "Report deadline was missed, but it can be recovered!";
+
 /* Class = "UILabel"; text = "Статус"; ObjectID = "ITj-t1-SPO"; */
 "ITj-t1-SPO.text" = "Статус";
 
@@ -52,6 +58,9 @@
 
 /* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "TIu-le-koq"; */
 "TIu-le-koq.normalTitle" = "Cancel";
+
+/* Class = "UILabel"; text = "Проект начат"; ObjectID = "UL0-Z7-na4"; */
+"UL0-Z7-na4.text" = "Проект начат";
 
 /* Class = "UIButton"; normalTitle = "Send"; ObjectID = "Xn4-tM-JMf"; */
 "Xn4-tM-JMf.normalTitle" = "Send";

@@ -16,7 +16,7 @@ class StatusCell: UITableViewCell, MWPhotoBrowserDelegate {
     // MARK: - IBOutlets -
     
     @IBOutlet weak var managerImageView: UIImageView!
-    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel?
     @IBOutlet weak var borderedView: UIView!
     
     weak var delegate: StatusesViewController!
@@ -59,13 +59,15 @@ class StatusCell: UITableViewCell, MWPhotoBrowserDelegate {
     // MARK: - General Methods -
     
     func configure() {
-//        if (object.type == StatusType.Status || object.type == StatusType.StatusWithImage) {
-//            managerImageView.loadURL(manager.image)
-//        }
-//        if (object.type == StatusType.StatusWithImage) {
-//            setupImages()
-//        }
-        statusLabel.text = object.text
+        if (object.type == StatusType.Post || object.type == StatusType.PostWithImage) {
+            managerImageView.loadURL(manager.image)
+        }
+        if (object.type == StatusType.PostWithImage) {
+            setupImages()
+        }
+        if (statusLabel != nil) {
+            statusLabel!.text = object.text
+        }
     }
     
     func setupImages() {
@@ -142,8 +144,8 @@ class StatusCell: UITableViewCell, MWPhotoBrowserDelegate {
     func addConstraintsToImageView1(imageView: UIImageView) {
         imageView.mas_makeConstraints{ make in
             make.height.equalTo()(imageView.mas_width)
-            make.left.equalTo()(self.statusLabel.mas_left)
-            make.top.equalTo()(self.statusLabel.mas_bottom).offset()(16)
+            make.left.equalTo()(self.statusLabel!.mas_left)
+            make.top.equalTo()(self.statusLabel!.mas_bottom).offset()(16)
             make.bottom.equalTo()(self.borderedView.mas_bottom).offset()(-16)
             if (self.object.attachements!.count == 1) {
                 make.width.equalTo()(100)
