@@ -26,8 +26,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         tryLogin()
     }
     
-    @IBAction func testLogin(sender: AnyObject) {
-        showTestLoginAlert()
+    @IBAction func testLogin(sender: UIButton) {
+        showTestLoginAlert(sender)
     }
     
     @IBAction func forgotPass(sender: AnyObject) {
@@ -112,8 +112,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         forgotPassButton.enabled = !start
     }
     
-    func showTestLoginAlert() {
+    func showTestLoginAlert(sender: UIView) {
         let actionSheetController: UIAlertController = UIAlertController(title: NSLocalizedString("What language do you prefer?", comment:""), message: nil, preferredStyle: .ActionSheet)
+        
+        if (actionSheetController.popoverPresentationController != nil) {
+            actionSheetController.popoverPresentationController!.sourceView = sender.superview
+            actionSheetController.popoverPresentationController!.sourceRect = sender.frame
+            actionSheetController.popoverPresentationController!.permittedArrowDirections = .Down;
+        }
         
         let cancelAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("Cancel", comment:""), style: .Cancel) { action -> Void in
             

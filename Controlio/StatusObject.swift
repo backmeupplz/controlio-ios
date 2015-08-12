@@ -104,6 +104,7 @@ class StatusObject {
                     
 
                     case "update":
+                        
                         post.type = .ReportChange
                         post.text = NSLocalizedString("Report period was changed to: ", comment: "")
                         var dayString = getDayStrings(json["text"]["days"].array!)

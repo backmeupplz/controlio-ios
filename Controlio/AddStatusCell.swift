@@ -53,9 +53,15 @@ class AddStatusCell: UITableViewCell, UIImagePickerControllerDelegate, UINavigat
     
     // MARK: - Actions -
     
-    @IBAction func addPhotoTouched(sender: AnyObject) {
+    @IBAction func addPhotoTouched(sender: UIView) {
         textView.resignFirstResponder()
         let alertController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        
+        if (alertController.popoverPresentationController != nil) {
+            alertController.popoverPresentationController!.sourceView = sender
+            alertController.popoverPresentationController!.sourceRect = sender.frame
+            alertController.popoverPresentationController!.permittedArrowDirections = .Any;
+        }
         
         let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
             

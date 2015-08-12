@@ -83,6 +83,9 @@ class ProjectListViewController: UITableViewController {
     func showSettingsAlert() {
         var alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         
+        if (alert.popoverPresentationController != nil) {
+            alert.popoverPresentationController!.barButtonItem = self.navigationItem.rightBarButtonItem
+        }
         
         let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment:""), style: .Cancel) { action -> Void in
             
