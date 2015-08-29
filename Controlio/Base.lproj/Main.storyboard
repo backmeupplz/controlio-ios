@@ -400,7 +400,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6KQ-Ks-xuK" customClass="BorderedView" customModule="Controlio" customModuleProvider="target">
                                             <rect key="frame" x="8" y="8" width="584" height="87"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5nG-f9-yaz" customClass="RoundImageView" customModule="Controlio" customModuleProvider="target">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5nG-f9-yaz" customClass="RoundImageView" customModule="Controlio" customModuleProvider="target">
                                                     <rect key="frame" x="16" y="16" width="55" height="55"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="55" id="JEU-4I-9Ty"/>
@@ -461,7 +461,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4pe-cX-eb5" customClass="BorderedView" customModule="Controlio" customModuleProvider="target">
                                             <rect key="frame" x="8" y="8" width="584" height="87"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0eP-dO-9MF" customClass="RoundImageView" customModule="Controlio" customModuleProvider="target">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0eP-dO-9MF" customClass="RoundImageView" customModule="Controlio" customModuleProvider="target">
                                                     <rect key="frame" x="16" y="16" width="55" height="55"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="55" id="J9u-BH-nE4"/>
