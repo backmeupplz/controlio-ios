@@ -40,7 +40,12 @@ class ProjectInfoViewController: UITableViewController, MFMailComposeViewControl
         alert.addAction(cancelAction)
         
         let callAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("Звоним!", comment:""), style: .Default) { action -> Void in
-            UIApplication.sharedApplication().openURL(NSURL(string:"tel://\(sender.titleLabel!.text!)")!)
+            var urlString = sender.titleLabel!.text!
+            urlString = urlString.stringByReplacingOccurrencesOfString(" ", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+            urlString = urlString.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+            urlString = "tel://\(urlString)"
+            
+            UIApplication.sharedApplication().openURL(NSURL(string:urlString)!)
         }
         alert.addAction(callAction)
         
