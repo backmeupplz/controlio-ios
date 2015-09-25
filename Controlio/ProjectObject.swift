@@ -16,8 +16,8 @@ class ProjectObject {
     var timestamp: Int!
     var timestampString: String! {
         get {
-            var date = NSDate(timeIntervalSince1970: NSTimeInterval(timestamp))
-            var formatter = NSDateFormatter()
+            let date = NSDate(timeIntervalSince1970: NSTimeInterval(timestamp))
+            let formatter = NSDateFormatter()
             formatter.dateStyle = NSDateFormatterStyle.LongStyle
             formatter.timeStyle = .MediumStyle
             return formatter.stringFromDate(date)
@@ -32,7 +32,7 @@ class ProjectObject {
     var adminRights: Bool!
     
     class func convertJsonToObject(json: JSON) -> ProjectObject {
-        var obj = ProjectObject()
+        let obj = ProjectObject()
         
         obj.identificator = json["id"].int
         obj.image = json["thumbnail"].URL

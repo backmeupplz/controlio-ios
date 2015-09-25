@@ -22,7 +22,6 @@
 		B39290D41B092B6B001FF219 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B39290D21B092B6B001FF219 /* Main.storyboard */; };
 		B39290D61B092B6B001FF219 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B39290D51B092B6B001FF219 /* Images.xcassets */; };
 		B39290D91B092B6B001FF219 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B39290D71B092B6B001FF219 /* LaunchScreen.xib */; };
-		B39290E51B092B6B001FF219 /* ControlioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39290E41B092B6B001FF219 /* ControlioTests.swift */; };
 		B39290F31B093DC2001FF219 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39290F21B093DC2001FF219 /* LoginViewController.swift */; };
 		B39290F71B094062001FF219 /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39290F61B094062001FF219 /* BorderedButton.swift */; };
 		B39290F91B09488A001FF219 /* ProjectListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39290F81B09488A001FF219 /* ProjectListViewController.swift */; };
@@ -37,16 +36,6 @@
 		B3F3C9FF1B0C1474006FC4B9 /* StatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F3C9FE1B0C1474006FC4B9 /* StatusCell.swift */; };
 		B3F3CA011B0C18B0006FC4B9 /* StatusObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F3CA001B0C18B0006FC4B9 /* StatusObject.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		B39290DF1B092B6B001FF219 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B39290C11B092B6A001FF219 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B39290C81B092B6A001FF219;
-			remoteInfo = Controlio;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		3086F95D1E3C3D238BD84E4C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -69,7 +58,6 @@
 		B39290D31B092B6B001FF219 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B39290D51B092B6B001FF219 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B39290D81B092B6B001FF219 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		B39290DE1B092B6B001FF219 /* ControlioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ControlioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B39290E31B092B6B001FF219 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B39290E41B092B6B001FF219 /* ControlioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlioTests.swift; sourceTree = "<group>"; };
 		B39290F21B093DC2001FF219 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -99,13 +87,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1177918565D4698A83595D02 /* Pods.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B39290DB1B092B6B001FF219 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,7 +125,6 @@
 			isa = PBXGroup;
 			children = (
 				B39290C91B092B6B001FF219 /* Controlio.app */,
-				B39290DE1B092B6B001FF219 /* ControlioTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -281,40 +261,20 @@
 			productReference = B39290C91B092B6B001FF219 /* Controlio.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B39290DD1B092B6B001FF219 /* ControlioTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B39290EB1B092B6B001FF219 /* Build configuration list for PBXNativeTarget "ControlioTests" */;
-			buildPhases = (
-				B39290DA1B092B6B001FF219 /* Sources */,
-				B39290DB1B092B6B001FF219 /* Frameworks */,
-				B39290DC1B092B6B001FF219 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B39290E01B092B6B001FF219 /* PBXTargetDependency */,
-			);
-			name = ControlioTests;
-			productName = ControlioTests;
-			productReference = B39290DE1B092B6B001FF219 /* ControlioTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		B39290C11B092B6A001FF219 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Borodutch Studio LLC";
 				TargetAttributes = {
 					B39290C81B092B6A001FF219 = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = 9VUB6L23QH;
-					};
-					B39290DD1B092B6B001FF219 = {
-						CreatedOnToolsVersion = 6.3.1;
-						TestTargetID = B39290C81B092B6A001FF219;
 					};
 				};
 			};
@@ -333,7 +293,6 @@
 			projectRoot = "";
 			targets = (
 				B39290C81B092B6A001FF219 /* Controlio */,
-				B39290DD1B092B6B001FF219 /* ControlioTests */,
 			);
 		};
 /* End PBXProject section */
@@ -347,13 +306,6 @@
 				B39C6B331B0FE1E5000792DE /* Localizable.strings in Resources */,
 				B39290D91B092B6B001FF219 /* LaunchScreen.xib in Resources */,
 				B39290D61B092B6B001FF219 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B39290DC1B092B6B001FF219 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,23 +390,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B39290DA1B092B6B001FF219 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B39290E51B092B6B001FF219 /* ControlioTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		B39290E01B092B6B001FF219 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B39290C81B092B6A001FF219 /* Controlio */;
-			targetProxy = B39290DF1B092B6B001FF219 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B39290D21B092B6B001FF219 /* Main.storyboard */ = {
@@ -511,6 +447,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -584,6 +521,7 @@
 				INFOPLIST_FILE = Controlio/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "BorodutchStudio.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "17978f54-bd18-4f37-9921-30726ade964b";
 				SWIFT_OBJC_BRIDGING_HEADER = "Controlio/Controlio-Bridging-Header.h";
@@ -602,43 +540,10 @@
 				INFOPLIST_FILE = Controlio/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "BorodutchStudio.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "17978f54-bd18-4f37-9921-30726ade964b";
 				SWIFT_OBJC_BRIDGING_HEADER = "Controlio/Controlio-Bridging-Header.h";
-			};
-			name = Release;
-		};
-		B39290EC1B092B6B001FF219 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = ControlioTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Controlio.app/Controlio";
-			};
-			name = Debug;
-		};
-		B39290ED1B092B6B001FF219 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = ControlioTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Controlio.app/Controlio";
 			};
 			name = Release;
 		};
@@ -659,15 +564,6 @@
 			buildConfigurations = (
 				B39290E91B092B6B001FF219 /* Debug */,
 				B39290EA1B092B6B001FF219 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B39290EB1B092B6B001FF219 /* Build configuration list for PBXNativeTarget "ControlioTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B39290EC1B092B6B001FF219 /* Debug */,
-				B39290ED1B092B6B001FF219 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -102,37 +102,37 @@ class StatusCell: UITableViewCell, MWPhotoBrowserDelegate {
     
     func removePrevViews() {
         if (imageView1 != nil) {
-            imageView1.removeConstraints(imageView1.constraints())
+            imageView1.removeConstraints(imageView1.constraints)
             imageView1.removeFromSuperview()
             imageView1 = nil
         }
         if (imageView2 != nil) {
-            imageView2!.removeConstraints(imageView2!.constraints())
+            imageView2!.removeConstraints(imageView2!.constraints)
             imageView2!.removeFromSuperview()
             imageView2 = nil
         }
         if (imageView3 != nil) {
-            imageView3!.removeConstraints(imageView3!.constraints())
+            imageView3!.removeConstraints(imageView3!.constraints)
             imageView3!.removeFromSuperview()
             imageView3 = nil
         }
         if (plusLabel != nil) {
-            plusLabel!.removeConstraints(plusLabel!.constraints())
+            plusLabel!.removeConstraints(plusLabel!.constraints)
             plusLabel!.removeFromSuperview()
             plusLabel = nil
         }
         if (button1 != nil) {
-            button1!.removeConstraints(button1!.constraints())
+            button1!.removeConstraints(button1!.constraints)
             button1!.removeFromSuperview()
             button1 = nil
         }
         if (button2 != nil) {
-            button2!.removeConstraints(button2!.constraints())
+            button2!.removeConstraints(button2!.constraints)
             button2!.removeFromSuperview()
             button2 = nil
         }
         if (button3 != nil) {
-            button3!.removeConstraints(button3!.constraints())
+            button3!.removeConstraints(button3!.constraints)
             button3!.removeFromSuperview()
             button3 = nil
         }
@@ -140,7 +140,7 @@ class StatusCell: UITableViewCell, MWPhotoBrowserDelegate {
     
     func addImageViewWithIndex(index: Int) -> UIImageView {
         var attachements = object.attachements as [NSURL]!
-        var imageView = UIImageView()
+        let imageView = UIImageView()
         imageView.contentMode = UIViewContentMode.ScaleAspectFill
         imageView.cornerRadius = 6.0
         imageView.loadURL(attachements[index])
@@ -183,7 +183,7 @@ class StatusCell: UITableViewCell, MWPhotoBrowserDelegate {
     }
     
     func addPlusLabelToView(view: UIView) {
-        var label = UILabel()
+        let label = UILabel()
         self.borderedView.addSubview(label)
         label.backgroundColor = UIColor(white: 0.0, alpha: 0.75)
         label.textColor = UIColor.whiteColor()
@@ -199,7 +199,7 @@ class StatusCell: UITableViewCell, MWPhotoBrowserDelegate {
     }
     
     func addButtonToView(view: UIView, index: Int) {
-        var button = UIButton()
+        let button = UIButton()
         self.borderedView.addSubview(button)
         button.mas_makeConstraints{ make in
             make.edges.equalTo()(view)
@@ -220,15 +220,15 @@ class StatusCell: UITableViewCell, MWPhotoBrowserDelegate {
     }
     
     func openAttachment(sender: UIButton) {
-        var index: Int = sender.tag
+        let index: Int = sender.tag
         
-        var attachements = object.attachements!
+        let attachements = object.attachements!
         photos = [MWPhoto]()
         for attach in attachements {
             photos.append(MWPhoto(URL: attach))
         }
         
-        var browser = MWPhotoBrowser(delegate: self)
+        let browser = MWPhotoBrowser(delegate: self)
         browser.displayActionButton = true
         browser.displayNavArrows = true
         browser.displaySelectionButtons = false

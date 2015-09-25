@@ -32,7 +32,7 @@ class ProjectInfoViewController: UITableViewController, MFMailComposeViewControl
     // MARK: - IBOutlet -
     
     @IBAction func managerPhoneTouched(sender: UIButton) {
-        var alert = UIAlertController(title: NSLocalizedString("Звоним?", comment:""), message: sender.titleLabel!.text, preferredStyle: .Alert)
+        let alert = UIAlertController(title: NSLocalizedString("Звоним?", comment:""), message: sender.titleLabel!.text, preferredStyle: .Alert)
         
         let cancelAction = UIAlertAction(title: NSLocalizedString("Нет", comment:""), style: .Cancel) { action -> Void in
             
@@ -53,7 +53,7 @@ class ProjectInfoViewController: UITableViewController, MFMailComposeViewControl
     }
     
     @IBAction func managerEmailTouched(sender: UIButton) {
-        var picker = MFMailComposeViewController()
+        let picker = MFMailComposeViewController()
         picker.mailComposeDelegate = self
         picker.setToRecipients([sender.titleLabel!.text!])
         let prefix = NSLocalizedString("Вопрос по проекту", comment:"")
@@ -62,7 +62,7 @@ class ProjectInfoViewController: UITableViewController, MFMailComposeViewControl
     }
     
     @IBAction func managerWebsiteTouched(sender: UIButton) {
-        var alert = UIAlertController(title: NSLocalizedString("Переходим по ссылке?", comment:""), message: sender.titleLabel!.text, preferredStyle: .Alert)
+        let alert = UIAlertController(title: NSLocalizedString("Переходим по ссылке?", comment:""), message: sender.titleLabel!.text, preferredStyle: .Alert)
         
         let cancelAction = UIAlertAction(title: NSLocalizedString("Нет", comment:""), style: .Cancel) { action -> Void in
             
@@ -84,14 +84,14 @@ class ProjectInfoViewController: UITableViewController, MFMailComposeViewControl
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("ProjectDescriptionCell") as! ProjectDescriptionCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("ProjectDescriptionCell") as! ProjectDescriptionCell
         cell.object = object
         return cell
     }
     
     // MARK: - MFMailComposeViewControllerDelegate -
     
-    func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
         dismissViewControllerAnimated(true, completion: nil)
     }
     

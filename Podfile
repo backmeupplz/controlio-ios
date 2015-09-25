@@ -3,7 +3,7 @@ platform :ios, '8.0'
 use_frameworks!
 inhibit_all_warnings!
 
-pod 'Alamofire', '~> 1.2'
+pod 'Alamofire', '~> 2.0'
 pod 'AFNetworking', '~> 2.5'
 pod 'Masonry', '~> 0.6'
 pod "SwiftyJSON", ">= 2.2"

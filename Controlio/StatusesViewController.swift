@@ -80,12 +80,12 @@ class StatusesViewController : UITableViewController {
         
         if (indexPath.row == 0) {
             if (edditingMode == .Status) {
-                var cell = tableView.dequeueReusableCellWithIdentifier("AddStatusCell") as! AddStatusCell
+                let cell = tableView.dequeueReusableCellWithIdentifier("AddStatusCell") as! AddStatusCell
                 cell.delegate = self
                 cell.object = self.object
                 return cell
             } else if (edditingMode == .Post) {
-                var cell = tableView.dequeueReusableCellWithIdentifier("AddPostCell") as! AddStatusCell
+                let cell = tableView.dequeueReusableCellWithIdentifier("AddPostCell") as! AddStatusCell
                 cell.delegate = self
                 cell.object = self.object
                 return cell
@@ -98,8 +98,8 @@ class StatusesViewController : UITableViewController {
         
         
         
-        var object = tableData[edditingMode != .None ? indexPath.row-1 : indexPath.row] as StatusObject
-        var cell = tableView.dequeueReusableCellWithIdentifier("StatusCell\(object.type.cellNameExtension())", forIndexPath: indexPath) as! StatusCell
+        let object = tableData[edditingMode != .None ? indexPath.row-1 : indexPath.row] as StatusObject
+        let cell = tableView.dequeueReusableCellWithIdentifier("StatusCell\(object.type.cellNameExtension())", forIndexPath: indexPath) as! StatusCell
         
         cell.manager = self.object.manager
         cell.object = object
@@ -208,7 +208,7 @@ class StatusesViewController : UITableViewController {
         alertController.addAction(addPostAction)
         
         alertController.popoverPresentationController?.barButtonItem = sender
-        var controller = UIApplication.sharedApplication().delegate?.window??.rootViewController
+        let controller = UIApplication.sharedApplication().delegate?.window??.rootViewController
         controller!.presentViewController(alertController, animated: true, completion: nil)
     }
     
@@ -228,7 +228,7 @@ class StatusesViewController : UITableViewController {
     // MARK: - Segues -
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var dest = segue.destinationViewController as! ProjectInfoViewController
+        let dest = segue.destinationViewController as! ProjectInfoViewController
         dest.object = object
     }
 }

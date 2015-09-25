@@ -11,8 +11,8 @@ import UIKit
 
 class PushNoAnimationSegue: UIStoryboardSegue {
     override func perform () {
-        let src = self.sourceViewController as! UIViewController
-        let dst = self.destinationViewController as!UIViewController
+        let src = self.sourceViewController 
+        let dst = self.destinationViewController 
         src.navigationController!.pushViewController(dst, animated:false)
     }
     

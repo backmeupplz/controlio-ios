@@ -22,21 +22,23 @@ class ServerManager {
     var token: String? {
         didSet {
             NSUserDefaults.standardUserDefaults().setObject(token, forKey: UDToken)
-            println("Set token to: \(token)")
+            print("Set token to: \(token)")
         }
     }
     
     // MARK: - Public Methods -
     
     func auth(login: String, password: String, completion:(NSError?)->()) {
+        
         Alamofire.request(.POST, serverURL+"auth", parameters: ["login": login, "password": password])
-            .responseJSON { (request, response, json, error) in
-                var err = error
-                if (error == nil) {
-                    let js = JSON(json!)
+            .responseJSON { (request, response, result) in
+                var err: NSError?
+                switch result {
+                case .Success:
+                    let js = JSON(result.value!)
                     
                     if (js["error"].bool == true) {
-                        var code: Int = js["code"].int!
+                        let code: Int = js["code"].int!
                         switch code {
                         case 0:
                             self.showErrorMessage(NSLocalizedString("No login or password specified", comment: ""))
@@ -47,11 +49,12 @@ class ServerManager {
                         default:
                             break
                         }
-                        err = NSError()
+                        err = NSError(domain: "Authentication failed", code: 0, userInfo: nil)
                     } else {
                         self.token = js["access_token"].string
                     }
-                } else {
+                case .Failure(_):
+                    err = NSError(domain: "Authentication failed", code: 0, userInfo: nil)
                     self.showError(err!)
                 }
                 completion(err)
@@ -60,38 +63,41 @@ class ServerManager {
     
     func resetPass(login: String, completion:(NSError?)->()) {
         Alamofire.request(.POST, serverURL+"reset-password", parameters: ["login": login])
-            .responseJSON { (request, response, json, error) in
-                var err = error
-                if (error == nil) {
-                    let js = JSON(json!)
+            .responseJSON { (request, response, result) in
+                var err: NSError?
+                switch result {
+                case .Success:
+                    let js = JSON(result.value!)
                     
                     if (js["error"].bool == true) {
                         self.showErrorMessage(NSLocalizedString("Unable to perform action", comment: ""))
-                        err = NSError()
+                        err = NSError(domain: "Resetting pass failed", code: 0, userInfo: nil)
                     }
-                } else {
+                case .Failure(_):
+                    err = NSError(domain: "Resetting pass failed", code: 0, userInfo: nil)
                     self.showError(err!)
                 }
                 completion(err)
-        }
+            }
     }
     
     func changePass(login: String, oldPass: String, newPass: String, completion:(NSError?)->()) {
         Alamofire.request(.POST, serverURL+"change-password", parameters: ["login": login, "password": oldPass, "new_password": newPass])
-            .responseJSON { (request, response, json, error) in
-                var err = error
-                if (error == nil) {
-                    let js = JSON(json!)
-                    
+            .responseJSON { (request, response, result) in
+                var err: NSError?
+                switch result {
+                case .Success:
+                    let js = JSON(result.value!)
                     if (js["error"].bool == true) {
                         self.showErrorMessage(NSLocalizedString("Unable to change password", comment: ""))
-                        err = NSError()
+                        err = NSError(domain: "Unable to change password", code: 0, userInfo: nil)
                     }
-                } else {
+                case .Failure(_):
+                    err = NSError(domain: "Unable to change password", code: 0, userInfo: nil)
                     self.showError(err!)
                 }
                 completion(err)
-        }
+            }
     }
     
     func logout() {
@@ -100,69 +106,71 @@ class ServerManager {
     }
     
     func getProjects(offset: Int, count: Int, completion:(NSError?, [ProjectObject]?)->()) {
-        var params = self.appendToken(["offset": offset, "count": count])
+        let params = self.appendToken(["offset": offset, "count": count])
         Alamofire.request(.POST, serverURL+"project", parameters: params)
-            .responseJSON { (request, response, json, error) in
-                if (error == nil) {
-                    let js = JSON(json!)
+            .responseJSON { (request, response, result) in
+                switch result {
+                case .Success:
+                    let js = JSON(result.value!)
                     completion(nil,self.convertJsonToProjectObjects(js))
-                    
-                } else {
-                    self.showError(error!)
-                    completion(error, nil)
+                case .Failure(_):
+                    let err = NSError(domain: "Could not get list of projects", code: 0, userInfo: nil)
+                    self.showError(err)
+                    completion(err, nil)
                 }
-        }
+                
+            }
     }
     
     func getStatuses(projectid: Int, offset: Int, count: Int, completion:(NSError?, [StatusObject]?)->()) {
-        var params = self.appendToken(["project": projectid, "offset": offset, "count": count])
+        let params = self.appendToken(["project": projectid, "offset": offset, "count": count])
         Alamofire.request(.POST, serverURL+"posts", parameters: params)
-            .responseJSON { (request, response, json, error) in
-                if (error == nil) {
-                    let js = JSON(json!)
+            .responseJSON { (request, response, result) in
+                switch result {
+                case .Success:
+                    let js = JSON(result.value!)
                     completion(nil,self.convertJsonToStatusObjects(js))
-                } else {
-                    self.showError(error!)
-                    completion(error, nil)
+                case .Failure(_):
+                    let err = NSError(domain: "Could not get statuses", code: 0, userInfo: nil)
+                    self.showError(err)
+                    completion(err, nil)
                 }
-        }
+            }
     }
     
     func sendPost(projectid: Int, image: UIImage?, text: String, completion:NSError?->()) {
-        var params = self.appendToken(["project": projectid, "offset": 10, "count": 10])
+        let params = self.appendToken(["project": projectid, "offset": 10, "count": 10])
         Alamofire.request(.POST, serverURL+"posts", parameters: params)
-            .responseJSON { (request, response, json, error) in
-                if (error == nil) {
-                    let js = JSON(json!)
+            .responseJSON { (request, response, result) in
+                switch result {
+                case .Success:
                     completion(nil)
-                } else {
-                    self.showError(error!)
-                    completion(error)
+                case .Failure(_):
+                    completion(nil)
                 }
-        }
+            }
     }
     
     func sendStatus(projectid: Int, text: String, completion:NSError?->()) {
-        var params = self.appendToken(["project": projectid, "offset": 10, "count": 10])
+        let params = self.appendToken(["project": projectid, "offset": 10, "count": 10])
         Alamofire.request(.POST, serverURL+"posts", parameters: params)
-            .responseJSON { (request, response, json, error) in
-                if (error == nil) {
-                    let js = JSON(json!)
+            .responseJSON { (request, response, result) in
+                switch result {
+                case .Success:
                     completion(nil)
-                } else {
-                    self.showError(error!)
-                    completion(error)
+                case .Failure(_):
+                    completion(nil)
                 }
-        }
+            }
     }
     
     func addPushTokenToServer(pushToken: String) {
-        var params = self.appendToken(["device_token": pushToken])
+        let params = self.appendToken(["device_token": pushToken])
         Alamofire.request(.POST, serverURL+"register-push-token", parameters: params)
     }
     
     func deletePushTokenFromServer(pushToken: String) {
-        var params = self.appendToken(["device_token": pushToken])
+        let params = self.appendToken(["device_token": pushToken])
         Alamofire.request(.POST, serverURL+"remove-push-token", parameters: params)
     }
     
@@ -183,7 +191,7 @@ class ServerManager {
     }
     
     func showErrorMessage(error: String) {
-        var alert = UIAlertController(title: NSLocalizedString("Ошибочка", comment:""), message: error, preferredStyle: .Alert)
+        let alert = UIAlertController(title: NSLocalizedString("Ошибочка", comment:""), message: error, preferredStyle: .Alert)
         
         let cancelAction = UIAlertAction(title: NSLocalizedString("Ясно!", comment:""), style: .Cancel) { action -> Void in
             
@@ -214,8 +222,8 @@ class ServerManager {
         var previousTimestamp: Int?
         
         for jsonObject in json.arrayValue {
-            var status = StatusObject.convertJsonToObject(jsonObject)
-            var timestamp = status.timestamp - (status.timestamp % (60*60*24))
+            let status = StatusObject.convertJsonToObject(jsonObject)
+            let timestamp = status.timestamp - (status.timestamp % (60*60*24))
             if (previousTimestamp == nil) {
                 result.append(StatusObject.timeStatus(timestamp))
             } else if (previousTimestamp != timestamp) {

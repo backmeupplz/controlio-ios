@@ -37,7 +37,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     // MARK: - View Controller Life Cycle -
     
     override func viewDidLoad() {
-        var token = NSUserDefaults.standardUserDefaults().objectForKey(UDToken) as? String
+        let token = NSUserDefaults.standardUserDefaults().objectForKey(UDToken) as? String
         if (token != nil) {
             ServerManager.sharedInstance.token = token
             self.performSegueWithIdentifier("SegueToMainWithoutAnimation", sender: self)
@@ -67,7 +67,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     // MARK: - General Methods -
     
     func tryLogin() {
-        tryLoginWith(loginTextField.text, password: passwordTextField.text)
+        tryLoginWith(loginTextField.text!, password: passwordTextField.text!)
     }
     
     func tryLoginWith(email: String, password: String) {
@@ -91,7 +91,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             self.startServerProcess(false)
             
             if (error == nil) {
-                var alert = UIAlertController(title: NSLocalizedString("Check your email, we reset your password", comment:""), message: "", preferredStyle: .Alert)
+                let alert = UIAlertController(title: NSLocalizedString("Check your email, we reset your password", comment:""), message: "", preferredStyle: .Alert)
                 
                 let cancelAction = UIAlertAction(title: NSLocalizedString("Ясно!", comment:""), style: .Cancel) { action -> Void in
                     
@@ -148,8 +148,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         alertController.addAction(cancelAction)
         
         let loginAction = UIAlertAction(title: NSLocalizedString("Reset password", comment:""), style: .Default) { (_) in
-            let loginTextField = alertController.textFields![0] as! UITextField
-            self.tryResetPassWith(loginTextField.text)
+            let loginTextField = alertController.textFields![0] 
+            self.tryResetPassWith(loginTextField.text!)
         }
         loginAction.enabled = false
         

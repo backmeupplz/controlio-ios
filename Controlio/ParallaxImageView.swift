@@ -22,7 +22,7 @@ class ParallaxImageView: UIImageView {
     // MARK: General Methods
     
     func enableParallax() {
-        motionEffects?.removeAll(keepCapacity: true)
+        motionEffects.removeAll(keepCapacity: true)
         
         let verticalMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.y",
             type: .TiltAlongVerticalAxis)

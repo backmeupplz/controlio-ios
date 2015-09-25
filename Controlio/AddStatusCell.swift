@@ -92,8 +92,8 @@ class AddStatusCell: UITableViewCell, UIImagePickerControllerDelegate, UINavigat
             alertController.addAction(removeAction)
         }
         
-        alertController.popoverPresentationController?.sourceView = sender as! UIView;
-        var controller = UIApplication.sharedApplication().delegate?.window??.rootViewController
+        alertController.popoverPresentationController?.sourceView = sender ;
+        let controller = UIApplication.sharedApplication().delegate?.window??.rootViewController
         controller!.presentViewController(alertController, animated: true, completion: nil)
     }
     
@@ -126,7 +126,7 @@ class AddStatusCell: UITableViewCell, UIImagePickerControllerDelegate, UINavigat
     
     @IBAction func cancelTouched(sender: AnyObject) {
         textView.resignFirstResponder()
-        if (count(textView.text) > 0 || photoView?.image != nil) {
+        if (textView.text.characters.count > 0 || photoView?.image != nil) {
             let alertController: UIAlertController = UIAlertController(title: "Are you sure you want to cancel?", message: "You will loose the draft", preferredStyle: .Alert)
             
             let cancelAction: UIAlertAction = UIAlertAction(title: "Nope", style: .Cancel) { action -> Void in
@@ -140,7 +140,7 @@ class AddStatusCell: UITableViewCell, UIImagePickerControllerDelegate, UINavigat
                 self.delegate?.shouldDismissAddStatusCellCancel()
             }
             alertController.addAction(yesAction)
-            alertController.popoverPresentationController?.sourceView = sender as! UIView
+            alertController.popoverPresentationController?.sourceView = sender as? UIView
             self.delegate!.presentViewController(alertController, animated: true, completion: nil)
         } else {
             self.delegate?.shouldDismissAddStatusCellCancel()

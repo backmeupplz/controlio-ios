@@ -41,7 +41,7 @@ class PushNotificationsManager {
     
     func appLaunchedWithOptions(launchOptions: [NSObject: AnyObject]?) {
         if let launchOpts = launchOptions {
-            var notificationPayload = launchOpts[UIApplicationLaunchOptionsRemoteNotificationKey] as? [NSObject : AnyObject]
+            let notificationPayload = launchOpts[UIApplicationLaunchOptionsRemoteNotificationKey] as? [NSObject : AnyObject]
             if (notificationPayload != nil) {
                 handlePush(notificationPayload!, launch: true)
             }
@@ -56,14 +56,14 @@ class PushNotificationsManager {
     
     func handlePush(push:[NSObject : AnyObject], launch:Bool) {
         
-        var token = NSUserDefaults.standardUserDefaults().objectForKey(UDToken) as? String
+        let token = NSUserDefaults.standardUserDefaults().objectForKey(UDToken) as? String
         if (token != nil) {
             if (launch) {
                 projectToShow = ProjectObject.convertJsonToObject(JSON(push["project"]!))
             } else {
-                var navCont = UIApplication.sharedApplication().keyWindow?.rootViewController as! UINavigationController
-                navCont.popToViewController(navCont.viewControllers[1] as! UIViewController, animated: false)
-                var topVC = navCont.topViewController as! ProjectListViewController
+                let navCont = UIApplication.sharedApplication().keyWindow?.rootViewController as! UINavigationController
+                navCont.popToViewController(navCont.viewControllers[1] , animated: false)
+                let topVC = navCont.topViewController as! ProjectListViewController
                 topVC.performSegueWithIdentifier("SegueToReports", sender: ProjectObject.convertJsonToObject(JSON(push["project"]!)))
             }
         }
@@ -71,7 +71,7 @@ class PushNotificationsManager {
     }
     
     func showTestAlert() {
-        var alert = UIAlertView(title: "Why?", message: "", delegate: nil, cancelButtonTitle: "ok")
+        let alert = UIAlertView(title: "Why?", message: "", delegate: nil, cancelButtonTitle: "ok")
         alert.show()
     }
 }

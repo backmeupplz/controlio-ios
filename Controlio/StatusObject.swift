@@ -53,12 +53,12 @@ class StatusObject {
     var attachements: [NSURL]?
     
     class func timeStatus(timestamp: Int) -> StatusObject {
-        var status = StatusObject()
+        let status = StatusObject()
         status.type = .Time
         status.timestamp = timestamp
         
-        var date = NSDate(timeIntervalSince1970: NSTimeInterval(status.timestamp))
-        var formatter = NSDateFormatter()
+        let date = NSDate(timeIntervalSince1970: NSTimeInterval(status.timestamp))
+        let formatter = NSDateFormatter()
         formatter.dateStyle = NSDateFormatterStyle.LongStyle
         formatter.timeStyle = .NoStyle
         status.text = formatter.stringFromDate(date)
@@ -67,7 +67,7 @@ class StatusObject {
     }
     
     class func convertJsonToObject(json: JSON) -> StatusObject {
-        var post = StatusObject()
+        let post = StatusObject()
         post.timestamp = json["create_date_utc"].int
         
         switch json["type"].string! {
@@ -76,7 +76,7 @@ class StatusObject {
                 if (json["attachments"].array?.count > 0) {
                     post.type = .PostWithImage
                     var temp = [NSURL]()
-                    var attachments = json["attachments"].array
+                    let attachments = json["attachments"].array
                     for attach in attachments! {
                         temp.append(attach.URL!)
                     }
@@ -88,16 +88,16 @@ class StatusObject {
                 post.text = json["text"].string
                 post.type = .Status
             case "report":
-                var type = json["text"]["type"].string!
+                let type = json["text"]["type"].string!
                 switch type {
                     case "new":
                         post.type = .ReportStart
                         post.text = NSLocalizedString("Report period was set to: ", comment: "")
-                        var dayString = getDayStrings(json["text"]["days"].array!)
-                        var hoursString = json["text"]["time"][0].string!
-                        var minutesString = json["text"]["time"][1].string!
+                        let dayString = getDayStrings(json["text"]["days"].array!)
+                        let hoursString = json["text"]["time"][0].string!
+                        let minutesString = json["text"]["time"][1].string!
                         var utcString = json["text"]["utc"].string!
-                        if utcString.toInt() >= 0 {
+                        if Int(utcString) >= 0 {
                             utcString = "+" + utcString
                         }
                         post.text = "\(post.text)\(dayString)\(hoursString):\(minutesString), UTC\(utcString)"
@@ -107,11 +107,11 @@ class StatusObject {
                         
                         post.type = .ReportChange
                         post.text = NSLocalizedString("Report period was changed to: ", comment: "")
-                        var dayString = getDayStrings(json["text"]["days"].array!)
-                        var hoursString = json["text"]["time"][0].string!
-                        var minutesString = json["text"]["time"][1].string!
+                        let dayString = getDayStrings(json["text"]["days"].array!)
+                        let hoursString = json["text"]["time"][0].string!
+                        let minutesString = json["text"]["time"][1].string!
                         var utcString = json["text"]["utc"].string!
-                        if utcString.toInt() >= 0 {
+                        if Int(utcString) >= 0 {
                             utcString = "+" + utcString
                         }
                         post.text = "\(post.text)\(dayString)\(hoursString):\(minutesString), UTC\(utcString)"
@@ -123,14 +123,14 @@ class StatusObject {
                 }
             
             case "fail":
-                var timestamp = NSDate().timeIntervalSince1970
+                let timestamp = NSDate().timeIntervalSince1970
                 post.type = Int(timestamp - (60*60*24*3)) > Int(post.timestamp) ? .CompletelyMissedPost : .MissedPost
             case "message_fail":
                 post.text = json["text"].string
                 if (json["attachments"].array?.count > 0) {
                     post.type = .RecoveredPostWithImage
                     var temp = [NSURL]()
-                    var attachments = json["attachments"].array
+                    let attachments = json["attachments"].array
                     for attach in attachments! {
                         temp.append(attach.URL!)
                     }

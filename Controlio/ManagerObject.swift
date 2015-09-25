@@ -17,7 +17,7 @@ class ManagerObject {
     var website: String!
     
     class func convertJsonToObject(json: JSON) -> ManagerObject {
-        var manager = ManagerObject()
+        let manager = ManagerObject()
         manager.image = json["image"].URL
         manager.name = json["name"].string
         manager.telephone = json["telephone"].string

@@ -46,7 +46,7 @@ class ProjectListViewController: UITableViewController {
             self.downloadMoreObjects()
         }
         
-        var cell = tableView.dequeueReusableCellWithIdentifier("ProjectCell", forIndexPath: indexPath) as! ProjectCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("ProjectCell", forIndexPath: indexPath) as! ProjectCell
         cell.object = tableData[indexPath.row]
         return cell
     }
@@ -81,7 +81,7 @@ class ProjectListViewController: UITableViewController {
     }
     
     func showSettingsAlert() {
-        var alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         
         if (alert.popoverPresentationController != nil) {
             alert.popoverPresentationController!.barButtonItem = self.navigationItem.rightBarButtonItem
@@ -106,7 +106,7 @@ class ProjectListViewController: UITableViewController {
     }
     
     func showLogoutAlert() {
-        var alert = UIAlertController(title: NSLocalizedString("Точно выходим?", comment:""), message: NSLocalizedString("Придется опять залогиниться", comment:""), preferredStyle: .Alert)
+        let alert = UIAlertController(title: NSLocalizedString("Точно выходим?", comment:""), message: NSLocalizedString("Придется опять залогиниться", comment:""), preferredStyle: .Alert)
         
         
         let cancelAction = UIAlertAction(title: NSLocalizedString("Нет", comment:""), style: .Cancel) { action -> Void in
@@ -130,10 +130,10 @@ class ProjectListViewController: UITableViewController {
         alertController.addAction(cancelAction)
         
         let changePassAction = UIAlertAction(title: NSLocalizedString("Reset password", comment:""), style: .Default) { (_) in
-            let loginTextField = alertController.textFields![0] as! UITextField
-            let oldPasswordTextField = alertController.textFields![1] as! UITextField
-            let newPasswordTextField = alertController.textFields![2] as! UITextField
-            self.tryChangePassword(loginTextField.text, oldPassword: oldPasswordTextField.text, newPassword: newPasswordTextField.text)
+            let loginTextField = alertController.textFields![0] 
+            let oldPasswordTextField = alertController.textFields![1] 
+            let newPasswordTextField = alertController.textFields![2] 
+            self.tryChangePassword(loginTextField.text!, oldPassword: oldPasswordTextField.text!, newPassword: newPasswordTextField.text!)
         }
         
         alertController.addTextFieldWithConfigurationHandler { (textField) in
@@ -162,7 +162,7 @@ class ProjectListViewController: UITableViewController {
     }
     
     func checkForProjectToShow() {
-        var proj: ProjectObject? = PushNotificationsManager.sharedInstance.projectToShow
+        let proj: ProjectObject? = PushNotificationsManager.sharedInstance.projectToShow
         if (proj != nil) {
             self.performSegueWithIdentifier("SegueToReports", sender: proj)
             PushNotificationsManager.sharedInstance.projectToShow = nil
@@ -172,7 +172,7 @@ class ProjectListViewController: UITableViewController {
     func tryChangePassword(login: String, oldPassword: String, newPassword: String) {
         ServerManager.sharedInstance.changePass(login, oldPass: oldPassword, newPass: newPassword) { (error: NSError?) -> () in
             if (error == nil) {
-                var alert = UIAlertController(title: NSLocalizedString("Password was successfully changed", comment:""), message: "", preferredStyle: .Alert)
+                let alert = UIAlertController(title: NSLocalizedString("Password was successfully changed", comment:""), message: "", preferredStyle: .Alert)
                 
                 let cancelAction = UIAlertAction(title: NSLocalizedString("Ясно!", comment:""), style: .Cancel) { action -> Void in
                     
@@ -226,7 +226,7 @@ class ProjectListViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var cell = tableView.cellForRowAtIndexPath(indexPath) as! ProjectCell
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! ProjectCell
         
         self.performSegueWithIdentifier("SegueToReports", sender: cell.object)
     }
@@ -234,7 +234,7 @@ class ProjectListViewController: UITableViewController {
     // MARK: - Segues -
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var dest = segue.destinationViewController as! StatusesViewController
+        let dest = segue.destinationViewController as! StatusesViewController
         dest.object = sender as! ProjectObject
     }
 }

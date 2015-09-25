@@ -26,7 +26,7 @@ class BorderedTextView: UITextView {
     
     @IBInspectable var borderColor: UIColor {
         get {
-            return UIColor(CGColor: layer.borderColor)!
+            return UIColor(CGColor: layer.borderColor!)
         }
         set {
             layer.borderColor = newValue.CGColor
