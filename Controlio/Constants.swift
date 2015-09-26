@@ -9,4 +9,4 @@
 import Foundation
 
 let UDToken = "UDToken"
-let serverURL = "https://controlio.co/ios/"
+let serverURL = "http://controlio.co/ios/"

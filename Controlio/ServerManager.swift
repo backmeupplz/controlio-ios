@@ -29,7 +29,6 @@ class ServerManager {
     // MARK: - Public Methods -
     
     func auth(login: String, password: String, completion:(NSError?)->()) {
-        
         Alamofire.request(.POST, serverURL+"auth", parameters: ["login": login, "password": password])
             .responseJSON { (request, response, result) in
                 var err: NSError?
@@ -54,7 +53,7 @@ class ServerManager {
                         self.token = js["access_token"].string
                     }
                 case .Failure(_):
-                    err = NSError(domain: "Authentication failed", code: 0, userInfo: nil)
+                    err = result.error as? NSError
                     self.showError(err!)
                 }
                 completion(err)
