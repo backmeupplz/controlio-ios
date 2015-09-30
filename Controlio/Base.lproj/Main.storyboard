@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="S0l-2R-hFL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="S0l-2R-hFL">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -179,8 +180,10 @@
                         <color key="sectionIndexBackgroundColor" red="0.90196078430000004" green="0.92941176469999998" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ProjectCell" rowHeight="250" id="P9P-tG-25X" customClass="ProjectCell" customModule="Controlio" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="22" width="600" height="250"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P9P-tG-25X" id="XWy-yT-AVN">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="250"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LJR-3B-fCh" customClass="BorderedView" customModule="Controlio" customModuleProvider="target">
@@ -193,7 +196,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="he6-he-Ede" customClass="BorderedView" customModule="Controlio" customModuleProvider="target">
-                                                    <rect key="frame" x="446" y="8" width="128" height="25"/>
+                                                    <rect key="frame" x="445" y="8" width="129" height="25"/>
                                                     <color key="backgroundColor" red="0.078431372550000003" green="0.78039215689999997" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="hcn-zl-ZPD"/>
@@ -205,7 +208,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Проект начат" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eo2-6o-pTj">
-                                                    <rect key="frame" x="456" y="10" width="108" height="21"/>
+                                                    <rect key="frame" x="455" y="10" width="109" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="gTd-Bw-Q2d"/>
                                                     </constraints>
@@ -286,6 +289,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="djj-V4-eRl" secondAttribute="trailing" constant="8" id="aCv-4Q-BDr"/>
                                                 <constraint firstItem="eo2-6o-pTj" firstAttribute="centerX" secondItem="he6-he-Ede" secondAttribute="centerX" id="aeX-rJ-E1O"/>
                                                 <constraint firstAttribute="bottom" secondItem="djj-V4-eRl" secondAttribute="bottom" constant="8" id="bls-ES-qel"/>
+                                                <constraint firstItem="eo2-6o-pTj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="LJR-3B-fCh" secondAttribute="leading" constant="20" id="hDT-MO-59Q"/>
                                                 <constraint firstItem="djj-V4-eRl" firstAttribute="top" secondItem="eKO-EE-t76" secondAttribute="bottom" constant="8" id="hnS-Br-Kh1"/>
                                                 <constraint firstItem="he6-he-Ede" firstAttribute="top" secondItem="LJR-3B-fCh" secondAttribute="top" constant="8" id="jJn-IJ-1jd"/>
                                                 <constraint firstItem="9iM-SG-5D5" firstAttribute="leading" secondItem="LJR-3B-fCh" secondAttribute="leading" constant="8" id="juE-I9-4yo"/>
@@ -393,8 +397,10 @@
                         <color key="backgroundColor" red="0.90196078430000004" green="0.92941176469999998" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StatusCellPost" rowHeight="103" id="yMs-bp-cpH" customClass="StatusCell" customModule="Controlio" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="22" width="600" height="103"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yMs-bp-cpH" id="hSd-0o-I5n">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="103"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6KQ-Ks-xuK" customClass="BorderedView" customModule="Controlio" customModuleProvider="target">
@@ -454,8 +460,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StatusCellPostWithImage" rowHeight="103" id="zrd-Nt-7RP" customClass="StatusCell" customModule="Controlio" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="125" width="600" height="103"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zrd-Nt-7RP" id="OMA-9D-F2m">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="103"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4pe-cX-eb5" customClass="BorderedView" customModule="Controlio" customModuleProvider="target">
@@ -521,8 +529,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddPostCell" rowHeight="111" id="mIk-lq-3qx" customClass="AddStatusCell" customModule="Controlio" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="228" width="600" height="111"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mIk-lq-3qx" id="3VG-ib-bH9">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="111"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mcc-Zo-b6g" customClass="BorderedView" customModule="Controlio" customModuleProvider="target">
@@ -679,8 +689,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddStatusCell" rowHeight="111" id="Qw5-4T-4jP" customClass="AddStatusCell" customModule="Controlio" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="339" width="600" height="111"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qw5-4T-4jP" id="JsX-nf-ZrI">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="111"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3w4-6C-rc5" customClass="BorderedView" customModule="Controlio" customModuleProvider="target">
@@ -790,8 +802,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StatusCellTime" rowHeight="37" id="aFA-M4-K4g" customClass="StatusCell" customModule="Controlio" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="450" width="600" height="37"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aFA-M4-K4g" id="szZ-7g-fw3">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="37"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 мая 2015" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AG7-bx-Fz8">
@@ -817,8 +831,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StatusCellStatus" rowHeight="68" id="3ay-Tv-yLG" customClass="StatusCell" customModule="Controlio" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="487" width="600" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3ay-Tv-yLG" id="HnD-jx-hZZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="68"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Текущий статус заказа" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qT4-ug-DGY">
@@ -831,7 +847,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FNl-qV-HNA" customClass="BorderedView" customModule="Controlio" customModuleProvider="target">
-                                            <rect key="frame" x="236" y="35" width="128" height="25"/>
+                                            <rect key="frame" x="236" y="35" width="129" height="25"/>
                                             <color key="backgroundColor" red="0.078431372549019607" green="0.7803921568627451" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="25" id="xPf-V5-IUx"/>
@@ -848,7 +864,7 @@
                                             </variation>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Проект начат" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Af5-fD-G0L">
-                                            <rect key="frame" x="246" y="37" width="108" height="21"/>
+                                            <rect key="frame" x="246" y="37" width="109" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -881,12 +897,14 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StatusCellReport" rowHeight="41" id="OKn-82-uPS" customClass="StatusCell" customModule="Controlio" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="555" width="600" height="41"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OKn-82-uPS" id="6Ba-f8-WhZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="41"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BkU-Ji-rDi" customClass="BorderedView" customModule="Controlio" customModuleProvider="target">
-                                            <rect key="frame" x="236" y="8" width="128" height="25"/>
+                                            <rect key="frame" x="236" y="8" width="129" height="25"/>
                                             <color key="backgroundColor" red="0.078431372550000003" green="0.78039215689999997" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -895,7 +913,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Проект начат" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UL0-Z7-na4">
-                                            <rect key="frame" x="246" y="10" width="108" height="21"/>
+                                            <rect key="frame" x="246" y="10" width="109" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -920,12 +938,14 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StatusCellMissedPost" rowHeight="41" id="RoH-M6-rsl" customClass="StatusCell" customModule="Controlio" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="596" width="600" height="41"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RoH-M6-rsl" id="x4E-Dt-kqn">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="41"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XRV-li-FfP" customClass="BorderedView" customModule="Controlio" customModuleProvider="target">
-                                            <rect key="frame" x="35" y="8" width="531" height="25"/>
+                                            <rect key="frame" x="37" y="8" width="527" height="25"/>
                                             <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -934,7 +954,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Исполнитель пропустил отчет, но все еще может исправиться!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IJC-7m-Q06">
-                                            <rect key="frame" x="45" y="10" width="511" height="21"/>
+                                            <rect key="frame" x="47" y="10" width="507" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -956,12 +976,14 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StatusCellCompletelyMissedPost" rowHeight="41" id="hKm-h9-AdB" customClass="StatusCell" customModule="Controlio" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="637" width="600" height="41"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hKm-h9-AdB" id="tmF-9Z-Tbv">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="41"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Frm-5i-9Yp" customClass="BorderedView" customModule="Controlio" customModuleProvider="target">
-                                            <rect key="frame" x="111" y="8" width="379" height="25"/>
+                                            <rect key="frame" x="112" y="8" width="377" height="25"/>
                                             <color key="backgroundColor" red="0.96078431369999995" green="0.23921568630000001" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -970,7 +992,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="К сожалению, исполнитель пропустил отчет" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cS-na-VEz">
-                                            <rect key="frame" x="121" y="10" width="359" height="21"/>
+                                            <rect key="frame" x="122" y="10" width="357" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -1028,9 +1050,10 @@
                         <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProjectDescriptionCell" rowHeight="446" id="pAv-eJ-g6E" customClass="ProjectDescriptionCell" customModule="Controlio" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="600" height="446"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pAv-eJ-g6E" id="mL6-sD-atw">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="446"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ремонт двигателя BMW 130I" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RKF-F6-IPJ">
