@@ -46,7 +46,7 @@ enum StatusType {
     }
 }
 
-class StatusObject {
+class StatusObject: Equatable {
     var timestamp: Int!
     var type: StatusType!
     var text: String!
@@ -171,5 +171,11 @@ class StatusObject {
         
         return result
     }
+}
+
+func ==(lhs: StatusObject, rhs: StatusObject) -> Bool {
+    return lhs.timestamp == rhs.timestamp &&
+        lhs.type == rhs.type &&
+        lhs.text == rhs.text
 }
 

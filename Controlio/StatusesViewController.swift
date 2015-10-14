@@ -132,7 +132,7 @@ class StatusesViewController : UITableViewController {
         ServerManager.sharedInstance.getStatuses(object.identificator, offset: 0, count: 20, completion: { (error, objects) -> () in
             if (error == nil) {
                 self.tableData = objects!
-                
+                self.addTimestampObjects()
             } else {
                 self.refreshControl!.endRefreshing()
             }
@@ -156,9 +156,11 @@ class StatusesViewController : UITableViewController {
         if (offset == 0) {
             noMoreData = false
             tableData = objects
+            self.addTimestampObjects()
         } else {
             if (objects.count > 0) {
                 tableData += objects
+                self.addTimestampObjects()
             }
             noMoreData = objects.count == 0
         }
@@ -221,6 +223,27 @@ class StatusesViewController : UITableViewController {
             tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .Right)
         }
         tableView.endUpdates()
+    }
+    
+    func addTimestampObjects() {
+        var result = [StatusObject]()
+        
+        var previousTimestamp: Int?
+        for object in tableData {
+            
+            if (object.type != StatusType.Time) {
+                let timestamp = object.timestamp - (object.timestamp % (60*60*24))
+                if (previousTimestamp == nil) {
+                    result.append(StatusObject.timeStatus(timestamp))
+                } else if (previousTimestamp != timestamp) {
+                    result.append(StatusObject.timeStatus(timestamp))
+                }
+                previousTimestamp = timestamp
+                result.append(object)
+            }
+        }
+        
+        tableData = result
     }
     
     // MARK: - Segues -
