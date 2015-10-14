@@ -96,8 +96,6 @@ class StatusesViewController : UITableViewController {
             self.downloadMoreObjects()
         }
         
-        
-        
         let object = tableData[edditingMode != .None ? indexPath.row-1 : indexPath.row] as StatusObject
         let cell = tableView.dequeueReusableCellWithIdentifier("StatusCell\(object.type.cellNameExtension())", forIndexPath: indexPath) as! StatusCell
         
@@ -167,7 +165,7 @@ class StatusesViewController : UITableViewController {
     }
     
     func isLastCellAtIndexPath(indexPath: NSIndexPath) -> Bool {
-        return tableData.count > 0 && indexPath.row-1 == tableData.count - 1;
+        return tableData.count > 0 && indexPath.row == tableData.count - 1;
     }
     
     func getRealTableDataCount() -> Int {
