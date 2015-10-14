@@ -9,21 +9,21 @@
         <!--Login View Controller-->
         <scene sceneID="xSt-r9-Chc">
             <objects>
-                <viewController id="6QB-UK-VGG" customClass="LoginViewController" customModule="Controlio" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="6QB-UK-VGG" customClass="LoginViewController" customModule="Controlio" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Xxh-Jg-I8e"/>
                         <viewControllerLayoutGuide type="bottom" id="tkK-RS-zz3"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ulU-cS-wg6">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="bAj-ZV-QjX">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                 <animations/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DpK-LC-Qim">
-                                <rect key="frame" x="113" y="74" width="375" height="451"/>
+                                <rect key="frame" x="113" y="43" width="375" height="451"/>
                                 <subviews>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="e0e-0l-iRT">
                                         <rect key="frame" x="134" y="8" width="106" height="69"/>
@@ -164,6 +164,7 @@
                             <constraint firstItem="bAj-ZV-QjX" firstAttribute="leading" secondItem="ulU-cS-wg6" secondAttribute="leading" id="yzL-oh-xLS"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="v4e-NZ-Tjg"/>
                     <connections>
                         <outlet property="demoLoginButton" destination="tOg-9b-YBU" id="Y38-vk-4B2"/>
@@ -183,7 +184,7 @@
         <!--Controlio-->
         <scene sceneID="WRn-v0-Yhx">
             <objects>
-                <tableViewController title="Controlio" id="wov-zY-9ON" customClass="ProjectListViewController" customModule="Controlio" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Controlio" automaticallyAdjustsScrollViewInsets="NO" id="wov-zY-9ON" customClass="ProjectListViewController" customModule="Controlio" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="253" sectionHeaderHeight="22" sectionFooterHeight="22" id="jQC-fM-68m">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -393,6 +394,7 @@
                             <outlet property="delegate" destination="wov-zY-9ON" id="TY4-Jo-XHt"/>
                         </connections>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="Gu6-ya-kWn">
                         <barButtonItem key="rightBarButtonItem" image="settings" id="iD2-1U-J3s">
                             <connections>
@@ -411,7 +413,7 @@
         <!--Statuses View Controller-->
         <scene sceneID="6tp-Xc-Wx4">
             <objects>
-                <tableViewController id="Ncd-FA-n4t" customClass="StatusesViewController" customModule="Controlio" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController automaticallyAdjustsScrollViewInsets="NO" id="Ncd-FA-n4t" customClass="StatusesViewController" customModule="Controlio" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="7YN-gc-9df">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1087,6 +1089,7 @@
                             <outlet property="delegate" destination="Ncd-FA-n4t" id="Gyo-Jq-hmx"/>
                         </connections>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="GaN-2n-ZLk">
                         <barButtonItem key="rightBarButtonItem" id="LJx-9c-wIr">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="n2s-YO-B3W">
@@ -1303,6 +1306,7 @@
         <scene sceneID="9HJ-s8-C7O">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="S0l-2R-hFL" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Zrj-2X-hD5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
