@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-@IBDesignable
+//@IBDesignable
 extension UIImageView {
     
     // MARK: - Variables -

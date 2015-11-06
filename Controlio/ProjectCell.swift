@@ -14,10 +14,11 @@ class ProjectCell: UITableViewCell {
     
     // MARK: - IBOutlets -
     
-    @IBOutlet weak var lastImageView: ParallaxImageView!
-    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var companyLogo: RoundImageView!
+    @IBOutlet weak var companyTitle: UILabel!
     @IBOutlet weak var titleMessageLabel: UILabel!
     @IBOutlet weak var timestampLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
     
     // MARK: - Public Variables -
@@ -31,9 +32,10 @@ class ProjectCell: UITableViewCell {
     // MARK: - General Methods -
     
     func configure() {
-        lastImageView.loadURL(object.image)
+        companyLogo.loadURL(object.image)
+        companyTitle.text = arc4random() % 2 == 0 ? "Starbucks Canada" : "Santa Ventures"
         titleMessageLabel.text = object.title
-        timestampLabel.text = object.timestampString
+        timestampLabel.text = object.shortTimestampString
         messageLabel.text = object.message
         statusLabel.text = object.status
     }

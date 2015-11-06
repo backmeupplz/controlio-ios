@@ -35,7 +35,7 @@ class StatusCell: UITableViewCell, MWPhotoBrowserDelegate {
     
     // MARK: - Public Variables -
     
-    var manager: ManagerObject!
+    var project: ProjectObject!
     var object: StatusObject! {
         didSet {
             configure()
@@ -61,7 +61,8 @@ class StatusCell: UITableViewCell, MWPhotoBrowserDelegate {
     func configure() {
         
         if (object.type == StatusType.Post || object.type == StatusType.PostWithImage || object.type == StatusType.RecoveredPost || object.type == StatusType.RecoveredPostWithImage) {
-            managerImageView.loadURL(manager.image)
+//            managerImageView.loadURL(project.image)
+            managerImageView.image = UIImage(named: "1")
         }
         if (object.type == StatusType.PostWithImage || object.type == StatusType.RecoveredPostWithImage) {
             setupImages()

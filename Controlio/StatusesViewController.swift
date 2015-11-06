@@ -99,7 +99,7 @@ class StatusesViewController : UITableViewController {
         let object = tableData[edditingMode != .None ? indexPath.row-1 : indexPath.row] as StatusObject
         let cell = tableView.dequeueReusableCellWithIdentifier("StatusCell\(object.type.cellNameExtension())", forIndexPath: indexPath) as! StatusCell
         
-        cell.manager = self.object.manager
+        cell.project = self.object
         cell.object = object
         cell.delegate = self
         return cell

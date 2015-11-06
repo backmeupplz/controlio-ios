@@ -23,6 +23,15 @@ class ProjectObject {
             return formatter.stringFromDate(date)
         }
     }
+    var shortTimestampString: String! {
+        get {
+            let date = NSDate(timeIntervalSince1970: NSTimeInterval(timestamp))
+            let formatter = NSDateFormatter()
+            formatter.dateStyle = NSDateFormatterStyle.ShortStyle
+            formatter.timeStyle = .NoStyle
+            return formatter.stringFromDate(date)
+        }
+    }
     var message: String!
     var info: String!
     var status: String!
