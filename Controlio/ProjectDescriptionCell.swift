@@ -21,7 +21,8 @@ class ProjectDescriptionCell: UITableViewCell {
     
     // MARK: - IBOutlets -
     
-    @IBOutlet weak var mainImageView: UIImageView!
+    @IBOutlet weak var companyLogo: RoundImageView!
+    @IBOutlet weak var companyTitle: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
     
@@ -34,7 +35,8 @@ class ProjectDescriptionCell: UITableViewCell {
     // MARK: - General Methods -
     
     func setup() {
-        mainImageView.loadURL(object.image)
+        companyLogo.loadURL(object.image)
+        companyTitle.text = arc4random() % 2 == 0 ? "Starbucks Canada" : "Santa Ventures"
         titleLabel.text = object.title
         infoLabel.text = object.info
         
