@@ -208,6 +208,7 @@ class ServerManager {
     func convertJsonToProjectObjects(json: JSON) -> [ProjectObject] {
         var result = [ProjectObject]()
         for jsonObject in json.arrayValue {
+            
             result.append(ProjectObject.convertJsonToObject(jsonObject))
         }
         return result
