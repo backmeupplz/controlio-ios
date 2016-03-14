@@ -30,6 +30,9 @@ class StartViewController: UIViewController, UIScrollViewDelegate {
         
         setupPageControl()
         addLabels()
+        
+        // DEBUG
+        Router(self).showMain()
     }
     
     // MARK: - UIScrollViewDelegate -
@@ -42,10 +45,11 @@ class StartViewController: UIViewController, UIScrollViewDelegate {
     
     @IBAction private func signupTouched(sender: AnyObject) {
         
+        Router(self).showSignUp()
     }
     
     @IBAction private func loginTouched(sender: AnyObject) {
-        
+        Router(self).showLogIn()
     }
     
     @IBAction private func demoTouched(sender: UIButton) {
