@@ -62,7 +62,7 @@ class Router {
         showVC(Router.recoveryVC())
     }
     
-    func showMain() {
+    func showMain(animated: Bool = true) {
         showVC(Router.mainTBC())
     }
     

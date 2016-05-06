@@ -50,7 +50,7 @@
         <scene sceneID="mqP-uT-rQ4">
             <objects>
                 <navigationController id="Ijo-gm-cwR" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Projects" id="fhC-a6-oV1"/>
+                    <tabBarItem key="tabBarItem" title="Projects" image="projects" id="fhC-a6-oV1"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="EPo-v6-Vdk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -101,7 +101,7 @@
         <scene sceneID="3yx-8E-4VC">
             <objects>
                 <navigationController id="b14-le-hiB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="New Project" id="cfk-iK-s2j"/>
+                    <tabBarItem key="tabBarItem" title="New Project" image="new-project" id="cfk-iK-s2j"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="glg-2d-Vgw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -152,7 +152,7 @@
         <scene sceneID="FkB-cL-5Ng">
             <objects>
                 <navigationController id="576-Wy-VdO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Support" id="uye-yc-d9N"/>
+                    <tabBarItem key="tabBarItem" title="Support" image="support" id="uye-yc-d9N"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Rk-jm-OQe">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -203,7 +203,7 @@
         <scene sceneID="8TT-HS-w7f">
             <objects>
                 <navigationController id="Tdo-Ll-yW5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" id="nVd-0c-5o7"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="nVd-0c-5o7"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ite-bO-gOl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -222,4 +222,10 @@
             <point key="canvasLocation" x="448" y="1429"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="new-project" width="20" height="20"/>
+        <image name="projects" width="20" height="17"/>
+        <image name="settings" width="18" height="18"/>
+        <image name="support" width="20" height="20"/>
+    </resources>
 </document>

@@ -61,6 +61,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         case .Russian:
             print("Login Russian")
         }
+        Router(self).showMain()
     }
     
     private func checkTextFields() {
