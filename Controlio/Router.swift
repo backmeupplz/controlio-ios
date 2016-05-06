@@ -63,13 +63,17 @@ class Router {
     }
     
     func showMain(animated: Bool = true) {
-        showVC(Router.mainTBC())
+        showVC(Router.mainTBC(), animated: animated)
     }
     
     // MARK: - Private Functions -
     
-    private func showVC(vc: UIViewController) {
-        controller.showViewController(vc, sender: controller)
+    private func showVC(vc: UIViewController, animated: Bool = true) {
+        if animated {
+            controller.showViewController(vc, sender: controller)
+        } else {
+            controller.navigationController?.viewControllers.append(vc)
+        }
     }
     
     private class func loginStoryboard() -> UIStoryboard {

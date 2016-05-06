@@ -246,6 +246,7 @@
 				B3FEB8451C9630D20048B688 /* Extensions */,
 				B3FEB83A1C962F920048B688 /* Cell */,
 				B3C03D0D1C90D70A0096E04C /* GradientView.swift */,
+				B3E634E01C915B9300C0572A /* UISearchBar+CursorTint.swift */,
 				B3C03D111C90E6E70096E04C /* RoundedShadowedButton.swift */,
 				B3AA2F8E1C910ACC00FE7E54 /* RoundedBorderedTextField.swift */,
 				B3FEB8461C9631870048B688 /* CustomizableView.swift */,
@@ -335,7 +336,6 @@
 			children = (
 				B3FEB8431C9630BA0048B688 /* UIImageView+BeautifulWebImage.swift */,
 				B3C03D191C90FF890096E04C /* UIAlertController+Additions.swift */,
-				B3E634E01C915B9300C0572A /* UISearchBar+CursorTint.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
