@@ -12,11 +12,11 @@ class GradientView: UIView {
     
     // MARK: - Variables -
     
-    var startColor = UIColor.controlioViolet()
-    var endColor = UIColor.controlioGreen()
+    @IBInspectable var startColor = UIColor.controlioViolet()
+    @IBInspectable var endColor = UIColor.controlioGradientGreen()
     
-    var startPoint = CGPoint(x: 0.0, y: 0.0)
-    var endPoint = CGPoint(x: 1.0, y: 1.0)
+    @IBInspectable var startPoint = CGPoint(x: 0.0, y: 0.0)
+    @IBInspectable var endPoint = CGPoint(x: 1.0, y: 1.0)
     
     // MARK: - Private Variables -
     
@@ -30,18 +30,44 @@ class GradientView: UIView {
         addGradient()
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+//        addGradient()
+    }
+    
     // MARK: - Private Functions -
 
     private func addGradient() {
-        gradient?.removeFromSuperlayer()
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        let componentCount = 2
+            
+        var fRed: CGFloat = 0
+        var fGreen: CGFloat = 0
+        var fBlue: CGFloat = 0
+        var fAlpha: CGFloat = 0
         
-        gradient = CAGradientLayer()
+        var sRed: CGFloat = 0
+        var sGreen: CGFloat = 0
+        var sBlue: CGFloat = 0
+        var sAlpha: CGFloat = 0
         
-        gradient!.colors = [startColor.CGColor, endColor.CGColor]
-        gradient!.startPoint = startPoint
-        gradient!.endPoint = endPoint
-        gradient!.frame = CGRect(x: 0.0, y: 0.0, width: frame.width, height: frame.size.height)
+        startColor.getRed(&fRed, green: &fGreen, blue: &fBlue, alpha: &fAlpha)
+        endColor.getRed(&sRed, green: &sGreen, blue: &sBlue, alpha: &sAlpha)
         
-        layer.insertSublayer(gradient!, atIndex: 0)
+        let components = [
+            fRed, fGreen, fBlue, fAlpha,
+            sRed, sGreen, sBlue, sAlpha
+        ]
+        
+        let locations : [CGFloat] = [0, 1]
+        
+        let gradient = CGGradientCreateWithColorComponents(colorSpace, components, locations, componentCount)
+        
+        let startPoint = CGPoint(x: CGRectGetWidth(bounds)*self.startPoint.x, y: CGRectGetHeight(bounds)*self.startPoint.y)
+        let endPoint = CGPoint(x: CGRectGetWidth(bounds)*self.endPoint.x, y: CGRectGetHeight(bounds)*self.endPoint.y)
+        
+        let context = UIGraphicsGetCurrentContext()
+        CGContextDrawLinearGradient(context, gradient, startPoint, endPoint, CGGradientDrawingOptions(rawValue: 0))
     }
 }

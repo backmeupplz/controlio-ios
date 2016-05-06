@@ -13,10 +13,14 @@ extension UIColor {
     // MARK: - General Functions -
     
     class func controlioViolet() -> UIColor {
-        return UIColor(red: 165.0/255, green: 154.0/255, blue: 252.0/255, alpha: 1.0)
+        return UIColor(red: 176.0/255, green: 164.0/255, blue: 253.0/255, alpha: 1.0)
     }
     
     class func controlioGreen() -> UIColor {
-        return UIColor(red: 63.0/255, green: 199.0/255, blue: 159.0/255, alpha: 1.0)
+        return UIColor(red: 3.0/255, green: 195.0/255, blue: 134.0/255, alpha: 1.0)
+    }
+    
+    class func controlioGradientGreen() -> UIColor {
+        return UIColor(red: 72.0/255, green: 207.0/255, blue: 170.0/255, alpha: 1.0)
     }
 }

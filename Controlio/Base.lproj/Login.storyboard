@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vxU-vq-VqA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vxU-vq-VqA">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="SFUIDisplay-Bold.otf">
+            <string>SFUIDisplay-Bold</string>
+            <string>SFUIDisplay-Bold</string>
+            <string>SFUIDisplay-Bold</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Start View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -17,14 +24,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch-screen-logo" translatesAutoresizingMaskIntoConstraints="NO" id="Up5-ic-yDH">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UUx-WB-FnK" userLabel="Gradient" customClass="GradientView" customModule="Controlio" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-with-text" translatesAutoresizingMaskIntoConstraints="NO" id="Up5-ic-yDH" userLabel="Logo">
                                 <rect key="frame" x="195" y="72" width="211" height="182"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="211" id="7oD-4a-RyV"/>
                                     <constraint firstAttribute="height" constant="182" id="F6U-BL-KPK"/>
                                 </constraints>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tda-LR-KyL">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tda-LR-KyL" userLabel="Catch Phrase View" customClass="CatchPhraseView" customModule="Controlio" customModuleProvider="target">
                                 <rect key="frame" x="180" y="231" width="240" height="128"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -32,7 +43,7 @@
                                     <constraint firstAttribute="width" constant="240" id="iYn-Cb-1pe"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="bHn-DN-Jmr"/>
+                                    <outlet property="pageControl" destination="1Dw-BL-b9x" id="uOR-hA-GrY"/>
                                 </connections>
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="1Dw-BL-b9x">
@@ -40,15 +51,16 @@
                                 <color key="pageIndicatorTintColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                                 <color key="currentPageIndicatorTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </pageControl>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uwh-Q6-fwo" customClass="RoundedShadowedButton" customModule="Controlio" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uwh-Q6-fwo" userLabel="Sign Up Button" customClass="RoundedShadowedButton" customModule="Controlio" customModuleProvider="target">
                                 <rect key="frame" x="180" y="402" width="240" height="53"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="53" id="Uiw-i1-auA"/>
                                     <constraint firstAttribute="width" constant="240" id="axU-Az-LYp"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="18"/>
                                 <state key="normal" title="Get started">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.34509803921568627" green="0.36470588235294116" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
@@ -57,8 +69,9 @@
                                     <action selector="signupTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Pz5-VG-YPu"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VnK-05-hhK">
-                                <rect key="frame" x="196" y="461" width="208" height="34"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VnK-05-hhK" userLabel="Login Button">
+                                <rect key="frame" x="192" y="461" width="217" height="34"/>
+                                <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="18"/>
                                 <state key="normal" title="Already have an account?">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -69,8 +82,9 @@
                                     <action selector="loginTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jmr-0O-b2j"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Dn-tl-G00">
-                                <rect key="frame" x="227" y="493" width="147" height="34"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Dn-tl-G00" userLabel="Demo Account Button">
+                                <rect key="frame" x="224" y="493" width="152" height="34"/>
+                                <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="18"/>
                                 <state key="normal" title="Try demo account">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -82,7 +96,6 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.1629859031" green="0.88033800659999994" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="7Dn-tl-G00" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="210" id="0Xa-z4-i2K">
                                 <variation key="heightClass=compact" constant="94"/>
@@ -96,6 +109,8 @@
                             <constraint firstItem="Up5-ic-yDH" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-137" id="K7z-gO-HXQ">
                                 <variation key="heightClass=compact" constant="-70"/>
                             </constraint>
+                            <constraint firstItem="UUx-WB-FnK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="OpK-T4-nsp"/>
+                            <constraint firstItem="UUx-WB-FnK" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="PlV-DX-jed"/>
                             <constraint firstItem="tda-LR-KyL" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-5" id="R5m-jd-3qd">
                                 <variation key="heightClass=compact" constant="62"/>
                             </constraint>
@@ -111,8 +126,10 @@
                             <constraint firstItem="VnK-05-hhK" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="178" id="cUl-aU-WCo">
                                 <variation key="heightClass=compact" constant="62"/>
                             </constraint>
+                            <constraint firstAttribute="trailing" secondItem="UUx-WB-FnK" secondAttribute="trailing" id="ddO-F6-adD"/>
                             <constraint firstItem="7Dn-tl-G00" firstAttribute="centerX" secondItem="uwh-Q6-fwo" secondAttribute="centerX" id="dta-v7-s82"/>
                             <constraint firstItem="VnK-05-hhK" firstAttribute="centerX" secondItem="uwh-Q6-fwo" secondAttribute="centerX" id="pu2-B5-cvF"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="UUx-WB-FnK" secondAttribute="bottom" id="tdy-Rp-aud"/>
                             <constraint firstItem="uwh-Q6-fwo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zGu-zC-rBr">
                                 <variation key="heightClass=compact" constant="136"/>
                             </constraint>
@@ -120,8 +137,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="KWm-f6-cHY"/>
                     <connections>
-                        <outlet property="pageControl" destination="1Dw-BL-b9x" id="t9e-ik-3rm"/>
-                        <outlet property="scrollView" destination="tda-LR-KyL" id="Kz0-rF-wIT"/>
+                        <outlet property="catchPhraseView" destination="tda-LR-KyL" id="IKk-fG-H5D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -590,6 +606,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="launch-screen-logo" width="500" height="500"/>
+        <image name="logo-with-text" width="166" height="166"/>
     </resources>
 </document>

@@ -2,13 +2,41 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-	</dict>
-	<key>LSApplicationCategoryType</key>
-	<string></string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>SFUIText-Bold.otf</string>
+		<string>SFUIText-BoldG1.otf</string>
+		<string>SFUIText-BoldG2.otf</string>
+		<string>SFUIText-BoldG3.otf</string>
+		<string>SFUIText-BoldItalicG1.otf</string>
+		<string>SFUIText-BoldItalicG2.otf</string>
+		<string>SFUIText-BoldItalicG3.otf</string>
+		<string>SFUIText-Heavy.otf</string>
+		<string>SFUIText-HeavyItalic.otf</string>
+		<string>SFUIText-Italic.otf</string>
+		<string>SFUIText-ItalicG1.otf</string>
+		<string>SFUIText-ItalicG2.otf</string>
+		<string>SFUIText-ItalicG3.otf</string>
+		<string>SFUIText-Light.otf</string>
+		<string>SFUIText-LightItalic.otf</string>
+		<string>SFUIText-Medium.otf</string>
+		<string>SFUIText-MediumItalic.otf</string>
+		<string>SFUIText-Regular.otf</string>
+		<string>SFUIText-RegularG1.otf</string>
+		<string>SFUIText-RegularG2.otf</string>
+		<string>SFUIText-RegularG3.otf</string>
+		<string>SFUIText-Semibold.otf</string>
+		<string>SFUIText-SemiboldItalic.otf</string>
+		<string>SFUIDisplay-Ultralight.otf</string>
+		<string>SFUIDisplay-Thin.otf</string>
+		<string>SFUIDisplay-Semibold.otf</string>
+		<string>SFUIDisplay-Regular.otf</string>
+		<string>SFUIDisplay-Medium.otf</string>
+		<string>SFUIDisplay-Light.otf</string>
+		<string>SFUIDisplay-Heavy.otf</string>
+		<string>SFUIDisplay-Bold.otf</string>
+		<string>SFUIDisplay-Black.otf</string>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -26,9 +54,16 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

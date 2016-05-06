@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,18 +17,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch-screen-logo" translatesAutoresizingMaskIntoConstraints="NO" id="vBN-8l-TlX">
-                                <rect key="frame" x="142" y="173" width="317" height="254"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash-screen" translatesAutoresizingMaskIntoConstraints="NO" id="qe0-xL-Ivv" userLabel="Background Image">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-with-text" translatesAutoresizingMaskIntoConstraints="NO" id="bg4-06-uFM" userLabel="Logo">
+                                <rect key="frame" x="195" y="209" width="211" height="182"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="254" id="RbT-J4-NYj"/>
-                                    <constraint firstAttribute="width" constant="317" id="aJ2-0x-XIJ"/>
+                                    <constraint firstAttribute="height" constant="182" id="Rp2-iw-yN4"/>
+                                    <constraint firstAttribute="width" constant="211" id="por-P8-MJj"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.16298590312249905" green="0.8803380065943357" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="vBN-8l-TlX" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="IZ1-cu-Pmw"/>
-                            <constraint firstItem="vBN-8l-TlX" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="v7U-aL-5kt"/>
+                            <constraint firstItem="qe0-xL-Ivv" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Goj-We-Hya"/>
+                            <constraint firstAttribute="trailing" secondItem="qe0-xL-Ivv" secondAttribute="trailing" id="Kqs-wv-cSJ"/>
+                            <constraint firstItem="qe0-xL-Ivv" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="ODH-OP-9C4"/>
+                            <constraint firstItem="bg4-06-uFM" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="jAP-7b-CI0"/>
+                            <constraint firstItem="bg4-06-uFM" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ojD-eM-qOq"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="qe0-xL-Ivv" secondAttribute="bottom" id="tyh-Yp-en1"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -38,6 +44,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="launch-screen-logo" width="500" height="500"/>
+        <image name="logo-with-text" width="166" height="166"/>
+        <image name="splash-screen" width="100" height="100"/>
     </resources>
 </document>
