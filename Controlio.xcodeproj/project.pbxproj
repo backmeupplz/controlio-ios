@@ -53,6 +53,7 @@
 		B3C03D141C90E90B0096E04C /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C03D131C90E90B0096E04C /* StartViewController.swift */; };
 		B3C03D171C90FEB70096E04C /* DemoAccountLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C03D161C90FEB70096E04C /* DemoAccountLanguage.swift */; };
 		B3C03D1A1C90FF890096E04C /* UIAlertController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C03D191C90FF890096E04C /* UIAlertController+Additions.swift */; };
+		B3D1692C1CDDA5950080D748 /* PopupNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D1692B1CDDA5950080D748 /* PopupNotificationManager.swift */; };
 		B3E634D31C91344400C0572A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E634D21C91344400C0572A /* Router.swift */; };
 		B3E634D51C91444700C0572A /* RecoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E634D41C91444700C0572A /* RecoveryViewController.swift */; };
 		B3E634D71C914CE600C0572A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3E634D61C914CE600C0572A /* Main.storyboard */; };
@@ -119,6 +120,7 @@
 		B3C03D131C90E90B0096E04C /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		B3C03D161C90FEB70096E04C /* DemoAccountLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoAccountLanguage.swift; sourceTree = "<group>"; };
 		B3C03D191C90FF890096E04C /* UIAlertController+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Additions.swift"; sourceTree = "<group>"; };
+		B3D1692B1CDDA5950080D748 /* PopupNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupNotificationManager.swift; sourceTree = "<group>"; };
 		B3E634D21C91344400C0572A /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		B3E634D41C91444700C0572A /* RecoveryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecoveryViewController.swift; sourceTree = "<group>"; };
 		B3E634D61C914CE600C0572A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				B3C03D151C90FEA50096E04C /* Enums */,
 				B3B2B92C1C90CD1600468342 /* AppDelegate.swift */,
 				B3E634D21C91344400C0572A /* Router.swift */,
+				B3D1692B1CDDA5950080D748 /* PopupNotificationManager.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -512,6 +515,7 @@
 				B3C03D171C90FEB70096E04C /* DemoAccountLanguage.swift in Sources */,
 				B3E634E11C915B9300C0572A /* UISearchBar+CursorTint.swift in Sources */,
 				B3C03D141C90E90B0096E04C /* StartViewController.swift in Sources */,
+				B3D1692C1CDDA5950080D748 /* PopupNotificationManager.swift in Sources */,
 				B3C03D101C90DAA60096E04C /* UIColor+Controlio.swift in Sources */,
 				B3AA2F911C9110EF00FE7E54 /* SignUpViewController.swift in Sources */,
 				B3C03D1A1C90FF890096E04C /* UIAlertController+Additions.swift in Sources */,

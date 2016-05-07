@@ -35,5 +35,4 @@ class RecoveryViewController: UIViewController {
         if !success { return }
         print("recover")
     }
-    
 }
