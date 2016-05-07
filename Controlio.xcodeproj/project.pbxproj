@@ -40,6 +40,7 @@
 		B383239A1CDC409D004D0A1C /* SFUIText-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B38323831CDC409D004D0A1C /* SFUIText-Semibold.otf */; };
 		B383239B1CDC409D004D0A1C /* SFUIText-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = B38323841CDC409D004D0A1C /* SFUIText-SemiboldItalic.otf */; };
 		B383239D1CDC4336004D0A1C /* CatchPhraseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B383239C1CDC4336004D0A1C /* CatchPhraseView.swift */; };
+		B390C7A11CDE93C100D5F021 /* SupportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B390C7A01CDE93C100D5F021 /* SupportCell.swift */; };
 		B3AA2F8F1C910ACC00FE7E54 /* RoundedBorderedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AA2F8E1C910ACC00FE7E54 /* RoundedBorderedTextField.swift */; };
 		B3AA2F911C9110EF00FE7E54 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AA2F901C9110EF00FE7E54 /* SignUpViewController.swift */; };
 		B3AA2F931C9110FE00FE7E54 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AA2F921C9110FE00FE7E54 /* LogInViewController.swift */; };
@@ -54,6 +55,7 @@
 		B3C03D171C90FEB70096E04C /* DemoAccountLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C03D161C90FEB70096E04C /* DemoAccountLanguage.swift */; };
 		B3C03D1A1C90FF890096E04C /* UIAlertController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C03D191C90FF890096E04C /* UIAlertController+Additions.swift */; };
 		B3D1692C1CDDA5950080D748 /* PopupNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D1692B1CDDA5950080D748 /* PopupNotification.swift */; };
+		B3D1692E1CDDC15F0080D748 /* SupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D1692D1CDDC15F0080D748 /* SupportViewController.swift */; };
 		B3E634D31C91344400C0572A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E634D21C91344400C0572A /* Router.swift */; };
 		B3E634D51C91444700C0572A /* RecoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E634D41C91444700C0572A /* RecoveryViewController.swift */; };
 		B3E634D71C914CE600C0572A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3E634D61C914CE600C0572A /* Main.storyboard */; };
@@ -105,6 +107,7 @@
 		B38323831CDC409D004D0A1C /* SFUIText-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-Semibold.otf"; sourceTree = "<group>"; };
 		B38323841CDC409D004D0A1C /* SFUIText-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-SemiboldItalic.otf"; sourceTree = "<group>"; };
 		B383239C1CDC4336004D0A1C /* CatchPhraseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatchPhraseView.swift; sourceTree = "<group>"; };
+		B390C7A01CDE93C100D5F021 /* SupportCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportCell.swift; sourceTree = "<group>"; };
 		B3AA2F8E1C910ACC00FE7E54 /* RoundedBorderedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedBorderedTextField.swift; sourceTree = "<group>"; };
 		B3AA2F901C9110EF00FE7E54 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		B3AA2F921C9110FE00FE7E54 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +124,7 @@
 		B3C03D161C90FEB70096E04C /* DemoAccountLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoAccountLanguage.swift; sourceTree = "<group>"; };
 		B3C03D191C90FF890096E04C /* UIAlertController+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Additions.swift"; sourceTree = "<group>"; };
 		B3D1692B1CDDA5950080D748 /* PopupNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupNotification.swift; sourceTree = "<group>"; };
+		B3D1692D1CDDC15F0080D748 /* SupportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportViewController.swift; sourceTree = "<group>"; };
 		B3E634D21C91344400C0572A /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		B3E634D41C91444700C0572A /* RecoveryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecoveryViewController.swift; sourceTree = "<group>"; };
 		B3E634D61C914CE600C0572A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -321,6 +325,7 @@
 			children = (
 				B3E634DC1C914D6200C0572A /* MainViewController.swift */,
 				B3E634DE1C91514D00C0572A /* ProjectsController.swift */,
+				B3D1692D1CDDC15F0080D748 /* SupportViewController.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -330,6 +335,7 @@
 			children = (
 				B3FEB83D1C9630290048B688 /* ProjectCell.swift */,
 				B3FEB83E1C9630290048B688 /* ProjectCell.xib */,
+				B390C7A01CDE93C100D5F021 /* SupportCell.swift */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -502,6 +508,7 @@
 			files = (
 				B3E634D31C91344400C0572A /* Router.swift in Sources */,
 				B383239D1CDC4336004D0A1C /* CatchPhraseView.swift in Sources */,
+				B3D1692E1CDDC15F0080D748 /* SupportViewController.swift in Sources */,
 				B3FEB8441C9630BA0048B688 /* UIImageView+BeautifulWebImage.swift in Sources */,
 				B3FEB8471C9631870048B688 /* CustomizableView.swift in Sources */,
 				B3FEB8491C963E260048B688 /* CustomizableImageView.swift in Sources */,
@@ -518,6 +525,7 @@
 				B3D1692C1CDDA5950080D748 /* PopupNotification.swift in Sources */,
 				B3C03D101C90DAA60096E04C /* UIColor+Controlio.swift in Sources */,
 				B3AA2F911C9110EF00FE7E54 /* SignUpViewController.swift in Sources */,
+				B390C7A11CDE93C100D5F021 /* SupportCell.swift in Sources */,
 				B3C03D1A1C90FF890096E04C /* UIAlertController+Additions.swift in Sources */,
 				B3AA2F931C9110FE00FE7E54 /* LogInViewController.swift in Sources */,
 				B3C03D121C90E6E70096E04C /* RoundedShadowedButton.swift in Sources */,
