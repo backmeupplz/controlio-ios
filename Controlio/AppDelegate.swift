@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         setupKeyboard()
-        PopupNotificationManager.setup()
+        PopupNotification.setup()
         
         return true
     }

@@ -9,7 +9,7 @@
 import UIKit
 import JDStatusBarNotification
 
-class PopupNotificationManager: NSObject {
+class PopupNotification: NSObject {
     
     // MARK: - Private Class Variables -
     
