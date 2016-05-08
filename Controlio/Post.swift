@@ -8,6 +8,15 @@
 
 import UIKit
 
-class Post: NSObject {
+enum PostType {
+    case Status
+    case Post
+}
 
+class Post: NSObject {
+    
+    // MARK: - Variables -
+    
+    var type: PostType!
+    var text: String!
 }

@@ -10,6 +10,14 @@ import UIKit
 
 class ProjectController: UITableViewController {
     
+    // MARK: - Variables -
+    
+    var project: Project! {
+        didSet {
+            configure()
+        }
+    }
+    
     // MARK: - View Controller Life Cycle -
     
     override func viewDidLoad() {
@@ -20,6 +28,12 @@ class ProjectController: UITableViewController {
         setupBackButton()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        configure()
+    }
+    
     // MARK: - Public Functions -
     
     func loadData() {
@@ -27,6 +41,12 @@ class ProjectController: UITableViewController {
     }
     
     // MARK: - Private Functions -
+    
+    private func configure() {
+        title = project.title
+        
+        tableView.reloadData()
+    }
     
     private func setupTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension

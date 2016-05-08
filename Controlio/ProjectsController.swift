@@ -13,6 +13,7 @@ class ProjectsController: UITableViewController, UISearchResultsUpdating, UISear
     // MARK: - Variables -
     
     private let searchController = UISearchController(searchResultsController: nil)
+    private var projects = [Project]()
     
     // MARK: - UISearchResultsUpdating -
     
@@ -29,18 +30,19 @@ class ProjectsController: UITableViewController, UISearchResultsUpdating, UISear
     // MARK: - UITableViewDataSource -
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return projects.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(String(ProjectCell), forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(String(ProjectCell), forIndexPath: indexPath) as! ProjectCell
+        cell.project = projects[indexPath.row]
         return cell
     }
     
     // MARK: - UITableViewDelegate -
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        Router(self).showProject()
+        Router(self).showProject(projects[indexPath.row])
     }
     
     // MARK: - View Controller Life Cycle -
@@ -56,6 +58,12 @@ class ProjectsController: UITableViewController, UISearchResultsUpdating, UISear
         setupBackButton()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        loadData()
+    }
+    
     // MARK: - Public Functions -
     
     func showSearch() {
@@ -63,7 +71,11 @@ class ProjectsController: UITableViewController, UISearchResultsUpdating, UISear
     }
     
     func loadData() {
-        refreshControl?.endRefreshing()
+        DataManager.sharedManager.getProjects { projects in
+            self.projects = projects!
+            self.refreshControl?.endRefreshing()
+            self.tableView.reloadData()
+        }
     }
     
     // MARK: - Private Functions -

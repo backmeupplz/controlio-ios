@@ -10,16 +10,38 @@ import UIKit
 
 class ProjectCell: UITableViewCell {
     
-    @IBOutlet private weak var projectImageView: UIImageView!
-    @IBOutlet private weak var managerImageView: UIImageView!
+    // MARK: - Variables -
     
-    override func awakeFromNib() {
-        configure()
+    var project: Project! {
+        didSet {
+            configure()
+        }
     }
     
-    func configure() {
-        projectImageView.loadURL(NSURL(string: "http://www.city-n.ru/upload/2016/02/22/374107.jpg"))
-        managerImageView.loadURL(NSURL(string: "http://rostwes.ru/wp-content/uploads/2015/12/48z.jpg"))
+    // MARK: - Outlets -
+    
+    @IBOutlet private weak var projectImageView: UIImageView!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var projectTitleLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var projectDescriptionLabel: UILabel!
+    
+    @IBOutlet private weak var managerImageView: UIImageView!
+    @IBOutlet weak var managerNameLabel: UILabel!
+    @IBOutlet weak var postLabel: UILabel!
+    
+    // MARK: - Private Functions -
+    
+    private func configure() {
+        projectImageView.loadURL(project.image)
+        dateLabel.text = NSDateFormatter.projectDateString(project.dateCreated)
+        projectTitleLabel.text = project.title
+        statusLabel.text = project.lastStatus.text
+        projectDescriptionLabel.text = project.projectDescription
+        
+        managerImageView.loadURL(project.manager.image)
+        managerNameLabel.text = project.manager.name
+        postLabel.text = project.lastPost?.text ?? project.lastStatus.text
     }
     
 }

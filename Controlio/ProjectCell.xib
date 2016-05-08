@@ -55,7 +55,7 @@
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3pj-gS-WC7" userLabel="Rounded View" customClass="CustomizableView" customModule="Controlio" customModuleProvider="target">
                         <rect key="frame" x="10" y="5" width="386" height="295"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cid-cU-Gbr" customClass="CustomizableImageView" customModule="Controlio" customModuleProvider="target">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cid-cU-Gbr" customClass="CustomizableImageView" customModule="Controlio" customModuleProvider="target">
                                 <rect key="frame" x="20" y="20" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="WGW-IZ-0Sy"/>
@@ -101,7 +101,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AQg-5V-2Yl" userLabel="Manager View" customClass="GradientView" customModule="Controlio" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="195" width="386" height="100"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ykm-oC-jGl" customClass="CustomizableImageView" customModule="Controlio" customModuleProvider="target">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ykm-oC-jGl" customClass="CustomizableImageView" customModule="Controlio" customModuleProvider="target">
                                         <rect key="frame" x="20" y="20" width="60" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="Bny-cN-1Kz"/>
@@ -236,8 +236,14 @@
                 </variation>
             </tableViewCellContentView>
             <connections>
+                <outlet property="dateLabel" destination="sM8-Eq-cP3" id="SOB-jt-cQH"/>
                 <outlet property="managerImageView" destination="Ykm-oC-jGl" id="aC9-1P-bvi"/>
+                <outlet property="managerNameLabel" destination="kP3-BS-o3j" id="l3h-f8-nMk"/>
+                <outlet property="postLabel" destination="tqf-CY-LEZ" id="zFX-TL-2fm"/>
+                <outlet property="projectDescriptionLabel" destination="iJZ-uZ-HaJ" id="uyF-Yj-zWe"/>
                 <outlet property="projectImageView" destination="Cid-cU-Gbr" id="ECZ-kK-coe"/>
+                <outlet property="projectTitleLabel" destination="8Pw-HE-oEt" id="Pg9-FU-RFS"/>
+                <outlet property="statusLabel" destination="e93-uz-1TR" id="8Nb-Kh-jnL"/>
             </connections>
             <point key="canvasLocation" x="476" y="605"/>
         </tableViewCell>
