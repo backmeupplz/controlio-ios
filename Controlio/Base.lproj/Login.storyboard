@@ -97,7 +97,7 @@
                                     <action selector="signupTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Pz5-VG-YPu"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VnK-05-hhK" userLabel="Login Button">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VnK-05-hhK" userLabel="Login Button">
                                 <rect key="frame" x="192" y="461" width="217" height="34"/>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="18"/>
                                 <state key="normal" title="Already have an account?">
@@ -110,7 +110,7 @@
                                     <action selector="loginTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jmr-0O-b2j"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Dn-tl-G00" userLabel="Demo Account Button">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Dn-tl-G00" userLabel="Demo Account Button">
                                 <rect key="frame" x="224" y="493" width="152" height="34"/>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="18"/>
                                 <state key="normal" title="Try demo account">
@@ -189,7 +189,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VrW-jH-qkB" userLabel="Sign Up Title">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Sign Up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VrW-jH-qkB" userLabel="Sign Up Title">
                                 <rect key="frame" x="243" y="99" width="114" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="bMg-jb-S0Y"/>
@@ -300,7 +300,7 @@
                                     <action selector="signUpTouched:" destination="nJx-q4-SDZ" eventType="touchUpInside" id="Tmw-GU-WIg"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jaG-a7-G34" userLabel="Login Button">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jaG-a7-G34" userLabel="Login Button">
                                 <rect key="frame" x="192" y="466" width="217" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="boJ-At-NnP"/>
@@ -504,7 +504,7 @@
                                     <action selector="logInTouched:" destination="whJ-LL-Qxb" eventType="touchUpInside" id="OGx-Kj-2Pz"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="loN-fr-0B5" userLabel="Password Recovery Button">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="loN-fr-0B5" userLabel="Password Recovery Button">
                                 <rect key="frame" x="206" y="389" width="192" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="185" id="JmV-S0-tyq"/>
@@ -526,7 +526,7 @@
                                     <action selector="forgotPasswordTouched:" destination="whJ-LL-Qxb" eventType="touchUpInside" id="jwc-NL-BZg"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ysp-fU-hAK" userLabel="Sign Up Button">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ysp-fU-hAK" userLabel="Sign Up Button">
                                 <rect key="frame" x="167" y="423" width="269" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="260" id="e7d-dZ-z0c"/>
@@ -548,7 +548,7 @@
                                     <action selector="signUpTouched:" destination="whJ-LL-Qxb" eventType="touchUpInside" id="7JS-Y6-OjD"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ctN-Hb-xlu" userLabel="Demo Button">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ctN-Hb-xlu" userLabel="Demo Button">
                                 <rect key="frame" x="156" y="457" width="289" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="xeQ-9K-SYc"/>
@@ -671,7 +671,7 @@
                                     <outlet property="delegate" destination="kks-eL-3bm" id="wi0-Kg-okI"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5GJ-t4-jTy">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5GJ-t4-jTy">
                                 <rect key="frame" x="240" y="406" width="121" height="34"/>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="18"/>
                                 <state key="normal" title="Back to sign in">
@@ -684,13 +684,13 @@
                                     <action selector="backTouched:" destination="kks-eL-3bm" eventType="touchUpInside" id="bN2-LT-Fgr"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account Recovery" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hon-kO-p9d">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Account Recovery" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hon-kO-p9d">
                                 <rect key="frame" x="169" y="160" width="262" height="41"/>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Light" family="SF UI Display" pointSize="34"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your email address and we'll help you reset your password" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x93-wg-OT7">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Enter your email address and we'll help you reset your password" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x93-wg-OT7">
                                 <rect key="frame" x="187" y="209" width="227" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="fAI-Oh-bXc"/>
@@ -724,7 +724,7 @@
                                     <action selector="recoverTouched:" destination="kks-eL-3bm" eventType="touchUpInside" id="6bP-ho-BGW"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EMAIL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dBN-cp-SeC">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="EMAIL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dBN-cp-SeC">
                                 <rect key="frame" x="184" y="253" width="34" height="15"/>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="12"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
@@ -761,6 +761,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo-with-text" width="166" height="166"/>
+        <image name="logo-with-text" width="163" height="101"/>
     </resources>
 </document>

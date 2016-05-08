@@ -9,8 +9,11 @@
 import UIKit
 
 extension UIAlertController {
-    func addCancelButton() {
-        let cancel = UIAlertAction(title: "Cancel", style: .Cancel) { action in
+    
+    // MARK: - General Functions -
+    
+    func addCancelButton(title: String = "Cancel") {
+        let cancel = UIAlertAction(title: title, style: .Cancel) { action in
             // Do nothing
         }
         addAction(cancel)

@@ -40,7 +40,8 @@
 		B383239A1CDC409D004D0A1C /* SFUIText-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B38323831CDC409D004D0A1C /* SFUIText-Semibold.otf */; };
 		B383239B1CDC409D004D0A1C /* SFUIText-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = B38323841CDC409D004D0A1C /* SFUIText-SemiboldItalic.otf */; };
 		B383239D1CDC4336004D0A1C /* CatchPhraseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B383239C1CDC4336004D0A1C /* CatchPhraseView.swift */; };
-		B390C7A11CDE93C100D5F021 /* SupportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B390C7A01CDE93C100D5F021 /* SupportCell.swift */; };
+		B390C7A31CDE96B800D5F021 /* DeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B390C7A21CDE96B800D5F021 /* DeepLink.swift */; };
+		B390C7A51CDE9B5400D5F021 /* NSIndexPath+RowSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B390C7A41CDE9B5400D5F021 /* NSIndexPath+RowSection.swift */; };
 		B3AA2F8F1C910ACC00FE7E54 /* RoundedBorderedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AA2F8E1C910ACC00FE7E54 /* RoundedBorderedTextField.swift */; };
 		B3AA2F911C9110EF00FE7E54 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AA2F901C9110EF00FE7E54 /* SignUpViewController.swift */; };
 		B3AA2F931C9110FE00FE7E54 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AA2F921C9110FE00FE7E54 /* LogInViewController.swift */; };
@@ -54,6 +55,7 @@
 		B3C03D141C90E90B0096E04C /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C03D131C90E90B0096E04C /* StartViewController.swift */; };
 		B3C03D171C90FEB70096E04C /* DemoAccountLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C03D161C90FEB70096E04C /* DemoAccountLanguage.swift */; };
 		B3C03D1A1C90FF890096E04C /* UIAlertController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C03D191C90FF890096E04C /* UIAlertController+Additions.swift */; };
+		B3C305A11CDFD79500C8E85F /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C305A01CDFD79500C8E85F /* SettingsController.swift */; };
 		B3D1692C1CDDA5950080D748 /* PopupNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D1692B1CDDA5950080D748 /* PopupNotification.swift */; };
 		B3D1692E1CDDC15F0080D748 /* SupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D1692D1CDDC15F0080D748 /* SupportViewController.swift */; };
 		B3E634D31C91344400C0572A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E634D21C91344400C0572A /* Router.swift */; };
@@ -107,7 +109,8 @@
 		B38323831CDC409D004D0A1C /* SFUIText-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-Semibold.otf"; sourceTree = "<group>"; };
 		B38323841CDC409D004D0A1C /* SFUIText-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-SemiboldItalic.otf"; sourceTree = "<group>"; };
 		B383239C1CDC4336004D0A1C /* CatchPhraseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatchPhraseView.swift; sourceTree = "<group>"; };
-		B390C7A01CDE93C100D5F021 /* SupportCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportCell.swift; sourceTree = "<group>"; };
+		B390C7A21CDE96B800D5F021 /* DeepLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeepLink.swift; sourceTree = "<group>"; };
+		B390C7A41CDE9B5400D5F021 /* NSIndexPath+RowSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSIndexPath+RowSection.swift"; sourceTree = "<group>"; };
 		B3AA2F8E1C910ACC00FE7E54 /* RoundedBorderedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedBorderedTextField.swift; sourceTree = "<group>"; };
 		B3AA2F901C9110EF00FE7E54 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		B3AA2F921C9110FE00FE7E54 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +126,7 @@
 		B3C03D131C90E90B0096E04C /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		B3C03D161C90FEB70096E04C /* DemoAccountLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoAccountLanguage.swift; sourceTree = "<group>"; };
 		B3C03D191C90FF890096E04C /* UIAlertController+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Additions.swift"; sourceTree = "<group>"; };
+		B3C305A01CDFD79500C8E85F /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		B3D1692B1CDDA5950080D748 /* PopupNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupNotification.swift; sourceTree = "<group>"; };
 		B3D1692D1CDDC15F0080D748 /* SupportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportViewController.swift; sourceTree = "<group>"; };
 		B3E634D21C91344400C0572A /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -270,6 +274,7 @@
 				B3C03D151C90FEA50096E04C /* Enums */,
 				B3B2B92C1C90CD1600468342 /* AppDelegate.swift */,
 				B3E634D21C91344400C0572A /* Router.swift */,
+				B390C7A21CDE96B800D5F021 /* DeepLink.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -305,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				B3C03D0F1C90DAA60096E04C /* UIColor+Controlio.swift */,
+				B390C7A41CDE9B5400D5F021 /* NSIndexPath+RowSection.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -326,6 +332,7 @@
 				B3E634DC1C914D6200C0572A /* MainViewController.swift */,
 				B3E634DE1C91514D00C0572A /* ProjectsController.swift */,
 				B3D1692D1CDDC15F0080D748 /* SupportViewController.swift */,
+				B3C305A01CDFD79500C8E85F /* SettingsController.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -335,7 +342,6 @@
 			children = (
 				B3FEB83D1C9630290048B688 /* ProjectCell.swift */,
 				B3FEB83E1C9630290048B688 /* ProjectCell.xib */,
-				B390C7A01CDE93C100D5F021 /* SupportCell.swift */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -512,6 +518,7 @@
 				B3FEB8441C9630BA0048B688 /* UIImageView+BeautifulWebImage.swift in Sources */,
 				B3FEB8471C9631870048B688 /* CustomizableView.swift in Sources */,
 				B3FEB8491C963E260048B688 /* CustomizableImageView.swift in Sources */,
+				B3C305A11CDFD79500C8E85F /* SettingsController.swift in Sources */,
 				B3E634DD1C914D6200C0572A /* MainViewController.swift in Sources */,
 				B3E634D51C91444700C0572A /* RecoveryViewController.swift in Sources */,
 				B3FEB83F1C9630290048B688 /* ProjectCell.swift in Sources */,
@@ -519,16 +526,17 @@
 				B3B2B92D1C90CD1600468342 /* AppDelegate.swift in Sources */,
 				B3C03D0E1C90D70A0096E04C /* GradientView.swift in Sources */,
 				B3AA2F8F1C910ACC00FE7E54 /* RoundedBorderedTextField.swift in Sources */,
+				B390C7A51CDE9B5400D5F021 /* NSIndexPath+RowSection.swift in Sources */,
 				B3C03D171C90FEB70096E04C /* DemoAccountLanguage.swift in Sources */,
 				B3E634E11C915B9300C0572A /* UISearchBar+CursorTint.swift in Sources */,
 				B3C03D141C90E90B0096E04C /* StartViewController.swift in Sources */,
 				B3D1692C1CDDA5950080D748 /* PopupNotification.swift in Sources */,
 				B3C03D101C90DAA60096E04C /* UIColor+Controlio.swift in Sources */,
 				B3AA2F911C9110EF00FE7E54 /* SignUpViewController.swift in Sources */,
-				B390C7A11CDE93C100D5F021 /* SupportCell.swift in Sources */,
 				B3C03D1A1C90FF890096E04C /* UIAlertController+Additions.swift in Sources */,
 				B3AA2F931C9110FE00FE7E54 /* LogInViewController.swift in Sources */,
 				B3C03D121C90E6E70096E04C /* RoundedShadowedButton.swift in Sources */,
+				B390C7A31CDE96B800D5F021 /* DeepLink.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -642,13 +650,13 @@
 			baseConfigurationReference = 3805DD83606C0E1695E1371D /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Nikita Kolmogorov (ZSXG5FJ8JQ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Controlio/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BorodutchStudio.Controlio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "20928a39-444e-4553-a39b-3a099109daa4";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -657,13 +665,13 @@
 			baseConfigurationReference = 32564BBA877C362EE70C73F6 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Nikita Kolmogorov (ZSXG5FJ8JQ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Controlio/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BorodutchStudio.Controlio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "20928a39-444e-4553-a39b-3a099109daa4";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
