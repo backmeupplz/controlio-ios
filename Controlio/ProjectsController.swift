@@ -20,12 +20,13 @@ class ProjectsController: UITableViewController, UISearchResultsUpdating, UISear
         
     }
     
-    
     // MARK: - UISearchBarDelegate -
     
     func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         title = searchBar.scopeButtonTitles![selectedScope]
     }
+    
+    // MARK: - UITableViewDataSource -
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 20
@@ -34,6 +35,12 @@ class ProjectsController: UITableViewController, UISearchResultsUpdating, UISear
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(String(ProjectCell), forIndexPath: indexPath)
         return cell
+    }
+    
+    // MARK: - UITableViewDelegate -
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        Router(self).showProject()
     }
     
     // MARK: - View Controller Life Cycle -
@@ -46,6 +53,7 @@ class ProjectsController: UITableViewController, UISearchResultsUpdating, UISear
         addRefreshControl()
         setupSearchController()
         addSearchButton()
+        setupBackButton()
     }
     
     // MARK: - Public Functions -
@@ -68,7 +76,7 @@ class ProjectsController: UITableViewController, UISearchResultsUpdating, UISear
     
     private func addRefreshControl() {
         refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: "loadData", forControlEvents: .ValueChanged)
+        refreshControl?.addTarget(self, action: #selector(ProjectsController.loadData), forControlEvents: .ValueChanged)
     }
     
     private func setupSearchController() {
@@ -83,7 +91,11 @@ class ProjectsController: UITableViewController, UISearchResultsUpdating, UISear
     }
     
     private func addSearchButton() {
-        let searchButton = UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: "showSearch")
+        let searchButton = UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: #selector(ProjectsController.showSearch))
         navigationItem.rightBarButtonItem = searchButton
+    }
+    
+    private func setupBackButton() {
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
     }
 }

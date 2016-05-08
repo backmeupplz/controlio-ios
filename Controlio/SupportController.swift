@@ -1,5 +1,5 @@
 //
-//  SupportViewController.swift
+//  SupportController.swift
 //  Controlio
 //
 //  Created by Nikita Kolmogorov on 06/05/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SupportViewController: UITableViewController {
+class SupportController: UITableViewController {
     
     // MARK: - View Controller Life Cycle -
 

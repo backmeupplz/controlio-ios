@@ -1,5 +1,5 @@
 //
-//  MainViewController.swift
+//  MainController.swift
 //  Controlio
 //
 //  Created by Nikita Kolmogorov on 09/03/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UITabBarController {
+class MainController: UITabBarController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         

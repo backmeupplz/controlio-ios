@@ -56,12 +56,16 @@
 		B3C03D171C90FEB70096E04C /* DemoAccountLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C03D161C90FEB70096E04C /* DemoAccountLanguage.swift */; };
 		B3C03D1A1C90FF890096E04C /* UIAlertController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C03D191C90FF890096E04C /* UIAlertController+Additions.swift */; };
 		B3C305A11CDFD79500C8E85F /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C305A01CDFD79500C8E85F /* SettingsController.swift */; };
+		B3C305A31CDFE06200C8E85F /* ProjectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C305A21CDFE06200C8E85F /* ProjectController.swift */; };
+		B3C305A61CDFE60B00C8E85F /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C305A51CDFE60B00C8E85F /* Project.swift */; };
+		B3C305A81CDFEAB900C8E85F /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C305A71CDFEAB900C8E85F /* Manager.swift */; };
+		B3C305AA1CDFEB0200C8E85F /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C305A91CDFEB0200C8E85F /* Post.swift */; };
 		B3D1692C1CDDA5950080D748 /* PopupNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D1692B1CDDA5950080D748 /* PopupNotification.swift */; };
-		B3D1692E1CDDC15F0080D748 /* SupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D1692D1CDDC15F0080D748 /* SupportViewController.swift */; };
+		B3D1692E1CDDC15F0080D748 /* SupportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D1692D1CDDC15F0080D748 /* SupportController.swift */; };
 		B3E634D31C91344400C0572A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E634D21C91344400C0572A /* Router.swift */; };
 		B3E634D51C91444700C0572A /* RecoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E634D41C91444700C0572A /* RecoveryViewController.swift */; };
 		B3E634D71C914CE600C0572A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3E634D61C914CE600C0572A /* Main.storyboard */; };
-		B3E634DD1C914D6200C0572A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E634DC1C914D6200C0572A /* MainViewController.swift */; };
+		B3E634DD1C914D6200C0572A /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E634DC1C914D6200C0572A /* MainController.swift */; };
 		B3E634DF1C91514D00C0572A /* ProjectsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E634DE1C91514D00C0572A /* ProjectsController.swift */; };
 		B3E634E11C915B9300C0572A /* UISearchBar+CursorTint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E634E01C915B9300C0572A /* UISearchBar+CursorTint.swift */; };
 		B3FEB83F1C9630290048B688 /* ProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FEB83D1C9630290048B688 /* ProjectCell.swift */; };
@@ -127,12 +131,16 @@
 		B3C03D161C90FEB70096E04C /* DemoAccountLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoAccountLanguage.swift; sourceTree = "<group>"; };
 		B3C03D191C90FF890096E04C /* UIAlertController+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Additions.swift"; sourceTree = "<group>"; };
 		B3C305A01CDFD79500C8E85F /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		B3C305A21CDFE06200C8E85F /* ProjectController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectController.swift; sourceTree = "<group>"; };
+		B3C305A51CDFE60B00C8E85F /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		B3C305A71CDFEAB900C8E85F /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		B3C305A91CDFEB0200C8E85F /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		B3D1692B1CDDA5950080D748 /* PopupNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupNotification.swift; sourceTree = "<group>"; };
-		B3D1692D1CDDC15F0080D748 /* SupportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportViewController.swift; sourceTree = "<group>"; };
+		B3D1692D1CDDC15F0080D748 /* SupportController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportController.swift; sourceTree = "<group>"; };
 		B3E634D21C91344400C0572A /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		B3E634D41C91444700C0572A /* RecoveryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecoveryViewController.swift; sourceTree = "<group>"; };
 		B3E634D61C914CE600C0572A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		B3E634DC1C914D6200C0572A /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		B3E634DC1C914D6200C0572A /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		B3E634DE1C91514D00C0572A /* ProjectsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsController.swift; sourceTree = "<group>"; };
 		B3E634E01C915B9300C0572A /* UISearchBar+CursorTint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISearchBar+CursorTint.swift"; sourceTree = "<group>"; };
 		B3FEB83D1C9630290048B688 /* ProjectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCell.swift; sourceTree = "<group>"; };
@@ -270,6 +278,7 @@
 		B3C03D091C90CFC20096E04C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B3C305A41CDFE5DF00C8E85F /* Objects */,
 				B3C03D181C90FF7C0096E04C /* Extensions */,
 				B3C03D151C90FEA50096E04C /* Enums */,
 				B3B2B92C1C90CD1600468342 /* AppDelegate.swift */,
@@ -315,6 +324,16 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
+		B3C305A41CDFE5DF00C8E85F /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				B3C305A51CDFE60B00C8E85F /* Project.swift */,
+				B3C305A71CDFEAB900C8E85F /* Manager.swift */,
+				B3C305A91CDFEB0200C8E85F /* Post.swift */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
 		B3E634D81C914D2C00C0572A /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -329,10 +348,11 @@
 		B3E634D91C914D3E00C0572A /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				B3E634DC1C914D6200C0572A /* MainViewController.swift */,
+				B3E634DC1C914D6200C0572A /* MainController.swift */,
 				B3E634DE1C91514D00C0572A /* ProjectsController.swift */,
-				B3D1692D1CDDC15F0080D748 /* SupportViewController.swift */,
+				B3D1692D1CDDC15F0080D748 /* SupportController.swift */,
 				B3C305A01CDFD79500C8E85F /* SettingsController.swift */,
+				B3C305A21CDFE06200C8E85F /* ProjectController.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -514,17 +534,19 @@
 			files = (
 				B3E634D31C91344400C0572A /* Router.swift in Sources */,
 				B383239D1CDC4336004D0A1C /* CatchPhraseView.swift in Sources */,
-				B3D1692E1CDDC15F0080D748 /* SupportViewController.swift in Sources */,
+				B3D1692E1CDDC15F0080D748 /* SupportController.swift in Sources */,
 				B3FEB8441C9630BA0048B688 /* UIImageView+BeautifulWebImage.swift in Sources */,
 				B3FEB8471C9631870048B688 /* CustomizableView.swift in Sources */,
 				B3FEB8491C963E260048B688 /* CustomizableImageView.swift in Sources */,
 				B3C305A11CDFD79500C8E85F /* SettingsController.swift in Sources */,
-				B3E634DD1C914D6200C0572A /* MainViewController.swift in Sources */,
+				B3E634DD1C914D6200C0572A /* MainController.swift in Sources */,
 				B3E634D51C91444700C0572A /* RecoveryViewController.swift in Sources */,
 				B3FEB83F1C9630290048B688 /* ProjectCell.swift in Sources */,
 				B3E634DF1C91514D00C0572A /* ProjectsController.swift in Sources */,
+				B3C305A81CDFEAB900C8E85F /* Manager.swift in Sources */,
 				B3B2B92D1C90CD1600468342 /* AppDelegate.swift in Sources */,
 				B3C03D0E1C90D70A0096E04C /* GradientView.swift in Sources */,
+				B3C305A31CDFE06200C8E85F /* ProjectController.swift in Sources */,
 				B3AA2F8F1C910ACC00FE7E54 /* RoundedBorderedTextField.swift in Sources */,
 				B390C7A51CDE9B5400D5F021 /* NSIndexPath+RowSection.swift in Sources */,
 				B3C03D171C90FEB70096E04C /* DemoAccountLanguage.swift in Sources */,
@@ -532,11 +554,13 @@
 				B3C03D141C90E90B0096E04C /* StartViewController.swift in Sources */,
 				B3D1692C1CDDA5950080D748 /* PopupNotification.swift in Sources */,
 				B3C03D101C90DAA60096E04C /* UIColor+Controlio.swift in Sources */,
+				B3C305AA1CDFEB0200C8E85F /* Post.swift in Sources */,
 				B3AA2F911C9110EF00FE7E54 /* SignUpViewController.swift in Sources */,
 				B3C03D1A1C90FF890096E04C /* UIAlertController+Additions.swift in Sources */,
 				B3AA2F931C9110FE00FE7E54 /* LogInViewController.swift in Sources */,
 				B3C03D121C90E6E70096E04C /* RoundedShadowedButton.swift in Sources */,
 				B390C7A31CDE96B800D5F021 /* DeepLink.swift in Sources */,
+				B3C305A61CDFE60B00C8E85F /* Project.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

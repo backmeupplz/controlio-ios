@@ -41,7 +41,11 @@ class Router {
     }
     
     private class func mainTBC() -> UIViewController {
-        return mainStoryboard().instantiateViewControllerWithIdentifier(String(MainViewController))
+        return mainStoryboard().instantiateViewControllerWithIdentifier(String(MainController))
+    }
+    
+    private class func projectVC() -> UIViewController {
+        return mainStoryboard().instantiateViewControllerWithIdentifier(String(ProjectController))
     }
     
     // MARK: - Public Functions -
@@ -64,6 +68,10 @@ class Router {
     
     func showMain(animated: Bool = true) {
         showVC(Router.mainTBC(), animated: animated)
+    }
+    
+    func showProject() {
+        showVC(Router.projectVC())
     }
     
     // MARK: - Private Functions -
