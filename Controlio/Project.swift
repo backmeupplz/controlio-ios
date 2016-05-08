@@ -16,12 +16,11 @@ class Project: NSObject {
     var projectDescription: String!
     var image: NSURL!
     var dateCreated: NSDate!
+    var status: String!
     
     var manager: Manager!
     
-    var lastStatus: Post!
     var lastPost: Post?
-    
     var posts: [Post]!
     
     // MARK: - Debug -
@@ -32,9 +31,10 @@ class Project: NSObject {
         for _ in 0...20 {
             let project = Project()
             project.title = "Готовим пиццу"
-            project.projectDescription = "Мы готовим пиццу, сложно сказать что-то еще"
+            project.projectDescription = "Мы готовим пиццу, сложно сказать что-то еще. Пицца в соусе макарено и полным фаршем с ананасами, анчоусами, грибами, блекджеком и куртизанками."
             project.image = NSURL(string: "https://cdn.evbuc.com/eventlogos/48995724/pizza.jpg")
             project.dateCreated = NSDate()
+            project.status = "Начали готовить пиццу"
             
             let manager = Manager()
             manager.name = "Алер Денисов"
@@ -42,16 +42,10 @@ class Project: NSObject {
             manager.phone = "+7 12345677"
             manager.image = NSURL(string: "https://pp.vk.me/c311617/v311617934/6344/4H2t29OBekM.jpg")
             
-            let status = Post()
-            status.type = .Status
-            status.text = "Начали готовить пиццу"
-            
             let post = Post()
-            post.type = .Post
             post.text = "Ну, что сказать, пиццу засунули в очаг, ждем, пока готовится"
             
             project.manager = manager
-            project.lastStatus = status
             project.lastPost = post
             
             result.append(project)

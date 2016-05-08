@@ -1,5 +1,5 @@
 //
-//  Post.swift
+//  PostCell.swift
 //  Controlio
 //
 //  Created by Nikita Kolmogorov on 08/05/16.
@@ -8,9 +8,6 @@
 
 import UIKit
 
-class Post: NSObject {
-    
-    // MARK: - Variables -
-    
-    var text: String!
+class PostCell: UITableViewCell {
+
 }

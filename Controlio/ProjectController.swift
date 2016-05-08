@@ -12,11 +12,20 @@ class ProjectController: UITableViewController {
     
     // MARK: - Variables -
     
-    var project: Project! {
-        didSet {
-            configure()
-        }
-    }
+    var project: Project!
+    
+    // MARK: - Private Variables -
+    
+    var needsHeaderViewLayout = true
+    
+    // MARK: - Outlets -
+    
+    @IBOutlet private weak var headerView: UIView!
+    
+    @IBOutlet private weak var projectImageView: UIImageView!
+    @IBOutlet private weak var statusLabel: UILabel!
+    @IBOutlet private weak var dateLabel: UILabel!
+    @IBOutlet private weak var descriptionLabel: UILabel!
     
     // MARK: - View Controller Life Cycle -
     
@@ -34,6 +43,12 @@ class ProjectController: UITableViewController {
         configure()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        checkHeaderViewHeight()
+    }
+    
     // MARK: - Public Functions -
     
     func loadData() {
@@ -45,7 +60,15 @@ class ProjectController: UITableViewController {
     private func configure() {
         title = project.title
         
+        projectImageView.loadURL(project.image)
+        statusLabel.text = project.status
+        dateLabel.text = NSDateFormatter.projectDateString(project.dateCreated)
+        descriptionLabel.text = project.projectDescription
+        
         tableView.reloadData()
+        
+        needsHeaderViewLayout = true
+        checkHeaderViewHeight()
     }
     
     private func setupTableView() {
@@ -61,5 +84,28 @@ class ProjectController: UITableViewController {
     
     private func setupBackButton() {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+    }
+    
+    private func checkHeaderViewHeight() {
+        if needsHeaderViewLayout {
+            let screenWidth = UIScreen.mainScreen().bounds.width
+            let labelWidth = screenWidth - CGFloat(60)
+            let labelHeight = project.projectDescription.heightWithConstrainedWidth(labelWidth, font: descriptionLabel.font)
+            headerView.frame.size.height = 131 + labelHeight
+            needsHeaderViewLayout = false
+        }
+    }
+    
+    // MARK: - Rotations -
+    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        
+        needsHeaderViewLayout = true
+        coordinator.animateAlongsideTransition({ context in
+                self.checkHeaderViewHeight()
+            }) { context in
+                // Completion
+        }
     }
 }

@@ -36,12 +36,12 @@ class ProjectCell: UITableViewCell {
         projectImageView.loadURL(project.image)
         dateLabel.text = NSDateFormatter.projectDateString(project.dateCreated)
         projectTitleLabel.text = project.title
-        statusLabel.text = project.lastStatus.text
+        statusLabel.text = project.status
         projectDescriptionLabel.text = project.projectDescription
         
         managerImageView.loadURL(project.manager.image)
         managerNameLabel.text = project.manager.name
-        postLabel.text = project.lastPost?.text ?? project.lastStatus.text
+        postLabel.text = project.lastPost?.text ?? project.status
     }
     
 }

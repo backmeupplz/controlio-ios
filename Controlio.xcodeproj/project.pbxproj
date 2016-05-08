@@ -62,6 +62,9 @@
 		B3C305AA1CDFEB0200C8E85F /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C305A91CDFEB0200C8E85F /* Post.swift */; };
 		B3C305AC1CDFEC7700C8E85F /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C305AB1CDFEC7700C8E85F /* DataManager.swift */; };
 		B3C305AE1CDFF43400C8E85F /* NSDateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C305AD1CDFF43400C8E85F /* NSDateFormatter+Extensions.swift */; };
+		B3C305B01CDFFB5900C8E85F /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C305AF1CDFFB5900C8E85F /* PostCell.swift */; };
+		B3C305B21CDFFB7D00C8E85F /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3C305B11CDFFB7D00C8E85F /* PostCell.xib */; };
+		B3C305B41CE0031E00C8E85F /* String+Height.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C305B31CE0031E00C8E85F /* String+Height.swift */; };
 		B3D1692C1CDDA5950080D748 /* PopupNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D1692B1CDDA5950080D748 /* PopupNotification.swift */; };
 		B3D1692E1CDDC15F0080D748 /* SupportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D1692D1CDDC15F0080D748 /* SupportController.swift */; };
 		B3E634D31C91344400C0572A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E634D21C91344400C0572A /* Router.swift */; };
@@ -139,6 +142,9 @@
 		B3C305A91CDFEB0200C8E85F /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		B3C305AB1CDFEC7700C8E85F /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		B3C305AD1CDFF43400C8E85F /* NSDateFormatter+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDateFormatter+Extensions.swift"; sourceTree = "<group>"; };
+		B3C305AF1CDFFB5900C8E85F /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		B3C305B11CDFFB7D00C8E85F /* PostCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCell.xib; sourceTree = "<group>"; };
+		B3C305B31CE0031E00C8E85F /* String+Height.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Height.swift"; sourceTree = "<group>"; };
 		B3D1692B1CDDA5950080D748 /* PopupNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupNotification.swift; sourceTree = "<group>"; };
 		B3D1692D1CDDC15F0080D748 /* SupportController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportController.swift; sourceTree = "<group>"; };
 		B3E634D21C91344400C0572A /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -326,6 +332,7 @@
 				B3C03D0F1C90DAA60096E04C /* UIColor+Controlio.swift */,
 				B390C7A41CDE9B5400D5F021 /* NSIndexPath+RowSection.swift */,
 				B3C305AD1CDFF43400C8E85F /* NSDateFormatter+Extensions.swift */,
+				B3C305B31CE0031E00C8E85F /* String+Height.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -368,6 +375,8 @@
 			children = (
 				B3FEB83D1C9630290048B688 /* ProjectCell.swift */,
 				B3FEB83E1C9630290048B688 /* ProjectCell.xib */,
+				B3C305AF1CDFFB5900C8E85F /* PostCell.swift */,
+				B3C305B11CDFFB7D00C8E85F /* PostCell.xib */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -470,6 +479,7 @@
 				B3B2B9341C90CD1600468342 /* Assets.xcassets in Resources */,
 				B383238A1CDC409D004D0A1C /* SFUIText-BoldItalicG2.otf in Resources */,
 				B38323861CDC409D004D0A1C /* SFUIText-BoldG1.otf in Resources */,
+				B3C305B21CDFFB7D00C8E85F /* PostCell.xib in Resources */,
 				B38323911CDC409D004D0A1C /* SFUIText-ItalicG3.otf in Resources */,
 				B3B2B9321C90CD1600468342 /* Login.storyboard in Resources */,
 				B383239A1CDC409D004D0A1C /* SFUIText-Semibold.otf in Resources */,
@@ -553,6 +563,8 @@
 				B3C305A81CDFEAB900C8E85F /* Manager.swift in Sources */,
 				B3B2B92D1C90CD1600468342 /* AppDelegate.swift in Sources */,
 				B3C03D0E1C90D70A0096E04C /* GradientView.swift in Sources */,
+				B3C305B41CE0031E00C8E85F /* String+Height.swift in Sources */,
+				B3C305B01CDFFB5900C8E85F /* PostCell.swift in Sources */,
 				B3C305A31CDFE06200C8E85F /* ProjectController.swift in Sources */,
 				B3AA2F8F1C910ACC00FE7E54 /* RoundedBorderedTextField.swift in Sources */,
 				B390C7A51CDE9B5400D5F021 /* NSIndexPath+RowSection.swift in Sources */,
