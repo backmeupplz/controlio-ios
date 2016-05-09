@@ -44,7 +44,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo-with-text" width="166" height="166"/>
+        <image name="logo-with-text" width="163" height="101"/>
         <image name="splash-screen" width="100" height="100"/>
     </resources>
 </document>

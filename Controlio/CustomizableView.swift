@@ -36,13 +36,17 @@ class CustomizableView: UIView {
         layer.cornerRadius = cornerRadius
     }
     
+    var once = true
     private func addShadow() {
-        layer.shadowColor = shadowColor.CGColor
-        layer.shadowOffset = shadowOffset
-        layer.shadowRadius = shadowRadius
-        layer.shadowOpacity = shadowOpacity
-        layer.borderWidth = borderWidth
-        layer.borderColor = borderColor.CGColor
+        if once {
+            layer.shadowColor = shadowColor.CGColor
+            layer.shadowOffset = shadowOffset
+            layer.shadowRadius = shadowRadius
+            layer.shadowOpacity = shadowOpacity
+            layer.borderWidth = borderWidth
+            layer.borderColor = borderColor.CGColor
+            once = false
+        }
     }
     
 }
