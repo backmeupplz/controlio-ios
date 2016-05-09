@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProjectController: UITableViewController {
+class ProjectController: UITableViewController, PostCellDelegate {
     
     // MARK: - Variables -
     
@@ -26,6 +26,25 @@ class ProjectController: UITableViewController {
     @IBOutlet private weak var statusLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
+    
+    // MARK: - UITableViewDataSource -
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return project.posts.count
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(String(PostCell), forIndexPath: indexPath) as! PostCell
+        cell.post = project.posts[indexPath.row]
+        cell.delegate = self
+        return cell
+    }
+    
+    // MARK: - PostCellDelegate -
+    
+    func openAttachment(index: Int, post: Post) {
+        print("open attachment: \(index)")
+    }
     
     // MARK: - View Controller Life Cycle -
     
@@ -74,7 +93,7 @@ class ProjectController: UITableViewController {
     private func setupTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 464.0
-        tableView.registerNib(UINib(nibName: String(ProjectCell), bundle: nil), forCellReuseIdentifier: String(ProjectCell))
+        tableView.registerNib(UINib(nibName: String(PostCell), bundle: nil), forCellReuseIdentifier: String(PostCell))
     }
     
     private func addRefreshControl() {
@@ -92,6 +111,7 @@ class ProjectController: UITableViewController {
             let labelWidth = screenWidth - CGFloat(60)
             let labelHeight = project.projectDescription.heightWithConstrainedWidth(labelWidth, font: descriptionLabel.font)
             headerView.frame.size.height = 131 + labelHeight
+            tableView.tableHeaderView = headerView
             needsHeaderViewLayout = false
         }
     }

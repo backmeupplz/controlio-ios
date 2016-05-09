@@ -13,4 +13,7 @@ class Post: NSObject {
     // MARK: - Variables -
     
     var text: String!
+    var date: NSDate!
+    var manager: Manager!
+    var attachments: [NSURL]!
 }

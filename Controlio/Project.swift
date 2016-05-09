@@ -45,8 +45,26 @@ class Project: NSObject {
             let post = Post()
             post.text = "Ну, что сказать, пиццу засунули в очаг, ждем, пока готовится"
             
+            var posts = [Post]()
+            
+            for number in 0...20 {
+                let post = Post()
+                post.text = "Ну, что сказать, пиццу засунули в очаг, ждем, пока готовится"
+                post.date = NSDate().dateByAddingTimeInterval(NSTimeInterval(-number*100))
+                post.manager = manager
+                post.attachments = [NSURL]()
+                if number > 0 {
+                    for i in 0...number-1 {
+                        let url = NSURL(string: i % 2 == 0 ? "https://i.kinja-img.com/gawker-media/image/upload/wafswectpmbr0zmug9ly.jpg" : "http://desotosff.com/wp-content/uploads/2014/07/roni.jpg")!
+                        post.attachments.append(url)
+                    }
+                }
+                posts.append(post)
+            }
+            
             project.manager = manager
             project.lastPost = post
+            project.posts = posts
             
             result.append(project)
         }

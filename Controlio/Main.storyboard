@@ -79,11 +79,11 @@
         <scene sceneID="njL-JQ-AZV">
             <objects>
                 <tableViewController storyboardIdentifier="ProjectController" id="pZG-0j-UYd" customClass="ProjectController" customModule="Controlio" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="aSr-xt-PLa">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="aSr-xt-PLa">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="Jia-aX-q0u">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="Jia-aX-q0u">
                             <rect key="frame" x="0.0" y="0.0" width="600" height="182"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -117,12 +117,12 @@
                                                 <constraint firstAttribute="height" constant="60" id="FJQ-tK-YFD"/>
                                             </constraints>
                                         </imageView>
-                                        <view alpha="0.76000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SJG-zX-fWp" userLabel="Gradient View" customClass="GradientView" customModule="Controlio" customModuleProvider="target">
+                                        <view alpha="0.84999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SJG-zX-fWp" userLabel="Gradient View" customClass="GradientView" customModule="Controlio" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="580" height="60"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DESCRIPTION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Tm-1U-Mcg" userLabel="Description Title Label">
-                                            <rect key="frame" x="20" y="80" width="75" height="15"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="DESCRIPTION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Tm-1U-Mcg" userLabel="Description Title Label">
+                                            <rect key="frame" x="20" y="80" width="80" height="17"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="15" id="6n3-6I-psC"/>
                                                 <constraint firstAttribute="width" constant="75" id="OWa-k6-fSM"/>
@@ -138,7 +138,7 @@
                                             </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X4r-qu-Mer" userLabel="Description Label">
-                                            <rect key="frame" x="20" y="101" width="529" height="51"/>
+                                            <rect key="frame" x="20" y="103" width="498" height="49"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="67" id="CrZ-wh-hEW"/>
                                                 <constraint firstAttribute="width" constant="346" id="iYj-jM-HQv"/>
@@ -155,13 +155,13 @@
                                             </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0k-MU-uf0">
-                                            <rect key="frame" x="531" y="22" width="29" height="15"/>
+                                            <rect key="frame" x="530" y="23" width="30" height="14"/>
                                             <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="12"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o63-sM-7B7">
-                                            <rect key="frame" x="20" y="20" width="37" height="20"/>
+                                            <rect key="frame" x="20" y="21" width="40" height="19"/>
                                             <fontDescription key="fontDescription" name="SFUIDisplay-Light" family="SF UI Display" pointSize="16"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -218,6 +218,16 @@
                                 <constraint firstItem="YUG-IF-cd8" firstAttribute="height" secondItem="5bv-Lo-04z" secondAttribute="height" id="ii2-CQ-YOY"/>
                             </constraints>
                         </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="Rs1-U2-Ce9">
+                                <rect key="frame" x="0.0" y="210" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rs1-U2-Ce9" id="OhQ-Vw-V4k">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="pZG-0j-UYd" id="PfK-xh-YzY"/>
                             <outlet property="delegate" destination="pZG-0j-UYd" id="FFW-lb-pr7"/>
@@ -607,8 +617,8 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="Si8-xi-98P"/>
                                                     <exclude reference="Hs9-VY-Zfk"/>
+                                                    <exclude reference="Si8-xi-98P"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>

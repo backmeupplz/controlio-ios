@@ -18,6 +18,8 @@ class CustomizableView: UIView {
     @IBInspectable var shadowRadius: CGFloat = 0
     @IBInspectable var shadowOpacity: Float = 0
     @IBInspectable var shadowOffset: CGSize = CGSizeZero
+    @IBInspectable var borderWidth: CGFloat = 0
+    @IBInspectable var borderColor: UIColor = UIColor.clearColor()
     
     // MARK: - View Life Cycle -
     
@@ -39,6 +41,8 @@ class CustomizableView: UIView {
         layer.shadowOffset = shadowOffset
         layer.shadowRadius = shadowRadius
         layer.shadowOpacity = shadowOpacity
+        layer.borderWidth = borderWidth
+        layer.borderColor = borderColor.CGColor
     }
     
 }
