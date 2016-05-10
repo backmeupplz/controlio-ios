@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B37630511CE28737004FE1B7 /* AttachmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37630501CE28737004FE1B7 /* AttachmentView.swift */; };
+		B37630531CE28741004FE1B7 /* AttachmentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B37630521CE28741004FE1B7 /* AttachmentView.xib */; };
 		B38323651CDC3FB3004D0A1C /* SFUIDisplay-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = B383235C1CDC3FB2004D0A1C /* SFUIDisplay-Black.otf */; };
 		B38323661CDC3FB3004D0A1C /* SFUIDisplay-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B383235D1CDC3FB2004D0A1C /* SFUIDisplay-Bold.otf */; };
 		B38323671CDC3FB3004D0A1C /* SFUIDisplay-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = B383235E1CDC3FB2004D0A1C /* SFUIDisplay-Heavy.otf */; };
@@ -49,6 +51,8 @@
 		B3B2B9321C90CD1600468342 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3B2B9301C90CD1600468342 /* Login.storyboard */; };
 		B3B2B9341C90CD1600468342 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3B2B9331C90CD1600468342 /* Assets.xcassets */; };
 		B3B2B9371C90CD1600468342 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3B2B9351C90CD1600468342 /* LaunchScreen.storyboard */; };
+		B3BA9C311CE18ED300647470 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BA9C301CE18ED300647470 /* InputView.swift */; };
+		B3BA9C331CE18EE300647470 /* InputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3BA9C321CE18EE300647470 /* InputView.xib */; };
 		B3C03D0E1C90D70A0096E04C /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C03D0D1C90D70A0096E04C /* GradientView.swift */; };
 		B3C03D101C90DAA60096E04C /* UIColor+Controlio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C03D0F1C90DAA60096E04C /* UIColor+Controlio.swift */; };
 		B3C03D121C90E6E70096E04C /* RoundedShadowedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C03D111C90E6E70096E04C /* RoundedShadowedButton.swift */; };
@@ -73,6 +77,9 @@
 		B3E634DD1C914D6200C0572A /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E634DC1C914D6200C0572A /* MainController.swift */; };
 		B3E634DF1C91514D00C0572A /* ProjectsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E634DE1C91514D00C0572A /* ProjectsController.swift */; };
 		B3E634E11C915B9300C0572A /* UISearchBar+CursorTint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E634E01C915B9300C0572A /* UISearchBar+CursorTint.swift */; };
+		B3E815791CE1566900E8F87B /* NewProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E815771CE1566900E8F87B /* NewProjectCell.swift */; };
+		B3E8157A1CE1566900E8F87B /* NewProjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3E815781CE1566900E8F87B /* NewProjectCell.xib */; };
+		B3E8157C1CE1603400E8F87B /* NewProjectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E8157B1CE1603400E8F87B /* NewProjectController.swift */; };
 		B3FEB83F1C9630290048B688 /* ProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FEB83D1C9630290048B688 /* ProjectCell.swift */; };
 		B3FEB8401C9630290048B688 /* ProjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3FEB83E1C9630290048B688 /* ProjectCell.xib */; };
 		B3FEB8441C9630BA0048B688 /* UIImageView+BeautifulWebImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FEB8431C9630BA0048B688 /* UIImageView+BeautifulWebImage.swift */; };
@@ -85,6 +92,8 @@
 		32564BBA877C362EE70C73F6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		3805DD83606C0E1695E1371D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		75482A7583BBE839D455C74C /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B37630501CE28737004FE1B7 /* AttachmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentView.swift; sourceTree = "<group>"; };
+		B37630521CE28741004FE1B7 /* AttachmentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttachmentView.xib; sourceTree = "<group>"; };
 		B383235C1CDC3FB2004D0A1C /* SFUIDisplay-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIDisplay-Black.otf"; sourceTree = "<group>"; };
 		B383235D1CDC3FB2004D0A1C /* SFUIDisplay-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIDisplay-Bold.otf"; sourceTree = "<group>"; };
 		B383235E1CDC3FB2004D0A1C /* SFUIDisplay-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIDisplay-Heavy.otf"; sourceTree = "<group>"; };
@@ -129,6 +138,8 @@
 		B3B2B9331C90CD1600468342 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B3B2B9361C90CD1600468342 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B3B2B9381C90CD1600468342 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3BA9C301CE18ED300647470 /* InputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		B3BA9C321CE18EE300647470 /* InputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputView.xib; sourceTree = "<group>"; };
 		B3C03D0D1C90D70A0096E04C /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		B3C03D0F1C90DAA60096E04C /* UIColor+Controlio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Controlio.swift"; sourceTree = "<group>"; };
 		B3C03D111C90E6E70096E04C /* RoundedShadowedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedShadowedButton.swift; sourceTree = "<group>"; };
@@ -153,6 +164,9 @@
 		B3E634DC1C914D6200C0572A /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		B3E634DE1C91514D00C0572A /* ProjectsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsController.swift; sourceTree = "<group>"; };
 		B3E634E01C915B9300C0572A /* UISearchBar+CursorTint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISearchBar+CursorTint.swift"; sourceTree = "<group>"; };
+		B3E815771CE1566900E8F87B /* NewProjectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProjectCell.swift; sourceTree = "<group>"; };
+		B3E815781CE1566900E8F87B /* NewProjectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewProjectCell.xib; sourceTree = "<group>"; };
+		B3E8157B1CE1603400E8F87B /* NewProjectController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProjectController.swift; sourceTree = "<group>"; };
 		B3FEB83D1C9630290048B688 /* ProjectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCell.swift; sourceTree = "<group>"; };
 		B3FEB83E1C9630290048B688 /* ProjectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectCell.xib; sourceTree = "<group>"; };
 		B3FEB8431C9630BA0048B688 /* UIImageView+BeautifulWebImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+BeautifulWebImage.swift"; sourceTree = "<group>"; };
@@ -281,6 +295,10 @@
 				B3FEB8481C963E260048B688 /* CustomizableImageView.swift */,
 				B383239C1CDC4336004D0A1C /* CatchPhraseView.swift */,
 				B3D1692B1CDDA5950080D748 /* PopupNotification.swift */,
+				B3BA9C301CE18ED300647470 /* InputView.swift */,
+				B3BA9C321CE18EE300647470 /* InputView.xib */,
+				B37630501CE28737004FE1B7 /* AttachmentView.swift */,
+				B37630521CE28741004FE1B7 /* AttachmentView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -366,6 +384,7 @@
 				B3D1692D1CDDC15F0080D748 /* SupportController.swift */,
 				B3C305A01CDFD79500C8E85F /* SettingsController.swift */,
 				B3C305A21CDFE06200C8E85F /* ProjectController.swift */,
+				B3E8157B1CE1603400E8F87B /* NewProjectController.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -377,6 +396,8 @@
 				B3FEB83E1C9630290048B688 /* ProjectCell.xib */,
 				B3C305AF1CDFFB5900C8E85F /* PostCell.swift */,
 				B3C305B11CDFFB7D00C8E85F /* PostCell.xib */,
+				B3E815771CE1566900E8F87B /* NewProjectCell.swift */,
+				B3E815781CE1566900E8F87B /* NewProjectCell.xib */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -461,6 +482,7 @@
 				B38323961CDC409D004D0A1C /* SFUIText-Regular.otf in Resources */,
 				B38323981CDC409D004D0A1C /* SFUIText-RegularG2.otf in Resources */,
 				B38323691CDC3FB3004D0A1C /* SFUIDisplay-Medium.otf in Resources */,
+				B3BA9C331CE18EE300647470 /* InputView.xib in Resources */,
 				B38323661CDC3FB3004D0A1C /* SFUIDisplay-Bold.otf in Resources */,
 				B38323971CDC409D004D0A1C /* SFUIText-RegularG1.otf in Resources */,
 				B38323651CDC3FB3004D0A1C /* SFUIDisplay-Black.otf in Resources */,
@@ -472,6 +494,7 @@
 				B38323671CDC3FB3004D0A1C /* SFUIDisplay-Heavy.otf in Resources */,
 				B38323881CDC409D004D0A1C /* SFUIText-BoldG3.otf in Resources */,
 				B383239B1CDC409D004D0A1C /* SFUIText-SemiboldItalic.otf in Resources */,
+				B37630531CE28741004FE1B7 /* AttachmentView.xib in Resources */,
 				B383238C1CDC409D004D0A1C /* SFUIText-Heavy.otf in Resources */,
 				B383236D1CDC3FB3004D0A1C /* SFUIDisplay-Ultralight.otf in Resources */,
 				B38323951CDC409D004D0A1C /* SFUIText-MediumItalic.otf in Resources */,
@@ -489,6 +512,7 @@
 				B383238F1CDC409D004D0A1C /* SFUIText-ItalicG1.otf in Resources */,
 				B3E634D71C914CE600C0572A /* Main.storyboard in Resources */,
 				B38323921CDC409D004D0A1C /* SFUIText-Light.otf in Resources */,
+				B3E8157A1CE1566900E8F87B /* NewProjectCell.xib in Resources */,
 				B38323891CDC409D004D0A1C /* SFUIText-BoldItalicG1.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -569,16 +593,20 @@
 				B3AA2F8F1C910ACC00FE7E54 /* RoundedBorderedTextField.swift in Sources */,
 				B390C7A51CDE9B5400D5F021 /* NSIndexPath+RowSection.swift in Sources */,
 				B3C03D171C90FEB70096E04C /* DemoAccountLanguage.swift in Sources */,
+				B3E8157C1CE1603400E8F87B /* NewProjectController.swift in Sources */,
 				B3E634E11C915B9300C0572A /* UISearchBar+CursorTint.swift in Sources */,
+				B3E815791CE1566900E8F87B /* NewProjectCell.swift in Sources */,
 				B3C03D141C90E90B0096E04C /* StartViewController.swift in Sources */,
 				B3D1692C1CDDA5950080D748 /* PopupNotification.swift in Sources */,
 				B3C03D101C90DAA60096E04C /* UIColor+Controlio.swift in Sources */,
+				B37630511CE28737004FE1B7 /* AttachmentView.swift in Sources */,
 				B3C305AA1CDFEB0200C8E85F /* Post.swift in Sources */,
 				B3AA2F911C9110EF00FE7E54 /* SignUpViewController.swift in Sources */,
 				B3C03D1A1C90FF890096E04C /* UIAlertController+Additions.swift in Sources */,
 				B3C305AE1CDFF43400C8E85F /* NSDateFormatter+Extensions.swift in Sources */,
 				B3AA2F931C9110FE00FE7E54 /* LogInViewController.swift in Sources */,
 				B3C03D121C90E6E70096E04C /* RoundedShadowedButton.swift in Sources */,
+				B3BA9C311CE18ED300647470 /* InputView.swift in Sources */,
 				B390C7A31CDE96B800D5F021 /* DeepLink.swift in Sources */,
 				B3C305A61CDFE60B00C8E85F /* Project.swift in Sources */,
 			);

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProjectController: UITableViewController, PostCellDelegate {
+class ProjectController: UITableViewController, PostCellDelegate, InputViewDelegate {
     
     // MARK: - Variables -
     
@@ -16,7 +16,8 @@ class ProjectController: UITableViewController, PostCellDelegate {
     
     // MARK: - Private Variables -
     
-    var needsHeaderViewLayout = true
+    private var needsHeaderViewLayout = true
+    private var input: InputView?
     
     // MARK: - Outlets -
     
@@ -46,6 +47,10 @@ class ProjectController: UITableViewController, PostCellDelegate {
         print("open attachment: \(index)")
     }
     
+    // MARK: - InputViewDelegate -
+    
+    // Delegate functisk
+    
     // MARK: - View Controller Life Cycle -
     
     override func viewDidLoad() {
@@ -54,6 +59,7 @@ class ProjectController: UITableViewController, PostCellDelegate {
         setupTableView()
         addRefreshControl()
         setupBackButton()
+        input = InputView.view(navigationController!.view, delegate: self)
     }
     
     override func viewWillAppear(animated: Bool) {
