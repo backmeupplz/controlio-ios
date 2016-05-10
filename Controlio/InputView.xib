@@ -2,33 +2,78 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="SFUIDisplay-Regular.otf">
+            <string>SFUIDisplay-Regular</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="InputView" customModule="Controlio" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="475" height="74"/>
+            <rect key="frame" x="0.0" y="0.0" width="373" height="155"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H9e-sb-04z">
-                    <rect key="frame" x="117" y="16" width="240" height="37"/>
-                    <color key="backgroundColor" red="0.0" green="0.83530922200000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Yt2-0l-Ule">
+                    <rect key="frame" x="8" y="17" width="357" height="29"/>
+                    <segments>
+                        <segment title="New message"/>
+                        <segment title="Change status"/>
+                        <segment title="Edit clients"/>
+                    </segments>
+                    <color key="tintColor" red="0.01176470588" green="0.76470588240000004" blue="0.52549019610000003" alpha="1" colorSpace="calibratedRGB"/>
+                </segmentedControl>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clip" translatesAutoresizingMaskIntoConstraints="NO" id="4pQ-AZ-PUF">
+                    <rect key="frame" x="8" y="65" width="20" height="12"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ILV-19-LIz">
+                    <rect key="frame" x="331" y="56" width="34" height="30"/>
+                    <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="15"/>
+                    <state key="normal" title="Send">
+                        <color key="titleColor" red="0.01176470588" green="0.76470588240000004" blue="0.52549019610000003" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hOP-MY-NFk" customClass="CustomizableView" customModule="Controlio" customModuleProvider="target">
+                    <rect key="frame" x="36" y="62" width="287" height="86"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="37" id="FJ6-OT-ZSZ"/>
-                        <constraint firstAttribute="width" constant="240" id="VVN-ph-sNi"/>
+                        <constraint firstAttribute="height" constant="86" id="dPe-KR-wPf"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" red="0.35686274509803922" green="0.37647058823529411" blue="0.43529411764705883" alpha="0.5" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="0.5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="H9e-sb-04z" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="2uE-I8-Pfo"/>
-                <constraint firstAttribute="bottom" secondItem="H9e-sb-04z" secondAttribute="bottom" constant="21" id="Zfv-Nn-hL5"/>
-                <constraint firstItem="H9e-sb-04z" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="zJW-bR-Fht"/>
+                <constraint firstItem="4pQ-AZ-PUF" firstAttribute="top" secondItem="Yt2-0l-Ule" secondAttribute="bottom" constant="20" id="8M1-0w-i20"/>
+                <constraint firstItem="4pQ-AZ-PUF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="8VU-JN-MlF"/>
+                <constraint firstItem="hOP-MY-NFk" firstAttribute="leading" secondItem="4pQ-AZ-PUF" secondAttribute="trailing" constant="8" id="A4L-hK-Sso"/>
+                <constraint firstAttribute="bottom" secondItem="hOP-MY-NFk" secondAttribute="bottom" constant="7" id="Jdr-9B-8ps"/>
+                <constraint firstAttribute="trailing" secondItem="ILV-19-LIz" secondAttribute="trailing" constant="8" id="L6A-ac-pEd"/>
+                <constraint firstItem="Yt2-0l-Ule" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="OHj-6l-8pX"/>
+                <constraint firstItem="Yt2-0l-Ule" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="17" id="XCU-LL-j0y"/>
+                <constraint firstItem="hOP-MY-NFk" firstAttribute="top" secondItem="Yt2-0l-Ule" secondAttribute="bottom" constant="17" id="Zo6-ng-Y8Z"/>
+                <constraint firstItem="ILV-19-LIz" firstAttribute="leading" secondItem="hOP-MY-NFk" secondAttribute="trailing" constant="8" id="eZ8-1j-83O"/>
+                <constraint firstItem="ILV-19-LIz" firstAttribute="centerY" secondItem="4pQ-AZ-PUF" secondAttribute="centerY" id="g9y-MF-F7T"/>
+                <constraint firstAttribute="trailing" secondItem="Yt2-0l-Ule" secondAttribute="trailing" constant="8" id="rjO-mj-cch"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="231.5" y="234"/>
+            <point key="canvasLocation" x="230.5" y="233.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="clip" width="20" height="12"/>
+    </resources>
 </document>

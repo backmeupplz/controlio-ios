@@ -8,6 +8,45 @@
 
 import UIKit
 
-class AttachmentView: UIView {
+protocol AttachmentViewDelegate: class {
+    func attachmentDidTouchCross(attachment: AttachmentView)
+    func attachmentWasTouched(attachment: AttachmentView)
+}
 
+class AttachmentView: UIView {
+    
+    // MARK: - Variables -
+    
+    weak var delegate: AttachmentViewDelegate?
+    var image: UIImage? {
+        set {
+            imageView.image = newValue
+        }
+        get {
+            return imageView.image
+        }
+    }
+    
+    // MARK: - Outlets -
+    
+    @IBOutlet private weak var imageView: CustomizableImageView!
+    
+    // MARK: - Class Functions -
+    
+    class func view(superview: UIView, delegate: AttachmentViewDelegate? = nil) -> AttachmentView {
+        let result = NSBundle.mainBundle().loadNibNamed(String(AttachmentView), owner: nil, options: [:]).last as! AttachmentView
+        result.delegate = delegate
+        superview.addSubview(result)
+        return result
+    }
+    
+    // MARK: - Actions -
+
+    @IBAction func crossTouched(sender: AnyObject) {
+        delegate?.attachmentDidTouchCross(self)
+    }
+
+    @IBAction func attachmentTouched(sender: AnyObject) {
+        delegate?.attachmentWasTouched(self)
+    }
 }

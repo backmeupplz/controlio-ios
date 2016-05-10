@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		B37630511CE28737004FE1B7 /* AttachmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37630501CE28737004FE1B7 /* AttachmentView.swift */; };
 		B37630531CE28741004FE1B7 /* AttachmentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B37630521CE28741004FE1B7 /* AttachmentView.xib */; };
+		B37630551CE28CA4004FE1B7 /* AttachmentContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37630541CE28CA4004FE1B7 /* AttachmentContainerView.swift */; };
+		B37630581CE28E9B004FE1B7 /* AttachmentWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37630571CE28E9B004FE1B7 /* AttachmentWrapperView.swift */; };
 		B38323651CDC3FB3004D0A1C /* SFUIDisplay-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = B383235C1CDC3FB2004D0A1C /* SFUIDisplay-Black.otf */; };
 		B38323661CDC3FB3004D0A1C /* SFUIDisplay-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B383235D1CDC3FB2004D0A1C /* SFUIDisplay-Bold.otf */; };
 		B38323671CDC3FB3004D0A1C /* SFUIDisplay-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = B383235E1CDC3FB2004D0A1C /* SFUIDisplay-Heavy.otf */; };
@@ -94,6 +96,8 @@
 		75482A7583BBE839D455C74C /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B37630501CE28737004FE1B7 /* AttachmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentView.swift; sourceTree = "<group>"; };
 		B37630521CE28741004FE1B7 /* AttachmentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttachmentView.xib; sourceTree = "<group>"; };
+		B37630541CE28CA4004FE1B7 /* AttachmentContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentContainerView.swift; sourceTree = "<group>"; };
+		B37630571CE28E9B004FE1B7 /* AttachmentWrapperView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentWrapperView.swift; sourceTree = "<group>"; };
 		B383235C1CDC3FB2004D0A1C /* SFUIDisplay-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIDisplay-Black.otf"; sourceTree = "<group>"; };
 		B383235D1CDC3FB2004D0A1C /* SFUIDisplay-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIDisplay-Bold.otf"; sourceTree = "<group>"; };
 		B383235E1CDC3FB2004D0A1C /* SFUIDisplay-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIDisplay-Heavy.otf"; sourceTree = "<group>"; };
@@ -203,6 +207,19 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		B37630561CE28CA9004FE1B7 /* InputView */ = {
+			isa = PBXGroup;
+			children = (
+				B3BA9C301CE18ED300647470 /* InputView.swift */,
+				B3BA9C321CE18EE300647470 /* InputView.xib */,
+				B37630541CE28CA4004FE1B7 /* AttachmentContainerView.swift */,
+				B37630571CE28E9B004FE1B7 /* AttachmentWrapperView.swift */,
+				B37630501CE28737004FE1B7 /* AttachmentView.swift */,
+				B37630521CE28741004FE1B7 /* AttachmentView.xib */,
+			);
+			name = InputView;
+			sourceTree = "<group>";
+		};
 		B383235B1CDC3F7A004D0A1C /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -287,6 +304,7 @@
 			children = (
 				B3FEB8451C9630D20048B688 /* Extensions */,
 				B3FEB83A1C962F920048B688 /* Cell */,
+				B37630561CE28CA9004FE1B7 /* InputView */,
 				B3C03D0D1C90D70A0096E04C /* GradientView.swift */,
 				B3E634E01C915B9300C0572A /* UISearchBar+CursorTint.swift */,
 				B3C03D111C90E6E70096E04C /* RoundedShadowedButton.swift */,
@@ -295,10 +313,6 @@
 				B3FEB8481C963E260048B688 /* CustomizableImageView.swift */,
 				B383239C1CDC4336004D0A1C /* CatchPhraseView.swift */,
 				B3D1692B1CDDA5950080D748 /* PopupNotification.swift */,
-				B3BA9C301CE18ED300647470 /* InputView.swift */,
-				B3BA9C321CE18EE300647470 /* InputView.xib */,
-				B37630501CE28737004FE1B7 /* AttachmentView.swift */,
-				B37630521CE28741004FE1B7 /* AttachmentView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -577,12 +591,14 @@
 				B383239D1CDC4336004D0A1C /* CatchPhraseView.swift in Sources */,
 				B3D1692E1CDDC15F0080D748 /* SupportController.swift in Sources */,
 				B3FEB8441C9630BA0048B688 /* UIImageView+BeautifulWebImage.swift in Sources */,
+				B37630581CE28E9B004FE1B7 /* AttachmentWrapperView.swift in Sources */,
 				B3FEB8471C9631870048B688 /* CustomizableView.swift in Sources */,
 				B3FEB8491C963E260048B688 /* CustomizableImageView.swift in Sources */,
 				B3C305A11CDFD79500C8E85F /* SettingsController.swift in Sources */,
 				B3E634DD1C914D6200C0572A /* MainController.swift in Sources */,
 				B3E634D51C91444700C0572A /* RecoveryViewController.swift in Sources */,
 				B3FEB83F1C9630290048B688 /* ProjectCell.swift in Sources */,
+				B37630551CE28CA4004FE1B7 /* AttachmentContainerView.swift in Sources */,
 				B3E634DF1C91514D00C0572A /* ProjectsController.swift in Sources */,
 				B3C305A81CDFEAB900C8E85F /* Manager.swift in Sources */,
 				B3B2B92D1C90CD1600468342 /* AppDelegate.swift in Sources */,
