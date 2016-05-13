@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="55" height="53"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cmO-EC-95z" userLabel="Attachment View" customClass="CustomizableImageView" customModule="Controlio" customModuleProvider="target">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cmO-EC-95z" userLabel="Attachment View" customClass="CustomizableImageView" customModule="Controlio" customModuleProvider="target">
                     <rect key="frame" x="3" y="10" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="8Yo-2q-2ZI"/>
@@ -21,12 +21,19 @@
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                             <real key="value" value="3"/>
                         </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="0.5"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" red="0.35686274509999999" green="0.37647058820000001" blue="0.43529411759999997" alpha="0.5" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q27-3B-z91" userLabel="Overlay Button">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q27-3B-z91" userLabel="Overlay Button" customClass="RoundedShadowedButton" customModule="Controlio" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="55" height="53"/>
                     <connections>
                         <action selector="attachmentTouched:" destination="iN0-l3-epB" eventType="touchUpInside" id="Mlc-5p-Qcv"/>
+                        <outletCollection property="dependantViews" destination="cmO-EC-95z" collectionClass="NSMutableArray" id="rCf-PE-Op0"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q2D-Ng-fdM" userLabel="Cross Button">

@@ -8,7 +8,15 @@
 
 import UIKit
 
-class AttachmentContainerView: UIView {
+protocol AttachmentContainerViewDelegate: class {
+    func closeImagePicker()
+}
+
+class AttachmentContainerView: UIView, PickerDelegate {
+    
+    // MARK: - Variables -
+    
+    weak var delegate: AttachmentContainerViewDelegate?
     
     // MARK: - Outlets -
     
@@ -17,8 +25,20 @@ class AttachmentContainerView: UIView {
     // MARK: - View Life Cycle -
     
     override func layoutSubviews() {
+        
         super.layoutSubviews()
+        
         wrapperView.preferredMaxLayoutWidth = wrapperView.frame.width
         super.layoutSubviews()
+    }
+    
+    // MARK: - UIImagePickerControllerDelegate -
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            wrapperView.attachments.append(pickedImage)
+        }
+        
+        delegate?.closeImagePicker()
     }
 }

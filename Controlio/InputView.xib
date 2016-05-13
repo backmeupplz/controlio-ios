@@ -7,6 +7,7 @@
     <customFonts key="customFonts">
         <mutableArray key="SFUIDisplay-Regular.otf">
             <string>SFUIDisplay-Regular</string>
+            <string>SFUIDisplay-Regular</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -28,7 +29,14 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clip" translatesAutoresizingMaskIntoConstraints="NO" id="4pQ-AZ-PUF">
                     <rect key="frame" x="8" y="65" width="20" height="12"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ILV-19-LIz">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yew-bu-k9R" userLabel="Clip Button" customClass="RoundedShadowedButton" customModule="Controlio" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="53" width="36" height="102"/>
+                    <connections>
+                        <action selector="attachmentTouched:" destination="iN0-l3-epB" eventType="touchUpInside" id="8gc-eO-Qam"/>
+                        <outletCollection property="dependantViews" destination="4pQ-AZ-PUF" collectionClass="NSMutableArray" id="jJe-GV-shU"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="200" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ILV-19-LIz">
                     <rect key="frame" x="331" y="56" width="34" height="30"/>
                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="15"/>
                     <state key="normal" title="Send">
@@ -37,9 +45,46 @@
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hOP-MY-NFk" customClass="CustomizableView" customModule="Controlio" customModuleProvider="target">
                     <rect key="frame" x="36" y="62" width="287" height="86"/>
+                    <subviews>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="g4k-eP-6LK" customClass="SLKTextView">
+                            <rect key="frame" x="7" y="0.0" width="273" height="34"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" priority="500" constant="34" id="UkJ-KS-VMX"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="15"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Khk-if-kjM" customClass="AttachmentContainerView" customModule="Controlio" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="31" width="287" height="55"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YbE-Bm-sx7" customClass="AttachmentWrapperView" customModule="Controlio" customModuleProvider="target">
+                                    <rect key="frame" x="7" y="0.0" width="273" height="52"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="YbE-Bm-sx7" secondAttribute="trailing" constant="7" id="AMw-BV-xjm"/>
+                                <constraint firstAttribute="bottom" secondItem="YbE-Bm-sx7" secondAttribute="bottom" constant="3" id="ClV-qC-8c2"/>
+                                <constraint firstItem="YbE-Bm-sx7" firstAttribute="leading" secondItem="Khk-if-kjM" secondAttribute="leading" constant="7" id="O81-ZJ-exv"/>
+                                <constraint firstItem="YbE-Bm-sx7" firstAttribute="top" secondItem="Khk-if-kjM" secondAttribute="top" id="aWD-pz-PU8"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="wrapperView" destination="YbE-Bm-sx7" id="pJ6-it-l0g"/>
+                            </connections>
+                        </view>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="Khk-if-kjM" firstAttribute="leading" secondItem="hOP-MY-NFk" secondAttribute="leading" id="5e9-QI-v9S"/>
+                        <constraint firstAttribute="bottom" secondItem="Khk-if-kjM" secondAttribute="bottom" id="CE8-1k-X3H"/>
+                        <constraint firstItem="g4k-eP-6LK" firstAttribute="top" secondItem="hOP-MY-NFk" secondAttribute="top" id="ExH-9Y-fc7"/>
+                        <constraint firstItem="Khk-if-kjM" firstAttribute="top" secondItem="g4k-eP-6LK" secondAttribute="bottom" constant="-3" id="Oow-cn-q7U"/>
                         <constraint firstAttribute="height" constant="86" id="dPe-KR-wPf"/>
+                        <constraint firstAttribute="trailing" secondItem="Khk-if-kjM" secondAttribute="trailing" id="q8o-v3-gt3"/>
+                        <constraint firstAttribute="trailing" secondItem="g4k-eP-6LK" secondAttribute="trailing" constant="7" id="qA8-o6-OZ7"/>
+                        <constraint firstItem="g4k-eP-6LK" firstAttribute="leading" secondItem="hOP-MY-NFk" secondAttribute="leading" constant="7" id="upM-vk-HnY"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -52,6 +97,11 @@
                             <real key="value" value="0.5"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="dPe-KR-wPf"/>
+                        </mask>
+                    </variation>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -60,16 +110,25 @@
                 <constraint firstItem="4pQ-AZ-PUF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="8VU-JN-MlF"/>
                 <constraint firstItem="hOP-MY-NFk" firstAttribute="leading" secondItem="4pQ-AZ-PUF" secondAttribute="trailing" constant="8" id="A4L-hK-Sso"/>
                 <constraint firstAttribute="bottom" secondItem="hOP-MY-NFk" secondAttribute="bottom" constant="7" id="Jdr-9B-8ps"/>
+                <constraint firstItem="yew-bu-k9R" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="53" id="KvD-YU-hrF"/>
                 <constraint firstAttribute="trailing" secondItem="ILV-19-LIz" secondAttribute="trailing" constant="8" id="L6A-ac-pEd"/>
                 <constraint firstItem="Yt2-0l-Ule" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="OHj-6l-8pX"/>
                 <constraint firstItem="Yt2-0l-Ule" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="17" id="XCU-LL-j0y"/>
                 <constraint firstItem="hOP-MY-NFk" firstAttribute="top" secondItem="Yt2-0l-Ule" secondAttribute="bottom" constant="17" id="Zo6-ng-Y8Z"/>
+                <constraint firstItem="hOP-MY-NFk" firstAttribute="leading" secondItem="yew-bu-k9R" secondAttribute="trailing" id="dEJ-xf-Ol3"/>
                 <constraint firstItem="ILV-19-LIz" firstAttribute="leading" secondItem="hOP-MY-NFk" secondAttribute="trailing" constant="8" id="eZ8-1j-83O"/>
                 <constraint firstItem="ILV-19-LIz" firstAttribute="centerY" secondItem="4pQ-AZ-PUF" secondAttribute="centerY" id="g9y-MF-F7T"/>
+                <constraint firstItem="yew-bu-k9R" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="oGU-bR-Rx0"/>
                 <constraint firstAttribute="trailing" secondItem="Yt2-0l-Ule" secondAttribute="trailing" constant="8" id="rjO-mj-cch"/>
+                <constraint firstAttribute="bottom" secondItem="yew-bu-k9R" secondAttribute="bottom" id="sei-I5-GCT"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="attachmentContainerView" destination="Khk-if-kjM" id="oJ4-ST-FP6"/>
+                <outlet property="textView" destination="g4k-eP-6LK" id="WpA-NI-tTL"/>
+                <outlet property="textViewHeight" destination="UkJ-KS-VMX" id="M9K-lb-V0L"/>
+            </connections>
             <point key="canvasLocation" x="230.5" y="233.5"/>
         </view>
     </objects>

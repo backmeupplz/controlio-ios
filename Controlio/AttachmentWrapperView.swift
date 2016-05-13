@@ -14,7 +14,7 @@ class AttachmentWrapperView: UIView, AttachmentViewDelegate {
     
     // MARK: - Variables -
     
-    var preferredMaxLayoutWidth: CGFloat! {
+    var preferredMaxLayoutWidth: CGFloat = 0 {
         didSet {
             configureMaxLayoutWidth(oldValue)
         }
@@ -32,11 +32,16 @@ class AttachmentWrapperView: UIView, AttachmentViewDelegate {
     // MARK: - AttachmentViewDelegate -
     
     func attachmentDidTouchCross(attachment: AttachmentView) {
+        guard let image = attachment.image,
+            let index = attachments.indexOf(image)
+            else { return }
         
+        attachments.removeAtIndex(index)
+//        configureAttachments()
     }
     
     func attachmentWasTouched(attachment: AttachmentView) {
-        
+        // open attachment
     }
     
     // MARK: - General Functions -
@@ -49,6 +54,7 @@ class AttachmentWrapperView: UIView, AttachmentViewDelegate {
         enumerateItemRects(preferredMaxLayoutWidth) { itemRect in
             totalRect = CGRectUnion(itemRect, totalRect)
         }
+        totalRect.size.height = totalRect.size.height + 3
         return totalRect.size
     }
     
@@ -62,16 +68,7 @@ class AttachmentWrapperView: UIView, AttachmentViewDelegate {
         }
     }
     
-    // MARK: - Private Functions -
-    
-    private func configureMaxLayoutWidth(oldValue: CGFloat) {
-        if preferredMaxLayoutWidth == oldValue {
-            return
-        }
-        invalidateIntrinsicContentSize()
-    }
-    
-    private func configureAttachments() {
+    func configureAttachments() {
         for view in attachmentViews {
             view.removeFromSuperview()
         }
@@ -83,6 +80,18 @@ class AttachmentWrapperView: UIView, AttachmentViewDelegate {
             attachmentView.frame = CGRectMake(0, 0, itemSize.width, itemSize.height)
             attachmentView.image = attachment
             attachmentView.translatesAutoresizingMaskIntoConstraints = false
+            attachmentViews.append(attachmentView)
+        }
+        
+        invalidateIntrinsicContentSize()
+    }
+    
+    // MARK: - Private Functions -
+    
+    private func configureMaxLayoutWidth(oldValue: CGFloat) {
+        
+        if preferredMaxLayoutWidth == oldValue {
+            return
         }
         
         invalidateIntrinsicContentSize()

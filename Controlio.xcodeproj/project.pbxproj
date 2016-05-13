@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B301EFDD1CE59A0A0013CD4D /* UIImagePickerDelegate+UINavgiationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B301EFDC1CE59A0A0013CD4D /* UIImagePickerDelegate+UINavgiationControllerDelegate.swift */; };
 		B37630511CE28737004FE1B7 /* AttachmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37630501CE28737004FE1B7 /* AttachmentView.swift */; };
 		B37630531CE28741004FE1B7 /* AttachmentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B37630521CE28741004FE1B7 /* AttachmentView.xib */; };
 		B37630551CE28CA4004FE1B7 /* AttachmentContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37630541CE28CA4004FE1B7 /* AttachmentContainerView.swift */; };
@@ -94,6 +95,7 @@
 		32564BBA877C362EE70C73F6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		3805DD83606C0E1695E1371D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		75482A7583BBE839D455C74C /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B301EFDC1CE59A0A0013CD4D /* UIImagePickerDelegate+UINavgiationControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImagePickerDelegate+UINavgiationControllerDelegate.swift"; sourceTree = "<group>"; };
 		B37630501CE28737004FE1B7 /* AttachmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentView.swift; sourceTree = "<group>"; };
 		B37630521CE28741004FE1B7 /* AttachmentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttachmentView.xib; sourceTree = "<group>"; };
 		B37630541CE28CA4004FE1B7 /* AttachmentContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentContainerView.swift; sourceTree = "<group>"; };
@@ -365,6 +367,7 @@
 				B390C7A41CDE9B5400D5F021 /* NSIndexPath+RowSection.swift */,
 				B3C305AD1CDFF43400C8E85F /* NSDateFormatter+Extensions.swift */,
 				B3C305B31CE0031E00C8E85F /* String+Height.swift */,
+				B301EFDC1CE59A0A0013CD4D /* UIImagePickerDelegate+UINavgiationControllerDelegate.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -609,6 +612,7 @@
 				B3AA2F8F1C910ACC00FE7E54 /* RoundedBorderedTextField.swift in Sources */,
 				B390C7A51CDE9B5400D5F021 /* NSIndexPath+RowSection.swift in Sources */,
 				B3C03D171C90FEB70096E04C /* DemoAccountLanguage.swift in Sources */,
+				B301EFDD1CE59A0A0013CD4D /* UIImagePickerDelegate+UINavgiationControllerDelegate.swift in Sources */,
 				B3E8157C1CE1603400E8F87B /* NewProjectController.swift in Sources */,
 				B3E634E11C915B9300C0572A /* UISearchBar+CursorTint.swift in Sources */,
 				B3E815791CE1566900E8F87B /* NewProjectCell.swift in Sources */,

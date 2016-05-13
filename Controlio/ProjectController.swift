@@ -18,6 +18,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     
     private var needsHeaderViewLayout = true
     private var input: InputView?
+    private let imagePicker = UIImagePickerController()
     
     // MARK: - Outlets -
     
@@ -49,6 +50,30 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     
     // MARK: - InputViewDelegate -
     
+    func openPickerWithDelegate(delegate: PickerDelegate) {
+        imagePicker.allowsEditing = false
+        imagePicker.delegate = delegate
+        
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        
+        alert.addDefaultAction("Camera") { 
+            self.imagePicker.sourceType = .Camera
+            self.presentViewController(self.imagePicker, animated: true, completion: nil)
+        }
+        alert.addDefaultAction("Library") { 
+            self.imagePicker.sourceType = .PhotoLibrary
+            self.presentViewController(self.imagePicker, animated: true, completion: nil)
+        }
+        alert.addCancelButton()
+        alert.addPopoverSourceView(input!)
+        
+        self.presentViewController(alert, animated: true) { }
+    }
+    
+    func closeImagePicker() {
+        dismissViewControllerAnimated(true) { }
+    }
+    
     // Delegate functisk
     
     // MARK: - View Controller Life Cycle -
@@ -59,19 +84,26 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         setupTableView()
         addRefreshControl()
         setupBackButton()
-        input = InputView.view(navigationController!.view, delegate: self)
+        input = InputView.view(navigationController!.view, vc: self, delegate: self)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         configure()
+        input?.show()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         checkHeaderViewHeight()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        input?.hide()
     }
     
     // MARK: - Public Functions -
@@ -129,9 +161,9 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         
         needsHeaderViewLayout = true
         coordinator.animateAlongsideTransition({ context in
-                self.checkHeaderViewHeight()
-            }) { context in
-                // Completion
+            self.checkHeaderViewHeight()
+        }) { context in
+            // Completion
         }
     }
 }
