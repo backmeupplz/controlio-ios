@@ -89,6 +89,7 @@
 		B3FEB8471C9631870048B688 /* CustomizableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FEB8461C9631870048B688 /* CustomizableView.swift */; };
 		B3FEB8491C963E260048B688 /* CustomizableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FEB8481C963E260048B688 /* CustomizableImageView.swift */; };
 		B3FFC6C71CE6894C00595E85 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FFC6C61CE6894C00595E85 /* CustomNavigationController.swift */; };
+		B3FFC6C91CE69D6700595E85 /* CustomSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FFC6C81CE69D6700595E85 /* CustomSearchController.swift */; };
 		C94FD14F261A23AE40B80481 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75482A7583BBE839D455C74C /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -180,6 +181,7 @@
 		B3FEB8461C9631870048B688 /* CustomizableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizableView.swift; sourceTree = "<group>"; };
 		B3FEB8481C963E260048B688 /* CustomizableImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizableImageView.swift; sourceTree = "<group>"; };
 		B3FFC6C61CE6894C00595E85 /* CustomNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
+		B3FFC6C81CE69D6700595E85 /* CustomSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -405,6 +407,7 @@
 				B3C305A21CDFE06200C8E85F /* ProjectController.swift */,
 				B3E8157B1CE1603400E8F87B /* NewProjectController.swift */,
 				B3FFC6C61CE6894C00595E85 /* CustomNavigationController.swift */,
+				B3FFC6C81CE69D6700595E85 /* CustomSearchController.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -622,6 +625,7 @@
 				B3E815791CE1566900E8F87B /* NewProjectCell.swift in Sources */,
 				B3C03D141C90E90B0096E04C /* StartViewController.swift in Sources */,
 				B3D1692C1CDDA5950080D748 /* PopupNotification.swift in Sources */,
+				B3FFC6C91CE69D6700595E85 /* CustomSearchController.swift in Sources */,
 				B3C03D101C90DAA60096E04C /* UIColor+Controlio.swift in Sources */,
 				B37630511CE28737004FE1B7 /* AttachmentView.swift in Sources */,
 				B3C305AA1CDFEB0200C8E85F /* Post.swift in Sources */,

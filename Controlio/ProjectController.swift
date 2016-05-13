@@ -75,8 +75,6 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         dismissViewControllerAnimated(true) { }
     }
     
-    // Delegate functisk
-    
     // MARK: - View Controller Life Cycle -
     
     override func viewDidLoad() {
@@ -93,6 +91,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         
         configure()
         input?.show()
+        IQKeyboardManager.sharedManager().enable = false
     }
     
     override func viewDidLayoutSubviews() {
@@ -105,6 +104,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         super.viewWillDisappear(animated)
         
         input?.hide()
+        IQKeyboardManager.sharedManager().enable = true
     }
     
     // MARK: - Public Functions -

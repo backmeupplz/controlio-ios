@@ -12,7 +12,7 @@ class ProjectsController: UITableViewController, UISearchResultsUpdating, UISear
     
     // MARK: - Variables -
     
-    private let searchController = UISearchController(searchResultsController: nil)
+    private let searchController = CustomSearchController(searchResultsController: nil)
     private var projects = [Project]()
     
     // MARK: - UISearchResultsUpdating -
