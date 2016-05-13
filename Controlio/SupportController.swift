@@ -48,4 +48,10 @@ class SupportController: UITableViewController {
         }
         presentViewController(alert, animated: true) {}
     }
+    
+    // MARK: - Status Bar -
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
 }

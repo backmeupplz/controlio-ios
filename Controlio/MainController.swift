@@ -9,9 +9,18 @@
 import UIKit
 
 class MainController: UITabBarController {
+    
+    // MARK: - View Controller Life Cycle -
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         tabBar.tintColor = UIColor.controlioGreen()
+    }
+    
+    // MARK: - Status Bar -
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
     }
 }

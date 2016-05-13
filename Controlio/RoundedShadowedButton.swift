@@ -12,7 +12,7 @@ class RoundedShadowedButton: UIButton {
     
     // MARK: - Outlets -
     
-    @IBOutlet private var dependantViews: [UIView]!
+    @IBOutlet private var dependantViews: [UIView]?
     
     // MARK: - Variables -
     
@@ -20,12 +20,14 @@ class RoundedShadowedButton: UIButton {
     var defaultAlpha = [UIView:CGFloat]()
     override var highlighted: Bool {
         didSet {
-            for view in dependantViews {
-                if highlighted {
-                    defaultAlpha[view] = view.alpha
-                    view.alpha = view.alpha / 2
-                } else {
-                    view.alpha = defaultAlpha[view] ?? 1.0
+            if let views = dependantViews {
+                for view in views {
+                    if highlighted {
+                        defaultAlpha[view] = view.alpha
+                        view.alpha = view.alpha / 2
+                    } else {
+                        view.alpha = defaultAlpha[view] ?? 1.0
+                    }
                 }
             }
         }

@@ -24,7 +24,7 @@ class StartViewController: UIViewController {
                                  "See the status of your orders like you track your parcel on mail post",
                                  "Let local business inform you about your order with the speed of a screen touch!"]
         
-        Router(self).showMain(false)
+//        Router(self).showMain(false)
     }
     
     // MARK: - Actions -
@@ -59,5 +59,11 @@ class StartViewController: UIViewController {
             print("Login Russian")
         }
         Router(self).showMain()
+    }
+    
+    // MARK: - Status Bar -
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 class ProjectController: UITableViewController, PostCellDelegate, InputViewDelegate {
     
@@ -165,5 +166,11 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         }) { context in
             // Completion
         }
+    }
+    
+    // MARK: - Status Bar -
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
     }
 }

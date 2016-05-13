@@ -35,4 +35,10 @@ class RecoveryViewController: UIViewController {
         if !success { return }
         print("recover")
     }
+    
+    // MARK: - Status Bar -
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
 }

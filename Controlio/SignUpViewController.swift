@@ -54,4 +54,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         if !success { return }
         Router(self).showMain()
     }
+    
+    // MARK: - Status Bar -
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
 }
