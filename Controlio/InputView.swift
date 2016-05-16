@@ -20,6 +20,7 @@ class InputView: CustomizableView, AttachmentContainerViewDelegate {
     // MARK: - Variables -
     
     weak var delegate: InputViewDelegate?
+    var shown = false
     
     // MARK: - Outlets -
     
@@ -74,6 +75,7 @@ class InputView: CustomizableView, AttachmentContainerViewDelegate {
     // MARK: - General Functions -
     
     func show() {
+        shown = true
         self.snp_remakeConstraints { make in
             make.bottom.equalTo(self.superview!)
             make.left.equalTo(self.superview!)
@@ -86,6 +88,7 @@ class InputView: CustomizableView, AttachmentContainerViewDelegate {
     }
 
     func hide() {
+        shown = false
         textView.resignFirstResponder()
         self.snp_remakeConstraints { make in
             make.top.equalTo(self.superview!.snp_bottom)
@@ -95,6 +98,14 @@ class InputView: CustomizableView, AttachmentContainerViewDelegate {
         UIView.animateWithDuration(0.3) {
             self.layoutIfNeeded()
             self.alpha = 0.0
+        }
+    }
+    
+    func changeBottomSpacing(spacing: CGFloat) {
+        self.snp_remakeConstraints { make in
+            make.bottom.equalTo(self.superview!.snp_bottom).inset(spacing)
+            make.left.equalTo(self.superview!)
+            make.right.equalTo(self.superview!)
         }
     }
     

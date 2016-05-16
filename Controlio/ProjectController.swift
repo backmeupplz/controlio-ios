@@ -83,15 +83,18 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         setupTableView()
         addRefreshControl()
         setupBackButton()
-        input = InputView.view(navigationController!.view, vc: self, delegate: self)
+        setupInput()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         configure()
-        input?.show()
+        
+        showInput()
+        
         IQKeyboardManager.sharedManager().enable = false
+        subcribeForNotifications()
     }
     
     override func viewDidLayoutSubviews() {
@@ -103,7 +106,9 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
-        input?.hide()
+        unsubscribeFromNotifications()
+        hideInput()
+        
         IQKeyboardManager.sharedManager().enable = true
     }
     
@@ -153,6 +158,75 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
             tableView.tableHeaderView = headerView
             needsHeaderViewLayout = false
         }
+    }
+    
+    private func setBottomScrollInset(inset: CGFloat) {
+        let scrollIndicatorInsets = tableView.scrollIndicatorInsets
+        let contentInset = tableView.contentInset
+        tableView.scrollIndicatorInsets = UIEdgeInsetsMake(scrollIndicatorInsets.top,
+                                                           scrollIndicatorInsets.left,
+                                                           inset,
+                                                           scrollIndicatorInsets.right)
+        tableView.contentInset = UIEdgeInsetsMake(contentInset.top,
+                                                  contentInset.left,
+                                                  inset,
+                                                  contentInset.right)
+    }
+    
+    private func setupInput() {
+        input = InputView.view(navigationController!.view, vc: self, delegate: self)
+    }
+    
+    private func showInput() {
+        if project.canEdit {
+            input?.show()
+            setBottomScrollInset(input?.frame.height ?? 0)
+        }
+    }
+    
+    private func hideInput() {
+        input?.hide()
+    }
+    
+    // MARK: - Notifications -
+    
+    private func subcribeForNotifications() {
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self, selector: #selector(ProjectController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(ProjectController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    private func unsubscribeFromNotifications() {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    @objc private func keyboardWillShow(notification: NSNotification) {
+        let userInfo = notification.userInfo!
+        let keyboardHeight = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue().height
+        let options = UIViewAnimationOptions(rawValue: UInt((userInfo[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).unsignedLongValue))
+        let duration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
+        
+        input?.changeBottomSpacing(keyboardHeight)
+        UIView.animateWithDuration(duration,
+                                   delay: 0,
+                                   options: options,
+                                   animations: { 
+                                    self.input?.layoutIfNeeded()
+            }) { finished in }
+    }
+    
+    @objc private func keyboardWillHide(notification: NSNotification) {
+        let userInfo = notification.userInfo!
+        let options = UIViewAnimationOptions(rawValue: UInt((userInfo[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).unsignedLongValue))
+        let duration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
+        
+        input?.changeBottomSpacing(0)
+        UIView.animateWithDuration(duration,
+                                   delay: 0,
+                                   options: options,
+                                   animations: {
+                                    self.input?.layoutIfNeeded()
+        }) { finished in }
     }
     
     // MARK: - Rotations -

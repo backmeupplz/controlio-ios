@@ -23,12 +23,14 @@ class Project: NSObject {
     var lastPost: Post?
     var posts: [Post]!
     
+    var canEdit: Bool = false
+    
     // MARK: - Debug -
     
     class func testProjects() -> [Project] {
         var result = [Project]()
         
-        for _ in 0...20 {
+        for _ in 0...5 {
             let project = Project()
             project.title = "Готовим пиццу"
             project.projectDescription = "Мы готовим пиццу, сложно сказать что-то еще. Пицца в соусе макарено и полным фаршем с ананасами, анчоусами, грибами, блекджеком и куртизанками."
@@ -47,7 +49,7 @@ class Project: NSObject {
             
             var posts = [Post]()
             
-            for number in 0...20 {
+            for number in 0...4 {
                 let post = Post()
                 post.text = "Ну, что сказать, пиццу засунули в очаг, ждем, пока готовится"
                 post.date = NSDate().dateByAddingTimeInterval(NSTimeInterval(-number*100))
@@ -65,6 +67,8 @@ class Project: NSObject {
             project.manager = manager
             project.lastPost = post
             project.posts = posts
+            
+            project.canEdit = true
             
             result.append(project)
         }
