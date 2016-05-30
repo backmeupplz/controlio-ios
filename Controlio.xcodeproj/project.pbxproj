@@ -74,6 +74,9 @@
 		B3C305B41CE0031E00C8E85F /* String+Height.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C305B31CE0031E00C8E85F /* String+Height.swift */; };
 		B3D1692C1CDDA5950080D748 /* PopupNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D1692B1CDDA5950080D748 /* PopupNotification.swift */; };
 		B3D1692E1CDDC15F0080D748 /* SupportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D1692D1CDDC15F0080D748 /* SupportController.swift */; };
+		B3D8C6F41CFBFBF4001EE432 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D8C6F31CFBFBF4001EE432 /* Server.swift */; };
+		B3D8C6F61CFBFC6B001EE432 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D8C6F51CFBFC6B001EE432 /* Config.swift */; };
+		B3D8C6F81CFBFD7E001EE432 /* NSUserDefaults+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D8C6F71CFBFD7E001EE432 /* NSUserDefaults+extensions.swift */; };
 		B3E634D31C91344400C0572A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E634D21C91344400C0572A /* Router.swift */; };
 		B3E634D51C91444700C0572A /* RecoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E634D41C91444700C0572A /* RecoveryViewController.swift */; };
 		B3E634D71C914CE600C0572A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3E634D61C914CE600C0572A /* Main.storyboard */; };
@@ -166,6 +169,9 @@
 		B3C305B31CE0031E00C8E85F /* String+Height.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Height.swift"; sourceTree = "<group>"; };
 		B3D1692B1CDDA5950080D748 /* PopupNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupNotification.swift; sourceTree = "<group>"; };
 		B3D1692D1CDDC15F0080D748 /* SupportController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportController.swift; sourceTree = "<group>"; };
+		B3D8C6F31CFBFBF4001EE432 /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
+		B3D8C6F51CFBFC6B001EE432 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		B3D8C6F71CFBFD7E001EE432 /* NSUserDefaults+extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSUserDefaults+extensions.swift"; sourceTree = "<group>"; };
 		B3E634D21C91344400C0572A /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		B3E634D41C91444700C0572A /* RecoveryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecoveryViewController.swift; sourceTree = "<group>"; };
 		B3E634D61C914CE600C0572A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -333,6 +339,8 @@
 				B3E634D21C91344400C0572A /* Router.swift */,
 				B390C7A21CDE96B800D5F021 /* DeepLink.swift */,
 				B3C305AB1CDFEC7700C8E85F /* DataManager.swift */,
+				B3D8C6F31CFBFBF4001EE432 /* Server.swift */,
+				B3D8C6F51CFBFC6B001EE432 /* Config.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -372,6 +380,7 @@
 				B3C305AD1CDFF43400C8E85F /* NSDateFormatter+Extensions.swift */,
 				B3C305B31CE0031E00C8E85F /* String+Height.swift */,
 				B301EFDC1CE59A0A0013CD4D /* UIImagePickerDelegate+UINavgiationControllerDelegate.swift */,
+				B3D8C6F71CFBFD7E001EE432 /* NSUserDefaults+extensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -603,6 +612,7 @@
 				B37630581CE28E9B004FE1B7 /* AttachmentWrapperView.swift in Sources */,
 				B3FEB8471C9631870048B688 /* CustomizableView.swift in Sources */,
 				B3FEB8491C963E260048B688 /* CustomizableImageView.swift in Sources */,
+				B3D8C6F41CFBFBF4001EE432 /* Server.swift in Sources */,
 				B3C305A11CDFD79500C8E85F /* SettingsController.swift in Sources */,
 				B3E634DD1C914D6200C0572A /* MainController.swift in Sources */,
 				B3E634D51C91444700C0572A /* RecoveryViewController.swift in Sources */,
@@ -617,6 +627,7 @@
 				B3C305B01CDFFB5900C8E85F /* PostCell.swift in Sources */,
 				B3C305A31CDFE06200C8E85F /* ProjectController.swift in Sources */,
 				B3AA2F8F1C910ACC00FE7E54 /* RoundedBorderedTextField.swift in Sources */,
+				B3D8C6F81CFBFD7E001EE432 /* NSUserDefaults+extensions.swift in Sources */,
 				B390C7A51CDE9B5400D5F021 /* NSIndexPath+RowSection.swift in Sources */,
 				B3C03D171C90FEB70096E04C /* DemoAccountLanguage.swift in Sources */,
 				B301EFDD1CE59A0A0013CD4D /* UIImagePickerDelegate+UINavgiationControllerDelegate.swift in Sources */,
@@ -631,6 +642,7 @@
 				B3C305AA1CDFEB0200C8E85F /* Post.swift in Sources */,
 				B3AA2F911C9110EF00FE7E54 /* SignUpViewController.swift in Sources */,
 				B3C03D1A1C90FF890096E04C /* UIAlertController+Additions.swift in Sources */,
+				B3D8C6F61CFBFC6B001EE432 /* Config.swift in Sources */,
 				B3C305AE1CDFF43400C8E85F /* NSDateFormatter+Extensions.swift in Sources */,
 				B3AA2F931C9110FE00FE7E54 /* LogInViewController.swift in Sources */,
 				B3C03D121C90E6E70096E04C /* RoundedShadowedButton.swift in Sources */,

@@ -110,7 +110,7 @@
                                     <action selector="loginTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jmr-0O-b2j"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Dn-tl-G00" userLabel="Demo Account Button">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Dn-tl-G00" userLabel="Demo Account Button">
                                 <rect key="frame" x="224" y="493" width="152" height="34"/>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="18"/>
                                 <state key="normal" title="Try demo account">
@@ -322,6 +322,9 @@
                                     <action selector="logInTouched:" destination="nJx-q4-SDZ" eventType="touchUpInside" id="ztc-tz-t08"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Odw-qD-P9E">
+                                <rect key="frame" x="428" y="413" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -345,6 +348,7 @@
                             <constraint firstItem="a9l-Wv-3KB" firstAttribute="centerX" secondItem="NlM-hP-4wx" secondAttribute="centerX" id="G5k-XL-c70">
                                 <variation key="heightClass=compact" constant="-124"/>
                             </constraint>
+                            <constraint firstItem="Odw-qD-P9E" firstAttribute="centerY" secondItem="FfA-Gh-j2w" secondAttribute="centerY" id="Lhf-w0-oTF"/>
                             <constraint firstItem="F9m-5Z-14k" firstAttribute="top" secondItem="FCR-PW-Zg1" secondAttribute="bottom" id="NGi-D4-sVn"/>
                             <constraint firstItem="VrW-jH-qkB" firstAttribute="centerY" secondItem="NlM-hP-4wx" secondAttribute="centerY" constant="-180.5" id="OA2-ep-KcY">
                                 <variation key="heightClass=compact" constant="-100.5"/>
@@ -379,12 +383,16 @@
                                 <variation key="heightClass=compact" constant="50.5"/>
                             </constraint>
                             <constraint firstItem="FCR-PW-Zg1" firstAttribute="leading" secondItem="NlM-hP-4wx" secondAttribute="leading" id="xed-2b-QbG"/>
+                            <constraint firstItem="Odw-qD-P9E" firstAttribute="leading" secondItem="FfA-Gh-j2w" secondAttribute="trailing" constant="8" id="z8k-gd-2dl"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="spinner" destination="Odw-qD-P9E" id="8Ch-ib-tQn"/>
                         <outletCollection property="textFields" destination="fdG-p9-VYT" collectionClass="NSMutableArray" id="YE5-dK-bLM"/>
                         <outletCollection property="textFields" destination="lkT-Wo-GgD" collectionClass="NSMutableArray" id="Tdo-7m-145"/>
                         <outletCollection property="textFields" destination="a9l-Wv-3KB" collectionClass="NSMutableArray" id="dWB-w9-wZV"/>
+                        <outletCollection property="buttons" destination="FfA-Gh-j2w" collectionClass="NSMutableArray" id="qlg-ui-7hi"/>
+                        <outletCollection property="buttons" destination="jaG-a7-G34" collectionClass="NSMutableArray" id="dXg-f6-Gfw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XAU-nW-z7l" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -504,7 +512,7 @@
                                     <action selector="logInTouched:" destination="whJ-LL-Qxb" eventType="touchUpInside" id="OGx-Kj-2Pz"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="loN-fr-0B5" userLabel="Password Recovery Button">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="loN-fr-0B5" userLabel="Password Recovery Button">
                                 <rect key="frame" x="206" y="389" width="192" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="185" id="JmV-S0-tyq"/>
@@ -526,29 +534,7 @@
                                     <action selector="forgotPasswordTouched:" destination="whJ-LL-Qxb" eventType="touchUpInside" id="jwc-NL-BZg"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ysp-fU-hAK" userLabel="Sign Up Button">
-                                <rect key="frame" x="167" y="423" width="269" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="260" id="e7d-dZ-z0c"/>
-                                    <constraint firstAttribute="height" constant="34" id="rug-UZ-bdE"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="18"/>
-                                <state key="normal" title="Don't have an account? Sign up!">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="e7d-dZ-z0c"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="signUpTouched:" destination="whJ-LL-Qxb" eventType="touchUpInside" id="7JS-Y6-OjD"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ctN-Hb-xlu" userLabel="Demo Button">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ctN-Hb-xlu" userLabel="Demo Button">
                                 <rect key="frame" x="156" y="457" width="289" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="xeQ-9K-SYc"/>
@@ -570,6 +556,31 @@
                                     <action selector="demoTouched:" destination="whJ-LL-Qxb" eventType="touchUpInside" id="PxW-Vg-OrG"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ysp-fU-hAK" userLabel="Sign Up Button">
+                                <rect key="frame" x="202" y="389" width="197" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="260" id="e7d-dZ-z0c"/>
+                                    <constraint firstAttribute="height" constant="34" id="rug-UZ-bdE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="18"/>
+                                <state key="normal" title="Don't have an account?">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="e7d-dZ-z0c"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="signUpTouched:" destination="whJ-LL-Qxb" eventType="touchUpInside" id="7JS-Y6-OjD"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="4vK-pe-DF1">
+                                <rect key="frame" x="429" y="337" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -577,7 +588,7 @@
                                 <variation key="heightClass=compact" constant="-32"/>
                             </constraint>
                             <constraint firstItem="ysp-fU-hAK" firstAttribute="centerX" secondItem="7EM-Te-g3p" secondAttribute="centerX" constant="1" id="0xO-jx-4UP">
-                                <variation key="heightClass=compact" constant="124.5"/>
+                                <variation key="heightClass=compact" constant="110.5"/>
                             </constraint>
                             <constraint firstItem="ctN-Hb-xlu" firstAttribute="centerX" secondItem="7EM-Te-g3p" secondAttribute="centerX" id="1zv-ZW-Ogk"/>
                             <constraint firstItem="Ibw-nL-yvk" firstAttribute="centerY" secondItem="7EM-Te-g3p" secondAttribute="centerY" constant="-20" id="4im-G2-aps">
@@ -597,6 +608,7 @@
                                 <variation key="heightClass=compact" constant="0.0"/>
                             </constraint>
                             <constraint firstItem="4CQ-1v-icp" firstAttribute="top" secondItem="7EM-Te-g3p" secondAttribute="top" id="VUE-vq-01Y"/>
+                            <constraint firstItem="4vK-pe-DF1" firstAttribute="centerY" secondItem="C9O-Ph-99H" secondAttribute="centerY" id="VcQ-GE-hBh"/>
                             <constraint firstItem="0Qo-aw-maF" firstAttribute="centerY" secondItem="7EM-Te-g3p" secondAttribute="centerY" constant="-55.5" id="Vql-NR-mwe">
                                 <variation key="heightClass=compact" constant="11.5"/>
                             </constraint>
@@ -604,8 +616,8 @@
                                 <variation key="heightClass=compact" constant="105"/>
                             </constraint>
                             <constraint firstItem="ryI-TV-Uaj" firstAttribute="top" secondItem="4CQ-1v-icp" secondAttribute="bottom" id="c2q-Cl-OJD"/>
-                            <constraint firstItem="ysp-fU-hAK" firstAttribute="centerY" secondItem="7EM-Te-g3p" secondAttribute="centerY" constant="140" id="cWj-Ac-aJx">
-                                <variation key="heightClass=compact" constant="63"/>
+                            <constraint firstItem="ysp-fU-hAK" firstAttribute="centerY" secondItem="7EM-Te-g3p" secondAttribute="centerY" constant="106" id="cWj-Ac-aJx">
+                                <variation key="heightClass=compact" constant="47"/>
                             </constraint>
                             <constraint firstItem="0Qo-aw-maF" firstAttribute="centerX" secondItem="7EM-Te-g3p" secondAttribute="centerX" constant="-72.5" id="cal-dO-Xdb">
                                 <variation key="heightClass=compact" constant="-211.5"/>
@@ -613,6 +625,7 @@
                             <constraint firstItem="9PS-Le-VuU" firstAttribute="centerY" secondItem="7EM-Te-g3p" secondAttribute="centerY" constant="-173" id="dgY-QA-04q">
                                 <variation key="heightClass=compact" constant="-104"/>
                             </constraint>
+                            <constraint firstItem="4vK-pe-DF1" firstAttribute="leading" secondItem="C9O-Ph-99H" secondAttribute="trailing" constant="8" id="fPx-c7-kYh"/>
                             <constraint firstItem="loN-fr-0B5" firstAttribute="centerX" secondItem="7EM-Te-g3p" secondAttribute="centerX" constant="1.5" id="gJV-Tc-Jdm">
                                 <variation key="heightClass=compact" constant="86"/>
                             </constraint>
@@ -632,8 +645,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="spinner" destination="4vK-pe-DF1" id="f2r-4H-LHm"/>
                         <outletCollection property="textFields" destination="UMm-0b-Ojj" collectionClass="NSMutableArray" id="KJv-G7-KMl"/>
                         <outletCollection property="textFields" destination="Ibw-nL-yvk" collectionClass="NSMutableArray" id="PGb-rd-zXN"/>
+                        <outletCollection property="buttons" destination="C9O-Ph-99H" id="jv8-Gv-oej"/>
+                        <outletCollection property="buttons" destination="ysp-fU-hAK" id="EMe-WN-z3O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u96-rm-5he" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -13,6 +13,8 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Outlets -
     
     @IBOutlet private var textFields: [UITextField]!
+    @IBOutlet var buttons: [UIButton]!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     // MARK: - UITextFieldDelegate -
     
@@ -73,7 +75,29 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             }
         }
         if !success { return }
-        Router(self).showMain()
+        
+        enableUI(false)
+        
+        Server.sharedManager.login(textFields[0].text!,
+                                   password: textFields[1].text!)
+        { error in
+            self.enableUI(true)
+            if let error = error {
+                PopupNotification.showNotification(error)
+            } else {
+                Router(self).showMain()
+            }
+        }
+    }
+    
+    private func enableUI(enable: Bool) {
+        spinner.hidden = enable
+        for textField in textFields {
+            textField.enabled = enable
+        }
+        for button in buttons {
+            button.enabled = enable
+        }
     }
     
     // MARK: - Status Bar -
