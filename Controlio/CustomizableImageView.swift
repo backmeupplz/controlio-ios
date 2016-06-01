@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class CustomizableImageView: UIImageView {
 
@@ -19,6 +20,11 @@ class CustomizableImageView: UIImageView {
     @IBInspectable var shadowOffset: CGSize = CGSizeZero
     @IBInspectable var borderWidth: CGFloat = 0
     @IBInspectable var borderColor: UIColor = UIColor.clearColor()
+    var s3Key: String? {
+        didSet {
+            getImageFromS3()
+        }
+    }
     
     // MARK: - View Life Cycle -
     
@@ -42,5 +48,33 @@ class CustomizableImageView: UIImageView {
         layer.shadowOpacity = shadowOpacity
         layer.borderWidth = borderWidth
         layer.borderColor = borderColor.CGColor
+    }
+    
+    // Images and S3
+    
+    private func getImageFromS3() {
+        let cache = SDImageCache.sharedImageCache()
+        
+        if let image = cache.imageFromDiskCacheForKey(s3Key!) {
+            print("got image (\(s3Key!)) from memory cache")
+            self.image = image
+            return
+        }
+        cache.queryDiskCacheForKey(s3Key) { image, cacheType in
+            if let image = image {
+                print("got image (\(self.s3Key!)) from disk cache")
+                self.image = image
+            } else {
+                S3.getImage(self.s3Key!) { image, error in
+                    if let error = error {
+                        PopupNotification.showNotification(error)
+                    } else if let image = image {
+                        print("got image (\(self.s3Key!)) from internet")
+                        cache.storeImage(image, forKey: self.s3Key!)
+                        self.image = image
+                    }
+                }
+            }
+        }
     }
 }

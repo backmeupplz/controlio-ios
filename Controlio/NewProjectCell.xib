@@ -51,7 +51,7 @@
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aE2-Pe-zyH" userLabel="Rounded View" customClass="CustomizableView" customModule="Controlio" customModuleProvider="target">
                         <rect key="frame" x="10" y="5" width="343" height="333"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo-background-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="zqE-pM-iLs" userLabel="Add Photo Background">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo-background-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="zqE-pM-iLs" userLabel="Add Photo Background" customClass="CustomizableImageView" customModule="Controlio" customModuleProvider="target">
                                 <rect key="frame" x="20" y="20" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="MNN-Pd-YMl"/>
@@ -169,6 +169,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Medium" family="SF UI Display" pointSize="14"/>
                                 <state key="normal" title="Create"/>
+                                <connections>
+                                    <action selector="createTouched:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="2Yf-2h-Fwb"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -239,8 +242,8 @@
                                 <exclude reference="JyV-CJ-0nw"/>
                                 <exclude reference="H1U-xP-vdl"/>
                                 <exclude reference="qPY-xy-6ox"/>
-                                <exclude reference="7tL-7X-PVj"/>
                                 <exclude reference="Ukb-Y6-Udb"/>
+                                <exclude reference="7tL-7X-PVj"/>
                                 <exclude reference="KHw-JG-f6J"/>
                                 <exclude reference="Qdm-k9-7m4"/>
                             </mask>
@@ -258,6 +261,9 @@
                     <constraint firstItem="aE2-Pe-zyH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="zeS-US-jGo"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="projectImageView" destination="zqE-pM-iLs" id="flm-lB-HSs"/>
+            </connections>
             <point key="canvasLocation" x="296.5" y="535"/>
         </tableViewCell>
     </objects>
