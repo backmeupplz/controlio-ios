@@ -13,35 +13,35 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Outlets -
     
-    @IBOutlet private var textFields: [UITextField]!
+    @IBOutlet fileprivate var textFields: [UITextField]!
     @IBOutlet var buttons: [UIButton]!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     // MARK: - UITextFieldDelegate -
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == textFields.last {
             textField.resignFirstResponder()
             signUpTouched(textField)
         } else {
-            textFields[textFields.indexOf(textField)!+1].becomeFirstResponder()
+            textFields[textFields.index(of: textField)!+1].becomeFirstResponder()
         }
         return false
     }
     
     // MARK: - Actions -
     
-    @IBAction func signUpTouched(sender: AnyObject?) {
+    @IBAction func signUpTouched(_ sender: AnyObject?) {
         checkTextFields()
     }
     
-    @IBAction func logInTouched(sender: AnyObject) {
+    @IBAction func logInTouched(_ sender: AnyObject) {
         Router(self).showLogIn()
     }
     
     // MARK: - Private Functions -
     
-    private func checkTextFields() {
+    fileprivate func checkTextFields() {
         var success = true
         for textField in textFields {
             if textField.text == "" {
@@ -70,19 +70,19 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    private func enableUI(enable: Bool) {
-        spinner.hidden = enable
+    fileprivate func enableUI(_ enable: Bool) {
+        spinner.isHidden = enable
         for textField in textFields {
-            textField.enabled = enable
+            textField.isEnabled = enable
         }
         for button in buttons {
-            button.enabled = enable
+            button.isEnabled = enable
         }
     }
     
     // MARK: - Status Bar -
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
 }

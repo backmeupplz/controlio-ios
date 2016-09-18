@@ -14,12 +14,12 @@ class CustomizableView: UIView {
     // MARK: - Variables -
     
     @IBInspectable var cornerRadius: CGFloat = 0
-    @IBInspectable var shadowColor: UIColor = UIColor.blackColor()
+    @IBInspectable var shadowColor: UIColor = UIColor.black
     @IBInspectable var shadowRadius: CGFloat = 0
     @IBInspectable var shadowOpacity: Float = 0
-    @IBInspectable var shadowOffset: CGSize = CGSizeZero
+    @IBInspectable var shadowOffset: CGSize = CGSize.zero
     @IBInspectable var borderWidth: CGFloat = 0
-    @IBInspectable var borderColor: UIColor = UIColor.clearColor()
+    @IBInspectable var borderColor: UIColor = UIColor.clear
     
     // MARK: - View Life Cycle -
     
@@ -32,19 +32,19 @@ class CustomizableView: UIView {
     
     // MARK: - Private Functions -
     
-    private func roundCorners() {
+    fileprivate func roundCorners() {
         layer.cornerRadius = cornerRadius
     }
     
     var once = true
-    private func addShadow() {
+    fileprivate func addShadow() {
         if once {
-            layer.shadowColor = shadowColor.CGColor
+            layer.shadowColor = shadowColor.cgColor
             layer.shadowOffset = shadowOffset
             layer.shadowRadius = shadowRadius
             layer.shadowOpacity = shadowOpacity
             layer.borderWidth = borderWidth
-            layer.borderColor = borderColor.CGColor
+            layer.borderColor = borderColor.cgColor
             once = false
         }
     }

@@ -14,12 +14,12 @@ class CustomizableImageView: UIImageView {
     // MARK: - Variables -
     
     @IBInspectable var cornerRadius: CGFloat = 0
-    @IBInspectable var shadowColor: UIColor = UIColor.blackColor()
+    @IBInspectable var shadowColor: UIColor = UIColor.black
     @IBInspectable var shadowRadius: CGFloat = 0
     @IBInspectable var shadowOpacity: Float = 0
-    @IBInspectable var shadowOffset: CGSize = CGSizeZero
+    @IBInspectable var shadowOffset: CGSize = CGSize.zero
     @IBInspectable var borderWidth: CGFloat = 0
-    @IBInspectable var borderColor: UIColor = UIColor.clearColor()
+    @IBInspectable var borderColor: UIColor = UIColor.clear
     var s3Key: String? {
         didSet {
             getImageFromS3()
@@ -37,30 +37,30 @@ class CustomizableImageView: UIImageView {
     
     // MARK: - Private Functions -
     
-    private func roundCorners() {
+    fileprivate func roundCorners() {
         layer.cornerRadius = cornerRadius
     }
     
-    private func addShadow() {
-        layer.shadowColor = shadowColor.CGColor
+    fileprivate func addShadow() {
+        layer.shadowColor = shadowColor.cgColor
         layer.shadowOffset = shadowOffset
         layer.shadowRadius = shadowRadius
         layer.shadowOpacity = shadowOpacity
         layer.borderWidth = borderWidth
-        layer.borderColor = borderColor.CGColor
+        layer.borderColor = borderColor.cgColor
     }
     
     // Images and S3
     
-    private func getImageFromS3() {
-        let cache = SDImageCache.sharedImageCache()
+    fileprivate func getImageFromS3() {
+        let cache = SDImageCache.shared()
         
-        if let image = cache.imageFromDiskCacheForKey(s3Key!) {
+        if let image = cache?.imageFromDiskCache(forKey: s3Key!) {
             print("got image (\(s3Key!)) from memory cache")
             self.image = image
             return
         }
-        cache.queryDiskCacheForKey(s3Key) { image, cacheType in
+        let _ = cache?.queryDiskCache(forKey: s3Key) { image, cacheType in
             if let image = image {
                 print("got image (\(self.s3Key!)) from disk cache")
                 self.image = image
@@ -70,7 +70,7 @@ class CustomizableImageView: UIImageView {
                         PopupNotification.showNotification(error)
                     } else if let image = image {
                         print("got image (\(self.s3Key!)) from internet")
-                        cache.storeImage(image, forKey: self.s3Key!)
+                        cache?.store(image, forKey: self.s3Key!)
                         self.image = image
                     }
                 }

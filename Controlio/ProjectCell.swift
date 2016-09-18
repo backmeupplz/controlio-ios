@@ -20,21 +20,21 @@ class ProjectCell: UITableViewCell {
     
     // MARK: - Outlets -
     
-    @IBOutlet private weak var projectImageView: UIImageView!
+    @IBOutlet fileprivate weak var projectImageView: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var projectTitleLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var projectDescriptionLabel: UILabel!
     
-    @IBOutlet private weak var managerImageView: UIImageView!
+    @IBOutlet fileprivate weak var managerImageView: UIImageView!
     @IBOutlet weak var managerNameLabel: UILabel!
     @IBOutlet weak var postLabel: UILabel!
     
     // MARK: - Private Functions -
     
-    private func configure() {
+    fileprivate func configure() {
         projectImageView.loadURL(project.image)
-        dateLabel.text = NSDateFormatter.projectDateString(project.dateCreated)
+        dateLabel.text = DateFormatter.projectDateString(project.dateCreated)
         projectTitleLabel.text = project.title
         statusLabel.text = project.status
         projectDescriptionLabel.text = project.projectDescription

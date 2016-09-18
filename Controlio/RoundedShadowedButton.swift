@@ -12,17 +12,17 @@ class RoundedShadowedButton: UIButton {
     
     // MARK: - Outlets -
     
-    @IBOutlet private var dependantViews: [UIView]?
+    @IBOutlet fileprivate var dependantViews: [UIView]?
     
     // MARK: - Variables -
     
     var cornerRadius: CGFloat = 6
     var defaultAlpha = [UIView:CGFloat]()
-    override var highlighted: Bool {
+    override var isHighlighted: Bool {
         didSet {
             if let views = dependantViews {
                 for view in views {
-                    if highlighted {
+                    if isHighlighted {
                         defaultAlpha[view] = view.alpha
                         view.alpha = view.alpha / 2
                     } else {
@@ -44,13 +44,13 @@ class RoundedShadowedButton: UIButton {
     
     // MARK: - Private Functions -
     
-    private func roundCorners() {
+    fileprivate func roundCorners() {
         layer.cornerRadius = cornerRadius
     }
     
-    private func addShadow() {
-        layer.shadowColor = UIColor.blackColor().CGColor
-        layer.shadowOffset = CGSizeMake(0, 2)
+    fileprivate func addShadow() {
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = CGSize(width: 0, height: 2)
         layer.shadowRadius = 3
         layer.shadowOpacity = 0.2
     }

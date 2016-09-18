@@ -8,15 +8,15 @@
 
 import UIKit
 
-extension NSUserDefaults {
+extension UserDefaults {
     
     // MARK: - Class functions -
     
-    class func set(value: AnyObject?, key: String) {
-        NSUserDefaults.standardUserDefaults().setValue(value, forKey: key)
+    class func set(_ value: AnyObject?, key: String) {
+        UserDefaults.standard.setValue(value, forKey: key)
     }
     
-    class func getString(key: String) -> String? {
-        return NSUserDefaults.standardUserDefaults().valueForKey(key) as? String
+    class func getString(_ key: String) -> String? {
+        return UserDefaults.standard.value(forKey: key) as? String
     }
 }

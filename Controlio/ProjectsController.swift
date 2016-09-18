@@ -12,37 +12,37 @@ class ProjectsController: UITableViewController, UISearchResultsUpdating, UISear
     
     // MARK: - Variables -
     
-    private let searchController = CustomSearchController(searchResultsController: nil)
-    private var projects = [Project]()
+    fileprivate let searchController = CustomSearchController(searchResultsController: nil)
+    fileprivate var projects = [Project]()
     
     // MARK: - UISearchResultsUpdating -
     
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
+    func updateSearchResults(for searchController: UISearchController) {
         
     }
     
     // MARK: - UISearchBarDelegate -
     
-    func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         title = searchBar.scopeButtonTitles![selectedScope]
     }
     
     // MARK: - UITableViewDataSource -
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return projects.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(String(ProjectCell), forIndexPath: indexPath) as! ProjectCell
-        cell.project = projects[indexPath.row]
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProjectCell()), for: indexPath) as! ProjectCell
+        cell.project = projects[(indexPath as NSIndexPath).row]
         return cell
     }
     
     // MARK: - UITableViewDelegate -
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        Router(self).showProject(projects[indexPath.row])
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        Router(self).showProject(projects[(indexPath as NSIndexPath).row])
     }
     
     // MARK: - View Controller Life Cycle -
@@ -58,7 +58,7 @@ class ProjectsController: UITableViewController, UISearchResultsUpdating, UISear
         setupBackButton()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         loadData()
@@ -67,7 +67,7 @@ class ProjectsController: UITableViewController, UISearchResultsUpdating, UISear
     // MARK: - Public Functions -
     
     func showSearch() {
-        presentViewController(searchController, animated: true) {}
+        present(searchController, animated: true) {}
     }
     
     func loadData() {
@@ -80,40 +80,40 @@ class ProjectsController: UITableViewController, UISearchResultsUpdating, UISear
     
     // MARK: - Private Functions -
     
-    private func setupTableView() {
+    fileprivate func setupTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 464.0
-        tableView.registerNib(UINib(nibName: String(ProjectCell), bundle: nil), forCellReuseIdentifier: String(ProjectCell))
+        tableView.register(UINib(nibName: String(describing: ProjectCell()), bundle: nil), forCellReuseIdentifier: String(describing: ProjectCell()))
     }
     
-    private func addRefreshControl() {
+    fileprivate func addRefreshControl() {
         refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(ProjectsController.loadData), forControlEvents: .ValueChanged)
+        refreshControl?.addTarget(self, action: #selector(ProjectsController.loadData), for: .valueChanged)
     }
     
-    private func setupSearchController() {
+    fileprivate func setupSearchController() {
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.scopeButtonTitles = ["All projects", "Completed", "In progress"]
         searchController.searchBar.delegate = self
-        searchController.searchBar.tintColor = UIColor.whiteColor()
+        searchController.searchBar.tintColor = UIColor.white
         searchController.searchBar.barTintColor = UIColor.controlioViolet()
-        searchController.searchBar.setCursorTintColor(UIColor.lightGrayColor())
+        searchController.searchBar.setCursorTintColor(UIColor.lightGray)
         definesPresentationContext = true
     }
     
-    private func addSearchButton() {
-        let searchButton = UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: #selector(ProjectsController.showSearch))
+    fileprivate func addSearchButton() {
+        let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(ProjectsController.showSearch))
         navigationItem.rightBarButtonItem = searchButton
     }
     
-    private func setupBackButton() {
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+    fileprivate func setupBackButton() {
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     // MARK: - Status Bar -
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
 }

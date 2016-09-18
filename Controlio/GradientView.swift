@@ -20,19 +20,19 @@ class GradientView: CustomizableView {
     
     // MARK: - Private Variables -
     
-    private var gradient: CAGradientLayer?
+    fileprivate var gradient: CAGradientLayer?
     
     // MARK: - View Life Cycle -
     
-    override func drawRect(rect: CGRect) {
-        super.drawRect(rect)
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
         
         addGradient()
     }
     
     // MARK: - Private Functions -
 
-    private func addGradient() {
+    fileprivate func addGradient() {
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         let componentCount = 2
             
@@ -56,12 +56,12 @@ class GradientView: CustomizableView {
         
         let locations : [CGFloat] = [0, 1]
         
-        let gradient = CGGradientCreateWithColorComponents(colorSpace, components, locations, componentCount)
+        let gradient = CGGradient(colorSpace: colorSpace, colorComponents: components, locations: locations, count: componentCount)
         
-        let startPoint = CGPoint(x: CGRectGetWidth(bounds)*self.startPoint.x, y: CGRectGetHeight(bounds)*self.startPoint.y)
-        let endPoint = CGPoint(x: CGRectGetWidth(bounds)*self.endPoint.x, y: CGRectGetHeight(bounds)*self.endPoint.y)
+        let startPoint = CGPoint(x: bounds.width*self.startPoint.x, y: bounds.height*self.startPoint.y)
+        let endPoint = CGPoint(x: bounds.width*self.endPoint.x, y: bounds.height*self.endPoint.y)
         
         let context = UIGraphicsGetCurrentContext()
-        CGContextDrawLinearGradient(context, gradient, startPoint, endPoint, CGGradientDrawingOptions(rawValue: 0))
+        context?.drawLinearGradient(gradient!, start: startPoint, end: endPoint, options: CGGradientDrawingOptions(rawValue: 0))
     }
 }

@@ -9,8 +9,8 @@
 import UIKit
 
 protocol AttachmentViewDelegate: class {
-    func attachmentDidTouchCross(attachment: AttachmentView)
-    func attachmentWasTouched(attachment: AttachmentView)
+    func attachmentDidTouchCross(_ attachment: AttachmentView)
+    func attachmentWasTouched(_ attachment: AttachmentView)
 }
 
 class AttachmentView: UIView {
@@ -29,12 +29,12 @@ class AttachmentView: UIView {
     
     // MARK: - Outlets -
     
-    @IBOutlet private weak var imageView: CustomizableImageView!
+    @IBOutlet fileprivate weak var imageView: CustomizableImageView!
     
     // MARK: - Class Functions -
     
-    class func view(superview: UIView, delegate: AttachmentViewDelegate? = nil) -> AttachmentView {
-        let result = NSBundle.mainBundle().loadNibNamed(String(AttachmentView), owner: nil, options: [:]).last as! AttachmentView
+    class func view(_ superview: UIView, delegate: AttachmentViewDelegate? = nil) -> AttachmentView {
+        let result = Bundle.main.loadNibNamed(String(describing: AttachmentView()), owner: nil, options: [:])?.last as! AttachmentView
         result.delegate = delegate
         superview.addSubview(result)
         return result
@@ -42,11 +42,11 @@ class AttachmentView: UIView {
     
     // MARK: - Actions -
 
-    @IBAction func crossTouched(sender: AnyObject) {
+    @IBAction func crossTouched(_ sender: AnyObject) {
         delegate?.attachmentDidTouchCross(self)
     }
 
-    @IBAction func attachmentTouched(sender: AnyObject) {
+    @IBAction func attachmentTouched(_ sender: AnyObject) {
         delegate?.attachmentWasTouched(self)
     }
 }

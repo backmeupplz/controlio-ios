@@ -12,22 +12,22 @@ extension UIAlertController {
     
     // MARK: - General Functions -
     
-    func addCancelButton(title: String = "Cancel") {
-        let cancel = UIAlertAction(title: title, style: .Cancel) { action in
+    func addCancelButton(_ title: String = "Cancel") {
+        let cancel = UIAlertAction(title: title, style: .cancel) { action in
             // Do nothing
         }
         addAction(cancel)
     }
     
-    func addPopoverSourceView(view: UIView) {
+    func addPopoverSourceView(_ view: UIView) {
         if let popover = popoverPresentationController {
             popover.sourceView = view
             popover.sourceRect = view.bounds
         }
     }
     
-    func addDefaultAction(title: String, completion:()->Void) {
-        let action = UIAlertAction(title: title, style: .Default) { action in
+    func addDefaultAction(_ title: String, completion:@escaping ()->Void) {
+        let action = UIAlertAction(title: title, style: .default) { action in
             completion()
         }
         addAction(action)

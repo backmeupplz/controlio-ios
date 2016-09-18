@@ -13,20 +13,20 @@ class PopupNotification: NSObject {
     
     // MARK: - Private Class Variables -
     
-    private static let controlioStyle = "controlioStyle"
+    fileprivate static let controlioStyle = "controlioStyle"
     
     // MARK: - Public Functions -
     
     class func setup() {
         JDStatusBarNotification.addStyleNamed(controlioStyle) { style -> JDStatusBarStyle! in
-            style.barColor = UIColor.controlioViolet()
-            style.textColor = UIColor.whiteColor()
-            style.font = UIFont(name: "SFUIText-Regular", size: 12)
+            style?.barColor = UIColor.controlioViolet()
+            style?.textColor = UIColor.white
+            style?.font = UIFont(name: "SFUIText-Regular", size: 12)
             return style
         }
     }
     
-    class func showNotification(text: String) {
-        JDStatusBarNotification.showWithStatus(text, dismissAfter: 2.0, styleName: controlioStyle)
+    class func showNotification(_ text: String) {
+        JDStatusBarNotification.show(withStatus: text, dismissAfter: 2.0, styleName: controlioStyle)
     }
 }

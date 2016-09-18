@@ -16,7 +16,7 @@ class DataManager: NSObject {
     
     // MARK: - Internal Functions -
     
-    func getProjects(completion: (projects: [Project]?)->()) {
-        completion(projects: Project.testProjects())
+    func getProjects(_ completion: (_ projects: [Project]?)->()) {
+        completion(Project.testProjects())
     }
 }

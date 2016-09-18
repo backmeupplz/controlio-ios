@@ -21,7 +21,7 @@ class CatchPhraseView: UIScrollView, UIScrollViewDelegate {
 
     // MARK: - Outlets -
     
-    @IBOutlet private weak var pageControl: UIPageControl?
+    @IBOutlet fileprivate weak var pageControl: UIPageControl?
     
     // MARK: - View Life Cycle -
 
@@ -33,34 +33,34 @@ class CatchPhraseView: UIScrollView, UIScrollViewDelegate {
     
     // MARK: - UIScrollViewDelegate -
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         pageControl?.currentPage = Int(contentOffset.x / frame.width)
     }
     
     // MARK: - Private Functions -
     
-    private func setupPageControl() {
+    fileprivate func setupPageControl() {
         pageControl?.currentPage = 0
         pageControl?.numberOfPages = labelsText.count
     }
     
-    private func addLabels() {
+    fileprivate func addLabels() {
         var previousLabel: UILabel?
         for text in labelsText {
             let label = UILabel()
-            label.textAlignment = NSTextAlignment.Center
+            label.textAlignment = NSTextAlignment.center
             label.text = text
             label.numberOfLines = 0
-            label.textColor = UIColor.whiteColor()
+            label.textColor = UIColor.white
             label.font = UIFont(name: "SFUIText-Regular", size: 16)
             
             addSubview(label)
             
-            label.snp_makeConstraints{ make in
+            label.snp.makeConstraints{ make in
                 make.width.equalTo(self).inset(UIEdgeInsetsMake(0, 4, 0, 4))
                 make.centerY.equalTo(self)
                 if previousLabel != nil {
-                    make.left.equalTo(previousLabel!.snp_right).offset(8)
+                    make.left.equalTo(previousLabel!.snp.right).offset(8)
                 } else {
                     make.left.equalTo(self).offset(4)
                 }

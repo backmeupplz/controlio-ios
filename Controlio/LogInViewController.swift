@@ -12,38 +12,38 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Outlets -
     
-    @IBOutlet private var textFields: [UITextField]!
+    @IBOutlet fileprivate var textFields: [UITextField]!
     @IBOutlet var buttons: [UIButton]!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     // MARK: - UITextFieldDelegate -
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == textFields.last {
             textField.resignFirstResponder()
             logInTouched(textField)
         } else {
-            textFields[textFields.indexOf(textField)!+1].becomeFirstResponder()
+            textFields[textFields.index(of: textField)!+1].becomeFirstResponder()
         }
         return false
     }
     
     // MARK: - Actions -
     
-    @IBAction func logInTouched(sender: AnyObject) {
+    @IBAction func logInTouched(_ sender: AnyObject) {
         checkTextFields()
     }
     
-    @IBAction func forgotPasswordTouched(sender: AnyObject) {
+    @IBAction func forgotPasswordTouched(_ sender: AnyObject) {
         Router(self).showRecovery()
     }
     
-    @IBAction func signUpTouched(sender: AnyObject) {
+    @IBAction func signUpTouched(_ sender: AnyObject) {
         Router(self).showSignUp()
     }
     
-    @IBAction func demoTouched(sender: UIButton) {
-        let alert = UIAlertController(title: "What language do you speak?", message: nil, preferredStyle: .ActionSheet)
+    @IBAction func demoTouched(_ sender: UIButton) {
+        let alert = UIAlertController(title: "What language do you speak?", message: nil, preferredStyle: .actionSheet)
         alert.addPopoverSourceView(sender)
         alert.addCancelButton()
         for demoAccountLanguage in DemoAccountLanguage.allCases {
@@ -51,22 +51,22 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                 self.loginDemo(demoAccountLanguage)
             }
         }
-        presentViewController(alert, animated: true) {}
+        present(alert, animated: true) {}
     }
     
     // MARK: - Private Function -
     
-    private func loginDemo(type: DemoAccountLanguage) {
+    fileprivate func loginDemo(_ type: DemoAccountLanguage) {
         switch type {
-        case .English:
+        case .english:
             print("Login English")
-        case .Russian:
+        case .russian:
             print("Login Russian")
         }
         Router(self).showMain()
     }
     
-    private func checkTextFields() {
+    fileprivate func checkTextFields() {
         var success = true
         for textField in textFields {
             if textField.text == "" {
@@ -90,19 +90,19 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    private func enableUI(enable: Bool) {
-        spinner.hidden = enable
+    fileprivate func enableUI(_ enable: Bool) {
+        spinner.isHidden = enable
         for textField in textFields {
-            textField.enabled = enable
+            textField.isEnabled = enable
         }
         for button in buttons {
-            button.enabled = enable
+            button.isEnabled = enable
         }
     }
     
     // MARK: - Status Bar -
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
 }

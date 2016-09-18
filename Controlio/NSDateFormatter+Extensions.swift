@@ -10,14 +10,14 @@ import UIKit
 
 //let projectDateStringFormatter = NSDateFormatter()
 
-extension NSDateFormatter {
+extension DateFormatter {
     
     // MARK: - Class Functions -
     
-    class func projectDateString(date: NSDate) -> String {
-        let formatter = NSDateFormatter()
-        formatter.dateStyle = .ShortStyle
-        formatter.timeStyle = .ShortStyle
-        return formatter.stringFromDate(date)
+    class func projectDateString(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        return formatter.string(from: date)
     }
 }

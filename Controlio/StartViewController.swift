@@ -13,7 +13,7 @@ class StartViewController: UIViewController {
     
     // MARK: - Outlets -
     
-    @IBOutlet private weak var catchPhraseView: CatchPhraseView!
+    @IBOutlet fileprivate weak var catchPhraseView: CatchPhraseView!
     
     // MARK: - View Controller Life Cycle -
     
@@ -24,22 +24,24 @@ class StartViewController: UIViewController {
                                  "See the status of your orders like you track your parcel on mail post",
                                  "Let local business inform you about your order with the speed of a screen touch!"]
         if Server.sharedManager.isLoggedIn() {
+            print(1)
             Router(self).showMain(false)
+            print(2)
         }
     }
     
     // MARK: - Actions -
     
-    @IBAction private func signupTouched(sender: AnyObject) {
+    @IBAction fileprivate func signupTouched(_ sender: AnyObject) {
         Router(self).showSignUp()
     }
     
-    @IBAction private func loginTouched(sender: AnyObject) {
+    @IBAction fileprivate func loginTouched(_ sender: AnyObject) {
         Router(self).showLogIn()
     }
     
-    @IBAction private func demoTouched(sender: UIButton) {
-        let alert = UIAlertController(title: "What language do you speak?", message: nil, preferredStyle: .ActionSheet)
+    @IBAction fileprivate func demoTouched(_ sender: UIButton) {
+        let alert = UIAlertController(title: "What language do you speak?", message: nil, preferredStyle: .actionSheet)
         alert.addPopoverSourceView(sender)
         alert.addCancelButton()
         for demoAccountLanguage in DemoAccountLanguage.allCases {
@@ -47,16 +49,16 @@ class StartViewController: UIViewController {
                 self.loginDemo(demoAccountLanguage)
             }
         }
-        presentViewController(alert, animated: true) {}
+        present(alert, animated: true) {}
     }
     
     // MARK: - Private Functions -
     
-    private func loginDemo(type: DemoAccountLanguage) {
+    fileprivate func loginDemo(_ type: DemoAccountLanguage) {
         switch type {
-        case .English:
+        case .english:
             print("Login English")
-        case .Russian:
+        case .russian:
             print("Login Russian")
         }
         Router(self).showMain()
@@ -64,7 +66,7 @@ class StartViewController: UIViewController {
     
     // MARK: - Status Bar -
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
 }

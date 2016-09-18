@@ -17,62 +17,62 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     
     // MARK: - Private Variables -
     
-    private var needsHeaderViewLayout = true
-    private var input: InputView?
-    private let imagePicker = UIImagePickerController()
+    fileprivate var needsHeaderViewLayout = true
+    fileprivate var input: InputView?
+    fileprivate let imagePicker = UIImagePickerController()
     
     // MARK: - Outlets -
     
-    @IBOutlet private weak var headerView: UIView!
+    @IBOutlet fileprivate weak var headerView: UIView!
     
-    @IBOutlet private weak var projectImageView: UIImageView!
-    @IBOutlet private weak var statusLabel: UILabel!
-    @IBOutlet private weak var dateLabel: UILabel!
-    @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet fileprivate weak var projectImageView: UIImageView!
+    @IBOutlet fileprivate weak var statusLabel: UILabel!
+    @IBOutlet fileprivate weak var dateLabel: UILabel!
+    @IBOutlet fileprivate weak var descriptionLabel: UILabel!
     
     // MARK: - UITableViewDataSource -
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return project.posts.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(String(PostCell), forIndexPath: indexPath) as! PostCell
-        cell.post = project.posts[indexPath.row]
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PostCell()), for: indexPath) as! PostCell
+        cell.post = project.posts[(indexPath as NSIndexPath).row]
         cell.delegate = self
         return cell
     }
     
     // MARK: - PostCellDelegate -
     
-    func openAttachment(index: Int, post: Post) {
+    func openAttachment(_ index: Int, post: Post) {
         print("open attachment: \(index)")
     }
     
     // MARK: - InputViewDelegate -
     
-    func openPickerWithDelegate(delegate: PickerDelegate) {
+    func openPickerWithDelegate(_ delegate: PickerDelegate) {
         imagePicker.allowsEditing = false
         imagePicker.delegate = delegate
         
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         alert.addDefaultAction("Camera") { 
-            self.imagePicker.sourceType = .Camera
-            self.presentViewController(self.imagePicker, animated: true, completion: nil)
+            self.imagePicker.sourceType = .camera
+            self.present(self.imagePicker, animated: true, completion: nil)
         }
         alert.addDefaultAction("Library") { 
-            self.imagePicker.sourceType = .PhotoLibrary
-            self.presentViewController(self.imagePicker, animated: true, completion: nil)
+            self.imagePicker.sourceType = .photoLibrary
+            self.present(self.imagePicker, animated: true, completion: nil)
         }
         alert.addCancelButton()
         alert.addPopoverSourceView(input!)
         
-        self.presentViewController(alert, animated: true) { }
+        self.present(alert, animated: true) { }
     }
     
     func closeImagePicker() {
-        dismissViewControllerAnimated(true) { }
+        dismiss(animated: true) { }
     }
     
     // MARK: - View Controller Life Cycle -
@@ -86,7 +86,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         setupInput()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         configure()
@@ -103,7 +103,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         checkHeaderViewHeight()
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         unsubscribeFromNotifications()
@@ -120,12 +120,12 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     
     // MARK: - Private Functions -
     
-    private func configure() {
+    fileprivate func configure() {
         title = project.title
         
         projectImageView.loadURL(project.image)
         statusLabel.text = project.status
-        dateLabel.text = NSDateFormatter.projectDateString(project.dateCreated)
+        dateLabel.text = DateFormatter.projectDateString(project.dateCreated)
         descriptionLabel.text = project.projectDescription
         
         tableView.reloadData()
@@ -134,24 +134,24 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         checkHeaderViewHeight()
     }
     
-    private func setupTableView() {
+    fileprivate func setupTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 464.0
-        tableView.registerNib(UINib(nibName: String(PostCell), bundle: nil), forCellReuseIdentifier: String(PostCell))
+        tableView.register(UINib(nibName: String(describing: PostCell()), bundle: nil), forCellReuseIdentifier: String(describing: PostCell()))
     }
     
-    private func addRefreshControl() {
+    fileprivate func addRefreshControl() {
         refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(ProjectController.loadData), forControlEvents: .ValueChanged)
+        refreshControl?.addTarget(self, action: #selector(ProjectController.loadData), for: .valueChanged)
     }
     
-    private func setupBackButton() {
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+    fileprivate func setupBackButton() {
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
-    private func checkHeaderViewHeight() {
+    fileprivate func checkHeaderViewHeight() {
         if needsHeaderViewLayout {
-            let screenWidth = UIScreen.mainScreen().bounds.width
+            let screenWidth = UIScreen.main.bounds.width
             let labelWidth = screenWidth - CGFloat(60)
             let labelHeight = project.projectDescription.heightWithConstrainedWidth(labelWidth, font: descriptionLabel.font)
             headerView.frame.size.height = 131 + labelHeight
@@ -160,7 +160,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         }
     }
     
-    private func setBottomScrollInset(inset: CGFloat) {
+    fileprivate func setBottomScrollInset(_ inset: CGFloat) {
         let scrollIndicatorInsets = tableView.scrollIndicatorInsets
         let contentInset = tableView.contentInset
         tableView.scrollIndicatorInsets = UIEdgeInsetsMake(scrollIndicatorInsets.top,
@@ -173,41 +173,41 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
                                                   contentInset.right)
     }
     
-    private func setupInput() {
+    fileprivate func setupInput() {
         input = InputView.view(navigationController!.view, vc: self, delegate: self)
     }
     
-    private func showInput() {
+    fileprivate func showInput() {
         if project.canEdit {
             input?.show()
             setBottomScrollInset(input?.frame.height ?? 0)
         }
     }
     
-    private func hideInput() {
+    fileprivate func hideInput() {
         input?.hide()
     }
     
     // MARK: - Notifications -
     
-    private func subcribeForNotifications() {
-        let notificationCenter = NSNotificationCenter.defaultCenter()
-        notificationCenter.addObserver(self, selector: #selector(ProjectController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(ProjectController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+    fileprivate func subcribeForNotifications() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(ProjectController.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(ProjectController.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
-    private func unsubscribeFromNotifications() {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+    fileprivate func unsubscribeFromNotifications() {
+        NotificationCenter.default.removeObserver(self)
     }
     
-    @objc private func keyboardWillShow(notification: NSNotification) {
-        let userInfo = notification.userInfo!
-        let keyboardHeight = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue().height
-        let options = UIViewAnimationOptions(rawValue: UInt((userInfo[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).unsignedLongValue))
+    @objc fileprivate func keyboardWillShow(_ notification: Notification) {
+        let userInfo = (notification as NSNotification).userInfo!
+        let keyboardHeight = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height
+        let options = UIViewAnimationOptions(rawValue: UInt((userInfo[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).uintValue))
         let duration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
         
         input?.changeBottomSpacing(keyboardHeight)
-        UIView.animateWithDuration(duration,
+        UIView.animate(withDuration: duration,
                                    delay: 0,
                                    options: options,
                                    animations: { 
@@ -215,13 +215,13 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
             }) { finished in }
     }
     
-    @objc private func keyboardWillHide(notification: NSNotification) {
-        let userInfo = notification.userInfo!
-        let options = UIViewAnimationOptions(rawValue: UInt((userInfo[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).unsignedLongValue))
+    @objc fileprivate func keyboardWillHide(_ notification: Notification) {
+        let userInfo = (notification as NSNotification).userInfo!
+        let options = UIViewAnimationOptions(rawValue: UInt((userInfo[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).uintValue))
         let duration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
         
         input?.changeBottomSpacing(0)
-        UIView.animateWithDuration(duration,
+        UIView.animate(withDuration: duration,
                                    delay: 0,
                                    options: options,
                                    animations: {
@@ -231,11 +231,11 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     
     // MARK: - Rotations -
     
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
         
         needsHeaderViewLayout = true
-        coordinator.animateAlongsideTransition({ context in
+        coordinator.animate(alongsideTransition: { context in
             self.checkHeaderViewHeight()
         }) { context in
             // Completion
@@ -244,7 +244,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     
     // MARK: - Status Bar -
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
 }

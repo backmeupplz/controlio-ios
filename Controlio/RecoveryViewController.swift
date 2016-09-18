@@ -16,17 +16,17 @@ class RecoveryViewController: UIViewController {
     
     // MARK: - Actions -
     
-    @IBAction func recoverTouched(sender: AnyObject) {
+    @IBAction func recoverTouched(_ sender: AnyObject) {
         checkTextFields()
     }
     
-    @IBAction func backTouched(sender: AnyObject) {
-        navigationController?.popViewControllerAnimated(true)
+    @IBAction func backTouched(_ sender: AnyObject) {
+        let _ = navigationController?.popViewController(animated: true)
     }
     
     // MARK: - Private Function -
     
-    private func checkTextFields() {
+    fileprivate func checkTextFields() {
         var success = true
         if textField.text == "" {
             textField.shake()
@@ -38,7 +38,7 @@ class RecoveryViewController: UIViewController {
     
     // MARK: - Status Bar -
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
 }

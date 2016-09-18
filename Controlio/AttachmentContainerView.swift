@@ -20,7 +20,7 @@ class AttachmentContainerView: UIView, PickerDelegate {
     
     // MARK: - Outlets -
     
-    @IBOutlet private weak var wrapperView: AttachmentWrapperView!
+    @IBOutlet fileprivate weak var wrapperView: AttachmentWrapperView!
     
     // MARK: - View Life Cycle -
     
@@ -34,7 +34,7 @@ class AttachmentContainerView: UIView, PickerDelegate {
     
     // MARK: - UIImagePickerControllerDelegate -
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             wrapperView.attachments.append(pickedImage)
         }

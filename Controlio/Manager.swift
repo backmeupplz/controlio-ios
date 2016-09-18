@@ -15,5 +15,5 @@ class Manager: NSObject {
     var name: String!
     var email: String!
     var phone: String?
-    var image: NSURL!
+    var image: URL!
 }

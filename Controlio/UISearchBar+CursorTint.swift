@@ -9,12 +9,12 @@
 import UIKit
 
 extension UISearchBar {
-    func setCursorTintColor(cursorTint: UIColor) {
+    func setCursorTintColor(_ cursorTint: UIColor) {
         let view = subviews.first!
         let subViewsArray = view.subviews
         
         for subView in subViewsArray {
-            if subView.isKindOfClass(UITextField){
+            if subView.isKind(of: UITextField.self){
                 subView.tintColor = cursorTint
             }
         }

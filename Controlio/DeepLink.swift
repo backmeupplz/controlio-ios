@@ -9,50 +9,50 @@
 import UIKit
 
 enum DeepLinkType: Int {
-    case Telegram = 1
-    case Skype
-    case Messenger
+    case telegram = 1
+    case skype
+    case messenger
     
     var scheme: String {
         switch self {
-        case Telegram:
+        case .telegram:
             return "tg://"
-        case Skype:
+        case .skype:
             return "skype:"
-        case Messenger:
+        case .messenger:
             return "fb-messenger://"
         }
     }
     
     var name: String {
         switch self {
-        case Telegram:
+        case .telegram:
             return "Telegram"
-        case Skype:
+        case .skype:
             return "Skype"
-        case Messenger:
+        case .messenger:
             return "Messenger"
         }
     }
     
     var itunesLink: String {
         switch self {
-        case Telegram:
+        case .telegram:
             return "itms://itunes.apple.com/ca/app/telegram-messenger/id686449807"
-        case Skype:
+        case .skype:
             return "itms://itunes.apple.com/ca/app/skype-for-iphone/id304878510"
-        case Messenger:
+        case .messenger:
             return "itms://itunes.apple.com/us/app/facebook-messenger/id454638411"
         }
     }
     
     var supportLink: String {
         switch self {
-        case Telegram:
+        case .telegram:
             return "tg://resolve?domain=borodutch"
-        case Skype:
+        case .skype:
             return "skype://backmeupplz...?chat"
-        case Messenger:
+        case .messenger:
             return "http://m.me/borodutchking"
         }
     }
@@ -62,28 +62,28 @@ class DeepLink: NSObject {
     
     // MARK: - Class Functions -
     
-    class func schemeAvailable(type: DeepLinkType) -> Bool {
+    class func schemeAvailable(_ type: DeepLinkType) -> Bool {
         return schemeAvailable(type.scheme)
     }
     
-    class func openItunes(type: DeepLinkType) {
+    class func openItunes(_ type: DeepLinkType) {
         openLink(type.itunesLink)
     }
     
-    class func openSupportLink(type: DeepLinkType) {
+    class func openSupportLink(_ type: DeepLinkType) {
         openLink(type.supportLink)
     }
     
     // MARK: - Private Class Functions
     
-    private class func schemeAvailable(scheme: String) -> Bool {
-        if let url = NSURL(string: scheme) {
-            return UIApplication.sharedApplication().canOpenURL(url)
+    fileprivate class func schemeAvailable(_ scheme: String) -> Bool {
+        if let url = URL(string: scheme) {
+            return UIApplication.shared.canOpenURL(url)
         }
         return false
     }
 
-    private class func openLink(link: String) {
-        UIApplication.sharedApplication().openURL(NSURL(string: link)!)
+    fileprivate class func openLink(_ link: String) {
+        UIApplication.shared.openURL(URL(string: link)!)
     }
 }

@@ -12,7 +12,7 @@ class Router {
     
     // MARK: - Variables -
     
-    private var controller: UIViewController!
+    fileprivate var controller: UIViewController!
     
     // MARK: - Object Life Cycle -
     
@@ -24,28 +24,29 @@ class Router {
     
     // MARK: - Private Class Functions -
     
-    private class func startVC() -> UIViewController {
-        return loginStoryboard().instantiateViewControllerWithIdentifier(String(StartViewController))
+    fileprivate class func startVC() -> UIViewController {
+        return loginStoryboard().instantiateViewController(withIdentifier: String(describing: StartViewController()))
     }
     
-    private class func logInVC() -> UIViewController {
-        return loginStoryboard().instantiateViewControllerWithIdentifier(String(LogInViewController))
+    
+    fileprivate class func logInVC() -> UIViewController {
+        return loginStoryboard().instantiateViewController(withIdentifier: String(describing: LogInViewController()))
     }
     
-    private class func signUpVC() -> UIViewController {
-        return loginStoryboard().instantiateViewControllerWithIdentifier(String(SignUpViewController))
+    fileprivate class func signUpVC() -> UIViewController {
+        return loginStoryboard().instantiateViewController(withIdentifier: String(describing: SignUpViewController()))
     }
     
-    private class func recoveryVC() -> UIViewController {
-        return loginStoryboard().instantiateViewControllerWithIdentifier(String(RecoveryViewController))
+    fileprivate class func recoveryVC() -> UIViewController {
+        return loginStoryboard().instantiateViewController(withIdentifier: String(describing: RecoveryViewController()))
     }
     
-    private class func mainTBC() -> UIViewController {
-        return mainStoryboard().instantiateViewControllerWithIdentifier(String(MainController))
+    fileprivate class func mainTBC() -> UIViewController {
+        return mainStoryboard().instantiateViewController(withIdentifier: String(describing: MainController()))
     }
     
-    private class func projectVC(project: Project) -> UIViewController {
-        let vc =  mainStoryboard().instantiateViewControllerWithIdentifier(String(ProjectController)) as! ProjectController
+    fileprivate class func projectVC(_ project: Project) -> UIViewController {
+        let vc =  mainStoryboard().instantiateViewController(withIdentifier: String(describing: ProjectController())) as! ProjectController
         vc.project = project
         return vc
     }
@@ -68,29 +69,29 @@ class Router {
         showVC(Router.recoveryVC())
     }
     
-    func showMain(animated: Bool = true) {
+    func showMain(_ animated: Bool = true) {
         showVC(Router.mainTBC(), animated: animated)
     }
     
-    func showProject(project: Project) {
+    func showProject(_ project: Project) {
         showVC(Router.projectVC(project))
     }
     
     // MARK: - Private Functions -
     
-    private func showVC(vc: UIViewController, animated: Bool = true) {
+    fileprivate func showVC(_ vc: UIViewController, animated: Bool = true) {
         if animated {
-            controller.showViewController(vc, sender: controller)
+            controller.show(vc, sender: controller)
         } else {
             controller.navigationController?.viewControllers.append(vc)
         }
     }
     
-    private class func loginStoryboard() -> UIStoryboard {
+    fileprivate class func loginStoryboard() -> UIStoryboard {
         return UIStoryboard(name: "Login", bundle: nil)
     }
     
-    private class func mainStoryboard() -> UIStoryboard {
+    fileprivate class func mainStoryboard() -> UIStoryboard {
         return UIStoryboard(name: "Main", bundle: nil)
     }
 }

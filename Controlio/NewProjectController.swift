@@ -12,12 +12,12 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate {
     
     // MARK: - UITableViewDataSource -
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(String(NewProjectCell), forIndexPath: indexPath) as! NewProjectCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: NewProjectCell()), for: indexPath) as! NewProjectCell
         cell.delegate = self
         return cell
     }
@@ -47,13 +47,13 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate {
     
     // MARK: - Private Functions -
     
-    private func setupTableView() {
+    fileprivate func setupTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 464.0
-        tableView.registerNib(UINib(nibName: String(NewProjectCell), bundle: nil), forCellReuseIdentifier: String(NewProjectCell))
+        tableView.register(UINib(nibName: String(describing: NewProjectCell()), bundle: nil), forCellReuseIdentifier: String(describing: NewProjectCell()))
     }
     
-    private func setupBackButton() {
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+    fileprivate func setupBackButton() {
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
 }

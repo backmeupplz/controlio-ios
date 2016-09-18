@@ -21,17 +21,17 @@ class SupportController: UITableViewController {
     
     // MARK: - UITableViewDelegate -
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tryOpening(DeepLinkType(rawValue: indexPath.row)!)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tryOpening(DeepLinkType(rawValue: (indexPath as NSIndexPath).row)!)
     }
     
     // MARK: - Private Functions -
     
-    private func tryOpening(type: DeepLinkType) {
+    fileprivate func tryOpening(_ type: DeepLinkType) {
         if DeepLink.schemeAvailable(type) {
             DeepLink.openSupportLink(type)
         } else {
@@ -39,19 +39,19 @@ class SupportController: UITableViewController {
         }
     }
     
-    private func showNoApppInstalledAlert(type: DeepLinkType) {
-        let alert = UIAlertController(title: "Looks like \(type.name) isn't installed", message: "Would you like to install \(type.name)?", preferredStyle: .Alert)
-        alert.addPopoverSourceView(tableView.cellForRowAtIndexPath(NSIndexPath(type.rawValue))!)
+    fileprivate func showNoApppInstalledAlert(_ type: DeepLinkType) {
+        let alert = UIAlertController(title: "Looks like \(type.name) isn't installed", message: "Would you like to install \(type.name)?", preferredStyle: .alert)
+        alert.addPopoverSourceView(tableView.cellForRow(at: IndexPath(type.rawValue))!)
         alert.addCancelButton()
         alert.addDefaultAction("Install") { 
             DeepLink.openItunes(type)
         }
-        presentViewController(alert, animated: true) {}
+        present(alert, animated: true) {}
     }
     
     // MARK: - Status Bar -
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
 }

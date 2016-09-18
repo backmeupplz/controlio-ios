@@ -12,7 +12,7 @@ class MainController: UITabBarController {
     
     // MARK: - View Controller Life Cycle -
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         tabBar.tintColor = UIColor.controlioGreen()
@@ -20,7 +20,7 @@ class MainController: UITabBarController {
     
     // MARK: - Status Bar -
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
 }

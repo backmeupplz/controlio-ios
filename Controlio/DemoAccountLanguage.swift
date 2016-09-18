@@ -9,22 +9,22 @@
 import UIKit
 
 enum DemoAccountLanguage: Int {
-    case English
-    case Russian
+    case english
+    case russian
     
     var string: String {
         get {
             switch self {
-            case .English:
+            case .english:
                 return "English"
-            case .Russian:
+            case .russian:
                 return "Russian"
             }
         }
     }
     static var allCases: [DemoAccountLanguage] {
         get {
-            return [.English, .Russian]
+            return [.english, .russian]
         }
     }
 }

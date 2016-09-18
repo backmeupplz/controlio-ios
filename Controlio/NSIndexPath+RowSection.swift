@@ -8,11 +8,13 @@
 
 import UIKit
 
-extension NSIndexPath {
+extension IndexPath {
     
     // MARK: - Class Functions -
     
-    convenience init(_ row: Int = 0, section: Int = 0) {
-        self.init(forRow:row, inSection: section)
+    init(_ row: Int = 0, section: Int = 0) {
+        self.init()
+        self.row = row
+        self.section = section
     }
 }

@@ -11,7 +11,7 @@ import SnapKit
 import SlackTextViewController
 
 protocol InputViewDelegate: class {
-    func openPickerWithDelegate(delegate: PickerDelegate)
+    func openPickerWithDelegate(_ delegate: PickerDelegate)
     func closeImagePicker()
 }
 
@@ -24,19 +24,19 @@ class InputView: CustomizableView, AttachmentContainerViewDelegate {
     
     // MARK: - Outlets -
     
-    @IBOutlet private weak var textView: SLKTextView!
-    @IBOutlet private weak var textViewHeight: NSLayoutConstraint!
-    @IBOutlet private weak var attachmentContainerView: AttachmentContainerView!
+    @IBOutlet fileprivate weak var textView: SLKTextView!
+    @IBOutlet fileprivate weak var textViewHeight: NSLayoutConstraint!
+    @IBOutlet fileprivate weak var attachmentContainerView: AttachmentContainerView!
     
     // MARK: - Class Functions -
     
-    class func view(superview: UIView, vc: UIViewController, delegate: InputViewDelegate? = nil) -> InputView {
-        let result = NSBundle.mainBundle().loadNibNamed(String(InputView), owner: nil, options: [:]).last as! InputView
+    class func view(_ superview: UIView, vc: UIViewController, delegate: InputViewDelegate? = nil) -> InputView {
+        let result = Bundle.main.loadNibNamed(String(describing: InputView()), owner: nil, options: [:])?.last as! InputView
         result.delegate = delegate
         
         superview.addSubview(result)
-        result.snp_makeConstraints { make in
-            make.top.equalTo(superview.snp_bottom)
+        result.snp.makeConstraints { make in
+            make.top.equalTo(superview.snp.bottom)
             make.left.equalTo(superview)
             make.right.equalTo(superview)
         }
@@ -60,7 +60,7 @@ class InputView: CustomizableView, AttachmentContainerViewDelegate {
     
     // MARK: - Actions -
     
-    @IBAction func attachmentTouched(sender: AnyObject) {
+    @IBAction func attachmentTouched(_ sender: AnyObject) {
         delegate?.openPickerWithDelegate(attachmentContainerView)
     }
     
@@ -76,34 +76,34 @@ class InputView: CustomizableView, AttachmentContainerViewDelegate {
     
     func show() {
         shown = true
-        self.snp_remakeConstraints { make in
+        self.snp.remakeConstraints { make in
             make.bottom.equalTo(self.superview!)
             make.left.equalTo(self.superview!)
             make.right.equalTo(self.superview!)
         }
-        UIView.animateWithDuration(0.3) {
+        UIView.animate(withDuration: 0.3, animations: {
             self.layoutIfNeeded()
             self.alpha = 1.0
-        }
+        }) 
     }
 
     func hide() {
         shown = false
         textView.resignFirstResponder()
-        self.snp_remakeConstraints { make in
-            make.top.equalTo(self.superview!.snp_bottom)
+        self.snp.remakeConstraints { make in
+            make.top.equalTo(self.superview!.snp.bottom)
             make.left.equalTo(self.superview!)
             make.right.equalTo(self.superview!)
         }
-        UIView.animateWithDuration(0.3) {
+        UIView.animate(withDuration: 0.3, animations: {
             self.layoutIfNeeded()
             self.alpha = 0.0
-        }
+        }) 
     }
     
-    func changeBottomSpacing(spacing: CGFloat) {
-        self.snp_remakeConstraints { make in
-            make.bottom.equalTo(self.superview!.snp_bottom).inset(spacing)
+    func changeBottomSpacing(_ spacing: CGFloat) {
+        self.snp.remakeConstraints { make in
+            make.bottom.equalTo(self.superview!.snp.bottom).inset(spacing)
             make.left.equalTo(self.superview!)
             make.right.equalTo(self.superview!)
         }
@@ -111,18 +111,18 @@ class InputView: CustomizableView, AttachmentContainerViewDelegate {
     
     // MARK: - Private Functions -
     
-    private func subscribeNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self,
+    fileprivate func subscribeNotifications() {
+        NotificationCenter.default.addObserver(self,
                                                          selector: #selector(InputView.textViewChangedContentSize),
-                                                         name: SLKTextViewContentSizeDidChangeNotification,
+                                                         name: NSNotification.Name.SLKTextViewContentSizeDidChange,
                                                          object: nil)
     }
     
-    private func unsubscribeNotifications() {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+    fileprivate func unsubscribeNotifications() {
+        NotificationCenter.default.removeObserver(self)
     }
     
-    @objc private func textViewChangedContentSize() {
+    @objc fileprivate func textViewChangedContentSize() {
         if !textView.isExpanding {
             textViewHeight.constant = textView.contentSize.height
             layoutIfNeeded()

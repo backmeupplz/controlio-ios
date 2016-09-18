@@ -8,7 +8,7 @@
 
 import UIKit
 import Alamofire
-import SwiftyJSON
+import SwiftyJSON3
 
 class Server: NSObject {
     
@@ -20,35 +20,35 @@ class Server: NSObject {
     
     var userId: String? {
         set {
-            NSUserDefaults.set(newValue, key: "userId")
+            UserDefaults.set(newValue as AnyObject?, key: "userId")
         }
         get {
-            return NSUserDefaults.getString("userId")
+            return UserDefaults.getString("userId")
         }
     }
     
     var token: String? {
         set {
-            NSUserDefaults.set(newValue, key: "token")
+            UserDefaults.set(newValue as AnyObject?, key: "token")
         }
         get {
-            return NSUserDefaults.getString("token")
+            return UserDefaults.getString("token")
         }
     }
     
-    // MARK: - Internal fucntions -
+    // MARK: - Internal functions -
     
     func isLoggedIn() -> Bool {
         return userId != nil && token != nil
     }
     
-    func signup(email: String, password: String, completion:(String?)->()) {
+    func signup(_ email: String, password: String, completion:@escaping (String?)->()) {
         let parameters = [
             "email": email,
             "password": password
         ]
         
-        Alamofire.request(.POST, apiUrl + "/users", parameters: parameters, headers: headers())
+        Alamofire.request(apiUrl + "/users", method: .post, parameters: parameters, headers: headers())
             .responseJSON { response in
                 if let message = response.result.error?.localizedDescription {
                     completion(message)
@@ -64,13 +64,13 @@ class Server: NSObject {
         }
     }
     
-    func login(email: String, password: String, completion:(String?)->()) {
+    func login(_ email: String, password: String, completion:@escaping (String?)->()) {
         let parameters = [
             "email": email,
             "password": password
         ]
         
-        Alamofire.request(.POST, apiUrl + "/users/login", parameters: parameters, headers: headers())
+        Alamofire.request(apiUrl + "/users/login", method: .post, parameters: parameters, headers: headers())
             .responseJSON { response in
                 if let message = response.result.error?.localizedDescription {
                     completion(message)
@@ -88,12 +88,12 @@ class Server: NSObject {
     
     // MARK: - Private functions -
     
-    private func saveUser(user: JSON) {
+    fileprivate func saveUser(_ user: JSON) {
         token = user["token"].string!
         userId = user["_id"].string!
     }
     
-    private func headers() -> [String:String] {
+    fileprivate func headers() -> [String:String] {
         return [
             "x-access-apiKey": apiKey,
         ]
