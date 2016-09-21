@@ -78,12 +78,11 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         
         enableUI(false)
         
-        Server.sharedManager.login(textFields[0].text!,
-                                   password: textFields[1].text!)
+        Server.login(textFields[0].text!, password: textFields[1].text!)
         { error in
             self.enableUI(true)
             if let error = error {
-                PopupNotification.showNotification(error)
+                PopupNotification.showNotification(error.domain)
             } else {
                 Router(self).showMain()
             }

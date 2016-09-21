@@ -12,13 +12,9 @@ import SwiftyJSON3
 
 class Server: NSObject {
     
-    // MARK: - Singleton -
-    
-    static let sharedManager = Server()
-    
     // MARK: - Properties -
     
-    var userId: String? {
+    class var userId: String? {
         set {
             UserDefaults.set(newValue as AnyObject?, key: "userId")
         }
@@ -27,7 +23,7 @@ class Server: NSObject {
         }
     }
     
-    var token: String? {
+    class var token: String? {
         set {
             UserDefaults.set(newValue as AnyObject?, key: "token")
         }
@@ -36,66 +32,81 @@ class Server: NSObject {
         }
     }
     
-    // MARK: - Internal functions -
+    // MARK: - Public functions -
     
-    func isLoggedIn() -> Bool {
-        return userId != nil && token != nil
+    class func isLoggedIn() -> Bool {
+        // TODO: remove hardcoded false statement
+        return false//userId != nil && token != nil
     }
     
-    func signup(_ email: String, password: String, completion:@escaping (String?)->()) {
+    class func signup(email: String, password: String, completion:@escaping (NSError?)->()) {
         let parameters = [
             "email": email,
             "password": password
         ]
         
-        Alamofire.request(apiUrl + "/users", method: .post, parameters: parameters, headers: headers())
-            .responseJSON { response in
-                if let message = response.result.error?.localizedDescription {
-                    completion(message)
-                } else {
-                    let json = JSON(response.result.value!)
-                    if let message = json["message"].string {
-                        completion(message)
-                    } else {
-                        self.saveUser(json)
-                        completion(nil)
-                    }
-                }
+        request(urlAddition: "users/signUp", method: .post, parameters: parameters, needsToken: false)
+        { json, error in
+            if let error = error {
+                completion(error)
+            } else {
+                saveUser(json!)
+                completion(nil)
+            }
         }
     }
     
-    func login(_ email: String, password: String, completion:@escaping (String?)->()) {
+    class func login(_ email: String, password: String, completion:@escaping (NSError?)->()) {
         let parameters = [
             "email": email,
             "password": password
         ]
-        
-        Alamofire.request(apiUrl + "/users/login", method: .post, parameters: parameters, headers: headers())
-            .responseJSON { response in
-                if let message = response.result.error?.localizedDescription {
-                    completion(message)
-                } else {
-                    let json = JSON(response.result.value!)
-                    if let message = json["message"].string {
-                        completion(message)
-                    } else {
-                        self.saveUser(json)
-                        completion(nil)
-                    }
-                }
+        request(urlAddition: "users/login", method: .post, parameters: parameters, needsToken: false)
+        { json, error in
+            if let error = error {
+                completion(error)
+            } else {
+                saveUser(json!)
+                completion(nil)
+            }
         }
     }
     
     // MARK: - Private functions -
     
-    fileprivate func saveUser(_ user: JSON) {
+    fileprivate class func request(urlAddition: String, method: HTTPMethod, parameters: [String:String], needsToken: Bool, completion: @escaping (JSON?, NSError?)->()) {
+        Alamofire.request(apiUrl + urlAddition, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: headers(needsToken: needsToken))
+            .responseJSON { response in
+                if let errorString = response.result.error?.localizedDescription {
+                    completion(nil, NSError(domain: errorString, code: 500, userInfo: nil))
+                } else if let error = checkForErrors(json: JSON(response.result.value)) {
+                    completion(nil, error)
+                } else {
+                    completion(JSON(response.result.value), nil)
+                }
+        }
+    }
+    
+    fileprivate class func checkForErrors(json: JSON) -> NSError? {
+        if let error = json["errors"].array?.first {
+            return NSError(domain: error["messages"].array?.first?.string ?? "Something went wrong", code: error["status"].int ?? 500, userInfo: nil)
+        } else if let errorName = json["errors"].dictionary?.keys.first {
+            return NSError(domain: json["errors"][errorName]["message"].string ?? "Something went wrong", code: 500, userInfo: nil)
+        } else if let message = json["message"].string {
+            return NSError(domain: message, code: json["status"].int ?? 500, userInfo: nil)
+        } else {
+            return nil
+        }
+    }
+    
+    fileprivate class func saveUser(_ user: JSON) {
         token = user["token"].string!
         userId = user["_id"].string!
     }
     
-    fileprivate func headers() -> [String:String] {
-        return [
-            "x-access-apiKey": apiKey,
-        ]
+    fileprivate class func headers(needsToken: Bool) -> [String:String] {
+        return needsToken ?
+            ["apiKey": apiKey, "token": token ?? ""] :
+            ["apiKey": apiKey]
     }
 }

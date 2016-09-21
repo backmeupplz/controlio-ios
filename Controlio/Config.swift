@@ -8,5 +8,5 @@
 
 import Foundation
 
-let apiUrl = "http://localhost:3000"
+let apiUrl = "http://localhost:3000/"
 let apiKey = "p[oqkix=%FAi]&FMAYnLUJJWC,w"

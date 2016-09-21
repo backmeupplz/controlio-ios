@@ -58,12 +58,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         if !success { return }
         
         enableUI(false)
-        Server.sharedManager.signup(textFields[0].text!,
-                                    password: textFields[1].text!)
+        Server.signup(email: textFields[0].text!, password: textFields[1].text!)
         { error in
             self.enableUI(true)
             if let error = error {
-                PopupNotification.showNotification(error)
+                PopupNotification.showNotification(error.domain)
             } else {
                 Router(self).showMain()
             }

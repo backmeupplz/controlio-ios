@@ -12,7 +12,7 @@ class Router {
     
     // MARK: - Variables -
     
-    fileprivate var controller: UIViewController!
+    private var controller: UIViewController!
     
     // MARK: - Object Life Cycle -
     
@@ -25,24 +25,23 @@ class Router {
     // MARK: - Private Class Functions -
     
     fileprivate class func startVC() -> UIViewController {
-        return loginStoryboard().instantiateViewController(withIdentifier: String(describing: StartViewController()))
+        return loginStoryboard().instantiateViewController(withIdentifier: "StartViewController")
     }
     
-    
     fileprivate class func logInVC() -> UIViewController {
-        return loginStoryboard().instantiateViewController(withIdentifier: String(describing: LogInViewController()))
+        return loginStoryboard().instantiateViewController(withIdentifier: "LogInViewController")
     }
     
     fileprivate class func signUpVC() -> UIViewController {
-        return loginStoryboard().instantiateViewController(withIdentifier: String(describing: SignUpViewController()))
+        return loginStoryboard().instantiateViewController(withIdentifier: "SignUpViewController")
     }
     
     fileprivate class func recoveryVC() -> UIViewController {
-        return loginStoryboard().instantiateViewController(withIdentifier: String(describing: RecoveryViewController()))
+        return loginStoryboard().instantiateViewController(withIdentifier: "RecoveryViewController")
     }
     
     fileprivate class func mainTBC() -> UIViewController {
-        return mainStoryboard().instantiateViewController(withIdentifier: String(describing: MainController()))
+        return mainStoryboard().instantiateViewController(withIdentifier: "MainController")
     }
     
     fileprivate class func projectVC(_ project: Project) -> UIViewController {

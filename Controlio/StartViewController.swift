@@ -23,10 +23,8 @@ class StartViewController: UIViewController {
         catchPhraseView.labelsText = ["Controlio is a ridiculously simple status report system to track your orders and contractors",
                                  "See the status of your orders like you track your parcel on mail post",
                                  "Let local business inform you about your order with the speed of a screen touch!"]
-        if Server.sharedManager.isLoggedIn() {
-            print(1)
+        if Server.isLoggedIn() {
             Router(self).showMain(false)
-            print(2)
         }
     }
     

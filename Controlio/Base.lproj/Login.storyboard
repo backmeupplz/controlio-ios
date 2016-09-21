@@ -1,43 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vxU-vq-VqA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vxU-vq-VqA">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="SFUIDisplay-Bold.otf">
+        <array key="SFUIDisplay-Bold.otf">
             <string>SFUIDisplay-Bold</string>
-            <string>SFUIDisplay-Bold</string>
-            <string>SFUIDisplay-Bold</string>
-            <string>SFUIDisplay-Bold</string>
-            <string>SFUIDisplay-Bold</string>
-            <string>SFUIDisplay-Bold</string>
-            <string>SFUIDisplay-Bold</string>
-            <string>SFUIDisplay-Bold</string>
-            <string>SFUIDisplay-Bold</string>
-            <string>SFUIDisplay-Bold</string>
-            <string>SFUIDisplay-Bold</string>
-        </mutableArray>
-        <mutableArray key="SFUIDisplay-Light.otf">
+        </array>
+        <array key="SFUIDisplay-Light.otf">
             <string>SFUIDisplay-Light</string>
-            <string>SFUIDisplay-Light</string>
-            <string>SFUIDisplay-Light</string>
-            <string>SFUIDisplay-Light</string>
-            <string>SFUIDisplay-Light</string>
-            <string>SFUIDisplay-Light</string>
-            <string>SFUIDisplay-Light</string>
-        </mutableArray>
-        <mutableArray key="SFUIDisplay-Regular.otf">
+        </array>
+        <array key="SFUIDisplay-Regular.otf">
             <string>SFUIDisplay-Regular</string>
-            <string>SFUIDisplay-Regular</string>
-            <string>SFUIDisplay-Regular</string>
-            <string>SFUIDisplay-Regular</string>
-            <string>SFUIDisplay-Regular</string>
-            <string>SFUIDisplay-Regular</string>
-            <string>SFUIDisplay-Regular</string>
-            <string>SFUIDisplay-Regular</string>
-            <string>SFUIDisplay-Regular</string>
-        </mutableArray>
+        </array>
     </customFonts>
     <scenes>
         <!--Start View Controller-->
@@ -49,118 +26,142 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UUx-WB-FnK" userLabel="Gradient" customClass="GradientView" customModule="Controlio" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-with-text" translatesAutoresizingMaskIntoConstraints="NO" id="Up5-ic-yDH" userLabel="Logo">
-                                <rect key="frame" x="195" y="72" width="211" height="182"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="211" id="7oD-4a-RyV"/>
-                                    <constraint firstAttribute="height" constant="182" id="F6U-BL-KPK"/>
+                                    <constraint firstAttribute="height" constant="123" id="Lm4-mA-AbZ"/>
+                                    <constraint firstAttribute="width" constant="166" id="pS7-e3-kzw"/>
                                 </constraints>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tda-LR-KyL" userLabel="Catch Phrase View" customClass="CatchPhraseView" customModule="Controlio" customModuleProvider="target">
-                                <rect key="frame" x="180" y="231" width="240" height="128"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="hQx-qG-H1P"/>
-                                    <constraint firstAttribute="width" constant="240" id="iYn-Cb-1pe"/>
+                                    <constraint firstAttribute="width" constant="240" id="8Az-VL-l53"/>
+                                    <constraint firstAttribute="height" constant="128" id="PXx-KP-Zj5"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="pageControl" destination="1Dw-BL-b9x" id="uOR-hA-GrY"/>
                                 </connections>
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="1Dw-BL-b9x">
-                                <rect key="frame" x="281" y="357" width="39" height="37"/>
-                                <color key="pageIndicatorTintColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
-                                <color key="currentPageIndicatorTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="4l4-oh-t5P"/>
+                                    <constraint firstAttribute="width" constant="39" id="nla-OC-mE7"/>
+                                </constraints>
+                                <color key="pageIndicatorTintColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="currentPageIndicatorTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uwh-Q6-fwo" userLabel="Sign Up Button" customClass="RoundedShadowedButton" customModule="Controlio" customModuleProvider="target">
-                                <rect key="frame" x="180" y="402" width="240" height="53"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="53" id="Uiw-i1-auA"/>
-                                    <constraint firstAttribute="width" constant="240" id="axU-Az-LYp"/>
+                                    <constraint firstAttribute="width" constant="291" id="1Mf-fN-0kL"/>
+                                    <constraint firstAttribute="height" constant="54" id="T4L-gn-l7S"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="14"/>
                                 <state key="normal" title="Get started">
-                                    <color key="titleColor" red="0.34509803921568627" green="0.36470588235294116" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.34509803921568627" green="0.36470588235294116" blue="0.42352941176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <state key="highlighted">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="signupTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Pz5-VG-YPu"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VnK-05-hhK" userLabel="Login Button">
-                                <rect key="frame" x="192" y="461" width="217" height="34"/>
-                                <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="18"/>
-                                <state key="normal" title="Already have an account?">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="loginTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jmr-0O-b2j"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Dn-tl-G00" userLabel="Demo Account Button">
-                                <rect key="frame" x="224" y="493" width="152" height="34"/>
-                                <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="18"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Dn-tl-G00" userLabel="Demo Account Button">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="Bw6-QI-f7V"/>
+                                    <constraint firstAttribute="width" constant="152" id="xyN-JZ-Eo4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="12"/>
                                 <state key="normal" title="Try demo account">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="demoTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="502-LF-hZn"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VnK-05-hhK" userLabel="Login Button">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="1fF-vh-bDs"/>
+                                    <constraint firstAttribute="width" constant="291" id="d4o-xl-xhh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="12"/>
+                                <state key="normal" title="Already have an account?">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jmr-0O-b2j"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Would you like to try our demo account?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GTs-vF-HE4">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="212" id="e9R-BQ-Wyf"/>
+                                    <constraint firstAttribute="height" constant="21" id="oQu-Gk-i60"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="12"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="7Dn-tl-G00" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="210" id="0Xa-z4-i2K">
-                                <variation key="heightClass=compact" constant="94"/>
+                            <constraint firstAttribute="trailing" secondItem="UUx-WB-FnK" secondAttribute="trailing" id="0fk-4m-ALE"/>
+                            <constraint firstItem="Up5-ic-yDH" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-124" id="2N0-8t-Mw6">
+                                <variation key="heightClass=compact" constant="-75.5"/>
                             </constraint>
-                            <constraint firstItem="Up5-ic-yDH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7sX-zi-dsr">
-                                <variation key="heightClass=compact" constant="-134.5"/>
+                            <constraint firstItem="Up5-ic-yDH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2fo-Sf-qXn">
+                                <variation key="heightClass=compact" constant="-150"/>
                             </constraint>
-                            <constraint firstItem="uwh-Q6-fwo" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="128.5" id="FPd-Ou-gvD">
-                                <variation key="heightClass=compact" constant="-0.5"/>
+                            <constraint firstItem="VnK-05-hhK" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="184.5" id="D9t-Ru-w14">
+                                <variation key="heightClass=compact" constant="55"/>
                             </constraint>
-                            <constraint firstItem="Up5-ic-yDH" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-137" id="K7z-gO-HXQ">
-                                <variation key="heightClass=compact" constant="-70"/>
+                            <constraint firstItem="1Dw-BL-b9x" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="70" id="Egt-YA-p4X">
+                                <variation key="heightClass=compact" constant="118.5"/>
                             </constraint>
-                            <constraint firstItem="UUx-WB-FnK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="OpK-T4-nsp"/>
-                            <constraint firstItem="UUx-WB-FnK" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="PlV-DX-jed"/>
-                            <constraint firstItem="tda-LR-KyL" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-5" id="R5m-jd-3qd">
-                                <variation key="heightClass=compact" constant="62"/>
+                            <constraint firstItem="VnK-05-hhK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="1" id="GLc-LA-UmG">
+                                <variation key="heightClass=compact" constant="124.5"/>
                             </constraint>
-                            <constraint firstItem="1Dw-BL-b9x" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="75.5" id="WFD-kI-lyT">
-                                <variation key="heightClass=compact" constant="142.5"/>
+                            <constraint firstItem="UUx-WB-FnK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="H9E-tT-nYM"/>
+                            <constraint firstItem="tda-LR-KyL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SLw-St-XOY">
+                                <variation key="heightClass=compact" constant="-150"/>
                             </constraint>
-                            <constraint firstItem="tda-LR-KyL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aQB-7v-Fta">
-                                <variation key="heightClass=compact" constant="-135"/>
+                            <constraint firstItem="UUx-WB-FnK" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Sqj-gJ-hgx"/>
+                            <constraint firstItem="tda-LR-KyL" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-3.5" id="VJL-7Q-S1c">
+                                <variation key="heightClass=compact" constant="45"/>
                             </constraint>
-                            <constraint firstItem="1Dw-BL-b9x" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cL7-kP-7Mi">
-                                <variation key="heightClass=compact" constant="-134.5"/>
+                            <constraint firstItem="GTs-vF-HE4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="W20-Hb-4Xv">
+                                <variation key="heightClass=compact" constant="123"/>
                             </constraint>
-                            <constraint firstItem="VnK-05-hhK" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="178" id="cUl-aU-WCo">
-                                <variation key="heightClass=compact" constant="62"/>
+                            <constraint firstItem="uwh-Q6-fwo" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="122.5" id="cd4-08-G4C">
+                                <variation key="heightClass=compact" constant="-7"/>
                             </constraint>
-                            <constraint firstAttribute="trailing" secondItem="UUx-WB-FnK" secondAttribute="trailing" id="ddO-F6-adD"/>
-                            <constraint firstItem="7Dn-tl-G00" firstAttribute="centerX" secondItem="uwh-Q6-fwo" secondAttribute="centerX" id="dta-v7-s82"/>
-                            <constraint firstItem="VnK-05-hhK" firstAttribute="centerX" secondItem="uwh-Q6-fwo" secondAttribute="centerX" id="pu2-B5-cvF"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="UUx-WB-FnK" secondAttribute="bottom" id="tdy-Rp-aud"/>
-                            <constraint firstItem="uwh-Q6-fwo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zGu-zC-rBr">
-                                <variation key="heightClass=compact" constant="136"/>
+                            <constraint firstItem="7Dn-tl-G00" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="246.5" id="egk-aJ-8CN">
+                                <variation key="heightClass=compact" constant="117"/>
+                            </constraint>
+                            <constraint firstItem="uwh-Q6-fwo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jyw-h0-2Ys">
+                                <variation key="heightClass=compact" constant="123.5"/>
+                            </constraint>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="UUx-WB-FnK" secondAttribute="bottom" id="key-qz-8b4"/>
+                            <constraint firstItem="1Dw-BL-b9x" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nc0-rX-8nR">
+                                <variation key="heightClass=compact" constant="-150.5"/>
+                            </constraint>
+                            <constraint firstItem="7Dn-tl-G00" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="oUG-sS-WNI">
+                                <variation key="heightClass=compact" constant="123"/>
+                            </constraint>
+                            <constraint firstItem="GTs-vF-HE4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="224" id="viL-21-ym4">
+                                <variation key="heightClass=compact" constant="94.5"/>
                             </constraint>
                         </constraints>
                     </view>
@@ -171,7 +172,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1004" y="424"/>
+            <point key="canvasLocation" x="428.87323943661971" y="418.125"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="kI2-58-wu2">
@@ -182,21 +183,19 @@
                         <viewControllerLayoutGuide type="bottom" id="F9m-5Z-14k"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="NlM-hP-4wx">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FCR-PW-Zg1" userLabel="Gradient" customClass="GradientView" customModule="Controlio" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VrW-jH-qkB" userLabel="Sign Up Title">
-                                <rect key="frame" x="243" y="99" width="114" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="bMg-jb-S0Y"/>
                                     <constraint firstAttribute="width" constant="106" id="pVB-3a-FZG"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Light" family="SF UI Display" pointSize="34"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -206,24 +205,22 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EMAIL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sVs-Dy-1LK" userLabel="Email Label">
-                                <rect key="frame" x="180" y="150" width="49" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="afw-R7-h1h"/>
                                     <constraint firstAttribute="width" constant="49" id="elx-c9-pIm"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="12"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fdG-p9-VYT" userLabel="Email Text Field" customClass="RoundedBorderedTextField" customModule="Controlio" customModuleProvider="target">
-                                <rect key="frame" x="180" y="171" width="240" height="50"/>
-                                <color key="backgroundColor" white="1" alpha="0.40000000000000002" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="HfS-fa-gEA"/>
                                     <constraint firstAttribute="width" constant="240" id="Lps-VQ-VOF"/>
                                 </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Light" family="SF UI Display" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
                                 <connections>
@@ -231,24 +228,22 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PASSWORD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vgH-nj-xPS" userLabel="Password Label">
-                                <rect key="frame" x="180" y="229" width="93" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="T5a-NW-WBd"/>
                                     <constraint firstAttribute="width" constant="93" id="c9I-Dw-wxC"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="12"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lkT-Wo-GgD" userLabel="Password Text Field" customClass="RoundedBorderedTextField" customModule="Controlio" customModuleProvider="target">
-                                <rect key="frame" x="180" y="250" width="240" height="50"/>
-                                <color key="backgroundColor" white="1" alpha="0.40000000000000002" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="ABQ-vD-Z83"/>
                                     <constraint firstAttribute="width" constant="240" id="cu7-oI-tx1"/>
                                 </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Light" family="SF UI Display" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES"/>
                                 <connections>
@@ -256,24 +251,22 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CONFIRM PASSWORD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCD-6L-rUH" userLabel="Confirm Password Label">
-                                <rect key="frame" x="180" y="308" width="173" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Si9-a2-SEQ"/>
                                     <constraint firstAttribute="width" constant="173" id="W1b-jq-Lvl"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="12"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a9l-Wv-3KB" userLabel="Confirm Password Text Field" customClass="RoundedBorderedTextField" customModule="Controlio" customModuleProvider="target">
-                                <rect key="frame" x="180" y="329" width="240" height="50"/>
-                                <color key="backgroundColor" white="1" alpha="0.40000000000000002" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="0nz-jz-1fT"/>
                                     <constraint firstAttribute="width" constant="240" id="PnN-gP-YGI"/>
                                 </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Light" family="SF UI Display" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" secureTextEntry="YES"/>
                                 <connections>
@@ -281,8 +274,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FfA-Gh-j2w" userLabel="Sign Up Button" customClass="RoundedShadowedButton" customModule="Controlio" customModuleProvider="target">
-                                <rect key="frame" x="180" y="405" width="240" height="53"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="53" id="KqH-Nr-BoX">
                                         <variation key="heightClass=compact" constant="50"/>
@@ -291,27 +283,26 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="18"/>
                                 <state key="normal" title="Sign Up">
-                                    <color key="titleColor" red="0.34509803921568627" green="0.36470588235294116" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.34509803921568627" green="0.36470588235294116" blue="0.42352941176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <state key="highlighted">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="signUpTouched:" destination="nJx-q4-SDZ" eventType="touchUpInside" id="Tmw-GU-WIg"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jaG-a7-G34" userLabel="Login Button">
-                                <rect key="frame" x="192" y="466" width="217" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="boJ-At-NnP"/>
                                     <constraint firstAttribute="width" constant="208" id="lsF-GK-JF1"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="18"/>
                                 <state key="normal" title="Already have an account?">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -322,11 +313,9 @@
                                     <action selector="logInTouched:" destination="nJx-q4-SDZ" eventType="touchUpInside" id="ztc-tz-t08"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Odw-qD-P9E">
-                                <rect key="frame" x="428" y="413" width="37" height="37"/>
-                            </activityIndicatorView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Odw-qD-P9E"/>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="sVs-Dy-1LK" firstAttribute="centerX" secondItem="NlM-hP-4wx" secondAttribute="centerX" constant="-95.5" id="49T-m4-V4f">
                                 <variation key="heightClass=compact" constant="-219.5"/>
@@ -397,7 +386,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XAU-nW-z7l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1646" y="424"/>
+            <point key="canvasLocation" x="1108" y="421"/>
         </scene>
         <!--Custom Navigation Controller-->
         <scene sceneID="boq-AN-Htx">
@@ -416,7 +405,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oin-XT-uSn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="344" y="424"/>
+            <point key="canvasLocation" x="-234" y="422"/>
         </scene>
         <!--Log In View Controller-->
         <scene sceneID="Tnd-sg-kMj">
@@ -427,42 +416,38 @@
                         <viewControllerLayoutGuide type="bottom" id="ryI-TV-Uaj"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="7EM-Te-g3p">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4CQ-1v-icp" userLabel="Gradient" customClass="GradientView" customModule="Controlio" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign In" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9PS-Le-VuU" userLabel="Sign In Title">
-                                <rect key="frame" x="248" y="109" width="106" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="106" id="6ND-ZH-R4G"/>
                                     <constraint firstAttribute="height" constant="36" id="Naa-zx-s8M"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Light" family="SF UI Display" pointSize="34"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EMAIL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2zX-d5-5rO" userLabel="Email Label">
-                                <rect key="frame" x="181" y="155" width="49" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="A1u-bT-hZ0"/>
                                     <constraint firstAttribute="width" constant="49" id="gCQ-Gp-ZQ4"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="12"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UMm-0b-Ojj" userLabel="Email Text Field" customClass="RoundedBorderedTextField" customModule="Controlio" customModuleProvider="target">
-                                <rect key="frame" x="181" y="176" width="240" height="50"/>
-                                <color key="backgroundColor" white="1" alpha="0.40000000000000002" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Vcu-QN-C49"/>
                                     <constraint firstAttribute="width" constant="240" id="jJ1-qG-1c5"/>
                                 </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
                                 <connections>
@@ -470,24 +455,22 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PASSWORD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Qo-aw-maF" userLabel="Password Label">
-                                <rect key="frame" x="181" y="234" width="93" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="93" id="bRr-4p-mob"/>
                                     <constraint firstAttribute="height" constant="21" id="g15-6z-jOa"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="12"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ibw-nL-yvk" userLabel="Password Text Field" customClass="RoundedBorderedTextField" customModule="Controlio" customModuleProvider="target">
-                                <rect key="frame" x="181" y="255" width="240" height="50"/>
-                                <color key="backgroundColor" white="1" alpha="0.40000000000000002" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="W4g-9T-QeS"/>
                                     <constraint firstAttribute="width" constant="240" id="aXL-in-7gL"/>
                                 </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" secureTextEntry="YES"/>
                                 <connections>
@@ -495,35 +478,33 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C9O-Ph-99H" userLabel="Login Button" customClass="RoundedShadowedButton" customModule="Controlio" customModuleProvider="target">
-                                <rect key="frame" x="181" y="331" width="240" height="50"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Nu0-4R-fVd"/>
                                     <constraint firstAttribute="width" constant="240" id="Xeq-DV-0dW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="18"/>
                                 <state key="normal" title="Sign In">
-                                    <color key="titleColor" red="0.34509803921568627" green="0.36470588235294116" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.34509803921568627" green="0.36470588235294116" blue="0.42352941176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <state key="highlighted">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="logInTouched:" destination="whJ-LL-Qxb" eventType="touchUpInside" id="OGx-Kj-2Pz"/>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="loN-fr-0B5" userLabel="Password Recovery Button">
-                                <rect key="frame" x="206" y="389" width="192" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="185" id="JmV-S0-tyq"/>
                                     <constraint firstAttribute="height" constant="34" id="aFK-ux-fcv"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="18"/>
                                 <state key="normal" title="Forgot your password?">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -535,17 +516,16 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ctN-Hb-xlu" userLabel="Demo Button">
-                                <rect key="frame" x="156" y="457" width="289" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="xeQ-9K-SYc"/>
                                     <constraint firstAttribute="width" constant="281" id="ybT-Zd-3b2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="18"/>
                                 <state key="normal" title="Or want to try our demo accounts?">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -557,17 +537,16 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ysp-fU-hAK" userLabel="Sign Up Button">
-                                <rect key="frame" x="202" y="389" width="197" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="260" id="e7d-dZ-z0c"/>
                                     <constraint firstAttribute="height" constant="34" id="rug-UZ-bdE"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="18"/>
                                 <state key="normal" title="Don't have an account?">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -578,11 +557,9 @@
                                     <action selector="signUpTouched:" destination="whJ-LL-Qxb" eventType="touchUpInside" id="7JS-Y6-OjD"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="4vK-pe-DF1">
-                                <rect key="frame" x="429" y="337" width="37" height="37"/>
-                            </activityIndicatorView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="4vK-pe-DF1"/>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="UMm-0b-Ojj" firstAttribute="centerY" secondItem="7EM-Te-g3p" secondAttribute="centerY" constant="-99" id="058-pf-72w">
                                 <variation key="heightClass=compact" constant="-32"/>
@@ -648,13 +625,13 @@
                         <outlet property="spinner" destination="4vK-pe-DF1" id="f2r-4H-LHm"/>
                         <outletCollection property="textFields" destination="UMm-0b-Ojj" collectionClass="NSMutableArray" id="KJv-G7-KMl"/>
                         <outletCollection property="textFields" destination="Ibw-nL-yvk" collectionClass="NSMutableArray" id="PGb-rd-zXN"/>
-                        <outletCollection property="buttons" destination="C9O-Ph-99H" id="jv8-Gv-oej"/>
-                        <outletCollection property="buttons" destination="ysp-fU-hAK" id="EMe-WN-z3O"/>
+                        <outletCollection property="buttons" destination="C9O-Ph-99H" collectionClass="NSMutableArray" id="jv8-Gv-oej"/>
+                        <outletCollection property="buttons" destination="ysp-fU-hAK" collectionClass="NSMutableArray" id="EMe-WN-z3O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u96-rm-5he" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2271" y="423"/>
+            <point key="canvasLocation" x="1873" y="421"/>
         </scene>
         <!--Recovery View Controller-->
         <scene sceneID="AlD-sZ-TZc">
@@ -665,22 +642,20 @@
                         <viewControllerLayoutGuide type="bottom" id="j7i-QH-xgK"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Nrz-IS-X9s">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R4q-HN-D44" userLabel="Gradient" customClass="GradientView" customModule="Controlio" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KP4-mw-k44" customClass="RoundedBorderedTextField" customModule="Controlio" customModuleProvider="target">
-                                <rect key="frame" x="180" y="269" width="240" height="50"/>
-                                <color key="backgroundColor" white="1" alpha="0.40000000000000002" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="39G-E7-8qR"/>
                                     <constraint firstAttribute="width" constant="240" id="N2k-ri-4Np"/>
                                 </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="go"/>
                                 <connections>
@@ -688,32 +663,29 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5GJ-t4-jTy">
-                                <rect key="frame" x="240" y="406" width="121" height="34"/>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="18"/>
                                 <state key="normal" title="Back to sign in">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="backTouched:" destination="kks-eL-3bm" eventType="touchUpInside" id="bN2-LT-Fgr"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account Recovery" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hon-kO-p9d">
-                                <rect key="frame" x="169" y="160" width="262" height="41"/>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Light" family="SF UI Display" pointSize="34"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your email address and we'll help you reset your password" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x93-wg-OT7">
-                                <rect key="frame" x="187" y="209" width="227" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="fAI-Oh-bXc"/>
                                     <constraint firstAttribute="width" constant="242" id="wC6-4R-gWW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Light" family="SF UI Display" pointSize="14"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -723,31 +695,29 @@
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UBo-tn-Jap" customClass="RoundedShadowedButton" customModule="Controlio" customModuleProvider="target">
-                                <rect key="frame" x="180" y="345" width="240" height="53"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="53" id="RVN-7b-YL8"/>
                                     <constraint firstAttribute="width" constant="240" id="sql-dp-krO"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="18"/>
                                 <state key="normal" title="Recover">
-                                    <color key="titleColor" red="0.34509803919999998" green="0.36470588240000001" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.34509803919999998" green="0.36470588240000001" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <state key="highlighted">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="recoverTouched:" destination="kks-eL-3bm" eventType="touchUpInside" id="6bP-ho-BGW"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EMAIL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dBN-cp-SeC">
-                                <rect key="frame" x="184" y="253" width="34" height="15"/>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="12"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="UBo-tn-Jap" firstAttribute="centerY" secondItem="Nrz-IS-X9s" secondAttribute="centerY" constant="71.5" id="3Wj-GX-xed"/>
                             <constraint firstItem="Hon-kO-p9d" firstAttribute="centerY" secondItem="Nrz-IS-X9s" secondAttribute="centerY" constant="-119.5" id="483-lg-3mM"/>
@@ -773,7 +743,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C78-7c-e4x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2906" y="424"/>
+            <point key="canvasLocation" x="2642" y="421"/>
         </scene>
     </scenes>
     <resources>
