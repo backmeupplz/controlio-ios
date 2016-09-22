@@ -74,7 +74,8 @@ class S3: NSObject {
         let ext = "png"
         let uploadRequest = AWSS3TransferManagerUploadRequest()
         uploadRequest?.body = URL(fileURLWithPath: path!)
-        uploadRequest?.key = "\(Server.userId ?? "no_userId")/" + ProcessInfo.processInfo.globallyUniqueString + "-\(Int(Date().timeIntervalSince1970))" + "." + ext
+        let userId = Server.currentUser?.id ?? "no_userId"
+        uploadRequest?.key = "\(userId)/" + ProcessInfo.processInfo.globallyUniqueString + "-\(Int(Date().timeIntervalSince1970))" + "." + ext
         uploadRequest?.bucket = S3BucketName
         uploadRequest?.uploadProgress = { bytesSent, totalBytesSent, totalBytesExpectedToSend in
             progress(Float(totalBytesSent) / Float(totalBytesExpectedToSend))

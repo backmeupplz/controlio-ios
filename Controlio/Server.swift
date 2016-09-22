@@ -14,21 +14,22 @@ class Server: NSObject {
     
     // MARK: - Properties -
     
-    class var userId: String? {
+    class var currentUser: User? {
         set {
-            UserDefaults.set(newValue as AnyObject?, key: "userId")
+            if let newValue = newValue {
+                let data = NSKeyedArchiver.archivedData(withRootObject: newValue)
+                UserDefaults.set(data, key: "currentUser")
+            } else {
+                UserDefaults.set(nil, key: "currentUser")
+            }
         }
         get {
-            return UserDefaults.getString("userId")
-        }
-    }
-    
-    class var token: String? {
-        set {
-            UserDefaults.set(newValue as AnyObject?, key: "token")
-        }
-        get {
-            return UserDefaults.getString("token")
+            let data = UserDefaults.get("currentUser") as? Data
+            if let data = data {
+                return NSKeyedUnarchiver.unarchiveObject(with: data) as? User
+            } else {
+                return nil
+            }
         }
     }
     
@@ -36,7 +37,7 @@ class Server: NSObject {
     
     class func isLoggedIn() -> Bool {
         // TODO: remove hardcoded false statement
-        return false//userId != nil && token != nil
+        return currentUser?.token != nil
     }
     
     class func signup(email: String, password: String, completion:@escaping (NSError?)->()) {
@@ -100,13 +101,12 @@ class Server: NSObject {
     }
     
     fileprivate class func saveUser(_ user: JSON) {
-        token = user["token"].string!
-        userId = user["_id"].string!
+        currentUser = User(json: user)
     }
     
     fileprivate class func headers(needsToken: Bool) -> [String:String] {
         return needsToken ?
-            ["apiKey": apiKey, "token": token ?? ""] :
+            ["apiKey": apiKey, "token": currentUser?.token ?? ""] :
             ["apiKey": apiKey]
     }
 }

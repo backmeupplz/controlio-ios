@@ -24,24 +24,17 @@ class NewProjectCell: UITableViewCell {
     
     @IBOutlet weak var projectImageView: CustomizableImageView!
     
-    // MARK: - DEBUG -
+    // MARK: - Actions -
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        
+    @IBAction func addPhotoTouched(_ sender: AnyObject) {
+        delegate?.editPhotoTouched()
+    }
+    
+    @IBAction func chooseManagerTouched(_ sender: AnyObject) {
+        delegate?.chooseManagerTouched()
     }
     
     @IBAction func createTouched(_ sender: AnyObject) {
-//        let nikita = UIImage(named: "nikita")!
-
-        projectImageView.s3Key = "574b8095fbdc05226baf382c/38540026-BE5C-4D5C-B896-2A29644CCCDA-2749-000004CC3331D0D6-1464754282.png"
-//        S3.uploadImage(nikita,
-//                       progress:
-//            { progress in
-//                        print(progress)
-//        }) { url, error in
-//            print(url ?? error)
-//        }
+        delegate?.createTouched()
     }
 }

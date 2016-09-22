@@ -88,6 +88,7 @@
 		B3E815791CE1566900E8F87B /* NewProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E815771CE1566900E8F87B /* NewProjectCell.swift */; };
 		B3E8157A1CE1566900E8F87B /* NewProjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3E815781CE1566900E8F87B /* NewProjectCell.xib */; };
 		B3E8157C1CE1603400E8F87B /* NewProjectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E8157B1CE1603400E8F87B /* NewProjectController.swift */; };
+		B3EA11491D93A7350026658B /* ChooseManagerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EA11481D93A7350026658B /* ChooseManagerTableViewController.swift */; };
 		B3FEB83F1C9630290048B688 /* ProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FEB83D1C9630290048B688 /* ProjectCell.swift */; };
 		B3FEB8401C9630290048B688 /* ProjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3FEB83E1C9630290048B688 /* ProjectCell.xib */; };
 		B3FEB8441C9630BA0048B688 /* UIImageView+BeautifulWebImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FEB8431C9630BA0048B688 /* UIImageView+BeautifulWebImage.swift */; };
@@ -185,6 +186,7 @@
 		B3E815771CE1566900E8F87B /* NewProjectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProjectCell.swift; sourceTree = "<group>"; };
 		B3E815781CE1566900E8F87B /* NewProjectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewProjectCell.xib; sourceTree = "<group>"; };
 		B3E8157B1CE1603400E8F87B /* NewProjectController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProjectController.swift; sourceTree = "<group>"; };
+		B3EA11481D93A7350026658B /* ChooseManagerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseManagerTableViewController.swift; sourceTree = "<group>"; };
 		B3FEB83D1C9630290048B688 /* ProjectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCell.swift; sourceTree = "<group>"; };
 		B3FEB83E1C9630290048B688 /* ProjectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectCell.xib; sourceTree = "<group>"; };
 		B3FEB8431C9630BA0048B688 /* UIImageView+BeautifulWebImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+BeautifulWebImage.swift"; sourceTree = "<group>"; };
@@ -422,6 +424,7 @@
 				B3C305A01CDFD79500C8E85F /* SettingsController.swift */,
 				B3C305A21CDFE06200C8E85F /* ProjectController.swift */,
 				B3E8157B1CE1603400E8F87B /* NewProjectController.swift */,
+				B3EA11481D93A7350026658B /* ChooseManagerTableViewController.swift */,
 				B3FFC6C61CE6894C00595E85 /* CustomNavigationController.swift */,
 				B3FFC6C81CE69D6700595E85 /* CustomSearchController.swift */,
 			);
@@ -656,6 +659,7 @@
 				B3C305AE1CDFF43400C8E85F /* NSDateFormatter+Extensions.swift in Sources */,
 				B3AA2F931C9110FE00FE7E54 /* LogInViewController.swift in Sources */,
 				B3C03D121C90E6E70096E04C /* RoundedShadowedButton.swift in Sources */,
+				B3EA11491D93A7350026658B /* ChooseManagerTableViewController.swift in Sources */,
 				B3BA9C311CE18ED300647470 /* InputView.swift in Sources */,
 				B390C7A31CDE96B800D5F021 /* DeepLink.swift in Sources */,
 				B3C305A61CDFE60B00C8E85F /* Project.swift in Sources */,

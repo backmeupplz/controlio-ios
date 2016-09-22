@@ -1,37 +1,23 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="SFUIDisplay-Light.otf">
+        <array key="SFUIDisplay-Light.otf">
             <string>SFUIDisplay-Light</string>
-            <string>SFUIDisplay-Light</string>
-        </mutableArray>
-        <mutableArray key="SFUIDisplay-Medium.otf">
+        </array>
+        <array key="SFUIDisplay-Medium.otf">
             <string>SFUIDisplay-Medium</string>
-        </mutableArray>
-        <mutableArray key="SFUIDisplay-Regular.otf">
+        </array>
+        <array key="SFUIDisplay-Regular.otf">
             <string>SFUIDisplay-Regular</string>
-            <string>SFUIDisplay-Regular</string>
-            <string>SFUIDisplay-Regular</string>
-            <string>SFUIDisplay-Regular</string>
-            <string>SFUIDisplay-Regular</string>
-            <string>SFUIDisplay-Regular</string>
-            <string>SFUIDisplay-Regular</string>
-            <string>SFUIDisplay-Regular</string>
-            <string>SFUIDisplay-Regular</string>
-            <string>SFUIDisplay-Regular</string>
-            <string>SFUIDisplay-Regular</string>
-            <string>SFUIDisplay-Regular</string>
-        </mutableArray>
-        <mutableArray key="SFUIText-Regular.otf">
+        </array>
+        <array key="SFUIText-Regular.otf">
             <string>SFUIText-Regular</string>
-            <string>SFUIText-Regular</string>
-            <string>SFUIText-Regular</string>
-            <string>SFUIText-Regular</string>
-        </mutableArray>
+        </array>
     </customFonts>
     <scenes>
         <!--Main Controller-->
@@ -41,9 +27,9 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" id="g7T-4B-eIO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <color key="tintColor" red="0.0" green="0.72156862745098038" blue="0.46274509803921571" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="selectedImageTintColor" red="0.0" green="0.72156862749999995" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.0" green="0.72156862745098038" blue="0.46274509803921571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" red="0.0" green="0.72156862749999995" blue="0.46274509800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="Ijo-gm-cwR" kind="relationship" relationship="viewControllers" id="OGa-Kk-iPp"/>
@@ -61,9 +47,9 @@
             <objects>
                 <tableViewController extendedLayoutIncludesOpaqueBars="YES" id="cSM-qy-Ojz" customClass="ProjectsController" customModule="Controlio" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Otc-c3-OeX">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <connections>
                             <outlet property="dataSource" destination="cSM-qy-Ojz" id="kNP-ZL-xSj"/>
                             <outlet property="delegate" destination="cSM-qy-Ojz" id="vtL-pO-Uxr"/>
@@ -80,22 +66,22 @@
             <objects>
                 <tableViewController storyboardIdentifier="ProjectController" hidesBottomBarWhenPushed="YES" id="pZG-0j-UYd" customClass="ProjectController" customModule="Controlio" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="aSr-xt-PLa">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="Jia-aX-q0u">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="182"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="182"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YUG-IF-cd8" userLabel="Shadow View" customClass="CustomizableView" customModule="Controlio" customModuleProvider="target">
-                                    <rect key="frame" x="10" y="5" width="580" height="172"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YUG-IF-cd8" userLabel="Shadow View" customClass="CustomizableView" customModule="Controlio" customModuleProvider="target">
+                                    <frame key="frameInset" minX="10" minY="5" width="580" height="172"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                             <real key="value" value="6"/>
                                         </userDefinedRuntimeAttribute>
                                         <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                            <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
+                                            <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                         </userDefinedRuntimeAttribute>
                                         <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
                                             <real key="value" value="1"/>
@@ -108,27 +94,27 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </view>
-                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5bv-Lo-04z" userLabel="Rounded View" customClass="CustomizableView" customModule="Controlio" customModuleProvider="target">
-                                    <rect key="frame" x="10" y="5" width="580" height="172"/>
+                                <view clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5bv-Lo-04z" userLabel="Rounded View" customClass="CustomizableView" customModule="Controlio" customModuleProvider="target">
+                                    <frame key="frameInset" minX="10" minY="5" width="580" height="172"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uBR-us-5Ud">
-                                            <rect key="frame" x="0.0" y="0.0" width="580" height="60"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uBR-us-5Ud">
+                                            <frame key="frameInset" width="580" height="60"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="60" id="FJQ-tK-YFD"/>
                                             </constraints>
                                         </imageView>
-                                        <view alpha="0.84999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SJG-zX-fWp" userLabel="Gradient View" customClass="GradientView" customModule="Controlio" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="580" height="60"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <view alpha="0.84999999999999998" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SJG-zX-fWp" userLabel="Gradient View" customClass="GradientView" customModule="Controlio" customModuleProvider="target">
+                                            <frame key="frameInset" width="580" height="60"/>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="DESCRIPTION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Tm-1U-Mcg" userLabel="Description Title Label">
-                                            <rect key="frame" x="20" y="80" width="75" height="15"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="DESCRIPTION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Tm-1U-Mcg" userLabel="Description Title Label">
+                                            <frame key="frameInset" minX="20" minY="80" width="75" height="15"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="15" id="6n3-6I-psC"/>
                                                 <constraint firstAttribute="width" constant="75" id="OWa-k6-fSM"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="12"/>
-                                            <color key="textColor" red="0.63921568630000003" green="0.67843137249999996" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.63921568630000003" green="0.67843137249999996" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                             <variation key="default">
                                                 <mask key="constraints">
@@ -137,15 +123,15 @@
                                                 </mask>
                                             </variation>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X4r-qu-Mer" userLabel="Description Label">
-                                            <rect key="frame" x="20" y="101" width="529" height="51"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X4r-qu-Mer" userLabel="Description Label">
+                                            <frame key="frameInset" minX="20" minY="101" width="529" height="51"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="67" id="CrZ-wh-hEW"/>
                                                 <constraint firstAttribute="width" constant="346" id="iYj-jM-HQv"/>
                                             </constraints>
                                             <string key="text">Запалили секреты, Зажигали танцоры. Прикололи на лето Светофоры, танцполы. Светомузыка ярко, Девочки-открывашки, Поцелуи, подарки На красивых рубашках</string>
                                             <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="14"/>
-                                            <color key="textColor" red="0.34509803919999998" green="0.36470588240000001" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.34509803919999998" green="0.36470588240000001" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                             <variation key="default">
                                                 <mask key="constraints">
@@ -154,20 +140,19 @@
                                                 </mask>
                                             </variation>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0k-MU-uf0">
-                                            <rect key="frame" x="531" y="23" width="29" height="15"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0k-MU-uf0">
+                                            <frame key="frameInset" minX="531" minY="23" width="29" height="15"/>
                                             <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="12"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o63-sM-7B7">
-                                            <rect key="frame" x="20" y="20" width="37" height="20"/>
                                             <fontDescription key="fontDescription" name="SFUIDisplay-Light" family="SF UI Display" pointSize="16"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="386" id="02O-gh-KeS"/>
                                         <constraint firstAttribute="bottom" secondItem="X4r-qu-Mer" secondAttribute="bottom" constant="20" id="3Ae-xt-sug"/>
@@ -206,7 +191,7 @@
                                     </variation>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="YUG-IF-cd8" firstAttribute="centerY" secondItem="5bv-Lo-04z" secondAttribute="centerY" id="0ND-Wf-Nef"/>
                                 <constraint firstItem="5bv-Lo-04z" firstAttribute="top" secondItem="Jia-aX-q0u" secondAttribute="top" constant="5" id="9Gz-cL-Jar"/>
@@ -220,10 +205,10 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="Rs1-U2-Ce9">
-                                <rect key="frame" x="0.0" y="210" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="210" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rs1-U2-Ce9" id="OhQ-Vw-V4k">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <frame key="frameInset" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -250,13 +235,13 @@
             <objects>
                 <navigationController id="Ijo-gm-cwR" customClass="CustomNavigationController" customModule="Controlio" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Projects" image="projects" id="fhC-a6-oV1"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="EPo-v6-Vdk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="EPo-v6-Vdk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.65098039215686276" green="0.60392156862745094" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.65098039215686276" green="0.60392156862745094" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
@@ -271,33 +256,55 @@
         <scene sceneID="gtF-SS-5d5">
             <objects>
                 <tableViewController id="m03-yG-n1s" customClass="NewProjectController" customModule="Controlio" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="vjf-gt-fMp">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="vjf-gt-fMp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.95686274509803915" green="0.96470588235294119" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <connections>
                             <outlet property="dataSource" destination="m03-yG-n1s" id="I1V-C0-VJI"/>
                             <outlet property="delegate" destination="m03-yG-n1s" id="Dug-F2-qc2"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="New project" id="eP9-4v-7rE"/>
+                    <connections>
+                        <segue destination="mgS-fk-4H3" kind="show" identifier="SegueToChooseManager" id="a6W-57-kEA"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="94w-g9-QVA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1212" y="-115"/>
+        </scene>
+        <!--Choose a manager-->
+        <scene sceneID="B8W-fc-Ing">
+            <objects>
+                <tableViewController title="Choose a manager" id="mgS-fk-4H3" customClass="ChooseManagerTableViewController" customModule="Controlio" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="EZm-IM-aMY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="mgS-fk-4H3" id="eyk-WU-3Zs"/>
+                            <outlet property="delegate" destination="mgS-fk-4H3" id="o2E-ra-9Yo"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aSP-n3-DP9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1900" y="-116"/>
         </scene>
         <!--New Project-->
         <scene sceneID="3yx-8E-4VC">
             <objects>
                 <navigationController id="b14-le-hiB" customClass="CustomNavigationController" customModule="Controlio" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="New Project" image="new-project" id="cfk-iK-s2j"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="glg-2d-Vgw">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="glg-2d-Vgw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.65098039220000004" green="0.60392156860000001" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.65098039220000004" green="0.60392156860000001" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
@@ -313,28 +320,27 @@
             <objects>
                 <tableViewController id="uVt-VT-I3Z" customClass="SupportController" customModule="Controlio" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="KwL-kp-Wzo">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <inset key="separatorInset" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="AyF-XY-WXT" userLabel="Footer">
-                            <rect key="frame" x="0.0" y="350" width="600" height="1"/>
+                            <rect key="frame" x="0.0" y="350" width="375" height="1"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         </view>
                         <sections>
                             <tableViewSection id="TaG-p0-ref">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="145" id="4FV-sS-NT3">
-                                        <rect key="frame" x="0.0" y="64" width="600" height="145"/>
+                                        <rect key="frame" x="0.0" y="64" width="375" height="145"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4FV-sS-NT3" id="tmS-Wu-jll">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="144.5"/>
+                                            <frame key="frameInset" width="375" height="144"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nikita" translatesAutoresizingMaskIntoConstraints="NO" id="0Bi-jo-qIn" customClass="CustomizableImageView" customModule="Controlio" customModuleProvider="target">
-                                                    <rect key="frame" x="20" y="64" width="60" height="60"/>
-                                                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="ip8-uy-fXa"/>
                                                         <constraint firstAttribute="height" constant="60" id="mN5-Gf-dKS"/>
@@ -345,22 +351,20 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you have any questions or suggestions for our platform – don't hesitate to contact me" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SKU-ge-Jua">
-                                                    <rect key="frame" x="20" y="20" width="523" height="24"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="If you have any questions or suggestions for our platform – don't hesitate to contact me" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SKU-ge-Jua">
+                                                    <frame key="frameInset" minX="20" minY="20" width="523" height="24"/>
                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="16"/>
-                                                    <color key="textColor" red="0.34509803921568627" green="0.36470588235294116" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.34509803921568627" green="0.36470588235294116" blue="0.42352941176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nikita Kolmogorov" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qWg-ei-8Pi">
-                                                    <rect key="frame" x="100" y="75" width="114" height="17"/>
                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Medium" family="SF UI Display" pointSize="14"/>
-                                                    <color key="textColor" red="0.34509803921568627" green="0.36470588235294116" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.34509803921568627" green="0.36470588235294116" blue="0.42352941176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Founder at Controlio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ff1-rm-RqM">
-                                                    <rect key="frame" x="100" y="96" width="121" height="17"/>
                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Light" family="SF UI Display" pointSize="14"/>
-                                                    <color key="textColor" red="0.35686274509803922" green="0.37647058823529411" blue="0.43529411764705883" alpha="0.5" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.35686274509803922" green="0.37647058823529411" blue="0.43529411764705883" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -381,23 +385,21 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="47" id="ZJN-Wd-r3x">
-                                        <rect key="frame" x="0.0" y="209" width="600" height="47"/>
+                                        <rect key="frame" x="0.0" y="209" width="375" height="47"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZJN-Wd-r3x" id="ldP-a8-oU4">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="46.5"/>
+                                            <frame key="frameInset" width="342" height="46"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="telegram" translatesAutoresizingMaskIntoConstraints="NO" id="4mo-No-p5c">
-                                                    <rect key="frame" x="20" y="8" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="fyZ-14-zVD"/>
                                                         <constraint firstAttribute="width" constant="30" id="k6H-yb-fW9"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@borodutch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZ9-f0-w5a">
-                                                    <rect key="frame" x="65" y="12" width="99" height="21"/>
                                                     <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI  Text" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -413,23 +415,21 @@
                                         <inset key="separatorInset" minX="60" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="47" id="t19-wo-pSK">
-                                        <rect key="frame" x="0.0" y="256" width="600" height="47"/>
+                                        <rect key="frame" x="0.0" y="256" width="375" height="47"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="t19-wo-pSK" id="2yy-VN-5St">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="46.5"/>
+                                            <frame key="frameInset" width="342" height="46"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="skype" translatesAutoresizingMaskIntoConstraints="NO" id="OFA-Xd-eKA">
-                                                    <rect key="frame" x="20" y="8" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="Aq5-BL-Q1n"/>
                                                         <constraint firstAttribute="width" constant="30" id="hfU-Pu-Qcw"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="backmeupplz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sMw-Yt-mKv">
-                                                    <rect key="frame" x="65" y="12" width="108" height="21"/>
                                                     <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI  Text" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -445,23 +445,21 @@
                                         <inset key="separatorInset" minX="60" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="47" id="mRx-X2-mHX">
-                                        <rect key="frame" x="0.0" y="303" width="600" height="47"/>
+                                        <rect key="frame" x="0.0" y="303" width="375" height="47"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mRx-X2-mHX" id="YSj-Rh-VuD">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="46.5"/>
+                                            <frame key="frameInset" width="342" height="46"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="facebook-massenger" translatesAutoresizingMaskIntoConstraints="NO" id="HS1-RC-y6n">
-                                                    <rect key="frame" x="20" y="8" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="2mx-04-dNM"/>
                                                         <constraint firstAttribute="width" constant="30" id="yNO-Y2-CXS"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="borodutchking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zeO-hr-gv3">
-                                                    <rect key="frame" x="65" y="12" width="117" height="21"/>
                                                     <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI  Text" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -495,13 +493,13 @@
             <objects>
                 <navigationController id="576-Wy-VdO" customClass="CustomNavigationController" customModule="Controlio" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Support" image="support" id="uye-yc-d9N"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Rk-jm-OQe">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2Rk-jm-OQe">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.65098039220000004" green="0.60392156860000001" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.65098039220000004" green="0.60392156860000001" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
@@ -517,24 +515,23 @@
             <objects>
                 <tableViewController id="e97-E5-mkK" customClass="SettingsController" customModule="Controlio" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="46" sectionHeaderHeight="18" sectionFooterHeight="1" id="9Vi-I7-qds">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="separatorColor" red="0.80784313725490198" green="0.80784313725490198" blue="0.82352941176470584" alpha="0.5" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="separatorColor" red="0.80784313725490198" green="0.80784313725490198" blue="0.82352941176470584" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
                             <tableViewSection headerTitle="ACCOUNT" id="lOy-co-JAf">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Z6K-CV-aGa">
-                                        <rect key="frame" x="0.0" y="113.5" width="600" height="46"/>
+                                        <rect key="frame" x="0.0" y="120" width="375" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z6K-CV-aGa" id="oqc-Q7-Iqv">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="45.5"/>
+                                            <frame key="frameInset" width="342" height="45"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iUX-uF-nG6">
-                                                    <rect key="frame" x="15" y="12" width="78" height="21"/>
                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
-                                                    <color key="textColor" red="0.20000000000000001" green="0.23529411764705882" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.20000000000000001" green="0.23529411764705882" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -554,22 +551,21 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="dsD-hk-o9H">
-                                        <rect key="frame" x="0.0" y="159.5" width="600" height="46"/>
+                                        <rect key="frame" x="0.0" y="166" width="375" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dsD-hk-o9H" id="y6N-I8-uci">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="45.5"/>
+                                            <frame key="frameInset" width="342" height="45"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plans" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4aD-DN-UBL">
-                                                    <rect key="frame" x="15" y="12" width="41" height="21"/>
                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
-                                                    <color key="textColor" red="0.20000000000000001" green="0.23529411759999999" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.20000000000000001" green="0.23529411759999999" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Free Trial" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l4S-na-4J8">
-                                                    <rect key="frame" x="484" y="12" width="75" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Free Trial" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l4S-na-4J8">
+                                                    <frame key="frameInset" minX="484" minY="12" width="75" height="21"/>
                                                     <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI  Text" pointSize="17"/>
-                                                    <color key="textColor" red="0.35686274509803922" green="0.37647058823529411" blue="0.43529411764705883" alpha="0.5" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.35686274509803922" green="0.37647058823529411" blue="0.43529411764705883" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -595,16 +591,15 @@
                             <tableViewSection headerTitle="MANAGERS" id="jBg-fV-qW9">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="uH7-NM-0bl">
-                                        <rect key="frame" x="0.0" y="238.5" width="600" height="46"/>
+                                        <rect key="frame" x="0.0" y="252" width="375" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uH7-NM-0bl" id="Dsb-GJ-ZNB">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="45.5"/>
+                                            <frame key="frameInset" width="342" height="45"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show all managers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qYR-O9-3WF">
-                                                    <rect key="frame" x="15" y="12" width="140" height="21"/>
                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
-                                                    <color key="textColor" red="0.20000000000000001" green="0.23529411759999999" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.20000000000000001" green="0.23529411759999999" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -624,16 +619,15 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="r5v-5B-pQ6">
-                                        <rect key="frame" x="0.0" y="284.5" width="600" height="46"/>
+                                        <rect key="frame" x="0.0" y="298" width="375" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="r5v-5B-pQ6" id="jIf-Oc-NqF">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="45.5"/>
+                                            <frame key="frameInset" width="342" height="45"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add new manager" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PzQ-Yb-d0J">
-                                                    <rect key="frame" x="15" y="12" width="135" height="21"/>
                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
-                                                    <color key="textColor" red="0.20000000000000001" green="0.23529411759999999" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.20000000000000001" green="0.23529411759999999" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -657,20 +651,19 @@
                             <tableViewSection headerTitle="APP SETTINGS" id="UxB-PP-P6K">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="ccZ-hD-ite">
-                                        <rect key="frame" x="0.0" y="363.5" width="600" height="46"/>
+                                        <rect key="frame" x="0.0" y="384" width="375" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ccZ-hD-ite" id="nvC-CU-mfH">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="45.5"/>
+                                            <frame key="frameInset" width="375" height="45"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Push notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ogz-8n-INN">
-                                                    <rect key="frame" x="15" y="12" width="132" height="21"/>
                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
-                                                    <color key="textColor" red="0.20000000000000001" green="0.23529411759999999" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.20000000000000001" green="0.23529411759999999" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PEU-tE-AUI">
-                                                    <rect key="frame" x="536" y="7" width="51" height="31"/>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PEU-tE-AUI">
+                                                    <frame key="frameInset" minX="536" minY="7" width="51" height="31"/>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -695,16 +688,15 @@
                             <tableViewSection headerTitle="INFORMATION" id="zwk-TC-85x">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="dhS-Yj-xYS">
-                                        <rect key="frame" x="0.0" y="442.5" width="600" height="46"/>
+                                        <rect key="frame" x="0.0" y="470" width="375" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dhS-Yj-xYS" id="HN1-Ic-gH8">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="45.5"/>
+                                            <frame key="frameInset" width="342" height="45"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms of use" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqQ-O9-mcX">
-                                                    <rect key="frame" x="15" y="12" width="95" height="21"/>
                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
-                                                    <color key="textColor" red="0.20000000000000001" green="0.23529411759999999" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.20000000000000001" green="0.23529411759999999" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -724,16 +716,15 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="FAe-0j-SUi">
-                                        <rect key="frame" x="0.0" y="488.5" width="600" height="46"/>
+                                        <rect key="frame" x="0.0" y="516" width="375" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FAe-0j-SUi" id="7zS-wL-oVW">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="45.5"/>
+                                            <frame key="frameInset" width="342" height="45"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy policy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VFp-7e-3Vq">
-                                                    <rect key="frame" x="15" y="12" width="101" height="21"/>
                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
-                                                    <color key="textColor" red="0.20000000000000001" green="0.23529411759999999" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.20000000000000001" green="0.23529411759999999" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -757,16 +748,15 @@
                             <tableViewSection id="3Pk-QX-T56">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="AiS-M5-0uA">
-                                        <rect key="frame" x="0.0" y="553.5" width="600" height="46"/>
+                                        <rect key="frame" x="0.0" y="581" width="375" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AiS-M5-0uA" id="yK3-om-rr1">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="45.5"/>
+                                            <frame key="frameInset" width="342" height="45"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C0R-g0-qnG">
-                                                    <rect key="frame" x="15" y="12" width="56" height="21"/>
                                                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
-                                                    <color key="textColor" red="0.011764705882352941" green="0.76470588235294112" blue="0.52549019607843139" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.011764705882352941" green="0.76470588235294112" blue="0.52549019607843139" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -804,13 +794,13 @@
             <objects>
                 <navigationController id="Tdo-Ll-yW5" customClass="CustomNavigationController" customModule="Controlio" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="settings" id="nVd-0c-5o7"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ite-bO-gOl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Ite-bO-gOl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.65098039220000004" green="0.60392156860000001" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.65098039220000004" green="0.60392156860000001" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>

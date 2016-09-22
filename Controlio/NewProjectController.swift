@@ -29,7 +29,7 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate {
     }
     
     func chooseManagerTouched() {
-        print("choose manager")
+        performSegue(withIdentifier: "SegueToChooseManager", sender: nil)
     }
     
     func createTouched() {
@@ -55,5 +55,13 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate {
     
     fileprivate func setupBackButton() {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    }
+    
+    // MARK: - Segues -
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dvc = segue.destination as? ChooseManagerTableViewController {
+            
+        }
     }
 }
