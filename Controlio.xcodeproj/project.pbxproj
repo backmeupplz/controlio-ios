@@ -89,6 +89,8 @@
 		B3E8157A1CE1566900E8F87B /* NewProjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3E815781CE1566900E8F87B /* NewProjectCell.xib */; };
 		B3E8157C1CE1603400E8F87B /* NewProjectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E8157B1CE1603400E8F87B /* NewProjectController.swift */; };
 		B3EA11491D93A7350026658B /* ChooseManagerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EA11481D93A7350026658B /* ChooseManagerTableViewController.swift */; };
+		B3EA114C1D93A9740026658B /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EA114A1D93A9740026658B /* UserCell.swift */; };
+		B3EA114D1D93A9740026658B /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3EA114B1D93A9740026658B /* UserCell.xib */; };
 		B3FEB83F1C9630290048B688 /* ProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FEB83D1C9630290048B688 /* ProjectCell.swift */; };
 		B3FEB8401C9630290048B688 /* ProjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3FEB83E1C9630290048B688 /* ProjectCell.xib */; };
 		B3FEB8441C9630BA0048B688 /* UIImageView+BeautifulWebImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FEB8431C9630BA0048B688 /* UIImageView+BeautifulWebImage.swift */; };
@@ -187,6 +189,8 @@
 		B3E815781CE1566900E8F87B /* NewProjectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewProjectCell.xib; sourceTree = "<group>"; };
 		B3E8157B1CE1603400E8F87B /* NewProjectController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProjectController.swift; sourceTree = "<group>"; };
 		B3EA11481D93A7350026658B /* ChooseManagerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseManagerTableViewController.swift; sourceTree = "<group>"; };
+		B3EA114A1D93A9740026658B /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		B3EA114B1D93A9740026658B /* UserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 		B3FEB83D1C9630290048B688 /* ProjectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCell.swift; sourceTree = "<group>"; };
 		B3FEB83E1C9630290048B688 /* ProjectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectCell.xib; sourceTree = "<group>"; };
 		B3FEB8431C9630BA0048B688 /* UIImageView+BeautifulWebImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+BeautifulWebImage.swift"; sourceTree = "<group>"; };
@@ -440,6 +444,8 @@
 				B3C305B11CDFFB7D00C8E85F /* PostCell.xib */,
 				B3E815771CE1566900E8F87B /* NewProjectCell.swift */,
 				B3E815781CE1566900E8F87B /* NewProjectCell.xib */,
+				B3EA114A1D93A9740026658B /* UserCell.swift */,
+				B3EA114B1D93A9740026658B /* UserCell.xib */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -537,6 +543,7 @@
 				B38323991CDC409D004D0A1C /* SFUIText-RegularG3.otf in Resources */,
 				B38323671CDC3FB3004D0A1C /* SFUIDisplay-Heavy.otf in Resources */,
 				B38323881CDC409D004D0A1C /* SFUIText-BoldG3.otf in Resources */,
+				B3EA114D1D93A9740026658B /* UserCell.xib in Resources */,
 				B383239B1CDC409D004D0A1C /* SFUIText-SemiboldItalic.otf in Resources */,
 				B37630531CE28741004FE1B7 /* AttachmentView.xib in Resources */,
 				B383238C1CDC409D004D0A1C /* SFUIText-Heavy.otf in Resources */,
@@ -624,6 +631,7 @@
 				B37630581CE28E9B004FE1B7 /* AttachmentWrapperView.swift in Sources */,
 				B3FEB8471C9631870048B688 /* CustomizableView.swift in Sources */,
 				B3FEB8491C963E260048B688 /* CustomizableImageView.swift in Sources */,
+				B3EA114C1D93A9740026658B /* UserCell.swift in Sources */,
 				B3D8C6F41CFBFBF4001EE432 /* Server.swift in Sources */,
 				B3C305A11CDFD79500C8E85F /* SettingsController.swift in Sources */,
 				B3E634DD1C914D6200C0572A /* MainController.swift in Sources */,
