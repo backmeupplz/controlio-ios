@@ -45,7 +45,7 @@ class Router {
     }
     
     fileprivate class func projectVC(_ project: Project) -> UIViewController {
-        let vc =  mainStoryboard().instantiateViewController(withIdentifier: String(describing: ProjectController())) as! ProjectController
+        let vc =  mainStoryboard().instantiateViewController(withIdentifier: "ProjectController") as! ProjectController
         vc.project = project
         return vc
     }

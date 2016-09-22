@@ -66,7 +66,7 @@
 		B3C305A11CDFD79500C8E85F /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C305A01CDFD79500C8E85F /* SettingsController.swift */; };
 		B3C305A31CDFE06200C8E85F /* ProjectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C305A21CDFE06200C8E85F /* ProjectController.swift */; };
 		B3C305A61CDFE60B00C8E85F /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C305A51CDFE60B00C8E85F /* Project.swift */; };
-		B3C305A81CDFEAB900C8E85F /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C305A71CDFEAB900C8E85F /* Manager.swift */; };
+		B3C305A81CDFEAB900C8E85F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C305A71CDFEAB900C8E85F /* User.swift */; };
 		B3C305AA1CDFEB0200C8E85F /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C305A91CDFEB0200C8E85F /* Post.swift */; };
 		B3C305AC1CDFEC7700C8E85F /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C305AB1CDFEC7700C8E85F /* DataManager.swift */; };
 		B3C305AE1CDFF43400C8E85F /* NSDateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C305AD1CDFF43400C8E85F /* NSDateFormatter+Extensions.swift */; };
@@ -163,7 +163,7 @@
 		B3C305A01CDFD79500C8E85F /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		B3C305A21CDFE06200C8E85F /* ProjectController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectController.swift; sourceTree = "<group>"; };
 		B3C305A51CDFE60B00C8E85F /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
-		B3C305A71CDFEAB900C8E85F /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		B3C305A71CDFEAB900C8E85F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B3C305A91CDFEB0200C8E85F /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		B3C305AB1CDFEC7700C8E85F /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		B3C305AD1CDFF43400C8E85F /* NSDateFormatter+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDateFormatter+Extensions.swift"; sourceTree = "<group>"; };
@@ -396,7 +396,7 @@
 			isa = PBXGroup;
 			children = (
 				B3C305A51CDFE60B00C8E85F /* Project.swift */,
-				B3C305A71CDFEAB900C8E85F /* Manager.swift */,
+				B3C305A71CDFEAB900C8E85F /* User.swift */,
 				B3C305A91CDFEB0200C8E85F /* Post.swift */,
 			);
 			name = Objects;
@@ -630,7 +630,7 @@
 				B37630551CE28CA4004FE1B7 /* AttachmentContainerView.swift in Sources */,
 				B3FFC6C71CE6894C00595E85 /* CustomNavigationController.swift in Sources */,
 				B3E634DF1C91514D00C0572A /* ProjectsController.swift in Sources */,
-				B3C305A81CDFEAB900C8E85F /* Manager.swift in Sources */,
+				B3C305A81CDFEAB900C8E85F /* User.swift in Sources */,
 				B3B2B92D1C90CD1600468342 /* AppDelegate.swift in Sources */,
 				B3C03D0E1C90D70A0096E04C /* GradientView.swift in Sources */,
 				B3C305B41CE0031E00C8E85F /* String+Height.swift in Sources */,

@@ -51,7 +51,7 @@ class PostCell: UITableViewCell {
     // MARK: - Private Functions -
     
     fileprivate func configure() {
-        managerImageView.loadURL(post.manager.image)
+        managerImageView.loadURL(post.manager.profileImage)
         managerNameLabel.text = post.manager.name
         dateLabel.text = DateFormatter.projectDateString(post.date)
         postLabel.text = post.text

@@ -18,7 +18,7 @@ class Project: NSObject {
     var dateCreated: Date!
     var status: String!
     
-    var manager: Manager!
+    var manager: User!
     
     var lastPost: Post?
     var posts: [Post]!
@@ -38,11 +38,11 @@ class Project: NSObject {
             project.dateCreated = Date()
             project.status = "Начали готовить пиццу"
             
-            let manager = Manager()
+            let manager = User()
             manager.name = "Алер Денисов"
             manager.email = "aler@porka.ru"
             manager.phone = "+7 12345677"
-            manager.image = URL(string: "https://pp.vk.me/c311617/v311617934/6344/4H2t29OBekM.jpg")
+            manager.profileImage = URL(string: "https://pp.vk.me/c311617/v311617934/6344/4H2t29OBekM.jpg")
             
             let post = Post()
             post.text = "Ну, что сказать, пиццу засунули в очаг, ждем, пока готовится"

@@ -14,6 +14,6 @@ class Post: NSObject {
     
     var text: String!
     var date: Date!
-    var manager: Manager!
+    var manager: User!
     var attachments: [URL]!
 }

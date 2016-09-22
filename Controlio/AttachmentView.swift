@@ -34,7 +34,7 @@ class AttachmentView: UIView {
     // MARK: - Class Functions -
     
     class func view(_ superview: UIView, delegate: AttachmentViewDelegate? = nil) -> AttachmentView {
-        let result = Bundle.main.loadNibNamed(String(describing: AttachmentView()), owner: nil, options: [:])?.last as! AttachmentView
+        let result = Bundle.main.loadNibNamed("AttachmentView", owner: nil, options: [:])?.last as! AttachmentView
         result.delegate = delegate
         superview.addSubview(result)
         return result

@@ -31,7 +31,7 @@ class InputView: CustomizableView, AttachmentContainerViewDelegate {
     // MARK: - Class Functions -
     
     class func view(_ superview: UIView, vc: UIViewController, delegate: InputViewDelegate? = nil) -> InputView {
-        let result = Bundle.main.loadNibNamed(String(describing: InputView()), owner: nil, options: [:])?.last as! InputView
+        let result = Bundle.main.loadNibNamed("InputView", owner: nil, options: [:])?.last as! InputView
         result.delegate = delegate
         
         superview.addSubview(result)

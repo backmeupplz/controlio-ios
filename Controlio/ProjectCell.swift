@@ -39,7 +39,7 @@ class ProjectCell: UITableViewCell {
         statusLabel.text = project.status
         projectDescriptionLabel.text = project.projectDescription
         
-        managerImageView.loadURL(project.manager.image)
+        managerImageView.loadURL(project.manager.profileImage)
         managerNameLabel.text = project.manager.name
         postLabel.text = project.lastPost?.text ?? project.status
     }

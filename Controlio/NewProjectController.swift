@@ -17,7 +17,7 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: NewProjectCell()), for: indexPath) as! NewProjectCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NewProjectCell", for: indexPath) as! NewProjectCell
         cell.delegate = self
         return cell
     }
@@ -50,7 +50,7 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate {
     fileprivate func setupTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 464.0
-        tableView.register(UINib(nibName: String(describing: NewProjectCell()), bundle: nil), forCellReuseIdentifier: String(describing: NewProjectCell()))
+        tableView.register(UINib(nibName: "NewProjectCell", bundle: nil), forCellReuseIdentifier: "NewProjectCell")
     }
     
     fileprivate func setupBackButton() {

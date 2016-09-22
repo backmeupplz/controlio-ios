@@ -34,7 +34,7 @@ class ProjectsController: UITableViewController, UISearchResultsUpdating, UISear
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProjectCell()), for: indexPath) as! ProjectCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectCell", for: indexPath) as! ProjectCell
         cell.project = projects[(indexPath as NSIndexPath).row]
         return cell
     }
@@ -58,24 +58,10 @@ class ProjectsController: UITableViewController, UISearchResultsUpdating, UISear
         setupBackButton()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        loadData()
-    }
-    
     // MARK: - Public Functions -
     
     func showSearch() {
         present(searchController, animated: true) {}
-    }
-    
-    func loadData() {
-        DataManager.sharedManager.getProjects { projects in
-            self.projects = projects!
-            self.refreshControl?.endRefreshing()
-            self.tableView.reloadData()
-        }
     }
     
     // MARK: - Private Functions -
@@ -83,12 +69,12 @@ class ProjectsController: UITableViewController, UISearchResultsUpdating, UISear
     fileprivate func setupTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 464.0
-        tableView.register(UINib(nibName: String(describing: ProjectCell()), bundle: nil), forCellReuseIdentifier: String(describing: ProjectCell()))
+        tableView.register(UINib(nibName: "ProjectCell", bundle: nil), forCellReuseIdentifier: "ProjectCell")
     }
     
     fileprivate func addRefreshControl() {
         refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(ProjectsController.loadData), for: .valueChanged)
+//        refreshControl?.addTarget(self, action: #selector(ProjectsController.loadData), for: .valueChanged)
     }
     
     fileprivate func setupSearchController() {

@@ -37,7 +37,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PostCell()), for: indexPath) as! PostCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
         cell.post = project.posts[(indexPath as NSIndexPath).row]
         cell.delegate = self
         return cell
@@ -137,7 +137,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     fileprivate func setupTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 464.0
-        tableView.register(UINib(nibName: String(describing: PostCell()), bundle: nil), forCellReuseIdentifier: String(describing: PostCell()))
+        tableView.register(UINib(nibName: "PostCell", bundle: nil), forCellReuseIdentifier: "PostCell")
     }
     
     fileprivate func addRefreshControl() {
