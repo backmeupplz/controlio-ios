@@ -13,6 +13,12 @@ class SettingsController: UITableViewController {
 
     // MARK: - View Controller Life Cycle -
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupBackButton()
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
@@ -41,6 +47,10 @@ class SettingsController: UITableViewController {
     }
     
     // MARK: - Private functions -
+    
+    fileprivate func setupBackButton() {
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    }
     
     fileprivate func showTermsOfUse() {
         let svc = SFSafariViewController(url: URL(string: "https://google.com")!)

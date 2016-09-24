@@ -74,6 +74,19 @@ class Server: NSObject {
         }
     }
     
+    // MARK: - Profile -
+    
+    class func getProfile(completion:@escaping (NSError?, User?)->()) {
+        request(urlAddition: "users/profile", method: .get, needsToken: true)
+        { json, error in
+            if let error = error {
+                completion(error, nil)
+            } else {
+                completion(nil, User(json: json!))
+            }
+        }
+    }
+    
     // MARK: - Managers -
     
     class func getManagers(completion:@escaping (NSError?, [User]?)->()) {

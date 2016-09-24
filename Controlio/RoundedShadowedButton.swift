@@ -24,9 +24,9 @@ class RoundedShadowedButton: UIButton {
                 for view in views {
                     if isHighlighted {
                         defaultAlpha[view] = view.alpha
-                        view.alpha = view.alpha / 2
+//                        view.alpha = view.alpha / 2.0
                     } else {
-                        view.alpha = defaultAlpha[view] ?? 1.0
+//                        view.alpha = defaultAlpha[view] ?? 1.0
                     }
                 }
             }

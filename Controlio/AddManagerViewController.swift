@@ -49,6 +49,8 @@ class AddManagerViewController: UITableViewController {
     // MARK: - Private functions -
     
     fileprivate func setupTableView() {
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 464.0
         tableView.tableFooterView = UIView()
         tableView.register(UINib(nibName: "AddManagerCell", bundle: nil), forCellReuseIdentifier: "AddManagerCell")
     }
