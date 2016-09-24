@@ -1,5 +1,5 @@
 //
-//  ChooseManagerTableViewController.swift
+//  ManagerTableViewController.swift
 //  Controlio
 //
 //  Created by Nikita Kolmogorov on 21/09/2016.
@@ -8,10 +8,25 @@
 
 import UIKit
 
-class ChooseManagerTableViewController: UITableViewController {
+enum ManagerTableViewControllerType {
+    case choose, show
+    func viewControllerTitle() -> String {
+        switch self {
+        case .choose:
+            return "Choose a Manager"
+        case .show:
+            return "All managers"
+        default:
+            return ""
+        }
+    }
+}
+
+class ManagerTableViewController: UITableViewController {
     
     // MARK: - Variables -
     
+    var type = ManagerTableViewControllerType.choose
     var managers = [User]() {
         didSet {
             tableView.reloadData()
@@ -29,6 +44,7 @@ class ChooseManagerTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavigationItem()
         setupTableView()
         addRefreshControl()
         setupBackButton()
@@ -68,6 +84,10 @@ class ChooseManagerTableViewController: UITableViewController {
     }
     
     // MARK: - Private functions -
+    
+    fileprivate func setupNavigationItem() {
+        navigationItem.title = type.viewControllerTitle()
+    }
     
     fileprivate func setupTableView() {
         tableView.tableFooterView = UIView()

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class SettingsController: UITableViewController {
 
@@ -28,6 +29,10 @@ class SettingsController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch (indexPath.section, indexPath.row) {
+        case (3, 0):
+            showTermsOfUse()
+        case (3, 1):
+            showPrivacyPolicy()
         case (4, 0):
             logout()
         default:
@@ -37,8 +42,27 @@ class SettingsController: UITableViewController {
     
     // MARK: - Private functions -
     
+    fileprivate func showTermsOfUse() {
+        let svc = SFSafariViewController(url: URL(string: "https://google.com")!)
+        self.present(svc, animated: true, completion: nil)
+    }
+    
+    fileprivate func showPrivacyPolicy() {
+        let svc = SFSafariViewController(url: URL(string: "https://facebook.com")!)
+        self.present(svc, animated: true, completion: nil)
+    }
+    
     fileprivate func logout() {
         Server.currentUser = nil
         let _ = self.navigationController?.tabBarController?.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    // MARK: - Segues -
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let dest = segue.destination
+        if let vc = dest as? ManagerTableViewController {
+            vc.type = .show
+        }
     }
 }

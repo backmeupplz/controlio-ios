@@ -107,7 +107,7 @@
                                             <frame key="frameInset" width="580" height="60"/>
                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="DESCRIPTION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Tm-1U-Mcg" userLabel="Description Title Label">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" ambiguous="YES" text="DESCRIPTION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Tm-1U-Mcg" userLabel="Description Title Label">
                                             <frame key="frameInset" minX="20" minY="80" width="75" height="15"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="15" id="6n3-6I-psC"/>
@@ -277,7 +277,7 @@
         <!--Choose a manager-->
         <scene sceneID="B8W-fc-Ing">
             <objects>
-                <tableViewController id="mgS-fk-4H3" customClass="ChooseManagerTableViewController" customModule="Controlio" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="mgS-fk-4H3" customClass="ManagerTableViewController" customModule="Controlio" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="EZm-IM-aMY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -660,6 +660,9 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="mgS-fk-4H3" kind="show" identifier="SegueToManagers" id="tcz-zS-pNJ"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="r5v-5B-pQ6">
                                         <rect key="frame" x="0.0" y="298" width="375" height="46"/>
@@ -688,6 +691,9 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="st0-4t-e0X" kind="show" identifier="SegueToAddManager" id="41E-sc-HNK"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -865,4 +871,8 @@
         <image name="support" width="20" height="20"/>
         <image name="telegram" width="29" height="29"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="41E-sc-HNK"/>
+        <segue reference="tcz-zS-pNJ"/>
+    </inferredMetricsTieBreakers>
 </document>

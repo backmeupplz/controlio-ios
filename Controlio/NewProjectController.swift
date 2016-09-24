@@ -60,8 +60,9 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate {
     // MARK: - Segues -
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let dvc = segue.destination as? ChooseManagerTableViewController {
-            
+        let dest = segue.destination
+        if let vc = dest as? ManagerTableViewController {
+            vc.type = .choose
         }
     }
 }
