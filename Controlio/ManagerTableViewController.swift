@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 enum ManagerTableViewControllerType {
     case choose, show
@@ -16,8 +17,6 @@ enum ManagerTableViewControllerType {
             return "Choose a Manager"
         case .show:
             return "All managers"
-        default:
-            return ""
         }
     }
 }
@@ -56,7 +55,7 @@ class ManagerTableViewController: UITableViewController {
         loadData()
     }
 
-    // MARK: - Table view data source
+    // MARK: - UITableViewDataSource -
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return managers.count
@@ -66,6 +65,30 @@ class ManagerTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserCell
         cell.user = managers[indexPath.row]
         return cell
+    }
+    
+    // MARK: - UITableViewDelegate -
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return indexPath.row != 0
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        guard editingStyle == .delete else { return }
+        
+        let hud = MBProgressHUD.showAdded(to: view, animated: false)
+        Server.removeManager(user: managers[indexPath.row])
+        { error in
+            hud.hide(animated: true)
+            if let error = error {
+                PopupNotification.showNotification(error.domain)
+            } else {
+                self.tableView.beginUpdates()
+                self.managers.remove(at: indexPath.row)
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                self.tableView.endUpdates()
+            }
+        }
     }
     
     // MARK: - Functions -

@@ -37,7 +37,7 @@ class User: NSObject, NSCoding {
     
     convenience init(json: JSON) {
         self.init()
-        print(json)
+        
         email = json["email"].string!
         id = json["_id"].string!
         

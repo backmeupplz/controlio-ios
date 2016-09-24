@@ -36,7 +36,6 @@ class Server: NSObject {
     // MARK: - Public functions -
     
     class func isLoggedIn() -> Bool {
-        // TODO: remove hardcoded false statement
         return currentUser?.token != nil
     }
     
@@ -93,6 +92,16 @@ class Server: NSObject {
             "email": email
         ]
         request(urlAddition: "users/manager", method: .post, parameters: parameters, needsToken: true)
+        { json, error in
+            completion(error)
+        }
+    }
+    
+    class func removeManager(user: User, completion:@escaping (NSError?)->()) {
+        let parameters = [
+            "id": user.id!
+        ]
+        request(urlAddition: "users/manager", method: .delete, parameters: parameters, needsToken: true)
         { json, error in
             completion(error)
         }
