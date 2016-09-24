@@ -23,4 +23,22 @@ class SettingsController: UITableViewController {
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .lightContent
     }
+    
+    // MARK: - UITableViewDelegate -
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch (indexPath.section, indexPath.row) {
+        case (4, 0):
+            logout()
+        default:
+            print(indexPath)
+        }
+    }
+    
+    // MARK: - Private functions -
+    
+    fileprivate func logout() {
+        Server.currentUser = nil
+        let _ = self.navigationController?.tabBarController?.navigationController?.popToRootViewController(animated: true)
+    }
 }

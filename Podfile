@@ -13,4 +13,5 @@ target 'Controlio' do
     pod 'JDStatusBarNotification'
     pod 'SlackTextViewController'
     pod 'AWSS3', '~> 2.3.3'
+    pod 'MBProgressHUD', '~> 1.0.0'
 end

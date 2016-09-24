@@ -40,6 +40,8 @@ class Server: NSObject {
         return currentUser?.token != nil
     }
     
+    // MARK: - Login -
+    
     class func signup(email: String, password: String, completion:@escaping (NSError?)->()) {
         let parameters = [
             "email": email,
@@ -73,9 +75,32 @@ class Server: NSObject {
         }
     }
     
+    // MARK: - Managers -
+    
+    class func getManagers(completion:@escaping (NSError?, [User]?)->()) {
+        request(urlAddition: "users/managers", method: .get, needsToken: true)
+        { json, error in
+            if let error = error {
+                completion(error, nil)
+            } else {
+                completion(nil, User.map(json: json!))
+            }
+        }
+    }
+    
+    class func addManager(email: String, completion:@escaping (NSError?)->()) {
+        let parameters = [
+            "email": email
+        ]
+        request(urlAddition: "users/manager", method: .post, parameters: parameters, needsToken: true)
+        { json, error in
+            completion(error)
+        }
+    }
+    
     // MARK: - Private functions -
     
-    fileprivate class func request(urlAddition: String, method: HTTPMethod, parameters: [String:String], needsToken: Bool, completion: @escaping (JSON?, NSError?)->()) {
+    fileprivate class func request(urlAddition: String, method: HTTPMethod, parameters: [String:String]? = nil, needsToken: Bool, completion: @escaping (JSON?, NSError?)->()) {
         Alamofire.request(apiUrl + urlAddition, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: headers(needsToken: needsToken))
             .responseJSON { response in
                 if let errorString = response.result.error?.localizedDescription {
@@ -106,7 +131,7 @@ class Server: NSObject {
     
     fileprivate class func headers(needsToken: Bool) -> [String:String] {
         return needsToken ?
-            ["apiKey": apiKey, "token": currentUser?.token ?? ""] :
+            ["apiKey": apiKey, "token": currentUser?.token ?? "", "userId": currentUser?.id ?? ""] :
             ["apiKey": apiKey]
     }
 }
