@@ -21,6 +21,7 @@ class User: NSObject, NSCoding {
     var name: String?
     var phone: String?
     var profileImage: URL?
+    var tempProfileImage: UIImage?
     
     var isBusiness = false
     var addedAsManager = false

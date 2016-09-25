@@ -48,6 +48,10 @@ class EditProfileCell: UITableViewCell {
             addPhotoBackground.loadURL(url)
             addPhotoCamera.isHidden = true
             addPhotoLabel.text = "Edit photo"
+        } else if let image = user.tempProfileImage {
+            addPhotoBackground.image = image
+            addPhotoCamera.isHidden = true
+            addPhotoLabel.text = "Edit photo"
         } else {
             addPhotoBackground.image = UIImage(named: "photo-background-placeholder")
             addPhotoCamera.isHidden = false

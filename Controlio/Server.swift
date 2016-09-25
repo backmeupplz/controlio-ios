@@ -87,6 +87,27 @@ class Server: NSObject {
         }
     }
     
+    class func editProfile(name: String?, phone: String?, profileImage: URL?, completion: @escaping (NSError?)->()) {
+        var parameters = [String:String]()
+        if let name = name {
+            parameters["name"] = name
+        }
+        if let phone = phone {
+            parameters["phone"] = phone
+        }
+        if let profileImage = profileImage {
+            parameters["photo"] = profileImage.absoluteString
+        }
+        request(urlAddition: "users/profile", method: .post, parameters: parameters, needsToken: true)
+        { json, error in
+            if let error = error {
+                completion(error)
+            } else {
+                completion(nil)
+            }
+        }
+    }
+    
     // MARK: - Managers -
     
     class func getManagers(completion:@escaping (NSError?, [User]?)->()) {
