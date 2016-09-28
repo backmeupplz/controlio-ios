@@ -20,7 +20,7 @@ class User: NSObject, NSCoding {
     
     var name: String?
     var phone: String?
-    var profileImage: URL?
+    var profileImageKey: String?
     var tempProfileImage: UIImage?
     
     var isBusiness = false
@@ -46,8 +46,8 @@ class User: NSObject, NSCoding {
         
         name = json["name"].string
         phone = json["phone"].string
-        if let profileImageUrlString = json["photo"].string {
-            profileImage = URL(string: profileImageUrlString)
+        if let profileImageKeyString = json["photo"].string {
+            profileImageKey = profileImageKeyString
         }
         
         isBusiness = json["isBusiness"].bool ?? false
@@ -68,7 +68,7 @@ class User: NSObject, NSCoding {
         
         aCoder.encode(name, forKey: "name")
         aCoder.encode(phone, forKey: "phone")
-        aCoder.encode(profileImage, forKey: "profileImage")
+        aCoder.encode(profileImageKey, forKey: "profileImageKey")
         
         aCoder.encode(isBusiness, forKey: "isBusiness")
         aCoder.encode(addedAsManager, forKey: "addedAsManager")
@@ -88,7 +88,7 @@ class User: NSObject, NSCoding {
         
         name = aDecoder.decodeObject(forKey: "name") as? String
         phone = aDecoder.decodeObject(forKey: "phone") as? String
-        profileImage = aDecoder.decodeObject(forKey: "profileImage") as? URL
+        profileImageKey = aDecoder.decodeObject(forKey: "profileImageKey") as? String
         
         isBusiness = aDecoder.decodeObject(forKey: "isBusiness") as? Bool ?? false
         addedAsManager = aDecoder.decodeObject(forKey: "addedAsManager") as? Bool ?? false

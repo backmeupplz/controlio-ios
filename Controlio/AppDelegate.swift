@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import IQKeyboardManagerSwift
+//import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -29,8 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Private Functions -
     
     fileprivate func setupKeyboard() {
-        IQKeyboardManager.sharedManager().enable = true
-        IQKeyboardManager.sharedManager().enableAutoToolbar = false
+//        IQKeyboardManager.sharedManager().enable = true
+//        IQKeyboardManager.sharedManager().enableAutoToolbar = false
     }
 }
 

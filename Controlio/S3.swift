@@ -78,7 +78,9 @@ class S3: NSObject {
         uploadRequest?.key = "\(userId)/" + ProcessInfo.processInfo.globallyUniqueString + "-\(Int(Date().timeIntervalSince1970))" + "." + ext
         uploadRequest?.bucket = S3BucketName
         uploadRequest?.uploadProgress = { bytesSent, totalBytesSent, totalBytesExpectedToSend in
-            progress(Float(totalBytesSent) / Float(totalBytesExpectedToSend))
+            DispatchQueue.main.async {
+                progress(Float(totalBytesSent) / Float(totalBytesExpectedToSend))
+            }
         }
         
         let transferManager = AWSS3TransferManager.default()

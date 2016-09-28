@@ -71,7 +71,6 @@
 		B3C305A61CDFE60B00C8E85F /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C305A51CDFE60B00C8E85F /* Project.swift */; };
 		B3C305A81CDFEAB900C8E85F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C305A71CDFEAB900C8E85F /* User.swift */; };
 		B3C305AA1CDFEB0200C8E85F /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C305A91CDFEB0200C8E85F /* Post.swift */; };
-		B3C305AC1CDFEC7700C8E85F /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C305AB1CDFEC7700C8E85F /* DataManager.swift */; };
 		B3C305AE1CDFF43400C8E85F /* NSDateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C305AD1CDFF43400C8E85F /* NSDateFormatter+Extensions.swift */; };
 		B3C305B01CDFFB5900C8E85F /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C305AF1CDFFB5900C8E85F /* PostCell.swift */; };
 		B3C305B21CDFFB7D00C8E85F /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3C305B11CDFFB7D00C8E85F /* PostCell.xib */; };
@@ -91,6 +90,8 @@
 		B3E634DD1C914D6200C0572A /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E634DC1C914D6200C0572A /* MainController.swift */; };
 		B3E634DF1C91514D00C0572A /* ProjectsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E634DE1C91514D00C0572A /* ProjectsController.swift */; };
 		B3E634E11C915B9300C0572A /* UISearchBar+CursorTint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E634E01C915B9300C0572A /* UISearchBar+CursorTint.swift */; };
+		B3E7B1281D9B3D40004FBF86 /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B1271D9B3D40004FBF86 /* Platform.swift */; };
+		B3E7B12A1D9B969C004FBF86 /* String+EmailValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B1291D9B969C004FBF86 /* String+EmailValidation.swift */; };
 		B3E815791CE1566900E8F87B /* NewProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E815771CE1566900E8F87B /* NewProjectCell.swift */; };
 		B3E8157A1CE1566900E8F87B /* NewProjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3E815781CE1566900E8F87B /* NewProjectCell.xib */; };
 		B3E8157C1CE1603400E8F87B /* NewProjectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E8157B1CE1603400E8F87B /* NewProjectController.swift */; };
@@ -177,7 +178,6 @@
 		B3C305A51CDFE60B00C8E85F /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		B3C305A71CDFEAB900C8E85F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B3C305A91CDFEB0200C8E85F /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		B3C305AB1CDFEC7700C8E85F /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		B3C305AD1CDFF43400C8E85F /* NSDateFormatter+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDateFormatter+Extensions.swift"; sourceTree = "<group>"; };
 		B3C305AF1CDFFB5900C8E85F /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		B3C305B11CDFFB7D00C8E85F /* PostCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCell.xib; sourceTree = "<group>"; };
@@ -197,6 +197,8 @@
 		B3E634DC1C914D6200C0572A /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		B3E634DE1C91514D00C0572A /* ProjectsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsController.swift; sourceTree = "<group>"; };
 		B3E634E01C915B9300C0572A /* UISearchBar+CursorTint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISearchBar+CursorTint.swift"; sourceTree = "<group>"; };
+		B3E7B1271D9B3D40004FBF86 /* Platform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
+		B3E7B1291D9B969C004FBF86 /* String+EmailValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+EmailValidation.swift"; sourceTree = "<group>"; };
 		B3E815771CE1566900E8F87B /* NewProjectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProjectCell.swift; sourceTree = "<group>"; };
 		B3E815781CE1566900E8F87B /* NewProjectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewProjectCell.xib; sourceTree = "<group>"; };
 		B3E8157B1CE1603400E8F87B /* NewProjectController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProjectController.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 		B37630561CE28CA9004FE1B7 /* InputView */ = {
 			isa = PBXGroup;
 			children = (
+				B3C03D0D1C90D70A0096E04C /* GradientView.swift */,
 				B3BA9C301CE18ED300647470 /* InputView.swift */,
 				B3BA9C321CE18EE300647470 /* InputView.xib */,
 				B37630541CE28CA4004FE1B7 /* AttachmentContainerView.swift */,
@@ -341,7 +344,6 @@
 				B3FEB8451C9630D20048B688 /* Extensions */,
 				B3FEB83A1C962F920048B688 /* Cells */,
 				B37630561CE28CA9004FE1B7 /* InputView */,
-				B3C03D0D1C90D70A0096E04C /* GradientView.swift */,
 				B3E634E01C915B9300C0572A /* UISearchBar+CursorTint.swift */,
 				B3C03D111C90E6E70096E04C /* RoundedShadowedButton.swift */,
 				B3AA2F8E1C910ACC00FE7E54 /* RoundedBorderedTextField.swift */,
@@ -362,10 +364,10 @@
 				B3B2B92C1C90CD1600468342 /* AppDelegate.swift */,
 				B3E634D21C91344400C0572A /* Router.swift */,
 				B390C7A21CDE96B800D5F021 /* DeepLink.swift */,
-				B3C305AB1CDFEC7700C8E85F /* DataManager.swift */,
 				B3D8C6F31CFBFBF4001EE432 /* Server.swift */,
 				B3D8C6F51CFBFC6B001EE432 /* Config.swift */,
 				B3D8C6F91CFC0A78001EE432 /* S3.swift */,
+				B3E7B1271D9B3D40004FBF86 /* Platform.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -406,6 +408,7 @@
 				B3C305B31CE0031E00C8E85F /* String+Height.swift */,
 				B301EFDC1CE59A0A0013CD4D /* UIImagePickerDelegate+UINavgiationControllerDelegate.swift */,
 				B3D8C6F71CFBFD7E001EE432 /* NSUserDefaults+extensions.swift */,
+				B3E7B1291D9B969C004FBF86 /* String+EmailValidation.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -645,7 +648,6 @@
 			files = (
 				B3E57BF41D9604B100F699F1 /* AddManagerViewController.swift in Sources */,
 				B3E634D31C91344400C0572A /* Router.swift in Sources */,
-				B3C305AC1CDFEC7700C8E85F /* DataManager.swift in Sources */,
 				B383239D1CDC4336004D0A1C /* CatchPhraseView.swift in Sources */,
 				B3D1692E1CDDC15F0080D748 /* SupportController.swift in Sources */,
 				B3FEB8441C9630BA0048B688 /* UIImageView+BeautifulWebImage.swift in Sources */,
@@ -682,10 +684,12 @@
 				B3FFC6C91CE69D6700595E85 /* CustomSearchController.swift in Sources */,
 				B3C03D101C90DAA60096E04C /* UIColor+Controlio.swift in Sources */,
 				B37630511CE28737004FE1B7 /* AttachmentView.swift in Sources */,
+				B3E7B12A1D9B969C004FBF86 /* String+EmailValidation.swift in Sources */,
 				B37F10E51D962F9A00CAA8D4 /* EditProfileCell.swift in Sources */,
 				B3C305AA1CDFEB0200C8E85F /* Post.swift in Sources */,
 				B3AA2F911C9110EF00FE7E54 /* SignUpViewController.swift in Sources */,
 				B3C03D1A1C90FF890096E04C /* UIAlertController+Additions.swift in Sources */,
+				B3E7B1281D9B3D40004FBF86 /* Platform.swift in Sources */,
 				B3D8C6F61CFBFC6B001EE432 /* Config.swift in Sources */,
 				B3C305AE1CDFF43400C8E85F /* NSDateFormatter+Extensions.swift in Sources */,
 				B37F10E21D962F2500CAA8D4 /* EditProfileViewController.swift in Sources */,
@@ -812,7 +816,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 78CB8BDD8D1FD1F9D323F17C /* Pods-Controlio.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Borodutch Studio LLC (9VUB6L23QH)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -832,7 +836,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9E0CE87DC6458B1EA1E9217C /* Pods-Controlio.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Borodutch Studio LLC (9VUB6L23QH)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

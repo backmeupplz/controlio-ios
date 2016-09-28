@@ -107,7 +107,7 @@
                                             <frame key="frameInset" width="580" height="60"/>
                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="DESCRIPTION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Tm-1U-Mcg" userLabel="Description Title Label">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" ambiguous="YES" text="DESCRIPTION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Tm-1U-Mcg" userLabel="Description Title Label">
                                             <frame key="frameInset" minX="20" minY="80" width="75" height="15"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="15" id="6n3-6I-psC"/>
@@ -332,7 +332,8 @@
         <!--New Project-->
         <scene sceneID="3yx-8E-4VC">
             <objects>
-                <navigationController id="b14-le-hiB" customClass="CustomNavigationController" customModule="Controlio" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="b14-le-hiB" customClass="CustomNavigationController" customModule="Controlio" customModuleProvider="target" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <tabBarItem key="tabBarItem" title="New Project" image="new-project" id="cfk-iK-s2j"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="glg-2d-Vgw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

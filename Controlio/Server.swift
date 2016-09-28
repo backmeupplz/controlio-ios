@@ -87,7 +87,7 @@ class Server: NSObject {
         }
     }
     
-    class func editProfile(name: String?, phone: String?, profileImage: URL?, completion: @escaping (NSError?)->()) {
+    class func editProfile(name: String?, phone: String?, profileImage: String?, completion: @escaping (NSError?)->()) {
         var parameters = [String:String]()
         if let name = name {
             parameters["name"] = name
@@ -96,13 +96,14 @@ class Server: NSObject {
             parameters["phone"] = phone
         }
         if let profileImage = profileImage {
-            parameters["photo"] = profileImage.absoluteString
+            parameters["photo"] = profileImage
         }
         request(urlAddition: "users/profile", method: .post, parameters: parameters, needsToken: true)
         { json, error in
             if let error = error {
                 completion(error)
             } else {
+                saveUser(json!)
                 completion(nil)
             }
         }

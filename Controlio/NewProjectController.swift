@@ -8,7 +8,11 @@
 
 import UIKit
 
-class NewProjectController: UITableViewController, NewProjectCellDelegate {
+class NewProjectController: UITableViewController, NewProjectCellDelegate, ManagerTableViewControllerDelegate {
+    
+    // MARK: - Variables -
+    
+    var manager: User?
     
     // MARK: - UITableViewDataSource -
     
@@ -19,6 +23,7 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewProjectCell", for: indexPath) as! NewProjectCell
         cell.delegate = self
+        configure(cell: cell)
         return cell
     }
 
@@ -36,6 +41,12 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate {
         print("create")
     }
     
+    // MARK: - ManagerTableViewControllerDelegate -
+    
+    func didChoose(manager: User) {
+        self.manager = manager
+    }
+    
     // MARK: - View Controller Life Cycle -
     
     override func viewDidLoad() {
@@ -45,7 +56,29 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate {
         setupBackButton()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+    }
+    
     // MARK: - Private Functions -
+    
+    fileprivate func configure(cell: NewProjectCell) {
+        cell.managerPhotoImage.image = UIImage(named: "photo-background-placeholder")
+        if let manager = manager {
+            cell.managerPhotoImage.load(key: manager.profileImageKey)
+            cell.managerTitleLabel.isHidden = false
+            cell.managerTitleLabel.text = manager.name ?? manager.email
+            cell.chooseManagerButton.isHidden = true
+            cell.chooseManagerBackgroundButton.isHidden = false
+        } else {
+            cell.managerTitleLabel.isHidden = true
+            cell.managerTitleLabel.text = nil
+            cell.chooseManagerButton.isHidden = false
+            cell.chooseManagerBackgroundButton.isHidden = true
+        }
+    }
     
     fileprivate func setupTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -62,6 +95,7 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let dest = segue.destination
         if let vc = dest as? ManagerTableViewController {
+            vc.delegate = self
             vc.type = .choose
         }
     }

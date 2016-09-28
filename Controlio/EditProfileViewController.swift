@@ -9,7 +9,7 @@
 import UIKit
 import MBProgressHUD
 
-class EditProfileViewController: UITableViewController, EditProfileCellDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class EditProfileViewController: UITableViewController, EditProfileCellDelegate, PickerDelegate {
 
     // MARK: - Variables -
     
@@ -31,15 +31,38 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
             phone = nil
         }
         
-        // TODO: handle image
-        
-        Server.editProfile(name: name, phone: phone, profileImage: nil)
-        { error in
-            if let error = error {
-                PopupNotification.showNotification(error.domain)
-            } else {
-                hud.hide(animated: true)
-                let _ = self.navigationController?.popViewController(animated: true)
+        if let tempPorfileImage = user.tempProfileImage {
+            hud.mode = .annularDeterminate
+            hud.label.text = "Uploading image"
+            S3.uploadImage(tempPorfileImage, progress: { progress in
+                print(progress)
+                hud.progress = progress
+            })
+            { key, error in
+                if let error = error {
+                    PopupNotification.showNotification(error)
+                } else {
+                    Server.editProfile(name: name, phone: phone, profileImage: key)
+                    { error in
+                        if let error = error {
+                            PopupNotification.showNotification(error.domain)
+                        } else {
+                            hud.hide(animated: true)
+                            let _ = self.navigationController?.popViewController(animated: true)
+                        }
+                    }
+                }
+            }
+        } else {
+            hud.label.text = "Uploading data"
+            Server.editProfile(name: name, phone: phone, profileImage: user.profileImageKey)
+            { error in
+                if let error = error {
+                    PopupNotification.showNotification(error.domain)
+                } else {
+                    hud.hide(animated: true)
+                    let _ = self.navigationController?.popViewController(animated: true)
+                }
             }
         }
     }
@@ -85,7 +108,7 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
         }
         let remove = UIAlertAction(title: "Remove photo", style: .destructive)
         { action in
-            self.user.profileImage = nil
+            self.user.profileImageKey = nil
             self.user.tempProfileImage = nil
             self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
         }
@@ -96,7 +119,7 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
         alert.addAction(library)
         alert.addAction(camera)
         alert.addAction(cancel)
-        if (user.profileImage != nil || user.tempProfileImage != nil) {
+        if user.profileImageKey != nil || user.tempProfileImage != nil {
             alert.addAction(remove)
         }
         present(alert, animated: true, completion: nil)
@@ -152,6 +175,10 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
     
     fileprivate func setNewPhoto(image: UIImage) {
         user.tempProfileImage = image
+        
+        let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! EditProfileCell
+        user.name = cell.nameTextfield.text
+        user.phone = cell.phoneTextfield.text
         tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
     }
 }

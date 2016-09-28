@@ -33,13 +33,13 @@ class ProjectCell: UITableViewCell {
     // MARK: - Private Functions -
     
     fileprivate func configure() {
-        projectImageView.loadURL(project.image)
+        projectImageView.load(url: project.image)
         dateLabel.text = DateFormatter.projectDateString(project.dateCreated)
         projectTitleLabel.text = project.title
         statusLabel.text = project.status
         projectDescriptionLabel.text = project.projectDescription
         
-        managerImageView.loadURL(project.manager.profileImage)
+        managerImageView.load(key: project.manager.profileImageKey)
         managerNameLabel.text = project.manager.name
         postLabel.text = project.lastPost?.text ?? project.status
     }

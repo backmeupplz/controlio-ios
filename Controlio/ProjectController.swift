@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import IQKeyboardManagerSwift
 
 class ProjectController: UITableViewController, PostCellDelegate, InputViewDelegate {
     
@@ -90,10 +89,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         super.viewWillAppear(animated)
         
         configure()
-        
         showInput()
-        
-        IQKeyboardManager.sharedManager().enable = false
         subcribeForNotifications()
     }
     
@@ -108,8 +104,6 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         
         unsubscribeFromNotifications()
         hideInput()
-        
-        IQKeyboardManager.sharedManager().enable = true
     }
     
     // MARK: - Public Functions -
@@ -123,7 +117,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     fileprivate func configure() {
         title = project.title
         
-        projectImageView.loadURL(project.image)
+        projectImageView.load(url: project.image)
         statusLabel.text = project.status
         dateLabel.text = DateFormatter.projectDateString(project.dateCreated)
         descriptionLabel.text = project.projectDescription

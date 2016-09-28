@@ -44,12 +44,12 @@ class EditProfileCell: UITableViewCell {
     func configure() {
         guard let user = user else { return }
         
-        if let url = user.profileImage {
-            addPhotoBackground.loadURL(url)
+        if let image = user.tempProfileImage {
+            addPhotoBackground.image = image
             addPhotoCamera.isHidden = true
             addPhotoLabel.text = "Edit photo"
-        } else if let image = user.tempProfileImage {
-            addPhotoBackground.image = image
+        } else if let key = user.profileImageKey {
+            addPhotoBackground.load(key: key)
             addPhotoCamera.isHidden = true
             addPhotoLabel.text = "Edit photo"
         } else {

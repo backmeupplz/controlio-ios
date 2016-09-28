@@ -51,7 +51,7 @@ class PostCell: UITableViewCell {
     // MARK: - Private Functions -
     
     fileprivate func configure() {
-        managerImageView.loadURL(post.manager.profileImage)
+        managerImageView.load(key: post.manager.profileImageKey)
         managerNameLabel.text = post.manager.name
         dateLabel.text = DateFormatter.projectDateString(post.date)
         postLabel.text = post.text
@@ -65,7 +65,7 @@ class PostCell: UITableViewCell {
         
         for number in 0...2 {
             if number < post.attachments.count {
-                attachmentImageViews[number].loadURL(post.attachments[number])
+                attachmentImageViews[number].load(url: post.attachments[number])
             } else {
                 attachmentImageViews[number].isHidden = true
                 attachmentButtons[number].isHidden = true

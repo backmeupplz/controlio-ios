@@ -21,8 +21,7 @@
                 <frame key="frameInset" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pqW-3U-7Nl" customClass="CustomizableImageView" customModule="Controlio" customModuleProvider="target">
-                        <color key="backgroundColor" red="1" green="0.81247268360000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo-background-placeholder-small" translatesAutoresizingMaskIntoConstraints="NO" id="pqW-3U-7Nl" customClass="CustomizableImageView" customModule="Controlio" customModuleProvider="target">
                         <constraints>
                             <constraint firstAttribute="width" constant="29" id="WnC-iz-S25"/>
                             <constraint firstAttribute="height" constant="29" id="aMM-Tb-gdF"/>
@@ -53,4 +52,7 @@
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="photo-background-placeholder-small" width="29" height="29"/>
+    </resources>
 </document>

@@ -25,6 +25,11 @@
                             <constraint firstAttribute="width" constant="60" id="S4W-Fy-Jb6"/>
                             <constraint firstAttribute="height" constant="60" id="suu-Tj-SwE"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="6"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add-photo-camera" translatesAutoresizingMaskIntoConstraints="NO" id="ych-sx-wBn" userLabel="Add Photo Camera">
                         <constraints>
@@ -109,7 +114,7 @@
                     <constraint firstAttribute="trailing" secondItem="Fsp-h5-beN" secondAttribute="trailing" constant="15" id="ByP-l5-Fd3"/>
                     <constraint firstItem="M78-qE-wEK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="GF7-7y-AGi"/>
                     <constraint firstItem="Wve-OL-yns" firstAttribute="top" secondItem="TsC-jf-SIF" secondAttribute="bottom" constant="4" id="KOa-Ja-6CT"/>
-                    <constraint firstAttribute="bottom" secondItem="Wve-OL-yns" secondAttribute="bottom" constant="15" id="LSt-ad-gMo"/>
+                    <constraint firstAttribute="bottom" secondItem="Wve-OL-yns" secondAttribute="bottom" priority="750" constant="15" id="LSt-ad-gMo"/>
                     <constraint firstItem="2OQ-hZ-1Lb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="95" id="LVl-dS-VcN"/>
                     <constraint firstItem="Fsp-h5-beN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="95" id="OpR-Sw-FpY"/>
                     <constraint firstAttribute="trailing" secondItem="TsC-jf-SIF" secondAttribute="trailing" constant="15" id="P8i-T6-1AP"/>

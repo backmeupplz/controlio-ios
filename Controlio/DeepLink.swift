@@ -84,6 +84,6 @@ class DeepLink: NSObject {
     }
 
     fileprivate class func openLink(_ link: String) {
-        UIApplication.shared.openURL(URL(string: link)!)
+        UIApplication.shared.open(URL(string: link)!)
     }
 }

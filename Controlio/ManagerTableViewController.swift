@@ -9,6 +9,10 @@
 import UIKit
 import MBProgressHUD
 
+protocol ManagerTableViewControllerDelegate: class {
+    func didChoose(manager: User)
+}
+
 enum ManagerTableViewControllerType {
     case choose, show
     func viewControllerTitle() -> String {
@@ -25,6 +29,7 @@ class ManagerTableViewController: UITableViewController {
     
     // MARK: - Variables -
     
+    var delegate: ManagerTableViewControllerDelegate?
     var type = ManagerTableViewControllerType.choose
     var managers = [User]() {
         didSet {
@@ -68,6 +73,11 @@ class ManagerTableViewController: UITableViewController {
     }
     
     // MARK: - UITableViewDelegate -
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.didChoose(manager: managers[indexPath.row])
+        let _ = navigationController?.popViewController(animated: true)
+    }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return indexPath.row != 0

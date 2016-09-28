@@ -25,6 +25,14 @@ class SettingsController: UITableViewController {
         tableView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        for indexPath in tableView.indexPathsForSelectedRows ?? [] {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+    }
+    
     // MARK: - Status Bar -
     
     override var preferredStatusBarStyle : UIStatusBarStyle {

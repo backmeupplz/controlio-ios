@@ -26,7 +26,7 @@ class UserCell: UITableViewCell {
     // MARK: - General functions -
     
     func configure() {
-        avatar.loadURL(user.profileImage)
+        avatar.load(key: user.profileImageKey)
         name.text = user.name ?? user.email
     }
 }
