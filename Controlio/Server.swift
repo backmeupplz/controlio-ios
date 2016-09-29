@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON3
+import CLTokenInputView
 
 class Server: NSObject {
     
@@ -142,9 +143,27 @@ class Server: NSObject {
         }
     }
     
+    // MARK: - Projects -
+    
+    class func addProject(image: String, title: String, initialStatus: String, clients: [CLToken], description: String, manager: User, completion:@escaping (NSError?)->()) {
+        let parameters: [String: Any] = [
+            "image": image,
+            "title": title,
+            "status": initialStatus,
+            "description": description,
+            "managerEmail": manager.email,
+            "clients": clients.map { $0.displayText }
+        ]
+        
+        request(urlAddition: "projects", method: .post, parameters: parameters, needsToken: true)
+        { json, error in
+            completion(error)
+        }
+    }
+    
     // MARK: - Private functions -
     
-    fileprivate class func request(urlAddition: String, method: HTTPMethod, parameters: [String:String]? = nil, needsToken: Bool, completion: @escaping (JSON?, NSError?)->()) {
+    fileprivate class func request(urlAddition: String, method: HTTPMethod, parameters: [String:Any]? = nil, needsToken: Bool, completion: @escaping (JSON?, NSError?)->()) {
         Alamofire.request(apiUrl + urlAddition, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: headers(needsToken: needsToken))
             .responseJSON { response in
                 if let errorString = response.result.error?.localizedDescription {

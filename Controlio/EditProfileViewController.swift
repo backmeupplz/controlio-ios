@@ -35,12 +35,12 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
             hud.mode = .annularDeterminate
             hud.label.text = "Uploading image"
             S3.uploadImage(tempPorfileImage, progress: { progress in
-                print(progress)
                 hud.progress = progress
             })
             { key, error in
                 if let error = error {
                     PopupNotification.showNotification(error)
+                    hud.hide(animated: true)
                 } else {
                     Server.editProfile(name: name, phone: phone, profileImage: key)
                     { error in
