@@ -7,25 +7,13 @@
 //
 
 import UIKit
+import UIScrollView_InfiniteScroll
 
-class ProjectsController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
+class ProjectsController: UITableViewController {
     
     // MARK: - Variables -
     
-    fileprivate let searchController = CustomSearchController(searchResultsController: nil)
     fileprivate var projects = [Project]()
-    
-    // MARK: - UISearchResultsUpdating -
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        
-    }
-    
-    // MARK: - UISearchBarDelegate -
-    
-    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        title = searchBar.scopeButtonTitles![selectedScope]
-    }
     
     // MARK: - UITableViewDataSource -
     
@@ -50,18 +38,12 @@ class ProjectsController: UITableViewController, UISearchResultsUpdating, UISear
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        extendedLayoutIncludesOpaqueBars = true
         setupTableView()
         addRefreshControl()
-        setupSearchController()
-        addSearchButton()
         setupBackButton()
-    }
-    
-    // MARK: - Public Functions -
-    
-    func showSearch() {
-        present(searchController, animated: true) {}
+        
+        addInfiniteScrolling()
+        loadInitialProjects()
     }
     
     // MARK: - Private Functions -
@@ -74,27 +56,64 @@ class ProjectsController: UITableViewController, UISearchResultsUpdating, UISear
     
     fileprivate func addRefreshControl() {
         refreshControl = UIRefreshControl()
-//        refreshControl?.addTarget(self, action: #selector(ProjectsController.loadData), for: .valueChanged)
-    }
-    
-    fileprivate func setupSearchController() {
-        searchController.searchResultsUpdater = self
-        searchController.dimsBackgroundDuringPresentation = false
-        searchController.searchBar.scopeButtonTitles = ["All projects", "Completed", "In progress"]
-        searchController.searchBar.delegate = self
-        searchController.searchBar.tintColor = UIColor.white
-        searchController.searchBar.barTintColor = UIColor.controlioViolet()
-        searchController.searchBar.setCursorTintColor(UIColor.lightGray)
-        definesPresentationContext = true
-    }
-    
-    fileprivate func addSearchButton() {
-        let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(ProjectsController.showSearch))
-        navigationItem.rightBarButtonItem = searchButton
+        refreshControl?.addTarget(self, action: #selector(ProjectsController.loadInitialProjects), for: .valueChanged)
     }
     
     fileprivate func setupBackButton() {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    }
+    
+    // MARK: - Pagination -
+    
+    fileprivate func addInfiniteScrolling() {
+        tableView.addInfiniteScroll
+        { tableView in
+            self.loadMoreProjects()
+        }
+    }
+    
+    @objc fileprivate func loadInitialProjects() {
+        Server.getProjects
+        { error, projects in
+            if let error = error {
+                PopupNotification.showNotification(error.domain)
+            } else {
+                self.addInitialProjects(projects: projects!)
+            }
+            self.refreshControl?.endRefreshing()
+        }
+    }
+    
+    fileprivate func loadMoreProjects() {
+        Server.getProjects(skip: projects.count)
+        { error, projects in
+            if let error = error {
+                PopupNotification.showNotification(error.domain)
+            } else {
+                self.addProjects(projects: projects!)
+            }
+            self.tableView.finishInfiniteScroll()
+        }
+    }
+    
+    fileprivate func addInitialProjects(projects: [Project]) {
+        let indexPathsToDelete = IndexPath.range(start: 0, length: self.projects.count)
+        self.projects = projects
+        let indexPathsToAdd = IndexPath.range(start: 0, length: projects.count)
+        
+        tableView.beginUpdates()
+        tableView.deleteRows(at: indexPathsToDelete, with: .fade)
+        tableView.insertRows(at: indexPathsToAdd, with: .fade)
+        tableView.endUpdates()
+    }
+    
+    fileprivate func addProjects(projects: [Project]) {
+        let indexPaths = IndexPath.range(start: self.projects.count, length: projects.count)
+        self.projects += projects
+        
+        tableView.beginUpdates()
+        tableView.insertRows(at: indexPaths, with: .bottom)
+        tableView.endUpdates()
     }
     
     // MARK: - Status Bar -

@@ -115,11 +115,7 @@ class Server: NSObject {
     class func getManagers(completion:@escaping (NSError?, [User]?)->()) {
         request(urlAddition: "users/managers", method: .get, needsToken: true)
         { json, error in
-            if let error = error {
-                completion(error, nil)
-            } else {
-                completion(nil, User.map(json: json!))
-            }
+            completion(error, User.map(json: json))
         }
     }
     
@@ -151,7 +147,7 @@ class Server: NSObject {
             "title": title,
             "status": initialStatus,
             "description": description,
-            "managerEmail": manager.email,
+            "manager": manager.id,
             "clients": clients.map { $0.displayText }
         ]
         
@@ -161,10 +157,22 @@ class Server: NSObject {
         }
     }
     
+    class func getProjects(skip: Int = 0, limit: Int = 20, completion:@escaping (NSError?, [Project]?)->()) {
+        let parameters = [
+            "skip": skip,
+            "limit": limit
+        ]
+        
+        request(urlAddition: "projects", method: .get, parameters: parameters, needsToken: true)
+        { json, error in
+            completion(error, Project.map(json: json))
+        }
+    }
+    
     // MARK: - Private functions -
     
     fileprivate class func request(urlAddition: String, method: HTTPMethod, parameters: [String:Any]? = nil, needsToken: Bool, completion: @escaping (JSON?, NSError?)->()) {
-        Alamofire.request(apiUrl + urlAddition, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: headers(needsToken: needsToken))
+        Alamofire.request(apiUrl + urlAddition, method: method, parameters: parameters, encoding: method == .get ? URLEncoding.default : JSONEncoding.default, headers: headers(needsToken: needsToken))
             .responseJSON { response in
                 if let errorString = response.result.error?.localizedDescription {
                     completion(nil, NSError(domain: errorString, code: 500, userInfo: nil))

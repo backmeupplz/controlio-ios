@@ -8,20 +8,10 @@
 
 import UIKit
 
-enum DemoAccountLanguage: Int {
-    case english
-    case russian
+enum DemoAccountLanguage: String {
+    case english = "English"
+    case russian = "Russian"
     
-    var string: String {
-        get {
-            switch self {
-            case .english:
-                return "English"
-            case .russian:
-                return "Russian"
-            }
-        }
-    }
     static var allCases: [DemoAccountLanguage] {
         get {
             return [.english, .russian]

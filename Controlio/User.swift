@@ -32,7 +32,8 @@ class User: NSObject, NSCoding {
     
     // MARK: - Functions -
     
-    class func map(json: JSON) -> [User] {
+    class func map(json: JSON?) -> [User]? {
+        guard let json = json else { return nil }
         return json.array!.map { User(json: $0) }
     }
     

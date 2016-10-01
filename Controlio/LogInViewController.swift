@@ -47,7 +47,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         alert.addPopoverSourceView(sender)
         alert.addCancelButton()
         for demoAccountLanguage in DemoAccountLanguage.allCases {
-            alert.addDefaultAction(demoAccountLanguage.string) {
+            alert.addDefaultAction(demoAccountLanguage.rawValue) {
                 self.loginDemo(demoAccountLanguage)
             }
         }

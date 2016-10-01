@@ -41,7 +41,7 @@ class SupportController: UITableViewController {
     
     fileprivate func showNoApppInstalledAlert(_ type: DeepLinkType) {
         let alert = UIAlertController(title: "Looks like \(type.name) isn't installed", message: "Would you like to install \(type.name)?", preferredStyle: .alert)
-        alert.addPopoverSourceView(tableView.cellForRow(at: IndexPath(type.rawValue))!)
+        alert.addPopoverSourceView(tableView.cellForRow(at: IndexPath(row: type.rawValue, section: 0))!)
         alert.addCancelButton()
         alert.addDefaultAction("Install") { 
             DeepLink.openItunes(type)

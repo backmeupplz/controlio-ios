@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON3
 
 class Post: NSObject {
     
@@ -16,4 +17,16 @@ class Post: NSObject {
     var date: Date!
     var manager: User!
     var attachments: [URL]!
+    
+    // MARK: - Functions -
+    
+    class func map(json: JSON) -> [Post] {
+        return json.array!.flatMap { Post(json: $0) }
+    }
+    
+    convenience init?(json: JSON?) {
+        guard json != nil else { return nil }
+        
+        self.init()
+    }
 }

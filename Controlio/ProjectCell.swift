@@ -33,7 +33,7 @@ class ProjectCell: UITableViewCell {
     // MARK: - Private Functions -
     
     fileprivate func configure() {
-        projectImageView.load(url: project.image)
+        projectImageView.load(key: project.imageKey)
         dateLabel.text = DateFormatter.projectDateString(project.dateCreated)
         projectTitleLabel.text = project.title
         statusLabel.text = project.status

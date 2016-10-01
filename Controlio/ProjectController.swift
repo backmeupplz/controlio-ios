@@ -32,12 +32,12 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     // MARK: - UITableViewDataSource -
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return project.posts.count
+        return 0// project.posts.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
-        cell.post = project.posts[(indexPath as NSIndexPath).row]
+//        cell.post = project.posts[(indexPath as NSIndexPath).row]
         cell.delegate = self
         return cell
     }
@@ -117,7 +117,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     fileprivate func configure() {
         title = project.title
         
-        projectImageView.load(url: project.image)
+        projectImageView.load(key: project.imageKey)
         statusLabel.text = project.status
         dateLabel.text = DateFormatter.projectDateString(project.dateCreated)
         descriptionLabel.text = project.projectDescription
