@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class ProjectController: UITableViewController, PostCellDelegate, InputViewDelegate {
     
     // MARK: - Variables -
     
     var project: Project!
+    var posts = [Post]()
     
     // MARK: - Private Variables -
     
@@ -32,12 +34,12 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     // MARK: - UITableViewDataSource -
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0// project.posts.count
+        return posts.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
-//        cell.post = project.posts[(indexPath as NSIndexPath).row]
+        cell.post = posts[indexPath.row]
         cell.delegate = self
         return cell
     }
@@ -72,6 +74,59 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     
     func closeImagePicker() {
         dismiss(animated: true) { }
+    }
+    
+    func didTouchSend() {
+        let text = input?.textView.text ?? ""
+        let attachments = input?.attachmentContainerView.wrapperView.attachments ?? []
+        
+        if text.isEmpty && attachments.count <= 0 {
+            PopupNotification.showNotification("Please provide at least one attachment or text")
+            return
+        }
+        
+        let hud = MBProgressHUD.showAdded(to: view, animated: false)
+        hud.offset = CGPoint(x: 0, y: -MBProgressMaxOffset + 150)
+        if attachments.count > 0 {
+            hud.mode = .annularDeterminate
+            hud.label.text = "Uploading attachments"
+            S3.upload(images: attachments, progress:
+            { progress in
+                hud.progress = progress
+            })
+            { keys, error in
+                if let error = error {
+                    PopupNotification.showNotification(error)
+                    hud.hide(animated: true)
+                } else {
+                    hud.mode = .indeterminate
+                    hud.label.text = "Uploading data"
+                    Server.addPost(projectId: self.project.id, text: text, attachmentKeys: keys!)
+                    { error in
+                        if let error = error {
+                            PopupNotification.showNotification(error.domain)
+                            hud.hide(animated: true)
+                        } else {
+                            hud.hide(animated: true)
+                            self.didAddProject()
+                        }
+                    }
+                }
+            }
+        } else {
+            hud.mode = .indeterminate
+            hud.label.text = "Uploading data"
+            Server.addPost(projectId: project.id, text: text, attachmentKeys: [])
+            { error in
+                if let error = error {
+                    PopupNotification.showNotification(error.domain)
+                    hud.hide(animated: true)
+                } else {
+                    hud.hide(animated: true)
+                    self.didAddProject()
+                }
+            }
+        }
     }
     
     // MARK: - View Controller Life Cycle -
@@ -180,6 +235,12 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     
     fileprivate func hideInput() {
         input?.hide()
+    }
+    
+    fileprivate func didAddProject() {
+        input?.textView.text = ""
+        input?.attachmentContainerView.wrapperView.attachments = []
+        loadData()
     }
     
     // MARK: - Notifications -

@@ -45,7 +45,7 @@
                     </view>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aE2-Pe-zyH" userLabel="Rounded View" customClass="CustomizableView" customModule="Controlio" customModuleProvider="target">
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo-background-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="zqE-pM-iLs" userLabel="Add Photo Background" customClass="CustomizableImageView" customModule="Controlio" customModuleProvider="target">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo-background-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="zqE-pM-iLs" userLabel="Add Photo Background" customClass="CustomizableImageView" customModule="Controlio" customModuleProvider="target">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="MNN-Pd-YMl"/>
                                     <constraint firstAttribute="width" constant="60" id="xhV-0X-919"/>
@@ -261,13 +261,13 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="azH-Sq-iFb"/>
-                                <exclude reference="JyV-CJ-0nw"/>
-                                <exclude reference="H1U-xP-vdl"/>
+                                <exclude reference="Qdm-k9-7m4"/>
                                 <exclude reference="qPY-xy-6ox"/>
+                                <exclude reference="JyV-CJ-0nw"/>
                                 <exclude reference="Ukb-Y6-Udb"/>
                                 <exclude reference="7tL-7X-PVj"/>
+                                <exclude reference="H1U-xP-vdl"/>
                                 <exclude reference="KHw-JG-f6J"/>
-                                <exclude reference="Qdm-k9-7m4"/>
                             </mask>
                         </variation>
                     </view>

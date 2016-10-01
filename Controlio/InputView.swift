@@ -13,6 +13,7 @@ import SlackTextViewController
 protocol InputViewDelegate: class {
     func openPickerWithDelegate(_ delegate: PickerDelegate)
     func closeImagePicker()
+    func didTouchSend()
 }
 
 class InputView: CustomizableView, AttachmentContainerViewDelegate {
@@ -24,9 +25,10 @@ class InputView: CustomizableView, AttachmentContainerViewDelegate {
     
     // MARK: - Outlets -
     
-    @IBOutlet fileprivate weak var textView: SLKTextView!
+    @IBOutlet weak var textView: SLKTextView!
     @IBOutlet fileprivate weak var textViewHeight: NSLayoutConstraint!
-    @IBOutlet fileprivate weak var attachmentContainerView: AttachmentContainerView!
+    @IBOutlet weak var attachmentContainerView: AttachmentContainerView!
+    @IBOutlet weak var sendButton: UIButton!
     
     // MARK: - Class Functions -
     
@@ -62,6 +64,10 @@ class InputView: CustomizableView, AttachmentContainerViewDelegate {
     
     @IBAction func attachmentTouched(_ sender: AnyObject) {
         delegate?.openPickerWithDelegate(attachmentContainerView)
+    }
+    
+    @IBAction func sendTouched(_ sender: AnyObject) {
+        delegate?.didTouchSend()
     }
     
     // MARK: - View Life Cycle -

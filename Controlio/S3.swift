@@ -62,6 +62,45 @@ class S3: NSObject {
         })
     }
     
+    class func upload(images: [UIImage],
+                      progress: @escaping (Float)->(),
+                      completion:@escaping ([String]?, String?)->()) {
+        if images.count <= 0 {
+            completion([], nil)
+            return
+        }
+        var completion: (([String]?, String?)->())? = completion
+        let completedProgress: Float = 1.0
+        let step = completedProgress / Float(images.count)
+        var resultKeys = [String]()
+        var numberOfImagesCompleted = 0
+        var progresses = [UIImage: Float]()
+        for image in images {
+            uploadImage(image, progress:
+            { progressFloat in
+                let relativeProgress = step * progressFloat
+                progresses[image] = relativeProgress
+                var overallProgress: Float = 0.0
+                for (_, prgrs) in progresses {
+                    overallProgress += prgrs
+                }
+                progress(overallProgress)
+            })
+            { key, error in
+                if let error = error {
+                    completion?(nil, error)
+                    completion = nil
+                } else {
+                    numberOfImagesCompleted += 1
+                    resultKeys.append(key!)
+                    if numberOfImagesCompleted >= images.count {
+                        completion?(resultKeys, nil)
+                    }
+                }
+            }
+        }
+    }
+    
     class func uploadImage(_ image: UIImage,
                            progress: @escaping (_ progress: Float)->(),
                            completion:@escaping (_ key: String?, _ error: String?)->()) {

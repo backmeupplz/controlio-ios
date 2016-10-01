@@ -20,7 +20,7 @@ class AttachmentContainerView: UIView, PickerDelegate {
     
     // MARK: - Outlets -
     
-    @IBOutlet fileprivate weak var wrapperView: AttachmentWrapperView!
+    @IBOutlet weak var wrapperView: AttachmentWrapperView!
     
     // MARK: - View Life Cycle -
     

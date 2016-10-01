@@ -169,6 +169,29 @@ class Server: NSObject {
         }
     }
     
+    class func changeStatus(projectId: String, status: String, completion:@escaping (NSError?)->()) {
+        
+    }
+    
+    class func changeClients(projectId: String, clientEmails: [String], completion:@escaping (NSError?)->()) {
+        
+    }
+    
+    // MARK: - Posts -
+    
+    class func addPost(projectId: String, text: String, attachmentKeys: [String], completion:@escaping (NSError?)->()) {
+        let parameters: [String: Any] = [
+            "projectid": projectId,
+            "text": text,
+            "attachments": attachmentKeys
+        ]
+        
+        request(urlAddition: "posts", method: .post, parameters: parameters, needsToken: true)
+        { json, error in
+            completion(error)
+        }
+    }
+    
     // MARK: - Private functions -
     
     fileprivate class func request(urlAddition: String, method: HTTPMethod, parameters: [String:Any]? = nil, needsToken: Bool, completion: @escaping (JSON?, NSError?)->()) {
@@ -178,6 +201,8 @@ class Server: NSObject {
                     completion(nil, NSError(domain: errorString, code: 500, userInfo: nil))
                 } else if let error = checkForErrors(json: JSON(response.result.value)) {
                     completion(nil, error)
+                }else if response.response?.statusCode == 500 {
+                    completion(nil, NSError(domain: "Server error", code: 500, userInfo: nil))
                 } else {
                     completion(JSON(response.result.value), nil)
                 }
