@@ -161,7 +161,7 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
     
     fileprivate func addRefreshControl() {
         refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(ProjectController.loadData), for: .valueChanged)
+        refreshControl?.addTarget(self, action: #selector(EditProfileViewController.loadData), for: .valueChanged)
     }
     
     fileprivate func setupBackButton() {

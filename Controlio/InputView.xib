@@ -110,9 +110,20 @@
                         </mask>
                     </variation>
                 </view>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="200" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TYI-pq-70f">
+                    <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="15"/>
+                    <state key="normal" title="Cancel">
+                        <color key="titleColor" red="0.01176470588" green="0.76470588240000004" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="cancelTouched:" destination="iN0-l3-epB" eventType="touchUpInside" id="gTr-vf-22M"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="TYI-pq-70f" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="3H4-Fj-S6V"/>
+                <constraint firstItem="TYI-pq-70f" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="7Km-3L-jYt"/>
                 <constraint firstItem="4pQ-AZ-PUF" firstAttribute="top" secondItem="Yt2-0l-Ule" secondAttribute="bottom" constant="20" id="8M1-0w-i20"/>
                 <constraint firstItem="4pQ-AZ-PUF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="8VU-JN-MlF"/>
                 <constraint firstItem="hOP-MY-NFk" firstAttribute="leading" secondItem="4pQ-AZ-PUF" secondAttribute="trailing" constant="8" id="A4L-hK-Sso"/>
@@ -144,6 +155,7 @@
             </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="attachmentContainerView" destination="Khk-if-kjM" id="oJ4-ST-FP6"/>
+                <outlet property="cancelButton" destination="TYI-pq-70f" id="ohP-hd-IrQ"/>
                 <outlet property="clipButton" destination="yew-bu-k9R" id="OHO-1y-waU"/>
                 <outlet property="clipImage" destination="4pQ-AZ-PUF" id="CLl-Mo-dUH"/>
                 <outlet property="segmentedControl" destination="Yt2-0l-Ule" id="AWz-Ud-DoK"/>

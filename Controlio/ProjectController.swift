@@ -58,7 +58,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         
         let edit = UIAlertAction(title: "Edit", style: .default)
         { action in
-            
+            self.input?.post = post
         }
         let delete = UIAlertAction(title: "Delete", style: .destructive)
         { action in
@@ -104,17 +104,21 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         dismiss(animated: true) { }
     }
     
-    func shouldAddPost(text: String, attachments: [UIImage]) {
+    func shouldAddPost(text: String, attachments: [Any]) {
         if text.isEmpty && attachments.count <= 0 {
             PopupNotification.showNotification("Please provide at least one attachment or text")
             return
         }
         
         let hud = MBProgressHUD.showAdded(to: view, animated: false)
-        if attachments.count > 0 {
+        
+        let completedKeys = attachments.filter { $0 is String } as! [String]
+        let imagesToUpload = attachments.filter { $0 is UIImage } as! [UIImage]
+        
+        if imagesToUpload.count > 0 {
             hud.mode = .annularDeterminate
             hud.label.text = "Uploading attachments"
-            S3.upload(images: attachments, progress:
+            S3.upload(images: imagesToUpload, progress:
             { progress in
                 hud.progress = progress
             })
@@ -125,7 +129,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
                 } else {
                     hud.mode = .indeterminate
                     hud.label.text = "Uploading data"
-                    Server.addPost(projectId: self.project.id, text: text, attachmentKeys: keys!)
+                    Server.addPost(projectId: self.project.id, text: text, attachmentKeys: keys!+completedKeys)
                     { error in
                         if let error = error {
                             PopupNotification.showNotification(error.domain)
@@ -140,7 +144,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         } else {
             hud.mode = .indeterminate
             hud.label.text = "Uploading data"
-            Server.addPost(projectId: project.id, text: text, attachmentKeys: [])
+            Server.addPost(projectId: project.id, text: text, attachmentKeys: completedKeys)
             { error in
                 if let error = error {
                     PopupNotification.showNotification(error.domain)
@@ -175,12 +179,10 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         hud.label.text = "Uploading data"
         Server.changeClients(projectId: project.id, clientEmails: clients)
         { error in
-            
+            hud.hide(animated: true)
             if let error = error {
                 PopupNotification.showNotification(error.domain)
-                hud.hide(animated: true)
             } else {
-                hud.hide(animated: true)
                 PopupNotification.showNotification("Clients saved")
                 self.project.clients = []
                 for client in clients {
@@ -189,6 +191,67 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
                     self.project.clients.append(user)
                 }
                 
+            }
+        }
+    }
+    
+    func shouldEditPost(post: Post, text: String, attachments: [Any]) {
+        if text.isEmpty && attachments.count <= 0 {
+            PopupNotification.showNotification("Please provide at least one attachment or text")
+            return
+        }
+        
+        let hud = MBProgressHUD.showAdded(to: view, animated: false)
+        
+        let completedKeys = attachments.filter { $0 is String } as! [String]
+        let imagesToUpload = attachments.filter { $0 is UIImage } as! [UIImage]
+        
+        if imagesToUpload.count > 0 {
+            hud.mode = .annularDeterminate
+            hud.label.text = "Uploading attachments"
+            S3.upload(images: imagesToUpload, progress:
+                { progress in
+                    hud.progress = progress
+                })
+            { keys, error in
+                if let error = error {
+                    PopupNotification.showNotification(error)
+                    hud.hide(animated: true)
+                } else {
+                    hud.mode = .indeterminate
+                    hud.label.text = "Uploading data"
+                    Server.editPost(post: post, text: text, attachments: keys!+completedKeys)
+                    { error in
+                        hud.hide(animated: true)
+                        if let error = error {
+                            PopupNotification.showNotification(error.domain)
+                        } else {
+                            self.input?.post = nil
+                            post.text = text
+                            post.attachments = keys!+completedKeys
+                            self.tableView.beginUpdates()
+                            self.tableView.reloadRows(at: [IndexPath(row: self.posts.index(of: post)!, section: 0)], with: .fade)
+                            self.tableView.endUpdates()
+                        }
+                    }
+                }
+            }
+        } else {
+            hud.mode = .indeterminate
+            hud.label.text = "Uploading data"
+            Server.editPost(post: post, text: text, attachments: completedKeys)
+            { error in
+                hud.hide(animated: true)
+                if let error = error {
+                    PopupNotification.showNotification(error.domain)
+                } else {
+                    self.input?.post = nil
+                    post.text = text
+                    post.attachments = completedKeys
+                    self.tableView.beginUpdates()
+                    self.tableView.reloadRows(at: [IndexPath(row: self.posts.index(of: post)!, section: 0)], with: .fade)
+                    self.tableView.endUpdates()
+                }
             }
         }
     }
@@ -227,12 +290,6 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         
         unsubscribeFromNotifications()
         hideInput()
-    }
-    
-    // MARK: - Public Functions -
-    
-    func loadData() {
-        refreshControl?.endRefreshing()
     }
     
     // MARK: - Private Functions -
@@ -313,7 +370,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     
     fileprivate func reloadAndCleanInput() {
         input?.clean()
-        loadData()
+        loadInitialPosts()
     }
     
     @objc fileprivate func openEdit() {

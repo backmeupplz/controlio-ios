@@ -129,7 +129,7 @@ class ManagerTableViewController: UITableViewController {
     
     fileprivate func addRefreshControl() {
         refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(ProjectController.loadData), for: .valueChanged)
+        refreshControl?.addTarget(self, action: #selector(ManagerTableViewController.loadData), for: .valueChanged)
     }
     
     fileprivate func setupBackButton() {

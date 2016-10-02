@@ -14,9 +14,10 @@ import CLTokenInputView
 protocol InputViewDelegate: class {
     func openPickerWithDelegate(_ delegate: PickerDelegate)
     func closeImagePicker()
-    func shouldAddPost(text: String, attachments: [UIImage])
+    func shouldAddPost(text: String, attachments: [Any])
     func shouldChangeStatus(text: String)
     func shouldEditClients(clients: [String])
+    func shouldEditPost(post: Post, text: String, attachments: [Any])
 }
 
 class InputView: CustomizableView, AttachmentContainerViewDelegate, CLTokenInputViewDelegate {
@@ -26,6 +27,12 @@ class InputView: CustomizableView, AttachmentContainerViewDelegate, CLTokenInput
     var project: Project!
     weak var delegate: InputViewDelegate?
     var shown = false
+    
+    var post: Post? {
+        didSet {
+            configureForEditting()
+        }
+    }
     
     // MARK: - Outlets -
     
@@ -42,6 +49,8 @@ class InputView: CustomizableView, AttachmentContainerViewDelegate, CLTokenInput
     
     @IBOutlet weak var textViewBottom: NSLayoutConstraint!
     @IBOutlet weak var tokenViewBottom: NSLayoutConstraint!
+    
+    @IBOutlet weak var cancelButton: UIButton!
     
     // MARK: - Class Functions -
     
@@ -114,6 +123,10 @@ class InputView: CustomizableView, AttachmentContainerViewDelegate, CLTokenInput
     
     @IBAction func sendTouched(_ sender: AnyObject) {
         textView.resignFirstResponder()
+        if let post = post {
+            delegate?.shouldEditPost(post: post, text: textView.text, attachments: attachmentContainerView.wrapperView.attachments)
+            return
+        }
         switch segmentedControl.selectedSegmentIndex {
         case 0:
             let text = textView.text ?? ""
@@ -128,6 +141,10 @@ class InputView: CustomizableView, AttachmentContainerViewDelegate, CLTokenInput
         default:
             break
         }
+    }
+    
+    @IBAction func cancelTouched(_ sender: AnyObject) {
+        post = nil
     }
     
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
@@ -243,5 +260,19 @@ class InputView: CustomizableView, AttachmentContainerViewDelegate, CLTokenInput
         let contactAddButton = UIButton(type: .contactAdd)
         contactAddButton.addTarget(self, action: #selector(NewProjectCell.addTokenTouched), for: .touchUpInside)
         return contactAddButton
+    }
+    
+    fileprivate func configureForEditting() {
+        if let post = post {
+            segmentedControl.isHidden = true
+            cancelButton.isHidden = false
+            textView.text = post.text
+            attachmentContainerView.wrapperView.attachments = post.attachments
+        } else {
+            segmentedControl.isHidden = false
+            cancelButton.isHidden = true
+            textView.text = ""
+            attachmentContainerView.wrapperView.attachments = []
+        }
     }
 }

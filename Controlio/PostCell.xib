@@ -168,7 +168,7 @@
                                     <outletCollection property="dependantViews" destination="FJ3-tn-bSO" collectionClass="NSMutableArray" id="vMP-zU-fqx"/>
                                 </connections>
                             </button>
-                            <view userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FJ3-tn-bSO" customClass="GradientView" customModule="Controlio" customModuleProvider="target">
+                            <view clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FJ3-tn-bSO" customClass="GradientView" customModule="Controlio" customModuleProvider="target">
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">

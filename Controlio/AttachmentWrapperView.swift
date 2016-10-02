@@ -19,7 +19,7 @@ class AttachmentWrapperView: UIView, AttachmentViewDelegate {
             configureMaxLayoutWidth(oldValue)
         }
     }
-    var attachments = [UIImage]() {
+    var attachments = [Any]() {
         didSet {
             configureAttachments()
         }
@@ -32,12 +32,29 @@ class AttachmentWrapperView: UIView, AttachmentViewDelegate {
     // MARK: - AttachmentViewDelegate -
     
     func attachmentDidTouchCross(_ attachment: AttachmentView) {
-        guard let image = attachment.image,
-            let index = attachments.index(of: image)
-            else { return }
-        
-        attachments.remove(at: index)
-//        configureAttachments()
+        if let key = attachment.imageKey {
+            let index = attachments.index(where: { object -> Bool in
+                if let object = object as? String {
+                    return object == key
+                } else {
+                    return false
+                }
+            })
+            if let index = index {
+                attachments.remove(at: index)
+            }
+        } else if let image = attachment.image {
+            let index = attachments.index(where: { object -> Bool in
+                if let object = object as? UIImage {
+                    return object == image
+                } else {
+                    return false
+                }
+            })
+            if let index = index {
+                attachments.remove(at: index)
+            }
+        }
     }
     
     func attachmentWasTouched(_ attachment: AttachmentView) {
@@ -78,7 +95,12 @@ class AttachmentWrapperView: UIView, AttachmentViewDelegate {
         for attachment in attachments {
             let attachmentView = AttachmentView.view(self, delegate: self)
             attachmentView.frame = CGRect(x: 0, y: 0, width: itemSize.width, height: itemSize.height)
-            attachmentView.image = attachment
+            if let image = attachment as? UIImage {
+                attachmentView.image = image
+            } else if let key = attachment as? String {
+                attachmentView.image = nil
+                attachmentView.imageKey = key
+            }
             attachmentView.translatesAutoresizingMaskIntoConstraints = false
             attachmentViews.append(attachmentView)
         }

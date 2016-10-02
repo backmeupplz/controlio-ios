@@ -26,6 +26,12 @@ class AttachmentView: UIView {
             return imageView.image
         }
     }
+    var imageKey: String? {
+        didSet {
+            imageView.image = nil
+            imageView.load(key: imageKey)
+        }
+    }
     
     // MARK: - Outlets -
     
