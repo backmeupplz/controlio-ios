@@ -47,7 +47,7 @@ class Project: NSObject {
         
         manager = User(json: json["manager"])
         
-        lastPost = Post(json: json["lastPost"])
+        lastPost = Post(json: json["lastPost"], manager: manager)
         
         canEdit = json["canEdit"].bool ?? false
     }

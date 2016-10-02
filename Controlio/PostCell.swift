@@ -9,7 +9,7 @@
 import UIKit
 
 protocol PostCellDelegate: class {
-    func openAttachment(_ index: Int, post: Post)
+    func openAttachment(_ index: Int, post: Post, fromView: UIView)
 }
 
 class PostCell: UITableViewCell {
@@ -45,15 +45,19 @@ class PostCell: UITableViewCell {
     // MARK: - Actions -
     
     @IBAction func attachmentTouched(_ sender: UIButton) {
-        delegate?.openAttachment(sender.tag, post: post)
+        delegate?.openAttachment(sender.tag, post: post, fromView: sender)
     }
     
     // MARK: - Private Functions -
     
     fileprivate func configure() {
-        managerImageView.load(key: post.manager.profileImageKey)
-        managerNameLabel.text = post.manager.name
-        dateLabel.text = DateFormatter.projectDateString(post.date)
+        if let managerImageKey = post.manager.profileImageKey {
+            managerImageView.load(key: managerImageKey)
+        } else {
+            managerImageView.image = UIImage(named: "photo-background-placeholder")
+        }
+        managerNameLabel.text = post.manager.name ?? post.manager.email
+        dateLabel.text = DateFormatter.projectDateString(post.dateCreated)
         postLabel.text = post.text
         
         if post.attachments.count <= 0 {
@@ -65,7 +69,7 @@ class PostCell: UITableViewCell {
         
         for number in 0...2 {
             if number < post.attachments.count {
-                attachmentImageViews[number].load(url: post.attachments[number])
+                attachmentImageViews[number].load(key: post.attachments[number])
             } else {
                 attachmentImageViews[number].isHidden = true
                 attachmentButtons[number].isHidden = true

@@ -192,6 +192,19 @@ class Server: NSObject {
         }
     }
     
+    class func getPosts(project: Project, skip: Int = 0, limit: Int = 20, completion:@escaping (NSError?, [Post]?)->()) {
+        let parameters: [String: Any] = [
+            "projectid": project.id,
+            "skip": skip,
+            "limit": limit
+        ]
+        
+        request(urlAddition: "posts", method: .get, parameters: parameters, needsToken: true)
+        { json, error in
+            completion(error, Post.map(json: json, manager: project.manager))
+        }
+    }
+    
     // MARK: - Private functions -
     
     fileprivate class func request(urlAddition: String, method: HTTPMethod, parameters: [String:Any]? = nil, needsToken: Bool, completion: @escaping (JSON?, NSError?)->()) {

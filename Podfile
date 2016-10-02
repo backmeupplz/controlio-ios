@@ -16,4 +16,5 @@ target 'Controlio' do
     pod 'MBProgressHUD', '~> 1.0.0'
     pod 'CLTokenInputView'
     pod 'UIScrollView-InfiniteScroll'
+    pod 'SKPhotoBrowser', :git => 'https://github.com/suzuki-0000/SKPhotoBrowser.git', :branch => 'swift3'
 end

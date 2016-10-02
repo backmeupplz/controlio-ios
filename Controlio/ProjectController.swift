@@ -22,6 +22,8 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     fileprivate var input: InputView?
     fileprivate let imagePicker = UIImagePickerController()
     
+    fileprivate var currentGallery: ImageGallery?
+    
     // MARK: - Outlets -
     
     @IBOutlet fileprivate weak var headerView: UIView!
@@ -46,8 +48,9 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     
     // MARK: - PostCellDelegate -
     
-    func openAttachment(_ index: Int, post: Post) {
-        print("open attachment: \(index)")
+    func openAttachment(_ index: Int, post: Post, fromView: UIView) {
+        currentGallery = ImageGallery()
+        currentGallery?.showGallery(atViewController: self, index: index, imageKeys: post.attachments, fromView: fromView)
     }
     
     // MARK: - InputViewDelegate -
@@ -138,6 +141,9 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         addRefreshControl()
         setupBackButton()
         setupInput()
+        
+        addInfiniteScrolling()
+        loadInitialPosts()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -191,7 +197,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     
     fileprivate func addRefreshControl() {
         refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(ProjectController.loadData), for: .valueChanged)
+        refreshControl?.addTarget(self, action: #selector(ProjectController.loadInitialPosts), for: .valueChanged)
     }
     
     fileprivate func setupBackButton() {
@@ -241,6 +247,59 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         input?.textView.text = ""
         input?.attachmentContainerView.wrapperView.attachments = []
         loadData()
+    }
+    
+    // MARK: - Pagination -
+    
+    fileprivate func addInfiniteScrolling() {
+        tableView.addInfiniteScroll
+        { tableView in
+            self.loadMorePosts()
+        }
+    }
+    
+    @objc fileprivate func loadInitialPosts() {
+        Server.getPosts(project: project)
+        { error, posts in
+            if let error = error {
+                PopupNotification.showNotification(error.domain)
+            } else {
+                self.addInitialPosts(posts: posts!)
+            }
+            self.refreshControl?.endRefreshing()
+        }
+    }
+    
+    fileprivate func loadMorePosts() {
+        Server.getPosts(project: project, skip: posts.count)
+        { error, posts in
+            if let error = error {
+                PopupNotification.showNotification(error.domain)
+            } else {
+                self.addPosts(posts: posts!)
+            }
+            self.tableView.finishInfiniteScroll()
+        }
+    }
+    
+    fileprivate func addInitialPosts(posts: [Post]) {
+        let indexPathsToDelete = IndexPath.range(start: 0, length: self.posts.count)
+        self.posts = posts
+        let indexPathsToAdd = IndexPath.range(start: 0, length: posts.count)
+        
+        tableView.beginUpdates()
+        tableView.deleteRows(at: indexPathsToDelete, with: .fade)
+        tableView.insertRows(at: indexPathsToAdd, with: .fade)
+        tableView.endUpdates()
+    }
+    
+    fileprivate func addPosts(posts: [Post]) {
+        let indexPaths = IndexPath.range(start: self.posts.count, length: posts.count)
+        self.posts += posts
+        
+        tableView.beginUpdates()
+        tableView.insertRows(at: indexPaths, with: .bottom)
+        tableView.endUpdates()
     }
     
     // MARK: - Notifications -
