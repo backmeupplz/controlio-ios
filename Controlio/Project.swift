@@ -22,6 +22,7 @@ class Project: NSObject {
     var status: String!
     
     var manager: User!
+    var clients: [User]!
     
     var lastPost: Post?
     
@@ -46,6 +47,7 @@ class Project: NSObject {
         status = json["status"].string!
         
         manager = User(json: json["manager"])
+        clients = User.map(json: json["clients"])
         
         lastPost = Post(json: json["lastPost"], manager: manager)
         

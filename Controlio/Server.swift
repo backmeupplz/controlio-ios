@@ -170,11 +170,27 @@ class Server: NSObject {
     }
     
     class func changeStatus(projectId: String, status: String, completion:@escaping (NSError?)->()) {
+        let parameters = [
+            "projectid": projectId,
+            "status": status
+        ]
         
+        request(urlAddition: "projects/status", method: .post, parameters: parameters, needsToken: true)
+        { json, error in
+            completion(error)
+        }
     }
     
     class func changeClients(projectId: String, clientEmails: [String], completion:@escaping (NSError?)->()) {
+        let parameters: [String: Any] = [
+            "projectid": projectId,
+            "clients": clientEmails
+        ]
         
+        request(urlAddition: "projects/clients", method: .post, parameters: parameters, needsToken: true)
+        { json, error in
+            completion(error)
+        }
     }
     
     // MARK: - Posts -

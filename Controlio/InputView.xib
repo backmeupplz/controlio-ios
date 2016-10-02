@@ -24,6 +24,9 @@
                         <segment title="Edit clients"/>
                     </segments>
                     <color key="tintColor" red="0.01176470588" green="0.76470588240000004" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <connections>
+                        <action selector="segmentChanged:" destination="iN0-l3-epB" eventType="valueChanged" id="IKS-PQ-4za"/>
+                    </connections>
                 </segmentedControl>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clip" translatesAutoresizingMaskIntoConstraints="NO" id="4pQ-AZ-PUF"/>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yew-bu-k9R" userLabel="Clip Button" customClass="RoundedShadowedButton" customModule="Controlio" customModuleProvider="target">
@@ -43,6 +46,12 @@
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hOP-MY-NFk" customClass="CustomizableView" customModule="Controlio" customModuleProvider="target">
                     <subviews>
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ibv-m4-cuP" userLabel="Token View" customClass="CLTokenInputView">
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <outlet property="delegate" destination="iN0-l3-epB" id="mda-8p-nkj"/>
+                            </connections>
+                        </view>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="g4k-eP-6LK" customClass="SLKTextView">
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
@@ -74,11 +83,15 @@
                         <constraint firstItem="Khk-if-kjM" firstAttribute="leading" secondItem="hOP-MY-NFk" secondAttribute="leading" id="5e9-QI-v9S"/>
                         <constraint firstAttribute="bottom" secondItem="Khk-if-kjM" secondAttribute="bottom" id="CE8-1k-X3H"/>
                         <constraint firstItem="g4k-eP-6LK" firstAttribute="top" secondItem="hOP-MY-NFk" secondAttribute="top" id="ExH-9Y-fc7"/>
-                        <constraint firstItem="Khk-if-kjM" firstAttribute="top" secondItem="g4k-eP-6LK" secondAttribute="bottom" constant="-3" id="Oow-cn-q7U"/>
+                        <constraint firstItem="Khk-if-kjM" firstAttribute="top" secondItem="g4k-eP-6LK" secondAttribute="bottom" priority="750" constant="-3" id="Oow-cn-q7U"/>
+                        <constraint firstItem="Khk-if-kjM" firstAttribute="top" secondItem="Ibv-m4-cuP" secondAttribute="bottom" priority="500" constant="-3" id="QtK-rv-wZS"/>
+                        <constraint firstItem="Ibv-m4-cuP" firstAttribute="top" secondItem="hOP-MY-NFk" secondAttribute="top" id="as5-zY-Hlk"/>
                         <constraint firstAttribute="height" constant="86" id="dPe-KR-wPf"/>
+                        <constraint firstItem="Ibv-m4-cuP" firstAttribute="leading" secondItem="hOP-MY-NFk" secondAttribute="leading" constant="7" id="iHC-Yv-sI5"/>
                         <constraint firstAttribute="trailing" secondItem="Khk-if-kjM" secondAttribute="trailing" id="q8o-v3-gt3"/>
                         <constraint firstAttribute="trailing" secondItem="g4k-eP-6LK" secondAttribute="trailing" constant="7" id="qA8-o6-OZ7"/>
                         <constraint firstItem="g4k-eP-6LK" firstAttribute="leading" secondItem="hOP-MY-NFk" secondAttribute="leading" constant="7" id="upM-vk-HnY"/>
+                        <constraint firstAttribute="trailing" secondItem="Ibv-m4-cuP" secondAttribute="trailing" constant="7" id="z95-cc-mYF"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -131,9 +144,15 @@
             </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="attachmentContainerView" destination="Khk-if-kjM" id="oJ4-ST-FP6"/>
+                <outlet property="clipButton" destination="yew-bu-k9R" id="OHO-1y-waU"/>
+                <outlet property="clipImage" destination="4pQ-AZ-PUF" id="CLl-Mo-dUH"/>
+                <outlet property="segmentedControl" destination="Yt2-0l-Ule" id="AWz-Ud-DoK"/>
                 <outlet property="sendButton" destination="ILV-19-LIz" id="cqP-SX-rqY"/>
                 <outlet property="textView" destination="g4k-eP-6LK" id="WpA-NI-tTL"/>
+                <outlet property="textViewBottom" destination="QtK-rv-wZS" id="vMD-VY-dQe"/>
                 <outlet property="textViewHeight" destination="UkJ-KS-VMX" id="M9K-lb-V0L"/>
+                <outlet property="tokenView" destination="Ibv-m4-cuP" id="fdF-me-X3W"/>
+                <outlet property="tokenViewBottom" destination="QtK-rv-wZS" id="sdd-GG-L3I"/>
             </connections>
             <point key="canvasLocation" x="230.5" y="233.5"/>
         </view>

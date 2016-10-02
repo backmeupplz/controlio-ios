@@ -79,17 +79,13 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         dismiss(animated: true) { }
     }
     
-    func didTouchSend() {
-        let text = input?.textView.text ?? ""
-        let attachments = input?.attachmentContainerView.wrapperView.attachments ?? []
-        
+    func shouldAddPost(text: String, attachments: [UIImage]) {
         if text.isEmpty && attachments.count <= 0 {
             PopupNotification.showNotification("Please provide at least one attachment or text")
             return
         }
         
         let hud = MBProgressHUD.showAdded(to: view, animated: false)
-        hud.offset = CGPoint(x: 0, y: -MBProgressMaxOffset + 150)
         if attachments.count > 0 {
             hud.mode = .annularDeterminate
             hud.label.text = "Uploading attachments"
@@ -111,7 +107,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
                             hud.hide(animated: true)
                         } else {
                             hud.hide(animated: true)
-                            self.didAddProject()
+                            self.reloadAndCleanInput()
                         }
                     }
                 }
@@ -126,8 +122,48 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
                     hud.hide(animated: true)
                 } else {
                     hud.hide(animated: true)
-                    self.didAddProject()
+                    self.reloadAndCleanInput()
                 }
+            }
+        }
+    }
+    
+    func shouldChangeStatus(text: String) {
+        let hud = MBProgressHUD.showAdded(to: view, animated: false)
+        hud.label.text = "Uploading data"
+        Server.changeStatus(projectId: project.id, status: text)
+        { error in
+            if let error = error {
+                PopupNotification.showNotification(error.domain)
+                hud.hide(animated: true)
+            } else {
+                hud.hide(animated: true)
+                self.project.status = text
+                self.configure()
+                self.reloadAndCleanInput()
+            }
+        }
+    }
+    
+    func shouldEditClients(clients: [String]) {
+        let hud = MBProgressHUD.showAdded(to: view, animated: false)
+        hud.label.text = "Uploading data"
+        Server.changeClients(projectId: project.id, clientEmails: clients)
+        { error in
+            
+            if let error = error {
+                PopupNotification.showNotification(error.domain)
+                hud.hide(animated: true)
+            } else {
+                hud.hide(animated: true)
+                PopupNotification.showNotification("Clients saved")
+                self.project.clients = []
+                for client in clients {
+                    let user = User()
+                    user.email = client
+                    self.project.clients.append(user)
+                }
+                
             }
         }
     }
@@ -229,7 +265,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     }
     
     fileprivate func setupInput() {
-        input = InputView.view(navigationController!.view, vc: self, delegate: self)
+        input = InputView.view(navigationController!.view, vc: self, delegate: self, project: project)
     }
     
     fileprivate func showInput() {
@@ -243,9 +279,8 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         input?.hide()
     }
     
-    fileprivate func didAddProject() {
-        input?.textView.text = ""
-        input?.attachmentContainerView.wrapperView.attachments = []
+    fileprivate func reloadAndCleanInput() {
+        input?.clean()
         loadData()
     }
     

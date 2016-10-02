@@ -46,6 +46,12 @@ class ProjectsController: UITableViewController {
         loadInitialProjects()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData()
+    }
+    
     // MARK: - Private Functions -
     
     fileprivate func setupTableView() {

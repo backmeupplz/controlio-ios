@@ -9,30 +9,43 @@
 import UIKit
 import SnapKit
 import SlackTextViewController
+import CLTokenInputView
 
 protocol InputViewDelegate: class {
     func openPickerWithDelegate(_ delegate: PickerDelegate)
     func closeImagePicker()
-    func didTouchSend()
+    func shouldAddPost(text: String, attachments: [UIImage])
+    func shouldChangeStatus(text: String)
+    func shouldEditClients(clients: [String])
 }
 
-class InputView: CustomizableView, AttachmentContainerViewDelegate {
+class InputView: CustomizableView, AttachmentContainerViewDelegate, CLTokenInputViewDelegate {
     
     // MARK: - Variables -
     
+    var project: Project!
     weak var delegate: InputViewDelegate?
     var shown = false
     
     // MARK: - Outlets -
     
-    @IBOutlet weak var textView: SLKTextView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
+    @IBOutlet weak var tokenView: CLTokenInputView!
+    @IBOutlet fileprivate weak var textView: SLKTextView!
     @IBOutlet fileprivate weak var textViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var attachmentContainerView: AttachmentContainerView!
+    @IBOutlet fileprivate weak var attachmentContainerView: AttachmentContainerView!
     @IBOutlet weak var sendButton: UIButton!
+    
+    @IBOutlet weak var clipImage: UIImageView!
+    @IBOutlet weak var clipButton: RoundedShadowedButton!
+    
+    @IBOutlet weak var textViewBottom: NSLayoutConstraint!
+    @IBOutlet weak var tokenViewBottom: NSLayoutConstraint!
     
     // MARK: - Class Functions -
     
-    class func view(_ superview: UIView, vc: UIViewController, delegate: InputViewDelegate? = nil) -> InputView {
+    class func view(_ superview: UIView, vc: UIViewController, delegate: InputViewDelegate? = nil, project: Project) -> InputView {
         let result = Bundle.main.loadNibNamed("InputView", owner: nil, options: [:])?.last as! InputView
         result.delegate = delegate
         
@@ -51,6 +64,12 @@ class InputView: CustomizableView, AttachmentContainerViewDelegate {
         
         result.attachmentContainerView.delegate = result
         
+        result.setupTokenInputView()
+        for client in project.clients {
+            result.tokenView.add(CLToken(displayText: client.email, context: nil))
+        }
+        result.project = project
+        
         return result
     }
     
@@ -60,6 +79,33 @@ class InputView: CustomizableView, AttachmentContainerViewDelegate {
         delegate?.closeImagePicker()
     }
     
+    // MARK: - CLTokenInputViewDelegate -
+    
+    func tokenInputView(_ view: CLTokenInputView, didChangeText text: String?) {
+        
+    }
+    
+    func tokenInputView(_ view: CLTokenInputView, didAdd token: CLToken) {
+        setNeedsLayout()
+    }
+    
+    func tokenInputView(_ view: CLTokenInputView, didRemove token: CLToken) {
+        setNeedsLayout()
+    }
+    
+    func tokenInputViewDidEndEditing(_ view: CLTokenInputView) {
+        view.accessoryView = nil
+    }
+    
+    func tokenInputViewDidBeginEditing(_ view: CLTokenInputView) {
+        view.accessoryView = contactAddButton()
+    }
+    
+    func tokenInputViewShouldReturn(_ view: CLTokenInputView) -> Bool {
+        addTokenTouched()
+        return false
+    }
+    
     // MARK: - Actions -
     
     @IBAction func attachmentTouched(_ sender: AnyObject) {
@@ -67,7 +113,44 @@ class InputView: CustomizableView, AttachmentContainerViewDelegate {
     }
     
     @IBAction func sendTouched(_ sender: AnyObject) {
-        delegate?.didTouchSend()
+        textView.resignFirstResponder()
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            let text = textView.text ?? ""
+            let attachments = attachmentContainerView.wrapperView.attachments
+            delegate?.shouldAddPost(text: text, attachments: attachments)
+        case 1:
+            let text = textView.text ?? ""
+            delegate?.shouldChangeStatus(text: text)
+        case 2:
+            let emails = tokenView.allTokens.map { $0.displayText }
+            delegate?.shouldEditClients(clients: emails)
+        default:
+            break
+        }
+    }
+    
+    @IBAction func segmentChanged(_ sender: UISegmentedControl) {
+        let index = sender.selectedSegmentIndex
+        sendButton.setTitle(index == 0 ? "Send" : "Save", for: .normal)
+        textView.placeholder = index == 0 ? "Type new message..." : "Type new status..."
+        
+        clipImage.isHidden = index != 0
+        clipButton.isEnabled = index == 0
+        textView.isHidden = index == 2
+        tokenView.isHidden = index != 2
+        textViewBottom.priority = index == 2 ? 500 : 750
+        tokenViewBottom.priority = index == 2 ? 750 : 500
+        if index == 2 {
+            for token in tokenView.allTokens {
+                tokenView.remove(token)
+            }
+            for client in project.clients {
+                tokenView.add(CLToken(displayText: client.email, context: nil))
+            }
+        }
+        
+        setNeedsLayout()
     }
     
     // MARK: - View Life Cycle -
@@ -79,6 +162,11 @@ class InputView: CustomizableView, AttachmentContainerViewDelegate {
     }
     
     // MARK: - General Functions -
+    
+    func clean() {
+        textView.text = ""
+        attachmentContainerView.wrapperView.attachments = []
+    }
     
     func show() {
         shown = true
@@ -115,13 +203,23 @@ class InputView: CustomizableView, AttachmentContainerViewDelegate {
         }
     }
     
+    func addTokenTouched() {
+        let text = tokenView.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) ?? ""
+        if !text.isEmpty && text.isEmail {
+            let token = CLToken(displayText: text, context: nil)
+            tokenView.add(token)
+        } else {
+            PopupNotification.showNotification("Please provide a valid email")
+        }
+    }
+    
     // MARK: - Private Functions -
     
     fileprivate func subscribeNotifications() {
         NotificationCenter.default.addObserver(self,
-                                                         selector: #selector(InputView.textViewChangedContentSize),
-                                                         name: NSNotification.Name.SLKTextViewContentSizeDidChange,
-                                                         object: nil)
+                                               selector: #selector(InputView.textViewChangedContentSize),
+                                               name: NSNotification.Name.SLKTextViewContentSizeDidChange,
+                                               object: nil)
     }
     
     fileprivate func unsubscribeNotifications() {
@@ -133,5 +231,17 @@ class InputView: CustomizableView, AttachmentContainerViewDelegate {
             textViewHeight.constant = textView.contentSize.height
             layoutIfNeeded()
         }
+    }
+    
+    fileprivate func setupTokenInputView() {
+        tokenView.tintColor = UIColor.controlioGreen()
+        tokenView.placeholderText = "Client emails"
+        tokenView.textField.font = UIFont(name: "SFUIText-Regular", size: 14)
+    }
+    
+    fileprivate func contactAddButton() -> UIButton {
+        let contactAddButton = UIButton(type: .contactAdd)
+        contactAddButton.addTarget(self, action: #selector(NewProjectCell.addTokenTouched), for: .touchUpInside)
+        return contactAddButton
     }
 }

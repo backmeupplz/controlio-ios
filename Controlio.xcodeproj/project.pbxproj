@@ -820,7 +820,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 78CB8BDD8D1FD1F9D323F17C /* Pods-Controlio.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Borodutch Studio LLC (9VUB6L23QH)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -840,7 +840,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9E0CE87DC6458B1EA1E9217C /* Pods-Controlio.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Borodutch Studio LLC (9VUB6L23QH)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
