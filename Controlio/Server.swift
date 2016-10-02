@@ -193,6 +193,20 @@ class Server: NSObject {
         }
     }
     
+    class func editProject(project: Project, title: String, description: String, image: String, completion: @escaping (NSError?)->()) {
+        let parameters = [
+            "projectid": project.id,
+            "title": title,
+            "description": description,
+            "image": image
+        ]
+        
+        request(urlAddition: "projects", method: .put, parameters: parameters, needsToken: true)
+        { json, error in
+            completion(error)
+        }
+    }
+    
     // MARK: - Posts -
     
     class func addPost(projectId: String, text: String, attachmentKeys: [String], completion:@escaping (NSError?)->()) {
@@ -218,6 +232,19 @@ class Server: NSObject {
         request(urlAddition: "posts", method: .get, parameters: parameters, needsToken: true)
         { json, error in
             completion(error, Post.map(json: json, manager: project.manager))
+        }
+    }
+    
+    class func editPost(post: Post, text: String, attachments: [String], completion: @escaping (NSError?)->()) {
+        let parameters: [String: Any] = [
+            "postid": post.id,
+            "text": text,
+            "attachments": attachments
+        ]
+        
+        request(urlAddition: "posts", method: .put, parameters: parameters, needsToken: true)
+        { json, error in
+            completion(error)
         }
     }
     
