@@ -10,6 +10,7 @@ import UIKit
 
 protocol PostCellDelegate: class {
     func openAttachment(_ index: Int, post: Post, fromView: UIView)
+    func edit(post: Post, cell: PostCell)
 }
 
 class PostCell: UITableViewCell {
@@ -22,6 +23,7 @@ class PostCell: UITableViewCell {
         }
     }
     weak var delegate: PostCellDelegate?
+    var longPressGR: UILongPressGestureRecognizer?
     
     // MARK: - Outlets -
     
@@ -46,6 +48,13 @@ class PostCell: UITableViewCell {
     
     @IBAction func attachmentTouched(_ sender: UIButton) {
         delegate?.openAttachment(sender.tag, post: post, fromView: sender)
+    }
+    
+    // MARK: - View Life Cycle -
+    
+    override func awakeFromNib() {
+        longPressGR = UILongPressGestureRecognizer(target: self, action: #selector(PostCell.longPressed))
+        addGestureRecognizer(longPressGR!)
     }
     
     // MARK: - Private Functions -
@@ -98,5 +107,9 @@ class PostCell: UITableViewCell {
             view.isHidden = hide
         }
         postLabelBottom.priority = hide ? 750 : 250
+    }
+    
+    @objc fileprivate func longPressed() {
+        delegate?.edit(post: post, cell: self)
     }
 }

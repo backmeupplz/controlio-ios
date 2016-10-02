@@ -53,6 +53,31 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         currentGallery?.showGallery(atViewController: self, index: index, imageKeys: post.attachments, fromView: fromView)
     }
     
+    func edit(post: Post, cell: PostCell) {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let edit = UIAlertAction(title: "Edit", style: .default)
+        { action in
+            
+        }
+        let delete = UIAlertAction(title: "Delete", style: .destructive)
+        { action in
+            self.delete(post: post, cell: cell)
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        { action in
+            // Do nothing
+        }
+        
+        if Date().timeIntervalSince1970 - post.dateCreated.timeIntervalSince1970 < 60*60*3 {
+            alert.addAction(edit)
+        }
+        alert.addAction(delete)
+        alert.addAction(cancel)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
     // MARK: - InputViewDelegate -
     
     func openPickerWithDelegate(_ delegate: PickerDelegate) {
@@ -293,6 +318,22 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     
     @objc fileprivate func openEdit() {
         performSegue(withIdentifier: "SegueToEdit", sender: nil)
+    }
+    
+    fileprivate func delete(post: Post, cell: PostCell) {
+        let hud = MBProgressHUD.showAdded(to: view, animated: true)
+        Server.deletePost(post: post)
+        { error in
+            hud.hide(animated: true)
+            if let error = error {
+                PopupNotification.showNotification(error.domain)
+            } else {
+                self.posts.remove(at: self.posts.index(of: post)!)
+                self.tableView.beginUpdates()
+                self.tableView.deleteRows(at: [self.tableView.indexPath(for: cell)!], with: .right)
+                self.tableView.endUpdates()
+            }
+        }
     }
     
     // MARK: - Pagination -

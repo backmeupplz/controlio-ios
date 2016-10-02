@@ -248,6 +248,17 @@ class Server: NSObject {
         }
     }
     
+    class func deletePost(post: Post, completion: @escaping (NSError?)->()) {
+        let parameters: [String: Any] = [
+            "postid": post.id
+        ]
+        
+        request(urlAddition: "posts", method: .delete, parameters: parameters, needsToken: true)
+        { json, error in
+            completion(error)
+        }
+    }
+    
     // MARK: - Private functions -
     
     fileprivate class func request(urlAddition: String, method: HTTPMethod, parameters: [String:Any]? = nil, needsToken: Bool, completion: @escaping (JSON?, NSError?)->()) {
