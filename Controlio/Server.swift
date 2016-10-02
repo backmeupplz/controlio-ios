@@ -194,7 +194,7 @@ class Server: NSObject {
     }
     
     class func editProject(project: Project, title: String, description: String, image: String, completion: @escaping (NSError?)->()) {
-        let parameters = [
+        let parameters: [String: String] = [
             "projectid": project.id,
             "title": title,
             "description": description,

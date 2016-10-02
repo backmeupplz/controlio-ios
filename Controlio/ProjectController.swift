@@ -176,6 +176,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         setupTableView()
         addRefreshControl()
         setupBackButton()
+        setupEditButton()
         setupInput()
         
         addInfiniteScrolling()
@@ -240,6 +241,12 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
+    fileprivate func setupEditButton() {
+        if project.canEdit {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(ProjectController.openEdit))
+        }
+    }
+    
     fileprivate func checkHeaderViewHeight() {
         if needsHeaderViewLayout {
             let screenWidth = UIScreen.main.bounds.width
@@ -282,6 +289,10 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     fileprivate func reloadAndCleanInput() {
         input?.clean()
         loadData()
+    }
+    
+    @objc fileprivate func openEdit() {
+        performSegue(withIdentifier: "SegueToEdit", sender: nil)
     }
     
     // MARK: - Pagination -
@@ -376,6 +387,14 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
                                    animations: {
                                     self.input?.layoutIfNeeded()
         }) { finished in }
+    }
+    
+    // MARK: - Segues -
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dvc = segue.destination as? NewProjectController {
+            dvc.project = project
+        }
     }
     
     // MARK: - Rotations -

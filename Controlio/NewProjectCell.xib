@@ -291,6 +291,7 @@
                 <outlet property="clientEmailsTokenView" destination="oMn-Em-kGg" id="ngO-UL-B9v"/>
                 <outlet property="createButton" destination="xdf-QA-fuR" id="NEJ-Up-Zyt"/>
                 <outlet property="descriptionTextField" destination="E3m-ll-y4P" id="0bL-Fj-Ouj"/>
+                <outlet property="detailDisclosureImage" destination="7Ee-4I-QDK" id="puQ-t2-Nat"/>
                 <outlet property="initialStatusTextField" destination="yu8-wy-iZL" id="vMX-2C-Hom"/>
                 <outlet property="managerPhotoImage" destination="m6j-30-O3c" id="PwB-9Q-naO"/>
                 <outlet property="managerTitleLabel" destination="c8L-20-1TG" id="Abu-jo-8q9"/>

@@ -37,6 +37,8 @@ class NewProjectCell: UITableViewCell, UITextFieldDelegate, CLTokenInputViewDele
     @IBOutlet weak var chooseManagerButton: UIButton!
     @IBOutlet weak var chooseManagerBackgroundButton: UIButton!
     
+    @IBOutlet weak var detailDisclosureImage: UIImageView!
+    
     @IBOutlet weak var createButton: RoundedShadowedButton!
     
     // MARK: - UITextFieldDelegate -

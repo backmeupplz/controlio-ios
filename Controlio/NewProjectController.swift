@@ -14,6 +14,7 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate, Manag
     
     // MARK: - Variables -
     
+    var project: Project?
     var manager: User?
     let imagePicker = UIImagePickerController()
     
@@ -61,7 +62,7 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate, Manag
         alert.addAction(library)
         alert.addAction(camera)
         alert.addAction(cancel)
-        if image != nil {
+        if image != nil && project == nil {
             alert.addAction(remove)
         }
         present(alert, animated: true, completion: nil)
@@ -74,7 +75,7 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate, Manag
     func createTouched() {
         let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! NewProjectCell
         
-        guard let image = image else {
+        if image == nil && project?.imageKey == nil {
             PopupNotification.showNotification("Please provide an image")
             return
         }
@@ -90,36 +91,68 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate, Manag
             PopupNotification.showNotification("Please provide a description")
             return
         }
-        guard cell.clientEmailsTokenView.allTokens.count > 0 else {
+        if cell.clientEmailsTokenView.allTokens.count <= 0 && project == nil {
             PopupNotification.showNotification("Please provide at least one client email")
             return
         }
-        guard let manager = manager else {
+        if manager == nil && project?.manager == nil {
             PopupNotification.showNotification("Please choose a manager")
             return
         }
         
         let hud = MBProgressHUD.showAdded(to: view, animated: false)
-        hud.mode = .annularDeterminate
-        hud.label.text = "Uploading image"
-        S3.uploadImage(image, progress: { progress in
-            hud.progress = progress
-        })
-        { key, error in
-            if let error = error {
-                PopupNotification.showNotification(error)
-                hud.hide(animated: true)
-            } else {
-                Server.addProject(image: key!, title: title, initialStatus: initialStatus, clients: cell.clientEmailsTokenView.allTokens, description: description, manager: manager)
-                { error in
-                    if let error = error {
-                        PopupNotification.showNotification(error.domain)
-                        hud.hide(animated: true)
+        if let image = image {
+            hud.mode = .annularDeterminate
+            hud.label.text = "Uploading image"
+            S3.uploadImage(image, progress: { progress in
+                hud.progress = progress
+            })
+            { key, error in
+                if let error = error {
+                    PopupNotification.showNotification(error)
+                    hud.hide(animated: true)
+                } else {
+                    if self.project == nil {
+                        Server.addProject(image: key!, title: title, initialStatus: initialStatus, clients: cell.clientEmailsTokenView.allTokens, description: description, manager: self.manager!)
+                        { error in
+                            if let error = error {
+                                PopupNotification.showNotification(error.domain)
+                                hud.hide(animated: true)
+                            } else {
+                                hud.hide(animated: true)
+                                self.cleanTempFields()
+                                self.selectFirstTab()
+                            }
+                        }
                     } else {
-                        hud.hide(animated: true)
-                        self.cleanTempFields()
-                        self.selectFirstTab()
+                        Server.editProject(project: self.project!, title: title, description: description, image: key!)
+                        { error in
+                            if let error = error {
+                                PopupNotification.showNotification(error.domain)
+                                hud.hide(animated: true)
+                            } else {
+                                hud.hide(animated: true)
+                                self.project!.title = title
+                                self.project!.projectDescription = description
+                                self.project?.imageKey = key!
+                                let _ = self.navigationController?.popViewController(animated: true)
+                            }
+                        }
                     }
+                }
+            }
+        } else {
+            hud.label.text = "Uploading data"
+            Server.editProject(project: project!, title: title, description: description, image: project!.imageKey)
+            { error in
+                if let error = error {
+                    PopupNotification.showNotification(error.domain)
+                    hud.hide(animated: true)
+                } else {
+                    hud.hide(animated: true)
+                    self.project!.title = title
+                    self.project!.projectDescription = description
+                    let _ = self.navigationController?.popViewController(animated: true)
                 }
             }
         }
@@ -168,6 +201,12 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate, Manag
             cell.managerTitleLabel.text = manager.name ?? manager.email
             cell.chooseManagerButton.isHidden = true
             cell.chooseManagerBackgroundButton.isHidden = false
+        } else if let manager = project?.manager  {
+            cell.managerPhotoImage.load(key: manager.profileImageKey)
+            cell.managerTitleLabel.isHidden = false
+            cell.managerTitleLabel.text = manager.name ?? manager.email
+            cell.chooseManagerButton.isHidden = true
+            cell.chooseManagerBackgroundButton.isHidden = true
         } else {
             cell.managerTitleLabel.isHidden = true
             cell.managerTitleLabel.text = nil
@@ -178,21 +217,35 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate, Manag
             cell.photoImage.image = image
             cell.cameraImage.isHidden = true
             cell.photoLabel.text = "Edit image"
+        } else if let imageKey = project?.imageKey {
+            cell.photoImage.load(key: imageKey)
+            cell.cameraImage.isHidden = true
+            cell.photoLabel.text = "Edit image"
         } else {
             cell.photoImage.image = UIImage(named: "photo-background-placeholder")
             cell.cameraImage.isHidden = false
             cell.photoLabel.text = "Add image"
         }
         
-        cell.titleTextField.text = tempTitle
-        cell.initialStatusTextField.text = tempInitialStatus
-        cell.descriptionTextField.text = tempDescription
+        cell.titleTextField.text = tempTitle ?? project?.title
+        cell.initialStatusTextField.text = tempInitialStatus ?? project?.status
+        cell.initialStatusTextField.isEnabled = project == nil
+        cell.descriptionTextField.text = tempDescription ?? project?.projectDescription
         for token in cell.clientEmailsTokenView.allTokens {
             cell.clientEmailsTokenView.remove(token)
         }
-        for token in tempTokens {
-            cell.clientEmailsTokenView.add(token)
+        if tempTokens.count > 0 {
+            for token in tempTokens {
+                cell.clientEmailsTokenView.add(token)
+            }
+        } else if (project?.clients.count ?? 0) > 0 {
+            for client in project?.clients ?? [] {
+                cell.clientEmailsTokenView.add(CLToken(displayText: client.email, context: nil))
+            }
         }
+        cell.detailDisclosureImage.isHidden = project != nil
+        cell.clientEmailsTokenView.isUserInteractionEnabled = project == nil
+        cell.createButton.setTitle(project == nil ? "Create" : "Save", for: .normal)
     }
     
     fileprivate func setupTableView() {
