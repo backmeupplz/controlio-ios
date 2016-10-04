@@ -71,7 +71,7 @@ class SettingsController: UITableViewController {
     }
     
     fileprivate func logout() {
-        Server.currentUser = nil
+        Server.logout()
         let _ = self.navigationController?.tabBarController?.navigationController?.popToRootViewController(animated: true)
     }
     

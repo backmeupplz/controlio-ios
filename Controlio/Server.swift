@@ -33,6 +33,7 @@ class Server: NSObject {
             }
         }
     }
+    static var pushNotificationsToken: String?
     
     // MARK: - Public functions -
     
@@ -43,10 +44,13 @@ class Server: NSObject {
     // MARK: - Login -
     
     class func signup(email: String, password: String, completion:@escaping (NSError?)->()) {
-        let parameters = [
+        var parameters = [
             "email": email,
             "password": password
         ]
+        if let pushNotificationsToken = pushNotificationsToken {
+            parameters["iosPushToken"] = pushNotificationsToken
+        }
         
         request(urlAddition: "users/signUp", method: .post, parameters: parameters, needsToken: false)
         { json, error in
@@ -60,10 +64,14 @@ class Server: NSObject {
     }
     
     class func login(_ email: String, password: String, completion:@escaping (NSError?)->()) {
-        let parameters = [
+        var parameters = [
             "email": email,
             "password": password
         ]
+        if let pushNotificationsToken = pushNotificationsToken {
+            parameters["iosPushToken"] = pushNotificationsToken
+        }
+        
         request(urlAddition: "users/login", method: .post, parameters: parameters, needsToken: false)
         { json, error in
             if let error = error {
@@ -73,6 +81,20 @@ class Server: NSObject {
                 completion(nil)
             }
         }
+    }
+    
+    class func logout() {
+        if let pushNotificationsToken = pushNotificationsToken {
+            let parameters = ["iosPushToken": pushNotificationsToken]
+            
+            request(urlAddition: "users/logout", method: .post, parameters: parameters, needsToken: true)
+            { json, error in
+                if let error = error {
+                    print(error)
+                }
+            }
+        }
+        currentUser = nil
     }
     
     // MARK: - Profile -

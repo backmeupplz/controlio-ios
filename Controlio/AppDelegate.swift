@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 //import IQKeyboardManagerSwift
 
 @UIApplicationMain
@@ -22,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupKeyboard()
         PopupNotification.setup()
         S3.setup()
+        setupPushNotifications(application: application)
         
         return true
     }
@@ -31,6 +33,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     fileprivate func setupKeyboard() {
 //        IQKeyboardManager.sharedManager().enable = true
 //        IQKeyboardManager.sharedManager().enableAutoToolbar = false
+    }
+    
+    fileprivate func setupPushNotifications(application: UIApplication) {
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+            if let error = error {
+                print(error)
+            }
+        }
+        application.registerForRemoteNotifications()
+    }
+    
+    // MARK: - Push Notifications Delegate -
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
+        Server.pushNotificationsToken = deviceTokenString
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print(error)
     }
 }
 
