@@ -44,10 +44,10 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
                 } else {
                     Server.editProfile(name: name, phone: phone, profileImage: key)
                     { error in
+                        hud.hide(animated: true)
                         if let error = error {
                             PopupNotification.showNotification(error.domain)
                         } else {
-                            hud.hide(animated: true)
                             let _ = self.navigationController?.popViewController(animated: true)
                         }
                     }
@@ -57,10 +57,10 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
             hud.label.text = "Uploading data"
             Server.editProfile(name: name, phone: phone, profileImage: user.profileImageKey)
             { error in
+                hud.hide(animated: true)
                 if let error = error {
                     PopupNotification.showNotification(error.domain)
                 } else {
-                    hud.hide(animated: true)
                     let _ = self.navigationController?.popViewController(animated: true)
                 }
             }

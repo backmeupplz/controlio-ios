@@ -112,7 +112,9 @@ class S3: NSObject {
                            completion:@escaping (_ key: String?, _ error: String?)->()) {
         let path = saveImage(image)
         if path == nil {
-            completion(nil, "Could not save image to file system")
+            DispatchQueue.main.async {
+                completion(nil, "Could not save image to file system")
+            }
             return
         }
         
@@ -131,17 +133,23 @@ class S3: NSObject {
         let transferManager = AWSS3TransferManager.default()
         transferManager?.upload(uploadRequest).continue({ (task) -> AnyObject! in
             if let error = task.error {
-                completion(nil,
-                           error.localizedDescription)
+                DispatchQueue.main.async {
+                    completion(nil,
+                               error.localizedDescription)
+                }
             } else if let exception = task.exception {
                 
                 completion(nil,
                            exception.name.rawValue)
             } else if task.result != nil {
                 // Success
-                completion(uploadRequest!.key!, nil)
+                DispatchQueue.main.async {
+                    completion(uploadRequest!.key!, nil)
+                }
             } else {
-                completion(nil, "Unexpected empty result")
+                DispatchQueue.main.async {
+                    completion(nil, "Unexpected empty result")
+                }
             }
             
             // Remove file

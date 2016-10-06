@@ -43,11 +43,7 @@ class SettingsController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch (indexPath.section, indexPath.row) {
-        case (3, 0):
-            showTermsOfUse()
-        case (3, 1):
-            showPrivacyPolicy()
-        case (4, 0):
+        case (2, 0):
             logout()
         default:
             print(indexPath)

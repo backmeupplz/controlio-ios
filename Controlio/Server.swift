@@ -43,7 +43,7 @@ class Server: NSObject {
     
     class func isDemo() -> Bool {
         return currentUser?.isDemo ?? false
-    }
+    } 
     
     // MARK: - Login -
     

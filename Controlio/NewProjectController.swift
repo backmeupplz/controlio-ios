@@ -73,6 +73,7 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate, Manag
     }
     
     func createTouched() {
+        view.endEditing(true)
         let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! NewProjectCell
         
         if image == nil && project?.imageKey == nil {
@@ -115,11 +116,10 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate, Manag
                     if self.project == nil {
                         Server.addProject(image: key!, title: title, initialStatus: initialStatus, clients: cell.clientEmailsTokenView.allTokens, description: description, manager: self.manager!)
                         { error in
+                            hud.hide(animated: true)
                             if let error = error {
                                 PopupNotification.showNotification(error.domain)
-                                hud.hide(animated: true)
                             } else {
-                                hud.hide(animated: true)
                                 self.cleanTempFields()
                                 self.selectFirstTab()
                             }
@@ -127,11 +127,10 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate, Manag
                     } else {
                         Server.editProject(project: self.project!, title: title, description: description, image: key!)
                         { error in
+                            hud.hide(animated: true)
                             if let error = error {
                                 PopupNotification.showNotification(error.domain)
-                                hud.hide(animated: true)
                             } else {
-                                hud.hide(animated: true)
                                 self.project!.title = title
                                 self.project!.projectDescription = description
                                 self.project?.imageKey = key!
@@ -145,11 +144,10 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate, Manag
             hud.label.text = "Uploading data"
             Server.editProject(project: project!, title: title, description: description, image: project!.imageKey)
             { error in
+                hud.hide(animated: true)
                 if let error = error {
                     PopupNotification.showNotification(error.domain)
-                    hud.hide(animated: true)
                 } else {
-                    hud.hide(animated: true)
                     self.project!.title = title
                     self.project!.projectDescription = description
                     let _ = self.navigationController?.popViewController(animated: true)

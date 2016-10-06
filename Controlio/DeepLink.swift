@@ -10,15 +10,12 @@ import UIKit
 
 enum DeepLinkType: Int {
     case telegram = 1
-    case skype
     case messenger
     
     var scheme: String {
         switch self {
         case .telegram:
             return "tg://"
-        case .skype:
-            return "skype:"
         case .messenger:
             return "fb-messenger://"
         }
@@ -28,8 +25,6 @@ enum DeepLinkType: Int {
         switch self {
         case .telegram:
             return "Telegram"
-        case .skype:
-            return "Skype"
         case .messenger:
             return "Messenger"
         }
@@ -39,8 +34,6 @@ enum DeepLinkType: Int {
         switch self {
         case .telegram:
             return "itms://itunes.apple.com/ca/app/telegram-messenger/id686449807"
-        case .skype:
-            return "itms://itunes.apple.com/ca/app/skype-for-iphone/id304878510"
         case .messenger:
             return "itms://itunes.apple.com/us/app/facebook-messenger/id454638411"
         }
@@ -50,10 +43,8 @@ enum DeepLinkType: Int {
         switch self {
         case .telegram:
             return "tg://resolve?domain=borodutch"
-        case .skype:
-            return "skype://backmeupplz...?chat"
         case .messenger:
-            return "http://m.me/borodutchking"
+            return "http://m.me/borodutch"
         }
     }
 }

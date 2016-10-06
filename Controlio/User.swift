@@ -58,6 +58,7 @@ class User: NSObject, NSCoding {
         emailVerified = json["isEmailVerified"].bool ?? false
         profileCompleted = json["isCompleted"].bool ?? false
         isAdmin = json["isAdmin"].bool ?? false
+        
         isDemo = json["isDemo"].bool ?? false
     }
     
@@ -79,6 +80,7 @@ class User: NSObject, NSCoding {
         aCoder.encode(emailVerified, forKey: "emailVerified")
         aCoder.encode(profileCompleted, forKey: "profileCompleted")
         aCoder.encode(isAdmin, forKey: "isAdmin")
+        aCoder.encode(isDemo, forKey: "isDemo")
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -99,5 +101,6 @@ class User: NSObject, NSCoding {
         emailVerified = aDecoder.decodeObject(forKey: "emailVerified") as? Bool ?? false
         profileCompleted = aDecoder.decodeObject(forKey: "profileCompleted") as? Bool ?? false
         isAdmin = aDecoder.decodeObject(forKey: "isAdmin") as? Bool ?? false
+        isDemo = aDecoder.decodeBool(forKey: "isDemo")
     }
 }
