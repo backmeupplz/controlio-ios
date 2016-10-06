@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		98CE909FBC3BD5F65F168787 /* Pods_Controlio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FE83454A2E4F5D30F57FC0B /* Pods_Controlio.framework */; };
 		B301EFDD1CE59A0A0013CD4D /* UIImagePickerDelegate+UINavgiationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B301EFDC1CE59A0A0013CD4D /* UIImagePickerDelegate+UINavgiationControllerDelegate.swift */; };
+		B30A42161DA61FC6001FB870 /* MagicLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30A42151DA61FC6001FB870 /* MagicLinkViewController.swift */; };
 		B37630511CE28737004FE1B7 /* AttachmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37630501CE28737004FE1B7 /* AttachmentView.swift */; };
 		B37630531CE28741004FE1B7 /* AttachmentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B37630521CE28741004FE1B7 /* AttachmentView.xib */; };
 		B37630551CE28CA4004FE1B7 /* AttachmentContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37630541CE28CA4004FE1B7 /* AttachmentContainerView.swift */; };
@@ -114,6 +115,7 @@
 		7FE83454A2E4F5D30F57FC0B /* Pods_Controlio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Controlio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E0CE87DC6458B1EA1E9217C /* Pods-Controlio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Controlio.release.xcconfig"; path = "Pods/Target Support Files/Pods-Controlio/Pods-Controlio.release.xcconfig"; sourceTree = "<group>"; };
 		B301EFDC1CE59A0A0013CD4D /* UIImagePickerDelegate+UINavgiationControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImagePickerDelegate+UINavgiationControllerDelegate.swift"; sourceTree = "<group>"; };
+		B30A42151DA61FC6001FB870 /* MagicLinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagicLinkViewController.swift; sourceTree = "<group>"; };
 		B32FE1C11DA301C6001A72B7 /* Controlio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Controlio.entitlements; sourceTree = "<group>"; };
 		B37630501CE28737004FE1B7 /* AttachmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentView.swift; sourceTree = "<group>"; };
 		B37630521CE28741004FE1B7 /* AttachmentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttachmentView.xib; sourceTree = "<group>"; };
@@ -434,6 +436,7 @@
 				B3AA2F901C9110EF00FE7E54 /* SignUpViewController.swift */,
 				B3AA2F921C9110FE00FE7E54 /* LogInViewController.swift */,
 				B3E634D41C91444700C0572A /* RecoveryViewController.swift */,
+				B30A42151DA61FC6001FB870 /* MagicLinkViewController.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -524,6 +527,9 @@
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.SafariKeychain = {
 								enabled = 1;
 							};
 						};
@@ -701,6 +707,7 @@
 				B3C03D1A1C90FF890096E04C /* UIAlertController+Additions.swift in Sources */,
 				B3E7B1281D9B3D40004FBF86 /* Platform.swift in Sources */,
 				B3D8C6F61CFBFC6B001EE432 /* Config.swift in Sources */,
+				B30A42161DA61FC6001FB870 /* MagicLinkViewController.swift in Sources */,
 				B3E7B12C1D9F0DBC004FBF86 /* Date+ISO.swift in Sources */,
 				B3C305AE1CDFF43400C8E85F /* NSDateFormatter+Extensions.swift in Sources */,
 				B37F10E21D962F2500CAA8D4 /* EditProfileViewController.swift in Sources */,
@@ -838,8 +845,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BorodutchStudio.Controlio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "10aa1c11-b545-4aff-aba2-b15f692ef9fa";
-				PROVISIONING_PROFILE_SPECIFIER = "Controlio Dev 4";
+				PROVISIONING_PROFILE = "f6a12c8f-ffa1-4b3b-b79d-a03c8e2af3ce";
+				PROVISIONING_PROFILE_SPECIFIER = "Controlio Dev 5";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -859,8 +866,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BorodutchStudio.Controlio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "10aa1c11-b545-4aff-aba2-b15f692ef9fa";
-				PROVISIONING_PROFILE_SPECIFIER = "Controlio Dev 4";
+				PROVISIONING_PROFILE = "f6a12c8f-ffa1-4b3b-b79d-a03c8e2af3ce";
+				PROVISIONING_PROFILE_SPECIFIER = "Controlio Dev 5";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

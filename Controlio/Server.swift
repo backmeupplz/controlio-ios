@@ -83,6 +83,17 @@ class Server: NSObject {
         }
     }
     
+    class func recoverPassword(_ email: String, completion:@escaping (NSError?)->()) {
+        let parameters = [
+            "email": email
+        ]
+        
+        request(urlAddition: "users/recoverPassword", method: .post, parameters: parameters, needsToken: false)
+        { json, error in
+            completion(error)
+        }
+    }
+    
     class func logout() {
         if let pushNotificationsToken = pushNotificationsToken {
             let parameters = ["iosPushToken": pushNotificationsToken]

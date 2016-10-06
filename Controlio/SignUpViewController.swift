@@ -31,12 +31,20 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Actions -
     
+    @IBAction func backTouched(_ sender: AnyObject) {
+        let _ = navigationController?.popViewController(animated: true)
+    }
+    
     @IBAction func signUpTouched(_ sender: AnyObject?) {
         checkTextFields()
     }
     
     @IBAction func logInTouched(_ sender: AnyObject) {
         Router(self).showLogIn()
+    }
+    
+    @IBAction func forgotPasswordTouched(_ sender: AnyObject) {
+        Router(self).showRecovery()
     }
     
     // MARK: - Private Functions -

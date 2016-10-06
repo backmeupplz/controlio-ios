@@ -32,6 +32,10 @@ class Router {
         return loginStoryboard().instantiateViewController(withIdentifier: "LogInViewController")
     }
     
+    fileprivate class func magicLinkVC() -> UIViewController {
+        return loginStoryboard().instantiateViewController(withIdentifier: "MagicLinkViewController")
+    }
+    
     fileprivate class func signUpVC() -> UIViewController {
         return loginStoryboard().instantiateViewController(withIdentifier: "SignUpViewController")
     }
@@ -54,6 +58,10 @@ class Router {
     
     func showStart() {
         showVC(Router.startVC())
+    }
+    
+    func showMagicLink() {
+        showVC(Router.magicLinkVC())
     }
     
     func showSignUp() {

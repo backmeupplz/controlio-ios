@@ -8,5 +8,5 @@
 
 import Foundation
 
-let apiUrl = Platform.isSimulator ? "http://localhost:3000/" : "http://10.0.0.142:3000/"
+let apiUrl = "http://localhost:8443/"
 let apiKey = "p[oqkix=%FAi]&FMAYnLUJJWC,w"

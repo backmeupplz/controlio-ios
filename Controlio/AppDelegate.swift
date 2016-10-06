@@ -55,5 +55,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print(error)
     }
+    
+    // MARK: - Universal links -
+    
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
+        if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
+            if let url = userActivity.webpageURL {
+                let queryItems = URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems ?? []
+                var queryItemsDictionary = [String: String]()
+                
+                for item in queryItems {
+                    queryItemsDictionary[item.name] = item.value
+                }
+                let userId = queryItemsDictionary["userid"]
+                let token = queryItemsDictionary["token"]
+                
+                print(userId)
+                print(token)
+            }
+        }
+        return true
+    }
 }
 

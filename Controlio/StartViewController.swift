@@ -31,7 +31,7 @@ class StartViewController: UIViewController {
     // MARK: - Actions -
     
     @IBAction fileprivate func signupTouched(_ sender: AnyObject) {
-        Router(self).showSignUp()
+        Router(self).showMagicLink()
     }
     
     @IBAction fileprivate func loginTouched(_ sender: AnyObject) {

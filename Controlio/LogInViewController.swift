@@ -30,6 +30,10 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Actions -
     
+    @IBAction func backTouched(_ sender: AnyObject) {
+        let _ = navigationController?.popViewController(animated: true)
+    }
+    
     @IBAction func logInTouched(_ sender: AnyObject) {
         checkTextFields()
     }
