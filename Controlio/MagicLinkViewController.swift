@@ -37,14 +37,45 @@ class MagicLinkViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        signupTouched(signupButton)
+        magicLinkTouched(magicLinkButton)
         return false
     }
     
     // MARK: - Private functions -
     
     fileprivate func sendMagicLink() {
+        var success = true
+        if emailTextField.text == "" || !(emailTextField.text?.isEmail ?? false) {
+            emailTextField.shake()
+            success = false
+        }
+        if !success { return }
         
+        enable(ui: false)
+        
+        Server.requestMagicLink(emailTextField.text!)
+        { error in
+            self.enable(ui: true)
+            if let error = error {
+                PopupNotification.showNotification(error.domain)
+            } else {
+                let alert = UIAlertController(title: "Success!", message: "We have sent you a magic link to login. Please, check your inbox!", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "Ok!", style: .default)
+                { action in
+                    // Do nothing
+                }
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    fileprivate func enable(ui: Bool) {
+        emailTextField.isEnabled = ui
+        spinner.isHidden = ui
+        magicLinkButton.isEnabled = ui
+        loginButton.isEnabled = ui
+        signupButton.isEnabled = ui
     }
     
     // MARK: - Status Bar -

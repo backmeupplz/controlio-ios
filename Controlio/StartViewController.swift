@@ -39,7 +39,7 @@ class StartViewController: UIViewController {
     }
     
     @IBAction fileprivate func demoTouched(_ sender: UIButton) {
-        let alert = UIAlertController(title: "What language do you speak?", message: nil, preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "What language do you prefer?", message: nil, preferredStyle: .actionSheet)
         alert.addPopoverSourceView(sender)
         alert.addCancelButton()
         for demoAccountLanguage in DemoAccountLanguage.allCases {

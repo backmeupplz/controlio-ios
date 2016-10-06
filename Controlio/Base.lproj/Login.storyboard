@@ -822,7 +822,7 @@
                                     <constraint firstAttribute="width" constant="152" id="oJR-Sy-TgW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="12"/>
-                                <state key="normal" title="(or signup)">
+                                <state key="normal" title="(or usual signup)">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <state key="highlighted">
@@ -832,11 +832,11 @@
                                     <action selector="signupTouched:" destination="eFC-7B-UMl" eventType="touchUpInside" id="cBk-Uh-pe1"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just give us your email and we will send you a magic link. Click the magic link and you are in!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CpF-ue-2fx">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CpF-ue-2fx">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="58" id="So3-fN-Pr4"/>
                                     <constraint firstAttribute="width" constant="240" id="wMh-vY-R9Z"/>
                                 </constraints>
+                                <string key="text">No need to login or sign up anymore! Just give us your email and we will send you a magic link. Click the magic link and you are in – we got you covered.</string>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Light" family="SF UI Display" pointSize="14"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -857,9 +857,6 @@
                             <constraint firstItem="jGT-Ha-Ws9" firstAttribute="centerY" secondItem="pPF-8D-YbP" secondAttribute="centerY" constant="149" id="8y5-OY-srS">
                                 <variation key="heightClass=compact" constant="46.5"/>
                             </constraint>
-                            <constraint firstItem="nrX-p8-eFI" firstAttribute="centerY" secondItem="pPF-8D-YbP" secondAttribute="centerY" constant="-141" id="95p-rb-wgu">
-                                <variation key="heightClass=compact" constant="-70.5"/>
-                            </constraint>
                             <constraint firstItem="hq9-kL-y68" firstAttribute="top" secondItem="pPF-8D-YbP" secondAttribute="top" id="ALk-tK-Qtn"/>
                             <constraint firstItem="JP6-1E-Yux" firstAttribute="centerX" secondItem="pPF-8D-YbP" secondAttribute="centerX" id="Gjb-4u-cM7">
                                 <variation key="heightClass=compact" constant="-123"/>
@@ -875,12 +872,11 @@
                             </constraint>
                             <constraint firstAttribute="trailing" secondItem="hq9-kL-y68" secondAttribute="trailing" id="QYf-5q-c4j"/>
                             <constraint firstItem="hq9-kL-y68" firstAttribute="leading" secondItem="pPF-8D-YbP" secondAttribute="leading" id="Qau-NQ-7Pe"/>
-                            <constraint firstItem="CpF-ue-2fx" firstAttribute="centerY" secondItem="pPF-8D-YbP" secondAttribute="centerY" constant="-83.5" id="Z4y-BD-iNy">
-                                <variation key="heightClass=compact" constant="-13"/>
-                            </constraint>
+                            <constraint firstItem="CpF-ue-2fx" firstAttribute="top" secondItem="nrX-p8-eFI" secondAttribute="bottom" constant="8" id="Ubw-ML-GjF"/>
                             <constraint firstItem="uUq-DV-nuG" firstAttribute="centerY" secondItem="pPF-8D-YbP" secondAttribute="centerY" constant="127" id="bQi-Wq-MiP">
                                 <variation key="heightClass=compact" constant="24.5"/>
                             </constraint>
+                            <constraint firstItem="Eob-BJ-0Bd" firstAttribute="top" secondItem="CpF-ue-2fx" secondAttribute="bottom" constant="4" id="eIy-n5-kBH"/>
                             <constraint firstItem="CpF-ue-2fx" firstAttribute="centerX" secondItem="pPF-8D-YbP" secondAttribute="centerX" id="h4n-qY-nsY">
                                 <variation key="heightClass=compact" constant="-123"/>
                             </constraint>

@@ -8,7 +8,8 @@
 
 import UIKit
 import UserNotifications
-//import IQKeyboardManagerSwift
+import IQKeyboardManagerSwift
+import MBProgressHUD
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -31,8 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Private Functions -
     
     fileprivate func setupKeyboard() {
-//        IQKeyboardManager.sharedManager().enable = true
-//        IQKeyboardManager.sharedManager().enableAutoToolbar = false
+        IQKeyboardManager.sharedManager().enable = true
+        IQKeyboardManager.sharedManager().enableAutoToolbar = false
     }
     
     fileprivate func setupPushNotifications(application: UIApplication) {
@@ -70,8 +71,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let userId = queryItemsDictionary["userid"]
                 let token = queryItemsDictionary["token"]
                 
-                print(userId)
-                print(token)
+                guard let userIdUnwrapped = userId, let tokenUnwrapped = token else {
+                    return true
+                }
+                
+                guard let topController = UIApplication.topViewController() else { return true }
+                let hud = MBProgressHUD.showAdded(to: topController.view, animated: true)
+                Server.loginMagicLink(userid: userIdUnwrapped, token: tokenUnwrapped)
+                { error in
+                    hud.hide(animated: true)
+                    if let error = error {
+                        PopupNotification.showNotification(error.domain)
+                    } else {
+                        Router(topController).showMain()
+                    }
+                }
             }
         }
         return true

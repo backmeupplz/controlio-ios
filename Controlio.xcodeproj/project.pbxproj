@@ -10,6 +10,7 @@
 		98CE909FBC3BD5F65F168787 /* Pods_Controlio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FE83454A2E4F5D30F57FC0B /* Pods_Controlio.framework */; };
 		B301EFDD1CE59A0A0013CD4D /* UIImagePickerDelegate+UINavgiationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B301EFDC1CE59A0A0013CD4D /* UIImagePickerDelegate+UINavgiationControllerDelegate.swift */; };
 		B30A42161DA61FC6001FB870 /* MagicLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30A42151DA61FC6001FB870 /* MagicLinkViewController.swift */; };
+		B30A42181DA6319C001FB870 /* UIApplication+TopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30A42171DA6319C001FB870 /* UIApplication+TopVC.swift */; };
 		B37630511CE28737004FE1B7 /* AttachmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37630501CE28737004FE1B7 /* AttachmentView.swift */; };
 		B37630531CE28741004FE1B7 /* AttachmentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B37630521CE28741004FE1B7 /* AttachmentView.xib */; };
 		B37630551CE28CA4004FE1B7 /* AttachmentContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37630541CE28CA4004FE1B7 /* AttachmentContainerView.swift */; };
@@ -116,6 +117,7 @@
 		9E0CE87DC6458B1EA1E9217C /* Pods-Controlio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Controlio.release.xcconfig"; path = "Pods/Target Support Files/Pods-Controlio/Pods-Controlio.release.xcconfig"; sourceTree = "<group>"; };
 		B301EFDC1CE59A0A0013CD4D /* UIImagePickerDelegate+UINavgiationControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImagePickerDelegate+UINavgiationControllerDelegate.swift"; sourceTree = "<group>"; };
 		B30A42151DA61FC6001FB870 /* MagicLinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagicLinkViewController.swift; sourceTree = "<group>"; };
+		B30A42171DA6319C001FB870 /* UIApplication+TopVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+TopVC.swift"; sourceTree = "<group>"; };
 		B32FE1C11DA301C6001A72B7 /* Controlio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Controlio.entitlements; sourceTree = "<group>"; };
 		B37630501CE28737004FE1B7 /* AttachmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentView.swift; sourceTree = "<group>"; };
 		B37630521CE28741004FE1B7 /* AttachmentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttachmentView.xib; sourceTree = "<group>"; };
@@ -415,6 +417,7 @@
 				B3D8C6F71CFBFD7E001EE432 /* NSUserDefaults+extensions.swift */,
 				B3E7B1291D9B969C004FBF86 /* String+EmailValidation.swift */,
 				B3E7B12B1D9F0DBC004FBF86 /* Date+ISO.swift */,
+				B30A42171DA6319C001FB870 /* UIApplication+TopVC.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -701,6 +704,7 @@
 				B3C03D101C90DAA60096E04C /* UIColor+Controlio.swift in Sources */,
 				B37630511CE28737004FE1B7 /* AttachmentView.swift in Sources */,
 				B3E7B12A1D9B969C004FBF86 /* String+EmailValidation.swift in Sources */,
+				B30A42181DA6319C001FB870 /* UIApplication+TopVC.swift in Sources */,
 				B37F10E51D962F9A00CAA8D4 /* EditProfileCell.swift in Sources */,
 				B3C305AA1CDFEB0200C8E85F /* Post.swift in Sources */,
 				B3AA2F911C9110EF00FE7E54 /* SignUpViewController.swift in Sources */,

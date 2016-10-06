@@ -108,6 +108,41 @@ class Server: NSObject {
         currentUser = nil
     }
     
+    class func requestMagicLink(_ email: String, completion:@escaping (NSError?)->()) {
+        let parameters = [
+            "email": email
+        ]
+        
+        request(urlAddition: "users/requestMagicLink", method: .post, parameters: parameters, needsToken: false)
+        { json, error in
+            completion(error)
+        }
+    }
+    
+    class func loginMagicLink(userid: String, token: String, completion:@escaping (NSError?)->()) {
+        var parameters = [
+            "userid": userid,
+            "token": token
+        ]
+        if let pushNotificationsToken = pushNotificationsToken {
+            parameters["iosPushToken"] = pushNotificationsToken
+        }
+        
+        request(urlAddition: "users/loginMagicLink", method: .post, parameters: parameters, needsToken: false)
+        { json, error in
+            if let error = error {
+                completion(error)
+            } else {
+                if currentUser != nil {
+                    completion(NSError(domain: "Please logout first", code: 500, userInfo: nil))
+                } else {
+                    saveUser(json!)
+                    completion(nil)
+                }
+            }
+        }
+    }
+    
     // MARK: - Profile -
     
     class func getProfile(completion:@escaping (NSError?, User?)->()) {
@@ -292,6 +327,12 @@ class Server: NSObject {
         }
     }
     
+    // MARK: - Functions -
+    
+    class func saveUser(_ user: JSON) {
+        currentUser = User(json: user)
+    }
+    
     // MARK: - Private functions -
     
     fileprivate class func request(urlAddition: String, method: HTTPMethod, parameters: [String:Any]? = nil, needsToken: Bool, completion: @escaping (JSON?, NSError?)->()) {
@@ -319,10 +360,6 @@ class Server: NSObject {
         } else {
             return nil
         }
-    }
-    
-    fileprivate class func saveUser(_ user: JSON) {
-        currentUser = User(json: user)
     }
     
     fileprivate class func headers(needsToken: Bool) -> [String:String] {
