@@ -56,6 +56,11 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     func edit(post: Post, cell: PostCell) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
+        if let popoverController = alert.popoverPresentationController {
+            popoverController.sourceView = cell
+            popoverController.sourceRect = cell.bounds
+        }
+        
         let edit = UIAlertAction(title: "Edit", style: .default)
         { action in
             self.input?.post = post
@@ -80,11 +85,16 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     
     // MARK: - InputViewDelegate -
     
-    func openPickerWithDelegate(_ delegate: PickerDelegate) {
+    func openPicker(with delegate: PickerDelegate, sender: UIView) {
         imagePicker.allowsEditing = false
         imagePicker.delegate = delegate
         
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        if let popoverController = alert.popoverPresentationController {
+            popoverController.sourceView = sender
+            popoverController.sourceRect = sender.bounds
+        }
         
         alert.addDefaultAction("Camera") { 
             self.imagePicker.sourceType = .camera

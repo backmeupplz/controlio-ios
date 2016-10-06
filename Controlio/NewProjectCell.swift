@@ -10,7 +10,7 @@ import UIKit
 import CLTokenInputView
 
 protocol NewProjectCellDelegate: class {
-    func editPhotoTouched()
+    func editPhotoTouched(sender: UIView)
     func chooseManagerTouched()
     func createTouched()
 }
@@ -86,7 +86,7 @@ class NewProjectCell: UITableViewCell, UITextFieldDelegate, CLTokenInputViewDele
     // MARK: - Actions -
     
     @IBAction func addPhotoTouched(_ sender: AnyObject) {
-        delegate?.editPhotoTouched()
+        delegate?.editPhotoTouched(sender: sender as! UIView)
     }
     
     @IBAction func chooseManagerTouched(_ sender: AnyObject) {

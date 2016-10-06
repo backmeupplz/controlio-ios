@@ -94,8 +94,14 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
     
     // MARK: - EditProfileCellDelegate -
     
-    func editPhotoTouched() {
+    func editPhotoTouched(sender: UIView) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        if let popoverController = alert.popoverPresentationController {
+            popoverController.sourceView = sender
+            popoverController.sourceRect = sender.bounds
+        }
+        
         let library = UIAlertAction(title: "Choose from library", style: .default)
         { action in
             self.imagePicker.sourceType = .photoLibrary

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol EditProfileCellDelegate: class {
-    func editPhotoTouched()
+    func editPhotoTouched(sender: UIView)
 }
 
 class EditProfileCell: UITableViewCell {
@@ -36,7 +36,7 @@ class EditProfileCell: UITableViewCell {
     // MARK: - Actions -
     
     @IBAction func editPhotoTouched(_ sender: AnyObject) {
-        delegate?.editPhotoTouched()
+        delegate?.editPhotoTouched(sender: sender as! UIView)
     }
     
     // MARK: - Private functions -
