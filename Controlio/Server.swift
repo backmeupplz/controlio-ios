@@ -41,6 +41,10 @@ class Server: NSObject {
         return currentUser?.token != nil
     }
     
+    class func isDemo() -> Bool {
+        return currentUser?.isDemo ?? false
+    }
+    
     // MARK: - Login -
     
     class func signup(email: String, password: String, completion:@escaping (NSError?)->()) {
@@ -167,6 +171,10 @@ class Server: NSObject {
         if let profileImage = profileImage {
             parameters["photo"] = profileImage
         }
+        if isDemo() {
+            completion(NSError(domain: "You can't do that in demo account", code: 500, userInfo: nil))
+            return
+        }
         request(urlAddition: "users/profile", method: .post, parameters: parameters, needsToken: true)
         { json, error in
             if let error = error {
@@ -191,6 +199,10 @@ class Server: NSObject {
         let parameters = [
             "email": email
         ]
+        if isDemo() {
+            completion(NSError(domain: "You can't do that in demo account", code: 500, userInfo: nil))
+            return
+        }
         request(urlAddition: "users/manager", method: .post, parameters: parameters, needsToken: true)
         { json, error in
             completion(error)
@@ -201,6 +213,10 @@ class Server: NSObject {
         let parameters = [
             "id": user.id!
         ]
+        if isDemo() {
+            completion(NSError(domain: "You can't do that in demo account", code: 500, userInfo: nil))
+            return
+        }
         request(urlAddition: "users/manager", method: .delete, parameters: parameters, needsToken: true)
         { json, error in
             completion(error)
@@ -218,7 +234,10 @@ class Server: NSObject {
             "manager": manager.id,
             "clients": clients.map { $0.displayText }
         ]
-        
+        if isDemo() {
+            completion(NSError(domain: "You can't do that in demo account", code: 500, userInfo: nil))
+            return
+        }
         request(urlAddition: "projects", method: .post, parameters: parameters, needsToken: true)
         { json, error in
             completion(error)
@@ -242,7 +261,10 @@ class Server: NSObject {
             "projectid": projectId,
             "status": status
         ]
-        
+        if isDemo() {
+            completion(NSError(domain: "You can't do that in demo account", code: 500, userInfo: nil))
+            return
+        }
         request(urlAddition: "projects/status", method: .post, parameters: parameters, needsToken: true)
         { json, error in
             completion(error)
@@ -254,7 +276,10 @@ class Server: NSObject {
             "projectid": projectId,
             "clients": clientEmails
         ]
-        
+        if isDemo() {
+            completion(NSError(domain: "You can't do that in demo account", code: 500, userInfo: nil))
+            return
+        }
         request(urlAddition: "projects/clients", method: .post, parameters: parameters, needsToken: true)
         { json, error in
             completion(error)
@@ -268,7 +293,10 @@ class Server: NSObject {
             "description": description,
             "image": image
         ]
-        
+        if isDemo() {
+            completion(NSError(domain: "You can't do that in demo account", code: 500, userInfo: nil))
+            return
+        }
         request(urlAddition: "projects", method: .put, parameters: parameters, needsToken: true)
         { json, error in
             completion(error)
@@ -283,7 +311,10 @@ class Server: NSObject {
             "text": text,
             "attachments": attachmentKeys
         ]
-        
+        if isDemo() {
+            completion(NSError(domain: "You can't do that in demo account", code: 500, userInfo: nil))
+            return
+        }
         request(urlAddition: "posts", method: .post, parameters: parameters, needsToken: true)
         { json, error in
             completion(error)
@@ -309,7 +340,10 @@ class Server: NSObject {
             "text": text,
             "attachments": attachments
         ]
-        
+        if isDemo() {
+            completion(NSError(domain: "You can't do that in demo account", code: 500, userInfo: nil))
+            return
+        }
         request(urlAddition: "posts", method: .put, parameters: parameters, needsToken: true)
         { json, error in
             completion(error)
@@ -320,7 +354,10 @@ class Server: NSObject {
         let parameters: [String: Any] = [
             "postid": post.id
         ]
-        
+        if isDemo() {
+            completion(NSError(domain: "You can't do that in demo account", code: 500, userInfo: nil))
+            return
+        }
         request(urlAddition: "posts", method: .delete, parameters: parameters, needsToken: true)
         { json, error in
             completion(error)

@@ -11,10 +11,12 @@ import UIKit
 enum DemoAccountLanguage: String {
     case english = "English"
     case russian = "Russian"
+    case pizza = "Pizza"
+    case cars = "Cars"
     
     static var allCases: [DemoAccountLanguage] {
         get {
-            return [.english, .russian]
+            return [.english, .russian, .pizza, .cars]
         }
     }
 }

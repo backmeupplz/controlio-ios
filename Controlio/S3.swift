@@ -84,17 +84,23 @@ class S3: NSObject {
                 for (_, prgrs) in progresses {
                     overallProgress += prgrs
                 }
-                progress(overallProgress)
+                DispatchQueue.main.async {
+                    progress(overallProgress)
+                }
             })
             { key, error in
                 if let error = error {
-                    completion?(nil, error)
+                    DispatchQueue.main.async {
+                        completion?(nil, error)
+                    }
                     completion = nil
                 } else {
                     numberOfImagesCompleted += 1
                     resultKeys.append(key!)
                     if numberOfImagesCompleted >= images.count {
-                        completion?(resultKeys, nil)
+                        DispatchQueue.main.async {
+                            completion?(resultKeys, nil)
+                        }
                     }
                 }
             }

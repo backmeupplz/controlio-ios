@@ -8,7 +8,7 @@
 
 import UIKit
 import UserNotifications
-import IQKeyboardManagerSwift
+//import IQKeyboardManagerSwift
 import MBProgressHUD
 
 @UIApplicationMain
@@ -32,8 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Private Functions -
     
     fileprivate func setupKeyboard() {
-        IQKeyboardManager.sharedManager().enable = true
-        IQKeyboardManager.sharedManager().enableAutoToolbar = false
+//        IQKeyboardManager.sharedManager().enable = true
+//        IQKeyboardManager.sharedManager().enableAutoToolbar = false
     }
     
     fileprivate func setupPushNotifications(application: UIApplication) {

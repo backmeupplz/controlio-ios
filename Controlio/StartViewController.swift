@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import MBProgressHUD
 
 class StartViewController: UIViewController {
     
@@ -39,15 +40,25 @@ class StartViewController: UIViewController {
     }
     
     @IBAction fileprivate func demoTouched(_ sender: UIButton) {
-        let alert = UIAlertController(title: "What language do you prefer?", message: nil, preferredStyle: .actionSheet)
-        alert.addPopoverSourceView(sender)
-        alert.addCancelButton()
-        for demoAccountLanguage in DemoAccountLanguage.allCases {
-            alert.addDefaultAction(demoAccountLanguage.rawValue) {
-                self.loginDemo(demoAccountLanguage)
+        let hud = MBProgressHUD.showAdded(to: view, animated: false)
+        Server.login("giraffe@controlio.co", password: "PotatoFry1984large!1")
+        { error in
+            hud.hide(animated: true)
+            if let error = error {
+                PopupNotification.showNotification(error.domain)
+            } else {
+                Router(self).showMain()
             }
         }
-        present(alert, animated: true) {}
+//        let alert = UIAlertController(title: "What language do you prefer?", message: nil, preferredStyle: .actionSheet)
+//        alert.addPopoverSourceView(sender)
+//        alert.addCancelButton()
+//        for demoAccountLanguage in DemoAccountLanguage.allCases {
+//            alert.addDefaultAction(demoAccountLanguage.rawValue) {
+//                self.loginDemo(demoAccountLanguage)
+//            }
+//        }
+//        present(alert, animated: true) {}
     }
     
     // MARK: - Private Functions -
@@ -55,15 +66,54 @@ class StartViewController: UIViewController {
     fileprivate func loginDemo(_ type: DemoAccountLanguage) {
         switch type {
         case .english:
-            print("Login English")
+            let hud = MBProgressHUD.showAdded(to: view, animated: false)
+            Server.login("giraffe@controlio.co", password: "PotatoFry1984large!1")
+            { error in
+                hud.hide(animated: true)
+                if let error = error {
+                    PopupNotification.showNotification(error.domain)
+                } else {
+                    Router(self).showMain()
+                }
+            }
         case .russian:
-            print("Login Russian")
+            let hud = MBProgressHUD.showAdded(to: view, animated: false)
+            Server.login("jaguar@controlio.co", password: "PotatoFry1984large!1")
+            { error in
+                hud.hide(animated: true)
+                if let error = error {
+                    PopupNotification.showNotification(error.domain)
+                } else {
+                    Router(self).showMain()
+                }
+            }
+        case .pizza:
+            let hud = MBProgressHUD.showAdded(to: view, animated: false)
+            Server.login("pizza@controlio.co", password: "PotatoFry1984large!1")
+            { error in
+                hud.hide(animated: true)
+                if let error = error {
+                    PopupNotification.showNotification(error.domain)
+                } else {
+                    Router(self).showMain()
+                }
+            }
+        case .cars:
+            let hud = MBProgressHUD.showAdded(to: view, animated: false)
+            Server.login("cars@controlio.co", password: "PotatoFry1984large!1")
+            { error in
+                hud.hide(animated: true)
+                if let error = error {
+                    PopupNotification.showNotification(error.domain)
+                } else {
+                    Router(self).showMain()
+                }
+            }
         }
-        Router(self).showMain()
     }
-    
+
     // MARK: - Status Bar -
-    
+
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .lightContent
     }

@@ -46,29 +46,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         Router(self).showSignUp()
     }
     
-    @IBAction func demoTouched(_ sender: UIButton) {
-        let alert = UIAlertController(title: "What language do you speak?", message: nil, preferredStyle: .actionSheet)
-        alert.addPopoverSourceView(sender)
-        alert.addCancelButton()
-        for demoAccountLanguage in DemoAccountLanguage.allCases {
-            alert.addDefaultAction(demoAccountLanguage.rawValue) {
-                self.loginDemo(demoAccountLanguage)
-            }
-        }
-        present(alert, animated: true) {}
-    }
-    
     // MARK: - Private Function -
-    
-    fileprivate func loginDemo(_ type: DemoAccountLanguage) {
-        switch type {
-        case .english:
-            print("Login English")
-        case .russian:
-            print("Login Russian")
-        }
-        Router(self).showMain()
-    }
     
     fileprivate func checkTextFields() {
         var success = true

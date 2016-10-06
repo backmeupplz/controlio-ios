@@ -29,6 +29,7 @@ class User: NSObject, NSCoding {
     var emailVerified = false
     var profileCompleted = false
     var isAdmin = false
+    var isDemo = false
     
     // MARK: - Functions -
     
@@ -57,6 +58,7 @@ class User: NSObject, NSCoding {
         emailVerified = json["isEmailVerified"].bool ?? false
         profileCompleted = json["isCompleted"].bool ?? false
         isAdmin = json["isAdmin"].bool ?? false
+        isDemo = json["isDemo"].bool ?? false
     }
     
     // MARK: - NSCoding -
