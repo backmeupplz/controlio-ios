@@ -300,6 +300,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         
         unsubscribeFromNotifications()
         hideInput()
+        view.endEditing(true)
     }
     
     // MARK: - Private Functions -
