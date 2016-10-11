@@ -234,6 +234,7 @@ class Server: NSObject {
             "manager": manager.id,
             "clients": clients.map { $0.displayText }
         ]
+        
         if isDemo() {
             completion(NSError(domain: "You can't do that in demo account", code: 500, userInfo: nil))
             return
@@ -259,13 +260,14 @@ class Server: NSObject {
     class func changeStatus(projectId: String, status: String, completion:@escaping (NSError?)->()) {
         let parameters = [
             "projectid": projectId,
-            "status": status
+            "text": status,
+            "type": "status"
         ]
         if isDemo() {
             completion(NSError(domain: "You can't do that in demo account", code: 500, userInfo: nil))
             return
         }
-        request(urlAddition: "projects/status", method: .post, parameters: parameters, needsToken: true)
+        request(urlAddition: "posts", method: .post, parameters: parameters, needsToken: true)
         { json, error in
             completion(error)
         }

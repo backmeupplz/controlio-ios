@@ -527,7 +527,7 @@
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = 9VUB6L23QH;
 						LastSwiftMigration = 0800;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -849,8 +849,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BorodutchStudio.Controlio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f6a12c8f-ffa1-4b3b-b79d-a03c8e2af3ce";
-				PROVISIONING_PROFILE_SPECIFIER = "Controlio Dev 5";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -870,8 +870,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BorodutchStudio.Controlio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f6a12c8f-ffa1-4b3b-b79d-a03c8e2af3ce";
-				PROVISIONING_PROFILE_SPECIFIER = "Controlio Dev 5";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

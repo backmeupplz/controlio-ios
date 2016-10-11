@@ -68,6 +68,9 @@ class PostCell: UITableViewCell {
         managerNameLabel.text = post.manager.name ?? post.manager.email
         dateLabel.text = DateFormatter.projectDateString(post.dateCreated)
         postLabel.text = post.text
+        if post.type == .status {
+            postLabel.text = "Status changed: \(postLabel.text ?? "")"
+        }
         
         if post.attachments.count <= 0 {
             hideAttachments(true)

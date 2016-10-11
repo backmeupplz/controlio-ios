@@ -10,6 +10,7 @@ import UIKit
 import UserNotifications
 //import IQKeyboardManagerSwift
 import MBProgressHUD
+import CLTokenInputView
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,6 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PopupNotification.setup()
         S3.setup()
         setupPushNotifications(application: application)
+        
+        let manager = User()
+        manager.id = "57fc540fdc97161874534d91"
         
         return true
     }
@@ -50,7 +54,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
-        print(deviceTokenString)
         Server.pushNotificationsToken = deviceTokenString
     }
     

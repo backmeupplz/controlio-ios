@@ -268,11 +268,15 @@ class InputView: CustomizableView, AttachmentContainerViewDelegate, CLTokenInput
             cancelButton.isHidden = false
             textView.text = post.text
             attachmentContainerView.wrapperView.attachments = post.attachments
+            clipImage.isHidden = post.type == .status
+            clipButton.isEnabled = post.type != .status
         } else {
             segmentedControl.isHidden = false
             cancelButton.isHidden = true
             textView.text = ""
             attachmentContainerView.wrapperView.attachments = []
+            clipImage.isHidden = segmentedControl.selectedSegmentIndex != 0
+            clipButton.isEnabled = segmentedControl.selectedSegmentIndex == 0
         }
     }
 }
