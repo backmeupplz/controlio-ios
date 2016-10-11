@@ -27,7 +27,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UUx-WB-FnK" userLabel="Gradient" customClass="GradientView" customModule="Controlio" customModuleProvider="target">
@@ -184,7 +184,7 @@
                         <viewControllerLayoutGuide type="bottom" id="F9m-5Z-14k"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="NlM-hP-4wx">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FCR-PW-Zg1" userLabel="Gradient" customClass="GradientView" customModule="Controlio" customModuleProvider="target">
@@ -432,7 +432,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ryI-TV-Uaj"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="7EM-Te-g3p">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4CQ-1v-icp" userLabel="Gradient" customClass="GradientView" customModule="Controlio" customModuleProvider="target">
@@ -623,7 +623,7 @@
                         <viewControllerLayoutGuide type="bottom" id="j7i-QH-xgK"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Nrz-IS-X9s">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R4q-HN-D44" userLabel="Gradient" customClass="GradientView" customModule="Controlio" customModuleProvider="target">
@@ -745,7 +745,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ILh-yV-5st"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="pPF-8D-YbP">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hq9-kL-y68" userLabel="Gradient" customClass="GradientView" customModule="Controlio" customModuleProvider="target">
