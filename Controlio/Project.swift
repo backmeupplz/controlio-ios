@@ -19,11 +19,11 @@ class Project: NSObject {
     var projectDescription: String!
     var imageKey: String!
     var dateCreated: Date!
-    var status: String!
     
     var manager: User!
     var clients: [User]!
     
+    var lastStatus: Post?
     var lastPost: Post?
     
     var canEdit: Bool = false
@@ -44,12 +44,12 @@ class Project: NSObject {
         projectDescription = json["description"].string!
         imageKey = json["image"].string!
         dateCreated = json["createdAt"].string!.dateFromISO8601!
-        status = json["status"].string!
         
         manager = User(json: json["manager"])
         clients = User.map(json: json["clients"])
         
         lastPost = Post(json: json["lastPost"], manager: manager)
+        lastStatus = Post(json: json["lastStatus"], manager: manager)
         
         canEdit = json["canEdit"].bool ?? false
     }

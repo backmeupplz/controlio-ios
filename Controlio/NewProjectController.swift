@@ -232,7 +232,7 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate, Manag
         }
         
         cell.titleTextField.text = tempTitle ?? project?.title
-        cell.initialStatusTextField.text = tempInitialStatus ?? project?.status
+        cell.initialStatusTextField.text = tempInitialStatus ?? project?.lastStatus?.text
         cell.initialStatusTextField.isEnabled = project == nil
         cell.descriptionTextField.text = tempDescription ?? project?.projectDescription
         for token in cell.clientEmailsTokenView.allTokens {

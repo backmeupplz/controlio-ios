@@ -177,7 +177,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
                 hud.hide(animated: true)
             } else {
                 hud.hide(animated: true)
-                self.project.status = text
+                self.project.lastStatus?.text = text
                 self.configure()
                 self.reloadAndCleanInput()
             }
@@ -308,7 +308,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         title = project.title
         
         projectImageView.load(key: project.imageKey)
-        statusLabel.text = project.status
+        statusLabel.text = project.lastStatus?.text
         dateLabel.text = DateFormatter.projectDateString(project.dateCreated)
         descriptionLabel.text = project.projectDescription
         

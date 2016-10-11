@@ -50,6 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
+        print(deviceTokenString)
         Server.pushNotificationsToken = deviceTokenString
     }
     
@@ -59,36 +60,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: - Universal links -
     
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        login(with: url)
+        
+        return true
+    }
+    
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
         if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
             if let url = userActivity.webpageURL {
-                let queryItems = URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems ?? []
-                var queryItemsDictionary = [String: String]()
-                
-                for item in queryItems {
-                    queryItemsDictionary[item.name] = item.value
-                }
-                let userId = queryItemsDictionary["userid"]
-                let token = queryItemsDictionary["token"]
-                
-                guard let userIdUnwrapped = userId, let tokenUnwrapped = token else {
-                    return true
-                }
-                
-                guard let topController = UIApplication.topViewController() else { return true }
-                let hud = MBProgressHUD.showAdded(to: topController.view, animated: true)
-                Server.loginMagicLink(userid: userIdUnwrapped, token: tokenUnwrapped)
-                { error in
-                    hud.hide(animated: true)
-                    if let error = error {
-                        PopupNotification.showNotification(error.domain)
-                    } else {
-                        Router(topController).showMain()
-                    }
-                }
+                login(with: url)
             }
         }
         return true
+    }
+    
+    func login(with url: URL) {
+        let queryItems = URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems ?? []
+        var queryItemsDictionary = [String: String]()
+        
+        for item in queryItems {
+            queryItemsDictionary[item.name] = item.value
+        }
+        let userId = queryItemsDictionary["userid"]
+        let token = queryItemsDictionary["token"]
+        
+        guard let userIdUnwrapped = userId, let tokenUnwrapped = token else {
+            return
+        }
+        
+        guard let topController = UIApplication.topViewController() else { return }
+        let hud = MBProgressHUD.showAdded(to: topController.view, animated: true)
+        Server.loginMagicLink(userid: userIdUnwrapped, token: tokenUnwrapped)
+        { error in
+            hud.hide(animated: true)
+            if let error = error {
+                PopupNotification.showNotification(error.domain)
+            } else {
+                Router(topController).showMain()
+            }
+        }
     }
 }
 

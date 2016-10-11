@@ -36,7 +36,7 @@ class ProjectCell: UITableViewCell {
         projectImageView.load(key: project.imageKey)
         dateLabel.text = DateFormatter.projectDateString(project.dateCreated)
         projectTitleLabel.text = project.title
-        statusLabel.text = project.status
+        statusLabel.text = project.lastStatus?.text
         projectDescriptionLabel.text = project.projectDescription
         
         if let managerImageKey = project.manager.profileImageKey {
@@ -45,7 +45,7 @@ class ProjectCell: UITableViewCell {
             managerImageView.image = UIImage(named: "photo-background-placeholder")
         }
         managerNameLabel.text = project.manager.name ?? project.manager.email
-        postLabel.text = project.lastPost?.text ?? project.status
+        postLabel.text = project.lastPost?.text ?? project.lastStatus?.text
     }
     
 }

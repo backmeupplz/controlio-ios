@@ -9,11 +9,18 @@
 import UIKit
 import SwiftyJSON3
 
+enum PostType: String {
+    case post = "post"
+    case status = "status"
+}
+
+
 class Post: NSObject {
     
     // MARK: - Variables -
     
     var id: String!
+    var type: PostType = .post
     
     var text: String!
     var dateCreated: Date!
@@ -33,6 +40,7 @@ class Post: NSObject {
         self.init()
         
         self.id = id
+        type = PostType(rawValue: json["type"].string ?? "post") ?? .post
         
         text = json["text"].string
         dateCreated = json["createdAt"].string!.dateFromISO8601
