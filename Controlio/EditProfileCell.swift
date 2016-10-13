@@ -47,15 +47,15 @@ class EditProfileCell: UITableViewCell {
         if let image = user.tempProfileImage {
             addPhotoBackground.image = image
             addPhotoCamera.isHidden = true
-            addPhotoLabel.text = "Edit photo"
+            addPhotoLabel.text = NSLocalizedString("Edit photo", comment: "Edit profile image label")
         } else if let key = user.profileImageKey {
             addPhotoBackground.load(key: key)
             addPhotoCamera.isHidden = true
-            addPhotoLabel.text = "Edit photo"
+            addPhotoLabel.text = NSLocalizedString("Edit photo", comment: "Edit profile image label")
         } else {
             addPhotoBackground.image = UIImage(named: "photo-background-placeholder")
             addPhotoCamera.isHidden = false
-            addPhotoLabel.text = "Add photo"
+            addPhotoLabel.text = NSLocalizedString("Add photo", comment: "Edit profile image label")
         }
         
         nameTextfield.text = user.name

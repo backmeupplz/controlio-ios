@@ -67,7 +67,7 @@ class InputView: CustomizableView, AttachmentContainerViewDelegate, CLTokenInput
         result.alpha = 0.0
         result.layoutIfNeeded()
         
-        result.textView.placeholder = "Type new message..."
+        result.textView.placeholder = NSLocalizedString("Type new message...", comment: "Input view placeholder")
         result.textView.placeholderColor = UIColor(red: 128.0/255.0, green: 128.0/255.0, blue: 128.0/255.0, alpha: 1.0)
         result.textView.maxNumberOfLines = 5
         
@@ -149,8 +149,8 @@ class InputView: CustomizableView, AttachmentContainerViewDelegate, CLTokenInput
     
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
         let index = sender.selectedSegmentIndex
-        sendButton.setTitle(index == 0 ? "Send" : "Save", for: .normal)
-        textView.placeholder = index == 0 ? "Type new message..." : "Type new status..."
+        sendButton.setTitle(index == 0 ? NSLocalizedString("Send", comment: "Input view button") : NSLocalizedString("Save", comment: "Input view button"), for: .normal)
+        textView.placeholder = index == 0 ? NSLocalizedString("Type new message...", comment: "Input view placeholder") : NSLocalizedString("Type new status...", comment: "Input view placeholder")
         
         clipImage.isHidden = index != 0
         clipButton.isEnabled = index == 0
@@ -226,7 +226,7 @@ class InputView: CustomizableView, AttachmentContainerViewDelegate, CLTokenInput
             let token = CLToken(displayText: text, context: nil)
             tokenView.add(token)
         } else {
-            PopupNotification.showNotification("Please provide a valid email")
+            PopupNotification.showNotification(NSLocalizedString("Please provide a valid email", comment: "Error"))
         }
     }
     
@@ -252,7 +252,7 @@ class InputView: CustomizableView, AttachmentContainerViewDelegate, CLTokenInput
     
     fileprivate func setupTokenInputView() {
         tokenView.tintColor = UIColor.controlioGreen()
-        tokenView.placeholderText = "Client emails"
+        tokenView.placeholderText = NSLocalizedString("Client emails", comment: "Token view placeholder")
         tokenView.textField.font = UIFont(name: "SFUIText-Regular", size: 14)
     }
     

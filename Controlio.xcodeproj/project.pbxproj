@@ -103,6 +103,7 @@
 		B3F303921DAF4B0500535FCD /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3F303941DAF4B0500535FCD /* PostCell.xib */; };
 		B3F303971DAF4B1800535FCD /* NewProjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3F303991DAF4B1800535FCD /* NewProjectCell.xib */; };
 		B3F3039C1DAF4B6700535FCD /* EditProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3F3039E1DAF4B6700535FCD /* EditProfileCell.xib */; };
+		B3F303A31DAF53B600535FCD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B3F303A51DAF53B600535FCD /* Localizable.strings */; };
 		B3FEB83F1C9630290048B688 /* ProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FEB83D1C9630290048B688 /* ProjectCell.swift */; };
 		B3FEB8441C9630BA0048B688 /* UIImageView+BeautifulWebImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FEB8431C9630BA0048B688 /* UIImageView+BeautifulWebImage.swift */; };
 		B3FEB8471C9631870048B688 /* CustomizableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FEB8461C9631870048B688 /* CustomizableView.swift */; };
@@ -220,6 +221,8 @@
 		B3F3039B1DAF4B3600535FCD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/NewProjectCell.strings; sourceTree = "<group>"; };
 		B3F3039D1DAF4B6700535FCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/EditProfileCell.xib; sourceTree = "<group>"; };
 		B3F303A01DAF4B6A00535FCD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/EditProfileCell.strings; sourceTree = "<group>"; };
+		B3F303A41DAF53B600535FCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B3F303A61DAF53B800535FCD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B3FEB83D1C9630290048B688 /* ProjectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCell.swift; sourceTree = "<group>"; };
 		B3FEB8431C9630BA0048B688 /* UIImageView+BeautifulWebImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+BeautifulWebImage.swift"; sourceTree = "<group>"; };
 		B3FEB8461C9631870048B688 /* CustomizableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizableView.swift; sourceTree = "<group>"; };
@@ -347,6 +350,7 @@
 				B383235B1CDC3F7A004D0A1C /* Fonts */,
 				B3B2B9331C90CD1600468342 /* Assets.xcassets */,
 				B3B2B9381C90CD1600468342 /* Info.plist */,
+				B3F303A51DAF53B600535FCD /* Localizable.strings */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -610,6 +614,7 @@
 				B38323871CDC409D004D0A1C /* SFUIText-BoldG2.otf in Resources */,
 				B3F3038D1DAF4AE900535FCD /* ProjectCell.xib in Resources */,
 				B383238F1CDC409D004D0A1C /* SFUIText-ItalicG1.otf in Resources */,
+				B3F303A31DAF53B600535FCD /* Localizable.strings in Resources */,
 				B3F303881DAF491200535FCD /* Main.storyboard in Resources */,
 				B38323921CDC409D004D0A1C /* SFUIText-Light.otf in Resources */,
 				B3F303971DAF4B1800535FCD /* NewProjectCell.xib in Resources */,
@@ -796,6 +801,15 @@
 				B3F303A01DAF4B6A00535FCD /* ru */,
 			);
 			name = EditProfileCell.xib;
+			sourceTree = "<group>";
+		};
+		B3F303A51DAF53B600535FCD /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B3F303A41DAF53B600535FCD /* Base */,
+				B3F303A61DAF53B800535FCD /* ru */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -103,7 +103,7 @@ class NewProjectCell: UITableViewCell, UITextFieldDelegate, CLTokenInputViewDele
             let token = CLToken(displayText: text, context: nil)
             clientEmailsTokenView.add(token)
         } else {
-            PopupNotification.showNotification("Please provide a valid email")
+            PopupNotification.showNotification(NSLocalizedString("Please provide a valid email", comment: "Error"))
         }
     }
     
@@ -111,7 +111,7 @@ class NewProjectCell: UITableViewCell, UITextFieldDelegate, CLTokenInputViewDele
     
     fileprivate func setupTokenInputView() {
         clientEmailsTokenView.tintColor = UIColor.controlioGreen()
-        clientEmailsTokenView.placeholderText = "Client emails"
+        clientEmailsTokenView.placeholderText = NSLocalizedString("Client emails", comment: "Token input view placeholder")
         clientEmailsTokenView.textField.font = UIFont(name: "SFUIText-Regular", size: 14)
     }
     
