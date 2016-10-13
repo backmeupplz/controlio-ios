@@ -9,9 +9,15 @@
 import UIKit
 import MBProgressHUD
 
+protocol ProjectControllerDelegate: class {
+    func didDeleteProject(project: Project)
+}
+
 class ProjectController: UITableViewController, PostCellDelegate, InputViewDelegate {
     
     // MARK: - Variables -
+    
+    weak var delegate: ProjectControllerDelegate?
     
     var project: Project!
     var posts = [Post]()
@@ -32,6 +38,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     @IBOutlet fileprivate weak var statusLabel: UILabel!
     @IBOutlet fileprivate weak var dateLabel: UILabel!
     @IBOutlet fileprivate weak var descriptionLabel: UILabel!
+    @IBOutlet weak var roundedView: CustomizableView!
     
     // MARK: - UITableViewDataSource -
     
@@ -61,15 +68,15 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
             popoverController.sourceRect = cell.bounds
         }
         
-        let edit = UIAlertAction(title: "Edit", style: .default)
+        let edit = UIAlertAction(title: NSLocalizedString("Edit", comment: "Edit post button"), style: .default)
         { action in
             self.input?.post = post
         }
-        let delete = UIAlertAction(title: "Delete", style: .destructive)
+        let delete = UIAlertAction(title: NSLocalizedString("Delete", comment: "Edit post button"), style: .destructive)
         { action in
             self.delete(post: post, cell: cell)
         }
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        let cancel = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Edit post button"), style: .cancel)
         { action in
             // Do nothing
         }
@@ -96,11 +103,11 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
             popoverController.sourceRect = sender.bounds
         }
         
-        alert.addDefaultAction("Camera") { 
+        alert.addDefaultAction(NSLocalizedString("Camera", comment: "Image picker button")) {
             self.imagePicker.sourceType = .camera
             self.present(self.imagePicker, animated: true, completion: nil)
         }
-        alert.addDefaultAction("Library") { 
+        alert.addDefaultAction(NSLocalizedString("Library", comment: "Image picker button")) {
             self.imagePicker.sourceType = .photoLibrary
             self.present(self.imagePicker, animated: true, completion: nil)
         }
@@ -116,7 +123,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     
     func shouldAddPost(text: String, attachments: [Any]) {
         if text.isEmpty && attachments.count <= 0 {
-            PopupNotification.showNotification("Please provide at least one attachment or text")
+            PopupNotification.showNotification(NSLocalizedString("Please provide at least one attachment or text", comment: "New post error"))
             return
         }
         
@@ -127,7 +134,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         
         if imagesToUpload.count > 0 {
             hud.mode = .annularDeterminate
-            hud.label.text = "Uploading attachments"
+            hud.label.text = NSLocalizedString("Uploading attachments", comment: "New post upload message")
             S3.upload(images: imagesToUpload, progress:
             { progress in
                 hud.progress = progress
@@ -138,7 +145,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
                     hud.hide(animated: true)
                 } else {
                     hud.mode = .indeterminate
-                    hud.label.text = "Uploading data"
+                    hud.label.text = NSLocalizedString("Uploading data", comment: "New post upload message")
                     Server.addPost(projectId: self.project.id, text: text, attachmentKeys: keys!+completedKeys)
                     { error in
                         if let error = error {
@@ -153,7 +160,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
             }
         } else {
             hud.mode = .indeterminate
-            hud.label.text = "Uploading data"
+            hud.label.text = NSLocalizedString("Uploading data", comment: "New post upload message")
             Server.addPost(projectId: project.id, text: text, attachmentKeys: completedKeys)
             { error in
                 if let error = error {
@@ -169,7 +176,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     
     func shouldChangeStatus(text: String) {
         let hud = MBProgressHUD.showAdded(to: view, animated: false)
-        hud.label.text = "Uploading data"
+        hud.label.text = NSLocalizedString("Uploading data", comment: "Project change status message")
         Server.changeStatus(projectId: project.id, status: text)
         { error in
             if let error = error {
@@ -186,14 +193,14 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     
     func shouldEditClients(clients: [String]) {
         let hud = MBProgressHUD.showAdded(to: view, animated: false)
-        hud.label.text = "Uploading data"
+        hud.label.text = NSLocalizedString("Uploading data", comment: "Project change clients message")
         Server.changeClients(projectId: project.id, clientEmails: clients)
         { error in
             hud.hide(animated: true)
             if let error = error {
                 PopupNotification.showNotification(error.domain)
             } else {
-                PopupNotification.showNotification("Clients saved")
+                PopupNotification.showNotification(NSLocalizedString("Clients saved", comment: "Project change clients success message"))
                 self.project.clients = []
                 for client in clients {
                     let user = User()
@@ -207,7 +214,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     
     func shouldEditPost(post: Post, text: String, attachments: [Any]) {
         if text.isEmpty && attachments.count <= 0 {
-            PopupNotification.showNotification("Please provide at least one attachment or text")
+            PopupNotification.showNotification(NSLocalizedString("Please provide at least one attachment or text", comment: "Edit post error"))
             return
         }
         
@@ -218,7 +225,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         
         if imagesToUpload.count > 0 {
             hud.mode = .annularDeterminate
-            hud.label.text = "Uploading attachments"
+            hud.label.text = NSLocalizedString("Uploading attachments", comment: "Edit post upload message")
             S3.upload(images: imagesToUpload, progress:
                 { progress in
                     hud.progress = progress
@@ -229,7 +236,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
                     hud.hide(animated: true)
                 } else {
                     hud.mode = .indeterminate
-                    hud.label.text = "Uploading data"
+                    hud.label.text = NSLocalizedString("Uploading data", comment: "Edit post upload message")
                     Server.editPost(post: post, text: text, attachments: keys!+completedKeys)
                     { error in
                         hud.hide(animated: true)
@@ -248,7 +255,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
             }
         } else {
             hud.mode = .indeterminate
-            hud.label.text = "Uploading data"
+            hud.label.text = NSLocalizedString("Uploading data", comment: "Edit post upload message")
             Server.editPost(post: post, text: text, attachments: completedKeys)
             { error in
                 hud.hide(animated: true)
@@ -285,7 +292,6 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         super.viewWillAppear(animated)
         
         configure()
-        showInput()
         subcribeForNotifications()
     }
     
@@ -317,6 +323,14 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         
         needsHeaderViewLayout = true
         checkHeaderViewHeight()
+        
+        if project.isArchived {
+            hideInput()
+        } else {
+            showInput()
+        }
+        
+        roundedView.alpha = project.isArchived ? 0.5 : 1.0
     }
     
     fileprivate func setupTableView() {
@@ -369,7 +383,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     }
     
     fileprivate func showInput() {
-        if project.canEdit {
+        if project.canEdit && !project.isArchived {
             input?.show()
             setBottomScrollInset(input?.frame.height ?? 0)
         }
@@ -385,7 +399,59 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     }
     
     @objc fileprivate func openEdit() {
-        performSegue(withIdentifier: "SegueToEdit", sender: nil)
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        if let popoverController = alert.popoverPresentationController {
+            popoverController.barButtonItem = navigationItem.rightBarButtonItem
+        }
+        
+        let edit = UIAlertAction(title: NSLocalizedString("Edit", comment: "Edit project option"), style: .default)
+        { action in
+            self.performSegue(withIdentifier: "SegueToEdit", sender: nil)
+        }
+        
+        let archiveTitle = project.isArchived ? NSLocalizedString("Unarchive", comment: "Edit project option") : NSLocalizedString("Archive", comment: "Edit project option")
+        let archive = UIAlertAction(title: archiveTitle, style: .default)
+        { action in
+            let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+            Server.archive(project: self.project, archive: !self.project.isArchived)
+            { error in
+                hud.hide(animated: true)
+                if let error = error {
+                    PopupNotification.showNotification(error.domain)
+                } else {
+                    self.project.isArchived = !self.project.isArchived
+                    self.configure()
+                }
+            }
+        }
+        
+        let delete = UIAlertAction(title: NSLocalizedString("Delete", comment: "Edit project option"), style: .destructive)
+        { action in
+            let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+            Server.delete(project: self.project)
+            { error in
+                hud.hide(animated: true)
+                if let error = error {
+                    PopupNotification.showNotification(error.domain)
+                } else {
+                    self.delegate?.didDeleteProject(project: self.project)
+                    let _ = self.navigationController?.popViewController(animated: true)
+                }
+            }
+        }
+        
+        let cancel = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Edit project option"), style: .cancel)
+        { action in
+            // do nothing
+        }
+        
+        alert.addAction(archive)
+        if !project.isArchived {
+            alert.addAction(edit)
+        }
+        alert.addAction(delete)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
     }
     
     fileprivate func delete(post: Post, cell: PostCell) {

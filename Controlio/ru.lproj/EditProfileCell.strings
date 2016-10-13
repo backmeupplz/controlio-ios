@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "Add photo"; ObjectID = "3nX-sc-Yuv"; */
+"3nX-sc-Yuv.text" = "Добавить фото";
+
+/* Class = "UITextField"; placeholder = "Name"; ObjectID = "PaN-aB-TDV"; */
+"PaN-aB-TDV.placeholder" = "Имя";
+
+/* Class = "UITextField"; placeholder = "Phone"; ObjectID = "TsC-jf-SIF"; */
+"TsC-jf-SIF.placeholder" = "Телефон";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "qVZ-4z-6Kr"; */
+"qVZ-4z-6Kr.placeholder" = "Email";

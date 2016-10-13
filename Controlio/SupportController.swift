@@ -40,10 +40,10 @@ class SupportController: UITableViewController {
     }
     
     fileprivate func showNoApppInstalledAlert(_ type: DeepLinkType) {
-        let alert = UIAlertController(title: "Looks like \(type.name) isn't installed", message: "Would you like to install \(type.name)?", preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString("Looks like \(type.name) isn't installed", comment: "No app install alert title"), message: NSLocalizedString("Would you like to install \(type.name)?", comment: "No app install alert message"), preferredStyle: .alert)
         alert.addPopoverSourceView(tableView.cellForRow(at: IndexPath(row: type.rawValue, section: 0))!)
         alert.addCancelButton()
-        alert.addDefaultAction("Install") { 
+        alert.addDefaultAction(NSLocalizedString("Install", comment: "No app install alert button")) {
             DeepLink.openItunes(type)
         }
         present(alert, animated: true) {}

@@ -33,7 +33,7 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
         
         if let tempPorfileImage = user.tempProfileImage {
             hud.mode = .annularDeterminate
-            hud.label.text = "Uploading image"
+            hud.label.text = NSLocalizedString("Uploading image", comment: "Edit profile upload message")
             S3.uploadImage(tempPorfileImage, progress: { progress in
                 hud.progress = progress
             })
@@ -54,7 +54,7 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
                 }
             }
         } else {
-            hud.label.text = "Uploading data"
+            hud.label.text = NSLocalizedString("Uploading data", comment: "Edit profile upload message")
             Server.editProfile(name: name, phone: phone, profileImage: user.profileImageKey)
             { error in
                 hud.hide(animated: true)
@@ -102,23 +102,23 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
             popoverController.sourceRect = sender.bounds
         }
         
-        let library = UIAlertAction(title: "Choose from library", style: .default)
+        let library = UIAlertAction(title: NSLocalizedString("Choose from library", comment: "Open picker option"), style: .default)
         { action in
             self.imagePicker.sourceType = .photoLibrary
             self.present(self.imagePicker, animated: true, completion: nil)
         }
-        let camera = UIAlertAction(title: "Take a photo", style: .default)
+        let camera = UIAlertAction(title: NSLocalizedString("Take a photo", comment: "Open picker option"), style: .default)
         { action in
             self.imagePicker.sourceType = .camera
             self.present(self.imagePicker, animated: true, completion: nil)
         }
-        let remove = UIAlertAction(title: "Remove photo", style: .destructive)
+        let remove = UIAlertAction(title: NSLocalizedString("Remove photo", comment: "Open picker option"), style: .destructive)
         { action in
             self.user.profileImageKey = nil
             self.user.tempProfileImage = nil
             self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
         }
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        let cancel = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Open picker option"), style: .cancel)
         { action in
             // do nothing
         }

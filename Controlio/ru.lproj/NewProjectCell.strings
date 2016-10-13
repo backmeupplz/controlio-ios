@@ -1,0 +1,21 @@
+
+/* Class = "UIButton"; normalTitle = "Choose a manager"; ObjectID = "8pk-HI-aBo"; */
+"8pk-HI-aBo.normalTitle" = "Выбрать менеджера";
+
+/* Class = "UITextField"; placeholder = "Description"; ObjectID = "E3m-ll-y4P"; */
+"E3m-ll-y4P.placeholder" = "Описание";
+
+/* Class = "UILabel"; text = "Add photo"; ObjectID = "Ej7-Cv-TKa"; */
+"Ej7-Cv-TKa.text" = "Добавить фото";
+
+/* Class = "UITextField"; placeholder = "Title"; ObjectID = "RIV-fN-s03"; */
+"RIV-fN-s03.placeholder" = "Название";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "c8L-20-1TG"; */
+"c8L-20-1TG.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Create"; ObjectID = "xdf-QA-fuR"; */
+"xdf-QA-fuR.normalTitle" = "Создать";
+
+/* Class = "UITextField"; placeholder = "Initial status"; ObjectID = "yu8-wy-iZL"; */
+"yu8-wy-iZL.placeholder" = "Первый статус";

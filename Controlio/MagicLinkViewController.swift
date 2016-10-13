@@ -59,8 +59,8 @@ class MagicLinkViewController: UIViewController, UITextFieldDelegate {
             if let error = error {
                 PopupNotification.showNotification(error.domain)
             } else {
-                let alert = UIAlertController(title: "Success!", message: "We have sent you a magic link to login. Please, check your inbox!", preferredStyle: .alert)
-                let ok = UIAlertAction(title: "Ok!", style: .default)
+                let alert = UIAlertController(title: NSLocalizedString("Success!", comment: "Magic link alert title"), message: NSLocalizedString("We have sent you a magic link to login. Please, check your inbox!", comment: "Magic link alert message"), preferredStyle: .alert)
+                let ok = UIAlertAction(title: NSLocalizedString("Ok!", comment: "Magic link alert button"), style: .default)
                 { action in
                     // Do nothing
                 }

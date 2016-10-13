@@ -20,6 +20,8 @@ class ProjectCell: UITableViewCell {
     
     // MARK: - Outlets -
     
+    @IBOutlet weak var roundedView: CustomizableView!
+    
     @IBOutlet fileprivate weak var projectImageView: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var projectTitleLabel: UILabel!
@@ -46,6 +48,8 @@ class ProjectCell: UITableViewCell {
         }
         managerNameLabel.text = project.manager.name ?? project.manager.email
         postLabel.text = project.lastPost?.text ?? project.lastStatus?.text
+        
+        roundedView.alpha = project.isArchived ? 0.5 : 1.0
     }
     
 }

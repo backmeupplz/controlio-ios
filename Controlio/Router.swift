@@ -48,9 +48,10 @@ class Router {
         return mainStoryboard().instantiateViewController(withIdentifier: "MainController")
     }
     
-    fileprivate class func projectVC(_ project: Project) -> UIViewController {
+    fileprivate class func projectVC(_ project: Project, delegate: ProjectControllerDelegate? = nil) -> UIViewController {
         let vc =  mainStoryboard().instantiateViewController(withIdentifier: "ProjectController") as! ProjectController
         vc.project = project
+        vc.delegate = delegate
         return vc
     }
     
@@ -80,8 +81,8 @@ class Router {
         showVC(Router.mainTBC(), animated: animated)
     }
     
-    func showProject(_ project: Project) {
-        showVC(Router.projectVC(project))
+    func showProject(_ project: Project, delegate: ProjectControllerDelegate? = nil) {
+        showVC(Router.projectVC(project, delegate: delegate))
     }
     
     // MARK: - Private Functions -

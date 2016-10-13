@@ -28,6 +28,8 @@ class Project: NSObject {
     
     var canEdit: Bool = false
     
+    var isArchived = false
+    
     // MARK: - Functions -
     
     class func map(json: JSON?) -> [Project]? {
@@ -52,5 +54,6 @@ class Project: NSObject {
         lastStatus = Post(json: json["lastStatus"], manager: manager)
         
         canEdit = json["canEdit"].bool ?? false
+        isArchived = json["isArchived"].bool ?? false
     }
 }

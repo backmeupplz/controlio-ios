@@ -27,7 +27,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UUx-WB-FnK" userLabel="Gradient" customClass="GradientView" customModule="Controlio" customModuleProvider="target">
@@ -108,7 +108,6 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Would you like to try our demo account?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GTs-vF-HE4">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="212" id="e9R-BQ-Wyf"/>
                                     <constraint firstAttribute="height" constant="21" id="oQu-Gk-i60"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="12"/>
@@ -184,7 +183,7 @@
                         <viewControllerLayoutGuide type="bottom" id="F9m-5Z-14k"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="NlM-hP-4wx">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FCR-PW-Zg1" userLabel="Gradient" customClass="GradientView" customModule="Controlio" customModuleProvider="target">
@@ -334,6 +333,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Odw-qD-P9E" firstAttribute="centerX" secondItem="NlM-hP-4wx" secondAttribute="centerX" id="1ya-j8-i3U">
+                                <variation key="heightClass=compact" constant="124"/>
+                            </constraint>
                             <constraint firstItem="sVs-Dy-1LK" firstAttribute="centerX" secondItem="NlM-hP-4wx" secondAttribute="centerX" constant="-95.5" id="49T-m4-V4f">
                                 <variation key="heightClass=compact" constant="-219.5"/>
                             </constraint>
@@ -355,13 +357,15 @@
                             <constraint firstItem="a9l-Wv-3KB" firstAttribute="centerX" secondItem="NlM-hP-4wx" secondAttribute="centerX" id="G5k-XL-c70">
                                 <variation key="heightClass=compact" constant="-124"/>
                             </constraint>
-                            <constraint firstItem="Odw-qD-P9E" firstAttribute="centerY" secondItem="FfA-Gh-j2w" secondAttribute="centerY" id="Lhf-w0-oTF"/>
                             <constraint firstItem="I53-mO-5r4" firstAttribute="top" secondItem="FfA-Gh-j2w" secondAttribute="bottom" constant="8" id="M2i-Vd-nRY"/>
                             <constraint firstItem="F9m-5Z-14k" firstAttribute="top" secondItem="FCR-PW-Zg1" secondAttribute="bottom" id="NGi-D4-sVn"/>
                             <constraint firstItem="VrW-jH-qkB" firstAttribute="centerY" secondItem="NlM-hP-4wx" secondAttribute="centerY" constant="-180.5" id="OA2-ep-KcY">
                                 <variation key="heightClass=compact" constant="-100.5"/>
                             </constraint>
                             <constraint firstItem="Klc-af-5s6" firstAttribute="leading" secondItem="NlM-hP-4wx" secondAttribute="leadingMargin" id="PEr-yi-KWC"/>
+                            <constraint firstItem="Odw-qD-P9E" firstAttribute="centerY" secondItem="NlM-hP-4wx" secondAttribute="centerY" constant="221.5" id="Rf5-PM-w0X">
+                                <variation key="heightClass=compact" constant="133.5"/>
+                            </constraint>
                             <constraint firstItem="fdG-p9-VYT" firstAttribute="centerY" secondItem="NlM-hP-4wx" secondAttribute="centerY" constant="-104" id="Z9h-aI-0z5">
                                 <variation key="heightClass=compact" constant="-26"/>
                             </constraint>
@@ -389,7 +393,6 @@
                                 <variation key="heightClass=compact" constant="50.5"/>
                             </constraint>
                             <constraint firstItem="FCR-PW-Zg1" firstAttribute="leading" secondItem="NlM-hP-4wx" secondAttribute="leading" id="xed-2b-QbG"/>
-                            <constraint firstItem="Odw-qD-P9E" firstAttribute="leading" secondItem="FfA-Gh-j2w" secondAttribute="trailing" constant="8" id="z8k-gd-2dl"/>
                         </constraints>
                     </view>
                     <connections>
@@ -410,7 +413,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="vxU-vq-VqA" customClass="CustomNavigationController" customModule="Controlio" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="wDf-H7-mOf">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wDf-H7-mOf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -432,7 +435,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ryI-TV-Uaj"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="7EM-Te-g3p">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4CQ-1v-icp" userLabel="Gradient" customClass="GradientView" customModule="Controlio" customModuleProvider="target">
@@ -623,7 +626,7 @@
                         <viewControllerLayoutGuide type="bottom" id="j7i-QH-xgK"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Nrz-IS-X9s">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R4q-HN-D44" userLabel="Gradient" customClass="GradientView" customModule="Controlio" customModuleProvider="target">
@@ -745,7 +748,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ILh-yV-5st"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="pPF-8D-YbP">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hq9-kL-y68" userLabel="Gradient" customClass="GradientView" customModule="Controlio" customModuleProvider="target">
@@ -754,7 +757,6 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Magic link" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nrX-p8-eFI" userLabel="Sign Up Title">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="41" id="QMr-b8-WOk"/>
-                                    <constraint firstAttribute="width" constant="144" id="xh1-yV-i06"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Light" family="SF UI Display" pointSize="34"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -786,7 +788,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Chm-Ug-DPC" userLabel="Sign Up Button" customClass="RoundedShadowedButton" customModule="Controlio" customModuleProvider="target">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="9Nt-ru-a1h"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="9Nt-ru-a1h"/>
                                     <constraint firstAttribute="height" constant="53" id="SIz-qz-e5m"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="18"/>
@@ -803,7 +805,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uUq-DV-nuG" userLabel="Demo Account Button">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="94f-VB-rDE"/>
-                                    <constraint firstAttribute="width" constant="152" id="pia-ec-iIn"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="152" id="pia-ec-iIn"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="12"/>
                                 <state key="normal" title="(or try usual login)">
@@ -819,7 +821,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jGT-Ha-Ws9" userLabel="Demo Account Button">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="23" id="1sQ-bs-Eai"/>
-                                    <constraint firstAttribute="width" constant="152" id="oJR-Sy-TgW"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="152" id="oJR-Sy-TgW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="12"/>
                                 <state key="normal" title="(or usual signup)">
@@ -841,12 +843,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="swI-iF-Pq9">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="37" id="6Us-RR-MaT"/>
-                                    <constraint firstAttribute="height" constant="37" id="otd-Qz-cpy"/>
-                                </constraints>
-                            </activityIndicatorView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="swI-iF-Pq9"/>
                         </subviews>
                         <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -854,15 +851,15 @@
                                 <variation key="heightClass=compact" constant="66"/>
                             </constraint>
                             <constraint firstItem="ILh-yV-5st" firstAttribute="top" secondItem="hq9-kL-y68" secondAttribute="bottom" id="4YW-6F-H9X"/>
+                            <constraint firstItem="swI-iF-Pq9" firstAttribute="centerY" secondItem="pPF-8D-YbP" secondAttribute="centerY" constant="187.5" id="5fl-7l-dFA">
+                                <variation key="heightClass=compact" constant="85.5"/>
+                            </constraint>
                             <constraint firstItem="jGT-Ha-Ws9" firstAttribute="centerY" secondItem="pPF-8D-YbP" secondAttribute="centerY" constant="149" id="8y5-OY-srS">
                                 <variation key="heightClass=compact" constant="46.5"/>
                             </constraint>
                             <constraint firstItem="hq9-kL-y68" firstAttribute="top" secondItem="pPF-8D-YbP" secondAttribute="top" id="ALk-tK-Qtn"/>
                             <constraint firstItem="JP6-1E-Yux" firstAttribute="centerX" secondItem="pPF-8D-YbP" secondAttribute="centerX" id="Gjb-4u-cM7">
                                 <variation key="heightClass=compact" constant="-123"/>
-                            </constraint>
-                            <constraint firstItem="swI-iF-Pq9" firstAttribute="centerX" secondItem="pPF-8D-YbP" secondAttribute="centerX" constant="146" id="Hf9-8C-JkA">
-                                <variation key="heightClass=compact" constant="265.5"/>
                             </constraint>
                             <constraint firstItem="Eob-BJ-0Bd" firstAttribute="centerY" secondItem="pPF-8D-YbP" secondAttribute="centerY" constant="-40" id="NMd-HG-fpA">
                                 <variation key="heightClass=compact" constant="30.5"/>
@@ -872,6 +869,9 @@
                             </constraint>
                             <constraint firstAttribute="trailing" secondItem="hq9-kL-y68" secondAttribute="trailing" id="QYf-5q-c4j"/>
                             <constraint firstItem="hq9-kL-y68" firstAttribute="leading" secondItem="pPF-8D-YbP" secondAttribute="leading" id="Qau-NQ-7Pe"/>
+                            <constraint firstItem="swI-iF-Pq9" firstAttribute="centerX" secondItem="pPF-8D-YbP" secondAttribute="centerX" id="SCi-sb-jfn">
+                                <variation key="heightClass=compact" constant="125"/>
+                            </constraint>
                             <constraint firstItem="CpF-ue-2fx" firstAttribute="top" secondItem="nrX-p8-eFI" secondAttribute="bottom" constant="8" id="Ubw-ML-GjF"/>
                             <constraint firstItem="uUq-DV-nuG" firstAttribute="centerY" secondItem="pPF-8D-YbP" secondAttribute="centerY" constant="127" id="bQi-Wq-MiP">
                                 <variation key="heightClass=compact" constant="24.5"/>
@@ -888,9 +888,6 @@
                             </constraint>
                             <constraint firstItem="Eob-BJ-0Bd" firstAttribute="centerX" secondItem="pPF-8D-YbP" secondAttribute="centerX" constant="-96" id="qpy-ze-4Rx">
                                 <variation key="heightClass=compact" constant="-218.5"/>
-                            </constraint>
-                            <constraint firstItem="swI-iF-Pq9" firstAttribute="centerY" secondItem="pPF-8D-YbP" secondAttribute="centerY" constant="72" id="t1h-Xg-XMr">
-                                <variation key="heightClass=compact" constant="-30.5"/>
                             </constraint>
                             <constraint firstItem="jGT-Ha-Ws9" firstAttribute="centerX" secondItem="pPF-8D-YbP" secondAttribute="centerX" constant="-1.5" id="tas-IB-8pK">
                                 <variation key="heightClass=compact" constant="123"/>

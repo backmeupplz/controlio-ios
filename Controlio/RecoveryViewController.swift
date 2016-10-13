@@ -44,8 +44,8 @@ class RecoveryViewController: UIViewController {
             if let error = error {
                 PopupNotification.showNotification(error.domain)
             } else {
-                let alert = UIAlertController(title: "Success!", message: "We have sent you a link to reset password. Please, check your inbox!", preferredStyle: .alert)
-                let ok = UIAlertAction(title: "Ok!", style: .default)
+                let alert = UIAlertController(title: NSLocalizedString("Success!", comment: "Recover password alert title"), message: NSLocalizedString("We have sent you a link to reset password. Please, check your inbox!", comment: "Recover password alert message"), preferredStyle: .alert)
+                let ok = UIAlertAction(title: NSLocalizedString("Ok!", comment: "Recover password alert button"), style: .default)
                 { action in
                     let _ = self.navigationController?.popViewController(animated: true)
                 }

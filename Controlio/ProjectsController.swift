@@ -9,11 +9,23 @@
 import UIKit
 import UIScrollView_InfiniteScroll
 
-class ProjectsController: UITableViewController {
+class ProjectsController: UITableViewController, ProjectControllerDelegate {
     
     // MARK: - Variables -
     
     fileprivate var projects = [Project]()
+    
+    // MARK: - ProjectControllerDelegate -
+    
+    func didDeleteProject(project: Project) {
+        let index = projects.index(of: project)!
+        
+        projects.remove(at: index)
+        
+        tableView.beginUpdates()
+        tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .right)
+        tableView.endUpdates()
+    }
     
     // MARK: - UITableViewDataSource -
     
@@ -30,7 +42,7 @@ class ProjectsController: UITableViewController {
     // MARK: - UITableViewDelegate -
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        Router(self).showProject(projects[(indexPath as NSIndexPath).row])
+        Router(self).showProject(projects[(indexPath as NSIndexPath).row], delegate: self)
     }
     
     // MARK: - View Controller Life Cycle -

@@ -18,9 +18,9 @@ enum ManagerTableViewControllerType {
     func viewControllerTitle() -> String {
         switch self {
         case .choose:
-            return "Choose a Manager"
+            return NSLocalizedString("Choose a Manager", comment: "Managers VC type option")
         case .show:
-            return "All managers"
+            return NSLocalizedString("All managers", comment: "Managers VC type option")
         }
     }
 }

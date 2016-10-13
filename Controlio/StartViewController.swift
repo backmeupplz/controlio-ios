@@ -20,10 +20,9 @@ class StartViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        catchPhraseView.labelsText = ["Controlio is a ridiculously simple status report system to track your orders and contractors",
-                                 "See the status of your orders like you track your parcel on mail post",
-                                 "Let local business inform you about your order with the speed of a screen touch!"]
+        catchPhraseView.labelsText = [NSLocalizedString("Controlio is a ridiculously simple status report system to track your orders and contractors", comment: "Login catch phrase 1"),
+                                 NSLocalizedString("See the status of your orders like you track your parcel on mail post", comment: "Login catch phrase 2"),
+                                 NSLocalizedString("Let local business inform you about your order with the speed of a screen touch!", comment: "Login catch phrase 3")]
         if Server.isLoggedIn() {
             Router(self).showMain(false)
         }

@@ -69,7 +69,7 @@ class PostCell: UITableViewCell {
         dateLabel.text = DateFormatter.projectDateString(post.dateCreated)
         postLabel.text = post.text
         if post.type == .status {
-            postLabel.text = "Status changed: \(postLabel.text ?? "")"
+            postLabel.text = NSLocalizedString("Status changed: \(postLabel.text ?? "")", comment: "Post cell status prefix")
         }
         
         if post.attachments.count <= 0 {

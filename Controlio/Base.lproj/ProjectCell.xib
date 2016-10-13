@@ -77,12 +77,14 @@
                                 <color key="textColor" red="0.35686274509803922" green="0.37647058823529411" blue="0.43529411764705883" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DESCRIPTION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jj0-an-vjl" userLabel="Description Title Label">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="DESCRIPTION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jj0-an-vjl" userLabel="Description Title Label">
+                                <frame key="frameInset" width="1000" height="1000"/>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="12"/>
                                 <color key="textColor" red="0.63921568627450975" green="0.67843137254901964" blue="0.73333333333333328" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJZ-uZ-HaJ" userLabel="Description Label">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJZ-uZ-HaJ" userLabel="Description Label">
+                                <frame key="frameInset" width="1000" height="1000"/>
                                 <string key="text">Запалили секреты, Зажигали танцоры. Прикололи на лето Светофоры, танцполы. Светомузыка ярко, Девочки-открывашки, Поцелуи, подарки На красивых рубашках</string>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="14"/>
                                 <color key="textColor" red="0.34509803921568627" green="0.36470588235294116" blue="0.42352941176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -194,11 +196,11 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="b3q-TB-hnB"/>
-                                <exclude reference="qg5-Hw-EQe"/>
-                                <exclude reference="ocp-Hs-gWP"/>
                                 <exclude reference="j6e-u0-X5a"/>
-                                <exclude reference="4Sw-Gc-Fr9"/>
                                 <exclude reference="qax-bh-HzS"/>
+                                <exclude reference="qg5-Hw-EQe"/>
+                                <exclude reference="4Sw-Gc-Fr9"/>
+                                <exclude reference="ocp-Hs-gWP"/>
                             </mask>
                         </variation>
                     </view>
@@ -228,6 +230,7 @@
                 <outlet property="projectDescriptionLabel" destination="iJZ-uZ-HaJ" id="uyF-Yj-zWe"/>
                 <outlet property="projectImageView" destination="Cid-cU-Gbr" id="ECZ-kK-coe"/>
                 <outlet property="projectTitleLabel" destination="8Pw-HE-oEt" id="Pg9-FU-RFS"/>
+                <outlet property="roundedView" destination="3pj-gS-WC7" id="Hfj-YU-ESN"/>
                 <outlet property="statusLabel" destination="e93-uz-1TR" id="8Nb-Kh-jnL"/>
             </connections>
             <point key="canvasLocation" x="476" y="605"/>

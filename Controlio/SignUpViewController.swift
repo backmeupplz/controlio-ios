@@ -53,13 +53,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         var success = true
         for textField in textFields {
             if textField.text == "" {
-                PopupNotification.showNotification("All fields should be filled");
+                PopupNotification.showNotification(NSLocalizedString("All fields should be filled", comment: "Error"));
                 textField.shake()
                 success = false
             }
         }
         if textFields[1].text != textFields[2].text {
-            PopupNotification.showNotification("Passwords don't match");
+            PopupNotification.showNotification(NSLocalizedString("Passwords don't match", comment: "Error"));
             textFields[2].shake()
             success = false
         }

@@ -46,22 +46,22 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate, Manag
             popoverController.sourceRect = sender.bounds
         }
         
-        let library = UIAlertAction(title: "Choose from library", style: .default)
+        let library = UIAlertAction(title: NSLocalizedString("Choose from library", comment: "Open picker option"), style: .default)
         { action in
             self.imagePicker.sourceType = .photoLibrary
             self.present(self.imagePicker, animated: true, completion: nil)
         }
-        let camera = UIAlertAction(title: "Take a photo", style: .default)
+        let camera = UIAlertAction(title: NSLocalizedString("Take a photo", comment: "Open picker option"), style: .default)
         { action in
             self.imagePicker.sourceType = .camera
             self.present(self.imagePicker, animated: true, completion: nil)
         }
-        let remove = UIAlertAction(title: "Remove photo", style: .destructive)
+        let remove = UIAlertAction(title: NSLocalizedString("Remove photo", comment: "Open picker option"), style: .destructive)
         { action in
             self.image = nil
             self.reloadCell()
         }
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        let cancel = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Open picker option"), style: .cancel)
         { action in
             // do nothing
         }
@@ -83,34 +83,34 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate, Manag
         let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! NewProjectCell
         
         if image == nil && project?.imageKey == nil {
-            PopupNotification.showNotification("Please provide an image")
+            PopupNotification.showNotification(NSLocalizedString("Please provide an image", comment: "Add project error"))
             return
         }
         guard let title = cell.titleTextField.text, !title.isEmpty else {
-            PopupNotification.showNotification("Please provide a title")
+            PopupNotification.showNotification(NSLocalizedString("Please provide a title", comment: "Add project error"))
             return
         }
         guard let initialStatus = cell.initialStatusTextField.text, !initialStatus.isEmpty else {
-            PopupNotification.showNotification("Please provide an initial status")
+            PopupNotification.showNotification(NSLocalizedString("Please provide an initial status", comment: "Add project error"))
             return
         }
         guard let description = cell.descriptionTextField.text, !description.isEmpty else {
-            PopupNotification.showNotification("Please provide a description")
+            PopupNotification.showNotification(NSLocalizedString("Please provide a description", comment: "Add project error"))
             return
         }
         if cell.clientEmailsTokenView.allTokens.count <= 0 && project == nil {
-            PopupNotification.showNotification("Please provide at least one client email")
+            PopupNotification.showNotification(NSLocalizedString("Please provide at least one client email", comment: "Add project error"))
             return
         }
         if manager == nil && project?.manager == nil {
-            PopupNotification.showNotification("Please choose a manager")
+            PopupNotification.showNotification(NSLocalizedString("Please choose a manager", comment: "Add project error"))
             return
         }
         
         let hud = MBProgressHUD.showAdded(to: view, animated: false)
         if let image = image {
             hud.mode = .annularDeterminate
-            hud.label.text = "Uploading image"
+            hud.label.text = NSLocalizedString("Uploading image", comment: "Add project upload message")
             S3.uploadImage(image, progress: { progress in
                 hud.progress = progress
             })
@@ -147,7 +147,7 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate, Manag
                 }
             }
         } else {
-            hud.label.text = "Uploading data"
+            hud.label.text = NSLocalizedString("Uploading data", comment: "Add project upload message")
             Server.editProject(project: project!, title: title, description: description, image: project!.imageKey)
             { error in
                 hud.hide(animated: true)
@@ -220,15 +220,15 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate, Manag
         if let image = image {
             cell.photoImage.image = image
             cell.cameraImage.isHidden = true
-            cell.photoLabel.text = "Edit image"
+            cell.photoLabel.text = NSLocalizedString("Edit image", comment: "New project image label")
         } else if let imageKey = project?.imageKey {
             cell.photoImage.load(key: imageKey)
             cell.cameraImage.isHidden = true
-            cell.photoLabel.text = "Edit image"
+            cell.photoLabel.text = NSLocalizedString("Edit image", comment: "New project image label")
         } else {
             cell.photoImage.image = UIImage(named: "photo-background-placeholder")
             cell.cameraImage.isHidden = false
-            cell.photoLabel.text = "Add image"
+            cell.photoLabel.text = NSLocalizedString("Add image", comment: "New project image label")
         }
         
         cell.titleTextField.text = tempTitle ?? project?.title
@@ -249,7 +249,7 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate, Manag
         }
         cell.detailDisclosureImage.isHidden = project != nil
         cell.clientEmailsTokenView.isUserInteractionEnabled = project == nil
-        cell.createButton.setTitle(project == nil ? "Create" : "Save", for: .normal)
+        cell.createButton.setTitle(project == nil ? NSLocalizedString("Create", comment: "New project button option") : NSLocalizedString("Save", comment: "New project button option"), for: .normal)
     }
     
     fileprivate func setupTableView() {

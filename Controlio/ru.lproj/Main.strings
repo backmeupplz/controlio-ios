@@ -1,0 +1,81 @@
+
+/* Class = "UINavigationItem"; title = "Choose a manager"; ObjectID = "2l2-ym-RDQ"; */
+"2l2-ym-RDQ.title" = "Выбрать менеджера";
+
+/* Class = "UILabel"; text = "DESCRIPTION"; ObjectID = "6Tm-1U-Mcg"; */
+"6Tm-1U-Mcg.text" = "ОПИСАНИЕ";
+
+/* Class = "UILabel"; text = "Log out"; ObjectID = "C0R-g0-qnG"; */
+"C0R-g0-qnG.text" = "Выйти";
+
+/* Class = "UINavigationItem"; title = "Edit profile"; ObjectID = "E2w-wT-ARS"; */
+"E2w-wT-ARS.title" = "Профиль";
+
+/* Class = "UIBarButtonItem"; title = "Add"; ObjectID = "K23-7v-uLX"; */
+"K23-7v-uLX.title" = "Добавить";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "L0k-MU-uf0"; */
+"L0k-MU-uf0.text" = "Label";
+
+/* Class = "UILabel"; text = "Add new manager"; ObjectID = "PzQ-Yb-d0J"; */
+"PzQ-Yb-d0J.text" = "Добавить менеджера";
+
+/* Class = "UILabel"; text = "If you have any questions or suggestions for our platform – don't hesitate to contact me"; ObjectID = "SKU-ge-Jua"; */
+"SKU-ge-Jua.text" = "Если есть какие-либо замечания или предложения – пишите напрямую мне";
+
+/* Class = "UILabel"; text = "Запалили секреты, Зажигали танцоры. Прикололи на лето Светофоры, танцполы. Светомузыка ярко, Девочки-открывашки, Поцелуи, подарки На красивых рубашках"; ObjectID = "X4r-qu-Mer"; */
+"X4r-qu-Mer.text" = "Запалили секреты, Зажигали танцоры. Прикололи на лето Светофоры, танцполы. Светомузыка ярко, Девочки-открывашки, Поцелуи, подарки На красивых рубашках";
+
+/* Class = "UILabel"; text = "@borodutch"; ObjectID = "YZ9-f0-w5a"; */
+"YZ9-f0-w5a.text" = "@borodutch";
+
+/* Class = "UINavigationItem"; title = "Add a manager"; ObjectID = "ae5-4s-DuX"; */
+"ae5-4s-DuX.title" = "Добавить менеджера";
+
+/* Class = "UITabBarItem"; title = "New Project"; ObjectID = "cfk-iK-s2j"; */
+"cfk-iK-s2j.title" = "Новый проект";
+
+/* Class = "UINavigationItem"; title = "All projects"; ObjectID = "dQP-fl-47G"; */
+"dQP-fl-47G.title" = "Все проекты";
+
+/* Class = "UINavigationItem"; title = "New project"; ObjectID = "eP9-4v-7rE"; */
+"eP9-4v-7rE.title" = "Новый проект";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "fLA-7B-DX0"; */
+"fLA-7B-DX0.title" = "Настройки";
+
+/* Class = "UILabel"; text = "Founder at Controlio"; ObjectID = "ff1-rm-RqM"; */
+"ff1-rm-RqM.text" = "Главный в Controlio";
+
+/* Class = "UITabBarItem"; title = "Projects"; ObjectID = "fhC-a6-oV1"; */
+"fhC-a6-oV1.title" = "Проекты";
+
+/* Class = "UILabel"; text = "Edit profile"; ObjectID = "iUX-uF-nG6"; */
+"iUX-uF-nG6.text" = "Редактировать профиль";
+
+/* Class = "UITableViewSection"; headerTitle = "MANAGERS"; ObjectID = "jBg-fV-qW9"; */
+"jBg-fV-qW9.headerTitle" = "МЕНЕДЖЕРЫ";
+
+/* Class = "UITableViewSection"; headerTitle = "ACCOUNT"; ObjectID = "lOy-co-JAf"; */
+"lOy-co-JAf.headerTitle" = "АККАУНТ";
+
+/* Class = "UITabBarItem"; title = "Settings"; ObjectID = "nVd-0c-5o7"; */
+"nVd-0c-5o7.title" = "Настройки";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "o63-sM-7B7"; */
+"o63-sM-7B7.text" = "Label";
+
+/* Class = "UILabel"; text = "Nikita Kolmogorov"; ObjectID = "qWg-ei-8Pi"; */
+"qWg-ei-8Pi.text" = "Никита Колмогоров";
+
+/* Class = "UILabel"; text = "Show all managers"; ObjectID = "qYR-O9-3WF"; */
+"qYR-O9-3WF.text" = "Все менеджеры";
+
+/* Class = "UINavigationItem"; title = "Support"; ObjectID = "sFv-9q-VHp"; */
+"sFv-9q-VHp.title" = "Помощь";
+
+/* Class = "UITabBarItem"; title = "Support"; ObjectID = "uye-yc-d9N"; */
+"uye-yc-d9N.title" = "Помощь";
+
+/* Class = "UILabel"; text = "borodutch"; ObjectID = "zeO-hr-gv3"; */
+"zeO-hr-gv3.text" = "borodutch";

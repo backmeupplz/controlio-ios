@@ -138,7 +138,7 @@ class Server: NSObject {
                 completion(error)
             } else {
                 if currentUser != nil {
-                    completion(NSError(domain: "Please logout first", code: 500, userInfo: nil))
+                    completion(NSError(domain: NSLocalizedString("Please logout first", comment: "Error"), code: 500, userInfo: nil))
                 } else {
                     saveUser(json!)
                     completion(nil)
@@ -172,7 +172,7 @@ class Server: NSObject {
             parameters["photo"] = profileImage
         }
         if isDemo() {
-            completion(NSError(domain: "You can't do that in demo account", code: 500, userInfo: nil))
+            completion(NSError(domain: NSLocalizedString("You can't do that in demo account", comment: "Error"), code: 500, userInfo: nil))
             return
         }
         request(urlAddition: "users/profile", method: .post, parameters: parameters, needsToken: true)
@@ -200,7 +200,7 @@ class Server: NSObject {
             "email": email
         ]
         if isDemo() {
-            completion(NSError(domain: "You can't do that in demo account", code: 500, userInfo: nil))
+            completion(NSError(domain: NSLocalizedString("You can't do that in demo account", comment: "Error"), code: 500, userInfo: nil))
             return
         }
         request(urlAddition: "users/manager", method: .post, parameters: parameters, needsToken: true)
@@ -214,7 +214,7 @@ class Server: NSObject {
             "id": user.id!
         ]
         if isDemo() {
-            completion(NSError(domain: "You can't do that in demo account", code: 500, userInfo: nil))
+            completion(NSError(domain: NSLocalizedString("You can't do that in demo account", comment: "Error"), code: 500, userInfo: nil))
             return
         }
         request(urlAddition: "users/manager", method: .delete, parameters: parameters, needsToken: true)
@@ -236,7 +236,7 @@ class Server: NSObject {
         ]
         
         if isDemo() {
-            completion(NSError(domain: "You can't do that in demo account", code: 500, userInfo: nil))
+            completion(NSError(domain: NSLocalizedString("You can't do that in demo account", comment: "Error"), code: 500, userInfo: nil))
             return
         }
         request(urlAddition: "projects", method: .post, parameters: parameters, needsToken: true)
@@ -264,7 +264,7 @@ class Server: NSObject {
             "type": "status"
         ]
         if isDemo() {
-            completion(NSError(domain: "You can't do that in demo account", code: 500, userInfo: nil))
+            completion(NSError(domain: NSLocalizedString("You can't do that in demo account", comment: "Error"), code: 500, userInfo: nil))
             return
         }
         request(urlAddition: "posts", method: .post, parameters: parameters, needsToken: true)
@@ -279,7 +279,7 @@ class Server: NSObject {
             "clients": clientEmails
         ]
         if isDemo() {
-            completion(NSError(domain: "You can't do that in demo account", code: 500, userInfo: nil))
+            completion(NSError(domain: NSLocalizedString("You can't do that in demo account", comment: "Error"), code: 500, userInfo: nil))
             return
         }
         request(urlAddition: "projects/clients", method: .post, parameters: parameters, needsToken: true)
@@ -296,10 +296,40 @@ class Server: NSObject {
             "image": image
         ]
         if isDemo() {
-            completion(NSError(domain: "You can't do that in demo account", code: 500, userInfo: nil))
+            completion(NSError(domain: NSLocalizedString("You can't do that in demo account", comment: "Error"), code: 500, userInfo: nil))
             return
         }
         request(urlAddition: "projects", method: .put, parameters: parameters, needsToken: true)
+        { json, error in
+            completion(error)
+        }
+    }
+    
+    class func archive(project: Project, archive: Bool, completion: @escaping (NSError?)->()) {
+        let parameters: [String: String] = [
+            "projectid": project.id
+        ]
+        if isDemo() {
+            completion(NSError(domain: NSLocalizedString("You can't do that in demo account", comment: "Error"), code: 500, userInfo: nil))
+            return
+        }
+        
+        let urlAddition = archive ? "projects/archive" : "projects/unarchive"
+        request(urlAddition: urlAddition, method: .post, parameters: parameters, needsToken: true)
+        { json, error in
+            completion(error)
+        }
+    }
+    
+    class func delete(project: Project, completion: @escaping (NSError?)->()) {
+        let parameters: [String: String] = [
+            "projectid": project.id
+        ]
+        if isDemo() {
+            completion(NSError(domain: NSLocalizedString("You can't do that in demo account", comment: "Error"), code: 500, userInfo: nil))
+            return
+        }
+        request(urlAddition: "projects", method: .delete, parameters: parameters, needsToken: true)
         { json, error in
             completion(error)
         }
@@ -314,7 +344,7 @@ class Server: NSObject {
             "attachments": attachmentKeys
         ]
         if isDemo() {
-            completion(NSError(domain: "You can't do that in demo account", code: 500, userInfo: nil))
+            completion(NSError(domain: NSLocalizedString("You can't do that in demo account", comment: "Error"), code: 500, userInfo: nil))
             return
         }
         request(urlAddition: "posts", method: .post, parameters: parameters, needsToken: true)
@@ -343,7 +373,7 @@ class Server: NSObject {
             "attachments": attachments
         ]
         if isDemo() {
-            completion(NSError(domain: "You can't do that in demo account", code: 500, userInfo: nil))
+            completion(NSError(domain: NSLocalizedString("You can't do that in demo account", comment: "Error"), code: 500, userInfo: nil))
             return
         }
         request(urlAddition: "posts", method: .put, parameters: parameters, needsToken: true)
@@ -357,7 +387,7 @@ class Server: NSObject {
             "postid": post.id
         ]
         if isDemo() {
-            completion(NSError(domain: "You can't do that in demo account", code: 500, userInfo: nil))
+            completion(NSError(domain: NSLocalizedString("You can't do that in demo account", comment: "Error"), code: 500, userInfo: nil))
             return
         }
         request(urlAddition: "posts", method: .delete, parameters: parameters, needsToken: true)
@@ -382,7 +412,7 @@ class Server: NSObject {
                 } else if let error = checkForErrors(json: JSON(response.result.value)) {
                     completion(nil, error)
                 }else if response.response?.statusCode == 500 {
-                    completion(nil, NSError(domain: "Server error", code: 500, userInfo: nil))
+                    completion(nil, NSError(domain: NSLocalizedString("Server error", comment: "Error"), code: 500, userInfo: nil))
                 } else {
                     completion(JSON(response.result.value), nil)
                 }
@@ -391,9 +421,9 @@ class Server: NSObject {
     
     fileprivate class func checkForErrors(json: JSON) -> NSError? {
         if let error = json["errors"].array?.first {
-            return NSError(domain: error["messages"].array?.first?.string ?? "Something went wrong", code: error["status"].int ?? 500, userInfo: nil)
+            return NSError(domain: error["messages"].array?.first?.string ?? NSLocalizedString("Something went wrong", comment: "Error"), code: error["status"].int ?? 500, userInfo: nil)
         } else if let errorName = json["errors"].dictionary?.keys.first {
-            return NSError(domain: json["errors"][errorName]["message"].string ?? "Something went wrong", code: 500, userInfo: nil)
+            return NSError(domain: json["errors"][errorName]["message"].string ?? NSLocalizedString("Something went wrong", comment: "Error"), code: 500, userInfo: nil)
         } else if let message = json["message"].string {
             return NSError(domain: message, code: json["status"].int ?? 500, userInfo: nil)
         } else {

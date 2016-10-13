@@ -1,0 +1,106 @@
+
+/* Class = "UILabel"; text = "PASSWORD"; ObjectID = "0Qo-aw-maF"; */
+"0Qo-aw-maF.text" = "ПАРОЛЬ";
+
+/* Class = "UILabel"; text = "EMAIL"; ObjectID = "2zX-d5-5rO"; */
+"2zX-d5-5rO.text" = "EMAIL";
+
+/* Class = "UIButton"; normalTitle = "Try demo account"; ObjectID = "7Dn-tl-G00"; */
+"7Dn-tl-G00.normalTitle" = "Войти в демо аккаунт";
+
+/* Class = "UILabel"; text = "Sign In"; ObjectID = "9PS-Le-VuU"; */
+"9PS-Le-VuU.text" = "Вход";
+
+/* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "C9O-Ph-99H"; */
+"C9O-Ph-99H.normalTitle" = "Войти";
+
+/* Class = "UIButton"; normalTitle = "Send magic link!"; ObjectID = "Chm-Ug-DPC"; */
+"Chm-Ug-DPC.normalTitle" = "Отправить!";
+
+/* Class = "UILabel"; text = "No need to login or sign up anymore! Just give us your email and we will send you a magic link. Click the magic link and you are in – we got you covered."; ObjectID = "CpF-ue-2fx"; */
+"CpF-ue-2fx.text" = "Больше никакой возни с паролями! Введите свой email и получите магическую ссылку. Кликните по ней, чтобы войти в Controlio.";
+
+/* Class = "UILabel"; text = "EMAIL"; ObjectID = "Eob-BJ-0Bd"; */
+"Eob-BJ-0Bd.text" = "EMAIL";
+
+/* Class = "UIButton"; normalTitle = "Sign Up"; ObjectID = "FfA-Gh-j2w"; */
+"FfA-Gh-j2w.normalTitle" = "Войти";
+
+/* Class = "UILabel"; text = "Would you like to try our demo account?"; ObjectID = "GTs-vF-HE4"; */
+"GTs-vF-HE4.text" = "Хотите попробовать перед регистрацией?";
+
+/* Class = "UILabel"; text = "Account Recovery"; ObjectID = "Hon-kO-p9d"; */
+"Hon-kO-p9d.text" = "Восстановление пароля";
+
+/* Class = "UIButton"; normalTitle = "Forgot your password?"; ObjectID = "I53-mO-5r4"; */
+"I53-mO-5r4.normalTitle" = "Забыли пароль?";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "IU3-bM-FLI"; */
+"IU3-bM-FLI.normalTitle" = "Назад";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "Ibw-nL-yvk"; */
+"Ibw-nL-yvk.placeholder" = "Пароль";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "JP6-1E-Yux"; */
+"JP6-1E-Yux.placeholder" = "Email";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "KP4-mw-k44"; */
+"KP4-mw-k44.placeholder" = "Email";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "Klc-af-5s6"; */
+"Klc-af-5s6.normalTitle" = "Назад";
+
+/* Class = "UIButton"; normalTitle = "Recover"; ObjectID = "UBo-tn-Jap"; */
+"UBo-tn-Jap.normalTitle" = "Восстановить";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "UMm-0b-Ojj"; */
+"UMm-0b-Ojj.placeholder" = "Email";
+
+/* Class = "UIButton"; normalTitle = "Already have an account?"; ObjectID = "VnK-05-hhK"; */
+"VnK-05-hhK.normalTitle" = "Уже зарегистрированы?";
+
+/* Class = "UILabel"; text = "Sign Up"; ObjectID = "VrW-jH-qkB"; */
+"VrW-jH-qkB.text" = "Регистрация";
+
+/* Class = "UITextField"; placeholder = "Confirm password"; ObjectID = "a9l-Wv-3KB"; */
+"a9l-Wv-3KB.placeholder" = "Подтвердите пароль";
+
+/* Class = "UILabel"; text = "CONFIRM PASSWORD"; ObjectID = "aCD-6L-rUH"; */
+"aCD-6L-rUH.text" = "ПАРОЛЬ ЕЩЕ РАЗ";
+
+/* Class = "UILabel"; text = "EMAIL"; ObjectID = "dBN-cp-SeC"; */
+"dBN-cp-SeC.text" = "EMAIL";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "dea-JO-UGV"; */
+"dea-JO-UGV.normalTitle" = "Назад";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "fdG-p9-VYT"; */
+"fdG-p9-VYT.placeholder" = "Email";
+
+/* Class = "UIButton"; normalTitle = "(or usual signup)"; ObjectID = "jGT-Ha-Ws9"; */
+"jGT-Ha-Ws9.normalTitle" = "(или обычная регистрация)";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "lkT-Wo-GgD"; */
+"lkT-Wo-GgD.placeholder" = "Пароль";
+
+/* Class = "UIButton"; normalTitle = "Forgot your password?"; ObjectID = "loN-fr-0B5"; */
+"loN-fr-0B5.normalTitle" = "Забыли пароль?";
+
+/* Class = "UILabel"; text = "Magic link"; ObjectID = "nrX-p8-eFI"; */
+"nrX-p8-eFI.text" = "Магическая ссылка";
+
+/* Class = "UILabel"; text = "EMAIL"; ObjectID = "sVs-Dy-1LK"; */
+"sVs-Dy-1LK.text" = "EMAIL";
+
+/* Class = "UIButton"; normalTitle = "(or try usual login)"; ObjectID = "uUq-DV-nuG"; */
+"uUq-DV-nuG.normalTitle" = "(или обычный вход)";
+
+/* Class = "UIButton"; normalTitle = "Get started"; ObjectID = "uwh-Q6-fwo"; */
+"uwh-Q6-fwo.normalTitle" = "Вперед!";
+
+/* Class = "UILabel"; text = "PASSWORD"; ObjectID = "vgH-nj-xPS"; */
+"vgH-nj-xPS.text" = "ПАРОЛЬ";
+
+/* Class = "UILabel"; text = "Enter your email address
+and we'll help you reset your password"; ObjectID = "x93-wg-OT7"; */
+"x93-wg-OT7.text" = "Введите свой email и мы поможем восстановить пароль";
