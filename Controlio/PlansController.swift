@@ -44,8 +44,7 @@ class PlansController: UITableViewController, MFMailComposeViewControllerDelegat
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
-            mail.setToRecipients(["paul@hackingwithswift.com"])
-            mail.setMessageBody("<p>You're so awesome!</p>", isHTML: true)
+            mail.setToRecipients(["sales@controlio.co"])
             
             present(mail, animated: true)
         } else {
