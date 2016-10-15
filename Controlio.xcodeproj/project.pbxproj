@@ -52,6 +52,7 @@
 		B383239D1CDC4336004D0A1C /* CatchPhraseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B383239C1CDC4336004D0A1C /* CatchPhraseView.swift */; };
 		B390C7A31CDE96B800D5F021 /* DeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B390C7A21CDE96B800D5F021 /* DeepLink.swift */; };
 		B390C7A51CDE9B5400D5F021 /* IndexPath+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B390C7A41CDE9B5400D5F021 /* IndexPath+Additions.swift */; };
+		B3A178D71DB2D12500C0E311 /* PlansController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A178D61DB2D12500C0E311 /* PlansController.swift */; };
 		B3AA2F8F1C910ACC00FE7E54 /* RoundedBorderedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AA2F8E1C910ACC00FE7E54 /* RoundedBorderedTextField.swift */; };
 		B3AA2F911C9110EF00FE7E54 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AA2F901C9110EF00FE7E54 /* SignUpViewController.swift */; };
 		B3AA2F931C9110FE00FE7E54 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AA2F921C9110FE00FE7E54 /* LogInViewController.swift */; };
@@ -161,6 +162,8 @@
 		B383239C1CDC4336004D0A1C /* CatchPhraseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatchPhraseView.swift; sourceTree = "<group>"; };
 		B390C7A21CDE96B800D5F021 /* DeepLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeepLink.swift; sourceTree = "<group>"; };
 		B390C7A41CDE9B5400D5F021 /* IndexPath+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IndexPath+Additions.swift"; sourceTree = "<group>"; };
+		B3A178D51DB2B7A000C0E311 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		B3A178D61DB2D12500C0E311 /* PlansController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlansController.swift; sourceTree = "<group>"; };
 		B3AA2F8E1C910ACC00FE7E54 /* RoundedBorderedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedBorderedTextField.swift; sourceTree = "<group>"; };
 		B3AA2F901C9110EF00FE7E54 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		B3AA2F921C9110FE00FE7E54 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -212,7 +215,6 @@
 		B3F303841DAF08E400535FCD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		B3F303851DAF08E400535FCD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Login.strings; sourceTree = "<group>"; };
 		B3F303891DAF491200535FCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B3F3038C1DAF491900535FCD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		B3F3038E1DAF4AE900535FCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ProjectCell.xib; sourceTree = "<group>"; };
 		B3F303911DAF4AEC00535FCD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ProjectCell.strings; sourceTree = "<group>"; };
 		B3F303931DAF4B0500535FCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PostCell.xib; sourceTree = "<group>"; };
@@ -469,6 +471,7 @@
 				B37F10E11D962F2500CAA8D4 /* EditProfileViewController.swift */,
 				B3FFC6C61CE6894C00595E85 /* CustomNavigationController.swift */,
 				B3FFC6C81CE69D6700595E85 /* CustomSearchController.swift */,
+				B3A178D61DB2D12500C0E311 /* PlansController.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -727,6 +730,7 @@
 				B30A42161DA61FC6001FB870 /* MagicLinkViewController.swift in Sources */,
 				B3E7B12C1D9F0DBC004FBF86 /* Date+ISO.swift in Sources */,
 				B3C305AE1CDFF43400C8E85F /* NSDateFormatter+Extensions.swift in Sources */,
+				B3A178D71DB2D12500C0E311 /* PlansController.swift in Sources */,
 				B37F10E21D962F2500CAA8D4 /* EditProfileViewController.swift in Sources */,
 				B3AA2F931C9110FE00FE7E54 /* LogInViewController.swift in Sources */,
 				B3C03D121C90E6E70096E04C /* RoundedShadowedButton.swift in Sources */,
@@ -762,7 +766,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B3F303891DAF491200535FCD /* Base */,
-				B3F3038C1DAF491900535FCD /* ru */,
+				B3A178D51DB2B7A000C0E311 /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

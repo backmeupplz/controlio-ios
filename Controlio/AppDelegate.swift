@@ -27,9 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         S3.setup()
         setupPushNotifications(application: application)
         
-        let manager = User()
-        manager.id = "57fc540fdc97161874534d91"
-        
         return true
     }
     

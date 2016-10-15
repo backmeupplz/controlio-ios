@@ -79,3 +79,6 @@
 
 /* Class = "UILabel"; text = "borodutch"; ObjectID = "zeO-hr-gv3"; */
 "zeO-hr-gv3.text" = "borodutch";
+
+/* Class = "UILabel"; text = "Plans"; ObjectID = "kZh-pu-hDg"; */
+"kZh-pu-hDg.text" = "Планы";
