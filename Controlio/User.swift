@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SwiftyJSON3
+import SwiftyJSON
 
 class User: NSObject, NSCoding {
     

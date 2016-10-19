@@ -4,8 +4,9 @@ use_frameworks!
 inhibit_all_warnings!
 
 target 'Controlio' do
+    pod 'Stripe'
     pod 'Alamofire', '~> 4.0'
-    pod 'SwiftyJSON3', '~> 3.0.0-beta.1'
+    pod 'SwiftyJSON'
     pod 'SDWebImage', '~> 3.7'
     pod 'SnapKit', '~> 3.0'
     pod 'IQKeyboardManagerSwift', '~> 4.0'

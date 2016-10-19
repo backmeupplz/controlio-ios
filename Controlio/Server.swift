@@ -8,7 +8,7 @@
 
 import UIKit
 import Alamofire
-import SwiftyJSON3
+import SwiftyJSON
 import CLTokenInputView
 
 class Server: NSObject {

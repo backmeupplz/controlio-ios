@@ -53,6 +53,8 @@
 		B390C7A31CDE96B800D5F021 /* DeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B390C7A21CDE96B800D5F021 /* DeepLink.swift */; };
 		B390C7A51CDE9B5400D5F021 /* IndexPath+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B390C7A41CDE9B5400D5F021 /* IndexPath+Additions.swift */; };
 		B3A178D71DB2D12500C0E311 /* PlansController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A178D61DB2D12500C0E311 /* PlansController.swift */; };
+		B3A89D541DB8069D00211EFF /* Payments.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A89D531DB8069D00211EFF /* Payments.swift */; };
+		B3A89D561DB806B100211EFF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A89D551DB806B100211EFF /* ViewController.swift */; };
 		B3AA2F8F1C910ACC00FE7E54 /* RoundedBorderedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AA2F8E1C910ACC00FE7E54 /* RoundedBorderedTextField.swift */; };
 		B3AA2F911C9110EF00FE7E54 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AA2F901C9110EF00FE7E54 /* SignUpViewController.swift */; };
 		B3AA2F931C9110FE00FE7E54 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AA2F921C9110FE00FE7E54 /* LogInViewController.swift */; };
@@ -164,6 +166,8 @@
 		B390C7A41CDE9B5400D5F021 /* IndexPath+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IndexPath+Additions.swift"; sourceTree = "<group>"; };
 		B3A178D51DB2B7A000C0E311 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		B3A178D61DB2D12500C0E311 /* PlansController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlansController.swift; sourceTree = "<group>"; };
+		B3A89D531DB8069D00211EFF /* Payments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payments.swift; sourceTree = "<group>"; };
+		B3A89D551DB806B100211EFF /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B3AA2F8E1C910ACC00FE7E54 /* RoundedBorderedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedBorderedTextField.swift; sourceTree = "<group>"; };
 		B3AA2F901C9110EF00FE7E54 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		B3AA2F921C9110FE00FE7E54 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -388,6 +392,7 @@
 				B3D8C6F31CFBFBF4001EE432 /* Server.swift */,
 				B3D8C6F91CFC0A78001EE432 /* S3.swift */,
 				B3E7B1271D9B3D40004FBF86 /* Platform.swift */,
+				B3A89D531DB8069D00211EFF /* Payments.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -448,6 +453,7 @@
 		B3E634D81C914D2C00C0572A /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				B3A89D551DB806B100211EFF /* ViewController.swift */,
 				B3C03D131C90E90B0096E04C /* StartViewController.swift */,
 				B3AA2F901C9110EF00FE7E54 /* SignUpViewController.swift */,
 				B3AA2F921C9110FE00FE7E54 /* LogInViewController.swift */,
@@ -710,6 +716,7 @@
 				B3E57BF11D9602DB00F699F1 /* AddManagerCell.swift in Sources */,
 				B390C7A51CDE9B5400D5F021 /* IndexPath+Additions.swift in Sources */,
 				B3C03D171C90FEB70096E04C /* DemoAccountLanguage.swift in Sources */,
+				B3A89D561DB806B100211EFF /* ViewController.swift in Sources */,
 				B301EFDD1CE59A0A0013CD4D /* UIImagePickerDelegate+UINavgiationControllerDelegate.swift in Sources */,
 				B3E8157C1CE1603400E8F87B /* NewProjectController.swift in Sources */,
 				B3E634E11C915B9300C0572A /* UISearchBar+CursorTint.swift in Sources */,
@@ -727,6 +734,7 @@
 				B3C03D1A1C90FF890096E04C /* UIAlertController+Additions.swift in Sources */,
 				B3E7B1281D9B3D40004FBF86 /* Platform.swift in Sources */,
 				B3D8C6F61CFBFC6B001EE432 /* Config.swift in Sources */,
+				B3A89D541DB8069D00211EFF /* Payments.swift in Sources */,
 				B30A42161DA61FC6001FB870 /* MagicLinkViewController.swift in Sources */,
 				B3E7B12C1D9F0DBC004FBF86 /* Date+ISO.swift in Sources */,
 				B3C305AE1CDFF43400C8E85F /* NSDateFormatter+Extensions.swift in Sources */,

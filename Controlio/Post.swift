@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SwiftyJSON3
+import SwiftyJSON
 
 enum PostType: String {
     case post = "post"

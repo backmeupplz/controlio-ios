@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vxU-vq-VqA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="a3A-iU-Rb0">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -406,6 +406,53 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XAU-nW-z7l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1716.5492957746478" y="416.25"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="brf-lK-Xtd">
+            <objects>
+                <navigationController id="a3A-iU-Rb0" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JbG-AC-Nlh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="LFG-yc-ffc" kind="relationship" relationship="rootViewController" id="pxT-tR-Ycg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IlG-uo-zsY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-480" y="-304"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Rln-1Z-Xc7">
+            <objects>
+                <viewController id="LFG-yc-ffc" customClass="ViewController" customModule="Controlio" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="j2E-ns-xgy"/>
+                        <viewControllerLayoutGuide type="bottom" id="plk-qd-eqp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oZ6-hA-7d0">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p2e-Aa-QdR">
+                                <state key="normal" title="Show paymnents"/>
+                                <connections>
+                                    <action selector="showPaymentsTouched:" destination="LFG-yc-ffc" eventType="touchUpInside" id="yPL-Fu-JGq"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="p2e-Aa-QdR" firstAttribute="centerY" secondItem="oZ6-hA-7d0" secondAttribute="centerY" id="BAH-aU-fuo"/>
+                            <constraint firstItem="p2e-Aa-QdR" firstAttribute="centerX" secondItem="oZ6-hA-7d0" secondAttribute="centerX" id="Pf2-ml-IqH"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="DUw-MC-Y4g"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cSO-O7-NFp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="268" y="-304"/>
         </scene>
         <!--Custom Navigation Controller-->
         <scene sceneID="boq-AN-Htx">
