@@ -15,6 +15,7 @@ class User: NSObject, NSCoding {
     
     var email: String!
     var id: String!
+    var stripeId: String?
     
     var token: String?
     
@@ -43,6 +44,7 @@ class User: NSObject, NSCoding {
         
         email = json["email"].string!
         id = json["_id"].string!
+        stripeId = json["stripeId"].string
         
         token = json["token"].string
         
@@ -67,6 +69,7 @@ class User: NSObject, NSCoding {
     func encode(with aCoder: NSCoder) {
         aCoder.encode(email, forKey: "email")
         aCoder.encode(id, forKey: "id")
+        aCoder.encode(stripeId, forKey: "stripeId")
         
         aCoder.encode(token, forKey: "token")
         
@@ -88,6 +91,7 @@ class User: NSObject, NSCoding {
         
         email = aDecoder.decodeObject(forKey: "email") as! String
         id = aDecoder.decodeObject(forKey: "id") as! String
+        stripeId = aDecoder.decodeObject(forKey: "stripeId") as? String
         
         token = aDecoder.decodeObject(forKey: "token") as? String
         

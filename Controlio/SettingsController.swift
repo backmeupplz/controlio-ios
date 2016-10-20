@@ -8,14 +8,18 @@
 
 import UIKit
 import SafariServices
+import Stripe
 
-class SettingsController: UITableViewController {
+class SettingsController: UITableViewController, STPPaymentContextDelegate {
 
+    var paymentContext = STPPaymentContext(apiAdapter: PaymentsAPIProvider())
+    
     // MARK: - View Controller Life Cycle -
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configurePaymentContext()
         setupBackButton()
     }
     
@@ -39,10 +43,30 @@ class SettingsController: UITableViewController {
         return .lightContent
     }
     
+    // MARK: - STPPaymentContextDelegate -
+    
+    func paymentContextDidChange(_ paymentContext: STPPaymentContext) {
+        
+    }
+    
+    func paymentContext(_ paymentContext: STPPaymentContext, didCreatePaymentResult paymentResult: STPPaymentResult, completion: @escaping STPErrorBlock) {
+        
+    }
+    func paymentContext(_ paymentContext: STPPaymentContext, didFinishWith status: STPPaymentStatus, error: Error?) {
+        
+        print(error)
+    }
+    func paymentContext(_ paymentContext: STPPaymentContext, didFailToLoadWithError error: Error) {
+        
+        print(error)
+    }
+    
     // MARK: - UITableViewDelegate -
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch (indexPath.section, indexPath.row) {
+        case (0, 2):
+            showPaymentMethods()
         case (2, 0):
             logout()
         default:
@@ -51,6 +75,11 @@ class SettingsController: UITableViewController {
     }
     
     // MARK: - Private functions -
+    
+    fileprivate func configurePaymentContext() {
+        paymentContext.hostViewController = self
+        paymentContext.delegate = self
+    }
     
     fileprivate func setupBackButton() {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
@@ -64,6 +93,10 @@ class SettingsController: UITableViewController {
     fileprivate func showPrivacyPolicy() {
         let svc = SFSafariViewController(url: URL(string: "https://facebook.com")!)
         self.present(svc, animated: true, completion: nil)
+    }
+    
+    fileprivate func showPaymentMethods() {
+        paymentContext.presentPaymentMethodsViewController()
     }
     
     fileprivate func logout() {

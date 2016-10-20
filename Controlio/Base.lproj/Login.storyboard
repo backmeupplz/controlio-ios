@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="a3A-iU-Rb0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vxU-vq-VqA">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -27,7 +27,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UUx-WB-FnK" userLabel="Gradient" customClass="GradientView" customModule="Controlio" customModuleProvider="target">
@@ -183,7 +183,7 @@
                         <viewControllerLayoutGuide type="bottom" id="F9m-5Z-14k"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="NlM-hP-4wx">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FCR-PW-Zg1" userLabel="Gradient" customClass="GradientView" customModule="Controlio" customModuleProvider="target">
@@ -407,60 +407,13 @@
             </objects>
             <point key="canvasLocation" x="1716.5492957746478" y="416.25"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="brf-lK-Xtd">
-            <objects>
-                <navigationController id="a3A-iU-Rb0" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JbG-AC-Nlh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="LFG-yc-ffc" kind="relationship" relationship="rootViewController" id="pxT-tR-Ycg"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IlG-uo-zsY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-480" y="-304"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="Rln-1Z-Xc7">
-            <objects>
-                <viewController id="LFG-yc-ffc" customClass="ViewController" customModule="Controlio" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="j2E-ns-xgy"/>
-                        <viewControllerLayoutGuide type="bottom" id="plk-qd-eqp"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="oZ6-hA-7d0">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p2e-Aa-QdR">
-                                <state key="normal" title="Show paymnents"/>
-                                <connections>
-                                    <action selector="showPaymentsTouched:" destination="LFG-yc-ffc" eventType="touchUpInside" id="yPL-Fu-JGq"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="p2e-Aa-QdR" firstAttribute="centerY" secondItem="oZ6-hA-7d0" secondAttribute="centerY" id="BAH-aU-fuo"/>
-                            <constraint firstItem="p2e-Aa-QdR" firstAttribute="centerX" secondItem="oZ6-hA-7d0" secondAttribute="centerX" id="Pf2-ml-IqH"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="DUw-MC-Y4g"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cSO-O7-NFp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="268" y="-304"/>
-        </scene>
         <!--Custom Navigation Controller-->
         <scene sceneID="boq-AN-Htx">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="vxU-vq-VqA" customClass="CustomNavigationController" customModule="Controlio" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="wDf-H7-mOf">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wDf-H7-mOf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -482,7 +435,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ryI-TV-Uaj"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="7EM-Te-g3p">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4CQ-1v-icp" userLabel="Gradient" customClass="GradientView" customModule="Controlio" customModuleProvider="target">
@@ -673,7 +626,7 @@
                         <viewControllerLayoutGuide type="bottom" id="j7i-QH-xgK"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Nrz-IS-X9s">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R4q-HN-D44" userLabel="Gradient" customClass="GradientView" customModule="Controlio" customModuleProvider="target">
@@ -795,7 +748,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ILh-yV-5st"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="pPF-8D-YbP">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hq9-kL-y68" userLabel="Gradient" customClass="GradientView" customModule="Controlio" customModuleProvider="target">

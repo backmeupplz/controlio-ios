@@ -396,6 +396,40 @@ class Server: NSObject {
         }
     }
     
+    // MARK: - Payments -
+    
+    class func stripeGetCustomer(completion: @escaping (DefaultDataResponse?, NSError?)->()) {
+        let parameters: [String: Any] = [
+            "customerid": currentUser?.stripeId ?? ""
+        ]
+        requestData(urlAddition: "payments/customer", method: .get, parameters: parameters, needsToken: true)
+        { response, error in
+            completion(response, error)
+        }
+    }
+    
+    class func stripeCustomerAttach(sourceId: String, completion: @escaping (NSError?)->()) {
+        let parameters: [String: Any] = [
+            "source": sourceId,
+            "customerid": currentUser?.stripeId ?? ""
+        ]
+        request(urlAddition: "payments/customer/sources", method: .post, parameters: parameters, needsToken: true)
+        { json, error in
+            completion(error)
+        }
+    }
+    
+    class func stripeCustomerSelect(defaultSourceId: String, completion: @escaping (NSError?)->()) {
+        let parameters: [String: Any] = [
+            "source": defaultSourceId,
+            "customerid": currentUser?.stripeId ?? ""
+        ]
+        request(urlAddition: "payments/customer/default_source", method: .post, parameters: parameters, needsToken: true)
+        { json, error in
+            completion(error)
+        }
+    }
+    
     // MARK: - Functions -
     
     class func saveUser(_ user: JSON) {
@@ -415,6 +449,21 @@ class Server: NSObject {
                     completion(nil, NSError(domain: NSLocalizedString("Server error", comment: "Error"), code: 500, userInfo: nil))
                 } else {
                     completion(JSON(response.result.value), nil)
+                }
+        }
+    }
+    
+    fileprivate class func requestData(urlAddition: String, method: HTTPMethod, parameters: [String:Any]? = nil, needsToken: Bool, completion: @escaping (DefaultDataResponse?, NSError?)->()) {
+        Alamofire.request("https://api.controlio.co/" + urlAddition, method: method, parameters: parameters, encoding: method == .get ? URLEncoding.default : JSONEncoding.default, headers: headers(needsToken: needsToken))
+            .response { response in
+                if let errorString = response.error?.localizedDescription {
+                    completion(nil, NSError(domain: errorString, code: 500, userInfo: nil))
+                } else if let error = self.checkForErrors(json: JSON(response.data)) {
+                    completion(nil, error)
+                } else if response.response?.statusCode == 500 {
+                    completion(nil, NSError(domain: NSLocalizedString("Server error", comment: "Error"), code: 500, userInfo: nil))
+                } else {
+                    completion(response, nil)
                 }
         }
     }

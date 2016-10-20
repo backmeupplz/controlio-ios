@@ -8,9 +8,9 @@
 
 import UIKit
 import UserNotifications
-//import IQKeyboardManagerSwift
 import MBProgressHUD
 import CLTokenInputView
+import Stripe
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Application Life Cycle -
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        setupKeyboard()
+        configureStripe()
         PopupNotification.setup()
         S3.setup()
         setupPushNotifications(application: application)
@@ -32,9 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: - Private Functions -
     
-    fileprivate func setupKeyboard() {
-//        IQKeyboardManager.sharedManager().enable = true
-//        IQKeyboardManager.sharedManager().enableAutoToolbar = false
+    fileprivate func configureStripe() {
+        STPPaymentConfiguration.shared().publishableKey = "pk_test_QUk0bgtsbIfR67SVr0EHnIpx"
+        STPPaymentConfiguration.shared().companyName = "Controlio"
     }
     
     fileprivate func setupPushNotifications(application: UIApplication) {
