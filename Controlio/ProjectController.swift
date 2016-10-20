@@ -123,7 +123,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     
     func shouldAddPost(text: String, attachments: [Any]) {
         if text.isEmpty && attachments.count <= 0 {
-            PopupNotification.showNotification(NSLocalizedString("Please provide at least one attachment or text", comment: "New post error"))
+            PopupNotification.show(notification: NSLocalizedString("Please provide at least one attachment or text", comment: "New post error"))
             return
         }
         
@@ -141,7 +141,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
             })
             { keys, error in
                 if let error = error {
-                    PopupNotification.showNotification(error)
+                    PopupNotification.show(notification: error)
                     hud.hide(animated: true)
                 } else {
                     hud.mode = .indeterminate
@@ -149,7 +149,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
                     Server.addPost(projectId: self.project.id, text: text, attachmentKeys: keys!+completedKeys)
                     { error in
                         if let error = error {
-                            PopupNotification.showNotification(error.domain)
+                            PopupNotification.show(notification: error.domain)
                             hud.hide(animated: true)
                         } else {
                             hud.hide(animated: true)
@@ -164,7 +164,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
             Server.addPost(projectId: project.id, text: text, attachmentKeys: completedKeys)
             { error in
                 if let error = error {
-                    PopupNotification.showNotification(error.domain)
+                    PopupNotification.show(notification: error.domain)
                     hud.hide(animated: true)
                 } else {
                     hud.hide(animated: true)
@@ -180,7 +180,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         Server.changeStatus(projectId: project.id, status: text)
         { error in
             if let error = error {
-                PopupNotification.showNotification(error.domain)
+                PopupNotification.show(notification: error.domain)
                 hud.hide(animated: true)
             } else {
                 hud.hide(animated: true)
@@ -198,9 +198,9 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         { error in
             hud.hide(animated: true)
             if let error = error {
-                PopupNotification.showNotification(error.domain)
+                PopupNotification.show(notification: error.domain)
             } else {
-                PopupNotification.showNotification(NSLocalizedString("Clients saved", comment: "Project change clients success message"))
+                PopupNotification.show(notification: NSLocalizedString("Clients saved", comment: "Project change clients success message"))
                 self.project.clients = []
                 for client in clients {
                     let user = User()
@@ -214,7 +214,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     
     func shouldEditPost(post: Post, text: String, attachments: [Any]) {
         if text.isEmpty && attachments.count <= 0 {
-            PopupNotification.showNotification(NSLocalizedString("Please provide at least one attachment or text", comment: "Edit post error"))
+            PopupNotification.show(notification: NSLocalizedString("Please provide at least one attachment or text", comment: "Edit post error"))
             return
         }
         
@@ -232,7 +232,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
                 })
             { keys, error in
                 if let error = error {
-                    PopupNotification.showNotification(error)
+                    PopupNotification.show(notification: error)
                     hud.hide(animated: true)
                 } else {
                     hud.mode = .indeterminate
@@ -241,7 +241,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
                     { error in
                         hud.hide(animated: true)
                         if let error = error {
-                            PopupNotification.showNotification(error.domain)
+                            PopupNotification.show(notification: error.domain)
                         } else {
                             self.input?.post = nil
                             post.text = text
@@ -260,7 +260,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
             { error in
                 hud.hide(animated: true)
                 if let error = error {
-                    PopupNotification.showNotification(error.domain)
+                    PopupNotification.show(notification: error.domain)
                 } else {
                     self.input?.post = nil
                     post.text = text
@@ -417,7 +417,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
             { error in
                 hud.hide(animated: true)
                 if let error = error {
-                    PopupNotification.showNotification(error.domain)
+                    PopupNotification.show(notification: error.domain)
                 } else {
                     self.project.isArchived = !self.project.isArchived
                     self.configure()
@@ -432,7 +432,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
             { error in
                 hud.hide(animated: true)
                 if let error = error {
-                    PopupNotification.showNotification(error.domain)
+                    PopupNotification.show(notification: error.domain)
                 } else {
                     self.delegate?.didDeleteProject(project: self.project)
                     let _ = self.navigationController?.popViewController(animated: true)
@@ -460,7 +460,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         { error in
             hud.hide(animated: true)
             if let error = error {
-                PopupNotification.showNotification(error.domain)
+                PopupNotification.show(notification: error.domain)
             } else {
                 self.posts.remove(at: self.posts.index(of: post)!)
                 self.tableView.beginUpdates()
@@ -483,7 +483,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         Server.getPosts(project: project)
         { error, posts in
             if let error = error {
-                PopupNotification.showNotification(error.domain)
+                PopupNotification.show(notification: error.domain)
             } else {
                 self.addInitialPosts(posts: posts!)
             }
@@ -495,7 +495,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         Server.getPosts(project: project, skip: posts.count)
         { error, posts in
             if let error = error {
-                PopupNotification.showNotification(error.domain)
+                PopupNotification.show(notification: error.domain)
             } else {
                 self.addPosts(posts: posts!)
             }

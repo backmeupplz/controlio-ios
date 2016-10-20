@@ -103,7 +103,7 @@ class NewProjectCell: UITableViewCell, UITextFieldDelegate, CLTokenInputViewDele
             let token = CLToken(displayText: text, context: nil)
             clientEmailsTokenView.add(token)
         } else {
-            PopupNotification.showNotification(NSLocalizedString("Please provide a valid email", comment: "Error"))
+            PopupNotification.show(notification: NSLocalizedString("Please provide a valid email", comment: "Error"))
         }
     }
     

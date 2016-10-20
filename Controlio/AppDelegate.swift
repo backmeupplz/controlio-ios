@@ -23,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         configureStripe()
-        PopupNotification.setup()
         S3.setup()
         setupPushNotifications(application: application)
         
@@ -95,7 +94,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         { error in
             hud.hide(animated: true)
             if let error = error {
-                PopupNotification.showNotification(error.domain)
+                PopupNotification.show(notification: error.domain)
             } else {
                 Router(topController).showMain()
             }

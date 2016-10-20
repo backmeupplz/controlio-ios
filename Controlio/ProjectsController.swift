@@ -94,7 +94,7 @@ class ProjectsController: UITableViewController, ProjectControllerDelegate {
         Server.getProjects
         { error, projects in
             if let error = error {
-                PopupNotification.showNotification(error.domain)
+                PopupNotification.show(notification: error.domain)
             } else {
                 self.addInitialProjects(projects: projects!)
             }
@@ -106,7 +106,7 @@ class ProjectsController: UITableViewController, ProjectControllerDelegate {
         Server.getProjects(skip: projects.count)
         { error, projects in
             if let error = error {
-                PopupNotification.showNotification(error.domain)
+                PopupNotification.show(notification: error.domain)
             } else {
                 self.addProjects(projects: projects!)
             }

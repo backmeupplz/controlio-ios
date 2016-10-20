@@ -67,7 +67,7 @@ class CustomizableImageView: UIImageView {
             } else {
                 S3.getImage(self.s3Key!) { image, error in
                     if let error = error {
-                        PopupNotification.showNotification(error)
+                        PopupNotification.show(notification: error)
                     } else if let image = image {
                         print("got image (\(self.s3Key!)) from internet")
                         cache?.store(image, forKey: self.s3Key!)

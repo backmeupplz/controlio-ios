@@ -91,7 +91,7 @@ class ManagerTableViewController: UITableViewController {
         { error in
             hud.hide(animated: true)
             if let error = error {
-                PopupNotification.showNotification(error.domain)
+                PopupNotification.show(notification: error.domain)
             } else {
                 self.tableView.beginUpdates()
                 self.managers.remove(at: indexPath.row)
@@ -108,7 +108,7 @@ class ManagerTableViewController: UITableViewController {
         Server.getManagers
         { error, users in
             if let error = error {
-                PopupNotification.showNotification(error.domain)
+                PopupNotification.show(notification: error.domain)
             } else {
                 self.managers = users!
             }

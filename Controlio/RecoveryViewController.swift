@@ -42,7 +42,7 @@ class RecoveryViewController: UIViewController {
         { error in
             self.enable(ui: true)
             if let error = error {
-                PopupNotification.showNotification(error.domain)
+                PopupNotification.show(notification: error.domain)
             } else {
                 let alert = UIAlertController(title: NSLocalizedString("Success!", comment: "Recover password alert title"), message: NSLocalizedString("We have sent you a link to reset password. Please, check your inbox!", comment: "Recover password alert message"), preferredStyle: .alert)
                 let ok = UIAlertAction(title: NSLocalizedString("Ok!", comment: "Recover password alert button"), style: .default)

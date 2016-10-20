@@ -226,7 +226,7 @@ class InputView: CustomizableView, AttachmentContainerViewDelegate, CLTokenInput
             let token = CLToken(displayText: text, context: nil)
             tokenView.add(token)
         } else {
-            PopupNotification.showNotification(NSLocalizedString("Please provide a valid email", comment: "Error"))
+            PopupNotification.show(notification: NSLocalizedString("Please provide a valid email", comment: "Error"))
         }
     }
     

@@ -12,7 +12,7 @@ extension UIAlertController {
     
     // MARK: - General Functions -
     
-    func addCancelButton(_ title: String = "Cancel") {
+    func addCancelButton(_ title: String = NSLocalizedString("Cancel", comment: "Cancel button on alert views")) {
         let cancel = UIAlertAction(title: title, style: .cancel) { action in
             // Do nothing
         }

@@ -44,7 +44,7 @@ class StartViewController: UIViewController {
         { error in
             hud.hide(animated: true)
             if let error = error {
-                PopupNotification.showNotification(error.domain)
+                PopupNotification.show(notification: error.domain)
             } else {
                 Router(self).showMain()
             }
@@ -70,7 +70,7 @@ class StartViewController: UIViewController {
             { error in
                 hud.hide(animated: true)
                 if let error = error {
-                    PopupNotification.showNotification(error.domain)
+                    PopupNotification.show(notification: error.domain)
                 } else {
                     Router(self).showMain()
                 }
@@ -81,7 +81,7 @@ class StartViewController: UIViewController {
             { error in
                 hud.hide(animated: true)
                 if let error = error {
-                    PopupNotification.showNotification(error.domain)
+                    PopupNotification.show(notification: error.domain)
                 } else {
                     Router(self).showMain()
                 }
@@ -92,7 +92,7 @@ class StartViewController: UIViewController {
             { error in
                 hud.hide(animated: true)
                 if let error = error {
-                    PopupNotification.showNotification(error.domain)
+                    PopupNotification.show(notification: error.domain)
                 } else {
                     Router(self).showMain()
                 }
@@ -103,7 +103,7 @@ class StartViewController: UIViewController {
             { error in
                 hud.hide(animated: true)
                 if let error = error {
-                    PopupNotification.showNotification(error.domain)
+                    PopupNotification.show(notification: error.domain)
                 } else {
                     Router(self).showMain()
                 }

@@ -39,7 +39,7 @@ class AddManagerViewController: UITableViewController {
         { error in
             hud.hide(animated: true)
             if let error = error {
-                PopupNotification.showNotification(error.domain)
+                PopupNotification.show(notification: error.domain)
             } else {
                 let _ = self.navigationController?.popViewController(animated: true)
             }

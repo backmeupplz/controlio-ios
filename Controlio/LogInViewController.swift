@@ -64,7 +64,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         { error in
             self.enableUI(true)
             if let error = error {
-                PopupNotification.showNotification(error.domain)
+                PopupNotification.show(notification: error.domain)
             } else {
                 Router(self).showMain()
             }

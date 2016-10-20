@@ -83,27 +83,27 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate, Manag
         let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! NewProjectCell
         
         if image == nil && project?.imageKey == nil {
-            PopupNotification.showNotification(NSLocalizedString("Please provide an image", comment: "Add project error"))
+            PopupNotification.show(notification: NSLocalizedString("Please provide an image", comment: "Add project error"))
             return
         }
         guard let title = cell.titleTextField.text, !title.isEmpty else {
-            PopupNotification.showNotification(NSLocalizedString("Please provide a title", comment: "Add project error"))
+            PopupNotification.show(notification: NSLocalizedString("Please provide a title", comment: "Add project error"))
             return
         }
         guard let initialStatus = cell.initialStatusTextField.text, !initialStatus.isEmpty else {
-            PopupNotification.showNotification(NSLocalizedString("Please provide an initial status", comment: "Add project error"))
+            PopupNotification.show(notification: NSLocalizedString("Please provide an initial status", comment: "Add project error"))
             return
         }
         guard let description = cell.descriptionTextField.text, !description.isEmpty else {
-            PopupNotification.showNotification(NSLocalizedString("Please provide a description", comment: "Add project error"))
+            PopupNotification.show(notification: NSLocalizedString("Please provide a description", comment: "Add project error"))
             return
         }
         if cell.clientEmailsTokenView.allTokens.count <= 0 && project == nil {
-            PopupNotification.showNotification(NSLocalizedString("Please provide at least one client email", comment: "Add project error"))
+            PopupNotification.show(notification: NSLocalizedString("Please provide at least one client email", comment: "Add project error"))
             return
         }
         if manager == nil && project?.manager == nil {
-            PopupNotification.showNotification(NSLocalizedString("Please choose a manager", comment: "Add project error"))
+            PopupNotification.show(notification: NSLocalizedString("Please choose a manager", comment: "Add project error"))
             return
         }
         
@@ -116,7 +116,7 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate, Manag
             })
             { key, error in
                 if let error = error {
-                    PopupNotification.showNotification(error)
+                    PopupNotification.show(notification: error)
                     hud.hide(animated: true)
                 } else {
                     if self.project == nil {
@@ -124,7 +124,7 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate, Manag
                         { error in
                             hud.hide(animated: true)
                             if let error = error {
-                                PopupNotification.showNotification(error.domain)
+                                PopupNotification.show(notification: error.domain)
                             } else {
                                 self.cleanTempFields()
                                 self.selectFirstTab()
@@ -135,7 +135,7 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate, Manag
                         { error in
                             hud.hide(animated: true)
                             if let error = error {
-                                PopupNotification.showNotification(error.domain)
+                                PopupNotification.show(notification: error.domain)
                             } else {
                                 self.project!.title = title
                                 self.project!.projectDescription = description
@@ -152,7 +152,7 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate, Manag
             { error in
                 hud.hide(animated: true)
                 if let error = error {
-                    PopupNotification.showNotification(error.domain)
+                    PopupNotification.show(notification: error.domain)
                 } else {
                     self.project!.title = title
                     self.project!.projectDescription = description

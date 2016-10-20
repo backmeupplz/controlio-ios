@@ -11,22 +11,13 @@ import JDStatusBarNotification
 
 class PopupNotification: NSObject {
     
-    // MARK: - Private Class Variables -
-    
-    fileprivate static let controlioStyle = "controlioStyle"
-    
     // MARK: - Public Functions -
     
-    class func setup() {
-        JDStatusBarNotification.addStyleNamed(controlioStyle) { style -> JDStatusBarStyle! in
-            style?.barColor = UIColor.controlioViolet()
-            style?.textColor = UIColor.white
-            style?.font = UIFont(name: "SFUIText-Regular", size: 12)
-            return style
+    class func show(notification: String) {
+        let alert = UIAlertController(title: "Ouch!", message: notification, preferredStyle: .alert)
+        alert.addDefaultAction("Ok!") { 
+            // do nothing
         }
-    }
-    
-    class func showNotification(_ text: String) {
-        JDStatusBarNotification.show(withStatus: text, dismissAfter: 2.0, styleName: controlioStyle)
+        UIApplication.topViewController()?.present(alert, animated: true, completion: nil)
     }
 }

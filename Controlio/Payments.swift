@@ -1,5 +1,5 @@
 //
-//  PaymentsAPIProvider.swift
+//  Payments.swift
 //  Controlio
 //
 //  Created by Nikita Kolmogorov on 18/10/2016.
@@ -9,7 +9,7 @@
 import UIKit
 import Stripe
 
-class PaymentsAPIProvider: NSObject, STPBackendAPIAdapter {
+class Payments: NSObject, STPBackendAPIAdapter {
     @objc func retrieveCustomer(_ completion: @escaping STPCustomerCompletionBlock) {
         Server.stripeGetCustomer
             { response, error in

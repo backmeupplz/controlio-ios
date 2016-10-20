@@ -12,7 +12,7 @@ import Stripe
 
 class SettingsController: UITableViewController, STPPaymentContextDelegate {
 
-    var paymentContext = STPPaymentContext(apiAdapter: PaymentsAPIProvider())
+    var paymentContext = STPPaymentContext(apiAdapter: Payments())
     
     // MARK: - View Controller Life Cycle -
     
@@ -32,6 +32,7 @@ class SettingsController: UITableViewController, STPPaymentContextDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        refreshPaymentContext()
         for indexPath in tableView.indexPathsForSelectedRows ?? [] {
             tableView.deselectRow(at: indexPath, animated: true)
         }
@@ -81,6 +82,11 @@ class SettingsController: UITableViewController, STPPaymentContextDelegate {
         paymentContext.delegate = self
     }
     
+    fileprivate func refreshPaymentContext() {
+        paymentContext = STPPaymentContext(apiAdapter: Payments())
+        configurePaymentContext()
+    }
+    
     fileprivate func setupBackButton() {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
@@ -96,12 +102,28 @@ class SettingsController: UITableViewController, STPPaymentContextDelegate {
     }
     
     fileprivate func showPaymentMethods() {
-        paymentContext.presentPaymentMethodsViewController()
+        if Server.currentUser?.isDemo ?? false {
+            showDemoMessage()
+        } else {
+            paymentContext.presentPaymentMethodsViewController()
+        }
     }
     
     fileprivate func logout() {
         Server.logout()
         let _ = self.navigationController?.tabBarController?.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    fileprivate func showDemoMessage() {
+        let alert = UIAlertController(title: "Ouch!", message: "You cannot select payment methods in the demo account — please login with your own account to do so", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "Ok!", style: .default)
+        { action in
+            if let ip = self.tableView.indexPathForSelectedRow {
+                self.tableView.deselectRow(at: ip, animated: true)
+            }
+        }
+        alert.addAction(ok)
+        present(alert, animated: true, completion: nil)
     }
     
     // MARK: - Segues -

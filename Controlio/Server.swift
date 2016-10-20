@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import CLTokenInputView
+import Stripe
 
 class Server: NSObject {
     

@@ -32,7 +32,7 @@ extension UIImageView {
                         { image, error in
                             if let error = error {
                                 self.remove(activityIndicator: ai)
-                                PopupNotification.showNotification(error)
+                                PopupNotification.show(notification: error)
                             } else {
                                 self.remove(activityIndicator: ai)
                                 SDImageCache.shared().store(image, forKey: key)

@@ -39,14 +39,14 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
             })
             { key, error in
                 if let error = error {
-                    PopupNotification.showNotification(error)
+                    PopupNotification.show(notification: error)
                     hud.hide(animated: true)
                 } else {
                     Server.editProfile(name: name, phone: phone, profileImage: key)
                     { error in
                         hud.hide(animated: true)
                         if let error = error {
-                            PopupNotification.showNotification(error.domain)
+                            PopupNotification.show(notification: error.domain)
                         } else {
                             let _ = self.navigationController?.popViewController(animated: true)
                         }
@@ -59,7 +59,7 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
             { error in
                 hud.hide(animated: true)
                 if let error = error {
-                    PopupNotification.showNotification(error.domain)
+                    PopupNotification.show(notification: error.domain)
                 } else {
                     let _ = self.navigationController?.popViewController(animated: true)
                 }
@@ -147,7 +147,7 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
         Server.getProfile
         { error, user in
             if let error = error {
-                PopupNotification.showNotification(error.domain)
+                PopupNotification.show(notification: error.domain)
             } else {
                 self.user = user
                 self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
