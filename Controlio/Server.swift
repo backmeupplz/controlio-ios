@@ -431,6 +431,21 @@ class Server: NSObject {
         }
     }
     
+    class func stripeCustomerChoose(plan: Plan, completion: @escaping (NSError?)->()) {
+        let parameters: [String: Any] = [
+            "planid": plan.rawValue,
+        ]
+        request(urlAddition: "payments/customer/subscription", method: .post, parameters: parameters, needsToken: true)
+        { json, error in
+            if let error = error {
+                completion(error)
+            } else {
+                saveUser(json!)
+                completion(nil)
+            }
+        }
+    }
+    
     // MARK: - Functions -
     
     class func saveUser(_ user: JSON) {
