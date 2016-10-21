@@ -27,7 +27,7 @@
 "C0R-g0-qnG.text" = "Выйти";
 
 /* Class = "UINavigationItem"; title = "Edit profile"; ObjectID = "E2w-wT-ARS"; */
-"E2w-wT-ARS.title" = "Редактировать профиль";
+"E2w-wT-ARS.title" = "Профиль";
 
 /* Class = "UILabel"; text = "Upgrade"; ObjectID = "JiL-o2-Hbi"; */
 "JiL-o2-Hbi.text" = "Повысить";

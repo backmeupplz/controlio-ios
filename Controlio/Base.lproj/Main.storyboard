@@ -498,7 +498,7 @@
             <objects>
                 <navigationController id="576-Wy-VdO" customClass="CustomNavigationController" customModule="Controlio" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Support" image="support" id="uye-yc-d9N"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Rk-jm-OQe">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2Rk-jm-OQe">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -622,7 +622,7 @@
                             <tableViewSection headerTitle="MANAGERS" id="jBg-fV-qW9">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="uH7-NM-0bl">
-                                        <rect key="frame" x="0.0" y="297" width="375" height="46"/>
+                                        <rect key="frame" x="0.0" y="298" width="375" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uH7-NM-0bl" id="Dsb-GJ-ZNB">
                                             <frame key="frameInset" width="342" height="45"/>
@@ -653,7 +653,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="r5v-5B-pQ6">
-                                        <rect key="frame" x="0.0" y="343" width="375" height="46"/>
+                                        <rect key="frame" x="0.0" y="344" width="375" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="r5v-5B-pQ6" id="jIf-Oc-NqF">
                                             <frame key="frameInset" width="342" height="45"/>
@@ -688,7 +688,7 @@
                             <tableViewSection id="3Pk-QX-T56">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="AiS-M5-0uA">
-                                        <rect key="frame" x="0.0" y="408" width="375" height="46"/>
+                                        <rect key="frame" x="0.0" y="409" width="375" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AiS-M5-0uA" id="yK3-om-rr1">
                                             <frame key="frameInset" width="342" height="45"/>
