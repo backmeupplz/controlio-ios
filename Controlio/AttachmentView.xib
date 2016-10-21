@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -12,7 +13,6 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cmO-EC-95z" userLabel="Attachment View" customClass="CustomizableImageView" customModule="Controlio" customModuleProvider="target">
-                    <rect key="frame" x="3" y="10" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="8Yo-2q-2ZI"/>
                         <constraint firstAttribute="width" constant="40" id="HNi-TD-tdF"/>
@@ -25,19 +25,17 @@
                             <real key="value" value="0.5"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                            <color key="value" red="0.35686274509999999" green="0.37647058820000001" blue="0.43529411759999997" alpha="0.5" colorSpace="calibratedRGB"/>
+                            <color key="value" red="0.35686274509999999" green="0.37647058820000001" blue="0.43529411759999997" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q27-3B-z91" userLabel="Overlay Button" customClass="RoundedShadowedButton" customModule="Controlio" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="55" height="53"/>
                     <connections>
                         <action selector="attachmentTouched:" destination="iN0-l3-epB" eventType="touchUpInside" id="Mlc-5p-Qcv"/>
                         <outletCollection property="dependantViews" destination="cmO-EC-95z" collectionClass="NSMutableArray" id="rCf-PE-Op0"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q2D-Ng-fdM" userLabel="Cross Button">
-                    <rect key="frame" x="33" y="3" width="19" height="19"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="19" id="Ni5-tr-jaU"/>
                         <constraint firstAttribute="height" constant="19" id="i4J-L2-lL8"/>
@@ -48,7 +46,7 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Q2D-Ng-fdM" firstAttribute="leading" secondItem="cmO-EC-95z" secondAttribute="trailing" constant="-10" id="E9c-Hz-zqr"/>
                 <constraint firstItem="Q27-3B-z91" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="FL3-n8-ePk"/>
