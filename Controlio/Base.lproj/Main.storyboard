@@ -1328,7 +1328,13 @@ And don‘t worry, you can upgrade, downgrade or cancel your plan at any time!</
                             <outlet property="delegate" destination="980-TW-ifv" id="OBL-0B-pPG"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Plans" id="LbP-m7-f9l"/>
+                    <navigationItem key="navigationItem" title="Plans" id="LbP-m7-f9l">
+                        <barButtonItem key="rightBarButtonItem" title="Redeem" id="qrE-Hs-v9p">
+                            <connections>
+                                <action selector="redeemTouched:" destination="980-TW-ifv" id="dkP-S7-OHX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outletCollection property="upgradeLabels" destination="5dN-8p-3l6" collectionClass="NSMutableArray" id="R1B-Oq-vM6"/>
                         <outletCollection property="upgradeLabels" destination="Wh2-tG-JpF" collectionClass="NSMutableArray" id="X3f-TI-JvQ"/>

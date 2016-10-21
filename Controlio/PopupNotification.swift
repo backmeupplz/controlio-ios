@@ -13,8 +13,8 @@ class PopupNotification: NSObject {
     
     // MARK: - Public Functions -
     
-    class func show(notification: String) {
-        let alert = UIAlertController(title: "Ouch!", message: notification, preferredStyle: .alert)
+    class func show(notification: String, title: String = "Ouch!") {
+        let alert = UIAlertController(title: title, message: notification, preferredStyle: .alert)
         alert.addDefaultAction("Ok!") { 
             // do nothing
         }

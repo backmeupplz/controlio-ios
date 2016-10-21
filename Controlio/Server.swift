@@ -446,6 +446,16 @@ class Server: NSObject {
         }
     }
     
+    class func stripeRedeemCoupon(coupon: String, completion: @escaping (NSError?)->()) {
+        let parameters: [String: Any] = [
+            "coupon": coupon,
+        ]
+        request(urlAddition: "payments/customer/coupon", method: .post, parameters: parameters, needsToken: true)
+        { json, error in
+            completion(error)
+        }
+    }
+    
     // MARK: - Functions -
     
     class func saveUser(_ user: JSON) {

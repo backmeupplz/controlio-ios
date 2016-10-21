@@ -81,6 +81,41 @@ class PlansController: UITableViewController, MFMailComposeViewControllerDelegat
         }
     }
     
+    @IBAction func redeemTouched(_ sender: AnyObject) {
+        let alert = UIAlertController(title: "Redeem a coupon", message: nil, preferredStyle:
+            UIAlertControllerStyle.alert)
+        
+        var textField: UITextField?
+        
+        alert.addTextField
+        { innerTextField in
+            innerTextField.placeholder = "Coupon"
+            textField = innerTextField
+        }
+        
+        let redeem = UIAlertAction(title: "Redeem", style: .default)
+        { action in
+            guard let text = textField?.text, !text.isEmpty else {
+                PopupNotification.show(notification: "Coupon cannot be empty")
+                return
+            }
+            let coupon = text
+            let hud = MBProgressHUD.showAdded(to: self.view, animated: false)
+            Server.stripeRedeemCoupon(coupon: coupon)
+            { error in
+                hud.hide(animated: true)
+                if let error = error {
+                    PopupNotification.show(notification: error.domain)
+                } else {
+                    PopupNotification.show(notification: "The coupon was applied to your account", title: "Success!")
+                }
+            }
+        }
+        alert.addAction(redeem)
+        alert.addCancelButton()
+        self.present(alert, animated: true, completion:nil)
+    }
+    
     // MARK: - STPPaymentContextDelegate -
     
     func paymentContextDidChange(_ paymentContext: STPPaymentContext) {
