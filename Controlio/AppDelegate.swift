@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         configureStripe()
         S3.setup()
         setupPushNotifications(application: application)
+        FeatureList.fetchFeatureList()
         
         return true
     }
@@ -32,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Private Functions -
     
     fileprivate func configureStripe() {
-        STPPaymentConfiguration.shared().publishableKey = "pk_test_QUk0bgtsbIfR67SVr0EHnIpx"
+        STPPaymentConfiguration.shared().publishableKey = "pk_live_HEgcrqEcUFRx4rfKjnRasMFv"
         STPPaymentConfiguration.shared().companyName = "Controlio"
     }
     

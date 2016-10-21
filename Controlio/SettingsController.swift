@@ -75,6 +75,15 @@ class SettingsController: UITableViewController, STPPaymentContextDelegate {
         }
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch (indexPath.section, indexPath.row) {
+        case (0, 1), (0, 2):
+            return FeatureList.payments ? 46 : 0
+        default:
+            return 46
+        }
+    }
+    
     // MARK: - Private functions -
     
     fileprivate func configurePaymentContext() {

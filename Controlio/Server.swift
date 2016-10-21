@@ -456,6 +456,15 @@ class Server: NSObject {
         }
     }
     
+    // MARK: - Features -
+    
+    class func features(completion: @escaping (JSON?, NSError?)->()) {
+        request(urlAddition: "feature_list", method: .get, needsToken: false)
+        { json, error in
+            completion(json, error)
+        }
+    }
+    
     // MARK: - Functions -
     
     class func saveUser(_ user: JSON) {
