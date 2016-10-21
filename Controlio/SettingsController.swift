@@ -115,8 +115,8 @@ class SettingsController: UITableViewController, STPPaymentContextDelegate {
     }
     
     fileprivate func showDemoMessage() {
-        let alert = UIAlertController(title: "Ouch!", message: "You cannot select payment methods in the demo account — please login with your own account to do so", preferredStyle: .alert)
-        let ok = UIAlertAction(title: "Ok!", style: .default)
+        let alert = UIAlertController(title: NSLocalizedString("Ouch!", comment:"Demo error title"), message: NSLocalizedString("You cannot select payment methods in the demo account — please login with your own account to do so", comment:"Demo error message"), preferredStyle: .alert)
+        let ok = UIAlertAction(title: NSLocalizedString("Ok!", comment:"Demo error ok button"), style: .default)
         { action in
             if let ip = self.tableView.indexPathForSelectedRow {
                 self.tableView.deselectRow(at: ip, animated: true)

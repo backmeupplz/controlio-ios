@@ -4,7 +4,7 @@ use_frameworks!
 inhibit_all_warnings!
 
 target 'Controlio' do
-    pod 'Stripe'
+    pod 'Stripe', :git => 'https://github.com/stripe/stripe-ios'
     pod 'Alamofire', '~> 4.0'
     pod 'SwiftyJSON'
     pod 'SDWebImage', '~> 3.7'

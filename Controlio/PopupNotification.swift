@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import JDStatusBarNotification
 
 class PopupNotification: NSObject {
     

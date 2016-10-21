@@ -77,26 +77,26 @@ class PlansController: UITableViewController, MFMailComposeViewControllerDelegat
             
             present(mail, animated: true)
         } else {
-            PopupNotification.show(notification: "Please configure email in Mail app")
+            PopupNotification.show(notification: NSLocalizedString("Please configure email in Mail app", comment: "Plans VC mail app error"))
         }
     }
     
     @IBAction func redeemTouched(_ sender: AnyObject) {
-        let alert = UIAlertController(title: "Redeem a coupon", message: nil, preferredStyle:
+        let alert = UIAlertController(title: NSLocalizedString("Redeem a coupon", comment: "Redeem alert title"), message: nil, preferredStyle:
             UIAlertControllerStyle.alert)
         
         var textField: UITextField?
         
         alert.addTextField
         { innerTextField in
-            innerTextField.placeholder = "Coupon"
+            innerTextField.placeholder = NSLocalizedString("Coupon", comment: "Redeem alert textfield placeholder")
             textField = innerTextField
         }
         
-        let redeem = UIAlertAction(title: "Redeem", style: .default)
+        let redeem = UIAlertAction(title: NSLocalizedString("Redeem", comment: "Redem alert button"), style: .default)
         { action in
             guard let text = textField?.text, !text.isEmpty else {
-                PopupNotification.show(notification: "Coupon cannot be empty")
+                PopupNotification.show(notification: NSLocalizedString("Coupon cannot be empty", comment: "Redem alert empty error"))
                 return
             }
             let coupon = text
@@ -107,7 +107,7 @@ class PlansController: UITableViewController, MFMailComposeViewControllerDelegat
                 if let error = error {
                     PopupNotification.show(notification: error.domain)
                 } else {
-                    PopupNotification.show(notification: "The coupon was applied to your account", title: "Success!")
+                    PopupNotification.show(notification: NSLocalizedString("The coupon was applied to your account", comment: "Redeem alert success message"), title: NSLocalizedString("Success!", comment: "Redeem alert success title"))
                 }
             }
         }
@@ -161,14 +161,14 @@ class PlansController: UITableViewController, MFMailComposeViewControllerDelegat
             let isCurrentPlan = number == currentPlan.rawValue
             upgradeGradients[number].isHidden = isCurrentPlan
             upgradeLabels[number].isHidden = isCurrentPlan
-            upgradeLabels[number].text = number <= currentPlan.rawValue ? "Downgrade" : "Upgrade"
+            upgradeLabels[number].text = number <= currentPlan.rawValue ? NSLocalizedString("Downgrade", comment: "Plans button downgrade title") : NSLocalizedString("Upgrade", comment: "Plans button upgrade title")
             yourPlanLabels[number].isHidden = !isCurrentPlan
         }
     }
     
     fileprivate func showAlreadyYourPlanMessage() {
-        let alert = UIAlertController(title: "You already have this plan", message: "If you want to upgrade or downgrade your plan, please select relevant plan from the list", preferredStyle: .alert)
-        let ok = UIAlertAction(title: "Ok!", style: .default)
+        let alert = UIAlertController(title: NSLocalizedString("You already have this plan", comment: "Plans error title"), message: NSLocalizedString("If you want to upgrade or downgrade your plan, please select relevant plan from the list", comment: "Plans error message"), preferredStyle: .alert)
+        let ok = UIAlertAction(title: NSLocalizedString("Ok!", comment: "Plans error button title"), style: .default)
         { action in
             // do nothing
         }
@@ -177,8 +177,8 @@ class PlansController: UITableViewController, MFMailComposeViewControllerDelegat
     }
     
     fileprivate func showDemoMessage() {
-        let alert = UIAlertController(title: "Ouch!", message: "You cannot select plans in the demo account — please login with your own account to purchase a plan", preferredStyle: .alert)
-        let ok = UIAlertAction(title: "Ok!", style: .default)
+        let alert = UIAlertController(title: NSLocalizedString("Ouch!", comment: "Plans demo error title"), message: NSLocalizedString("You cannot select plans in the demo account — please login with your own account to purchase a plan", comment: "Plans demo error message"), preferredStyle: .alert)
+        let ok = UIAlertAction(title: NSLocalizedString("Ok!", comment: "Plans demo error button title"), style: .default)
         { action in
             // do nothing
         }
