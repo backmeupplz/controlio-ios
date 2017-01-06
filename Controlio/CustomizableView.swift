@@ -13,13 +13,13 @@ class CustomizableView: UIView {
 
     // MARK: - Variables -
     
-    @IBInspectable var cornerRadius: CGFloat = 0
-    @IBInspectable var shadowColor: UIColor = UIColor.black
-    @IBInspectable var shadowRadius: CGFloat = 0
-    @IBInspectable var shadowOpacity: Float = 0
-    @IBInspectable var shadowOffset: CGSize = CGSize.zero
-    @IBInspectable var borderWidth: CGFloat = 0
-    @IBInspectable var borderColor: UIColor = UIColor.clear
+//    @IBInspectable var cornerRadius: CGFloat = 0
+//    @IBInspectable var shadowColor: UIColor = UIColor.black
+//    @IBInspectable var shadowRadius: CGFloat = 0
+//    @IBInspectable var shadowOpacity: Float = 0
+//    @IBInspectable var shadowOffset: CGSize = CGSize.zero
+//    @IBInspectable var borderWidth: CGFloat = 0
+//    @IBInspectable var borderColor: UIColor = UIColor.clear
     
     // MARK: - View Life Cycle -
     
@@ -39,13 +39,13 @@ class CustomizableView: UIView {
     var once = true
     fileprivate func addShadow() {
         if once {
-            layer.shadowColor = shadowColor.cgColor
-            layer.shadowOffset = shadowOffset
-            layer.shadowRadius = shadowRadius
-            layer.shadowOpacity = shadowOpacity
-            layer.borderWidth = borderWidth
-            layer.borderColor = borderColor.cgColor
-            once = false
+//            layer.shadowColor = shadowColor.cgColor
+//            layer.shadowOffset = shadowOffset
+//            layer.shadowRadius = shadowRadius
+//            layer.shadowOpacity = shadowOpacity
+//            layer.borderWidth = borderWidth
+//            layer.borderColor = borderColor.cgColor
+//            once = false
         }
     }
     

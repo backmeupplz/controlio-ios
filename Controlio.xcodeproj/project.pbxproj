@@ -11,6 +11,7 @@
 		B301EFDD1CE59A0A0013CD4D /* UIImagePickerDelegate+UINavgiationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B301EFDC1CE59A0A0013CD4D /* UIImagePickerDelegate+UINavgiationControllerDelegate.swift */; };
 		B30A42161DA61FC6001FB870 /* MagicLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30A42151DA61FC6001FB870 /* MagicLinkViewController.swift */; };
 		B30A42181DA6319C001FB870 /* UIApplication+TopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30A42171DA6319C001FB870 /* UIApplication+TopVC.swift */; };
+		B33805C71E1F5BE70096B081 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33805C61E1F5BE70096B081 /* R.generated.swift */; };
 		B37630511CE28737004FE1B7 /* AttachmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37630501CE28737004FE1B7 /* AttachmentView.swift */; };
 		B37630531CE28741004FE1B7 /* AttachmentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B37630521CE28741004FE1B7 /* AttachmentView.xib */; };
 		B37630551CE28CA4004FE1B7 /* AttachmentContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37630541CE28CA4004FE1B7 /* AttachmentContainerView.swift */; };
@@ -65,7 +66,6 @@
 		B3C03D0E1C90D70A0096E04C /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C03D0D1C90D70A0096E04C /* GradientView.swift */; };
 		B3C03D101C90DAA60096E04C /* UIColor+Controlio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C03D0F1C90DAA60096E04C /* UIColor+Controlio.swift */; };
 		B3C03D121C90E6E70096E04C /* RoundedShadowedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C03D111C90E6E70096E04C /* RoundedShadowedButton.swift */; };
-		B3C03D141C90E90B0096E04C /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C03D131C90E90B0096E04C /* StartViewController.swift */; };
 		B3C03D171C90FEB70096E04C /* DemoAccountLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C03D161C90FEB70096E04C /* DemoAccountLanguage.swift */; };
 		B3C03D1A1C90FF890096E04C /* UIAlertController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C03D191C90FF890096E04C /* UIAlertController+Additions.swift */; };
 		B3C305A11CDFD79500C8E85F /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C305A01CDFD79500C8E85F /* SettingsController.swift */; };
@@ -123,6 +123,7 @@
 		B30A42151DA61FC6001FB870 /* MagicLinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagicLinkViewController.swift; sourceTree = "<group>"; };
 		B30A42171DA6319C001FB870 /* UIApplication+TopVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+TopVC.swift"; sourceTree = "<group>"; };
 		B32FE1C11DA301C6001A72B7 /* Controlio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Controlio.entitlements; sourceTree = "<group>"; };
+		B33805C61E1F5BE70096B081 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		B37630501CE28737004FE1B7 /* AttachmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentView.swift; sourceTree = "<group>"; };
 		B37630521CE28741004FE1B7 /* AttachmentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttachmentView.xib; sourceTree = "<group>"; };
 		B37630541CE28CA4004FE1B7 /* AttachmentContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentContainerView.swift; sourceTree = "<group>"; };
@@ -179,7 +180,6 @@
 		B3C03D0D1C90D70A0096E04C /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		B3C03D0F1C90DAA60096E04C /* UIColor+Controlio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Controlio.swift"; sourceTree = "<group>"; };
 		B3C03D111C90E6E70096E04C /* RoundedShadowedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedShadowedButton.swift; sourceTree = "<group>"; };
-		B3C03D131C90E90B0096E04C /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		B3C03D161C90FEB70096E04C /* DemoAccountLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoAccountLanguage.swift; sourceTree = "<group>"; };
 		B3C03D191C90FF890096E04C /* UIAlertController+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Additions.swift"; sourceTree = "<group>"; };
 		B3C305A01CDFD79500C8E85F /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
@@ -358,6 +358,7 @@
 				B3B2B9331C90CD1600468342 /* Assets.xcassets */,
 				B3B2B9381C90CD1600468342 /* Info.plist */,
 				B3F303A51DAF53B600535FCD /* Localizable.strings */,
+				B33805C61E1F5BE70096B081 /* R.generated.swift */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -455,11 +456,10 @@
 		B3E634D81C914D2C00C0572A /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				B3C03D131C90E90B0096E04C /* StartViewController.swift */,
+				B30A42151DA61FC6001FB870 /* MagicLinkViewController.swift */,
 				B3AA2F901C9110EF00FE7E54 /* SignUpViewController.swift */,
 				B3AA2F921C9110FE00FE7E54 /* LogInViewController.swift */,
 				B3E634D41C91444700C0572A /* RecoveryViewController.swift */,
-				B30A42151DA61FC6001FB870 /* MagicLinkViewController.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -519,6 +519,7 @@
 			buildConfigurationList = B3B2B93B1C90CD1600468342 /* Build configuration list for PBXNativeTarget "Controlio" */;
 			buildPhases = (
 				E9B4A12B8FD7D9E157367305 /* [CP] Check Pods Manifest.lock */,
+				B33805C41E1F5B5A0096B081 /* ShellScript */,
 				B3B2B9251C90CD1600468342 /* Sources */,
 				B3B2B9261C90CD1600468342 /* Frameworks */,
 				B3B2B9271C90CD1600468342 /* Resources */,
@@ -541,7 +542,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Nikita Kolmogorov";
 				TargetAttributes = {
 					B3B2B9281C90CD1600468342 = {
@@ -650,6 +651,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Controlio/Pods-Controlio-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B33805C41E1F5B5A0096B081 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" \"$SRCROOT\"";
+		};
 		E9B4A12B8FD7D9E157367305 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -713,6 +727,7 @@
 				B3C305B01CDFFB5900C8E85F /* PostCell.swift in Sources */,
 				B3C305A31CDFE06200C8E85F /* ProjectController.swift in Sources */,
 				B3AA2F8F1C910ACC00FE7E54 /* RoundedBorderedTextField.swift in Sources */,
+				B33805C71E1F5BE70096B081 /* R.generated.swift in Sources */,
 				B3D8C6F81CFBFD7E001EE432 /* NSUserDefaults+extensions.swift in Sources */,
 				B3E57BF11D9602DB00F699F1 /* AddManagerCell.swift in Sources */,
 				B390C7A51CDE9B5400D5F021 /* IndexPath+Additions.swift in Sources */,
@@ -722,7 +737,6 @@
 				B3C35B121DB9E50C00F941F8 /* FeatureList.swift in Sources */,
 				B3E634E11C915B9300C0572A /* UISearchBar+CursorTint.swift in Sources */,
 				B3E815791CE1566900E8F87B /* NewProjectCell.swift in Sources */,
-				B3C03D141C90E90B0096E04C /* StartViewController.swift in Sources */,
 				B3D1692C1CDDA5950080D748 /* PopupNotification.swift in Sources */,
 				B3FFC6C91CE69D6700595E85 /* CustomSearchController.swift in Sources */,
 				B3C03D101C90DAA60096E04C /* UIColor+Controlio.swift in Sources */,
@@ -841,7 +855,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -889,7 +903,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -931,7 +945,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 78CB8BDD8D1FD1F9D323F17C /* Pods-Controlio.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -954,7 +968,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9E0CE87DC6458B1EA1E9217C /* Pods-Controlio.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;

@@ -17,4 +17,6 @@ target 'Controlio' do
     pod 'CLTokenInputView', :git => 'https://github.com/backmeupplz/CLTokenInputView.git'
     pod 'UIScrollView-InfiniteScroll'
     pod 'SKPhotoBrowser', :git => 'https://github.com/backmeupplz/SKPhotoBrowser.git', :branch => 'swift3'
+    pod 'Material', '~> 2.0'
+    pod 'R.swift'
 end

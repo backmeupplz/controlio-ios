@@ -7,80 +7,61 @@
 //
 
 import UIKit
+import Material
 
-class MagicLinkViewController: UIViewController, UITextFieldDelegate {
+class MagicLinkViewController: UIViewController {
     
     // MARK: - Outlets -
     
-    @IBOutlet weak var emailTextField: RoundedBorderedTextField!
-    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    @IBOutlet weak var emailTextField: ErrorTextField!
     
-    @IBOutlet weak var magicLinkButton: RoundedShadowedButton!
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var signupButton: UIButton!
+    // MARK: - View Controller life cycle
     
-    // MARK: - Actions -
-
-    @IBAction func magicLinkTouched(_ sender: AnyObject) {
-        sendMagicLink()
-    }
-    
-    @IBAction func loginTouched(_ sender: AnyObject) {
-        Router(self).showLogIn()
-    }
-    
-    @IBAction func signupTouched(_ sender: AnyObject) {
-        Router(self).showSignUp()
-    }
-    
-    // MARK: - UITextFieldDelegate -
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        magicLinkTouched(magicLinkButton)
-        return false
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setup()
     }
     
     // MARK: - Private functions -
     
-    fileprivate func sendMagicLink() {
-        var success = true
-        if emailTextField.text == "" || !(emailTextField.text?.isEmail ?? false) {
-            emailTextField.shake()
-            success = false
-        }
-        if !success { return }
-        
-        enable(ui: false)
-        
-        Server.requestMagicLink(emailTextField.text!)
-        { error in
-            self.enable(ui: true)
-            if let error = error {
-                PopupNotification.show(notification: error.domain)
-            } else {
-                let alert = UIAlertController(title: NSLocalizedString("Success!", comment: "Magic link alert title"), message: NSLocalizedString("We have sent you a magic link to login. Please, check your inbox!", comment: "Magic link alert message"), preferredStyle: .alert)
-                let ok = UIAlertAction(title: NSLocalizedString("Ok!", comment: "Magic link alert button"), style: .default)
-                { action in
-                    // Do nothing
-                }
-                alert.addAction(ok)
-                self.present(alert, animated: true, completion: nil)
-            }
-        }
+    // Mark: Setting up views
+    
+    fileprivate func setup() {
+        setupEmailTextField()
     }
     
-    fileprivate func enable(ui: Bool) {
-        emailTextField.isEnabled = ui
-        spinner.isHidden = ui
-        magicLinkButton.isEnabled = ui
-        loginButton.isEnabled = ui
-        signupButton.isEnabled = ui
+    fileprivate func setupEmailTextField() {
+        emailTextField.placeholder = "Email"
+        emailTextField.detail = "Some string"
+        
+        emailTextField.returnKeyType = .continue
+        
+        emailTextField.placeholderNormalColor = Color.init(white: 1.0, alpha: 0.5)
+        emailTextField.placeholderActiveColor = Color.white
+        emailTextField.dividerNormalColor = Color.white
+        emailTextField.dividerActiveColor = Color.white
+        
+        emailTextField.delegate = self
+    }
+    
+    // Mark: Other
+    
+    fileprivate func sendMagicLink() {
+        
     }
     
     // MARK: - Status Bar -
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .lightContent
+    }
+}
+
+extension MagicLinkViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return false
     }
 }
