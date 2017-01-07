@@ -3098,14 +3098,13 @@ struct _R: Rswift.Validatable {
       typealias InitialController = CustomNavigationController
       
       let bundle = R.hostingBundle
-      let logInViewController = StoryboardViewControllerResource<LogInViewController>(identifier: "LogInViewController")
+      let loginViewController = StoryboardViewControllerResource<LoginViewController>(identifier: "LoginViewController")
       let magicLinkViewController = StoryboardViewControllerResource<MagicLinkViewController>(identifier: "MagicLinkViewController")
       let name = "Login"
       let recoveryViewController = StoryboardViewControllerResource<RecoveryViewController>(identifier: "RecoveryViewController")
-      let signUpViewController = StoryboardViewControllerResource<SignUpViewController>(identifier: "SignUpViewController")
       
-      func logInViewController(_: Void = ()) -> LogInViewController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: logInViewController)
+      func loginViewController(_: Void = ()) -> LoginViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: loginViewController)
       }
       
       func magicLinkViewController(_: Void = ()) -> MagicLinkViewController? {
@@ -3116,16 +3115,11 @@ struct _R: Rswift.Validatable {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: recoveryViewController)
       }
       
-      func signUpViewController(_: Void = ()) -> SignUpViewController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: signUpViewController)
-      }
-      
       static func validate() throws {
         if UIKit.UIImage(named: "logo") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'logo' is used in storyboard 'Login', but couldn't be loaded.") }
-        if _R.storyboard.login().signUpViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'signUpViewController' could not be loaded from storyboard 'Login' as 'SignUpViewController'.") }
-        if _R.storyboard.login().logInViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'logInViewController' could not be loaded from storyboard 'Login' as 'LogInViewController'.") }
-        if _R.storyboard.login().magicLinkViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'magicLinkViewController' could not be loaded from storyboard 'Login' as 'MagicLinkViewController'.") }
         if _R.storyboard.login().recoveryViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'recoveryViewController' could not be loaded from storyboard 'Login' as 'RecoveryViewController'.") }
+        if _R.storyboard.login().magicLinkViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'magicLinkViewController' could not be loaded from storyboard 'Login' as 'MagicLinkViewController'.") }
+        if _R.storyboard.login().loginViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'loginViewController' could not be loaded from storyboard 'Login' as 'LoginViewController'.") }
       }
       
       fileprivate init() {}
