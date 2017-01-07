@@ -34,8 +34,17 @@ class RecoveryViewController: UIViewController {
     
     @IBAction func resetTouched(_ sender: Any) {
         if emailTextField.text?.isEmail ?? false {
-            resetUI()
-            print("should try resetting password")
+            emailTextField.isErrorRevealed = false
+            enable(ui: false)
+            Server.recoverPassword(emailTextField.text ?? "")
+            { error in
+                self.enable(ui: true)
+                if let error = error {
+                    self.snackbarController?.show(error: error.localizedDescription)
+                } else {
+                    self.snackbarController?.show(text: "Check your inbox. Reset password link is on it's way!")
+                }
+            }
         } else {
             emailTextField.isErrorRevealed = true
             emailTextField.shake()
@@ -47,6 +56,7 @@ class RecoveryViewController: UIViewController {
     fileprivate func enable(ui enable: Bool) {
         [backButton, emailTextField, resetButton]
             .forEach { $0.isEnabled = enable }
+        spinner.isHidden = enable
     }
     
     fileprivate func resetUI() {
