@@ -7,41 +7,94 @@
 //
 
 import UIKit
+import Material
 
 class RecoveryViewController: UIViewController {
     
     // MARK: - Outlets -
     
-    @IBOutlet weak var textField: RoundedBorderedTextField!
-    @IBOutlet weak var spinner: UIActivityIndicatorView!
-    @IBOutlet weak var recoverButton: RoundedShadowedButton!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var emailTextField: ErrorTextField!
+    @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
+    // MARK: - View Controller life cycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setup()
+    }
     
     // MARK: - Actions -
     
-    @IBAction func recoverTouched(_ sender: AnyObject) {
-        checkTextFields()
-    }
-    
-    @IBAction func backTouched(_ sender: AnyObject) {
+    @IBAction func backTouched(_ sender: Any) {
         let _ = navigationController?.popViewController(animated: true)
     }
     
-    // MARK: - Private Function -
-    
-    fileprivate func checkTextFields() {
+    @IBAction func resetTouched(_ sender: Any) {
+        if emailTextField.text?.isEmail ?? false {
+            resetUI()
+            print("should try resetting password")
+        } else {
+            emailTextField.isErrorRevealed = true
+            emailTextField.shake()
+        }
     }
     
-    fileprivate func enable(ui: Bool) {
-        textField.isEnabled = ui
-        spinner.isHidden = ui
-        recoverButton.isEnabled = ui
-        backButton.isEnabled = ui
+    // MARK: - Private functions -
+    
+    fileprivate func enable(ui enable: Bool) {
+        [backButton, emailTextField, resetButton]
+            .forEach { $0.isEnabled = enable }
+    }
+    
+    fileprivate func resetUI() {
+        emailTextField.text = ""
+        emailTextField.isErrorRevealed = false
+    }
+    
+    // Mark: Setting up views
+    
+    fileprivate func setup() {
+        setupBackButton()
+        setupEmailTextField()
+    }
+    
+    fileprivate func setupBackButton() {
+        backButton.setImage(Icon.arrowBack, for: .normal)
+    }
+    
+    fileprivate func setupEmailTextField() {
+        emailTextField.placeholder = "Email"
+        emailTextField.detail = "Should be a valid email"
+        
+        emailTextField.returnKeyType = .continue
+        
+        emailTextField.placeholderNormalColor = Color.init(white: 1.0, alpha: 0.5)
+        emailTextField.placeholderActiveColor = Color.white
+        emailTextField.dividerNormalColor = Color.white
+        emailTextField.dividerActiveColor = Color.white
+        
+        emailTextField.textColor = Color.white
+        emailTextField.detailColor = Color.white
+        
+        emailTextField.keyboardType = .emailAddress
+        
+        emailTextField.delegate = self
     }
     
     // MARK: - Status Bar -
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .lightContent
+    }
+}
+
+extension RecoveryViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        resetTouched(resetButton)
+        return false
     }
 }
