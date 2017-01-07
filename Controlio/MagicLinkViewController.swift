@@ -32,8 +32,17 @@ class MagicLinkViewController: UIViewController {
     
     @IBAction func magicLinkTouched(_ sender: Any) {
         if emailTextField.text?.isEmail ?? false {
-            resetUI()
-            print("should try sending email to server")
+            emailTextField.isErrorRevealed = false
+            enable(ui: false)
+            Server.requestMagicLink(emailTextField.text ?? "")
+            { error in
+                self.enable(ui: true)
+                if let error = error {
+                    self.snackbarController?.show(error: error.localizedDescription)
+                } else {
+                    self.snackbarController?.show(text: "Check your inbox. Magic link is on it's way!")
+                }
+            }
         } else {
             emailTextField.isErrorRevealed = true
             emailTextField.shake()
@@ -53,6 +62,7 @@ class MagicLinkViewController: UIViewController {
     fileprivate func enable(ui enable: Bool) {
         [emailTextField, magicLinkButton, demoButton, loginButton]
             .forEach { $0.isEnabled = enable }
+        spinner.isHidden = enable
     }
     
     fileprivate func resetUI() {

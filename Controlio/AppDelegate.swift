@@ -11,6 +11,7 @@ import UserNotifications
 import MBProgressHUD
 import CLTokenInputView
 import Stripe
+import Material
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Application Life Cycle -
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        configureVCs()
         configureStripe()
         S3.setup()
         setupPushNotifications(application: application)
@@ -31,6 +33,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // MARK: - Private Functions -
+    
+    fileprivate func configureVCs() {
+        window = UIWindow(frame: Screen.bounds)
+        window!.rootViewController = AppSnackbarController(rootViewController: R.storyboard.login.instantiateInitialViewController()!)
+        window!.makeKeyAndVisible()
+    }
     
     fileprivate func configureStripe() {
         STPPaymentConfiguration.shared().publishableKey = "pk_test_QUk0bgtsbIfR67SVr0EHnIpx"

@@ -63,7 +63,7 @@
                                 </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I53-mO-5r4" userLabel="Password Recovery Button">
-                                <rect key="frame" x="112.5" y="481.5" width="150" height="29"/>
+                                <rect key="frame" x="113" y="482" width="150" height="29"/>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="14"/>
                                 <state key="normal" title="Forgot your password?">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -76,7 +76,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aKg-Vx-Sb5" customClass="ErrorTextField" customModule="Material">
-                                <rect key="frame" x="67.5" y="157.5" width="240" height="32"/>
+                                <rect key="frame" x="68" y="158" width="240" height="32"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="Gdy-C5-iQ2"/>
@@ -84,14 +84,14 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cR8-6v-WyG" customClass="TextField" customModule="Material">
-                                <rect key="frame" x="67.5" y="245.5" width="240" height="32"/>
+                                <rect key="frame" x="68" y="246" width="240" height="32"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="vkF-Us-2IS"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sDY-iN-Rao" userLabel="Sign Up Button">
-                                <rect key="frame" x="67.5" y="421.5" width="240" height="53"/>
+                                <rect key="frame" x="68" y="422" width="240" height="53"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="53" id="6gA-Y6-u5P"/>
@@ -124,11 +124,11 @@
                                     <action selector="signupTouched:" destination="nJx-q4-SDZ" eventType="touchUpInside" id="5vZ-FJ-9d0"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Odw-qD-P9E">
-                                <rect key="frame" x="315.5" y="429.5" width="37" height="37"/>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Odw-qD-P9E">
+                                <rect key="frame" x="316" y="430" width="37" height="37"/>
                             </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uZY-Vf-ALv" customClass="ErrorTextField" customModule="Material">
-                                <rect key="frame" x="67.5" y="333.5" width="240" height="32"/>
+                                <rect key="frame" x="68" y="334" width="240" height="32"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="oer-y8-pzV"/>
@@ -258,7 +258,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="DRh-ID-Pol">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="DRh-ID-Pol">
                                 <rect key="frame" x="311" y="378" width="37" height="37"/>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XjF-Aa-CwF" userLabel="Sign Up Button">
@@ -369,7 +369,7 @@
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Chm-Ug-DPC" userLabel="Sign Up Button">
-                                <rect key="frame" x="67.5" y="401" width="240" height="53"/>
+                                <rect key="frame" x="68" y="401" width="240" height="53"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="Bhf-Cf-xeJ"/>
@@ -404,7 +404,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uUq-DV-nuG" userLabel="Demo Account Button">
-                                <rect key="frame" x="62.5" y="462" width="250" height="29"/>
+                                <rect key="frame" x="63" y="462" width="250" height="29"/>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="14"/>
                                 <state key="normal" title="Want to see how Controlio works first?">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -430,29 +430,29 @@
                                 </connections>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="swI-iF-Pq9">
-                                <rect key="frame" x="315.5" y="409" width="37" height="37"/>
+                                <rect key="frame" x="316" y="409" width="37" height="37"/>
                             </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xe3-Zd-YZF" customClass="ErrorTextField" customModule="Material">
-                                <rect key="frame" x="67.5" y="337" width="240" height="32"/>
+                                <rect key="frame" x="68" y="337" width="240" height="32"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="Euo-rO-NEH"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Magic link" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nrX-p8-eFI" userLabel="Sign Up Title">
-                                <rect key="frame" x="116" y="247" width="143" height="41"/>
+                                <rect key="frame" x="116" y="247" width="144" height="41"/>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Light" family="SF UI Display" pointSize="34"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use it to login" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CpF-ue-2fx">
-                                <rect key="frame" x="147.5" y="296" width="80" height="17"/>
+                                <rect key="frame" x="148" y="296" width="80" height="17"/>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Light" family="SF UI Display" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Up5-ic-yDH" userLabel="Logo">
-                                <rect key="frame" x="126.5" y="160" width="122" height="79"/>
+                                <rect key="frame" x="127" y="160" width="122" height="79"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="122" id="Jpc-8T-3j0"/>
                                     <constraint firstAttribute="height" constant="79" id="nws-x6-5O9"/>
