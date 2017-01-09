@@ -89,7 +89,7 @@ class LoginViewController: UIViewController {
                 { error in
                     self.enable(ui: true)
                     if let error = error {
-                        self.snackbarController?.show(error: error.localizedDescription)
+                        self.snackbarController?.show(error: error.domain)
                     } else {
                         self.resetUI()
                         Router(self).showMain()
@@ -100,7 +100,7 @@ class LoginViewController: UIViewController {
                 { error in
                     self.enable(ui: true)
                     if let error = error {
-                        self.snackbarController?.show(error: error.localizedDescription)
+                        self.snackbarController?.show(error: error.domain)
                     } else {
                         self.resetUI()
                         Router(self).showMain()

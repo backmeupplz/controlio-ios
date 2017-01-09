@@ -41,7 +41,7 @@ class MagicLinkViewController: UIViewController {
             { error in
                 self.enable(ui: true)
                 if let error = error {
-                    self.snackbarController?.show(error: error.localizedDescription)
+                    self.snackbarController?.show(error: error.domain)
                 } else {
                     self.snackbarController?.show(text: "Check your inbox. Magic link is on it's way!")
                 }

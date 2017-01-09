@@ -11,6 +11,7 @@ import Material
 
 protocol EditProfileCellDelegate: class {
     func editPhotoTouched(sender: UIView)
+    func saveTouched()
 }
 
 class EditProfileCell: UITableViewCell {
@@ -40,9 +41,56 @@ class EditProfileCell: UITableViewCell {
         delegate?.editPhotoTouched(sender: sender as! UIView)
     }
     
+    // MARK: - View Life Cycle -
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        setup()
+    }
+    
     // MARK: - Private functions -
     
-    func configure() {
+    fileprivate func setup() {
+        setupNameTextField()
+        setupEmailTextField()
+        setupPhoneTextField()
+    }
+    
+    fileprivate func setupNameTextField() {
+        nameTextfield.placeholder = "Name"
+        nameTextfield.returnKeyType = .continue
+        nameTextfield.keyboardType = .default
+        nameTextfield.delegate = self
+        nameTextfield.tintColor = Color.controlioGreen()
+        nameTextfield.dividerActiveColor = Color.controlioGreen()
+        nameTextfield.placeholderActiveColor = Color.controlioGreen()
+        nameTextfield.autocapitalizationType = .words
+    }
+    
+    fileprivate func setupEmailTextField() {
+        emailTextfield.placeholder = "Email"
+        emailTextfield.detail = "You cannot change the email yet"
+        emailTextfield.returnKeyType = .continue
+        emailTextfield.keyboardType = .emailAddress
+        emailTextfield.isEnabled = false
+        emailTextfield.delegate = self
+        emailTextfield.tintColor = Color.controlioGreen()
+        emailTextfield.dividerActiveColor = Color.controlioGreen()
+        emailTextfield.placeholderActiveColor = Color.controlioGreen()
+    }
+    
+    fileprivate func setupPhoneTextField() {
+        phoneTextfield.placeholder = "Phone"
+        phoneTextfield.detail = "Visible to your clients and project managers"
+        phoneTextfield.returnKeyType = .done
+        phoneTextfield.keyboardType = .phonePad
+        phoneTextfield.delegate = self
+        phoneTextfield.tintColor = Color.controlioGreen()
+        phoneTextfield.dividerActiveColor = Color.controlioGreen()
+        phoneTextfield.placeholderActiveColor = Color.controlioGreen()
+    }
+    
+    fileprivate func configure() {
         guard let user = user else { return }
         
         if let image = user.tempProfileImage {
@@ -62,5 +110,22 @@ class EditProfileCell: UITableViewCell {
         nameTextfield.text = user.name
         emailTextfield.text = user.email
         phoneTextfield.text = user.phone
+    }
+}
+
+extension EditProfileCell: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let textFields: [TextField] = [emailTextfield, phoneTextfield]
+        if let last = textFields.last,
+            let textField = textField as? TextField {
+            if textField == last {
+                textField.resignFirstResponder()
+                delegate?.saveTouched()
+            } else {
+                let index = textFields.index(of: textField) ?? 0
+                textFields[index + 1].becomeFirstResponder()
+            }
+        }
+        return false
     }
 }

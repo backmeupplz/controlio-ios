@@ -16,10 +16,24 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
     var user: User!
     let imagePicker = UIImagePickerController()
     
+    // MARK: - View Controller Life Cycle -
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        loadData()
+        setupTableView()
+        addRefreshControl()
+        setupBackButton()
+        setupImagePicker()
+    }
+    
     // MARK: - Actions -
     
     @IBAction func saveTouched(_ sender: AnyObject) {
-        let hud = MBProgressHUD.showAdded(to: view, animated: false)
+        view.endEditing(true)
+        
+        guard let hud = MBProgressHUD.show() else { return }
         
         let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! EditProfileCell
         var name = cell.nameTextfield.text
@@ -46,9 +60,9 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
                     { error in
                         hud.hide(animated: true)
                         if let error = error {
-                            PopupNotification.show(notification: error.domain)
+                            self.snackbarController?.show(error: error.domain)
                         } else {
-                            let _ = self.navigationController?.popViewController(animated: true)
+                            self.snackbarController?.show(text: "Your profile has been updated")
                         }
                     }
                 }
@@ -59,24 +73,12 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
             { error in
                 hud.hide(animated: true)
                 if let error = error {
-                    PopupNotification.show(notification: error.domain)
+                    self.snackbarController?.show(error: error.domain)
                 } else {
-                    let _ = self.navigationController?.popViewController(animated: true)
+                    self.snackbarController?.show(text: "Your profile has been updated")
                 }
             }
         }
-    }
-    
-    // MARK: - View Controller Life Cycle -
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        loadData()
-        setupTableView()
-        addRefreshControl()
-        setupBackButton()
-        setupImagePicker()
     }
     
     // MARK: - UITableViewDataSource -
@@ -131,6 +133,10 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
         present(alert, animated: true, completion: nil)
     }
     
+    func saveTouched() {
+        saveTouched(self)
+    }
+    
     // MARK: - UIImagePickerControllerDelegate -
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -144,10 +150,11 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
     // MARK: - Functions -
     
     func loadData() {
+        self.refreshControl?.beginRefreshing()
         Server.getProfile
         { error, user in
             if let error = error {
-                PopupNotification.show(notification: error.domain)
+                self.snackbarController?.show(error: error.domain)
             } else {
                 self.user = user
                 self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)

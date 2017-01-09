@@ -12,6 +12,7 @@
 		B30A42161DA61FC6001FB870 /* MagicLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30A42151DA61FC6001FB870 /* MagicLinkViewController.swift */; };
 		B30A42181DA6319C001FB870 /* UIApplication+TopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30A42171DA6319C001FB870 /* UIApplication+TopVC.swift */; };
 		B33805C71E1F5BE70096B081 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33805C61E1F5BE70096B081 /* R.generated.swift */; };
+		B33EBFCE1E23FD3B00703285 /* MBProgressHUD+Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33EBFCD1E23FD3B00703285 /* MBProgressHUD+Window.swift */; };
 		B37630511CE28737004FE1B7 /* AttachmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37630501CE28737004FE1B7 /* AttachmentView.swift */; };
 		B37630531CE28741004FE1B7 /* AttachmentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B37630521CE28741004FE1B7 /* AttachmentView.xib */; };
 		B37630551CE28CA4004FE1B7 /* AttachmentContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37630541CE28CA4004FE1B7 /* AttachmentContainerView.swift */; };
@@ -120,6 +121,7 @@
 		B30A42171DA6319C001FB870 /* UIApplication+TopVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+TopVC.swift"; sourceTree = "<group>"; };
 		B32FE1C11DA301C6001A72B7 /* Controlio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Controlio.entitlements; sourceTree = "<group>"; };
 		B33805C61E1F5BE70096B081 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		B33EBFCD1E23FD3B00703285 /* MBProgressHUD+Window.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MBProgressHUD+Window.swift"; sourceTree = "<group>"; };
 		B37630501CE28737004FE1B7 /* AttachmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentView.swift; sourceTree = "<group>"; };
 		B37630521CE28741004FE1B7 /* AttachmentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttachmentView.xib; sourceTree = "<group>"; };
 		B37630541CE28CA4004FE1B7 /* AttachmentContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentContainerView.swift; sourceTree = "<group>"; };
@@ -495,6 +497,7 @@
 			children = (
 				B3FEB8431C9630BA0048B688 /* UIImageView+BeautifulWebImage.swift */,
 				B3C03D191C90FF890096E04C /* UIAlertController+Additions.swift */,
+				B33EBFCD1E23FD3B00703285 /* MBProgressHUD+Window.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -702,6 +705,7 @@
 				B3E634D51C91444700C0572A /* RecoveryViewController.swift in Sources */,
 				B3FEB83F1C9630290048B688 /* ProjectCell.swift in Sources */,
 				B3D8C6FA1CFC0A78001EE432 /* S3.swift in Sources */,
+				B33EBFCE1E23FD3B00703285 /* MBProgressHUD+Window.swift in Sources */,
 				B37630551CE28CA4004FE1B7 /* AttachmentContainerView.swift in Sources */,
 				B3FFC6C71CE6894C00595E85 /* CustomNavigationController.swift in Sources */,
 				B3E634DF1C91514D00C0572A /* ProjectsController.swift in Sources */,

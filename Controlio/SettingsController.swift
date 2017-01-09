@@ -23,12 +23,6 @@ class SettingsController: UITableViewController, STPPaymentContextDelegate {
         setupBackButton()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        tableView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -55,7 +49,7 @@ class SettingsController: UITableViewController, STPPaymentContextDelegate {
     }
     func paymentContext(_ paymentContext: STPPaymentContext, didFinishWith status: STPPaymentStatus, error: Error?) {
         
-        print(error)
+        print(error ?? "Payment context error")
     }
     func paymentContext(_ paymentContext: STPPaymentContext, didFailToLoadWithError error: Error) {
         
@@ -102,12 +96,12 @@ class SettingsController: UITableViewController, STPPaymentContextDelegate {
     
     fileprivate func showTermsOfUse() {
         let svc = SFSafariViewController(url: URL(string: "https://google.com")!)
-        self.present(svc, animated: true, completion: nil)
+        present(svc, animated: true, completion: nil)
     }
     
     fileprivate func showPrivacyPolicy() {
         let svc = SFSafariViewController(url: URL(string: "https://facebook.com")!)
-        self.present(svc, animated: true, completion: nil)
+        present(svc, animated: true, completion: nil)
     }
     
     fileprivate func showPaymentMethods() {
@@ -124,7 +118,7 @@ class SettingsController: UITableViewController, STPPaymentContextDelegate {
     }
     
     fileprivate func showDemoMessage() {
-        let alert = UIAlertController(title: NSLocalizedString("Ouch!", comment:"Demo error title"), message: NSLocalizedString("You cannot select payment methods in the demo account — please login with your own account to do so", comment:"Demo error message"), preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString("Ouch!", comment:"Demo error title"), message: NSLocalizedString("You cannot select payment methods in the demo account — please login with your own account to do so", comment: "Demo error message"), preferredStyle: .alert)
         let ok = UIAlertAction(title: NSLocalizedString("Ok!", comment:"Demo error ok button"), style: .default)
         { action in
             if let ip = self.tableView.indexPathForSelectedRow {
