@@ -9,7 +9,6 @@ target 'Controlio' do
     pod 'SwiftyJSON'
     pod 'SDWebImage', '~> 3.7'
     pod 'SnapKit', '~> 3.0'
-    pod 'IQKeyboardManagerSwift', '~> 4.0'
     pod 'UITextField+Shake', '~> 1.1'
     pod 'SlackTextViewController'
     pod 'AWSS3', '~> 2.3.3'

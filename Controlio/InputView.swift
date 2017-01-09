@@ -258,7 +258,7 @@ class InputView: UIView, AttachmentContainerViewDelegate, CLTokenInputViewDelega
     
     fileprivate func contactAddButton() -> UIButton {
         let contactAddButton = UIButton(type: .contactAdd)
-        contactAddButton.addTarget(self, action: #selector(NewProjectCell.addTokenTouched), for: .touchUpInside)
+        contactAddButton.addTarget(self, action: #selector(InputView.addTokenTouched), for: .touchUpInside)
         return contactAddButton
     }
     

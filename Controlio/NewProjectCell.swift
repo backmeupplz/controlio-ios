@@ -7,15 +7,15 @@
 //
 
 import UIKit
-import CLTokenInputView
+import Material
 
 protocol NewProjectCellDelegate: class {
     func editPhotoTouched(sender: UIView)
-    func chooseManagerTouched()
+    func choosePeopleTouched()
     func createTouched()
 }
 
-class NewProjectCell: UITableViewCell, UITextFieldDelegate, CLTokenInputViewDelegate {
+class NewProjectCell: UITableViewCell {
     
     // MARK: - Variables -
     
@@ -27,60 +27,21 @@ class NewProjectCell: UITableViewCell, UITextFieldDelegate, CLTokenInputViewDele
     @IBOutlet weak var cameraImage: UIImageView!
     @IBOutlet weak var photoLabel: UILabel!
     
-    @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var initialStatusTextField: UITextField!
-    @IBOutlet weak var descriptionTextField: UITextField!
-    @IBOutlet weak var clientEmailsTokenView: CLTokenInputView!
-    
-    @IBOutlet weak var managerPhotoImage: UIImageView!
-    @IBOutlet weak var managerTitleLabel: UILabel!
-    @IBOutlet weak var chooseManagerButton: UIButton!
-    @IBOutlet weak var chooseManagerBackgroundButton: UIButton!
-    
-    @IBOutlet weak var detailDisclosureImage: UIImageView!
+    @IBOutlet weak var typePicker: UISegmentedControl!
+    @IBOutlet weak var titleTextField: TextField!
+    @IBOutlet weak var descriptionTextField: TextField!
+    @IBOutlet weak var initialStatusTextField: TextField!
+    @IBOutlet weak var peopleTextField: TextField!
+    @IBOutlet weak var peopleButton: UIButton!
     
     @IBOutlet weak var createButton: UIButton!
-    
-    // MARK: - UITextFieldDelegate -
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return false
-    }
-    
-    // MARK: - CLTokenInputViewDelegate -
-    
-    func tokenInputView(_ view: CLTokenInputView, didChangeText text: String?) {
-        
-    }
-    
-    func tokenInputView(_ view: CLTokenInputView, didAdd token: CLToken) {
-        setNeedsLayout()
-    }
-    
-    func tokenInputView(_ view: CLTokenInputView, didRemove token: CLToken) {
-        setNeedsLayout()
-    }
-    
-    func tokenInputViewDidEndEditing(_ view: CLTokenInputView) {
-        view.accessoryView = nil
-    }
-    
-    func tokenInputViewDidBeginEditing(_ view: CLTokenInputView) {
-        view.accessoryView = contactAddButton()
-    }
-    
-    func tokenInputViewShouldReturn(_ view: CLTokenInputView) -> Bool {
-        addTokenTouched()
-        return false
-    }
     
     // MARK: - View Life Cycle -
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        setupTokenInputView()
+        setup()
     }
     
     // MARK: - Actions -
@@ -89,35 +50,96 @@ class NewProjectCell: UITableViewCell, UITextFieldDelegate, CLTokenInputViewDele
         delegate?.editPhotoTouched(sender: sender as! UIView)
     }
     
-    @IBAction func chooseManagerTouched(_ sender: AnyObject) {
-        delegate?.chooseManagerTouched()
+    @IBAction func typePicked(_ sender: UISegmentedControl) {
+        
+    }
+    
+    @IBAction func choosePeopleTouched(_ sender: AnyObject) {
+        delegate?.choosePeopleTouched()
     }
     
     @IBAction func createTouched(_ sender: AnyObject) {
         delegate?.createTouched()
     }
     
-    func addTokenTouched() {
-        let text = clientEmailsTokenView.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) ?? ""
-        if !text.isEmpty && text.isEmail {
-            let token = CLToken(displayText: text, context: nil)
-            clientEmailsTokenView.add(token)
-        } else {
-            PopupNotification.show(notification: NSLocalizedString("Please provide a valid email", comment: "Error"))
-        }
-    }
-    
     // MARK: - Private functions -
     
-    fileprivate func setupTokenInputView() {
-        clientEmailsTokenView.tintColor = UIColor.controlioGreen()
-        clientEmailsTokenView.placeholderText = NSLocalizedString("Client emails", comment: "Token input view placeholder")
-        clientEmailsTokenView.textField.font = UIFont(name: "SFUIText-Regular", size: 14)
+    fileprivate func setup() {
+        setupTitleTextField()
+        setupDescriptionTextField()
+        setupInitialStatusTextField()
+        setupPeopleTextField()
     }
     
-    fileprivate func contactAddButton() -> UIButton {
-        let contactAddButton = UIButton(type: .contactAdd)
-        contactAddButton.addTarget(self, action: #selector(NewProjectCell.addTokenTouched), for: .touchUpInside)
-        return contactAddButton
+    fileprivate func setupTitleTextField() {
+        titleTextField.placeholder = "* Project title"
+        titleTextField.detail = "How will you name your project?"
+        
+        titleTextField.returnKeyType = .next
+        
+        titleTextField.dividerActiveColor = Color.controlioGreen()
+        titleTextField.placeholderActiveColor = Color.controlioGreen()
+        titleTextField.autocapitalizationType = .sentences
+        titleTextField.backgroundColor = Color.clear
+        
+        titleTextField.delegate = self
+    }
+    
+    fileprivate func setupDescriptionTextField() {
+        descriptionTextField.placeholder = "Project description"
+        descriptionTextField.detail = "What is your project about?"
+        
+        descriptionTextField.returnKeyType = .next
+        
+        descriptionTextField.dividerActiveColor = Color.controlioGreen()
+        descriptionTextField.placeholderActiveColor = Color.controlioGreen()
+        descriptionTextField.autocapitalizationType = .sentences
+        descriptionTextField.backgroundColor = Color.clear
+        
+        descriptionTextField.delegate = self
+    }
+    
+    fileprivate func setupInitialStatusTextField() {
+        initialStatusTextField.placeholder = "Initial status"
+        initialStatusTextField.detail = "What is the current status of the project"
+        
+        initialStatusTextField.returnKeyType = .next
+        
+        initialStatusTextField.dividerActiveColor = Color.controlioGreen()
+        initialStatusTextField.placeholderActiveColor = Color.controlioGreen()
+        initialStatusTextField.autocapitalizationType = .sentences
+        initialStatusTextField.backgroundColor = Color.clear
+        
+        initialStatusTextField.delegate = self
+    }
+    
+    fileprivate func setupPeopleTextField() {
+        peopleTextField.placeholder = "* Manager's email"
+        peopleTextField.detail = "Email of the manager who will send you updates"
+        
+        peopleTextField.returnKeyType = .continue
+        
+        peopleTextField.dividerActiveColor = Color.controlioGreen()
+        peopleTextField.placeholderActiveColor = Color.controlioGreen()
+        peopleTextField.backgroundColor = Color.clear
+        
+        peopleTextField.delegate = self
+    }
+}
+
+extension NewProjectCell: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let textFields: [TextField] = [titleTextField, descriptionTextField, initialStatusTextField]
+        if let last = textFields.last,
+            let textField = textField as? TextField {
+            if textField == last {
+                textField.resignFirstResponder()
+                print("Should show select manager or clients")
+            } else {
+                let index = textFields.index(of: textField) ?? 0
+                textFields[index + 1].becomeFirstResponder()
+            }
+        }
+        return false
     }
 }

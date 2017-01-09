@@ -737,38 +737,8 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.segue` struct is generated, and contains static references to 3 view controllers.
+  /// This `R.segue` struct is generated, and contains static references to 1 view controllers.
   struct segue {
-    /// This struct is generated for `ManagerTableViewController`, and contains static references to 1 segues.
-    struct managerTableViewController {
-      /// Segue identifier `SegueToNewManager`.
-      static let segueToNewManager: Rswift.StoryboardSegueIdentifier<UIKit.UIStoryboardSegue, ManagerTableViewController, AddManagerViewController> = Rswift.StoryboardSegueIdentifier(identifier: "SegueToNewManager")
-      
-      /// Optionally returns a typed version of segue `SegueToNewManager`.
-      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
-      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
-      static func segueToNewManager(segue: UIKit.UIStoryboardSegue) -> Rswift.TypedStoryboardSegueInfo<UIKit.UIStoryboardSegue, ManagerTableViewController, AddManagerViewController>? {
-        return Rswift.TypedStoryboardSegueInfo(segueIdentifier: R.segue.managerTableViewController.segueToNewManager, segue: segue)
-      }
-      
-      fileprivate init() {}
-    }
-    
-    /// This struct is generated for `NewProjectController`, and contains static references to 1 segues.
-    struct newProjectController {
-      /// Segue identifier `SegueToChooseManager`.
-      static let segueToChooseManager: Rswift.StoryboardSegueIdentifier<UIKit.UIStoryboardSegue, NewProjectController, ManagerTableViewController> = Rswift.StoryboardSegueIdentifier(identifier: "SegueToChooseManager")
-      
-      /// Optionally returns a typed version of segue `SegueToChooseManager`.
-      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
-      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
-      static func segueToChooseManager(segue: UIKit.UIStoryboardSegue) -> Rswift.TypedStoryboardSegueInfo<UIKit.UIStoryboardSegue, NewProjectController, ManagerTableViewController>? {
-        return Rswift.TypedStoryboardSegueInfo(segueIdentifier: R.segue.newProjectController.segueToChooseManager, segue: segue)
-      }
-      
-      fileprivate init() {}
-    }
-    
     /// This struct is generated for `ProjectController`, and contains static references to 1 segues.
     struct projectController {
       /// Segue identifier `SegueToEdit`.
@@ -2993,9 +2963,7 @@ struct _R: Rswift.Validatable {
       
       static func validate() throws {
         if UIKit.UIImage(named: "photo-background-placeholder") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'photo-background-placeholder' is used in nib 'NewProjectCell', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "detail-disclosure") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'detail-disclosure' is used in nib 'NewProjectCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "add-photo-camera") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'add-photo-camera' is used in nib 'NewProjectCell', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "photo-background-placeholder-small") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'photo-background-placeholder-small' is used in nib 'NewProjectCell', but couldn't be loaded.") }
       }
       
       fileprivate init() {}
