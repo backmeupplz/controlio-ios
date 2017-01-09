@@ -737,7 +737,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.segue` struct is generated, and contains static references to 4 view controllers.
+  /// This `R.segue` struct is generated, and contains static references to 3 view controllers.
   struct segue {
     /// This struct is generated for `ManagerTableViewController`, and contains static references to 1 segues.
     struct managerTableViewController {
@@ -779,30 +779,6 @@ struct R: Rswift.Validatable {
       /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
       static func segueToEdit(segue: UIKit.UIStoryboardSegue) -> Rswift.TypedStoryboardSegueInfo<UIKit.UIStoryboardSegue, ProjectController, NewProjectController>? {
         return Rswift.TypedStoryboardSegueInfo(segueIdentifier: R.segue.projectController.segueToEdit, segue: segue)
-      }
-      
-      fileprivate init() {}
-    }
-    
-    /// This struct is generated for `SettingsController`, and contains static references to 2 segues.
-    struct settingsController {
-      /// Segue identifier `SegueToAddManager`.
-      static let segueToAddManager: Rswift.StoryboardSegueIdentifier<UIKit.UIStoryboardSegue, SettingsController, AddManagerViewController> = Rswift.StoryboardSegueIdentifier(identifier: "SegueToAddManager")
-      /// Segue identifier `SegueToManagers`.
-      static let segueToManagers: Rswift.StoryboardSegueIdentifier<UIKit.UIStoryboardSegue, SettingsController, ManagerTableViewController> = Rswift.StoryboardSegueIdentifier(identifier: "SegueToManagers")
-      
-      /// Optionally returns a typed version of segue `SegueToAddManager`.
-      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
-      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
-      static func segueToAddManager(segue: UIKit.UIStoryboardSegue) -> Rswift.TypedStoryboardSegueInfo<UIKit.UIStoryboardSegue, SettingsController, AddManagerViewController>? {
-        return Rswift.TypedStoryboardSegueInfo(segueIdentifier: R.segue.settingsController.segueToAddManager, segue: segue)
-      }
-      
-      /// Optionally returns a typed version of segue `SegueToManagers`.
-      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
-      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
-      static func segueToManagers(segue: UIKit.UIStoryboardSegue) -> Rswift.TypedStoryboardSegueInfo<UIKit.UIStoryboardSegue, SettingsController, ManagerTableViewController>? {
-        return Rswift.TypedStoryboardSegueInfo(segueIdentifier: R.segue.settingsController.segueToManagers, segue: segue)
       }
       
       fileprivate init() {}

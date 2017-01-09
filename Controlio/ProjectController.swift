@@ -38,7 +38,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     @IBOutlet fileprivate weak var statusLabel: UILabel!
     @IBOutlet fileprivate weak var dateLabel: UILabel!
     @IBOutlet fileprivate weak var descriptionLabel: UILabel!
-    @IBOutlet weak var roundedView: CustomizableView!
+    @IBOutlet weak var roundedView: UIView!
     
     // MARK: - UITableViewDataSource -
     

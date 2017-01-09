@@ -20,7 +20,7 @@ class ProjectCell: UITableViewCell {
     
     // MARK: - Outlets -
     
-    @IBOutlet weak var roundedView: CustomizableView!
+    @IBOutlet weak var roundedView: UIView!
     
     @IBOutlet fileprivate weak var projectImageView: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!

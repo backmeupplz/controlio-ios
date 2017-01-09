@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GradientView: CustomizableView {
+class GradientView: UIView {
     
     // MARK: - Variables -
     

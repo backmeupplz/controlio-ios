@@ -68,7 +68,7 @@ class Server: NSObject {
         }
     }
     
-    class func login(_ email: String, password: String, completion:@escaping (NSError?)->()) {
+    class func login(email: String, password: String, completion:@escaping (NSError?)->()) {
         var parameters = [
             "email": email,
             "password": password

@@ -13,41 +13,10 @@ class CustomizableImageView: UIImageView {
 
     // MARK: - Variables -
     
-//    @IBInspectable var cornerRadius: CGFloat = 0
-//    @IBInspectable var shadowColor: UIColor = UIColor.black
-//    @IBInspectable var shadowRadius: CGFloat = 0
-//    @IBInspectable var shadowOpacity: Float = 0
-//    @IBInspectable var shadowOffset: CGSize = CGSize.zero
-//    @IBInspectable var borderWidth: CGFloat = 0
-//    @IBInspectable var borderColor: UIColor = UIColor.clear
     var s3Key: String? {
         didSet {
             getImageFromS3()
         }
-    }
-    
-    // MARK: - View Life Cycle -
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        roundCorners()
-        addShadow()
-    }
-    
-    // MARK: - Private Functions -
-    
-    fileprivate func roundCorners() {
-        layer.cornerRadius = cornerRadius
-    }
-    
-    fileprivate func addShadow() {
-//        layer.shadowColor = shadowColor.cgColor
-//        layer.shadowOffset = shadowOffset
-//        layer.shadowRadius = shadowRadius
-//        layer.shadowOpacity = shadowOpacity
-//        layer.borderWidth = borderWidth
-//        layer.borderColor = borderColor.cgColor
     }
     
     // Images and S3

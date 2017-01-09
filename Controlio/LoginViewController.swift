@@ -83,11 +83,29 @@ class LoginViewController: UIViewController {
         }
         
         if !error {
-            resetUI()
+            enable(ui: false)
             if state == .signup {
-                print("should try signup")
+                Server.signup(email: emailTextField.text!, password: passwordTextField.text!)
+                { error in
+                    self.enable(ui: true)
+                    if let error = error {
+                        self.snackbarController?.show(error: error.localizedDescription)
+                    } else {
+                        self.resetUI()
+                        Router(self).showMain()
+                    }
+                }
             } else {
-                print("should try login")
+                Server.login(email: emailTextField.text!, password: passwordTextField.text!)
+                { error in
+                    self.enable(ui: true)
+                    if let error = error {
+                        self.snackbarController?.show(error: error.localizedDescription)
+                    } else {
+                        self.resetUI()
+                        Router(self).showMain()
+                    }
+                }
             }
         }
     }
@@ -97,6 +115,7 @@ class LoginViewController: UIViewController {
     fileprivate func enable(ui enable: Bool) {
         [backButton, screenPicker, emailTextField, passwordTextField, repeatPasswordTextField, signupButton, forgotPasswordButton]
             .forEach { $0.isEnabled = enable }
+        spinner.isHidden = enable
     }
     
     fileprivate func resetUI() {

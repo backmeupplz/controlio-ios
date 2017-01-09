@@ -68,7 +68,7 @@ class SettingsController: UITableViewController, STPPaymentContextDelegate {
         switch (indexPath.section, indexPath.row) {
         case (0, 2):
             showPaymentMethods()
-        case (2, 0):
+        case (1, 0):
             logout()
         default:
             print(indexPath)

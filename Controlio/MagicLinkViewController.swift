@@ -26,6 +26,9 @@ class MagicLinkViewController: UIViewController {
         super.viewDidLoad()
         
         setup()
+        if Server.isLoggedIn() {
+            Router(self).showMain(animated: false)
+        }
     }
     
     // MARK: - Actions -

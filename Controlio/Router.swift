@@ -25,24 +25,24 @@ class Router {
     // MARK: - Public Functions -
     
     func showLogin() {
-        showVC(R.storyboard.login.loginViewController())
+        show(vc: R.storyboard.login.loginViewController())
     }
     
     func showRecovery() {
-        showVC(R.storyboard.login.recoveryViewController())
+        show(vc: R.storyboard.login.recoveryViewController())
     }
     
-    func showMain(_ animated: Bool = true) {
-        
+    func showMain(animated: Bool = true) {
+        show(vc: R.storyboard.main.mainController(), animated: animated)
     }
     
-    func showProject(_ project: Project, delegate: ProjectControllerDelegate? = nil) {
+    func show(project: Project, delegate: ProjectControllerDelegate? = nil) {
         
     }
     
     // MARK: - Private Functions -
     
-    fileprivate func showVC(_ vc: UIViewController?, animated: Bool = true) {
+    fileprivate func show(vc: UIViewController?, animated: Bool = true) {
         guard let vc = vc else { return }
         
         if animated {

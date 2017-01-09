@@ -20,7 +20,7 @@ protocol InputViewDelegate: class {
     func shouldEditPost(post: Post, text: String, attachments: [Any])
 }
 
-class InputView: CustomizableView, AttachmentContainerViewDelegate, CLTokenInputViewDelegate {
+class InputView: UIView, AttachmentContainerViewDelegate, CLTokenInputViewDelegate {
     
     // MARK: - Variables -
     
@@ -45,7 +45,7 @@ class InputView: CustomizableView, AttachmentContainerViewDelegate, CLTokenInput
     @IBOutlet weak var sendButton: UIButton!
     
     @IBOutlet weak var clipImage: UIImageView!
-    @IBOutlet weak var clipButton: RoundedShadowedButton!
+    @IBOutlet weak var clipButton: UIButton!
     
     @IBOutlet weak var textViewBottom: NSLayoutConstraint!
     @IBOutlet weak var tokenViewBottom: NSLayoutConstraint!

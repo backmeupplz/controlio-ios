@@ -39,7 +39,7 @@ class NewProjectCell: UITableViewCell, UITextFieldDelegate, CLTokenInputViewDele
     
     @IBOutlet weak var detailDisclosureImage: UIImageView!
     
-    @IBOutlet weak var createButton: RoundedShadowedButton!
+    @IBOutlet weak var createButton: UIButton!
     
     // MARK: - UITextFieldDelegate -
     

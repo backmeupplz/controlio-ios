@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Material
 
 protocol EditProfileCellDelegate: class {
     func editPhotoTouched(sender: UIView)
@@ -29,9 +30,9 @@ class EditProfileCell: UITableViewCell {
     @IBOutlet weak var addPhotoCamera: UIImageView!
     @IBOutlet weak var addPhotoLabel: UILabel!
     
-    @IBOutlet weak var nameTextfield: UITextField!
-    @IBOutlet weak var emailTextfield: UITextField!
-    @IBOutlet weak var phoneTextfield: UITextField!
+    @IBOutlet weak var nameTextfield: TextField!
+    @IBOutlet weak var emailTextfield: TextField!
+    @IBOutlet weak var phoneTextfield: TextField!
     
     // MARK: - Actions -
     
