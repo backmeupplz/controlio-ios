@@ -11,6 +11,7 @@
 		B301EFDD1CE59A0A0013CD4D /* UIImagePickerDelegate+UINavgiationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B301EFDC1CE59A0A0013CD4D /* UIImagePickerDelegate+UINavgiationControllerDelegate.swift */; };
 		B30A42161DA61FC6001FB870 /* MagicLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30A42151DA61FC6001FB870 /* MagicLinkViewController.swift */; };
 		B30A42181DA6319C001FB870 /* UIApplication+TopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30A42171DA6319C001FB870 /* UIApplication+TopVC.swift */; };
+		B30FC18D1E25907B00FEB944 /* ClientsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30FC18C1E25907B00FEB944 /* ClientsTableViewController.swift */; };
 		B33805C71E1F5BE70096B081 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33805C61E1F5BE70096B081 /* R.generated.swift */; };
 		B33EBFCE1E23FD3B00703285 /* MBProgressHUD+Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33EBFCD1E23FD3B00703285 /* MBProgressHUD+Window.swift */; };
 		B37630511CE28737004FE1B7 /* AttachmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37630501CE28737004FE1B7 /* AttachmentView.swift */; };
@@ -84,7 +85,6 @@
 		B3D8C6FA1CFC0A78001EE432 /* S3.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D8C6F91CFC0A78001EE432 /* S3.swift */; };
 		B3E57BF11D9602DB00F699F1 /* AddManagerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E57BEF1D9602DB00F699F1 /* AddManagerCell.swift */; };
 		B3E57BF21D9602DB00F699F1 /* AddManagerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3E57BF01D9602DB00F699F1 /* AddManagerCell.xib */; };
-		B3E57BF41D9604B100F699F1 /* AddManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E57BF31D9604B100F699F1 /* AddManagerViewController.swift */; };
 		B3E634D31C91344400C0572A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E634D21C91344400C0572A /* Router.swift */; };
 		B3E634D51C91444700C0572A /* RecoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E634D41C91444700C0572A /* RecoveryViewController.swift */; };
 		B3E634DD1C914D6200C0572A /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E634DC1C914D6200C0572A /* MainController.swift */; };
@@ -96,7 +96,6 @@
 		B3E7B12E1DA08857004FBF86 /* ImageGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B12D1DA08857004FBF86 /* ImageGallery.swift */; };
 		B3E815791CE1566900E8F87B /* NewProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E815771CE1566900E8F87B /* NewProjectCell.swift */; };
 		B3E8157C1CE1603400E8F87B /* NewProjectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E8157B1CE1603400E8F87B /* NewProjectController.swift */; };
-		B3EA11491D93A7350026658B /* ManagerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EA11481D93A7350026658B /* ManagerTableViewController.swift */; };
 		B3EA114C1D93A9740026658B /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EA114A1D93A9740026658B /* UserCell.swift */; };
 		B3EA114D1D93A9740026658B /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3EA114B1D93A9740026658B /* UserCell.xib */; };
 		B3F303881DAF491200535FCD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3F3038A1DAF491200535FCD /* Main.storyboard */; };
@@ -109,7 +108,6 @@
 		B3FEB8441C9630BA0048B688 /* UIImageView+BeautifulWebImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FEB8431C9630BA0048B688 /* UIImageView+BeautifulWebImage.swift */; };
 		B3FEB8491C963E260048B688 /* CustomizableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FEB8481C963E260048B688 /* CustomizableImageView.swift */; };
 		B3FFC6C71CE6894C00595E85 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FFC6C61CE6894C00595E85 /* CustomNavigationController.swift */; };
-		B3FFC6C91CE69D6700595E85 /* CustomSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FFC6C81CE69D6700595E85 /* CustomSearchController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -119,6 +117,7 @@
 		B301EFDC1CE59A0A0013CD4D /* UIImagePickerDelegate+UINavgiationControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImagePickerDelegate+UINavgiationControllerDelegate.swift"; sourceTree = "<group>"; };
 		B30A42151DA61FC6001FB870 /* MagicLinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagicLinkViewController.swift; sourceTree = "<group>"; };
 		B30A42171DA6319C001FB870 /* UIApplication+TopVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+TopVC.swift"; sourceTree = "<group>"; };
+		B30FC18C1E25907B00FEB944 /* ClientsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientsTableViewController.swift; sourceTree = "<group>"; };
 		B32FE1C11DA301C6001A72B7 /* Controlio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Controlio.entitlements; sourceTree = "<group>"; };
 		B33805C61E1F5BE70096B081 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		B33EBFCD1E23FD3B00703285 /* MBProgressHUD+Window.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MBProgressHUD+Window.swift"; sourceTree = "<group>"; };
@@ -197,7 +196,6 @@
 		B3D8C6F91CFC0A78001EE432 /* S3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = S3.swift; sourceTree = "<group>"; };
 		B3E57BEF1D9602DB00F699F1 /* AddManagerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddManagerCell.swift; sourceTree = "<group>"; };
 		B3E57BF01D9602DB00F699F1 /* AddManagerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddManagerCell.xib; sourceTree = "<group>"; };
-		B3E57BF31D9604B100F699F1 /* AddManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddManagerViewController.swift; sourceTree = "<group>"; };
 		B3E634D21C91344400C0572A /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		B3E634D41C91444700C0572A /* RecoveryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecoveryViewController.swift; sourceTree = "<group>"; };
 		B3E634DC1C914D6200C0572A /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
@@ -209,7 +207,6 @@
 		B3E7B12D1DA08857004FBF86 /* ImageGallery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageGallery.swift; sourceTree = "<group>"; };
 		B3E815771CE1566900E8F87B /* NewProjectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProjectCell.swift; sourceTree = "<group>"; };
 		B3E8157B1CE1603400E8F87B /* NewProjectController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProjectController.swift; sourceTree = "<group>"; };
-		B3EA11481D93A7350026658B /* ManagerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerTableViewController.swift; sourceTree = "<group>"; };
 		B3EA114A1D93A9740026658B /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		B3EA114B1D93A9740026658B /* UserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 		B3F303841DAF08E400535FCD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -229,7 +226,6 @@
 		B3FEB8431C9630BA0048B688 /* UIImageView+BeautifulWebImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+BeautifulWebImage.swift"; sourceTree = "<group>"; };
 		B3FEB8481C963E260048B688 /* CustomizableImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizableImageView.swift; sourceTree = "<group>"; };
 		B3FFC6C61CE6894C00595E85 /* CustomNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
-		B3FFC6C81CE69D6700595E85 /* CustomSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -463,12 +459,10 @@
 				B3C305A01CDFD79500C8E85F /* SettingsController.swift */,
 				B3C305A21CDFE06200C8E85F /* ProjectController.swift */,
 				B3E8157B1CE1603400E8F87B /* NewProjectController.swift */,
-				B3EA11481D93A7350026658B /* ManagerTableViewController.swift */,
-				B3E57BF31D9604B100F699F1 /* AddManagerViewController.swift */,
 				B37F10E11D962F2500CAA8D4 /* EditProfileViewController.swift */,
 				B3FFC6C61CE6894C00595E85 /* CustomNavigationController.swift */,
-				B3FFC6C81CE69D6700595E85 /* CustomSearchController.swift */,
 				B3A178D61DB2D12500C0E311 /* PlansController.swift */,
+				B30FC18C1E25907B00FEB944 /* ClientsTableViewController.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -692,7 +686,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3E57BF41D9604B100F699F1 /* AddManagerViewController.swift in Sources */,
 				B3E634D31C91344400C0572A /* Router.swift in Sources */,
 				B3D1692E1CDDC15F0080D748 /* SupportController.swift in Sources */,
 				B3FEB8441C9630BA0048B688 /* UIImageView+BeautifulWebImage.swift in Sources */,
@@ -721,13 +714,13 @@
 				B3E57BF11D9602DB00F699F1 /* AddManagerCell.swift in Sources */,
 				B390C7A51CDE9B5400D5F021 /* IndexPath+Additions.swift in Sources */,
 				B3C03D171C90FEB70096E04C /* DemoAccountLanguage.swift in Sources */,
+				B30FC18D1E25907B00FEB944 /* ClientsTableViewController.swift in Sources */,
 				B301EFDD1CE59A0A0013CD4D /* UIImagePickerDelegate+UINavgiationControllerDelegate.swift in Sources */,
 				B3E8157C1CE1603400E8F87B /* NewProjectController.swift in Sources */,
 				B3C35B121DB9E50C00F941F8 /* FeatureList.swift in Sources */,
 				B3E634E11C915B9300C0572A /* UISearchBar+CursorTint.swift in Sources */,
 				B3E815791CE1566900E8F87B /* NewProjectCell.swift in Sources */,
 				B3D1692C1CDDA5950080D748 /* PopupNotification.swift in Sources */,
-				B3FFC6C91CE69D6700595E85 /* CustomSearchController.swift in Sources */,
 				B3C03D101C90DAA60096E04C /* UIColor+Controlio.swift in Sources */,
 				B37630511CE28737004FE1B7 /* AttachmentView.swift in Sources */,
 				B3E7B12A1D9B969C004FBF86 /* String+EmailValidation.swift in Sources */,
@@ -745,7 +738,6 @@
 				B3A178D71DB2D12500C0E311 /* PlansController.swift in Sources */,
 				B37F10E21D962F2500CAA8D4 /* EditProfileViewController.swift in Sources */,
 				B3C1408F1E218E9D00FBE8EE /* AppSnackbarController.swift in Sources */,
-				B3EA11491D93A7350026658B /* ManagerTableViewController.swift in Sources */,
 				B3BA9C311CE18ED300647470 /* InputView.swift in Sources */,
 				B390C7A31CDE96B800D5F021 /* DeepLink.swift in Sources */,
 				B3C305A61CDFE60B00C8E85F /* Project.swift in Sources */,

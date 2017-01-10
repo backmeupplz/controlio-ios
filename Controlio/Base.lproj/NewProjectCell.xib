@@ -29,7 +29,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="363" height="475"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo-background-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="zqE-pM-iLs" userLabel="Add Photo Background" customClass="CustomizableImageView" customModule="Controlio" customModuleProvider="target">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo-background-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="zqE-pM-iLs" userLabel="Add Photo Background">
                         <rect key="frame" x="288" y="15" width="60" height="60"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="60" id="FTQ-LV-84R"/>
@@ -48,11 +48,10 @@
                             <constraint firstAttribute="width" constant="20" id="3qU-qQ-ylJ"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add photo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ej7-Cv-TKa" userLabel="Add Photo Label">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add photo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ej7-Cv-TKa" userLabel="Add Photo Label">
                         <rect key="frame" x="293" y="81" width="50" height="13"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="13" id="4Ok-q6-XrV"/>
-                            <constraint firstAttribute="width" constant="49.5" id="Gj0-sK-lhp"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI  Text" pointSize="10"/>
                         <color key="textColor" red="0.01176470588" green="0.76470588240000004" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -69,13 +68,13 @@
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I am a:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4e-x0-5Gi">
-                        <rect key="frame" x="15" y="24" width="48.5" height="20"/>
+                        <rect key="frame" x="15" y="24" width="49" height="21"/>
                         <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2C4-1E-LKQ">
-                        <rect key="frame" x="71" y="19.5" width="139" height="30"/>
+                        <rect key="frame" x="72" y="21" width="139" height="29"/>
                         <segments>
                             <segment title="Client"/>
                             <segment title="Business"/>
@@ -86,7 +85,7 @@
                         </connections>
                     </segmentedControl>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d9D-q0-EcB" customClass="TextField" customModule="Material">
-                        <rect key="frame" x="15" y="162.5" width="333" height="32"/>
+                        <rect key="frame" x="15" y="163" width="333" height="32"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.01176470588" green="0.76470588240000004" blue="0.52549019610000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -94,7 +93,7 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L29-mi-TGZ" customClass="TextField" customModule="Material">
-                        <rect key="frame" x="15" y="250.5" width="333" height="32"/>
+                        <rect key="frame" x="15" y="251" width="333" height="32"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.01176470588" green="0.76470588240000004" blue="0.52549019610000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -102,7 +101,7 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cqp-V4-Cwr" customClass="TextField" customModule="Material">
-                        <rect key="frame" x="15" y="338.5" width="333" height="32"/>
+                        <rect key="frame" x="15" y="339" width="333" height="32"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.01176470588" green="0.76470588240000004" blue="0.52549019610000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -110,7 +109,7 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eC6-fg-N3J" userLabel="Create Button">
-                        <rect key="frame" x="30" y="406.5" width="303" height="54"/>
+                        <rect key="frame" x="30" y="407" width="303" height="54"/>
                         <color key="backgroundColor" red="0.01176470588" green="0.76470588240000004" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="54" id="MD0-p9-VQ1"/>
@@ -126,24 +125,31 @@
                             <action selector="createTouched:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="tPf-Pi-z1e"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xvA-5u-lo3">
-                        <rect key="frame" x="15" y="338.5" width="333" height="32"/>
+                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xvA-5u-lo3">
+                        <rect key="frame" x="15" y="339" width="333" height="32"/>
                         <connections>
                             <action selector="choosePeopleTouched:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="62G-yo-bUg"/>
                         </connections>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5UI-aO-B7Z" customClass="TextField" customModule="Material">
-                        <rect key="frame" x="15" y="74.5" width="258" height="32"/>
+                        <rect key="frame" x="15" y="75" width="258" height="32"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.01176470588" green="0.76470588240000004" blue="0.52549019610000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="32" id="Ji4-Km-7ZK"/>
                         </constraints>
                     </view>
+                    <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ehm-Sf-zbs" customClass="TextField" customModule="Material">
+                        <rect key="frame" x="15" y="339" width="333" height="32"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.01176470588" green="0.76470588240000004" blue="0.52549019610000003" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
+                    <constraint firstItem="8Kh-OE-x0h" firstAttribute="centerX" secondItem="Ej7-Cv-TKa" secondAttribute="centerX" id="02v-qR-h7x"/>
                     <constraint firstAttribute="trailing" secondItem="L29-mi-TGZ" secondAttribute="trailing" constant="15" id="2Yg-yd-i5p"/>
+                    <constraint firstItem="cqp-V4-Cwr" firstAttribute="centerY" secondItem="ehm-Sf-zbs" secondAttribute="centerY" id="31D-20-9dn"/>
                     <constraint firstItem="5UI-aO-B7Z" firstAttribute="top" secondItem="2C4-1E-LKQ" secondAttribute="bottom" constant="26" id="3bE-jP-gE2"/>
                     <constraint firstItem="L29-mi-TGZ" firstAttribute="top" secondItem="d9D-q0-EcB" secondAttribute="bottom" constant="56" id="8Ur-kg-Dun"/>
                     <constraint firstItem="2C4-1E-LKQ" firstAttribute="centerY" secondItem="f4e-x0-5Gi" secondAttribute="centerY" id="8gr-1K-0DE"/>
@@ -155,14 +161,16 @@
                     <constraint firstItem="zqE-pM-iLs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="P7V-ro-kqf"/>
                     <constraint firstItem="eC6-fg-N3J" firstAttribute="top" secondItem="cqp-V4-Cwr" secondAttribute="bottom" constant="36" id="REi-8B-zxA"/>
                     <constraint firstItem="cqp-V4-Cwr" firstAttribute="centerX" secondItem="xvA-5u-lo3" secondAttribute="centerX" id="Sne-Vg-Aeo"/>
+                    <constraint firstItem="cqp-V4-Cwr" firstAttribute="centerX" secondItem="ehm-Sf-zbs" secondAttribute="centerX" id="TKC-qY-gxf"/>
                     <constraint firstItem="Ej7-Cv-TKa" firstAttribute="top" secondItem="zqE-pM-iLs" secondAttribute="bottom" constant="6" id="W0d-PS-oRo"/>
                     <constraint firstItem="d9D-q0-EcB" firstAttribute="top" secondItem="5UI-aO-B7Z" secondAttribute="bottom" constant="56" id="Wcv-SX-QdG"/>
                     <constraint firstItem="cqp-V4-Cwr" firstAttribute="centerY" secondItem="xvA-5u-lo3" secondAttribute="centerY" id="XbF-sn-R5u"/>
                     <constraint firstItem="Tq1-Nb-xP6" firstAttribute="leading" secondItem="5UI-aO-B7Z" secondAttribute="trailing" constant="15" id="YDT-mB-DCp"/>
                     <constraint firstItem="8Kh-OE-x0h" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="35" id="ZZk-e7-7GL"/>
-                    <constraint firstAttribute="trailing" secondItem="Ej7-Cv-TKa" secondAttribute="trailing" constant="20" id="bct-Cm-GrY"/>
                     <constraint firstAttribute="trailing" secondItem="Tq1-Nb-xP6" secondAttribute="trailing" constant="15" id="cv7-iK-0vc"/>
+                    <constraint firstItem="cqp-V4-Cwr" firstAttribute="height" secondItem="ehm-Sf-zbs" secondAttribute="height" id="eXc-5T-8zv"/>
                     <constraint firstAttribute="trailing" secondItem="eC6-fg-N3J" secondAttribute="trailing" constant="30" id="eYE-pt-h9P"/>
+                    <constraint firstItem="cqp-V4-Cwr" firstAttribute="width" secondItem="ehm-Sf-zbs" secondAttribute="width" id="f9T-fd-7s3"/>
                     <constraint firstItem="eC6-fg-N3J" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="h5H-OO-rmA"/>
                     <constraint firstAttribute="trailing" secondItem="d9D-q0-EcB" secondAttribute="trailing" constant="15" id="ngT-8U-ilc"/>
                     <constraint firstItem="cqp-V4-Cwr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="pab-UD-R8N"/>
@@ -179,11 +187,12 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="cameraImage" destination="8Kh-OE-x0h" id="PS1-qM-ywf"/>
+                <outlet property="clientsButton" destination="xvA-5u-lo3" id="IuJ-RD-Mx4"/>
+                <outlet property="clientsTextField" destination="ehm-Sf-zbs" id="RHc-v3-Knu"/>
                 <outlet property="createButton" destination="eC6-fg-N3J" id="K1Y-Jg-Z0d"/>
                 <outlet property="descriptionTextField" destination="d9D-q0-EcB" id="FIF-Bt-aBa"/>
                 <outlet property="initialStatusTextField" destination="L29-mi-TGZ" id="OTm-pm-anG"/>
-                <outlet property="peopleButton" destination="xvA-5u-lo3" id="LDU-8y-8Rl"/>
-                <outlet property="peopleTextField" destination="cqp-V4-Cwr" id="hnQ-2D-GCD"/>
+                <outlet property="managerTextField" destination="cqp-V4-Cwr" id="BZC-DZ-Fqv"/>
                 <outlet property="photoImage" destination="zqE-pM-iLs" id="EbR-iS-FWm"/>
                 <outlet property="photoLabel" destination="Ej7-Cv-TKa" id="GGh-iw-3dU"/>
                 <outlet property="titleTextField" destination="5UI-aO-B7Z" id="jlg-EE-NND"/>

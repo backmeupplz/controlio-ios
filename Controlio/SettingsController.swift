@@ -128,13 +128,4 @@ class SettingsController: UITableViewController, STPPaymentContextDelegate {
         alert.addAction(ok)
         present(alert, animated: true, completion: nil)
     }
-    
-    // MARK: - Segues -
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let dest = segue.destination
-        if let vc = dest as? ManagerTableViewController {
-            vc.type = .show
-        }
-    }
 }

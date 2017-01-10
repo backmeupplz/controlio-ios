@@ -290,50 +290,50 @@ class Server: NSObject {
     }
     
     class func editProject(project: Project, title: String, description: String, image: String, completion: @escaping (NSError?)->()) {
-        let parameters: [String: String] = [
-            "projectid": project.id,
-            "title": title,
-            "description": description,
-            "image": image
-        ]
-        if isDemo() {
-            completion(NSError(domain: NSLocalizedString("You can't do that in demo account", comment: "Error"), code: 500, userInfo: nil))
-            return
-        }
-        request(urlAddition: "projects", method: .put, parameters: parameters, needsToken: true)
-        { json, error in
-            completion(error)
-        }
+//        let parameters: [String: String] = [
+//            "projectid": project.id,
+//            "title": title,
+//            "description": description,
+//            "image": image
+//        ]
+//        if isDemo() {
+//            completion(NSError(domain: NSLocalizedString("You can't do that in demo account", comment: "Error"), code: 500, userInfo: nil))
+//            return
+//        }
+//        request(urlAddition: "projects", method: .put, parameters: parameters, needsToken: true)
+//        { json, error in
+//            completion(error)
+//        }
     }
     
     class func archive(project: Project, archive: Bool, completion: @escaping (NSError?)->()) {
-        let parameters: [String: String] = [
-            "projectid": project.id
-        ]
-        if isDemo() {
-            completion(NSError(domain: NSLocalizedString("You can't do that in demo account", comment: "Error"), code: 500, userInfo: nil))
-            return
-        }
-        
-        let urlAddition = archive ? "projects/archive" : "projects/unarchive"
-        request(urlAddition: urlAddition, method: .post, parameters: parameters, needsToken: true)
-        { json, error in
-            completion(error)
-        }
+//        let parameters: [String: String] = [
+//            "projectid": project.id
+//        ]
+//        if isDemo() {
+//            completion(NSError(domain: NSLocalizedString("You can't do that in demo account", comment: "Error"), code: 500, userInfo: nil))
+//            return
+//        }
+//        
+//        let urlAddition = archive ? "projects/archive" : "projects/unarchive"
+//        request(urlAddition: urlAddition, method: .post, parameters: parameters, needsToken: true)
+//        { json, error in
+//            completion(error)
+//        }
     }
     
     class func delete(project: Project, completion: @escaping (NSError?)->()) {
-        let parameters: [String: String] = [
-            "projectid": project.id
-        ]
-        if isDemo() {
-            completion(NSError(domain: NSLocalizedString("You can't do that in demo account", comment: "Error"), code: 500, userInfo: nil))
-            return
-        }
-        request(urlAddition: "projects", method: .delete, parameters: parameters, needsToken: true)
-        { json, error in
-            completion(error)
-        }
+//        let parameters: [String: String] = [
+//            "projectid": project.id
+//        ]
+//        if isDemo() {
+//            completion(NSError(domain: NSLocalizedString("You can't do that in demo account", comment: "Error"), code: 500, userInfo: nil))
+//            return
+//        }
+//        request(urlAddition: "projects", method: .delete, parameters: parameters, needsToken: true)
+//        { json, error in
+//            completion(error)
+//        }
     }
     
     // MARK: - Posts -
@@ -355,16 +355,16 @@ class Server: NSObject {
     }
     
     class func getPosts(project: Project, skip: Int = 0, limit: Int = 20, completion:@escaping (NSError?, [Post]?)->()) {
-        let parameters: [String: Any] = [
-            "projectid": project.id,
-            "skip": skip,
-            "limit": limit
-        ]
-        
-        request(urlAddition: "posts", method: .get, parameters: parameters, needsToken: true)
-        { json, error in
-            completion(error, Post.map(json: json, manager: project.manager))
-        }
+//        let parameters: [String: Any] = [
+//            "projectid": project.id,
+//            "skip": skip,
+//            "limit": limit
+//        ]
+//        
+//        request(urlAddition: "posts", method: .get, parameters: parameters, needsToken: true)
+//        { json, error in
+//            completion(error, Post.map(json: json, manager: project.manager))
+//        }
     }
     
     class func editPost(post: Post, text: String, attachments: [String], completion: @escaping (NSError?)->()) {

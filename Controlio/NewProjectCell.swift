@@ -9,6 +9,11 @@
 import UIKit
 import Material
 
+enum NewProjectCellType: Int {
+    case client = 0
+    case business = 1
+}
+
 protocol NewProjectCellDelegate: class {
     func editPhotoTouched(sender: UIView)
     func choosePeopleTouched()
@@ -19,11 +24,17 @@ class NewProjectCell: UITableViewCell {
     
     // MARK: - Variables -
     
+    var type = NewProjectCellType.client
     var delegate: NewProjectCellDelegate?
+    var project: Project! {
+        didSet {
+            configure()
+        }
+    }
     
     // MARK: - Outlets -
     
-    @IBOutlet weak var photoImage: CustomizableImageView!
+    @IBOutlet weak var photoImage: UIImageView!
     @IBOutlet weak var cameraImage: UIImageView!
     @IBOutlet weak var photoLabel: UILabel!
     
@@ -31,8 +42,9 @@ class NewProjectCell: UITableViewCell {
     @IBOutlet weak var titleTextField: TextField!
     @IBOutlet weak var descriptionTextField: TextField!
     @IBOutlet weak var initialStatusTextField: TextField!
-    @IBOutlet weak var peopleTextField: TextField!
-    @IBOutlet weak var peopleButton: UIButton!
+    @IBOutlet weak var managerTextField: TextField!
+    @IBOutlet weak var clientsTextField: TextField!
+    @IBOutlet weak var clientsButton: UIButton!
     
     @IBOutlet weak var createButton: UIButton!
     
@@ -51,7 +63,9 @@ class NewProjectCell: UITableViewCell {
     }
     
     @IBAction func typePicked(_ sender: UISegmentedControl) {
-        
+        type = NewProjectCellType(rawValue: sender.selectedSegmentIndex)!
+        project.tempType = type
+        setup(for: type)
     }
     
     @IBAction func choosePeopleTouched(_ sender: AnyObject) {
@@ -68,7 +82,8 @@ class NewProjectCell: UITableViewCell {
         setupTitleTextField()
         setupDescriptionTextField()
         setupInitialStatusTextField()
-        setupPeopleTextField()
+        setupManagerTextField()
+        setupClientsTextField()
     }
     
     fileprivate func setupTitleTextField() {
@@ -113,33 +128,102 @@ class NewProjectCell: UITableViewCell {
         initialStatusTextField.delegate = self
     }
     
-    fileprivate func setupPeopleTextField() {
-        peopleTextField.placeholder = "* Manager's email"
-        peopleTextField.detail = "Email of the manager who will send you updates"
+    fileprivate func setupManagerTextField() {
+        managerTextField.placeholder = "* Manager's email"
+        managerTextField.detail = "Email of the manager who will send you updates"
         
-        peopleTextField.returnKeyType = .continue
+        managerTextField.returnKeyType = .continue
+        managerTextField.keyboardType = .emailAddress
         
-        peopleTextField.dividerActiveColor = Color.controlioGreen()
-        peopleTextField.placeholderActiveColor = Color.controlioGreen()
-        peopleTextField.backgroundColor = Color.clear
+        managerTextField.dividerActiveColor = Color.controlioGreen()
+        managerTextField.placeholderActiveColor = Color.controlioGreen()
+        managerTextField.backgroundColor = Color.clear
         
-        peopleTextField.delegate = self
+        managerTextField.delegate = self
+    }
+    
+    fileprivate func setupClientsTextField() {
+        clientsTextField.placeholder = "* Clients' emails"
+        clientsTextField.detail = "Emails of your clients relevant to this project"
+        
+        clientsTextField.returnKeyType = .continue
+        clientsTextField.keyboardType = .emailAddress
+        
+        clientsTextField.dividerActiveColor = Color.controlioGreen()
+        clientsTextField.placeholderActiveColor = Color.controlioGreen()
+        clientsTextField.backgroundColor = Color.clear
+        
+        clientsTextField.delegate = self
+    }
+    
+    fileprivate func setup(for type: NewProjectCellType) {
+        managerTextField.isHidden = type == .business
+        clientsTextField.isHidden = type == .client
+        clientsButton.isUserInteractionEnabled = type == .business
+    }
+    
+    fileprivate func configure() {
+        if let image = project.tempImage {
+            cameraImage.isHidden = true
+            photoLabel.text = "Edit"
+            photoImage.image = image
+        } else if let key = project.imageKey {
+            cameraImage.isHidden = true
+            photoLabel.text = "Edit"
+            photoImage.load(key: key)
+        } else {
+            cameraImage.isHidden = false
+            photoLabel.text = "Add"
+            photoImage.image = UIImage(named: "photo-background-placeholder")
+        }
+        
+        typePicker.selectedSegmentIndex = project.tempType.rawValue
+        setup(for: project.tempType)
+        titleTextField.text = project.title
+        descriptionTextField.text = project.projectDescription
+        initialStatusTextField.text = project.tempInitialStatus
+        managerTextField.text = project.tempManagerEmail
+        clientsTextField.text = project.tempClientEmails.joined(separator: ", ")
     }
 }
 
 extension NewProjectCell: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        let textFields: [TextField] = [titleTextField, descriptionTextField, initialStatusTextField]
+        var textFields: [TextField] = [titleTextField, descriptionTextField, initialStatusTextField]
+        if type == .client {
+            textFields.append(managerTextField)
+        }
         if let last = textFields.last,
             let textField = textField as? TextField {
             if textField == last {
                 textField.resignFirstResponder()
-                print("Should show select manager or clients")
+                if type == .client {
+                    createTouched(createButton)
+                } else {
+                    choosePeopleTouched(clientsButton)
+                }
             } else {
                 let index = textFields.index(of: textField) ?? 0
                 textFields[index + 1].becomeFirstResponder()
             }
         }
         return false
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let text = (textField.text ?? "") as NSString
+        let resultString = text.replacingCharacters(in: range, with: string)
+        
+        if textField == titleTextField {
+            project?.title = resultString
+        } else if textField == descriptionTextField {
+            project?.projectDescription = resultString
+        } else if textField == initialStatusTextField {
+            project?.tempInitialStatus = resultString
+        } else if textField == managerTextField {
+            project?.tempManagerEmail = resultString
+        }
+        
+        return true
     }
 }

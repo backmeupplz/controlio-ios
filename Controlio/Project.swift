@@ -13,15 +13,15 @@ class Project: NSObject {
     
     // MARK: - Variables -
     
-    var id: String!
+    var id: String?
     
-    var title: String!
-    var projectDescription: String!
-    var imageKey: String!
-    var dateCreated: Date!
+    var title: String?
+    var projectDescription: String?
+    var imageKey: String?
+    var dateCreated: Date?
     
-    var manager: User!
-    var clients: [User]!
+    var managers = [User]()
+    var clients = [User]()
     
     var lastStatus: Post?
     var lastPost: Post?
@@ -29,6 +29,12 @@ class Project: NSObject {
     var canEdit: Bool = false
     
     var isArchived = false
+    
+    var tempType = NewProjectCellType.client
+    var tempImage: UIImage?
+    var tempInitialStatus: String?
+    var tempManagerEmail: String?
+    var tempClientEmails = [String]()
     
     // MARK: - Functions -
     
@@ -47,11 +53,11 @@ class Project: NSObject {
         imageKey = json["image"].string!
         dateCreated = json["createdAt"].string!.dateFromISO8601!
         
-        manager = User(json: json["manager"])
-        clients = User.map(json: json["clients"])
+//        manager = User(json: json["manager"])
+//        clients = User.map(json: json["clients"])
         
-        lastPost = Post(json: json["lastPost"], manager: manager)
-        lastStatus = Post(json: json["lastStatus"], manager: manager)
+//        lastPost = Post(json: json["lastPost"], manager: manager)
+//        lastStatus = Post(json: json["lastStatus"], manager: manager)
         
         canEdit = json["canEdit"].bool ?? false
         isArchived = json["isArchived"].bool ?? false

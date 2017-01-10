@@ -122,155 +122,155 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     }
     
     func shouldAddPost(text: String, attachments: [Any]) {
-        if text.isEmpty && attachments.count <= 0 {
-            PopupNotification.show(notification: NSLocalizedString("Please provide at least one attachment or text", comment: "New post error"))
-            return
-        }
-        
-        let hud = MBProgressHUD.showAdded(to: view, animated: false)
-        
-        let completedKeys = attachments.filter { $0 is String } as! [String]
-        let imagesToUpload = attachments.filter { $0 is UIImage } as! [UIImage]
-        
-        if imagesToUpload.count > 0 {
-            hud.mode = .annularDeterminate
-            hud.label.text = NSLocalizedString("Uploading attachments", comment: "New post upload message")
-            S3.upload(images: imagesToUpload, progress:
-            { progress in
-                hud.progress = progress
-            })
-            { keys, error in
-                if let error = error {
-                    PopupNotification.show(notification: error)
-                    hud.hide(animated: true)
-                } else {
-                    hud.mode = .indeterminate
-                    hud.label.text = NSLocalizedString("Uploading data", comment: "New post upload message")
-                    Server.addPost(projectId: self.project.id, text: text, attachmentKeys: keys!+completedKeys)
-                    { error in
-                        if let error = error {
-                            PopupNotification.show(notification: error.domain)
-                            hud.hide(animated: true)
-                        } else {
-                            hud.hide(animated: true)
-                            self.reloadAndCleanInput()
-                        }
-                    }
-                }
-            }
-        } else {
-            hud.mode = .indeterminate
-            hud.label.text = NSLocalizedString("Uploading data", comment: "New post upload message")
-            Server.addPost(projectId: project.id, text: text, attachmentKeys: completedKeys)
-            { error in
-                if let error = error {
-                    PopupNotification.show(notification: error.domain)
-                    hud.hide(animated: true)
-                } else {
-                    hud.hide(animated: true)
-                    self.reloadAndCleanInput()
-                }
-            }
-        }
+//        if text.isEmpty && attachments.count <= 0 {
+//            PopupNotification.show(notification: NSLocalizedString("Please provide at least one attachment or text", comment: "New post error"))
+//            return
+//        }
+//        
+//        let hud = MBProgressHUD.showAdded(to: view, animated: false)
+//        
+//        let completedKeys = attachments.filter { $0 is String } as! [String]
+//        let imagesToUpload = attachments.filter { $0 is UIImage } as! [UIImage]
+//        
+//        if imagesToUpload.count > 0 {
+//            hud.mode = .annularDeterminate
+//            hud.label.text = NSLocalizedString("Uploading attachments", comment: "New post upload message")
+//            S3.upload(images: imagesToUpload, progress:
+//            { progress in
+//                hud.progress = progress
+//            })
+//            { keys, error in
+//                if let error = error {
+//                    PopupNotification.show(notification: error)
+//                    hud.hide(animated: true)
+//                } else {
+//                    hud.mode = .indeterminate
+//                    hud.label.text = NSLocalizedString("Uploading data", comment: "New post upload message")
+//                    Server.addPost(projectId: self.project.id, text: text, attachmentKeys: keys!+completedKeys)
+//                    { error in
+//                        if let error = error {
+//                            PopupNotification.show(notification: error.domain)
+//                            hud.hide(animated: true)
+//                        } else {
+//                            hud.hide(animated: true)
+//                            self.reloadAndCleanInput()
+//                        }
+//                    }
+//                }
+//            }
+//        } else {
+//            hud.mode = .indeterminate
+//            hud.label.text = NSLocalizedString("Uploading data", comment: "New post upload message")
+//            Server.addPost(projectId: project.id, text: text, attachmentKeys: completedKeys)
+//            { error in
+//                if let error = error {
+//                    PopupNotification.show(notification: error.domain)
+//                    hud.hide(animated: true)
+//                } else {
+//                    hud.hide(animated: true)
+//                    self.reloadAndCleanInput()
+//                }
+//            }
+//        }
     }
     
     func shouldChangeStatus(text: String) {
-        let hud = MBProgressHUD.showAdded(to: view, animated: false)
-        hud.label.text = NSLocalizedString("Uploading data", comment: "Project change status message")
-        Server.changeStatus(projectId: project.id, status: text)
-        { error in
-            if let error = error {
-                PopupNotification.show(notification: error.domain)
-                hud.hide(animated: true)
-            } else {
-                hud.hide(animated: true)
-                self.project.lastStatus?.text = text
-                self.configure()
-                self.reloadAndCleanInput()
-            }
-        }
+//        let hud = MBProgressHUD.showAdded(to: view, animated: false)
+//        hud.label.text = NSLocalizedString("Uploading data", comment: "Project change status message")
+//        Server.changeStatus(projectId: project.id, status: text)
+//        { error in
+//            if let error = error {
+//                PopupNotification.show(notification: error.domain)
+//                hud.hide(animated: true)
+//            } else {
+//                hud.hide(animated: true)
+//                self.project.lastStatus?.text = text
+//                self.configure()
+//                self.reloadAndCleanInput()
+//            }
+//        }
     }
     
     func shouldEditClients(clients: [String]) {
-        let hud = MBProgressHUD.showAdded(to: view, animated: false)
-        hud.label.text = NSLocalizedString("Uploading data", comment: "Project change clients message")
-        Server.changeClients(projectId: project.id, clientEmails: clients)
-        { error in
-            hud.hide(animated: true)
-            if let error = error {
-                PopupNotification.show(notification: error.domain)
-            } else {
-                PopupNotification.show(notification: NSLocalizedString("Clients saved", comment: "Project change clients success message"))
-                self.project.clients = []
-                for client in clients {
-                    let user = User()
-                    user.email = client
-                    self.project.clients.append(user)
-                }
-                
-            }
-        }
+//        let hud = MBProgressHUD.showAdded(to: view, animated: false)
+//        hud.label.text = NSLocalizedString("Uploading data", comment: "Project change clients message")
+//        Server.changeClients(projectId: project.id, clientEmails: clients)
+//        { error in
+//            hud.hide(animated: true)
+//            if let error = error {
+//                PopupNotification.show(notification: error.domain)
+//            } else {
+//                PopupNotification.show(notification: NSLocalizedString("Clients saved", comment: "Project change clients success message"))
+//                self.project.clients = []
+//                for client in clients {
+//                    let user = User()
+//                    user.email = client
+//                    self.project.clients.append(user)
+//                }
+//                
+//            }
+//        }
     }
     
     func shouldEditPost(post: Post, text: String, attachments: [Any]) {
-        if text.isEmpty && attachments.count <= 0 {
-            PopupNotification.show(notification: NSLocalizedString("Please provide at least one attachment or text", comment: "Edit post error"))
-            return
-        }
-        
-        let hud = MBProgressHUD.showAdded(to: view, animated: false)
-        
-        let completedKeys = attachments.filter { $0 is String } as! [String]
-        let imagesToUpload = attachments.filter { $0 is UIImage } as! [UIImage]
-        
-        if imagesToUpload.count > 0 {
-            hud.mode = .annularDeterminate
-            hud.label.text = NSLocalizedString("Uploading attachments", comment: "Edit post upload message")
-            S3.upload(images: imagesToUpload, progress:
-                { progress in
-                    hud.progress = progress
-                })
-            { keys, error in
-                if let error = error {
-                    PopupNotification.show(notification: error)
-                    hud.hide(animated: true)
-                } else {
-                    hud.mode = .indeterminate
-                    hud.label.text = NSLocalizedString("Uploading data", comment: "Edit post upload message")
-                    Server.editPost(post: post, text: text, attachments: keys!+completedKeys)
-                    { error in
-                        hud.hide(animated: true)
-                        if let error = error {
-                            PopupNotification.show(notification: error.domain)
-                        } else {
-                            self.input?.post = nil
-                            post.text = text
-                            post.attachments = keys!+completedKeys
-                            self.tableView.beginUpdates()
-                            self.tableView.reloadRows(at: [IndexPath(row: self.posts.index(of: post)!, section: 0)], with: .fade)
-                            self.tableView.endUpdates()
-                        }
-                    }
-                }
-            }
-        } else {
-            hud.mode = .indeterminate
-            hud.label.text = NSLocalizedString("Uploading data", comment: "Edit post upload message")
-            Server.editPost(post: post, text: text, attachments: completedKeys)
-            { error in
-                hud.hide(animated: true)
-                if let error = error {
-                    PopupNotification.show(notification: error.domain)
-                } else {
-                    self.input?.post = nil
-                    post.text = text
-                    post.attachments = completedKeys
-                    self.tableView.beginUpdates()
-                    self.tableView.reloadRows(at: [IndexPath(row: self.posts.index(of: post)!, section: 0)], with: .fade)
-                    self.tableView.endUpdates()
-                }
-            }
-        }
+//        if text.isEmpty && attachments.count <= 0 {
+//            PopupNotification.show(notification: NSLocalizedString("Please provide at least one attachment or text", comment: "Edit post error"))
+//            return
+//        }
+//        
+//        let hud = MBProgressHUD.showAdded(to: view, animated: false)
+//        
+//        let completedKeys = attachments.filter { $0 is String } as! [String]
+//        let imagesToUpload = attachments.filter { $0 is UIImage } as! [UIImage]
+//        
+//        if imagesToUpload.count > 0 {
+//            hud.mode = .annularDeterminate
+//            hud.label.text = NSLocalizedString("Uploading attachments", comment: "Edit post upload message")
+//            S3.upload(images: imagesToUpload, progress:
+//                { progress in
+//                    hud.progress = progress
+//                })
+//            { keys, error in
+//                if let error = error {
+//                    PopupNotification.show(notification: error)
+//                    hud.hide(animated: true)
+//                } else {
+//                    hud.mode = .indeterminate
+//                    hud.label.text = NSLocalizedString("Uploading data", comment: "Edit post upload message")
+//                    Server.editPost(post: post, text: text, attachments: keys!+completedKeys)
+//                    { error in
+//                        hud.hide(animated: true)
+//                        if let error = error {
+//                            PopupNotification.show(notification: error.domain)
+//                        } else {
+//                            self.input?.post = nil
+//                            post.text = text
+//                            post.attachments = keys!+completedKeys
+//                            self.tableView.beginUpdates()
+//                            self.tableView.reloadRows(at: [IndexPath(row: self.posts.index(of: post)!, section: 0)], with: .fade)
+//                            self.tableView.endUpdates()
+//                        }
+//                    }
+//                }
+//            }
+//        } else {
+//            hud.mode = .indeterminate
+//            hud.label.text = NSLocalizedString("Uploading data", comment: "Edit post upload message")
+//            Server.editPost(post: post, text: text, attachments: completedKeys)
+//            { error in
+//                hud.hide(animated: true)
+//                if let error = error {
+//                    PopupNotification.show(notification: error.domain)
+//                } else {
+//                    self.input?.post = nil
+//                    post.text = text
+//                    post.attachments = completedKeys
+//                    self.tableView.beginUpdates()
+//                    self.tableView.reloadRows(at: [IndexPath(row: self.posts.index(of: post)!, section: 0)], with: .fade)
+//                    self.tableView.endUpdates()
+//                }
+//            }
+//        }
     }
     
     // MARK: - View Controller Life Cycle -
@@ -312,25 +312,25 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     // MARK: - Private Functions -
     
     fileprivate func configure() {
-        title = project.title
-        
-        projectImageView.load(key: project.imageKey)
-        statusLabel.text = project.lastStatus?.text
-        dateLabel.text = DateFormatter.projectDateString(project.dateCreated)
-        descriptionLabel.text = project.projectDescription
-        
-        tableView.reloadData()
-        
-        needsHeaderViewLayout = true
-        checkHeaderViewHeight()
-        
-        if project.isArchived {
-            hideInput()
-        } else {
-            showInput()
-        }
-        
-        roundedView.alpha = project.isArchived ? 0.5 : 1.0
+//        title = project.title
+//        
+//        projectImageView.load(key: project.imageKey)
+//        statusLabel.text = project.lastStatus?.text
+//        dateLabel.text = DateFormatter.projectDateString(project.dateCreated)
+//        descriptionLabel.text = project.projectDescription
+//        
+//        tableView.reloadData()
+//        
+//        needsHeaderViewLayout = true
+//        checkHeaderViewHeight()
+//        
+//        if project.isArchived {
+//            hideInput()
+//        } else {
+//            showInput()
+//        }
+//        
+//        roundedView.alpha = project.isArchived ? 0.5 : 1.0
     }
     
     fileprivate func setupTableView() {
@@ -355,14 +355,14 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     }
     
     fileprivate func checkHeaderViewHeight() {
-        if needsHeaderViewLayout {
-            let screenWidth = UIScreen.main.bounds.width
-            let labelWidth = screenWidth - CGFloat(60)
-            let labelHeight = project.projectDescription.heightWithConstrainedWidth(labelWidth, font: descriptionLabel.font)
-            headerView.frame.size.height = 131 + labelHeight
-            tableView.tableHeaderView = headerView
-            needsHeaderViewLayout = false
-        }
+//        if needsHeaderViewLayout {
+//            let screenWidth = UIScreen.main.bounds.width
+//            let labelWidth = screenWidth - CGFloat(60)
+//            let labelHeight = project.projectDescription.heightWithConstrainedWidth(labelWidth, font: descriptionLabel.font)
+//            headerView.frame.size.height = 131 + labelHeight
+//            tableView.tableHeaderView = headerView
+//            needsHeaderViewLayout = false
+//        }
     }
     
     fileprivate func setBottomScrollInset(_ inset: CGFloat) {

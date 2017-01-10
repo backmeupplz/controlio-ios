@@ -35,21 +35,21 @@ class ProjectCell: UITableViewCell {
     // MARK: - Private Functions -
     
     fileprivate func configure() {
-        projectImageView.load(key: project.imageKey)
-        dateLabel.text = DateFormatter.projectDateString(project.dateCreated)
-        projectTitleLabel.text = project.title
-        statusLabel.text = project.lastStatus?.text
-        projectDescriptionLabel.text = project.projectDescription
-        
-        if let managerImageKey = project.manager.profileImageKey {
-            managerImageView.load(key: managerImageKey)
-        } else {
-            managerImageView.image = UIImage(named: "photo-background-placeholder")
-        }
-        managerNameLabel.text = project.manager.name ?? project.manager.email
-        postLabel.text = project.lastPost?.text ?? project.lastStatus?.text
-        
-        roundedView.alpha = project.isArchived ? 0.5 : 1.0
+//        projectImageView.load(key: project.imageKey)
+//        dateLabel.text = DateFormatter.projectDateString(project.dateCreated)
+//        projectTitleLabel.text = project.title
+//        statusLabel.text = project.lastStatus?.text
+//        projectDescriptionLabel.text = project.projectDescription
+//        
+//        if let managerImageKey = project.manager.profileImageKey {
+//            managerImageView.load(key: managerImageKey)
+//        } else {
+//            managerImageView.image = UIImage(named: "photo-background-placeholder")
+//        }
+//        managerNameLabel.text = project.manager.name ?? project.manager.email
+//        postLabel.text = project.lastPost?.text ?? project.lastStatus?.text
+//        
+//        roundedView.alpha = project.isArchived ? 0.5 : 1.0
     }
     
 }
