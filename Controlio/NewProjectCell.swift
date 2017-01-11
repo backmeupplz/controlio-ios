@@ -132,7 +132,7 @@ class NewProjectCell: UITableViewCell {
         managerTextField.placeholder = "* Manager's email"
         managerTextField.detail = "Email of the manager who will send you updates"
         
-        managerTextField.returnKeyType = .continue
+        managerTextField.returnKeyType = .done
         managerTextField.keyboardType = .emailAddress
         
         managerTextField.dividerActiveColor = Color.controlioGreen()
@@ -146,7 +146,7 @@ class NewProjectCell: UITableViewCell {
         clientsTextField.placeholder = "* Clients' emails"
         clientsTextField.detail = "Emails of your clients relevant to this project"
         
-        clientsTextField.returnKeyType = .continue
+        clientsTextField.returnKeyType = .done
         clientsTextField.keyboardType = .emailAddress
         
         clientsTextField.dividerActiveColor = Color.controlioGreen()
@@ -157,6 +157,7 @@ class NewProjectCell: UITableViewCell {
     }
     
     fileprivate func setup(for type: NewProjectCellType) {
+        endEditing(true)
         managerTextField.isHidden = type == .business
         clientsTextField.isHidden = type == .client
         clientsButton.isUserInteractionEnabled = type == .business
@@ -197,9 +198,7 @@ extension NewProjectCell: UITextFieldDelegate {
             let textField = textField as? TextField {
             if textField == last {
                 textField.resignFirstResponder()
-                if type == .client {
-                    createTouched(createButton)
-                } else {
+                if type == .business {
                     choosePeopleTouched(clientsButton)
                 }
             } else {

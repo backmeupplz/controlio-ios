@@ -226,6 +226,50 @@ class Server: NSObject {
     
     // MARK: - Projects -
     
+    class func add(project: Project, progress:@escaping (Float)->(), completion:@escaping (NSError?)->()) {
+        if isDemo() {
+            completion(NSError(domain: "You can't do that in demo account", code: 403, userInfo: nil))
+            return
+        }
+        
+        var parameters: Parameters = [
+            "title": project.title!
+        ]
+        if project.tempType == .client {
+            parameters["type"] = "client"
+            parameters["managerEmail"] = project.tempManagerEmail
+        } else {
+            parameters["type"] = "business"
+            parameters["clientEmails"] = project.tempClientEmails
+        }
+        if let description = project.projectDescription {
+            parameters["description"] = description
+        }
+        if let initialStatus = project.tempInitialStatus {
+            parameters["initialStatus"] = initialStatus
+        }
+        
+        if let image = project.tempImage {
+            S3.upload(image: image, progress: progress)
+            { key, error in
+                if let error = error {
+                    completion(NSError(domain: error, code: 500, userInfo: nil))
+                } else if let key = key {
+                    parameters["image"] = key
+                    request(urlAddition: "projects", method: .post, parameters: parameters, needsToken: true)
+                    { json, error in
+                        completion(error)
+                    }
+                }
+            }
+        } else {
+            request(urlAddition: "projects", method: .post, parameters: parameters, needsToken: true)
+            { json, error in
+                completion(error)
+            }
+        }
+    }
+    
     class func addProject(image: String, title: String, initialStatus: String, clients: [CLToken], description: String, manager: User, completion:@escaping (NSError?)->()) {
         let parameters: [String: Any] = [
             "image": image,
@@ -247,46 +291,46 @@ class Server: NSObject {
     }
     
     class func getProjects(skip: Int = 0, limit: Int = 20, completion:@escaping (NSError?, [Project]?)->()) {
-        let parameters = [
-            "skip": skip,
-            "limit": limit
-        ]
-        
-        request(urlAddition: "projects", method: .get, parameters: parameters, needsToken: true)
-        { json, error in
-            completion(error, Project.map(json: json))
-        }
+//        let parameters = [
+//            "skip": skip,
+//            "limit": limit
+//        ]
+//        
+//        request(urlAddition: "projects", method: .get, parameters: parameters, needsToken: true)
+//        { json, error in
+//            completion(error, Project.map(json: json))
+//        }
     }
     
     class func changeStatus(projectId: String, status: String, completion:@escaping (NSError?)->()) {
-        let parameters = [
-            "projectid": projectId,
-            "text": status,
-            "type": "status"
-        ]
-        if isDemo() {
-            completion(NSError(domain: NSLocalizedString("You can't do that in demo account", comment: "Error"), code: 500, userInfo: nil))
-            return
-        }
-        request(urlAddition: "posts", method: .post, parameters: parameters, needsToken: true)
-        { json, error in
-            completion(error)
-        }
+//        let parameters = [
+//            "projectid": projectId,
+//            "text": status,
+//            "type": "status"
+//        ]
+//        if isDemo() {
+//            completion(NSError(domain: NSLocalizedString("You can't do that in demo account", comment: "Error"), code: 500, userInfo: nil))
+//            return
+//        }
+//        request(urlAddition: "posts", method: .post, parameters: parameters, needsToken: true)
+//        { json, error in
+//            completion(error)
+//        }
     }
     
     class func changeClients(projectId: String, clientEmails: [String], completion:@escaping (NSError?)->()) {
-        let parameters: [String: Any] = [
-            "projectid": projectId,
-            "clients": clientEmails
-        ]
-        if isDemo() {
-            completion(NSError(domain: NSLocalizedString("You can't do that in demo account", comment: "Error"), code: 500, userInfo: nil))
-            return
-        }
-        request(urlAddition: "projects/clients", method: .post, parameters: parameters, needsToken: true)
-        { json, error in
-            completion(error)
-        }
+//        let parameters: [String: Any] = [
+//            "projectid": projectId,
+//            "clients": clientEmails
+//        ]
+//        if isDemo() {
+//            completion(NSError(domain: NSLocalizedString("You can't do that in demo account", comment: "Error"), code: 500, userInfo: nil))
+//            return
+//        }
+//        request(urlAddition: "projects/clients", method: .post, parameters: parameters, needsToken: true)
+//        { json, error in
+//            completion(error)
+//        }
     }
     
     class func editProject(project: Project, title: String, description: String, image: String, completion: @escaping (NSError?)->()) {

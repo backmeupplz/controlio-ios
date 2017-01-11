@@ -79,7 +79,7 @@ class S3: NSObject {
         var images = images
         let firstImage = images.removeFirst()
         
-        uploadImage(firstImage, progress:
+        upload(image: firstImage, progress:
         { progressFloat in
             let actualProgress = step * progressFloat
             DispatchQueue.main.async {
@@ -101,9 +101,9 @@ class S3: NSObject {
         }
     }
     
-    class func uploadImage(_ image: UIImage,
-                           progress: @escaping (_ progress: Float)->(),
-                           completion:@escaping (_ key: String?, _ error: String?)->()) {
+    class func upload(image: UIImage,
+                      progress: @escaping (_ progress: Float)->(),
+                      completion:@escaping (_ key: String?, _ error: String?)->()) {
         DispatchQueue.global().async {
             let path = saveImage(image)
             if path == nil {

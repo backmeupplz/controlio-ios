@@ -48,7 +48,7 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
         if let tempPorfileImage = user.tempProfileImage {
             hud.mode = .annularDeterminate
             hud.label.text = NSLocalizedString("Uploading image", comment: "Edit profile upload message")
-            S3.uploadImage(tempPorfileImage, progress: { progress in
+            S3.upload(image: tempPorfileImage, progress: { progress in
                 hud.progress = progress
             })
             { key, error in

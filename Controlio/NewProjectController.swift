@@ -8,6 +8,7 @@
 
 import UIKit
 import MBProgressHUD
+import UITextField_Shake
 
 class NewProjectController: UITableViewController, NewProjectCellDelegate, PickerDelegate {
     
@@ -15,6 +16,7 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate, Picke
     
     var project = Project()
     let imagePicker = UIImagePickerController()
+    var cell: NewProjectCell!
     
     // MARK: - View Controller Life Cycle -
     
@@ -31,7 +33,7 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate, Picke
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NewProjectCell", for: indexPath) as! NewProjectCell
+        cell = tableView.dequeueReusableCell(withIdentifier: "NewProjectCell", for: indexPath) as! NewProjectCell
         cell.project = project
         cell.delegate = self
         return cell
@@ -81,8 +83,58 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate, Picke
     }
     
     func createTouched() {
-        print("Should create project")
-        reloadCell()
+        view.endEditing(true)
+        
+        var allGood = true
+        
+        if project.title?.isEmpty ?? true {
+            cell.titleTextField.shake()
+            allGood = false
+        }
+        if cell.type == .client && !(project.tempManagerEmail?.isEmail ?? false) {
+            cell.managerTextField.shake()
+            allGood = false
+        }
+        if cell.type == .business && project.tempClientEmails.count <= 0 {
+            cell.clientsTextField.shake()
+            allGood = false
+        }
+        
+        if allGood {
+            guard let hud = MBProgressHUD.show() else { return }
+            if project.tempImage != nil {
+                hud.mode = .annularDeterminate
+                hud.label.text = "Uploading image"
+                Server.add(project: project, progress: { progress in
+                    hud.progress = progress
+                    if progress >= 1 {
+                        hud.mode = .indeterminate
+                        hud.label.text = "Adding new project"
+                    }
+                })
+                { error in
+                    hud.hide(animated: true)
+                    if let error = error {
+                        self.snackbarController?.show(error: error.domain)
+                    } else {
+                        self.project = Project()
+                        self.selectFirstTab()
+                    }
+                }
+            } else {
+                hud.label.text = "Adding new project"
+                Server.add(project: project, progress: { progress in })
+                { error in
+                    hud.hide(animated: true)
+                    if let error = error {
+                        self.snackbarController?.show(error: error.domain)
+                    } else {
+                        self.project = Project()
+                        self.selectFirstTab()
+                    }
+                }
+            }
+        }
     }
     
     // MARK: - UIImagePickerControllerDelegate -
