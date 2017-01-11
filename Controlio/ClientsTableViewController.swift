@@ -31,8 +31,9 @@ class ClientsTableViewController: UITableViewController {
         guard let email = emailTextField.text else { return }
         
         let isValidEmail = email.isEmail
+        let isNotCurrentUser = email != Server.currentUser?.email
         let isDuplicate = project.tempClientEmails.contains(email)
-        if isValidEmail && !isDuplicate {
+        if isValidEmail && !isDuplicate && isNotCurrentUser {
             emailTextField.text = ""
             tableView.beginUpdates()
             project.tempClientEmails.insert(email, at: 0)

@@ -130,7 +130,9 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate, Picke
                         self.snackbarController?.show(error: error.domain)
                     } else {
                         self.project = Project()
+                        self.reloadCell()
                         self.selectFirstTab()
+                        self.snackbarController?.show(text: "You have successfuly created a project")
                     }
                 }
             }

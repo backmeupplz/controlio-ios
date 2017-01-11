@@ -179,6 +179,7 @@ class NewProjectCell: UITableViewCell {
         }
         
         typePicker.selectedSegmentIndex = project.tempType.rawValue
+        type = project.tempType
         setup(for: project.tempType)
         titleTextField.text = project.title
         descriptionTextField.text = project.projectDescription
