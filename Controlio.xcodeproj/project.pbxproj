@@ -18,6 +18,8 @@
 		B37630531CE28741004FE1B7 /* AttachmentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B37630521CE28741004FE1B7 /* AttachmentView.xib */; };
 		B37630551CE28CA4004FE1B7 /* AttachmentContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37630541CE28CA4004FE1B7 /* AttachmentContainerView.swift */; };
 		B37630581CE28E9B004FE1B7 /* AttachmentWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37630571CE28E9B004FE1B7 /* AttachmentWrapperView.swift */; };
+		B37A96041E2A48610075C7A7 /* ProjectApproveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37A96021E2A48610075C7A7 /* ProjectApproveCell.swift */; };
+		B37A96051E2A48610075C7A7 /* ProjectApproveCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B37A96031E2A48610075C7A7 /* ProjectApproveCell.xib */; };
 		B37F10E21D962F2500CAA8D4 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37F10E11D962F2500CAA8D4 /* EditProfileViewController.swift */; };
 		B37F10E51D962F9A00CAA8D4 /* EditProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37F10E31D962F9A00CAA8D4 /* EditProfileCell.swift */; };
 		B38323651CDC3FB3004D0A1C /* SFUIDisplay-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = B383235C1CDC3FB2004D0A1C /* SFUIDisplay-Black.otf */; };
@@ -125,6 +127,8 @@
 		B37630521CE28741004FE1B7 /* AttachmentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttachmentView.xib; sourceTree = "<group>"; };
 		B37630541CE28CA4004FE1B7 /* AttachmentContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentContainerView.swift; sourceTree = "<group>"; };
 		B37630571CE28E9B004FE1B7 /* AttachmentWrapperView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentWrapperView.swift; sourceTree = "<group>"; };
+		B37A96021E2A48610075C7A7 /* ProjectApproveCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectApproveCell.swift; sourceTree = "<group>"; };
+		B37A96031E2A48610075C7A7 /* ProjectApproveCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectApproveCell.xib; sourceTree = "<group>"; };
 		B37F10E11D962F2500CAA8D4 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		B37F10E31D962F9A00CAA8D4 /* EditProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileCell.swift; sourceTree = "<group>"; };
 		B383235C1CDC3FB2004D0A1C /* SFUIDisplay-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIDisplay-Black.otf"; sourceTree = "<group>"; };
@@ -482,6 +486,8 @@
 				B3E57BF01D9602DB00F699F1 /* AddManagerCell.xib */,
 				B37F10E31D962F9A00CAA8D4 /* EditProfileCell.swift */,
 				B3F3039E1DAF4B6700535FCD /* EditProfileCell.xib */,
+				B37A96021E2A48610075C7A7 /* ProjectApproveCell.swift */,
+				B37A96031E2A48610075C7A7 /* ProjectApproveCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -615,6 +621,7 @@
 				B38323921CDC409D004D0A1C /* SFUIText-Light.otf in Resources */,
 				B3F303971DAF4B1800535FCD /* NewProjectCell.xib in Resources */,
 				B38323891CDC409D004D0A1C /* SFUIText-BoldItalicG1.otf in Resources */,
+				B37A96051E2A48610075C7A7 /* ProjectApproveCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -733,6 +740,7 @@
 				B3D8C6F61CFBFC6B001EE432 /* Config.swift in Sources */,
 				B3A89D541DB8069D00211EFF /* Payments.swift in Sources */,
 				B30A42161DA61FC6001FB870 /* MagicLinkViewController.swift in Sources */,
+				B37A96041E2A48610075C7A7 /* ProjectApproveCell.swift in Sources */,
 				B3E7B12C1D9F0DBC004FBF86 /* Date+ISO.swift in Sources */,
 				B3C305AE1CDFF43400C8E85F /* NSDateFormatter+Extensions.swift in Sources */,
 				B3A178D71DB2D12500C0E311 /* PlansController.swift in Sources */,

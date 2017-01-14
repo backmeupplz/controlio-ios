@@ -37,15 +37,17 @@ class User: NSObject, NSCoding {
     // MARK: - Functions -
     
     class func map(json: JSON?) -> [User]? {
-        guard let json = json else { return nil }
-        return json.array!.map { User(json: $0) }
+        guard let array = json?.array else { return nil }
+        return array.flatMap { User(json: $0) }
     }
     
-    convenience init(json: JSON) {
+    convenience init?(json: JSON?) {
+        guard let json = json, !json.isEmpty, let id = json["_id"].string else { return nil }
+        
         self.init()
         
         email = json["email"].string!
-        id = json["_id"].string!
+        self.id = id
         
         stripeId = json["stripeId"].string
         plan = Plan(rawValue: (json["plan"].int ?? 0))

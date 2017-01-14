@@ -291,15 +291,34 @@ class Server: NSObject {
     }
     
     class func getProjects(skip: Int = 0, limit: Int = 20, completion:@escaping (NSError?, [Project]?)->()) {
-//        let parameters = [
-//            "skip": skip,
-//            "limit": limit
-//        ]
-//        
-//        request(urlAddition: "projects", method: .get, parameters: parameters, needsToken: true)
-//        { json, error in
-//            completion(error, Project.map(json: json))
-//        }
+        let parameters = [
+            "skip": skip,
+            "limit": limit
+        ]
+        
+        request(urlAddition: "projects", method: .get, parameters: parameters, needsToken: true)
+        { json, error in
+            completion(error, Project.map(json: json))
+        }
+    }
+    
+    class func getInvitedProjects(completion:@escaping (NSError?, [Project]?)->()) {
+        request(urlAddition: "projects/invites", method: .get, needsToken: true)
+        { json, error in
+            completion(error, Project.map(json: json)?.filter { $0.createdType != nil })
+        }
+    }
+    
+    class func invite(approve: Bool, project: Project, completion: @escaping (NSError?)->()) {
+        let parameters: Parameters = [
+            "projectId": project.id,
+            "accept": approve ? 1 : 0
+        ]
+        
+        request(urlAddition: "projects/invites", method: .post, parameters: parameters, needsToken: true)
+        { json, error in
+            completion(error)
+        }
     }
     
     class func changeStatus(projectId: String, status: String, completion:@escaping (NSError?)->()) {

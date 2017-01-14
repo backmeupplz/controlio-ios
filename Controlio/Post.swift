@@ -24,17 +24,17 @@ class Post: NSObject {
     
     var text: String!
     var dateCreated: Date!
-    var manager: User!
+    var author: User!
     var attachments: [String]!
     
     // MARK: - Functions -
     
-    class func map(json: JSON?, manager: User? = nil) -> [Post]? {
-        guard let json = json else { return nil }
-        return json.array!.flatMap { Post(json: $0, manager: manager) }
+    class func map(json: JSON?) -> [Post]? {
+        guard let array = json?.array else { return nil }
+        return array.flatMap { Post(json: $0) }
     }
     
-    convenience init?(json: JSON?, manager: User? = nil) {
+    convenience init?(json: JSON?) {
         guard let json = json, !json.isEmpty, let id = json["_id"].string else { return nil }
         
         self.init()
@@ -44,7 +44,7 @@ class Post: NSObject {
         
         text = json["text"].string
         dateCreated = json["createdAt"].string!.dateFromISO8601
-        self.manager = manager
+        author = User(json: json["author"])
         attachments = json["attachments"].array!.map { $0.string! }
     }
 }

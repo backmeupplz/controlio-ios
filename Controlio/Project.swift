@@ -9,6 +9,11 @@
 import UIKit
 import SwiftyJSON
 
+enum ProjectCreatedType: String {
+    case clientCreated = "clientCreated"
+    case managerCreated = "managerCreated"
+}
+
 class Project: NSObject {
     
     // MARK: - Variables -
@@ -19,7 +24,9 @@ class Project: NSObject {
     var projectDescription: String?
     var imageKey: String?
     var dateCreated: Date?
+    var dateUpdated: Date?
     
+    var owner: User?
     var managers = [User]()
     var clients = [User]()
     
@@ -27,8 +34,8 @@ class Project: NSObject {
     var lastPost: Post?
     
     var canEdit: Bool = false
-    
     var isArchived = false
+    var createdType: ProjectCreatedType?
     
     var tempType = NewProjectCellType.client
     var tempImage: UIImage?
@@ -39,8 +46,8 @@ class Project: NSObject {
     // MARK: - Functions -
     
     class func map(json: JSON?) -> [Project]? {
-        guard let json = json else { return nil }
-        return json.array!.map { Project(json: $0) }
+        guard let array = json?.array else { return nil }
+        return array.map { Project(json: $0) }
     }
     
     convenience init(json: JSON) {
@@ -49,17 +56,23 @@ class Project: NSObject {
         id = json["_id"].string!
         
         title = json["title"].string!
-        projectDescription = json["description"].string!
-        imageKey = json["image"].string!
-        dateCreated = json["createdAt"].string!.dateFromISO8601!
+        projectDescription = json["description"].string
+        imageKey = json["image"].string
+        dateCreated = json["createdAt"].string!.dateFromISO8601
+        dateUpdated = json["updatedAt"].string!.dateFromISO8601
         
-//        manager = User(json: json["manager"])
-//        clients = User.map(json: json["clients"])
+        owner = User(json: json["owner"])
+        clients = User.map(json: json["clients"]) ?? []
+        managers = User.map(json: json["managers"]) ?? []
         
-//        lastPost = Post(json: json["lastPost"], manager: manager)
-//        lastStatus = Post(json: json["lastStatus"], manager: manager)
+        lastPost = Post(json: json["lastPost"])
+        lastStatus = Post(json: json["lastStatus"])
         
         canEdit = json["canEdit"].bool ?? false
         isArchived = json["isArchived"].bool ?? false
+        
+        if let type = json["createdType"].string {
+            createdType = ProjectCreatedType(rawValue: type)!
+        }
     }
 }

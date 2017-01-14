@@ -667,7 +667,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.nib` struct is generated, and contains static references to 8 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 9 nibs.
   struct nib {
     /// Nib `AddManagerCell`.
     static let addManagerCell = _R.nib._AddManagerCell()
@@ -681,6 +681,8 @@ struct R: Rswift.Validatable {
     static let newProjectCell = _R.nib._NewProjectCell()
     /// Nib `PostCell`.
     static let postCell = _R.nib._PostCell()
+    /// Nib `ProjectApproveCell`.
+    static let projectApproveCell = _R.nib._ProjectApproveCell()
     /// Nib `ProjectCell`.
     static let projectCell = _R.nib._ProjectCell()
     /// Nib `UserCell`.
@@ -714,6 +716,11 @@ struct R: Rswift.Validatable {
     /// `UINib(name: "PostCell", in: bundle)`
     static func postCell(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.postCell)
+    }
+    
+    /// `UINib(name: "ProjectApproveCell", in: bundle)`
+    static func projectApproveCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.projectApproveCell)
     }
     
     /// `UINib(name: "ProjectCell", in: bundle)`
@@ -2889,7 +2896,6 @@ struct _R: Rswift.Validatable {
     static func validate() throws {
       try _PostCell.validate()
       try _EditProfileCell.validate()
-      try _ProjectCell.validate()
       try _AttachmentView.validate()
       try _UserCell.validate()
       try _InputView.validate()
@@ -2984,16 +2990,23 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
     
-    struct _ProjectCell: Rswift.NibResourceType, Rswift.Validatable {
+    struct _ProjectApproveCell: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "ProjectApproveCell"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> ProjectApproveCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ProjectApproveCell
+      }
+      
+      fileprivate init() {}
+    }
+    
+    struct _ProjectCell: Rswift.NibResourceType {
       let bundle = R.hostingBundle
       let name = "ProjectCell"
       
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> ProjectCell? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ProjectCell
-      }
-      
-      static func validate() throws {
-        if UIKit.UIImage(named: "photo-background-placeholder") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'photo-background-placeholder' is used in nib 'ProjectCell', but couldn't be loaded.") }
       }
       
       fileprivate init() {}

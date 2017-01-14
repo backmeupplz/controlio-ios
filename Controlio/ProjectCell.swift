@@ -20,36 +20,41 @@ class ProjectCell: UITableViewCell {
     
     // MARK: - Outlets -
     
-    @IBOutlet weak var roundedView: UIView!
-    
     @IBOutlet fileprivate weak var projectImageView: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var projectTitleLabel: UILabel!
-    @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var projectDescriptionLabel: UILabel!
     
-    @IBOutlet fileprivate weak var managerImageView: UIImageView!
-    @IBOutlet weak var managerNameLabel: UILabel!
-    @IBOutlet weak var postLabel: UILabel!
+    @IBOutlet weak var projectImageViewLeft: NSLayoutConstraint!
+    @IBOutlet weak var projectImageViewWidth: NSLayoutConstraint!
     
     // MARK: - Private Functions -
     
     fileprivate func configure() {
-//        projectImageView.load(key: project.imageKey)
-//        dateLabel.text = DateFormatter.projectDateString(project.dateCreated)
-//        projectTitleLabel.text = project.title
-//        statusLabel.text = project.lastStatus?.text
-//        projectDescriptionLabel.text = project.projectDescription
-//        
-//        if let managerImageKey = project.manager.profileImageKey {
-//            managerImageView.load(key: managerImageKey)
-//        } else {
-//            managerImageView.image = UIImage(named: "photo-background-placeholder")
-//        }
-//        managerNameLabel.text = project.manager.name ?? project.manager.email
-//        postLabel.text = project.lastPost?.text ?? project.lastStatus?.text
-//        
-//        roundedView.alpha = project.isArchived ? 0.5 : 1.0
+        if let key = project.imageKey {
+            projectImageView.image = UIImage(named: "photo-background-placeholder")
+            projectImageViewLeft.constant = 15
+            projectImageViewWidth.constant = 60
+            projectImageView.load(key: key)
+        } else {
+            projectImageView.image = UIImage(named: "photo-background-placeholder")
+            projectImageViewLeft.constant = 0
+            projectImageViewWidth.constant = 0
+        }
+        if let date = project.dateUpdated {
+            dateLabel.text = DateFormatter.projectDateString(date)
+        } else {
+            dateLabel.text = ""
+        }
+        projectTitleLabel.text = project.title
+        if let text = project.lastPost?.text {
+            projectDescriptionLabel.alpha = 1
+            projectDescriptionLabel.text = text
+        } else {
+            projectDescriptionLabel.alpha = 0.5
+            projectDescriptionLabel.text = "Nothing here yet"
+        }
+        
     }
     
 }

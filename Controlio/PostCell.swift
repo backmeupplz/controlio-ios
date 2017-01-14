@@ -60,12 +60,12 @@ class PostCell: UITableViewCell {
     // MARK: - Private Functions -
     
     fileprivate func configure() {
-        if let managerImageKey = post.manager.profileImageKey {
-            managerImageView.load(key: managerImageKey)
-        } else {
-            managerImageView.image = UIImage(named: "photo-background-placeholder")
-        }
-        managerNameLabel.text = post.manager.name ?? post.manager.email
+//        if let managerImageKey = post.manager.profileImageKey {
+//            managerImageView.load(key: managerImageKey)
+//        } else {
+//            managerImageView.image = UIImage(named: "photo-background-placeholder")
+//        }
+//        managerNameLabel.text = post.manager.name ?? post.manager.email
         dateLabel.text = DateFormatter.projectDateString(post.dateCreated)
         postLabel.text = post.text
         if post.type == .status {

@@ -8,11 +8,13 @@
 
 import UIKit
 import UIScrollView_InfiniteScroll
+import MBProgressHUD
 
-class ProjectsController: UITableViewController, ProjectControllerDelegate {
+class ProjectsController: UITableViewController, ProjectControllerDelegate, ProjectApproveCellDelegate {
     
     // MARK: - Variables -
     
+    fileprivate var invitedProjects = [Project]()
     fileprivate var projects = [Project]()
     
     // MARK: - ProjectControllerDelegate -
@@ -27,16 +29,59 @@ class ProjectsController: UITableViewController, ProjectControllerDelegate {
         tableView.endUpdates()
     }
     
+    // MARK: - ProjectApproveCell -
+    
+    func checkTouched(at cell: ProjectApproveCell) {
+        guard let hud = MBProgressHUD.show() else { return }
+        hud.label.text = "Accepting the invite..."
+        Server.invite(approve: true, project: cell.project)
+        { error in
+            hud.hide(animated: true)
+            if let error = error {
+                self.snackbarController?.show(error: error.domain)
+            } else {
+                self.snackbarController?.show(text: "You have accepted the invite to \"\(cell.project.title ?? "")\"")
+                self.loadInitialProjects()
+            }
+        }
+    }
+    
+    func crossTouched(at cell: ProjectApproveCell) {
+        guard let hud = MBProgressHUD.show() else { return }
+        hud.label.text = "Rejecting the invite..."
+        Server.invite(approve: false, project: cell.project)
+        { error in
+            hud.hide(animated: true)
+            if let error = error {
+                self.snackbarController?.show(error: error.domain)
+            } else {
+                self.snackbarController?.show(text: "You have rejected the invite to \"\(cell.project.title ?? "")\"")
+                self.loadInitialProjects()
+            }
+        }
+    }
+    
     // MARK: - UITableViewDataSource -
     
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return projects.count
+        return section == 1 ? projects.count : invitedProjects.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectCell", for: indexPath) as! ProjectCell
-        cell.project = projects[(indexPath as NSIndexPath).row]
-        return cell
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectApproveCell", for: indexPath) as! ProjectApproveCell
+            cell.project = invitedProjects[(indexPath as NSIndexPath).row]
+            cell.delegate = self
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectCell", for: indexPath) as! ProjectCell
+            cell.project = projects[(indexPath as NSIndexPath).row]
+            return cell
+        }
     }
     
     // MARK: - UITableViewDelegate -
@@ -70,6 +115,7 @@ class ProjectsController: UITableViewController, ProjectControllerDelegate {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 464.0
         tableView.register(UINib(nibName: "ProjectCell", bundle: nil), forCellReuseIdentifier: "ProjectCell")
+        tableView.register(UINib(nibName: "ProjectApproveCell", bundle: nil), forCellReuseIdentifier: "ProjectApproveCell")
     }
     
     fileprivate func addRefreshControl() {
@@ -91,12 +137,22 @@ class ProjectsController: UITableViewController, ProjectControllerDelegate {
     }
     
     @objc fileprivate func loadInitialProjects() {
+        Server.getInvitedProjects
+        { error, projects in
+            if let error = error {
+                self.snackbarController?.show(error: error.domain)
+            } else if let projects = projects {
+                self.invitedProjects = projects
+                self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+            }
+            self.refreshControl?.endRefreshing()
+        }
         Server.getProjects
         { error, projects in
             if let error = error {
-                PopupNotification.show(notification: error.domain)
-            } else {
-                self.addInitialProjects(projects: projects!)
+                self.snackbarController?.show(error: error.domain)
+            } else if let projects = projects {
+                self.addInitialProjects(projects: projects)
             }
             self.refreshControl?.endRefreshing()
         }
@@ -106,7 +162,7 @@ class ProjectsController: UITableViewController, ProjectControllerDelegate {
         Server.getProjects(skip: projects.count)
         { error, projects in
             if let error = error {
-                PopupNotification.show(notification: error.domain)
+                self.snackbarController?.show(error: error.domain)
             } else {
                 self.addProjects(projects: projects!)
             }
@@ -115,9 +171,9 @@ class ProjectsController: UITableViewController, ProjectControllerDelegate {
     }
     
     fileprivate func addInitialProjects(projects: [Project]) {
-        let indexPathsToDelete = IndexPath.range(start: 0, length: self.projects.count)
+        let indexPathsToDelete = IndexPath.range(start: 0, length: self.projects.count, section: 1)
         self.projects = projects
-        let indexPathsToAdd = IndexPath.range(start: 0, length: projects.count)
+        let indexPathsToAdd = IndexPath.range(start: 0, length: projects.count, section: 1)
         
         tableView.beginUpdates()
         tableView.deleteRows(at: indexPathsToDelete, with: .fade)
@@ -126,7 +182,7 @@ class ProjectsController: UITableViewController, ProjectControllerDelegate {
     }
     
     fileprivate func addProjects(projects: [Project]) {
-        let indexPaths = IndexPath.range(start: self.projects.count, length: projects.count)
+        let indexPaths = IndexPath.range(start: self.projects.count, length: projects.count, section: 1)
         self.projects += projects
         
         tableView.beginUpdates()
