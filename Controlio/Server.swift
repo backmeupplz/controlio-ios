@@ -316,7 +316,7 @@ class Server: NSObject {
             "accept": approve ? 1 : 0
         ]
         
-        request(urlAddition: "projects/invites", method: .post, parameters: parameters, needsToken: true)
+        request(urlAddition: "projects/invite", method: .post, parameters: parameters, needsToken: true)
         { json, error in
             completion(error)
         }
