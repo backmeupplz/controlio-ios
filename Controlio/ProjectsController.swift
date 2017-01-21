@@ -45,6 +45,7 @@ class ProjectsController: UITableViewController, ProjectControllerDelegate, Proj
                 self.invites = self.invites.filter { $0 != cell.invite }
                 self.tableView.deleteRows(at: [self.tableView.indexPath(for: cell)!], with: .automatic)
                 self.tableView.endUpdates()
+                self.loadInitialOnlyProjects()
             }
         }
     }
@@ -63,7 +64,6 @@ class ProjectsController: UITableViewController, ProjectControllerDelegate, Proj
                 self.invites = self.invites.filter { $0 != cell.invite }
                 self.tableView.deleteRows(at: [self.tableView.indexPath(for: cell)!], with: .automatic)
                 self.tableView.endUpdates()
-
             }
         }
     }
@@ -152,7 +152,6 @@ class ProjectsController: UITableViewController, ProjectControllerDelegate, Proj
                 self.invites = invites
                 self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
             }
-            self.refreshControl?.endRefreshing()
         }
         Server.getProjects
         { error, projects in
@@ -162,6 +161,19 @@ class ProjectsController: UITableViewController, ProjectControllerDelegate, Proj
                 self.addInitialProjects(projects: projects)
             }
             self.refreshControl?.endRefreshing()
+        }
+    }
+    
+    fileprivate func loadInitialOnlyProjects() {
+        tableView.refreshControl?.beginRefreshing()
+        Server.getProjects
+            { error, projects in
+                if let error = error {
+                    self.snackbarController?.show(error: error.domain)
+                } else if let projects = projects {
+                    self.addInitialProjects(projects: projects)
+                }
+                self.refreshControl?.endRefreshing()
         }
     }
     
