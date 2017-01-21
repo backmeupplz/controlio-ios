@@ -14,7 +14,7 @@ class ProjectsController: UITableViewController, ProjectControllerDelegate, Proj
     
     // MARK: - Variables -
     
-    fileprivate var invitedProjects = [Project]()
+    fileprivate var invites = [Invite]()
     fileprivate var projects = [Project]()
     
     // MARK: - ProjectControllerDelegate -
@@ -34,14 +34,17 @@ class ProjectsController: UITableViewController, ProjectControllerDelegate, Proj
     func checkTouched(at cell: ProjectApproveCell) {
         guard let hud = MBProgressHUD.show() else { return }
         hud.label.text = "Accepting the invite..."
-        Server.invite(approve: true, project: cell.project)
+        Server.invite(approve: true, invite: cell.invite)
         { error in
             hud.hide(animated: true)
             if let error = error {
                 self.snackbarController?.show(error: error.domain)
             } else {
-                self.snackbarController?.show(text: "You have accepted the invite to \"\(cell.project.title ?? "")\"")
-                self.loadInitialProjects()
+                self.snackbarController?.show(text: "You have accepted the invite to \"\(cell.invite.project.title ?? "")\"")
+                self.tableView.beginUpdates()
+                self.invites = self.invites.filter { $0 != cell.invite }
+                self.tableView.deleteRows(at: [self.tableView.indexPath(for: cell)!], with: .automatic)
+                self.tableView.endUpdates()
             }
         }
     }
@@ -49,14 +52,18 @@ class ProjectsController: UITableViewController, ProjectControllerDelegate, Proj
     func crossTouched(at cell: ProjectApproveCell) {
         guard let hud = MBProgressHUD.show() else { return }
         hud.label.text = "Rejecting the invite..."
-        Server.invite(approve: false, project: cell.project)
+        Server.invite(approve: false, invite: cell.invite)
         { error in
             hud.hide(animated: true)
             if let error = error {
                 self.snackbarController?.show(error: error.domain)
             } else {
-                self.snackbarController?.show(text: "You have rejected the invite to \"\(cell.project.title ?? "")\"")
-                self.loadInitialProjects()
+                self.snackbarController?.show(text: "You have rejected the invite to \"\(cell.invite.project.title ?? "")\"")
+                self.tableView.beginUpdates()
+                self.invites = self.invites.filter { $0 != cell.invite }
+                self.tableView.deleteRows(at: [self.tableView.indexPath(for: cell)!], with: .automatic)
+                self.tableView.endUpdates()
+
             }
         }
     }
@@ -68,13 +75,13 @@ class ProjectsController: UITableViewController, ProjectControllerDelegate, Proj
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 1 ? projects.count : invitedProjects.count
+        return section == 1 ? projects.count : invites.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectApproveCell", for: indexPath) as! ProjectApproveCell
-            cell.project = invitedProjects[(indexPath as NSIndexPath).row]
+            cell.invite = invites[(indexPath as NSIndexPath).row]
             cell.delegate = self
             return cell
         } else {
@@ -137,12 +144,12 @@ class ProjectsController: UITableViewController, ProjectControllerDelegate, Proj
     }
     
     @objc fileprivate func loadInitialProjects() {
-        Server.getInvitedProjects
-        { error, projects in
+        Server.getInvites
+        { error, invites in
             if let error = error {
                 self.snackbarController?.show(error: error.domain)
-            } else if let projects = projects {
-                self.invitedProjects = projects
+            } else if let invites = invites {
+                self.invites = invites
                 self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
             }
             self.refreshControl?.endRefreshing()

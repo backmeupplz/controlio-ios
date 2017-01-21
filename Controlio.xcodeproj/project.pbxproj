@@ -56,6 +56,7 @@
 		B383239B1CDC409D004D0A1C /* SFUIText-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = B38323841CDC409D004D0A1C /* SFUIText-SemiboldItalic.otf */; };
 		B390C7A31CDE96B800D5F021 /* DeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B390C7A21CDE96B800D5F021 /* DeepLink.swift */; };
 		B390C7A51CDE9B5400D5F021 /* IndexPath+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B390C7A41CDE9B5400D5F021 /* IndexPath+Additions.swift */; };
+		B39E06541E331EEF003B5910 /* Invite.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39E06531E331EEF003B5910 /* Invite.swift */; };
 		B3A178D71DB2D12500C0E311 /* PlansController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A178D61DB2D12500C0E311 /* PlansController.swift */; };
 		B3A89D541DB8069D00211EFF /* Payments.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A89D531DB8069D00211EFF /* Payments.swift */; };
 		B3AA2F911C9110EF00FE7E54 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AA2F901C9110EF00FE7E54 /* LoginViewController.swift */; };
@@ -165,6 +166,7 @@
 		B38323841CDC409D004D0A1C /* SFUIText-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-SemiboldItalic.otf"; sourceTree = "<group>"; };
 		B390C7A21CDE96B800D5F021 /* DeepLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeepLink.swift; sourceTree = "<group>"; };
 		B390C7A41CDE9B5400D5F021 /* IndexPath+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IndexPath+Additions.swift"; sourceTree = "<group>"; };
+		B39E06531E331EEF003B5910 /* Invite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Invite.swift; sourceTree = "<group>"; };
 		B3A178D61DB2D12500C0E311 /* PlansController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlansController.swift; sourceTree = "<group>"; };
 		B3A89D531DB8069D00211EFF /* Payments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payments.swift; sourceTree = "<group>"; };
 		B3AA2F901C9110EF00FE7E54 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -440,6 +442,7 @@
 				B3C305A51CDFE60B00C8E85F /* Project.swift */,
 				B3C305A71CDFEAB900C8E85F /* User.swift */,
 				B3C305A91CDFEB0200C8E85F /* Post.swift */,
+				B39E06531E331EEF003B5910 /* Invite.swift */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -698,6 +701,7 @@
 				B3FEB8441C9630BA0048B688 /* UIImageView+BeautifulWebImage.swift in Sources */,
 				B37630581CE28E9B004FE1B7 /* AttachmentWrapperView.swift in Sources */,
 				B3FEB8491C963E260048B688 /* CustomizableImageView.swift in Sources */,
+				B39E06541E331EEF003B5910 /* Invite.swift in Sources */,
 				B3EA114C1D93A9740026658B /* UserCell.swift in Sources */,
 				B3D8C6F41CFBFBF4001EE432 /* Server.swift in Sources */,
 				B3C305A11CDFD79500C8E85F /* SettingsController.swift in Sources */,

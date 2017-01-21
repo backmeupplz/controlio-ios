@@ -9,11 +9,6 @@
 import UIKit
 import SwiftyJSON
 
-enum ProjectCreatedType: String {
-    case clientCreated = "clientCreated"
-    case managerCreated = "managerCreated"
-}
-
 class Project: NSObject {
     
     // MARK: - Variables -
@@ -35,7 +30,6 @@ class Project: NSObject {
     
     var canEdit: Bool = false
     var isArchived = false
-    var createdType: ProjectCreatedType?
     
     var tempType = NewProjectCellType.client
     var tempImage: UIImage?
@@ -70,9 +64,5 @@ class Project: NSObject {
         
         canEdit = json["canEdit"].bool ?? false
         isArchived = json["isArchived"].bool ?? false
-        
-        if let type = json["createdType"].string {
-            createdType = ProjectCreatedType(rawValue: type)!
-        }
     }
 }

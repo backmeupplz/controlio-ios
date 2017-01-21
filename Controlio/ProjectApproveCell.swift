@@ -23,7 +23,7 @@ class ProjectApproveCell: UITableViewCell {
     @IBOutlet weak var crossButton: UIButton!
     
     var delegate: ProjectApproveCellDelegate?
-    var project: Project! {
+    var invite: Invite! {
         didSet {
             configure()
         }
@@ -53,16 +53,18 @@ class ProjectApproveCell: UITableViewCell {
     // MARK: - Private functions -
     
     fileprivate func configure() {
-        label.text = ""
-        guard let type = project.createdType else { return }
-        if type == .clientCreated {
-            guard let name = project.clients.first?.name ?? project.clients.first?.email,
-                let title = project.title else { return }
-            label.text = "\(name) invited you as a manager to \"\(title)\". Would you like to accept the invite?"
-        } else {
-            guard let name = project.owner?.name ?? project.owner?.email,
-                let title = project.title else { return }
-            label.text = "\(name) invited you as a client to \"\(title)\". Would you like to accept the invite?"
+        let senderName = invite.sender.name ?? invite.sender.email ?? ""
+        var inviteString = ""
+        switch invite.type {
+        case .manage:
+            inviteString = "invited you to manage"
+        case .own:
+            inviteString = "invited you as an owner to"
+        case .client:
+            inviteString = "invited you as a client to"
         }
+        let projectTitle = invite.project.title ?? ""
+        
+        label.text = "\(senderName) \(inviteString) \"\(projectTitle)\""
     }
 }

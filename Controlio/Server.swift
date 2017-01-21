@@ -302,16 +302,17 @@ class Server: NSObject {
         }
     }
     
-    class func getInvitedProjects(completion:@escaping (NSError?, [Project]?)->()) {
+    class func getInvites(completion:@escaping (NSError?, [Invite]?)->()) {
         request(urlAddition: "projects/invites", method: .get, needsToken: true)
         { json, error in
-            completion(error, Project.map(json: json)?.filter { $0.createdType != nil })
+            completion(nil, [])
+            completion(error, Invite.map(json: json))
         }
     }
     
-    class func invite(approve: Bool, project: Project, completion: @escaping (NSError?)->()) {
+    class func invite(approve: Bool, invite: Invite, completion: @escaping (NSError?)->()) {
         let parameters: Parameters = [
-            "projectId": project.id,
+            "inviteId": invite.id,
             "accept": approve ? 1 : 0
         ]
         
