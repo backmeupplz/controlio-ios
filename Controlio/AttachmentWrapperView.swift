@@ -64,7 +64,7 @@ class AttachmentWrapperView: UIView, AttachmentViewDelegate {
     // MARK: - General Functions -
     
     override var intrinsicContentSize : CGSize {
-        if attachments.count == 0 {
+        if attachments.count == 0 || isHidden {
             return CGSize.zero
         }
         var totalRect = CGRect.null

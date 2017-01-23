@@ -210,7 +210,7 @@ class PlansController: UITableViewController, MFMailComposeViewControllerDelegat
         message = NSLocalizedString("Would you like to switch to \"\(message)\" plan?", comment: "Alert message stub for purchase")
         let alert = UIAlertController(title: NSLocalizedString("Confirmation", comment: "Alert title for purchase"), message: message, preferredStyle: .alert)
         alert.addCancelButton()
-        alert.addDefaultAction(NSLocalizedString("Switch!", comment: "Alert ok button title for purchase")) {
+        alert.add(action: NSLocalizedString("Switch!", comment: "Alert ok button title for purchase")) {
             let hud = MBProgressHUD.showAdded(to: self.view, animated: false)
             Server.stripeCustomerChoose(plan: plan)
             { error in

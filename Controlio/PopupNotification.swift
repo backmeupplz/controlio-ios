@@ -14,7 +14,7 @@ class PopupNotification: NSObject {
     
     class func show(notification: String, title: String = "Ouch!") {
         let alert = UIAlertController(title: title, message: notification, preferredStyle: .alert)
-        alert.addDefaultAction("Ok!") { 
+        alert.add(action: "Ok!") {
             // do nothing
         }
         UIApplication.topViewController()?.present(alert, animated: true, completion: nil)

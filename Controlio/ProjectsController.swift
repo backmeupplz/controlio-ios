@@ -94,7 +94,11 @@ class ProjectsController: UITableViewController, ProjectControllerDelegate, Proj
     // MARK: - UITableViewDelegate -
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        Router(self).show(project: projects[(indexPath as NSIndexPath).row], delegate: self)
+        if indexPath.section == 0 {
+            Router(self).show(project: invites[(indexPath as NSIndexPath).row].project, delegate: self)
+        } else {
+            Router(self).show(project: projects[(indexPath as NSIndexPath).row], delegate: self)
+        }
     }
     
     // MARK: - View Controller Life Cycle -

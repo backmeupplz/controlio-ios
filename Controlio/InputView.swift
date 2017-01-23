@@ -16,11 +16,10 @@ protocol InputViewDelegate: class {
     func closeImagePicker()
     func shouldAddPost(text: String, attachments: [Any])
     func shouldChangeStatus(text: String)
-    func shouldEditClients(clients: [String])
     func shouldEditPost(post: Post, text: String, attachments: [Any])
 }
 
-class InputView: UIView, AttachmentContainerViewDelegate, CLTokenInputViewDelegate {
+class InputView: UIView, AttachmentContainerViewDelegate {
     
     // MARK: - Variables -
     
@@ -38,7 +37,6 @@ class InputView: UIView, AttachmentContainerViewDelegate, CLTokenInputViewDelega
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
-    @IBOutlet weak var tokenView: CLTokenInputView!
     @IBOutlet fileprivate weak var textView: SLKTextView!
     @IBOutlet fileprivate weak var textViewHeight: NSLayoutConstraint!
     @IBOutlet fileprivate weak var attachmentContainerView: AttachmentContainerView!
@@ -46,9 +44,6 @@ class InputView: UIView, AttachmentContainerViewDelegate, CLTokenInputViewDelega
     
     @IBOutlet weak var clipImage: UIImageView!
     @IBOutlet weak var clipButton: UIButton!
-    
-    @IBOutlet weak var textViewBottom: NSLayoutConstraint!
-    @IBOutlet weak var tokenViewBottom: NSLayoutConstraint!
     
     @IBOutlet weak var cancelButton: UIButton!
     
@@ -72,11 +67,6 @@ class InputView: UIView, AttachmentContainerViewDelegate, CLTokenInputViewDelega
         result.textView.maxNumberOfLines = 5
         
         result.attachmentContainerView.delegate = result
-        
-        result.setupTokenInputView()
-        for client in project.clients {
-            result.tokenView.add(CLToken(displayText: client.email, context: nil))
-        }
         result.project = project
         
         return result
@@ -86,33 +76,6 @@ class InputView: UIView, AttachmentContainerViewDelegate, CLTokenInputViewDelega
     
     func closeImagePicker() {
         delegate?.closeImagePicker()
-    }
-    
-    // MARK: - CLTokenInputViewDelegate -
-    
-    func tokenInputView(_ view: CLTokenInputView, didChangeText text: String?) {
-        
-    }
-    
-    func tokenInputView(_ view: CLTokenInputView, didAdd token: CLToken) {
-        setNeedsLayout()
-    }
-    
-    func tokenInputView(_ view: CLTokenInputView, didRemove token: CLToken) {
-        setNeedsLayout()
-    }
-    
-    func tokenInputViewDidEndEditing(_ view: CLTokenInputView) {
-        view.accessoryView = nil
-    }
-    
-    func tokenInputViewDidBeginEditing(_ view: CLTokenInputView) {
-        view.accessoryView = contactAddButton()
-    }
-    
-    func tokenInputViewShouldReturn(_ view: CLTokenInputView) -> Bool {
-        addTokenTouched()
-        return false
     }
     
     // MARK: - Actions -
@@ -135,9 +98,6 @@ class InputView: UIView, AttachmentContainerViewDelegate, CLTokenInputViewDelega
         case 1:
             let text = textView.text ?? ""
             delegate?.shouldChangeStatus(text: text)
-        case 2:
-            let emails = tokenView.allTokens.map { $0.displayText }
-            delegate?.shouldEditClients(clients: emails)
         default:
             break
         }
@@ -154,18 +114,7 @@ class InputView: UIView, AttachmentContainerViewDelegate, CLTokenInputViewDelega
         
         clipImage.isHidden = index != 0
         clipButton.isEnabled = index == 0
-        textView.isHidden = index == 2
-        tokenView.isHidden = index != 2
-        textViewBottom.priority = index == 2 ? 500 : 750
-        tokenViewBottom.priority = index == 2 ? 750 : 500
-        if index == 2 {
-            for token in tokenView.allTokens {
-                tokenView.remove(token)
-            }
-            for client in project.clients {
-                tokenView.add(CLToken(displayText: client.email, context: nil))
-            }
-        }
+        attachmentContainerView.wrapperView.isHidden = index != 0
         
         setNeedsLayout()
     }
@@ -220,16 +169,6 @@ class InputView: UIView, AttachmentContainerViewDelegate, CLTokenInputViewDelega
         }
     }
     
-    func addTokenTouched() {
-        let text = tokenView.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) ?? ""
-        if !text.isEmpty && text.isEmail {
-            let token = CLToken(displayText: text, context: nil)
-            tokenView.add(token)
-        } else {
-            PopupNotification.show(notification: NSLocalizedString("Please provide a valid email", comment: "Error"))
-        }
-    }
-    
     // MARK: - Private Functions -
     
     fileprivate func subscribeNotifications() {
@@ -248,18 +187,6 @@ class InputView: UIView, AttachmentContainerViewDelegate, CLTokenInputViewDelega
             textViewHeight.constant = textView.contentSize.height
             layoutIfNeeded()
         }
-    }
-    
-    fileprivate func setupTokenInputView() {
-        tokenView.tintColor = UIColor.controlioGreen()
-        tokenView.placeholderText = NSLocalizedString("Client emails", comment: "Token view placeholder")
-        tokenView.textField.font = UIFont(name: "SFUIText-Regular", size: 14)
-    }
-    
-    fileprivate func contactAddButton() -> UIButton {
-        let contactAddButton = UIButton(type: .contactAdd)
-        contactAddButton.addTarget(self, action: #selector(InputView.addTokenTouched), for: .touchUpInside)
-        return contactAddButton
     }
     
     fileprivate func configureForEditting() {

@@ -43,7 +43,9 @@ class Router {
     }
     
     func show(project: Project, delegate: ProjectControllerDelegate? = nil) {
-        
+        let vc = R.storyboard.main.projectController()
+        vc?.project = project
+        show(vc: vc)
     }
     
     // MARK: - Private Functions -

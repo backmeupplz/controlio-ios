@@ -24,21 +24,10 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     
     // MARK: - Private Variables -
     
-    fileprivate var needsHeaderViewLayout = true
     fileprivate var input: InputView?
     fileprivate let imagePicker = UIImagePickerController()
     
     fileprivate var currentGallery: ImageGallery?
-    
-    // MARK: - Outlets -
-    
-    @IBOutlet fileprivate weak var headerView: UIView!
-    
-    @IBOutlet fileprivate weak var projectImageView: UIImageView!
-    @IBOutlet fileprivate weak var statusLabel: UILabel!
-    @IBOutlet fileprivate weak var dateLabel: UILabel!
-    @IBOutlet fileprivate weak var descriptionLabel: UILabel!
-    @IBOutlet weak var roundedView: UIView!
     
     // MARK: - UITableViewDataSource -
     
@@ -62,30 +51,16 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     
     func edit(post: Post, cell: PostCell) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
-        if let popoverController = alert.popoverPresentationController {
-            popoverController.sourceView = cell
-            popoverController.sourceRect = cell.bounds
-        }
-        
-        let edit = UIAlertAction(title: NSLocalizedString("Edit", comment: "Edit post button"), style: .default)
-        { action in
+        alert.add(sourceView: cell)
+        alert.add(action: NSLocalizedString("Edit", comment: "Edit post button"))
+        {
             self.input?.post = post
         }
-        let delete = UIAlertAction(title: NSLocalizedString("Delete", comment: "Edit post button"), style: .destructive)
-        { action in
+        alert.add(action: NSLocalizedString("Delete", comment: "Edit post button"), style: .destructive)
+        {
             self.delete(post: post, cell: cell)
         }
-        let cancel = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Edit post button"), style: .cancel)
-        { action in
-            // Do nothing
-        }
-        
-        if Date().timeIntervalSince1970 - post.dateCreated.timeIntervalSince1970 < 60*60*3 {
-            alert.addAction(edit)
-        }
-        alert.addAction(delete)
-        alert.addAction(cancel)
+        alert.addCancelButton()
         
         present(alert, animated: true, completion: nil)
     }
@@ -97,24 +72,21 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         imagePicker.delegate = delegate
         
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.add(sourceView: sender)
         
-        if let popoverController = alert.popoverPresentationController {
-            popoverController.sourceView = sender
-            popoverController.sourceRect = sender.bounds
-        }
-        
-        alert.addDefaultAction(NSLocalizedString("Camera", comment: "Image picker button")) {
+        alert.add(action: NSLocalizedString("Camera", comment: "Image picker button"))
+        {
             self.imagePicker.sourceType = .camera
             self.present(self.imagePicker, animated: true, completion: nil)
         }
-        alert.addDefaultAction(NSLocalizedString("Library", comment: "Image picker button")) {
+        alert.add(action: NSLocalizedString("Library", comment: "Image picker button"))
+        {
             self.imagePicker.sourceType = .photoLibrary
             self.present(self.imagePicker, animated: true, completion: nil)
         }
         alert.addCancelButton()
-        alert.addPopoverSourceView(input!)
         
-        self.present(alert, animated: true) { }
+        present(alert, animated: true) { }
     }
     
     func closeImagePicker() {
@@ -191,27 +163,6 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
 //        }
     }
     
-    func shouldEditClients(clients: [String]) {
-//        let hud = MBProgressHUD.showAdded(to: view, animated: false)
-//        hud.label.text = NSLocalizedString("Uploading data", comment: "Project change clients message")
-//        Server.changeClients(projectId: project.id, clientEmails: clients)
-//        { error in
-//            hud.hide(animated: true)
-//            if let error = error {
-//                PopupNotification.show(notification: error.domain)
-//            } else {
-//                PopupNotification.show(notification: NSLocalizedString("Clients saved", comment: "Project change clients success message"))
-//                self.project.clients = []
-//                for client in clients {
-//                    let user = User()
-//                    user.email = client
-//                    self.project.clients.append(user)
-//                }
-//                
-//            }
-//        }
-    }
-    
     func shouldEditPost(post: Post, text: String, attachments: [Any]) {
 //        if text.isEmpty && attachments.count <= 0 {
 //            PopupNotification.show(notification: NSLocalizedString("Please provide at least one attachment or text", comment: "Edit post error"))
@@ -281,7 +232,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         setupTableView()
         addRefreshControl()
         setupBackButton()
-        setupEditButton()
+        setupInfoButton()
         setupInput()
         
         addInfiniteScrolling()
@@ -295,12 +246,6 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         subcribeForNotifications()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        checkHeaderViewHeight()
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
@@ -312,25 +257,10 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     // MARK: - Private Functions -
     
     fileprivate func configure() {
-//        title = project.title
-//        
-//        projectImageView.load(key: project.imageKey)
-//        statusLabel.text = project.lastStatus?.text
-//        dateLabel.text = DateFormatter.projectDateString(project.dateCreated)
-//        descriptionLabel.text = project.projectDescription
-//        
-//        tableView.reloadData()
-//        
-//        needsHeaderViewLayout = true
-//        checkHeaderViewHeight()
-//        
-//        if project.isArchived {
-//            hideInput()
-//        } else {
-//            showInput()
-//        }
-//        
-//        roundedView.alpha = project.isArchived ? 0.5 : 1.0
+        title = project.title
+        
+        tableView.reloadData()
+        showInput()
     }
     
     fileprivate func setupTableView() {
@@ -348,21 +278,8 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
-    fileprivate func setupEditButton() {
-        if project.canEdit {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(ProjectController.openEdit))
-        }
-    }
-    
-    fileprivate func checkHeaderViewHeight() {
-//        if needsHeaderViewLayout {
-//            let screenWidth = UIScreen.main.bounds.width
-//            let labelWidth = screenWidth - CGFloat(60)
-//            let labelHeight = project.projectDescription.heightWithConstrainedWidth(labelWidth, font: descriptionLabel.font)
-//            headerView.frame.size.height = 131 + labelHeight
-//            tableView.tableHeaderView = headerView
-//            needsHeaderViewLayout = false
-//        }
+    fileprivate func setupInfoButton() {
+        // TODO: add image view with project image that's clickable
     }
     
     fileprivate func setBottomScrollInset(_ inset: CGFloat) {
@@ -398,62 +315,6 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         loadInitialPosts()
     }
     
-    @objc fileprivate func openEdit() {
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        if let popoverController = alert.popoverPresentationController {
-            popoverController.barButtonItem = navigationItem.rightBarButtonItem
-        }
-        
-        let edit = UIAlertAction(title: NSLocalizedString("Edit", comment: "Edit project option"), style: .default)
-        { action in
-            self.performSegue(withIdentifier: "SegueToEdit", sender: nil)
-        }
-        
-        let archiveTitle = project.isArchived ? NSLocalizedString("Unarchive", comment: "Edit project option") : NSLocalizedString("Archive", comment: "Edit project option")
-        let archive = UIAlertAction(title: archiveTitle, style: .default)
-        { action in
-            let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
-            Server.archive(project: self.project, archive: !self.project.isArchived)
-            { error in
-                hud.hide(animated: true)
-                if let error = error {
-                    PopupNotification.show(notification: error.domain)
-                } else {
-                    self.project.isArchived = !self.project.isArchived
-                    self.configure()
-                }
-            }
-        }
-        
-        let delete = UIAlertAction(title: NSLocalizedString("Delete", comment: "Edit project option"), style: .destructive)
-        { action in
-            let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
-            Server.delete(project: self.project)
-            { error in
-                hud.hide(animated: true)
-                if let error = error {
-                    PopupNotification.show(notification: error.domain)
-                } else {
-                    self.delegate?.didDeleteProject(project: self.project)
-                    let _ = self.navigationController?.popViewController(animated: true)
-                }
-            }
-        }
-        
-        let cancel = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Edit project option"), style: .cancel)
-        { action in
-            // do nothing
-        }
-        
-        alert.addAction(archive)
-        if !project.isArchived {
-            alert.addAction(edit)
-        }
-        alert.addAction(delete)
-        alert.addAction(cancel)
-        present(alert, animated: true, completion: nil)
-    }
-    
     fileprivate func delete(post: Post, cell: PostCell) {
         let hud = MBProgressHUD.showAdded(to: view, animated: true)
         Server.deletePost(post: post)
@@ -483,7 +344,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         Server.getPosts(project: project)
         { error, posts in
             if let error = error {
-                PopupNotification.show(notification: error.domain)
+                self.snackbarController?.show(error: error.domain)
             } else {
                 self.addInitialPosts(posts: posts!)
             }
@@ -495,7 +356,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         Server.getPosts(project: project, skip: posts.count)
         { error, posts in
             if let error = error {
-                PopupNotification.show(notification: error.domain)
+                self.snackbarController?.show(error: error.domain)
             } else {
                 self.addPosts(posts: posts!)
             }
@@ -562,27 +423,6 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
                                    animations: {
                                     self.input?.layoutIfNeeded()
         }) { finished in }
-    }
-    
-    // MARK: - Segues -
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let dvc = segue.destination as? NewProjectController {
-            dvc.project = project
-        }
-    }
-    
-    // MARK: - Rotations -
-    
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        
-        needsHeaderViewLayout = true
-        coordinator.animate(alongsideTransition: { context in
-            self.checkHeaderViewHeight()
-        }) { context in
-            // Completion
-        }
     }
     
     // MARK: - Status Bar -

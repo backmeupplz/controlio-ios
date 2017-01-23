@@ -12,6 +12,13 @@ extension UIAlertController {
     
     // MARK: - General Functions -
     
+    convenience init(title: String? = nil, message: String? = nil, preferredStyle: UIAlertControllerStyle = .actionSheet, sourceView: UIView? = nil) {
+        self.init(title: title, message: message, preferredStyle: preferredStyle)
+        if let sourceView = sourceView {
+            add(sourceView: sourceView)
+        }
+    }
+    
     func addCancelButton(_ title: String = NSLocalizedString("Cancel", comment: "Cancel button on alert views")) {
         let cancel = UIAlertAction(title: title, style: .cancel) { action in
             // Do nothing
@@ -19,15 +26,15 @@ extension UIAlertController {
         addAction(cancel)
     }
     
-    func addPopoverSourceView(_ view: UIView) {
+    func add(sourceView: UIView) {
         if let popover = popoverPresentationController {
-            popover.sourceView = view
-            popover.sourceRect = view.bounds
+            popover.sourceView = sourceView
+            popover.sourceRect = sourceView.bounds
         }
     }
     
-    func addDefaultAction(_ title: String, completion:@escaping ()->Void) {
-        let action = UIAlertAction(title: title, style: .default) { action in
+    func add(action title: String, style: UIAlertActionStyle = .default, completion:@escaping ()->Void) {
+        let action = UIAlertAction(title: title, style: style) { action in
             completion()
         }
         addAction(action)
