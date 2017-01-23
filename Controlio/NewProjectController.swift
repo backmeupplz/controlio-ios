@@ -42,38 +42,26 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate, Picke
     // MARK: - NewProjectCellDelegate -
     
     func editPhotoTouched(sender: UIView) {
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
-        if let popoverController = alert.popoverPresentationController {
-            popoverController.sourceView = sender
-            popoverController.sourceRect = sender.bounds
-        }
-        
-        let library = UIAlertAction(title: NSLocalizedString("Choose from library", comment: "Open picker option"), style: .default)
-        { action in
+        let alert = UIAlertController(preferredStyle: .actionSheet, sourceView: sender)
+        alert.add(action: NSLocalizedString("Choose from library", comment: "Open picker option"))
+        {
             self.imagePicker.sourceType = .photoLibrary
             self.present(self.imagePicker, animated: true, completion: nil)
         }
-        let camera = UIAlertAction(title: NSLocalizedString("Take a photo", comment: "Open picker option"), style: .default)
-        { action in
+        alert.add(action: NSLocalizedString("Take a photo", comment: "Open picker option"))
+        {
             self.imagePicker.sourceType = .camera
             self.present(self.imagePicker, animated: true, completion: nil)
         }
-        let remove = UIAlertAction(title: NSLocalizedString("Remove photo", comment: "Open picker option"), style: .destructive)
-        { action in
-            self.project.tempImage = nil
-            self.project.imageKey = nil
-            self.reloadCell()
-        }
-        let cancel = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Open picker option"), style: .cancel)
-        { action in
-            // do nothing
-        }
-        alert.addAction(library)
-        alert.addAction(camera)
-        alert.addAction(cancel)
+        alert.addCancelButton()
+        
         if project.tempImage != nil || project.imageKey != nil {
-            alert.addAction(remove)
+            alert.add(action: NSLocalizedString("Remove photo", comment: "Open picker option"))
+            {
+                self.project.tempImage = nil
+                self.project.imageKey = nil
+                self.reloadCell()
+            }
         }
         present(alert, animated: true, completion: nil)
     }

@@ -30,7 +30,7 @@ class S3: NSObject {
         let expression = AWSS3TransferUtilityDownloadExpression()
         expression.downloadProgress = {(task: AWSS3TransferUtilityTask, bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) in
             DispatchQueue.main.async {
-                let progress = Float(totalBytesSent) / Float(totalBytesExpectedToSend)
+//                let progress = Float(totalBytesSent) / Float(totalBytesExpectedToSend)
             }
         }
         

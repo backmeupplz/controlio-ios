@@ -15,10 +15,10 @@ extension UIImageView {
     
     func load(key: String?) {
         if let key = key {
+            image = nil
             if let imageFromMemoryCache = SDImageCache.shared().imageFromMemoryCache(forKey: key) {
                 image = imageFromMemoryCache
             } else {
-                
                 let ai = greenActivityIndicator()
                 add(activityIndicator: ai)
                 
