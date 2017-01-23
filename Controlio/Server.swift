@@ -322,20 +322,20 @@ class Server: NSObject {
         }
     }
     
-    class func changeStatus(projectId: String, status: String, completion:@escaping (NSError?)->()) {
-//        let parameters = [
-//            "projectid": projectId,
-//            "text": status,
-//            "type": "status"
-//        ]
-//        if isDemo() {
-//            completion(NSError(domain: NSLocalizedString("You can't do that in demo account", comment: "Error"), code: 500, userInfo: nil))
-//            return
-//        }
-//        request(urlAddition: "posts", method: .post, parameters: parameters, needsToken: true)
-//        { json, error in
-//            completion(error)
-//        }
+    class func change(status: String, project: Project, completion:@escaping (NSError?, Post?)->()) {
+        let parameters = [
+            "projectid": project.id,
+            "text": status,
+            "type": "status"
+        ]
+        if isDemo() {
+            completion(NSError(domain: NSLocalizedString("You can't do that in demo account", comment: "Error"), code: 500, userInfo: nil), nil)
+            return
+        }
+        request(urlAddition: "posts", method: .post, parameters: parameters, needsToken: true)
+        { json, error in
+            completion(error, Post(json: json))
+        }
     }
     
     class func changeClients(projectId: String, clientEmails: [String], completion:@escaping (NSError?)->()) {
@@ -402,33 +402,36 @@ class Server: NSObject {
     
     // MARK: - Posts -
     
-    class func addPost(projectId: String, text: String, attachmentKeys: [String], completion:@escaping (NSError?)->()) {
-        let parameters: [String: Any] = [
-            "projectid": projectId,
+    class func addPost(to project: Project, text: String, attachmentKeys: [String], completion:@escaping (NSError?, Post?)->()) {
+        guard let id = project.id else { return }
+        let parameters: Parameters = [
+            "projectid": id,
             "text": text,
-            "attachments": attachmentKeys
+            "attachments": attachmentKeys,
+            "type": "post"
         ]
         if isDemo() {
-            completion(NSError(domain: NSLocalizedString("You can't do that in demo account", comment: "Error"), code: 500, userInfo: nil))
+            completion(NSError(domain: NSLocalizedString("You can't do that in demo account", comment: "Error"), code: 500, userInfo: nil), nil)
             return
         }
         request(urlAddition: "posts", method: .post, parameters: parameters, needsToken: true)
         { json, error in
-            completion(error)
+            completion(error, Post(json: json))
         }
     }
     
-    class func getPosts(project: Project, skip: Int = 0, limit: Int = 20, completion:@escaping (NSError?, [Post]?)->()) {
-//        let parameters: [String: Any] = [
-//            "projectid": project.id,
-//            "skip": skip,
-//            "limit": limit
-//        ]
-//        
-//        request(urlAddition: "posts", method: .get, parameters: parameters, needsToken: true)
-//        { json, error in
-//            completion(error, Post.map(json: json, manager: project.manager))
-//        }
+    class func getPosts(for project: Project, skip: Int = 0, limit: Int = 20, completion:@escaping (NSError?, [Post]?)->()) {
+        guard let id = project.id else { return }
+        let parameters: Parameters = [
+            "projectId": id,
+            "skip": skip,
+            "limit": limit
+        ]
+        
+        request(urlAddition: "posts", method: .get, parameters: parameters, needsToken: true)
+        { json, error in
+            completion(error, Post.map(json: json))
+        }
     }
     
     class func editPost(post: Post, text: String, attachments: [String], completion: @escaping (NSError?)->()) {

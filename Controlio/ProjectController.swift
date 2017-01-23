@@ -94,73 +94,78 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     }
     
     func shouldAddPost(text: String, attachments: [Any]) {
-//        if text.isEmpty && attachments.count <= 0 {
-//            PopupNotification.show(notification: NSLocalizedString("Please provide at least one attachment or text", comment: "New post error"))
-//            return
-//        }
-//        
-//        let hud = MBProgressHUD.showAdded(to: view, animated: false)
-//        
-//        let completedKeys = attachments.filter { $0 is String } as! [String]
-//        let imagesToUpload = attachments.filter { $0 is UIImage } as! [UIImage]
-//        
-//        if imagesToUpload.count > 0 {
-//            hud.mode = .annularDeterminate
-//            hud.label.text = NSLocalizedString("Uploading attachments", comment: "New post upload message")
-//            S3.upload(images: imagesToUpload, progress:
-//            { progress in
-//                hud.progress = progress
-//            })
-//            { keys, error in
-//                if let error = error {
-//                    PopupNotification.show(notification: error)
-//                    hud.hide(animated: true)
-//                } else {
-//                    hud.mode = .indeterminate
-//                    hud.label.text = NSLocalizedString("Uploading data", comment: "New post upload message")
-//                    Server.addPost(projectId: self.project.id, text: text, attachmentKeys: keys!+completedKeys)
-//                    { error in
-//                        if let error = error {
-//                            PopupNotification.show(notification: error.domain)
-//                            hud.hide(animated: true)
-//                        } else {
-//                            hud.hide(animated: true)
-//                            self.reloadAndCleanInput()
-//                        }
-//                    }
-//                }
-//            }
-//        } else {
-//            hud.mode = .indeterminate
-//            hud.label.text = NSLocalizedString("Uploading data", comment: "New post upload message")
-//            Server.addPost(projectId: project.id, text: text, attachmentKeys: completedKeys)
-//            { error in
-//                if let error = error {
-//                    PopupNotification.show(notification: error.domain)
-//                    hud.hide(animated: true)
-//                } else {
-//                    hud.hide(animated: true)
-//                    self.reloadAndCleanInput()
-//                }
-//            }
-//        }
+        if text.isEmpty && attachments.count <= 0 {
+            self.snackbarController?.show(error: NSLocalizedString("Please provide at least one attachment or text", comment: "New post error"))
+            return
+        }
+        
+        guard let hud = MBProgressHUD.show() else { return }
+        
+        let completedKeys = attachments.filter { $0 is String } as! [String]
+        let imagesToUpload = attachments.filter { $0 is UIImage } as! [UIImage]
+        
+        if imagesToUpload.count > 0 {
+            hud.mode = .annularDeterminate
+            hud.label.text = NSLocalizedString("Uploading attachments...", comment: "New post upload message")
+            S3.upload(images: imagesToUpload, progress:
+            { progress in
+                hud.progress = progress
+            })
+            { keys, error in
+                if let error = error {
+                    self.snackbarController?.show(error: error)
+                    hud.hide(animated: true)
+                } else {
+                    hud.mode = .indeterminate
+                    hud.label.text = NSLocalizedString("Uploading new message...", comment: "New post upload message")
+                    Server.addPost(to: self.project, text: text, attachmentKeys: keys!+completedKeys)
+                    { error, post in
+                        hud.hide(animated: true)
+                        if let error = error {
+                            self.snackbarController?.show(error: error.domain)
+                        } else {
+                            self.project.lastPost = post
+                            self.configure()
+                            self.reloadAndCleanInput()
+                            self.snackbarController?.show(text: "Message sent")
+                        }
+                    }
+                }
+            }
+        } else {
+            hud.mode = .indeterminate
+            hud.label.text = NSLocalizedString("Uploading new message...", comment: "New post upload message")
+            Server.addPost(to: project, text: text, attachmentKeys: completedKeys)
+            { error, post in
+                hud.hide(animated: true)
+                if let error = error {
+                    self.snackbarController?.show(error: error.domain)
+                } else {
+                    self.project.lastPost = post
+                    self.configure()
+                    self.reloadAndCleanInput()
+                    self.snackbarController?.show(text: "Message sent")
+                }
+            }
+        }
     }
     
     func shouldChangeStatus(text: String) {
-//        let hud = MBProgressHUD.showAdded(to: view, animated: false)
-//        hud.label.text = NSLocalizedString("Uploading data", comment: "Project change status message")
-//        Server.changeStatus(projectId: project.id, status: text)
-//        { error in
-//            if let error = error {
-//                PopupNotification.show(notification: error.domain)
-//                hud.hide(animated: true)
-//            } else {
-//                hud.hide(animated: true)
-//                self.project.lastStatus?.text = text
-//                self.configure()
-//                self.reloadAndCleanInput()
-//            }
-//        }
+        guard let hud = MBProgressHUD.show() else { return }
+        hud.label.text = NSLocalizedString("Changing status...", comment: "Project change status message")
+        Server.change(status: text, project: project)
+        { error, status in
+            hud.hide(animated: true)
+            if let error = error {
+                self.snackbarController?.show(error: error.domain)
+            } else {
+                self.project.lastStatus = status
+                self.project.lastPost = status
+                self.configure()
+                self.reloadAndCleanInput()
+                self.snackbarController?.show(text: "Status has been changed")
+            }
+        }
     }
     
     func shouldEditPost(post: Post, text: String, attachments: [Any]) {
@@ -341,7 +346,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     }
     
     @objc fileprivate func loadInitialPosts() {
-        Server.getPosts(project: project)
+        Server.getPosts(for: project)
         { error, posts in
             if let error = error {
                 self.snackbarController?.show(error: error.domain)
@@ -353,7 +358,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     }
     
     fileprivate func loadMorePosts() {
-        Server.getPosts(project: project, skip: posts.count)
+        Server.getPosts(for: project, skip: posts.count)
         { error, posts in
             if let error = error {
                 self.snackbarController?.show(error: error.domain)
