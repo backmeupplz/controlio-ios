@@ -8,6 +8,7 @@
 
 import UIKit
 import MBProgressHUD
+import Material
 
 protocol ProjectControllerDelegate: class {
     func didDeleteProject(project: Project)
@@ -284,7 +285,27 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     }
     
     fileprivate func setupInfoButton() {
-        // TODO: add image view with project image that's clickable
+        var customView: UIView!
+        if let imageKey = project.imageKey {
+            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+            imageView.backgroundColor = Color.white
+            imageView.cornerRadius = 6
+            imageView.load(key: imageKey)
+            imageView.clipsToBounds = true
+            imageView.contentMode = .scaleAspectFill
+            let container = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+            container.addSubview(imageView)
+            let button = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+            button.addTarget(self, action: #selector(ProjectController.openProject), for: .touchUpInside)
+            container.addSubview(button)
+            customView = container
+        } else {
+            let button = UIButton(type: .infoLight)
+            button.addTarget(self, action: #selector(ProjectController.openProject), for: .touchUpInside)
+            customView = button
+        }
+        let barItem = UIBarButtonItem(customView: customView)
+        navigationItem.rightBarButtonItem = barItem
     }
     
     fileprivate func setBottomScrollInset(_ inset: CGFloat) {
@@ -334,6 +355,10 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
                 self.tableView.endUpdates()
             }
         }
+    }
+    
+    @objc fileprivate func openProject() {
+        print("project open")
     }
     
     // MARK: - Pagination -
