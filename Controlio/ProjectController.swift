@@ -358,7 +358,17 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     }
     
     @objc fileprivate func openProject() {
-        print("project open")
+        let hud = MBProgressHUD.showAdded(to: view, animated: true)
+        hud.label.text = NSLocalizedString("Getting project info...", comment: "Getting project message")
+        Server.get(project: project)
+        { error, project in
+            hud.hide(animated: true)
+            if let error = error {
+                self.snackbarController?.show(error: error.domain)
+            } else if let project = project {
+                Router(self).showInfo(for: project)
+            }
+        }
     }
     
     // MARK: - Pagination -

@@ -3070,6 +3070,7 @@ struct _R: Rswift.Validatable {
       let mainController = StoryboardViewControllerResource<MainController>(identifier: "MainController")
       let name = "Main"
       let projectController = StoryboardViewControllerResource<ProjectController>(identifier: "ProjectController")
+      let projectInfoController = StoryboardViewControllerResource<ProjectInfoController>(identifier: "ProjectInfoController")
       
       func clientsTableViewController(_: Void = ()) -> ClientsTableViewController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: clientsTableViewController)
@@ -3083,6 +3084,10 @@ struct _R: Rswift.Validatable {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: projectController)
       }
       
+      func projectInfoController(_: Void = ()) -> ProjectInfoController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: projectInfoController)
+      }
+      
       static func validate() throws {
         if UIKit.UIImage(named: "settings") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'settings' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "support") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'support' is used in storyboard 'Main', but couldn't be loaded.") }
@@ -3091,8 +3096,9 @@ struct _R: Rswift.Validatable {
         if UIKit.UIImage(named: "projects") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'projects' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "telegram") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'telegram' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "facebook-massenger") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'facebook-massenger' is used in storyboard 'Main', but couldn't be loaded.") }
-        if _R.storyboard.main().clientsTableViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'clientsTableViewController' could not be loaded from storyboard 'Main' as 'ClientsTableViewController'.") }
         if _R.storyboard.main().projectController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'projectController' could not be loaded from storyboard 'Main' as 'ProjectController'.") }
+        if _R.storyboard.main().projectInfoController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'projectInfoController' could not be loaded from storyboard 'Main' as 'ProjectInfoController'.") }
+        if _R.storyboard.main().clientsTableViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'clientsTableViewController' could not be loaded from storyboard 'Main' as 'ClientsTableViewController'.") }
         if _R.storyboard.main().mainController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'mainController' could not be loaded from storyboard 'Main' as 'MainController'.") }
       }
       

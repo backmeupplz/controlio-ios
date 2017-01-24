@@ -40,7 +40,7 @@ class ProjectsController: UITableViewController, ProjectControllerDelegate, Proj
             if let error = error {
                 self.snackbarController?.show(error: error.domain)
             } else {
-                self.snackbarController?.show(text: "You have accepted the invite to \"\(cell.invite.project.title ?? "")\"")
+                self.snackbarController?.show(text: "You have accepted the invite to \"\(cell.invite.project!.title ?? "")\"")
                 self.tableView.beginUpdates()
                 self.invites = self.invites.filter { $0 != cell.invite }
                 self.tableView.deleteRows(at: [self.tableView.indexPath(for: cell)!], with: .automatic)
@@ -59,7 +59,7 @@ class ProjectsController: UITableViewController, ProjectControllerDelegate, Proj
             if let error = error {
                 self.snackbarController?.show(error: error.domain)
             } else {
-                self.snackbarController?.show(text: "You have rejected the invite to \"\(cell.invite.project.title ?? "")\"")
+                self.snackbarController?.show(text: "You have rejected the invite to \"\(cell.invite.project!.title ?? "")\"")
                 self.tableView.beginUpdates()
                 self.invites = self.invites.filter { $0 != cell.invite }
                 self.tableView.deleteRows(at: [self.tableView.indexPath(for: cell)!], with: .automatic)
@@ -95,7 +95,7 @@ class ProjectsController: UITableViewController, ProjectControllerDelegate, Proj
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            Router(self).show(project: invites[(indexPath as NSIndexPath).row].project, delegate: self)
+            Router(self).show(project: invites[(indexPath as NSIndexPath).row].project!, delegate: self)
         } else {
             Router(self).show(project: projects[(indexPath as NSIndexPath).row], delegate: self)
         }

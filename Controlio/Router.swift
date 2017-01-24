@@ -48,6 +48,12 @@ class Router {
         show(vc: vc)
     }
     
+    func showInfo(for project: Project, delegate: ProjectControllerDelegate? = nil) {
+        let vc = R.storyboard.main.projectInfoController()
+        vc?.project = project
+        show(vc: vc)
+    }
+    
     // MARK: - Private Functions -
     
     fileprivate func show(vc: UIViewController?, animated: Bool = true) {

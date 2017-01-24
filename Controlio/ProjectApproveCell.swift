@@ -53,7 +53,7 @@ class ProjectApproveCell: UITableViewCell {
     // MARK: - Private functions -
     
     fileprivate func configure() {
-        let senderName = invite.sender.name ?? invite.sender.email ?? ""
+        let senderName = invite.sender?.name ?? invite.sender?.email ?? ""
         var inviteString = ""
         switch invite.type {
         case .manage:
@@ -63,7 +63,7 @@ class ProjectApproveCell: UITableViewCell {
         case .client:
             inviteString = "invited you as a client to"
         }
-        let projectTitle = invite.project.title ?? ""
+        let projectTitle = invite.project!.title ?? ""
         
         label.text = "\(senderName) \(inviteString) \"\(projectTitle)\""
     }

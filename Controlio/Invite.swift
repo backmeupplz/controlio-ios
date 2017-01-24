@@ -21,8 +21,9 @@ class Invite: NSObject {
     
     var id: String!
     var type = InviteType.manage
-    var sender: User!
-    var project: Project!
+    var sender: User?
+    var project: Project?
+    var invitee: User?
     
     // MARK: - Functions -
     
@@ -36,7 +37,8 @@ class Invite: NSObject {
         
         id = json["_id"].string!
         type = InviteType(rawValue: json["type"].string!)!
-        sender = User(json: json["sender"])!
+        sender = User(json: json["sender"])
         project = Project(json: json["project"])
+        invitee = User(json: json["invitee"])
     }
 }

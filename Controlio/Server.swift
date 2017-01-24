@@ -302,6 +302,19 @@ class Server: NSObject {
         }
     }
     
+    class func get(project: Project, completion:@escaping (NSError?, Project?)->()) {
+        guard let id = project.id else { return }
+
+        let parameters: Parameters = [
+            "projectid": id
+        ]
+        
+        request(urlAddition: "projects/project", method: .get, parameters: parameters, needsToken: true)
+        { json, error in
+            completion(error, Project(json: json))
+        }
+    }
+    
     class func getInvites(completion:@escaping (NSError?, [Invite]?)->()) {
         request(urlAddition: "projects/invites", method: .get, needsToken: true)
         { json, error in

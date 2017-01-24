@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum ProjectCellType {
+    case list
+    case info
+}
+
 class ProjectCell: UITableViewCell {
     
     // MARK: - Variables -
@@ -17,6 +22,7 @@ class ProjectCell: UITableViewCell {
             configure()
         }
     }
+    var type = ProjectCellType.list
     
     // MARK: - Outlets -
     
@@ -47,12 +53,29 @@ class ProjectCell: UITableViewCell {
             dateLabel.text = ""
         }
         projectTitleLabel.text = project.title
-        if let text = project.lastPost?.text {
-            projectDescriptionLabel.alpha = 1
-            projectDescriptionLabel.text = text
+        if type == .info {
+            if let text = project.projectDescription {
+                projectDescriptionLabel.alpha = 1
+                projectDescriptionLabel.text = text
+            } else if let text = project.lastPost?.text {
+                projectDescriptionLabel.alpha = 1
+                projectDescriptionLabel.text = text
+            } else {
+                projectDescriptionLabel.alpha = 0.5
+                projectDescriptionLabel.text = "Nothing here yet"
+            }
+            projectDescriptionLabel.numberOfLines = 0
+            projectTitleLabel.numberOfLines = 0
         } else {
-            projectDescriptionLabel.alpha = 0.5
-            projectDescriptionLabel.text = "Nothing here yet"
+            if let text = project.lastPost?.text {
+                projectDescriptionLabel.alpha = 1
+                projectDescriptionLabel.text = text
+            } else {
+                projectDescriptionLabel.alpha = 0.5
+                projectDescriptionLabel.text = "Nothing here yet"
+            }
+            projectDescriptionLabel.numberOfLines = 2
+            projectTitleLabel.numberOfLines = 1
         }
         
     }

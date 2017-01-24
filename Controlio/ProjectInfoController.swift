@@ -7,89 +7,138 @@
 //
 
 import UIKit
+import SnapKit
 
 class ProjectInfoController: UITableViewController {
-
+    
+    // MARK: - Variables -
+    
+    var project: Project!
+    var sections = ["Info", "Owner", "Managers", "Clients", "Managers invited", "Clients invited", "Owner invited"]
+    
+    // MARK: - View Controller Life Cycle -
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        configure()
+        setupTableView()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Table view data source
-
+    
+    // MARK: - UITableViewDataSource -
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return sections.count
     }
-
+    
+    // MARK: - UITableViewDelegate -
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        switch section {
+        case 0:
+            return 1
+        case 1:
+            return project.owner == nil ? 0 : 1
+        case 2:
+            return project.managers.count
+        case 3:
+            return project.clients.count
+        case 4:
+            return project.managersInvited.count
+        case 5:
+            return project.clientsInvited.count
+        case 6:
+            return project.ownerInvited == nil ? 0 : 1
+        default:
+            return 0
+        }
     }
-
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell: UITableViewCell!
+        
+        switch indexPath.section {
+            case 0:
+                let projectCell = tableView.dequeueReusableCell(withIdentifier: "ProjectCell", for: indexPath) as! ProjectCell
+                projectCell.type = .info
+                projectCell.project = project
+                cell = projectCell
+            case 1, 2, 3, 4, 5, 6:
+                let userCell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserCell
+                switch indexPath.section {
+                case 1:
+                    userCell.user = project.owner!
+                case 2:
+                    userCell.user = project.managers[indexPath.row]
+                case 3:
+                    userCell.user = project.clients[indexPath.row]
+                case 4:
+                    userCell.user = project.managersInvited[indexPath.row].invitee
+                case 5:
+                    userCell.user = project.clientsInvited[indexPath.row].invitee
+                case 6:
+                    userCell.user = project.ownerInvited!.invitee
+                default:
+                    break
+                }
+                cell = userCell
+            default:
+                return UITableViewCell(style: .default, reuseIdentifier: nil)
+        }
+        
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 {
+            return nil
+        }
+        let header = UIView()
+        let label = UILabel()
+        header.addSubview(label)
+        label.snp.makeConstraints { make in
+            make.top.equalTo(header)
+            make.left.equalTo(header).offset(15)
+            make.bottom.equalTo(header)
+            make.right.equalTo(header).offset(-15)
+        }
+        label.textColor = UIColor(red: 88.0/255.0, green: 93.0/255.0, blue: 108.0/255.0, alpha: 1.0)
+        label.text = sections[section]
+        return header
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch section {
+        case 0:
+            return 1
+        case 1:
+            return project.owner == nil ? 0 : 44
+        case 2:
+            return project.managers.count == 0 ? 0 : 44
+        case 3:
+            return project.clients.count == 0 ? 0 : 44
+        case 4:
+            return project.managersInvited.count == 0 ? 0 : 44
+        case 5:
+            return project.clientsInvited.count == 0 ? 0 : 44
+        case 6:
+            return project.ownerInvited == nil ? 0 : 44
+        default:
+            return 0
+        }
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    
+    // MARK: - Private functions -
+    
+    fileprivate func configure() {
+        title = project.title
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    
+    fileprivate func setupTableView() {
+        tableView.tableFooterView = UIView()
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 464.0
+        tableView.register(UINib(nibName: "ProjectCell", bundle: nil), forCellReuseIdentifier: "ProjectCell")
+        tableView.register(UINib(nibName: "UserCell", bundle: nil), forCellReuseIdentifier: "UserCell")
     }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

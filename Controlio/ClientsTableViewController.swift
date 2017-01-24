@@ -50,6 +50,7 @@ class ClientsTableViewController: UITableViewController {
         tableView.tableFooterView = UIView()
         setupEmailTextField()
         setupAddButton()
+        emailTextField.becomeFirstResponder()
     }
     
     fileprivate func setupEmailTextField() {

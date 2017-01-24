@@ -25,6 +25,23 @@ class Project: NSObject {
     var managers = [User]()
     var clients = [User]()
     
+    var invites = [Invite]()
+    var ownerInvited: Invite? {
+        get {
+            return invites.filter { $0.type == .own }.last
+        }
+    }
+    var clientsInvited: [Invite] {
+        get {
+            return invites.filter { $0.type == .client }
+        }
+    }
+    var managersInvited: [Invite] {
+        get {
+            return invites.filter { $0.type == .manage }
+        }
+    }
+    
     var lastStatus: Post?
     var lastPost: Post?
     
@@ -41,13 +58,15 @@ class Project: NSObject {
     
     class func map(json: JSON?) -> [Project]? {
         guard let array = json?.array else { return nil }
-        return array.map { Project(json: $0) }
+        return array.flatMap { Project(json: $0) }
     }
     
-    convenience init(json: JSON) {
+    convenience init?(json: JSON?) {
+        guard let json = json, !json.isEmpty, let id = json["_id"].string else { return nil }
+        
         self.init()
         
-        id = json["_id"].string!
+        self.id = id
         
         title = json["title"].string!
         projectDescription = json["description"].string
@@ -58,6 +77,8 @@ class Project: NSObject {
         owner = User(json: json["owner"])
         clients = User.map(json: json["clients"]) ?? []
         managers = User.map(json: json["managers"]) ?? []
+        
+        invites = Invite.map(json: json["invites"]) ?? []
         
         lastPost = Post(json: json["lastPost"])
         lastStatus = Post(json: json["lastStatus"])
