@@ -24,7 +24,15 @@ class ProjectInfoController: UITableViewController {
         
         configure()
         setupTableView()
+        setupBackButton()
         addRefreshControl()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        reload()
     }
     
     // MARK: - UITableViewDataSource -
@@ -55,38 +63,32 @@ class ProjectInfoController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell!
-        
-        switch indexPath.section {
-            case 0:
-                let projectCell = tableView.dequeueReusableCell(withIdentifier: "ProjectCell", for: indexPath) as! ProjectCell
-                projectCell.type = .info
-                projectCell.project = project
-                cell = projectCell
-            case 1, 2, 3, 4, 5, 6:
-                let userCell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserCell
-                switch indexPath.section {
-                case 1:
-                    userCell.user = project.owner
-                case 2:
-                    userCell.user = project.managers[indexPath.row]
-                case 3:
-                    userCell.user = project.clients[indexPath.row]
-                case 4:
-                    userCell.invite = project.managersInvited[indexPath.row]
-                case 5:
-                    userCell.invite = project.clientsInvited[indexPath.row]
-                case 6:
-                    userCell.invite = project.ownerInvited
-                default:
-                    break
-                }
-                cell = userCell
+        if indexPath.section == 0 {
+            let projectCell = tableView.dequeueReusableCell(withIdentifier: "ProjectCell", for: indexPath) as! ProjectCell
+            projectCell.type = .info
+            projectCell.project = project
+            return projectCell
+        } else {
+            let userCell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserCell
+            switch indexPath.section {
+            case 1:
+                userCell.user = project.owner
+            case 2:
+                userCell.user = project.managers[indexPath.row]
+            case 3:
+                userCell.user = project.clients[indexPath.row]
+            case 4:
+                userCell.invite = project.managersInvited[indexPath.row]
+            case 5:
+                userCell.invite = project.clientsInvited[indexPath.row]
+            case 6:
+                userCell.invite = project.ownerInvited
             default:
-                return UITableViewCell(style: .default, reuseIdentifier: nil)
+                userCell.user = nil
+                userCell.invite = nil
+            }
+            return userCell
         }
-        
-        return cell
     }
     
     // MARK: - UITableViewDelegate -
@@ -96,16 +98,45 @@ class ProjectInfoController: UITableViewController {
             return nil
         }
         let header = UIView()
+        header.backgroundColor = UIColor(red: 244.0/255.0, green: 246.0/255.0, blue: 249.0/255.0, alpha: 1.0)
         let label = UILabel()
         header.addSubview(label)
         label.snp.makeConstraints { make in
             make.top.equalTo(header)
             make.left.equalTo(header).offset(15)
             make.bottom.equalTo(header)
-            make.right.equalTo(header).offset(-15)
+            if (section != 5 && project.canEdit) && (section != 4 && project.isOwner) {
+                make.right.equalTo(header).offset(-15)
+            }
         }
         label.textColor = UIColor(red: 88.0/255.0, green: 93.0/255.0, blue: 108.0/255.0, alpha: 1.0)
         label.text = sections[section]
+        if section == 5 && project.canEdit {
+            // add button to edit clients
+            let button = UIButton(type: .system)
+            button.setTitle("Invite more clients", for: .normal)
+            button.setTitleColor(UIColor.controlioGreen(), for: .normal)
+            button.addTarget(self, action: #selector(ProjectInfoController.addClientsTouched), for: .touchUpInside)
+            header.addSubview(button)
+            button.snp.makeConstraints { make in
+                make.top.equalTo(header)
+                make.bottom.equalTo(header)
+                make.left.equalTo(label.snp.right).offset(8)
+            }
+        }
+        if section == 4 && project.isOwner {
+            // add button to edit clients
+            let button = UIButton(type: .system)
+            button.setTitle("Invite more managers", for: .normal)
+            button.setTitleColor(UIColor.controlioGreen(), for: .normal)
+            button.addTarget(self, action: #selector(ProjectInfoController.addManagersTouched), for: .touchUpInside)
+            header.addSubview(button)
+            button.snp.makeConstraints { make in
+                make.top.equalTo(header)
+                make.bottom.equalTo(header)
+                make.left.equalTo(label.snp.right).offset(8)
+            }
+        }
         return header
     }
     
@@ -120,9 +151,9 @@ class ProjectInfoController: UITableViewController {
         case 3:
             return project.clients.count == 0 ? 0 : 44
         case 4:
-            return project.managersInvited.count == 0 ? 0 : 44
+            return project.managersInvited.count == 0 && !project.isOwner ? 0 : 44
         case 5:
-            return project.clientsInvited.count == 0 ? 0 : 44
+            return project.clientsInvited.count == 0 && !project.canEdit ? 0 : 44
         case 6:
             return project.ownerInvited == nil ? 0 : 44
         default:
@@ -167,6 +198,10 @@ class ProjectInfoController: UITableViewController {
         tableView.estimatedRowHeight = 464.0
         tableView.register(UINib(nibName: "ProjectCell", bundle: nil), forCellReuseIdentifier: "ProjectCell")
         tableView.register(UINib(nibName: "UserCell", bundle: nil), forCellReuseIdentifier: "UserCell")
+    }
+    
+    fileprivate func setupBackButton() {
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     fileprivate func addRefreshControl() {
@@ -276,5 +311,13 @@ class ProjectInfoController: UITableViewController {
         }
         tableView.deleteRows(at: [indexPath], with: .automatic)
         tableView.endUpdates()
+    }
+    
+    @objc fileprivate func addClientsTouched() {
+        Router(self).showClients(with: project, type: .addClients)
+    }
+    
+    @objc fileprivate func addManagersTouched() {
+        Router(self).showClients(with: project, type: .addManagers)
     }
 }

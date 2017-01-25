@@ -317,6 +317,34 @@ class Server: NSObject {
         }
     }
     
+    class func add(clients: [String], to project: Project, completion:@escaping (NSError?)->()) {
+        guard let id = project.id else { return }
+        
+        let parameters: Parameters = [
+            "projectId": id,
+            "clients": clients
+        ]
+        
+        request(urlAddition: "projects/clients", method: .post, parameters: parameters, needsToken: true)
+        { json, error in
+            completion(error)
+        }
+    }
+    
+    class func add(managers: [String], to project: Project, completion:@escaping (NSError?)->()) {
+        guard let id = project.id else { return }
+        
+        let parameters: Parameters = [
+            "projectId": id,
+            "managers": managers
+        ]
+        
+        request(urlAddition: "projects/managers", method: .post, parameters: parameters, needsToken: true)
+        { json, error in
+            completion(error)
+        }
+    }
+    
     class func change(status: String, project: Project, completion:@escaping (NSError?, Post?)->()) {
         let parameters = [
             "projectid": project.id,
@@ -523,14 +551,16 @@ class Server: NSObject {
     fileprivate class func request(urlAddition: String, method: HTTPMethod, parameters: [String:Any]? = nil, needsToken: Bool, completion: @escaping (JSON?, NSError?)->()) {
         Alamofire.request(apiUrl + urlAddition, method: method, parameters: parameters, encoding: method == .get ? URLEncoding.default : JSONEncoding.default, headers: headers(needsToken: needsToken))
             .responseJSON { response in
-                if let errorString = response.result.error?.localizedDescription {
-                    completion(nil, NSError(domain: errorString, code: 500, userInfo: nil))
-                } else if let error = checkForErrors(json: JSON(response.result.value)) {
-                    completion(nil, error)
-                }else if response.response?.statusCode == 500 {
-                    completion(nil, NSError(domain: NSLocalizedString("Server error", comment: "Error"), code: 500, userInfo: nil))
-                } else {
-                    completion(JSON(response.result.value), nil)
+                DispatchQueue.main.async {
+                    if let errorString = response.result.error?.localizedDescription {
+                        completion(nil, NSError(domain: errorString, code: 500, userInfo: nil))
+                    } else if let error = checkForErrors(json: JSON(response.result.value)) {
+                        completion(nil, error)
+                    } else if response.response?.statusCode == 500 {
+                        completion(nil, NSError(domain: NSLocalizedString("Server error", comment: "Error"), code: 500, userInfo: nil))
+                    } else {
+                        completion(JSON(response.result.value), nil)
+                    }
                 }
         }
     }
@@ -538,14 +568,16 @@ class Server: NSObject {
     fileprivate class func requestData(urlAddition: String, method: HTTPMethod, parameters: [String:Any]? = nil, needsToken: Bool, completion: @escaping (DefaultDataResponse?, NSError?)->()) {
         Alamofire.request("https://api.controlio.co/" + urlAddition, method: method, parameters: parameters, encoding: method == .get ? URLEncoding.default : JSONEncoding.default, headers: headers(needsToken: needsToken))
             .response { response in
-                if let errorString = response.error?.localizedDescription {
-                    completion(nil, NSError(domain: errorString, code: 500, userInfo: nil))
-                } else if let error = self.checkForErrors(json: JSON(response.data)) {
-                    completion(nil, error)
-                } else if response.response?.statusCode == 500 {
-                    completion(nil, NSError(domain: NSLocalizedString("Server error", comment: "Error"), code: 500, userInfo: nil))
-                } else {
-                    completion(response, nil)
+                DispatchQueue.main.async {
+                    if let errorString = response.error?.localizedDescription {
+                        completion(nil, NSError(domain: errorString, code: 500, userInfo: nil))
+                    } else if let error = self.checkForErrors(json: JSON(response.data)) {
+                        completion(nil, error)
+                    } else if response.response?.statusCode == 500 {
+                        completion(nil, NSError(domain: NSLocalizedString("Server error", comment: "Error"), code: 500, userInfo: nil))
+                    } else {
+                        completion(response, nil)
+                    }
                 }
         }
     }

@@ -14,12 +14,18 @@ class UserCell: UITableViewCell {
     
     var invite: Invite? {
         didSet {
+            if invite != nil && user != nil {
+                user = nil
+            }
             configure()
         }
     }
     
     var user: User? {
         didSet {
+            if invite != nil && user != nil {
+                invite = nil
+            }
             configure()
         }
     }
@@ -34,10 +40,13 @@ class UserCell: UITableViewCell {
     func configure() {
         if let invite = invite {
             avatar.load(key: invite.invitee?.profileImageKey)
-            name.text = invite.invitee?.name ?? invite.invitee?.email
+            name.text = invite.invitee?.name ?? invite.invitee?.email ?? ""
         } else if let user = user {
             avatar.load(key: user.profileImageKey)
             name.text = user.name ?? user.email
+        } else {
+            avatar.load(key: nil)
+            name.text = nil
         }
     }
 }

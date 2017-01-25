@@ -36,8 +36,9 @@ class Router {
         show(vc: R.storyboard.main.mainController(), animated: animated)
     }
     
-    func showClients(with project: Project) {
+    func showClients(with project: Project, type: ClientsTableViewControllerType = .clients) {
         let vc = R.storyboard.main.clientsTableViewController()
+        vc?.type = type
         vc?.project = project
         show(vc: vc)
     }
