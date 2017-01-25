@@ -47,6 +47,11 @@ class Project: NSObject {
     
     var canEdit: Bool = false
     var isArchived = false
+    var isOwner: Bool {
+        get {
+            return owner != nil && owner?.id == Server.currentUser?.id
+        }
+    }
     
     var tempType = NewProjectCellType.client
     var tempImage: UIImage?

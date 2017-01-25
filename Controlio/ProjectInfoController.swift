@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import MBProgressHUD
 
 class ProjectInfoController: UITableViewController {
     
@@ -23,6 +24,7 @@ class ProjectInfoController: UITableViewController {
         
         configure()
         setupTableView()
+        addRefreshControl()
     }
     
     // MARK: - UITableViewDataSource -
@@ -30,8 +32,6 @@ class ProjectInfoController: UITableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
-    
-    // MARK: - UITableViewDelegate -
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
@@ -67,17 +67,17 @@ class ProjectInfoController: UITableViewController {
                 let userCell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserCell
                 switch indexPath.section {
                 case 1:
-                    userCell.user = project.owner!
+                    userCell.user = project.owner
                 case 2:
                     userCell.user = project.managers[indexPath.row]
                 case 3:
                     userCell.user = project.clients[indexPath.row]
                 case 4:
-                    userCell.user = project.managersInvited[indexPath.row].invitee
+                    userCell.invite = project.managersInvited[indexPath.row]
                 case 5:
-                    userCell.user = project.clientsInvited[indexPath.row].invitee
+                    userCell.invite = project.clientsInvited[indexPath.row]
                 case 6:
-                    userCell.user = project.ownerInvited!.invitee
+                    userCell.invite = project.ownerInvited
                 default:
                     break
                 }
@@ -88,6 +88,8 @@ class ProjectInfoController: UITableViewController {
         
         return cell
     }
+    
+    // MARK: - UITableViewDelegate -
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
@@ -128,6 +130,31 @@ class ProjectInfoController: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        if indexPath.section <= 1 { // info and owner
+            return .none
+        } else if indexPath.section <= 2 && !project.isOwner { // managers
+            return .none
+        } else if !project.canEdit {
+            return .none
+        }
+        
+        return .delete
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 2:
+            removeManager(from: indexPath)
+        case 3:
+            removeClient(from: indexPath)
+        case 4, 5, 6:
+            removeInvite(from: indexPath)
+        default:
+            break
+        }
+    }
+    
     // MARK: - Private functions -
     
     fileprivate func configure() {
@@ -140,5 +167,114 @@ class ProjectInfoController: UITableViewController {
         tableView.estimatedRowHeight = 464.0
         tableView.register(UINib(nibName: "ProjectCell", bundle: nil), forCellReuseIdentifier: "ProjectCell")
         tableView.register(UINib(nibName: "UserCell", bundle: nil), forCellReuseIdentifier: "UserCell")
+    }
+    
+    fileprivate func addRefreshControl() {
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(ProjectInfoController.reload), for: .valueChanged)
+    }
+    
+    @objc fileprivate func reload() {
+        Server.get(project: project)
+        { error, project in
+            if let error = error {
+                self.snackbarController?.show(error: error.domain)
+            } else {
+                self.project = project
+                self.configure()
+                self.tableView.reloadData()
+            }
+            self.refreshControl?.endRefreshing()
+        }
+    }
+    
+    fileprivate func removeManager(from indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! UserCell
+        guard let user = cell.user else { return }
+        let alert = UIAlertController(title: "Would you like to remove \(user.name ?? user.email ?? "this user") from managers?", preferredStyle: .alert, sourceView: cell)
+        alert.add(action: "Remove", style: .destructive)
+        {
+            guard let hud = MBProgressHUD.show() else { return }
+            hud.label.text = "Removing \(user.name ?? user.email ?? "user") from managers"
+            Server.remove(manager: user, from: self.project)
+            { error in
+                hud.hide(animated: true)
+                if let error = error {
+                    self.snackbarController?.show(error: error.domain)
+                } else {
+                    self.removeCellAt(indexPath: indexPath)
+                    self.snackbarController?.show(text: "\(user.name ?? user.email ?? "This user") has been removed from managers")
+                }
+            }
+        }
+        alert.addCancelButton()
+        present(alert, animated: true) {}
+    }
+    
+    fileprivate func removeClient(from indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! UserCell
+        guard let user = cell.user else { return }
+        let alert = UIAlertController(title: "Would you like to remove \(user.name ?? user.email ?? "this user") from clients?", preferredStyle: .alert, sourceView: cell)
+        alert.add(action: "Remove", style: .destructive)
+        {
+            guard let hud = MBProgressHUD.show() else { return }
+            hud.label.text = "Removing \(user.name ?? user.email ?? "user") from clients"
+            Server.remove(client: user, from: self.project)
+            { error in
+                hud.hide(animated: true)
+                if let error = error {
+                    self.snackbarController?.show(error: error.domain)
+                } else {
+                    self.removeCellAt(indexPath: indexPath)
+                    self.snackbarController?.show(text: "\(user.name ?? user.email ?? "This user") has been removed from clients")
+                }
+            }
+        }
+        alert.addCancelButton()
+        present(alert, animated: true) {}
+    }
+    
+    fileprivate func removeInvite(from indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! UserCell
+        guard let invite = cell.invite else { return }
+        let alert = UIAlertController(title: "Would you like to revoke invite to \(invite.invitee?.name ?? invite.invitee?.email ?? "this user")?", preferredStyle: .alert, sourceView: cell)
+        alert.add(action: "Revoke", style: .destructive)
+        {
+            guard let hud = MBProgressHUD.show() else { return }
+            hud.label.text = "Revoking invite for \(invite.invitee?.name ?? invite.invitee?.email ?? "this user")"
+            Server.remove(invite: invite)
+            { error in
+                hud.hide(animated: true)
+                if let error = error {
+                    self.snackbarController?.show(error: error.domain)
+                } else {
+                    self.removeCellAt(indexPath: indexPath)
+                    self.snackbarController?.show(text: "Invite for \(invite.invitee?.name ?? invite.invitee?.email ?? "this user") has been revoked")
+                }
+            }
+        }
+        alert.addCancelButton()
+        present(alert, animated: true) {}
+    }
+    
+    fileprivate func removeCellAt(indexPath: IndexPath) {
+        tableView.beginUpdates()
+        switch indexPath.section {
+        case 2:
+            project.managers.remove(at: indexPath.row)
+        case 3:
+            project.clients.remove(at: indexPath.row)
+        case 4:
+            let invite = project.managersInvited[indexPath.row]
+            project.invites = project.invites.filter { $0 != invite }
+        case 5:
+            let invite = project.clientsInvited[indexPath.row]
+            project.invites = project.invites.filter { $0 != invite }
+        default:
+            tableView.endUpdates()
+            return
+        }
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+        tableView.endUpdates()
     }
 }

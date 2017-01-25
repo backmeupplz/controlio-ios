@@ -187,43 +187,6 @@ class Server: NSObject {
         }
     }
     
-    // MARK: - Managers -
-    
-    class func getManagers(completion:@escaping (NSError?, [User]?)->()) {
-        request(urlAddition: "users/managers", method: .get, needsToken: true)
-        { json, error in
-            completion(error, User.map(json: json))
-        }
-    }
-    
-    class func addManager(email: String, completion:@escaping (NSError?)->()) {
-        let parameters = [
-            "email": email
-        ]
-        if isDemo() {
-            completion(NSError(domain: NSLocalizedString("You can't do that in demo account", comment: "Error"), code: 500, userInfo: nil))
-            return
-        }
-        request(urlAddition: "users/manager", method: .post, parameters: parameters, needsToken: true)
-        { json, error in
-            completion(error)
-        }
-    }
-    
-    class func removeManager(user: User, completion:@escaping (NSError?)->()) {
-        let parameters = [
-            "id": user.id!
-        ]
-        if isDemo() {
-            completion(NSError(domain: NSLocalizedString("You can't do that in demo account", comment: "Error"), code: 500, userInfo: nil))
-            return
-        }
-        request(urlAddition: "users/manager", method: .delete, parameters: parameters, needsToken: true)
-        { json, error in
-            completion(error)
-        }
-    }
-    
     // MARK: - Projects -
     
     class func add(project: Project, progress:@escaping (Float)->(), completion:@escaping (NSError?)->()) {
@@ -267,26 +230,6 @@ class Server: NSObject {
             { json, error in
                 completion(error)
             }
-        }
-    }
-    
-    class func addProject(image: String, title: String, initialStatus: String, clients: [CLToken], description: String, manager: User, completion:@escaping (NSError?)->()) {
-        let parameters: [String: Any] = [
-            "image": image,
-            "title": title,
-            "status": initialStatus,
-            "description": description,
-            "manager": manager.id,
-            "clients": clients.map { $0.displayText }
-        ]
-        
-        if isDemo() {
-            completion(NSError(domain: NSLocalizedString("You can't do that in demo account", comment: "Error"), code: 500, userInfo: nil))
-            return
-        }
-        request(urlAddition: "projects", method: .post, parameters: parameters, needsToken: true)
-        { json, error in
-            completion(error)
         }
     }
     
@@ -335,6 +278,45 @@ class Server: NSObject {
         }
     }
     
+    class func remove(manager: User, from project: Project, completion:@escaping (NSError?)->()) {
+        guard let id = project.id else { return }
+        
+        let parameters: Parameters = [
+            "managerId": manager.id,
+            "projectId": id
+        ]
+        
+        request(urlAddition: "projects/manager", method: .delete, parameters: parameters, needsToken: true)
+        { json, error in
+            completion(error)
+        }
+    }
+    
+    class func remove(client: User, from project: Project, completion:@escaping (NSError?)->()) {
+        guard let id = project.id else { return }
+        
+        let parameters: Parameters = [
+            "clientId": client.id,
+            "projectId": id
+        ]
+        
+        request(urlAddition: "projects/client", method: .delete, parameters: parameters, needsToken: true)
+        { json, error in
+            completion(error)
+        }
+    }
+    
+    class func remove(invite: Invite, completion:@escaping (NSError?)->()) {
+        let parameters: Parameters = [
+            "inviteId": invite.id,
+        ]
+        
+        request(urlAddition: "projects/invite", method: .delete, parameters: parameters, needsToken: true)
+        { json, error in
+            completion(error)
+        }
+    }
+    
     class func change(status: String, project: Project, completion:@escaping (NSError?, Post?)->()) {
         let parameters = [
             "projectid": project.id,
@@ -349,21 +331,6 @@ class Server: NSObject {
         { json, error in
             completion(error, Post(json: json))
         }
-    }
-    
-    class func changeClients(projectId: String, clientEmails: [String], completion:@escaping (NSError?)->()) {
-//        let parameters: [String: Any] = [
-//            "projectid": projectId,
-//            "clients": clientEmails
-//        ]
-//        if isDemo() {
-//            completion(NSError(domain: NSLocalizedString("You can't do that in demo account", comment: "Error"), code: 500, userInfo: nil))
-//            return
-//        }
-//        request(urlAddition: "projects/clients", method: .post, parameters: parameters, needsToken: true)
-//        { json, error in
-//            completion(error)
-//        }
     }
     
     class func editProject(project: Project, title: String, description: String, image: String, completion: @escaping (NSError?)->()) {

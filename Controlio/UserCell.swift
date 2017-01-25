@@ -12,7 +12,13 @@ class UserCell: UITableViewCell {
     
     // MARK: - Variables -
     
-    var user: User! {
+    var invite: Invite? {
+        didSet {
+            configure()
+        }
+    }
+    
+    var user: User? {
         didSet {
             configure()
         }
@@ -26,7 +32,12 @@ class UserCell: UITableViewCell {
     // MARK: - General functions -
     
     func configure() {
-        avatar.load(key: user.profileImageKey)
-        name.text = user.name ?? user.email
+        if let invite = invite {
+            avatar.load(key: invite.invitee?.profileImageKey)
+            name.text = invite.invitee?.name ?? invite.invitee?.email
+        } else if let user = user {
+            avatar.load(key: user.profileImageKey)
+            name.text = user.name ?? user.email
+        }
     }
 }
