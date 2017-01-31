@@ -667,7 +667,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.nib` struct is generated, and contains static references to 9 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 10 nibs.
   struct nib {
     /// Nib `AddManagerCell`.
     static let addManagerCell = _R.nib._AddManagerCell()
@@ -687,6 +687,8 @@ struct R: Rswift.Validatable {
     static let projectCell = _R.nib._ProjectCell()
     /// Nib `UserCell`.
     static let userCell = _R.nib._UserCell()
+    /// Nib `UserProfileCell`.
+    static let userProfileCell = _R.nib._UserProfileCell()
     
     /// `UINib(name: "AddManagerCell", in: bundle)`
     static func addManagerCell(_: Void = ()) -> UIKit.UINib {
@@ -731,6 +733,11 @@ struct R: Rswift.Validatable {
     /// `UINib(name: "UserCell", in: bundle)`
     static func userCell(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.userCell)
+    }
+    
+    /// `UINib(name: "UserProfileCell", in: bundle)`
+    static func userProfileCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.userProfileCell)
     }
     
     fileprivate init() {}
@@ -2878,6 +2885,7 @@ struct _R: Rswift.Validatable {
     static func validate() throws {
       try _PostCell.validate()
       try _EditProfileCell.validate()
+      try _UserProfileCell.validate()
       try _AttachmentView.validate()
       try _UserCell.validate()
       try _InputView.validate()
@@ -3009,6 +3017,21 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
     
+    struct _UserProfileCell: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "UserProfileCell"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> UserProfileCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UserProfileCell
+      }
+      
+      static func validate() throws {
+        if UIKit.UIImage(named: "photo-background-placeholder") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'photo-background-placeholder' is used in nib 'UserProfileCell', but couldn't be loaded.") }
+      }
+      
+      fileprivate init() {}
+    }
+    
     fileprivate init() {}
   }
   
@@ -3071,6 +3094,7 @@ struct _R: Rswift.Validatable {
       let name = "Main"
       let projectController = StoryboardViewControllerResource<ProjectController>(identifier: "ProjectController")
       let projectInfoController = StoryboardViewControllerResource<ProjectInfoController>(identifier: "ProjectInfoController")
+      let userViewController = StoryboardViewControllerResource<UserViewController>(identifier: "UserViewController")
       
       func clientsTableViewController(_: Void = ()) -> ClientsTableViewController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: clientsTableViewController)
@@ -3088,6 +3112,10 @@ struct _R: Rswift.Validatable {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: projectInfoController)
       }
       
+      func userViewController(_: Void = ()) -> UserViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: userViewController)
+      }
+      
       static func validate() throws {
         if UIKit.UIImage(named: "settings") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'settings' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "support") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'support' is used in storyboard 'Main', but couldn't be loaded.") }
@@ -3099,6 +3127,7 @@ struct _R: Rswift.Validatable {
         if _R.storyboard.main().projectController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'projectController' could not be loaded from storyboard 'Main' as 'ProjectController'.") }
         if _R.storyboard.main().projectInfoController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'projectInfoController' could not be loaded from storyboard 'Main' as 'ProjectInfoController'.") }
         if _R.storyboard.main().clientsTableViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'clientsTableViewController' could not be loaded from storyboard 'Main' as 'ClientsTableViewController'.") }
+        if _R.storyboard.main().userViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'userViewController' could not be loaded from storyboard 'Main' as 'UserViewController'.") }
         if _R.storyboard.main().mainController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'mainController' could not be loaded from storyboard 'Main' as 'MainController'.") }
       }
       

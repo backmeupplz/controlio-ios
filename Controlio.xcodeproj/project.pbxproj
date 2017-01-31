@@ -82,6 +82,9 @@
 		B3C35B121DB9E50C00F941F8 /* FeatureList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C35B111DB9E50C00F941F8 /* FeatureList.swift */; };
 		B3D1692C1CDDA5950080D748 /* PopupNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D1692B1CDDA5950080D748 /* PopupNotification.swift */; };
 		B3D1692E1CDDC15F0080D748 /* SupportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D1692D1CDDC15F0080D748 /* SupportController.swift */; };
+		B3D81AD41E4141B80035C6E2 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D81AD31E4141B80035C6E2 /* UserViewController.swift */; };
+		B3D81AD71E4142080035C6E2 /* UserProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D81AD51E4142080035C6E2 /* UserProfileCell.swift */; };
+		B3D81AD81E4142080035C6E2 /* UserProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3D81AD61E4142080035C6E2 /* UserProfileCell.xib */; };
 		B3D8C6F41CFBFBF4001EE432 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D8C6F31CFBFBF4001EE432 /* Server.swift */; };
 		B3D8C6F61CFBFC6B001EE432 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D8C6F51CFBFC6B001EE432 /* Config.swift */; };
 		B3D8C6F81CFBFD7E001EE432 /* NSUserDefaults+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D8C6F71CFBFD7E001EE432 /* NSUserDefaults+extensions.swift */; };
@@ -197,6 +200,9 @@
 		B3C35B111DB9E50C00F941F8 /* FeatureList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureList.swift; sourceTree = "<group>"; };
 		B3D1692B1CDDA5950080D748 /* PopupNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupNotification.swift; sourceTree = "<group>"; };
 		B3D1692D1CDDC15F0080D748 /* SupportController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportController.swift; sourceTree = "<group>"; };
+		B3D81AD31E4141B80035C6E2 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		B3D81AD51E4142080035C6E2 /* UserProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileCell.swift; sourceTree = "<group>"; };
+		B3D81AD61E4142080035C6E2 /* UserProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileCell.xib; sourceTree = "<group>"; };
 		B3D8C6F31CFBFBF4001EE432 /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		B3D8C6F51CFBFC6B001EE432 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		B3D8C6F71CFBFD7E001EE432 /* NSUserDefaults+extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSUserDefaults+extensions.swift"; sourceTree = "<group>"; };
@@ -473,6 +479,7 @@
 				B3FFC6C61CE6894C00595E85 /* CustomNavigationController.swift */,
 				B3A178D61DB2D12500C0E311 /* PlansController.swift */,
 				B30FC18C1E25907B00FEB944 /* ClientsTableViewController.swift */,
+				B3D81AD31E4141B80035C6E2 /* UserViewController.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -494,6 +501,8 @@
 				B3F3039E1DAF4B6700535FCD /* EditProfileCell.xib */,
 				B37A96021E2A48610075C7A7 /* ProjectApproveCell.swift */,
 				B37A96031E2A48610075C7A7 /* ProjectApproveCell.xib */,
+				B3D81AD51E4142080035C6E2 /* UserProfileCell.swift */,
+				B3D81AD61E4142080035C6E2 /* UserProfileCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -619,6 +628,7 @@
 				B3B2B9321C90CD1600468342 /* Login.storyboard in Resources */,
 				B383239A1CDC409D004D0A1C /* SFUIText-Semibold.otf in Resources */,
 				B38323901CDC409D004D0A1C /* SFUIText-ItalicG2.otf in Resources */,
+				B3D81AD81E4142080035C6E2 /* UserProfileCell.xib in Resources */,
 				B38323871CDC409D004D0A1C /* SFUIText-BoldG2.otf in Resources */,
 				B3F3038D1DAF4AE900535FCD /* ProjectCell.xib in Resources */,
 				B383238F1CDC409D004D0A1C /* SFUIText-ItalicG1.otf in Resources */,
@@ -705,6 +715,7 @@
 				B37630581CE28E9B004FE1B7 /* AttachmentWrapperView.swift in Sources */,
 				B3FEB8491C963E260048B688 /* CustomizableImageView.swift in Sources */,
 				B39E06541E331EEF003B5910 /* Invite.swift in Sources */,
+				B3D81AD41E4141B80035C6E2 /* UserViewController.swift in Sources */,
 				B3EA114C1D93A9740026658B /* UserCell.swift in Sources */,
 				B3D8C6F41CFBFBF4001EE432 /* Server.swift in Sources */,
 				B3C305A11CDFD79500C8E85F /* SettingsController.swift in Sources */,
@@ -714,6 +725,7 @@
 				B3D8C6FA1CFC0A78001EE432 /* S3.swift in Sources */,
 				B33EBFCE1E23FD3B00703285 /* MBProgressHUD+Window.swift in Sources */,
 				B37630551CE28CA4004FE1B7 /* AttachmentContainerView.swift in Sources */,
+				B3D81AD71E4142080035C6E2 /* UserProfileCell.swift in Sources */,
 				B3FFC6C71CE6894C00595E85 /* CustomNavigationController.swift in Sources */,
 				B3E634DF1C91514D00C0572A /* ProjectsController.swift in Sources */,
 				B3C305A81CDFEAB900C8E85F /* User.swift in Sources */,

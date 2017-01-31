@@ -150,8 +150,12 @@ class Server: NSObject {
     
     // MARK: - Profile -
     
-    class func getProfile(completion:@escaping (NSError?, User?)->()) {
-        request(urlAddition: "users/profile", method: .get, needsToken: true)
+    class func getProfile(for user: User? = nil, completion:@escaping (NSError?, User?)->()) {
+        var parameters: Parameters = [:]
+        if let id = user?.id {
+            parameters["id"] = id
+        }
+        request(urlAddition: "users/profile", method: .get, parameters: parameters, needsToken: true)
         { json, error in
             if let error = error {
                 completion(error, nil)

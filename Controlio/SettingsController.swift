@@ -65,7 +65,7 @@ class SettingsController: UITableViewController, STPPaymentContextDelegate {
         case (1, 0):
             logout()
         default:
-            print(indexPath)
+            break
         }
     }
     

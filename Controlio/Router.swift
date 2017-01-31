@@ -55,6 +55,12 @@ class Router {
         show(vc: vc)
     }
     
+    func show(user: User) {
+        let vc = R.storyboard.main.userViewController()
+        vc?.user = user
+        show(vc: vc)
+    }
+    
     // MARK: - Private Functions -
     
     fileprivate func show(vc: UIViewController?, animated: Bool = true) {

@@ -66,6 +66,21 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         present(alert, animated: true, completion: nil)
     }
     
+    func open(user: User) {
+        guard let hud = MBProgressHUD.show() else { return }
+        hud.label.text = "Getting user profile..."
+        
+        Server.getProfile(for: user)
+        { error, user in
+            hud.hide(animated: true)
+            if let error = error {
+                self.snackbarController?.show(error: error.domain)
+            } else if let user = user {
+                Router(self).show(user: user)
+            }
+        }
+    }
+    
     // MARK: - InputViewDelegate -
     
     func openPicker(with delegate: PickerDelegate, sender: UIView) {

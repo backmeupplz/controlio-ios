@@ -186,6 +186,25 @@ class ProjectInfoController: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section > 0 {
+            let userCell = tableView.cellForRow(at: indexPath) as! UserCell
+            guard let user = userCell.user ?? userCell.invite?.invitee else { return }
+            guard let hud = MBProgressHUD.show() else { return }
+            hud.label.text = "Getting user profile..."
+            
+            Server.getProfile(for: user)
+            { error, user in
+                hud.hide(animated: true)
+                if let error = error {
+                    self.snackbarController?.show(error: error.domain)
+                } else if let user = user {
+                    Router(self).show(user: user)
+                }
+            }
+        }
+    }
+    
     // MARK: - Private functions -
     
     fileprivate func configure() {

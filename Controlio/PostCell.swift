@@ -11,6 +11,7 @@ import UIKit
 protocol PostCellDelegate: class {
     func openAttachment(_ index: Int, post: Post, fromView: UIView)
     func edit(post: Post, cell: PostCell)
+    func open(user: User)
 }
 
 class PostCell: UITableViewCell {
@@ -48,6 +49,10 @@ class PostCell: UITableViewCell {
     
     @IBAction func attachmentTouched(_ sender: UIButton) {
         delegate?.openAttachment(sender.tag, post: post, fromView: sender)
+    }
+    
+    @IBAction func managerTouched(_ sender: Any) {
+        delegate?.open(user: post.author)
     }
     
     // MARK: - View Life Cycle -
