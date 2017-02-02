@@ -365,21 +365,43 @@ class Server: NSObject {
         }
     }
     
-    class func editProject(project: Project, title: String, description: String, image: String, completion: @escaping (NSError?)->()) {
-//        let parameters: [String: String] = [
-//            "projectid": project.id,
-//            "title": title,
-//            "description": description,
-//            "image": image
-//        ]
-//        if isDemo() {
-//            completion(NSError(domain: NSLocalizedString("You can't do that in demo account", comment: "Error"), code: 500, userInfo: nil))
-//            return
-//        }
-//        request(urlAddition: "projects", method: .put, parameters: parameters, needsToken: true)
-//        { json, error in
-//            completion(error)
-//        }
+    class func edit(project: Project, progress:@escaping (Float)->(), completion:@escaping (NSError?)->()) {
+        if isDemo() {
+            completion(NSError(domain: "You can't do that in demo account", code: 403, userInfo: nil))
+            return
+        }
+        
+        var parameters: Parameters = [
+            "projectid": project.id!,
+            "title": project.tempTitle ?? project.title ?? "",
+            "description": project.tempProjectDescription ?? project.projectDescription ?? "",
+        ]
+        
+        if let key = project.imageKey {
+            parameters["image"] = key
+        }
+        
+        if let image = project.tempImage {
+            S3.upload(image: image, progress: progress)
+            { key, error in
+                if let error = error {
+                    completion(NSError(domain: error, code: 500, userInfo: nil))
+                } else if let key = key {
+                    parameters["image"] = key
+                    request(urlAddition: "projects", method: .put, parameters: parameters, needsToken: true)
+                    { json, error in
+                        completion(error)
+                    }
+                }
+            }
+        } else {
+            
+            request(urlAddition: "projects", method: .put, parameters: parameters, needsToken: true)
+            { json, error in
+                
+                completion(error)
+            }
+        }
     }
     
     class func archive(project: Project, archive: Bool, completion: @escaping (NSError?)->()) {

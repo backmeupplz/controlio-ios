@@ -10,15 +10,9 @@ import UIKit
 import MBProgressHUD
 import Material
 
-protocol ProjectControllerDelegate: class {
-    func didDeleteProject(project: Project)
-}
-
 class ProjectController: UITableViewController, PostCellDelegate, InputViewDelegate {
     
     // MARK: - Variables -
-    
-    weak var delegate: ProjectControllerDelegate?
     
     var project: Project!
     var posts = [Post]()

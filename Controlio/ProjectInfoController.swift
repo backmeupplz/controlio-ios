@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import MBProgressHUD
+import Material
 
 class ProjectInfoController: UITableViewController {
     
@@ -26,7 +27,7 @@ class ProjectInfoController: UITableViewController {
         setupTableView()
         setupBackButton()
         addRefreshControl()
-        
+        addRightButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -228,6 +229,15 @@ class ProjectInfoController: UITableViewController {
         refreshControl?.addTarget(self, action: #selector(ProjectInfoController.reload), for: .valueChanged)
     }
     
+    fileprivate func addRightButton() {
+        let button = UIButton(type: .custom)
+        button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        button.setImage(Icon.moreHorizontal, for: .normal)
+        button.addTarget(self, action: #selector(ProjectInfoController.moreTouched(sender:)), for: .touchUpInside)
+        let rightView = UIBarButtonItem(customView: button)
+        navigationItem.rightBarButtonItem = rightView
+    }
+    
     @objc fileprivate func reload() {
         Server.get(project: project)
         { error, project in
@@ -338,5 +348,50 @@ class ProjectInfoController: UITableViewController {
     
     @objc fileprivate func addManagersTouched() {
         Router(self).showClients(with: project, type: .addManagers)
+    }
+    
+    @objc fileprivate func moreTouched(sender: UIButton) {
+        let alert = UIAlertController(sourceView: sender)
+        if !project.isOwner {
+            alert.add(action: "Leave project", style: .destructive)
+            {
+                let alert = UIAlertController(title: "Are you sure you want to leave \(self.project.title ?? "this project")?", message: "You will not be able to get back unless you get invited", sourceView: sender)
+                alert.add(action: "Leave", style: .destructive)
+                {
+                    self.leave(project: self.project)
+                }
+                alert.addCancelButton()
+                self.present(alert, animated: true) {}
+            }
+        } else {
+            alert.add(action: "Delete project", style: .destructive)
+            {
+                let alert = UIAlertController(title: "Are you sure you want to delete \(self.project.title ?? "this project")?", message: "This action cannot be undone", sourceView: sender)
+                alert.add(action: "Delete", style: .destructive)
+                {
+                    self.delete(project: self.project)
+                }
+                alert.addCancelButton()
+                self.present(alert, animated: true) {}
+            }
+        }
+        if project.canEdit {
+            alert.add(action: "Edit project")
+            {
+                Router(self).showEdit(of: self.project)
+            }
+        }
+        alert.addCancelButton()
+        present(alert, animated: true) {}
+    }
+    
+    fileprivate func leave(project: Project) {
+        print("should leave")
+        let _ = navigationController?.popToRootViewController(animated: true)
+    }
+    
+    fileprivate func delete(project: Project) {
+        print("should delete")
+        let _ = navigationController?.popToRootViewController(animated: true)
     }
 }

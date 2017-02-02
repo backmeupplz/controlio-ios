@@ -53,6 +53,8 @@ class Project: NSObject {
         }
     }
     
+    var tempTitle: String?
+    var tempProjectDescription: String?
     var tempType = NewProjectCellType.client
     var tempImage: UIImage?
     var tempInitialStatus: String?

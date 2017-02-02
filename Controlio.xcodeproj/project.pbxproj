@@ -85,6 +85,9 @@
 		B3D81AD41E4141B80035C6E2 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D81AD31E4141B80035C6E2 /* UserViewController.swift */; };
 		B3D81AD71E4142080035C6E2 /* UserProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D81AD51E4142080035C6E2 /* UserProfileCell.swift */; };
 		B3D81AD81E4142080035C6E2 /* UserProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3D81AD61E4142080035C6E2 /* UserProfileCell.xib */; };
+		B3D81ADB1E42A4810035C6E2 /* EditProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D81AD91E42A4810035C6E2 /* EditProjectCell.swift */; };
+		B3D81ADC1E42A4810035C6E2 /* EditProjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3D81ADA1E42A4810035C6E2 /* EditProjectCell.xib */; };
+		B3D81ADE1E42AA400035C6E2 /* EditProjectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D81ADD1E42AA400035C6E2 /* EditProjectController.swift */; };
 		B3D8C6F41CFBFBF4001EE432 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D8C6F31CFBFBF4001EE432 /* Server.swift */; };
 		B3D8C6F61CFBFC6B001EE432 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D8C6F51CFBFC6B001EE432 /* Config.swift */; };
 		B3D8C6F81CFBFD7E001EE432 /* NSUserDefaults+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D8C6F71CFBFD7E001EE432 /* NSUserDefaults+extensions.swift */; };
@@ -203,6 +206,9 @@
 		B3D81AD31E4141B80035C6E2 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		B3D81AD51E4142080035C6E2 /* UserProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileCell.swift; sourceTree = "<group>"; };
 		B3D81AD61E4142080035C6E2 /* UserProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileCell.xib; sourceTree = "<group>"; };
+		B3D81AD91E42A4810035C6E2 /* EditProjectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProjectCell.swift; sourceTree = "<group>"; };
+		B3D81ADA1E42A4810035C6E2 /* EditProjectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProjectCell.xib; sourceTree = "<group>"; };
+		B3D81ADD1E42AA400035C6E2 /* EditProjectController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProjectController.swift; sourceTree = "<group>"; };
 		B3D8C6F31CFBFBF4001EE432 /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		B3D8C6F51CFBFC6B001EE432 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		B3D8C6F71CFBFD7E001EE432 /* NSUserDefaults+extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSUserDefaults+extensions.swift"; sourceTree = "<group>"; };
@@ -480,6 +486,7 @@
 				B3A178D61DB2D12500C0E311 /* PlansController.swift */,
 				B30FC18C1E25907B00FEB944 /* ClientsTableViewController.swift */,
 				B3D81AD31E4141B80035C6E2 /* UserViewController.swift */,
+				B3D81ADD1E42AA400035C6E2 /* EditProjectController.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -503,6 +510,8 @@
 				B37A96031E2A48610075C7A7 /* ProjectApproveCell.xib */,
 				B3D81AD51E4142080035C6E2 /* UserProfileCell.swift */,
 				B3D81AD61E4142080035C6E2 /* UserProfileCell.xib */,
+				B3D81AD91E42A4810035C6E2 /* EditProjectCell.swift */,
+				B3D81ADA1E42A4810035C6E2 /* EditProjectCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -608,6 +617,7 @@
 				B383236C1CDC3FB3004D0A1C /* SFUIDisplay-Thin.otf in Resources */,
 				B38323851CDC409D004D0A1C /* SFUIText-Bold.otf in Resources */,
 				B383238D1CDC409D004D0A1C /* SFUIText-HeavyItalic.otf in Resources */,
+				B3D81ADC1E42A4810035C6E2 /* EditProjectCell.xib in Resources */,
 				B38323931CDC409D004D0A1C /* SFUIText-LightItalic.otf in Resources */,
 				B38323991CDC409D004D0A1C /* SFUIText-RegularG3.otf in Resources */,
 				B38323671CDC3FB3004D0A1C /* SFUIDisplay-Heavy.otf in Resources */,
@@ -744,6 +754,7 @@
 				B301EFDD1CE59A0A0013CD4D /* UIImagePickerDelegate+UINavgiationControllerDelegate.swift in Sources */,
 				B3E8157C1CE1603400E8F87B /* NewProjectController.swift in Sources */,
 				B3C35B121DB9E50C00F941F8 /* FeatureList.swift in Sources */,
+				B3D81ADE1E42AA400035C6E2 /* EditProjectController.swift in Sources */,
 				B3E634E11C915B9300C0572A /* UISearchBar+CursorTint.swift in Sources */,
 				B3E815791CE1566900E8F87B /* NewProjectCell.swift in Sources */,
 				B3D1692C1CDDA5950080D748 /* PopupNotification.swift in Sources */,
@@ -757,6 +768,7 @@
 				B3C03D1A1C90FF890096E04C /* UIAlertController+Additions.swift in Sources */,
 				B3E7B1281D9B3D40004FBF86 /* Platform.swift in Sources */,
 				B3E67AAA1E36CEB30051EB89 /* ProjectInfoController.swift in Sources */,
+				B3D81ADB1E42A4810035C6E2 /* EditProjectCell.swift in Sources */,
 				B3D8C6F61CFBFC6B001EE432 /* Config.swift in Sources */,
 				B3A89D541DB8069D00211EFF /* Payments.swift in Sources */,
 				B30A42161DA61FC6001FB870 /* MagicLinkViewController.swift in Sources */,

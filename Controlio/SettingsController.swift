@@ -61,8 +61,10 @@ class SettingsController: UITableViewController, STPPaymentContextDelegate {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch (indexPath.section, indexPath.row) {
         case (0, 2):
+            tableView.deselectRow(at: indexPath, animated: true)
             showPaymentMethods()
         case (1, 0):
+            tableView.deselectRow(at: indexPath, animated: true)
             logout()
         default:
             break
@@ -113,8 +115,13 @@ class SettingsController: UITableViewController, STPPaymentContextDelegate {
     }
     
     fileprivate func logout() {
-        Server.logout()
-        let _ = self.navigationController?.tabBarController?.navigationController?.popToRootViewController(animated: true)
+        let alert = UIAlertController(title: "Would you like to log out?", preferredStyle: .alert)
+        alert.add(action: "Log out") {
+            Server.logout()
+            let _ = self.navigationController?.tabBarController?.navigationController?.popToRootViewController(animated: true)
+        }
+        alert.addCancelButton()
+        present(alert, animated: true) {}
     }
     
     fileprivate func showDemoMessage() {

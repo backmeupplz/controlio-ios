@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SFUIDisplay-Medium.otf">
+            <string>SFUIDisplay-Medium</string>
+        </array>
+        <array key="SFUIText-Regular.otf">
+            <string>SFUIText-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="251" id="KGk-i7-Jjw" customClass="EditProjectCell" customModule="Controlio" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="363" height="251"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="363" height="250"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nYG-yQ-sTB" customClass="TextField" customModule="Material">
+                        <rect key="frame" x="15" y="113" width="333" height="32"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.01176470588" green="0.76470588240000004" blue="0.52549019610000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="32" id="dRg-ag-Kg1"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yZ2-3e-Rkq" customClass="TextField" customModule="Material">
+                        <rect key="frame" x="15" y="25" width="258" height="32"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.01176470588" green="0.76470588240000004" blue="0.52549019610000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="32" id="Pn7-as-qtF"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add photo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pdz-WN-Lxt" userLabel="Add Photo Label">
+                        <rect key="frame" x="293" y="81" width="50" height="13"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="13" id="Vhl-yB-5YA"/>
+                            <constraint firstAttribute="width" constant="50" id="aAv-9a-H0p"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI  Text" pointSize="10"/>
+                        <color key="textColor" red="0.01176470588" green="0.76470588240000004" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add-photo-camera" translatesAutoresizingMaskIntoConstraints="NO" id="cba-Yy-NTn" userLabel="Add Photo Camera">
+                        <rect key="frame" x="308" y="35" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="E1G-nX-c3X"/>
+                            <constraint firstAttribute="height" constant="20" id="vHI-fD-Kgc"/>
+                        </constraints>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo-background-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="oYL-QQ-Puw" userLabel="Add Photo Background">
+                        <rect key="frame" x="288" y="15" width="60" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="7Ts-Nb-U4f"/>
+                            <constraint firstAttribute="height" constant="60" id="HM1-6B-MrF"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="6"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T5r-iq-4Pj" userLabel="Add Photo Button">
+                        <rect key="frame" x="288" y="15" width="60" height="79"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="GZb-Bd-125"/>
+                            <constraint firstAttribute="height" constant="79" id="mt3-wu-c8m"/>
+                        </constraints>
+                        <connections>
+                            <action selector="addPhotoTouched:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="cWS-oL-Zwj"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BOl-57-x0V" userLabel="Create Button">
+                        <rect key="frame" x="30" y="181" width="303" height="54"/>
+                        <color key="backgroundColor" red="0.01176470588" green="0.76470588240000004" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="54" id="tXY-PW-oOM"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFUIDisplay-Medium" family="SF UI Display" pointSize="14"/>
+                        <state key="normal" title="Save"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="6"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="saveTouched:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Ek9-yQ-U1N"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="oYL-QQ-Puw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="0lU-n6-HOY"/>
+                    <constraint firstAttribute="trailing" secondItem="Pdz-WN-Lxt" secondAttribute="trailing" constant="20" id="8w8-wO-X47"/>
+                    <constraint firstItem="T5r-iq-4Pj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="FFv-8s-qGR"/>
+                    <constraint firstAttribute="trailing" secondItem="cba-Yy-NTn" secondAttribute="trailing" constant="35" id="FQv-wC-Gph"/>
+                    <constraint firstItem="nYG-yQ-sTB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="G8p-Lf-Ptk"/>
+                    <constraint firstItem="T5r-iq-4Pj" firstAttribute="leading" secondItem="yZ2-3e-Rkq" secondAttribute="trailing" constant="15" id="GpF-UT-ptG"/>
+                    <constraint firstAttribute="trailing" secondItem="BOl-57-x0V" secondAttribute="trailing" constant="30" id="NzZ-ww-f2E"/>
+                    <constraint firstAttribute="bottom" secondItem="BOl-57-x0V" secondAttribute="bottom" constant="15" id="QuV-KK-e9N"/>
+                    <constraint firstItem="nYG-yQ-sTB" firstAttribute="top" secondItem="T5r-iq-4Pj" secondAttribute="bottom" constant="19" id="SuJ-im-Chb"/>
+                    <constraint firstItem="cba-Yy-NTn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="35" id="U7N-4H-1Zz"/>
+                    <constraint firstItem="Pdz-WN-Lxt" firstAttribute="top" secondItem="oYL-QQ-Puw" secondAttribute="bottom" constant="6" id="Uhh-S9-h49"/>
+                    <constraint firstAttribute="trailing" secondItem="nYG-yQ-sTB" secondAttribute="trailing" constant="15" id="atx-8H-jjj"/>
+                    <constraint firstItem="yZ2-3e-Rkq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="dEm-wX-Tdq"/>
+                    <constraint firstAttribute="trailing" secondItem="T5r-iq-4Pj" secondAttribute="trailing" constant="15" id="gHP-Xc-Bqa"/>
+                    <constraint firstAttribute="trailing" secondItem="oYL-QQ-Puw" secondAttribute="trailing" constant="15" id="pt4-pT-4TE"/>
+                    <constraint firstItem="BOl-57-x0V" firstAttribute="top" secondItem="nYG-yQ-sTB" secondAttribute="bottom" constant="36" id="sLG-4N-2ti"/>
+                    <constraint firstItem="BOl-57-x0V" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="sbf-c9-YF4"/>
+                    <constraint firstItem="yZ2-3e-Rkq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="tlK-ln-hQ5"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="cameraImage" destination="cba-Yy-NTn" id="tzT-FN-iip"/>
+                <outlet property="descriptionTextField" destination="nYG-yQ-sTB" id="A2o-kW-Ndh"/>
+                <outlet property="photoImage" destination="oYL-QQ-Puw" id="bYX-Zr-msi"/>
+                <outlet property="photoLabel" destination="Pdz-WN-Lxt" id="IkN-Ce-XqK"/>
+                <outlet property="saveButton" destination="BOl-57-x0V" id="v7k-Yv-kwR"/>
+                <outlet property="titleTextField" destination="yZ2-3e-Rkq" id="rFd-YZ-enC"/>
+            </connections>
+            <point key="canvasLocation" x="5.5" y="157.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="add-photo-camera" width="20" height="18"/>
+        <image name="photo-background-placeholder" width="60" height="60"/>
+    </resources>
+</document>

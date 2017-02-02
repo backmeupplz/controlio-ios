@@ -667,7 +667,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.nib` struct is generated, and contains static references to 10 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 11 nibs.
   struct nib {
     /// Nib `AddManagerCell`.
     static let addManagerCell = _R.nib._AddManagerCell()
@@ -675,6 +675,8 @@ struct R: Rswift.Validatable {
     static let attachmentView = _R.nib._AttachmentView()
     /// Nib `EditProfileCell`.
     static let editProfileCell = _R.nib._EditProfileCell()
+    /// Nib `EditProjectCell`.
+    static let editProjectCell = _R.nib._EditProjectCell()
     /// Nib `InputView`.
     static let inputView = _R.nib._InputView()
     /// Nib `NewProjectCell`.
@@ -703,6 +705,11 @@ struct R: Rswift.Validatable {
     /// `UINib(name: "EditProfileCell", in: bundle)`
     static func editProfileCell(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.editProfileCell)
+    }
+    
+    /// `UINib(name: "EditProjectCell", in: bundle)`
+    static func editProjectCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.editProjectCell)
     }
     
     /// `UINib(name: "InputView", in: bundle)`
@@ -2883,13 +2890,14 @@ struct _R: Rswift.Validatable {
   
   struct nib: Rswift.Validatable {
     static func validate() throws {
+      try _NewProjectCell.validate()
       try _PostCell.validate()
       try _EditProfileCell.validate()
       try _UserProfileCell.validate()
       try _AttachmentView.validate()
+      try _EditProjectCell.validate()
       try _UserCell.validate()
       try _InputView.validate()
-      try _NewProjectCell.validate()
     }
     
     struct _AddManagerCell: Rswift.NibResourceType {
@@ -2929,6 +2937,22 @@ struct _R: Rswift.Validatable {
       static func validate() throws {
         if UIKit.UIImage(named: "photo-background-placeholder") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'photo-background-placeholder' is used in nib 'EditProfileCell', but couldn't be loaded.") }
         if UIKit.UIImage(named: "add-photo-camera") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'add-photo-camera' is used in nib 'EditProfileCell', but couldn't be loaded.") }
+      }
+      
+      fileprivate init() {}
+    }
+    
+    struct _EditProjectCell: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "EditProjectCell"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> EditProjectCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? EditProjectCell
+      }
+      
+      static func validate() throws {
+        if UIKit.UIImage(named: "photo-background-placeholder") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'photo-background-placeholder' is used in nib 'EditProjectCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "add-photo-camera") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'add-photo-camera' is used in nib 'EditProjectCell', but couldn't be loaded.") }
       }
       
       fileprivate init() {}
@@ -3090,6 +3114,7 @@ struct _R: Rswift.Validatable {
     struct main: Rswift.StoryboardResourceType, Rswift.Validatable {
       let bundle = R.hostingBundle
       let clientsTableViewController = StoryboardViewControllerResource<ClientsTableViewController>(identifier: "ClientsTableViewController")
+      let editProjectController = StoryboardViewControllerResource<EditProjectController>(identifier: "EditProjectController")
       let mainController = StoryboardViewControllerResource<MainController>(identifier: "MainController")
       let name = "Main"
       let projectController = StoryboardViewControllerResource<ProjectController>(identifier: "ProjectController")
@@ -3098,6 +3123,10 @@ struct _R: Rswift.Validatable {
       
       func clientsTableViewController(_: Void = ()) -> ClientsTableViewController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: clientsTableViewController)
+      }
+      
+      func editProjectController(_: Void = ()) -> EditProjectController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: editProjectController)
       }
       
       func mainController(_: Void = ()) -> MainController? {
@@ -3124,6 +3153,7 @@ struct _R: Rswift.Validatable {
         if UIKit.UIImage(named: "projects") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'projects' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "telegram") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'telegram' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "facebook-massenger") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'facebook-massenger' is used in storyboard 'Main', but couldn't be loaded.") }
+        if _R.storyboard.main().editProjectController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'editProjectController' could not be loaded from storyboard 'Main' as 'EditProjectController'.") }
         if _R.storyboard.main().projectController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'projectController' could not be loaded from storyboard 'Main' as 'ProjectController'.") }
         if _R.storyboard.main().projectInfoController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'projectInfoController' could not be loaded from storyboard 'Main' as 'ProjectInfoController'.") }
         if _R.storyboard.main().clientsTableViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'clientsTableViewController' could not be loaded from storyboard 'Main' as 'ClientsTableViewController'.") }

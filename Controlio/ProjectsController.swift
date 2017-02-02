@@ -10,7 +10,7 @@ import UIKit
 import UIScrollView_InfiniteScroll
 import MBProgressHUD
 
-class ProjectsController: UITableViewController, ProjectControllerDelegate, ProjectApproveCellDelegate {
+class ProjectsController: UITableViewController, ProjectApproveCellDelegate {
     
     // MARK: - Variables -
     
@@ -95,9 +95,9 @@ class ProjectsController: UITableViewController, ProjectControllerDelegate, Proj
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            Router(self).show(project: invites[(indexPath as NSIndexPath).row].project!, delegate: self)
+            Router(self).show(project: invites[(indexPath as NSIndexPath).row].project!)
         } else {
-            Router(self).show(project: projects[(indexPath as NSIndexPath).row], delegate: self)
+            Router(self).show(project: projects[(indexPath as NSIndexPath).row])
         }
     }
     
