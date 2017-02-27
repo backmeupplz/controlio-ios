@@ -580,12 +580,12 @@ class Server: NSObject {
                 DispatchQueue.main.async {
                     if let errorString = response.result.error?.localizedDescription {
                         completion(nil, NSError(domain: errorString, code: 500, userInfo: nil))
-                    } else if let error = checkForErrors(json: JSON(response.result.value)) {
+                    } else if let value = response.result.value, let error = checkForErrors(json: JSON(value)) {
                         completion(nil, error)
                     } else if response.response?.statusCode == 500 {
                         completion(nil, NSError(domain: NSLocalizedString("Server error", comment: "Error"), code: 500, userInfo: nil))
-                    } else {
-                        completion(JSON(response.result.value), nil)
+                    } else if let value = response.result.value {
+                        completion(JSON(value), nil)
                     }
                 }
         }
@@ -597,7 +597,7 @@ class Server: NSObject {
                 DispatchQueue.main.async {
                     if let errorString = response.error?.localizedDescription {
                         completion(nil, NSError(domain: errorString, code: 500, userInfo: nil))
-                    } else if let error = self.checkForErrors(json: JSON(response.data)) {
+                    } else if let data = response.data, let error = self.checkForErrors(json: JSON(data)) {
                         completion(nil, error)
                     } else if response.response?.statusCode == 500 {
                         completion(nil, NSError(domain: NSLocalizedString("Server error", comment: "Error"), code: 500, userInfo: nil))

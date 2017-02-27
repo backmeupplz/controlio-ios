@@ -27,12 +27,12 @@ class ProjectCell: UITableViewCell {
     // MARK: - Outlets -
     
     @IBOutlet fileprivate weak var projectImageView: UIImageView!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var projectTitleLabel: UILabel!
-    @IBOutlet weak var projectDescriptionLabel: UILabel!
+    @IBOutlet fileprivate weak var dateLabel: UILabel!
+    @IBOutlet fileprivate weak var projectTitleLabel: UILabel!
+    @IBOutlet fileprivate weak var projectDescriptionLabel: UILabel!
     
-    @IBOutlet weak var projectImageViewLeft: NSLayoutConstraint!
-    @IBOutlet weak var projectImageViewWidth: NSLayoutConstraint!
+    @IBOutlet fileprivate weak var projectImageViewLeft: NSLayoutConstraint!
+    @IBOutlet fileprivate weak var projectImageViewWidth: NSLayoutConstraint!
     
     // MARK: - Private Functions -
     

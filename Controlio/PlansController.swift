@@ -131,7 +131,7 @@ class PlansController: UITableViewController, MFMailComposeViewControllerDelegat
     }
     func paymentContext(_ paymentContext: STPPaymentContext, didFinishWith status: STPPaymentStatus, error: Error?) {
         
-        print(error)
+        print(error?.localizedDescription ?? "error")
     }
     func paymentContext(_ paymentContext: STPPaymentContext, didFailToLoadWithError error: Error) {
         
