@@ -27,14 +27,14 @@ class Payments: NSObject, STPBackendAPIAdapter {
                 }
         }
     }
-    @objc func attachSource(toCustomer source: STPSource, completion: @escaping STPErrorBlock) {
+    public func attachSource(toCustomer source: STPSourceProtocol, completion: @escaping STPErrorBlock) {
         Server.stripeCustomerAttach(sourceId: source.stripeID)
         { error in
             completion(error)
         }
     }
     
-    @objc func selectDefaultCustomerSource(_ source: STPSource, completion: @escaping STPErrorBlock) {
+    public func selectDefaultCustomerSource(_ source: STPSourceProtocol, completion: @escaping STPErrorBlock) {
         Server.stripeCustomerSelect(defaultSourceId: source.stripeID)
         { error in
             completion(error)
