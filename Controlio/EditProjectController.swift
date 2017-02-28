@@ -10,7 +10,7 @@ import UIKit
 import MBProgressHUD
 import UITextField_Shake
 
-class EditProjectController: UITableViewController, EditProjectCellDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class EditProjectController: UITableViewController, EditProjectCellDelegate, PickerDelegate {
 
     // MARK: - Variables -
     
