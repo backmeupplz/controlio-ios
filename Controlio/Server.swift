@@ -422,14 +422,11 @@ class Server: NSObject {
     
     class func delete(project: Project, completion: @escaping (NSError?)->()) {
         guard let id = project.id else { return }
-        guard let userId = self.currentUser?.id else { return }
-        guard let ownerId = project.owner?.id else { return }
-        if userId != ownerId { return }
 
         if isDemo() {
             completion(NSError(domain: NSLocalizedString("You can't do that in demo account", comment: "Error"), code: 500, userInfo: nil))
             return
-        }
+        } else if !project.isOwner { return }
 
         let parameters: Parameters = [
             "projectId": id
