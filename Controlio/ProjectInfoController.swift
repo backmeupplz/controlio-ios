@@ -386,8 +386,18 @@ class ProjectInfoController: UITableViewController {
     }
     
     fileprivate func leave(project: Project) {
-        print("should leave")
-        let _ = navigationController?.popToRootViewController(animated: true)
+        guard let hud = MBProgressHUD.show() else { return }
+        hud.label.text = "Leaving the project..."
+        
+        Server.leave(project: project) { error in
+            hud.hide(animated: true)
+            if let error = error {
+                self.snackbarController?.show(error: error.domain)
+            } else {
+                let _ = self.navigationController?.popToRootViewController(animated: true)
+                self.snackbarController?.show(text: "You have left the project")
+            }
+        }
     }
     
     fileprivate func delete(project: Project) {
