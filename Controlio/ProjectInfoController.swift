@@ -363,7 +363,7 @@ class ProjectInfoController: UITableViewController {
                 alert.addCancelButton()
                 self.present(alert, animated: true) {}
             }
-        } else {
+        } else if project.isOwner {
             alert.add(action: "Delete project", style: .destructive)
             {
                 let alert = UIAlertController(title: "Are you sure you want to delete \(self.project.title ?? "this project")?", message: "This action cannot be undone", sourceView: sender)
@@ -391,7 +391,10 @@ class ProjectInfoController: UITableViewController {
     }
     
     fileprivate func delete(project: Project) {
-        print("should delete")
-        let _ = navigationController?.popToRootViewController(animated: true)
+        Server.delete(project: project, completion: { error in
+            if error == nil {
+                let _ = self.navigationController?.popToRootViewController(animated: true)
+            }
+        })
     }
 }
