@@ -438,6 +438,30 @@ class Server: NSObject {
         }
     }
     
+    class func leave(project: Project, completion: @escaping (NSError?)->()) {
+        guard let id = project.id else { return }
+        let parameters: [String: String] = [
+            "projectid": id
+        ]
+        
+        if isDemo() {
+            completion(NSError(domain: "You can't leave the demo project", code: 403, userInfo: nil))
+            return
+        }
+        
+        if project.isOwner {
+            completion(NSError(domain: "You can't leave project as an owner", code: 403, userInfo: nil))
+            return
+        }
+        
+        
+        request(urlAddition: "projects/leave", method: .post, parameters: parameters, needsToken: true)
+        { json, error in
+            completion(error)
+        }
+        
+    }
+    
     // MARK: - Posts -
     
     class func addPost(to project: Project, text: String, attachmentKeys: [String], completion:@escaping (NSError?, Post?)->()) {
