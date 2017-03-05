@@ -391,10 +391,17 @@ class ProjectInfoController: UITableViewController {
     }
     
     fileprivate func delete(project: Project) {
-        Server.delete(project: project, completion: { error in
-            if error == nil {
+        guard let hud = MBProgressHUD.show() else { return }
+        hud.label.text = "Deleting the project..."
+        
+        Server.delete(project: project) { error in
+            hud.hide(animated: true)
+            if let error = error {
+                self.snackbarController?.show(error: error.domain)
+            } else {
                 let _ = self.navigationController?.popToRootViewController(animated: true)
+                self.snackbarController?.show(text: "Project has been deleted")
             }
-        })
+        }
     }
 }

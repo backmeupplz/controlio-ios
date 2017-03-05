@@ -426,13 +426,13 @@ class Server: NSObject {
         if isDemo() {
             completion(NSError(domain: NSLocalizedString("You can't do that in demo account", comment: "Error"), code: 500, userInfo: nil))
             return
-        } else if !project.isOwner { return }
+        }
 
         let parameters: Parameters = [
-            "projectId": id
+            "projectid": id
         ]
         
-        request(urlAddition: "projects/", method: .delete, parameters: parameters, needsToken: true)
+        request(urlAddition: "projects", method: .delete, parameters: parameters, needsToken: true)
         { json, error in
             completion(error)
         }
