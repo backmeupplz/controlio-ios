@@ -33,17 +33,27 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
     @IBAction func saveTouched(_ sender: AnyObject) {
         view.endEditing(true)
         
-        guard let hud = MBProgressHUD.show() else { return }
-        
         let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! EditProfileCell
+        
         var name = cell.nameTextfield.text
         if name?.isEmpty ?? false {
             name = nil
         }
+        guard !((name?.characters.count)! > 10) else {
+            cell.nameTextfield.shake()
+            return
+        }
+
         var phone = cell.phoneTextfield.text
         if phone?.isEmpty ?? false {
             phone = nil
         }
+        guard !((phone?.characters.count)! < 8 || (phone?.characters.count)! > 30) else {
+            cell.phoneTextfield.shake()
+            return
+        }
+
+        guard let hud = MBProgressHUD.show() else { return }
         
         if let tempPorfileImage = user.tempProfileImage {
             hud.mode = .annularDeterminate
