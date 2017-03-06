@@ -39,8 +39,10 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
         if name?.isEmpty ?? false {
             name = nil
         }
-        guard !((name?.characters.count)! > 10) else {
+        
+        guard (name?.characters.count ?? 0) < 50 else {
             cell.nameTextfield.shake()
+            snackbarController?.show(error: "Name should be less than 50 chars")
             return
         }
 
@@ -48,8 +50,10 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
         if phone?.isEmpty ?? false {
             phone = nil
         }
-        guard !((phone?.characters.count)! < 8 || (phone?.characters.count)! > 30) else {
+        
+        guard (phone?.characters.count ?? 0) < 20 else {
             cell.phoneTextfield.shake()
+            snackbarController?.show(error: "Phone should be less than 20 chars")
             return
         }
 
