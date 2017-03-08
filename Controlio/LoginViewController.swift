@@ -61,7 +61,8 @@ class LoginViewController: UIViewController {
     @IBAction func signupTouched(_ sender: Any) {
         var error = false
         
-        if !(emailTextField.text?.isEmail ?? false) {
+        let emailLength = emailTextField.text?.characters.count ?? 0
+        if !(emailTextField.text?.isEmail ?? false && emailLength < 100) {
             emailTextField.isErrorRevealed = true
             emailTextField.shake()
             error = true
