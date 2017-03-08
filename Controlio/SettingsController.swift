@@ -9,9 +9,12 @@
 import UIKit
 import SafariServices
 import Stripe
+import SDWebImage
 
 class SettingsController: UITableViewController, STPPaymentContextDelegate {
-
+    
+    @IBOutlet weak var memoryCacheSize: UILabel!
+    
     var paymentContext = STPPaymentContext(apiAdapter: Payments())
     
     // MARK: - View Controller Life Cycle -
@@ -21,6 +24,7 @@ class SettingsController: UITableViewController, STPPaymentContextDelegate {
         
         configurePaymentContext()
         setupBackButton()
+        updateCacheSizeView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,6 +67,10 @@ class SettingsController: UITableViewController, STPPaymentContextDelegate {
         case (0, 2):
             tableView.deselectRow(at: indexPath, animated: true)
             showPaymentMethods()
+        case (0, 3):
+            clearCache()
+            updateCacheSizeView()
+            tableView.deselectRow(at: indexPath, animated: true)
         case (1, 0):
             tableView.deselectRow(at: indexPath, animated: true)
             logout()
@@ -134,5 +142,21 @@ class SettingsController: UITableViewController, STPPaymentContextDelegate {
         }
         alert.addAction(ok)
         present(alert, animated: true, completion: nil)
+    }
+    
+    // MARK: - SDImageCache -
+    
+    fileprivate func getCacheSize() -> Double {
+        let count: Double = Double(SDImageCache.shared().getSize());
+        return count / (1024*1024)
+    }
+    
+    fileprivate func clearCache() {
+        SDImageCache.shared().clearDisk()
+    }
+    
+    fileprivate func updateCacheSizeView() {
+        let count = round(getCacheSize() * 10) / 10
+        self.memoryCacheSize.text = "\(count) mb"
     }
 }
