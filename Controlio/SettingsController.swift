@@ -24,13 +24,13 @@ class SettingsController: UITableViewController, STPPaymentContextDelegate {
         
         configurePaymentContext()
         setupBackButton()
-        updateCacheSizeView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         refreshPaymentContext()
+        updateCacheSizeView()
         for indexPath in tableView.indexPathsForSelectedRows ?? [] {
             tableView.deselectRow(at: indexPath, animated: true)
         }
@@ -69,7 +69,6 @@ class SettingsController: UITableViewController, STPPaymentContextDelegate {
             showPaymentMethods()
         case (0, 3):
             clearCache()
-            updateCacheSizeView()
             tableView.deselectRow(at: indexPath, animated: true)
         case (1, 0):
             tableView.deselectRow(at: indexPath, animated: true)
@@ -153,10 +152,11 @@ class SettingsController: UITableViewController, STPPaymentContextDelegate {
     
     fileprivate func clearCache() {
         SDImageCache.shared().clearDisk()
+        updateCacheSizeView()
     }
     
     fileprivate func updateCacheSizeView() {
         let count = round(getCacheSize() * 10) / 10
-        self.memoryCacheSize.text = "\(count) mb"
+        self.memoryCacheSize.text = "\(count) Mb"
     }
 }
