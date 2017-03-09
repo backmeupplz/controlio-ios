@@ -1,11 +1,11 @@
-#update_fastlane
+update_fastlane
 fastlane_version "2.19.3"
 
 default_platform :ios
 
 platform :ios do
   before_all do
-    # cocoapods
+    cocoapods
   end
 
   desc "Submit a new Beta Build to Apple TestFlight"
@@ -20,7 +20,6 @@ platform :ios do
 
   desc "Deploy a new version to the App Store"
   lane :release do
-    increment_build_number
     match(type: "appstore")
     # snapshot
     gym(scheme: "Controlio")
