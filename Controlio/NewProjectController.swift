@@ -107,6 +107,7 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate, Picke
                     } else {
                         self.project = Project()
                         self.selectFirstTab()
+                        self.notificationCreateProject(project: self.project)
                     }
                 }
             } else {
@@ -121,10 +122,18 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate, Picke
                         self.reloadCell()
                         self.selectFirstTab()
                         self.snackbarController?.show(text: "You have successfuly created a project")
+                        self.notificationCreateProject(project: self.project)
                     }
                 }
             }
         }
+    }
+    
+    // MARK: - NotificationCenter -
+    
+    func notificationCreateProject(project: Project) {
+        print("notificationCreateProject addproject")
+        NotificationCenter.default.post(name: Notification.Name("NotificationCreateProject"), object: project)
     }
     
     // MARK: - UIImagePickerControllerDelegate -

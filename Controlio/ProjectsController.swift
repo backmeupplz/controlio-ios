@@ -106,6 +106,12 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(ProjectsController.methodOfReceivedNotificationCreateProject(notification:)),
+            name: Notification.Name("NotificationCreateProject"),
+            object: nil)
+        
         setupTableView()
         addRefreshControl()
         setupBackButton()
@@ -118,6 +124,10 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate {
         super.viewWillAppear(animated)
         
         tableView.reloadData()
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: - Private Functions -
@@ -218,4 +228,12 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate {
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .lightContent
     }
+    
+    // MARK: - NotificationCenter -
+    
+    func methodOfReceivedNotificationCreateProject(notification: Notification){
+        loadInitialProjects()
+    }
+    
+
 }
