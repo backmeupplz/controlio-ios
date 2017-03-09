@@ -1,4 +1,15 @@
+# Pods
 Podfile.lock
 Pods/
 *.xcworkspace
+
+# Misc
 *.xcuserstate
+R.generated.swift
+
+# Fastlane
+Controlio.app.dSYM.zip
+Controlio.ipa
+fastlane/report.xml
+fastlane/screenshots
+fastlane/metadata
