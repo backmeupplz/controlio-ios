@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="fastlane.lanes">
+    
+    
+    
+      
+      <testcase classname="fastlane.lanes" name="0: Verifying required fastlane version" time="0.00481">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.003974">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="2: curl 'https://api.telegram.org/bot237463370:AAGI_aywb5T-oCyFaRHsgae5XhuEwWd257o/sendMessage?chat_id=-1001107091033&amp;text=🍎 Controlio has been successfully deployed to the AppStore!'" time="0.864911">
+        
+      </testcase>
+    
+  </testsuite>
+</testsuites>

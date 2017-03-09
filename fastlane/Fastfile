@@ -1,31 +1,32 @@
-update_fastlane
+#update_fastlane
 fastlane_version "2.19.3"
 
 default_platform :ios
 
 platform :ios do
   before_all do
-    cocoapods
+    # cocoapods
   end
 
   desc "Submit a new Beta Build to Apple TestFlight"
   desc "This will also make sure the profile is up to date"
   lane :beta do
     match(type: "appstore")
-    gym
+    gym(scheme: "Controlio")
     pilot
 
-    # sh "your_script.sh"
+    #sh "curl 'https://api.telegram.org/bot237463370:AAGI_aywb5T-oCyFaRHsgae5XhuEwWd257o/sendMessage?chat_id=-1001107091033&text=✈️ Controlio has been successfully deployed to the Test Flight!'"
   end
 
   desc "Deploy a new version to the App Store"
   lane :release do
+    increment_build_number
     match(type: "appstore")
     # snapshot
-    gym
+    gym(scheme: "Controlio")
     deliver(force: true)
     # frameit
-    sh "telegram.sh"
+    sh "curl 'https://api.telegram.org/bot237463370:AAGI_aywb5T-oCyFaRHsgae5XhuEwWd257o/sendMessage?chat_id=-1001107091033&text=🍎 Controlio has been successfully deployed to the AppStore!'"
   end
 
   after_all do |lane|
