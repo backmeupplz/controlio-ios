@@ -6,7 +6,7 @@
 	<string>development</string>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
-		<string>api.controlio.co</string>
+		<string>applinks:api.controlio.co</string>
 	</array>
 </dict>
 </plist>
