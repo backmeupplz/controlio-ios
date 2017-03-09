@@ -132,8 +132,7 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate, Picke
     // MARK: - NotificationCenter -
     
     func notificationCreateProject(project: Project) {
-        print("notificationCreateProject addproject")
-        NotificationCenter.default.post(name: Notification.Name("NotificationCreateProject"), object: project)
+        NotificationCenter.default.post(name: Notification.Name("ProjectCreated"), object: nil)
     }
     
     // MARK: - UIImagePickerControllerDelegate -

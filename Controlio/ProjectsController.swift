@@ -106,11 +106,7 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(ProjectsController.methodOfReceivedNotificationCreateProject(notification:)),
-            name: Notification.Name("NotificationCreateProject"),
-            object: nil)
+        
         
         setupTableView()
         addRefreshControl()
@@ -118,6 +114,8 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate {
         
         addInfiniteScrolling()
         loadInitialProjects()
+        
+        setupNotifications()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -127,7 +125,7 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate {
     }
 
     deinit {
-        NotificationCenter.default.removeObserver(self)
+        removeNotifications()
     }
     
     // MARK: - Private Functions -
@@ -146,6 +144,25 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate {
     
     fileprivate func setupBackButton() {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    }
+    
+    // MARK: - Notifications -
+    
+    fileprivate func setupNotifications() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(ProjectsController.projectCreated),
+            name: NSNotification.Name("ProjectCreated"),
+            object: nil)
+    }
+    
+    fileprivate func removeNotifications() {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    func projectCreated(){
+        refreshControl?.beginRefreshing()
+        loadInitialProjects()
     }
     
     // MARK: - Pagination -
@@ -228,12 +245,4 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate {
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .lightContent
     }
-    
-    // MARK: - NotificationCenter -
-    
-    func methodOfReceivedNotificationCreateProject(notification: Notification){
-        loadInitialProjects()
-    }
-    
-
 }

@@ -32,11 +32,12 @@ class Invite: NSObject {
         return array.flatMap { Invite(json: $0) }
     }
     
-    convenience init?(json: JSON) {
-        guard Type.dictionary == json.type else { return nil }
+    convenience init?(json: JSON?) {
+        guard let json = json, !json.isEmpty, let id = json["_id"].string else { return nil }
+        
         self.init()
         
-        id = json["_id"].string!
+        self.id = id
         type = InviteType(rawValue: json["type"].string!)!
         sender = User(json: json["sender"])
         project = Project(json: json["project"])
