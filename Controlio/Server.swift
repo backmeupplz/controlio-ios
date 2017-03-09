@@ -272,7 +272,7 @@ class Server: NSObject {
     
     class func invite(approve: Bool, invite: Invite, completion: @escaping (NSError?)->()) {
         let parameters: Parameters = [
-            "inviteId": invite.id,
+            "inviteid": invite.id,
             "accept": approve ? 1 : 0
         ]
         
@@ -286,8 +286,8 @@ class Server: NSObject {
         guard let id = project.id else { return }
         
         let parameters: Parameters = [
-            "managerId": manager.id,
-            "projectId": id
+            "managerid": manager.id,
+            "projectid": id
         ]
         
         request(urlAddition: "projects/manager", method: .delete, parameters: parameters, needsToken: true)
@@ -300,8 +300,8 @@ class Server: NSObject {
         guard let id = project.id else { return }
         
         let parameters: Parameters = [
-            "clientId": client.id,
-            "projectId": id
+            "clientid": client.id,
+            "projectid": id
         ]
         
         request(urlAddition: "projects/client", method: .delete, parameters: parameters, needsToken: true)
@@ -312,7 +312,7 @@ class Server: NSObject {
     
     class func remove(invite: Invite, completion:@escaping (NSError?)->()) {
         let parameters: Parameters = [
-            "inviteId": invite.id,
+            "inviteid": invite.id,
         ]
         
         request(urlAddition: "projects/invite", method: .delete, parameters: parameters, needsToken: true)
@@ -325,7 +325,7 @@ class Server: NSObject {
         guard let id = project.id else { return }
         
         let parameters: Parameters = [
-            "projectId": id,
+            "projectid": id,
             "clients": clients
         ]
         
@@ -339,7 +339,7 @@ class Server: NSObject {
         guard let id = project.id else { return }
         
         let parameters: Parameters = [
-            "projectId": id,
+            "projectid": id,
             "managers": managers
         ]
         
@@ -485,7 +485,7 @@ class Server: NSObject {
     class func getPosts(for project: Project, skip: Int = 0, limit: Int = 20, completion:@escaping (NSError?, [Post]?)->()) {
         guard let id = project.id else { return }
         let parameters: Parameters = [
-            "projectId": id,
+            "projectid": id,
             "skip": skip,
             "limit": limit
         ]
