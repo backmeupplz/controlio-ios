@@ -551,8 +551,8 @@
                                                     <color key="textColor" red="0.17887768149375916" green="0.21362596750259399" blue="0.3131902813911438" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="15mb" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hy9-if-TKb">
-                                                    <rect key="frame" x="220" y="12" width="139" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15mb" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hy9-if-TKb">
+                                                    <rect key="frame" x="314.5" y="12" width="42.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.1788776815" green="0.21362596750000001" blue="0.31319028139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -561,13 +561,11 @@
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="WLi-wK-RzT" secondAttribute="bottom" constant="12" id="42v-Rm-Lqc"/>
                                                 <constraint firstItem="WLi-wK-RzT" firstAttribute="leading" secondItem="Y4n-gG-sIJ" secondAttribute="leading" constant="15" id="GKR-QV-U5f"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="WLi-wK-RzT" secondAttribute="trailing" constant="15" id="GQu-20-h5y"/>
                                                 <constraint firstItem="WLi-wK-RzT" firstAttribute="top" secondItem="Y4n-gG-sIJ" secondAttribute="top" constant="12" id="P8D-gG-qs6"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="hy9-if-TKb" secondAttribute="trailing" constant="10" id="Rgc-7P-5CL"/>
-                                                <constraint firstItem="hy9-if-TKb" firstAttribute="top" secondItem="Y4n-gG-sIJ" secondAttribute="topMargin" constant="4" id="V5b-1B-WoP"/>
+                                                <constraint firstItem="hy9-if-TKb" firstAttribute="centerY" secondItem="Y4n-gG-sIJ" secondAttribute="centerY" id="Td3-YT-AhV"/>
+                                                <constraint firstItem="hy9-if-TKb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="WLi-wK-RzT" secondAttribute="trailing" constant="12" id="eiP-jW-COB"/>
                                                 <constraint firstItem="WLi-wK-RzT" firstAttribute="centerY" secondItem="Y4n-gG-sIJ" secondAttribute="centerY" id="mzL-ay-Y4u"/>
-                                                <constraint firstItem="hy9-if-TKb" firstAttribute="top" secondItem="Y4n-gG-sIJ" secondAttribute="topMargin" constant="8" id="s69-mK-t8i"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="hy9-if-TKb" secondAttribute="bottom" constant="4.5" id="vaj-IC-vqS"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
