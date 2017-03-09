@@ -29,10 +29,11 @@ class Invite: NSObject {
     
     class func map(json: JSON?) -> [Invite]? {
         guard let array = json?.array else { return nil }
-        return array.map { Invite(json: $0) }
+        return array.flatMap { Invite(json: $0) }
     }
     
-    convenience init(json: JSON) {
+    convenience init?(json: JSON) {
+        guard Type.dictionary == json.type else { return nil }
         self.init()
         
         id = json["_id"].string!
