@@ -206,7 +206,7 @@ class Server: NSObject {
             parameters["type"] = "client"
             parameters["managerEmail"] = project.tempManagerEmail
         } else {
-            parameters["type"] = "business"
+            parameters["type"] = "manager"
             parameters["clientEmails"] = project.tempClientEmails
         }
         if let description = project.projectDescription {
