@@ -84,6 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func login(with url: URL) {
+        
         let queryItems = URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems ?? []
         var queryItemsDictionary = [String: String]()
         
@@ -98,7 +99,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         guard let topController = UIApplication.topViewController() else { return }
-        let hud = MBProgressHUD.showAdded(to: topController.view, animated: true)
+        guard let hud = MBProgressHUD.show() else { return }
         Server.loginMagicLink(userid: userIdUnwrapped, token: tokenUnwrapped)
         { error in
             hud.hide(animated: true)

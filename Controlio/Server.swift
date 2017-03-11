@@ -132,7 +132,7 @@ class Server: NSObject {
         if let pushNotificationsToken = pushNotificationsToken {
             parameters["iosPushToken"] = pushNotificationsToken
         }
-        
+
         request(urlAddition: "users/loginMagicLink", method: .post, parameters: parameters, needsToken: false)
         { json, error in
             if let error = error {
@@ -350,8 +350,10 @@ class Server: NSObject {
     }
     
     class func change(status: String, project: Project, completion:@escaping (NSError?, Post?)->()) {
+        guard let id = project.id else { return }
+        
         let parameters = [
-            "projectid": project.id,
+            "projectid": id,
             "text": status,
             "type": "status"
         ]
