@@ -197,9 +197,7 @@
 		B3C305AD1CDFF43400C8E85F /* NSDateFormatter+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDateFormatter+Extensions.swift"; sourceTree = "<group>"; };
 		B3C305AF1CDFFB5900C8E85F /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		B3C305B31CE0031E00C8E85F /* String+Height.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Height.swift"; sourceTree = "<group>"; };
-		B3C35B091DB9D29900F941F8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		B3C35B0B1DB9D4F700F941F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/InputView.xib; sourceTree = "<group>"; };
-		B3C35B0E1DB9D4FA00F941F8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InputView.strings; sourceTree = "<group>"; };
 		B3C35B111DB9E50C00F941F8 /* FeatureList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureList.swift; sourceTree = "<group>"; };
 		B3D1692B1CDDA5950080D748 /* PopupNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupNotification.swift; sourceTree = "<group>"; };
 		B3D1692D1CDDC15F0080D748 /* SupportController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportController.swift; sourceTree = "<group>"; };
@@ -229,19 +227,12 @@
 		B3E8157B1CE1603400E8F87B /* NewProjectController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProjectController.swift; sourceTree = "<group>"; };
 		B3EA114A1D93A9740026658B /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		B3EA114B1D93A9740026658B /* UserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
-		B3F303841DAF08E400535FCD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		B3F303851DAF08E400535FCD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Login.strings; sourceTree = "<group>"; };
 		B3F303891DAF491200535FCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B3F3038E1DAF4AE900535FCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ProjectCell.xib; sourceTree = "<group>"; };
-		B3F303911DAF4AEC00535FCD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ProjectCell.strings; sourceTree = "<group>"; };
 		B3F303931DAF4B0500535FCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PostCell.xib; sourceTree = "<group>"; };
-		B3F303961DAF4B0700535FCD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/PostCell.strings; sourceTree = "<group>"; };
 		B3F303981DAF4B1800535FCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NewProjectCell.xib; sourceTree = "<group>"; };
-		B3F3039B1DAF4B3600535FCD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/NewProjectCell.strings; sourceTree = "<group>"; };
 		B3F3039D1DAF4B6700535FCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/EditProfileCell.xib; sourceTree = "<group>"; };
-		B3F303A01DAF4B6A00535FCD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/EditProfileCell.strings; sourceTree = "<group>"; };
 		B3F303A41DAF53B600535FCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		B3F303A61DAF53B800535FCD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B3FEB83D1C9630290048B688 /* ProjectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCell.swift; sourceTree = "<group>"; };
 		B3FEB8431C9630BA0048B688 /* UIImageView+BeautifulWebImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+BeautifulWebImage.swift"; sourceTree = "<group>"; };
 		B3FEB8481C963E260048B688 /* CustomizableImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizableImageView.swift; sourceTree = "<group>"; };
@@ -583,7 +574,6 @@
 			knownRegions = (
 				en,
 				Base,
-				ru,
 			);
 			mainGroup = B3B2B9201C90CD1600468342;
 			productRefGroup = B3B2B92A1C90CD1600468342 /* Products */;
@@ -791,7 +781,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				B3B2B9311C90CD1600468342 /* Base */,
-				B3F303851DAF08E400535FCD /* ru */,
 			);
 			name = Login.storyboard;
 			sourceTree = "<group>";
@@ -800,7 +789,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				B3B2B9361C90CD1600468342 /* Base */,
-				B3F303841DAF08E400535FCD /* ru */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -809,7 +797,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				B3C35B0B1DB9D4F700F941F8 /* Base */,
-				B3C35B0E1DB9D4FA00F941F8 /* ru */,
 			);
 			name = InputView.xib;
 			sourceTree = "<group>";
@@ -818,7 +805,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				B3F303891DAF491200535FCD /* Base */,
-				B3C35B091DB9D29900F941F8 /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -827,7 +813,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				B3F3038E1DAF4AE900535FCD /* Base */,
-				B3F303911DAF4AEC00535FCD /* ru */,
 			);
 			name = ProjectCell.xib;
 			sourceTree = "<group>";
@@ -836,7 +821,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				B3F303931DAF4B0500535FCD /* Base */,
-				B3F303961DAF4B0700535FCD /* ru */,
 			);
 			name = PostCell.xib;
 			sourceTree = "<group>";
@@ -845,7 +829,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				B3F303981DAF4B1800535FCD /* Base */,
-				B3F3039B1DAF4B3600535FCD /* ru */,
 			);
 			name = NewProjectCell.xib;
 			sourceTree = "<group>";
@@ -854,7 +837,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				B3F3039D1DAF4B6700535FCD /* Base */,
-				B3F303A01DAF4B6A00535FCD /* ru */,
 			);
 			name = EditProfileCell.xib;
 			sourceTree = "<group>";
@@ -863,7 +845,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				B3F303A41DAF53B600535FCD /* Base */,
-				B3F303A61DAF53B800535FCD /* ru */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

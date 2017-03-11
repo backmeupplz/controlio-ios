@@ -53,7 +53,17 @@ class MagicLinkViewController: UIViewController {
     }
     
     @IBAction func demoTouched(_ sender: Any) {
-        print("demo touched")
+        enable(ui: false)
+        Server.login(email: "awesome@controlio.co", password: "DeepFriedPotato")
+        { error in
+            self.enable(ui: true)
+            if let error = error {
+                self.snackbarController?.show(error: error.domain)
+            } else {
+                self.resetUI()
+                Router(self).showMain()
+            }
+        }
     }
     
     @IBAction func loginTouched(_ sender: Any) {
