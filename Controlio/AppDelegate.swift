@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Application Life Cycle -
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        checkIfUITests()
         configureVCs()
         configureStripe()
         S3.setup()
@@ -33,6 +34,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // MARK: - Private Functions -
+    
+    fileprivate func checkIfUITests() {
+        if ProcessInfo.processInfo.arguments.contains("isUITesting") {
+            if let bundle = Bundle.main.bundleIdentifier {
+                UserDefaults.standard.removePersistentDomain(forName: bundle)
+            }
+        }
+    }
     
     fileprivate func configureVCs() {
         window = UIWindow(frame: Screen.bounds)
