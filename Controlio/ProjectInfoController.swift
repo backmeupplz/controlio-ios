@@ -374,6 +374,16 @@ class ProjectInfoController: UITableViewController {
                 alert.addCancelButton()
                 self.present(alert, animated: true) {}
             }
+            alert.add(action: "Archive project", style: .destructive)
+            {
+                let alert = UIAlertController(title: "Are you sure you want to archive \(self.project.title ?? "this project")?", message: "This action cannot be undone", sourceView: sender)
+                alert.add(action: "Archive", style: .destructive)
+                {
+                    self.archive(project: self.project)
+                }
+                alert.addCancelButton()
+                self.present(alert, animated: true) {}
+            }
         }
         if project.canEdit {
             alert.add(action: "Edit project")
@@ -414,4 +424,20 @@ class ProjectInfoController: UITableViewController {
             }
         }
     }
+    
+    fileprivate func archive(project: Project) {
+        guard let hud = MBProgressHUD.show() else { return }
+        hud.label.text = "Archiving the project..."
+        
+        Server.delete(project: project) { error in
+            hud.hide(animated: true)
+            if let error = error {
+                self.snackbarController?.show(error: error.domain)
+            } else {
+                let _ = self.navigationController?.popToRootViewController(animated: true)
+                self.snackbarController?.show(text: "Project has been deleted")
+            }
+        }
+    }
+
 }
