@@ -407,9 +407,12 @@ class Server: NSObject {
     }
     
     class func archive(project: Project, archive: Bool, completion: @escaping (NSError?)->()) {
-        let parameters: [String: String] = [
-            "projectid": project.id!
+        guard let id = project.id else {return }
+        
+        let parameters: Parameters = [
+            "projectid": id
         ]
+        
         if isDemo() {
             completion(NSError(domain: NSLocalizedString("You can't do that in demo account", comment: "Error"), code: 500, userInfo: nil))
             return

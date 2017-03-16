@@ -374,10 +374,10 @@ class ProjectInfoController: UITableViewController {
                 alert.addCancelButton()
                 self.present(alert, animated: true) {}
             }
-            alert.add(action: "Archive project", style: .destructive)
+            alert.add(action: "Archive project", style: .default)
             {
                 let alert = UIAlertController(title: "Are you sure you want to archive \(self.project.title ?? "this project")?", message: "This action cannot be undone", sourceView: sender)
-                alert.add(action: "Archive", style: .destructive)
+                alert.add(action: "Archive", style: .default)
                 {
                     self.archive(project: self.project)
                 }
