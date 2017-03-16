@@ -17,6 +17,7 @@ class ProjectInfoController: UITableViewController {
     
     var project: Project!
     var sections = ["Info", "Owner", "Managers", "Clients", "Managers invited", "Clients invited", "Owner invited"]
+    var isArchive: Bool = false
     
     // MARK: - View Controller Life Cycle -
     
@@ -429,13 +430,13 @@ class ProjectInfoController: UITableViewController {
         guard let hud = MBProgressHUD.show() else { return }
         hud.label.text = "Archiving the project..."
         
-        Server.delete(project: project) { error in
+        Server.archive(project: project, archive: isArchive) { error in
             hud.hide(animated: true)
             if let error = error {
                 self.snackbarController?.show(error: error.domain)
             } else {
                 let _ = self.navigationController?.popToRootViewController(animated: true)
-                self.snackbarController?.show(text: "Project has been deleted")
+                self.snackbarController?.show(text: "Project has been archived")
             }
         }
     }
