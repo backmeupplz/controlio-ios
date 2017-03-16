@@ -418,7 +418,7 @@ class Server: NSObject {
             return
         }
         
-        let urlAddition = archive ? "projects/archive" : "projects/unarchive"
+        let urlAddition = archive ? "projects/unarchive" : "projects/archive"
         request(urlAddition: urlAddition, method: .post, parameters: parameters, needsToken: true)
         { json, error in
             completion(error)
