@@ -28,7 +28,7 @@ platform :ios do
     sh "curl 'https://api.telegram.org/bot237463370:AAGI_aywb5T-oCyFaRHsgae5XhuEwWd257o/sendMessage?chat_id=-1001107091033&text=🍎 Controlio has been successfully deployed to the AppStore!'"
   end
 
-  desc "Deploy a new version to the App Store without screenshots“
+  desc "Deploy a new version to the App Store without screenshots"
   lane :releasens do
     match(type: "appstore")
     gym(scheme: "Controlio")

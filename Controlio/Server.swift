@@ -531,11 +531,12 @@ class Server: NSObject {
     // MARK: - Payments -
     
     class func stripeGetCustomer(completion: @escaping (DefaultDataResponse?, NSError?)->()) {
-        let parameters: [String: Any] = [
+        let parameters: Parameters = [
             "customerid": currentUser?.stripeId ?? ""
         ]
         requestData(urlAddition: "payments/customer", method: .get, parameters: parameters, needsToken: true)
         { response, error in
+            
             completion(response, error)
         }
     }
@@ -622,7 +623,7 @@ class Server: NSObject {
     }
     
     fileprivate class func requestData(urlAddition: String, method: HTTPMethod, parameters: [String:Any]? = nil, needsToken: Bool, completion: @escaping (DefaultDataResponse?, NSError?)->()) {
-        Alamofire.request("https://api.controlio.co/" + urlAddition, method: method, parameters: parameters, encoding: method == .get ? URLEncoding.default : JSONEncoding.default, headers: headers(needsToken: needsToken))
+        Alamofire.request(apiUrl + urlAddition, method: method, parameters: parameters, encoding: method == .get ? URLEncoding.default : JSONEncoding.default, headers: headers(needsToken: needsToken))
             .response { response in
                 DispatchQueue.main.async {
                     if let errorString = response.error?.localizedDescription {

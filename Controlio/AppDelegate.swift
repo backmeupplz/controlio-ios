@@ -50,17 +50,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     fileprivate func configureStripe() {
-        STPPaymentConfiguration.shared().publishableKey = "pk_test_QUk0bgtsbIfR67SVr0EHnIpx"
+        STPPaymentConfiguration.shared().publishableKey = "pk_test_MybaaRNvH9ndvmA5ty1atlGO"
         STPPaymentConfiguration.shared().companyName = "Controlio"
     }
     
     fileprivate func setupPushNotifications(application: UIApplication) {
-        let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
-            if let error = error {
-                print(error)
+        if #available(iOS 10.0, *) {
+            let center = UNUserNotificationCenter.current()
+            center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+                if let error = error {
+                    print(error)
+                }
             }
+        } else {
+            // Fallback on earlier versions
         }
+        
         application.registerForRemoteNotifications()
     }
     

@@ -196,7 +196,7 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate {
     }
     
     fileprivate func loadInitialOnlyProjects() {
-        tableView.refreshControl?.beginRefreshing()
+        refreshControl?.beginRefreshing()
         Server.getProjects
             { error, projects in
                 if let error = error {

@@ -52,7 +52,11 @@ class UserViewController: UITableViewController, UserProfileCellDelegate, MFMail
         
         let alert = UIAlertController(title: phone, message: "Call this number?", preferredStyle: .alert)
         alert.add(action: "Call") {
-            UIApplication.shared.open(url)
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url)
+            } else {
+                // Fallback on earlier versions
+            }
         }
         alert.addCancelButton()
         present(alert, animated: true) { }

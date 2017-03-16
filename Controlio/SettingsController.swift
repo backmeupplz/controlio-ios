@@ -45,18 +45,15 @@ class SettingsController: UITableViewController, STPPaymentContextDelegate {
     // MARK: - STPPaymentContextDelegate -
     
     func paymentContextDidChange(_ paymentContext: STPPaymentContext) {
-        
     }
     
     func paymentContext(_ paymentContext: STPPaymentContext, didCreatePaymentResult paymentResult: STPPaymentResult, completion: @escaping STPErrorBlock) {
-        
     }
+    
     func paymentContext(_ paymentContext: STPPaymentContext, didFinishWith status: STPPaymentStatus, error: Error?) {
-        
         print(error ?? "Payment context error")
     }
     func paymentContext(_ paymentContext: STPPaymentContext, didFailToLoadWithError error: Error) {
-        
         print(error)
     }
     

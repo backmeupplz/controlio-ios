@@ -75,6 +75,10 @@ class DeepLink: NSObject {
     }
 
     fileprivate class func openLink(_ link: String) {
-        UIApplication.shared.open(URL(string: link)!)
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(URL(string: link)!)
+        } else {
+            // Fallback on earlier versions
+        }
     }
 }
