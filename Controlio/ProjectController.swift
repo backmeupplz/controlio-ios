@@ -9,8 +9,9 @@
 import UIKit
 import MBProgressHUD
 import Material
+import DZNEmptyDataSet
 
-class ProjectController: UITableViewController, PostCellDelegate, InputViewDelegate {
+class ProjectController: UITableViewController, PostCellDelegate, InputViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
     // MARK: - Variables -
     
@@ -282,6 +283,9 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 464.0
         tableView.register(UINib(nibName: "PostCell", bundle: nil), forCellReuseIdentifier: "PostCell")
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
+        tableView.tableFooterView = UIView()
     }
     
     fileprivate func addRefreshControl() {
@@ -478,5 +482,14 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .lightContent
+    }
+    
+    // MARK: - DZNEmptyDataSet -
+    
+    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        print("tableView.contentSize", tableView.contentSize, tableView.bounds)
+        let str = "No posts!"
+        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.title1)]
+        return NSAttributedString(string: str, attributes: attrs)
     }
 }

@@ -9,13 +9,19 @@
 import UIKit
 import UIScrollView_InfiniteScroll
 import MBProgressHUD
+import DZNEmptyDataSet
 
-class ProjectsController: UITableViewController, ProjectApproveCellDelegate {
+class ProjectsController: UITableViewController, ProjectApproveCellDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
     // MARK: - Variables -
     
     fileprivate var invites = [Invite]()
     fileprivate var projects = [Project]()
+    fileprivate var isLoading: Bool = false;
+    fileprivate func setLoaderProjects(){
+        self.isLoading = false
+        self.tableView.reloadData()
+    }
     
     // MARK: - ProjectControllerDelegate -
     
@@ -135,6 +141,9 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate {
         tableView.estimatedRowHeight = 464.0
         tableView.register(UINib(nibName: "ProjectCell", bundle: nil), forCellReuseIdentifier: "ProjectCell")
         tableView.register(UINib(nibName: "ProjectApproveCell", bundle: nil), forCellReuseIdentifier: "ProjectApproveCell")
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
+        tableView.tableFooterView = UIView()
     }
     
     fileprivate func addRefreshControl() {
@@ -154,6 +163,11 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate {
             selector: #selector(ProjectsController.projectCreated),
             name: NSNotification.Name("ProjectCreated"),
             object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(ProjectsController.projectDeleted),
+            name: NSNotification.Name("ProjectDeleted"),
+            object: nil)
     }
     
     fileprivate func removeNotifications() {
@@ -161,6 +175,11 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate {
     }
     
     func projectCreated(){
+        refreshControl?.beginRefreshing()
+        loadInitialProjects()
+    }
+
+    func projectDeleted(){
         refreshControl?.beginRefreshing()
         loadInitialProjects()
     }
@@ -184,8 +203,10 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate {
                 self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
             }
         }
+        self.isLoading = true
         Server.getProjects
         { error, projects in
+            self.setLoaderProjects()
             if let error = error {
                 self.snackbarController?.show(error: error.domain)
             } else if let projects = projects {
@@ -197,8 +218,10 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate {
     
     fileprivate func loadInitialOnlyProjects() {
         tableView.refreshControl?.beginRefreshing()
+        isLoading = true
         Server.getProjects
             { error, projects in
+                self.setLoaderProjects()
                 if let error = error {
                     self.snackbarController?.show(error: error.domain)
                 } else if let projects = projects {
@@ -209,8 +232,10 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate {
     }
     
     fileprivate func loadMoreProjects() {
+        isLoading = true
         Server.getProjects(skip: projects.count)
         { error, projects in
+            self.setLoaderProjects()
             if let error = error {
                 self.snackbarController?.show(error: error.domain)
             } else {
@@ -244,5 +269,16 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate {
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .lightContent
+    }
+    
+    // MARK: - DZNEmptyDataSet -
+    
+    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        var str = "You don't have projects!"
+        if isLoading {
+            str = "Loading..."
+        }
+        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.title1)]
+        return NSAttributedString(string: str, attributes: attrs)
     }
 }
