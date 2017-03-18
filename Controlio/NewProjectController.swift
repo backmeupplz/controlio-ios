@@ -9,13 +9,27 @@
 import UIKit
 import MBProgressHUD
 import UITextField_Shake
+import NohanaImagePicker
+import Photos
 
 class NewProjectController: UITableViewController, NewProjectCellDelegate, PickerDelegate {
+    
+    // MARK: - NohanaImagePickerControllerDelegate -
+    
+    func nohanaImagePickerDidCancel(_ picker: NohanaImagePickerController){
+        print("cancel")
+        imagePicker.dismiss(animated: true, completion: nil)
+    }
+    
+    func nohanaImagePicker(_ picker: NohanaImagePickerController, didFinishPickingPhotoKitAssets pickedAssts: [PHAsset]){
+        print("complited")
+        imagePicker.dismiss(animated: true, completion: nil)
+    }
     
     // MARK: - Variables -
     
     var project = Project()
-    let imagePicker = UIImagePickerController()
+    let imagePicker = NohanaImagePickerController()
     var cell: NewProjectCell!
     
     // MARK: - View Controller Life Cycle -
@@ -42,28 +56,28 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate, Picke
     // MARK: - NewProjectCellDelegate -
     
     func editPhotoTouched(sender: UIView) {
-        let alert = UIAlertController(preferredStyle: .actionSheet, sourceView: sender)
-        alert.add(action: NSLocalizedString("Choose from library", comment: "Open picker option"))
-        {
-            self.imagePicker.sourceType = .photoLibrary
-            self.present(self.imagePicker, animated: true, completion: nil)
-        }
-        alert.add(action: NSLocalizedString("Take a photo", comment: "Open picker option"))
-        {
-            self.imagePicker.sourceType = .camera
-            self.present(self.imagePicker, animated: true, completion: nil)
-        }
-        alert.addCancelButton()
-        
-        if project.tempImage != nil || project.imageKey != nil {
-            alert.add(action: NSLocalizedString("Remove photo", comment: "Open picker option"))
-            {
-                self.project.tempImage = nil
-                self.project.imageKey = nil
-                self.reloadCell()
-            }
-        }
-        present(alert, animated: true, completion: nil)
+//        let alert = UIAlertController(preferredStyle: .actionSheet, sourceView: sender)
+//        alert.add(action: NSLocalizedString("Choose from library", comment: "Open picker option"))
+//        {
+//            self.imagePicker.sourceType = .photoLibrary
+//            self.present(self.imagePicker, animated: true, completion: nil)
+//        }
+//        alert.add(action: NSLocalizedString("Take a photo", comment: "Open picker option"))
+//        {
+//            self.imagePicker.sourceType = .camera
+//            self.present(self.imagePicker, animated: true, completion: nil)
+//        }
+//        alert.addCancelButton()
+//        
+//        if project.tempImage != nil || project.imageKey != nil {
+//            alert.add(action: NSLocalizedString("Remove photo", comment: "Open picker option"))
+//            {
+//                self.project.tempImage = nil
+//                self.project.imageKey = nil
+//                self.reloadCell()
+//            }
+//        }
+        present(imagePicker, animated: true, completion: nil)
     }
     
     func choosePeopleTouched() {
@@ -170,7 +184,7 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate, Picke
     
     fileprivate func setupImagePicker() {
         imagePicker.delegate = self
-        imagePicker.allowsEditing = true
+        //imagePicker.allowsEditing = true
     }
     
     fileprivate func selectFirstTab() {
