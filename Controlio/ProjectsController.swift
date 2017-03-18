@@ -9,13 +9,16 @@
 import UIKit
 import UIScrollView_InfiniteScroll
 import MBProgressHUD
+import DZNEmptyDataSet
+import Material
 
-class ProjectsController: UITableViewController, ProjectApproveCellDelegate {
+class ProjectsController: UITableViewController, ProjectApproveCellDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
     // MARK: - Variables -
     
     fileprivate var invites = [Invite]()
     fileprivate var projects = [Project]()
+    fileprivate var isLoading = true
     
     // MARK: - ProjectControllerDelegate -
     
@@ -106,8 +109,6 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         setupTableView()
         addRefreshControl()
         setupBackButton()
@@ -135,6 +136,9 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate {
         tableView.estimatedRowHeight = 464.0
         tableView.register(UINib(nibName: "ProjectCell", bundle: nil), forCellReuseIdentifier: "ProjectCell")
         tableView.register(UINib(nibName: "ProjectApproveCell", bundle: nil), forCellReuseIdentifier: "ProjectApproveCell")
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
+        tableView.tableFooterView = UIView()
     }
     
     fileprivate func addRefreshControl() {
@@ -154,10 +158,14 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate {
             selector: #selector(ProjectsController.projectCreated),
             name: NSNotification.Name("ProjectCreated"),
             object: nil)
-        NotificationCenter.default.addObserver(
-            self,
+        NotificationCenter.default.addObserver(self,
+            selector: #selector(ProjectsController.projectDeleted),
+            name: NSNotification.Name("ProjectDeleted"),
+            object: nil)
+        NotificationCenter.default.addObserver(self,
             selector: #selector(ProjectsController.projectIsArchivedChanged),
-            name: NSNotification.Name("ProjectIsArchivedChanged"), object: nil)
+            name: NSNotification.Name("ProjectIsArchivedChanged"),
+            object: nil)
     }
     
     fileprivate func removeNotifications() {
@@ -165,6 +173,11 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate {
     }
     
     func projectCreated(){
+        refreshControl?.beginRefreshing()
+        loadInitialProjects()
+    }
+
+    func projectDeleted(){
         refreshControl?.beginRefreshing()
         loadInitialProjects()
     }
@@ -184,6 +197,7 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate {
     }
     
     @objc fileprivate func loadInitialProjects() {
+        isLoading = true
         Server.getInvites
         { error, invites in
             if let error = error {
@@ -200,6 +214,7 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate {
             } else if let projects = projects {
                 self.addInitialProjects(projects: projects)
             }
+            self.isLoading = false
             self.refreshControl?.endRefreshing()
         }
     }
@@ -253,5 +268,46 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate {
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .lightContent
+    }
+    
+    // MARK: - DZNEmptyDataSetSource -
+    
+    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        let text = isLoading ? "Loading...": "You don't have any projects yet"
+        let attributes = [
+            NSFontAttributeName: Font.boldSystemFont(ofSize: 18.0),
+            NSForegroundColorAttributeName: Color.darkGray
+        ]
+        return NSAttributedString(string: text, attributes: attributes)
+    }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let text = isLoading ? "Let us get your projects from the cloud": "You can create your first project"
+        
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.lineBreakMode = .byWordWrapping;
+        paragraph.alignment = .center;
+        
+        let attributes = [
+            NSFontAttributeName: Font.boldSystemFont(ofSize: 14.0),
+            NSForegroundColorAttributeName: Color.lightGray,
+            NSParagraphStyleAttributeName: paragraph
+        ]
+        return NSAttributedString(string: text, attributes: attributes)
+    }
+    
+    func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControlState) -> NSAttributedString! {
+        let attributes = [
+            NSFontAttributeName: Font.boldSystemFont(ofSize: 17.0),
+            NSForegroundColorAttributeName: Color.controlioGreen(),
+        ]
+        
+        return NSAttributedString(string: "Create project", attributes: attributes)
+    }
+    
+    // MARK: - DZNEmptyDataSetDelegate -
+    
+    func emptyDataSet(_ scrollView: UIScrollView!, didTap button: UIButton!) {
+        navigationController?.tabBarController?.selectedIndex = 1
     }
 }

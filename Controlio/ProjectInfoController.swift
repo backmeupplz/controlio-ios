@@ -405,6 +405,7 @@ class ProjectInfoController: UITableViewController {
         }
     }
     
+    
     fileprivate func delete(project: Project) {
         guard let hud = MBProgressHUD.show() else { return }
         hud.label.text = "Deleting the project..."
@@ -417,6 +418,7 @@ class ProjectInfoController: UITableViewController {
             } else {
                 let _ = self.navigationController?.popToRootViewController(animated: true)
                 self.snackbarController?.show(text: "Project has been deleted")
+                NotificationCenter.default.post(name: Notification.Name("ProjectDeleted"), object: nil)
             }
         }
     }
