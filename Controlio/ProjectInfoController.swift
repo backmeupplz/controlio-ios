@@ -412,14 +412,8 @@ class ProjectInfoController: UITableViewController {
             } else {
                 let _ = self.navigationController?.popToRootViewController(animated: true)
                 self.snackbarController?.show(text: "Project has been deleted")
-                self.notificationDeleteProject(project: self.project)
+                NotificationCenter.default.post(name: Notification.Name("ProjectDeleted"), object: nil)
             }
         }
-    }
-    
-    // MARK: - NotificationCenter -
-    
-    func notificationDeleteProject(project: Project) {
-        NotificationCenter.default.post(name: Notification.Name("ProjectDeleted"), object: nil)
     }
 }

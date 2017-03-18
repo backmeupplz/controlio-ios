@@ -10,6 +10,7 @@ import UIKit
 import UIScrollView_InfiniteScroll
 import MBProgressHUD
 import DZNEmptyDataSet
+import Material
 
 class ProjectsController: UITableViewController, ProjectApproveCellDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
@@ -17,11 +18,7 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate, DZN
     
     fileprivate var invites = [Invite]()
     fileprivate var projects = [Project]()
-    fileprivate var isLoading: Bool = false;
-    fileprivate func setLoaderProjects(){
-        self.isLoading = false
-        self.tableView.reloadData()
-    }
+    fileprivate var isLoading = true
     
     // MARK: - ProjectControllerDelegate -
     
@@ -112,8 +109,6 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate, DZN
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         setupTableView()
         addRefreshControl()
         setupBackButton()
@@ -194,6 +189,7 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate, DZN
     }
     
     @objc fileprivate func loadInitialProjects() {
+        isLoading = true
         Server.getInvites
         { error, invites in
             if let error = error {
@@ -203,25 +199,22 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate, DZN
                 self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
             }
         }
-        self.isLoading = true
         Server.getProjects
         { error, projects in
-            self.setLoaderProjects()
             if let error = error {
                 self.snackbarController?.show(error: error.domain)
             } else if let projects = projects {
                 self.addInitialProjects(projects: projects)
             }
+            self.isLoading = false
             self.refreshControl?.endRefreshing()
         }
     }
     
     fileprivate func loadInitialOnlyProjects() {
         tableView.refreshControl?.beginRefreshing()
-        isLoading = true
         Server.getProjects
             { error, projects in
-                self.setLoaderProjects()
                 if let error = error {
                     self.snackbarController?.show(error: error.domain)
                 } else if let projects = projects {
@@ -232,10 +225,8 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate, DZN
     }
     
     fileprivate func loadMoreProjects() {
-        isLoading = true
         Server.getProjects(skip: projects.count)
         { error, projects in
-            self.setLoaderProjects()
             if let error = error {
                 self.snackbarController?.show(error: error.domain)
             } else {
@@ -271,14 +262,44 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate, DZN
         return .lightContent
     }
     
-    // MARK: - DZNEmptyDataSet -
+    // MARK: - DZNEmptyDataSetSource -
     
     func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
-        var str = "You don't have projects!"
-        if isLoading {
-            str = "Loading..."
-        }
-        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.title1)]
-        return NSAttributedString(string: str, attributes: attrs)
+        let text = isLoading ? "Loading...": "You don't have any projects yet"
+        let attributes = [
+            NSFontAttributeName: Font.boldSystemFont(ofSize: 18.0),
+            NSForegroundColorAttributeName: Color.darkGray
+        ]
+        return NSAttributedString(string: text, attributes: attributes)
+    }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let text = isLoading ? "Let us get your projects from the cloud": "You can create your first project"
+        
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.lineBreakMode = .byWordWrapping;
+        paragraph.alignment = .center;
+        
+        let attributes = [
+            NSFontAttributeName: Font.boldSystemFont(ofSize: 14.0),
+            NSForegroundColorAttributeName: Color.lightGray,
+            NSParagraphStyleAttributeName: paragraph
+        ]
+        return NSAttributedString(string: text, attributes: attributes)
+    }
+    
+    func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControlState) -> NSAttributedString! {
+        let attributes = [
+            NSFontAttributeName: Font.boldSystemFont(ofSize: 17.0),
+            NSForegroundColorAttributeName: Color.controlioGreen(),
+        ]
+        
+        return NSAttributedString(string: "Create project", attributes: attributes)
+    }
+    
+    // MARK: - DZNEmptyDataSetDelegate -
+    
+    func emptyDataSet(_ scrollView: UIScrollView!, didTap button: UIButton!) {
+        navigationController?.tabBarController?.selectedIndex = 1
     }
 }
