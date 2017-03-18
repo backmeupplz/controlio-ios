@@ -433,14 +433,8 @@ class ProjectInfoController: UITableViewController {
             } else {
                 let _ = self.navigationController?.popToRootViewController(animated: true)
                 self.snackbarController?.show(text: project.isArchived ? "Project has been unarchived": "Project has been archived")
-                self.notificationArchiveProject(project: self.project)
+                NotificationCenter.default.post(name: Notification.Name("ProjectIsArchivedChanged"), object:nil)
             }
         }
-    }
-    
-    // MARK: -  Notifications -
-    
-    func notificationArchiveProject(project: Project){
-        NotificationCenter.default.post(name: Notification.Name("ProjectArchived"), object:nil)
     }
 }

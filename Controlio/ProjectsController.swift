@@ -156,8 +156,8 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate {
             object: nil)
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(ProjectsController.projectArchived),
-            name: NSNotification.Name("ProjectArchived"), object: nil)
+            selector: #selector(ProjectsController.projectIsArchivedChanged),
+            name: NSNotification.Name("ProjectIsArchivedChanged"), object: nil)
     }
     
     fileprivate func removeNotifications() {
@@ -169,9 +169,9 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate {
         loadInitialProjects()
     }
     
-    func projectArchived(){
+    func projectIsArchivedChanged(){
         refreshControl?.beginRefreshing()
-
+        loadInitialProjects()
     }
     
     // MARK: - Pagination -
