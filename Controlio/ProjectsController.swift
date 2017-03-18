@@ -297,6 +297,10 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate, DZN
         return NSAttributedString(string: "Create project", attributes: attributes)
     }
     
+    func verticalOffset(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat {
+        return -64.0
+    }
+    
     // MARK: - DZNEmptyDataSetDelegate -
     
     func emptyDataSet(_ scrollView: UIScrollView!, didTap button: UIButton!) {
