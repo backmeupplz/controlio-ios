@@ -211,7 +211,7 @@ class PlansController: UITableViewController, MFMailComposeViewControllerDelegat
         let alert = UIAlertController(title: NSLocalizedString("Confirmation", comment: "Alert title for purchase"), message: message, preferredStyle: .alert)
         alert.addCancelButton()
         alert.add(action: NSLocalizedString("Switch!", comment: "Alert ok button title for purchase")) {
-            let hud = MBProgressHUD.showAdded(to: self.view, animated: false)
+            guard let hud = MBProgressHUD.show() else { return }
             Server.stripeCustomerChoose(plan: plan)
             { error in
                 hud.hide(animated: true)

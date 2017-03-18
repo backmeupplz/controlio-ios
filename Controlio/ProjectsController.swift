@@ -158,10 +158,13 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate, DZN
             selector: #selector(ProjectsController.projectCreated),
             name: NSNotification.Name("ProjectCreated"),
             object: nil)
-        NotificationCenter.default.addObserver(
-            self,
+        NotificationCenter.default.addObserver(self,
             selector: #selector(ProjectsController.projectDeleted),
             name: NSNotification.Name("ProjectDeleted"),
+            object: nil)
+        NotificationCenter.default.addObserver(self,
+            selector: #selector(ProjectsController.projectIsArchivedChanged),
+            name: NSNotification.Name("ProjectIsArchivedChanged"),
             object: nil)
     }
     
@@ -175,6 +178,11 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate, DZN
     }
 
     func projectDeleted(){
+        refreshControl?.beginRefreshing()
+        loadInitialProjects()
+    }
+    
+    func projectIsArchivedChanged(){
         refreshControl?.beginRefreshing()
         loadInitialProjects()
     }
@@ -212,7 +220,7 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate, DZN
     }
     
     fileprivate func loadInitialOnlyProjects() {
-        tableView.refreshControl?.beginRefreshing()
+        refreshControl?.beginRefreshing()
         Server.getProjects
             { error, projects in
                 if let error = error {

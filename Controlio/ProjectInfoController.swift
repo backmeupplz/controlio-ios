@@ -364,6 +364,10 @@ class ProjectInfoController: UITableViewController {
                 self.present(alert, animated: true) {}
             }
         } else if project.isOwner {
+            alert.add(action: project.isArchived ? "Unarchive project": "Archive project", style: .default)
+            {
+                self.toggleArchive(for: self.project)
+            }
             alert.add(action: "Delete project", style: .destructive)
             {
                 let alert = UIAlertController(title: "Are you sure you want to delete \(self.project.title ?? "this project")?", message: "This action cannot be undone", sourceView: sender)
@@ -389,7 +393,8 @@ class ProjectInfoController: UITableViewController {
         guard let hud = MBProgressHUD.show() else { return }
         hud.label.text = "Leaving the project..."
         
-        Server.leave(project: project) { error in
+        Server.leave(project: project)
+        { error in
             hud.hide(animated: true)
             if let error = error {
                 self.snackbarController?.show(error: error.domain)
@@ -405,7 +410,8 @@ class ProjectInfoController: UITableViewController {
         guard let hud = MBProgressHUD.show() else { return }
         hud.label.text = "Deleting the project..."
         
-        Server.delete(project: project) { error in
+        Server.delete(project: project)
+        { error in
             hud.hide(animated: true)
             if let error = error {
                 self.snackbarController?.show(error: error.domain)
@@ -413,6 +419,23 @@ class ProjectInfoController: UITableViewController {
                 let _ = self.navigationController?.popToRootViewController(animated: true)
                 self.snackbarController?.show(text: "Project has been deleted")
                 NotificationCenter.default.post(name: Notification.Name("ProjectDeleted"), object: nil)
+            }
+        }
+    }
+    
+    fileprivate func toggleArchive(for project: Project) {
+        guard let hud = MBProgressHUD.show() else { return }
+        hud.label.text = project.isArchived ? "Unarchiving the project...": "Archiving the project..."
+        
+        Server.toggleArchive(for: project)
+        { error in
+            hud.hide(animated: true)
+            if let error = error {
+                self.snackbarController?.show(error: error.domain)
+            } else {
+                let _ = self.navigationController?.popToRootViewController(animated: true)
+                self.snackbarController?.show(text: project.isArchived ? "Project has been unarchived": "Project has been archived")
+                NotificationCenter.default.post(name: Notification.Name("ProjectIsArchivedChanged"), object:nil)
             }
         }
     }
