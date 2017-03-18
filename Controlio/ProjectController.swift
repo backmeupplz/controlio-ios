@@ -508,4 +508,8 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         ]
         return NSAttributedString(string: text, attributes: attributes)
     }
+    
+    func verticalOffset(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat {
+        return -64.0
+    }
 }
