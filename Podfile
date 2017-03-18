@@ -18,4 +18,5 @@ target 'Controlio' do
     pod 'SKPhotoBrowser', :git => 'https://github.com/backmeupplz/SKPhotoBrowser.git', :branch => 'swift3'
     pod 'Material', '~> 2.0'
     pod 'R.swift'
+    pod 'DZNEmptyDataSet'
 end

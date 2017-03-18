@@ -364,22 +364,16 @@ class ProjectInfoController: UITableViewController {
                 self.present(alert, animated: true) {}
             }
         } else if project.isOwner {
+            alert.add(action: project.isArchived ? "Unarchive project": "Archive project", style: .default)
+            {
+                self.toggleArchive(for: self.project)
+            }
             alert.add(action: "Delete project", style: .destructive)
             {
                 let alert = UIAlertController(title: "Are you sure you want to delete \(self.project.title ?? "this project")?", message: "This action cannot be undone", sourceView: sender)
                 alert.add(action: "Delete", style: .destructive)
                 {
                     self.delete(project: self.project)
-                }
-                alert.addCancelButton()
-                self.present(alert, animated: true) {}
-            }
-            alert.add(action: "Archive project", style: .default)
-            {
-                let alert = UIAlertController(title: "Are you sure you want to archive \(self.project.title ?? "this project")?", message: "This action cannot be undone", sourceView: sender)
-                alert.add(action: "Archive", style: .default)
-                {
-                    self.archive(project: self.project)
                 }
                 alert.addCancelButton()
                 self.present(alert, animated: true) {}
@@ -399,7 +393,8 @@ class ProjectInfoController: UITableViewController {
         guard let hud = MBProgressHUD.show() else { return }
         hud.label.text = "Leaving the project..."
         
-        Server.leave(project: project) { error in
+        Server.leave(project: project)
+        { error in
             hud.hide(animated: true)
             if let error = error {
                 self.snackbarController?.show(error: error.domain)
@@ -410,40 +405,38 @@ class ProjectInfoController: UITableViewController {
         }
     }
     
+    
     fileprivate func delete(project: Project) {
         guard let hud = MBProgressHUD.show() else { return }
         hud.label.text = "Deleting the project..."
         
-        Server.delete(project: project) { error in
+        Server.delete(project: project)
+        { error in
             hud.hide(animated: true)
             if let error = error {
                 self.snackbarController?.show(error: error.domain)
             } else {
                 let _ = self.navigationController?.popToRootViewController(animated: true)
                 self.snackbarController?.show(text: "Project has been deleted")
+                NotificationCenter.default.post(name: Notification.Name("ProjectDeleted"), object: nil)
             }
         }
     }
     
-    fileprivate func archive(project: Project) {
+    fileprivate func toggleArchive(for project: Project) {
         guard let hud = MBProgressHUD.show() else { return }
-        hud.label.text = "Archiving the project..."
+        hud.label.text = project.isArchived ? "Unarchiving the project...": "Archiving the project..."
         
-        Server.archive(project: project, archive: project.isArchived) { error in
+        Server.toggleArchive(for: project)
+        { error in
             hud.hide(animated: true)
             if let error = error {
                 self.snackbarController?.show(error: error.domain)
             } else {
                 let _ = self.navigationController?.popToRootViewController(animated: true)
-                self.snackbarController?.show(text: "Project has been archived")
-                self.notificationArchiveProject(project: self.project)
+                self.snackbarController?.show(text: project.isArchived ? "Project has been unarchived": "Project has been archived")
+                NotificationCenter.default.post(name: Notification.Name("ProjectIsArchivedChanged"), object:nil)
             }
         }
-    }
-    
-    // MARK: -  Notifications -
-    
-    func notificationArchiveProject(project: Project){
-        NotificationCenter.default.post(name: Notification.Name("ProjectArchived"), object:nil)
     }
 }

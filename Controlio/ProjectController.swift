@@ -9,8 +9,9 @@
 import UIKit
 import MBProgressHUD
 import Material
+import DZNEmptyDataSet
 
-class ProjectController: UITableViewController, PostCellDelegate, InputViewDelegate {
+class ProjectController: UITableViewController, PostCellDelegate, InputViewDelegate, DZNEmptyDataSetSource {
     
     // MARK: - Variables -
     
@@ -282,6 +283,8 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 464.0
         tableView.register(UINib(nibName: "PostCell", bundle: nil), forCellReuseIdentifier: "PostCell")
+        tableView.emptyDataSetSource = self
+        tableView.tableFooterView = UIView()
     }
     
     fileprivate func addRefreshControl() {
@@ -478,5 +481,35 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .lightContent
+    }
+    
+    // MARK: - DZNEmptyDataSet -
+    
+    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        let text = "No posts yet"
+        let attributes = [
+            NSFontAttributeName: Font.boldSystemFont(ofSize: 18.0),
+            NSForegroundColorAttributeName: Color.darkGray
+        ]
+        return NSAttributedString(string: text, attributes: attributes)
+    }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let text = project.canEdit ? "Please create your first update" : "Managers should post updates here"
+        
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.lineBreakMode = .byWordWrapping;
+        paragraph.alignment = .center;
+        
+        let attributes = [
+            NSFontAttributeName: Font.boldSystemFont(ofSize: 14.0),
+            NSForegroundColorAttributeName: Color.lightGray,
+            NSParagraphStyleAttributeName: paragraph
+        ]
+        return NSAttributedString(string: text, attributes: attributes)
+    }
+    
+    func verticalOffset(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat {
+        return -64.0
     }
 }
