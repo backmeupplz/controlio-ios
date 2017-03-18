@@ -406,7 +406,7 @@ class Server: NSObject {
         }
     }
     
-    class func archive(project: Project, archive: Bool, completion: @escaping (NSError?)->()) {
+    class func toggleArchive(for project: Project, completion: @escaping (NSError?)->()) {
         guard let id = project.id else {return }
         
         let parameters: Parameters = [
@@ -418,7 +418,7 @@ class Server: NSObject {
             return
         }
         
-        let urlAddition = archive ? "projects/unarchive" : "projects/archive"
+        let urlAddition = project.isArchived ? "projects/unarchive" : "projects/archive"
         request(urlAddition: urlAddition, method: .post, parameters: parameters, needsToken: true)
         { json, error in
             completion(error)
