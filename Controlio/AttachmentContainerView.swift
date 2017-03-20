@@ -20,12 +20,10 @@ class AttachmentContainerView: UIView, PickerDelegate {
     // MARK: - NohanaImagePickerControllerDelegate -
     
     func nohanaImagePickerDidCancel(_ picker: NohanaImagePickerController){
-        print("cancel")
         picker.dismiss(animated: true, completion: nil)
     }
     
     func nohanaImagePicker(_ picker: NohanaImagePickerController, didFinishPickingPhotoKitAssets pickedAssts: [PHAsset]){
-        print("complited")
         for image in pickedAssts {
             wrapperView.attachments.append(picker.getAssetUIImage(image))
         }
