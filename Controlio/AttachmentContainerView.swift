@@ -16,17 +16,6 @@ protocol AttachmentContainerViewDelegate: class {
 }
 
 class AttachmentContainerView: UIView, PickerDelegate {
-
-    func getAssetThumbnail(asset: PHAsset) -> UIImage {
-        let manager = PHImageManager.default()
-        let option = PHImageRequestOptions()
-        var thumbnail = UIImage()
-        option.isSynchronous = true
-        manager.requestImage(for: asset, targetSize: CGSize(width: 100, height: 100), contentMode: .aspectFit, options: option, resultHandler: {(result, info)->Void in
-            thumbnail = result!
-        })
-        return thumbnail
-    }
     
     // MARK: - NohanaImagePickerControllerDelegate -
     
@@ -38,7 +27,7 @@ class AttachmentContainerView: UIView, PickerDelegate {
     func nohanaImagePicker(_ picker: NohanaImagePickerController, didFinishPickingPhotoKitAssets pickedAssts: [PHAsset]){
         print("complited")
         for image in pickedAssts {
-            wrapperView.attachments.append(getAssetThumbnail(asset: image))
+            wrapperView.attachments.append(picker.getAssetUIImage(image))
         }
         picker.dismiss(animated: true, completion: nil)
     }
@@ -59,15 +48,5 @@ class AttachmentContainerView: UIView, PickerDelegate {
         
         wrapperView.preferredMaxLayoutWidth = wrapperView.frame.width
         super.layoutSubviews()
-    }
-    
-    // MARK: - UIImagePickerControllerDelegate -
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            wrapperView.attachments.append(pickedImage)
-        }
-        
-        delegate?.closeImagePicker()
     }
 }

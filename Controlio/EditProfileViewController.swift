@@ -16,12 +16,13 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
     // MARK: - NohanaImagePickerControllerDelegate -
     
     func nohanaImagePickerDidCancel(_ picker: NohanaImagePickerController){
-        print("cancel")
         imagePicker.dismiss(animated: true, completion: nil)
     }
     
     func nohanaImagePicker(_ picker: NohanaImagePickerController, didFinishPickingPhotoKitAssets pickedAssts: [PHAsset]){
-        print("complited")
+        if let image = pickedAssts.first {
+            setNewPhoto(image: picker.getAssetUIImage(image))
+        }
         imagePicker.dismiss(animated: true, completion: nil)
     }
     
@@ -125,54 +126,43 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
     // MARK: - EditProfileCellDelegate -
     
     func editPhotoTouched(sender: UIView) {
-//        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-//        
-//        if let popoverController = alert.popoverPresentationController {
-//            popoverController.sourceView = sender
-//            popoverController.sourceRect = sender.bounds
-//        }
-//        
-//        let library = UIAlertAction(title: NSLocalizedString("Choose from library", comment: "Open picker option"), style: .default)
-//        { action in
-//            self.imagePicker.sourceType = .photoLibrary
-//            self.present(self.imagePicker, animated: true, completion: nil)
-//        }
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        if let popoverController = alert.popoverPresentationController {
+            popoverController.sourceView = sender
+            popoverController.sourceRect = sender.bounds
+        }
+        
+        let library = UIAlertAction(title: NSLocalizedString("Choose from library", comment: "Open picker option"), style: .default)
+        { action in
+            self.present(self.imagePicker, animated: true, completion: nil)
+        }
 //        let camera = UIAlertAction(title: NSLocalizedString("Take a photo", comment: "Open picker option"), style: .default)
 //        { action in
 //            self.imagePicker.sourceType = .camera
 //            self.present(self.imagePicker, animated: true, completion: nil)
 //        }
-//        let remove = UIAlertAction(title: NSLocalizedString("Remove photo", comment: "Open picker option"), style: .destructive)
-//        { action in
-//            self.user.profileImageKey = nil
-//            self.user.tempProfileImage = nil
-//            self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
-//        }
-//        let cancel = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Open picker option"), style: .cancel)
-//        { action in
-//            // do nothing
-//        }
-//        alert.addAction(library)
+        let remove = UIAlertAction(title: NSLocalizedString("Remove photo", comment: "Open picker option"), style: .destructive)
+        { action in
+            self.user.profileImageKey = nil
+            self.user.tempProfileImage = nil
+            self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+        }
+        let cancel = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Open picker option"), style: .cancel)
+        { action in
+            // do nothing
+        }
+        alert.addAction(library)
 //        alert.addAction(camera)
-//        alert.addAction(cancel)
-//        if user.profileImageKey != nil || user.tempProfileImage != nil {
-//            alert.addAction(remove)
-//        }
-        present(imagePicker, animated: true, completion: nil)
+        alert.addAction(cancel)
+        if user.profileImageKey != nil || user.tempProfileImage != nil {
+            alert.addAction(remove)
+        }
+        present(alert, animated: true, completion: nil)
     }
     
     func saveTouched() {
         saveTouched(self)
-    }
-    
-    // MARK: - UIImagePickerControllerDelegate -
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
-            setNewPhoto(image: pickedImage)
-        }
-        
-        dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Functions -
@@ -211,7 +201,7 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
     
     fileprivate func setupImagePicker() {
         imagePicker.delegate = self
-//        imagePicker.allowsEditing = true
+        imagePicker.maximumNumberOfSelection = 1
     }
     
     fileprivate func setNewPhoto(image: UIImage) {

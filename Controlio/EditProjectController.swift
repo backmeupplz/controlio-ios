@@ -23,6 +23,9 @@ class EditProjectController: UITableViewController, EditProjectCellDelegate, Pic
     
     func nohanaImagePicker(_ picker: NohanaImagePickerController, didFinishPickingPhotoKitAssets pickedAssts: [PHAsset]){
         print("complited")
+        if let image = pickedAssts.first {
+            project.tempImage = picker.getAssetUIImage(image)
+        }
         imagePicker.dismiss(animated: true, completion: nil)
     }
     
@@ -50,29 +53,27 @@ class EditProjectController: UITableViewController, EditProjectCellDelegate, Pic
     // MARK: - EditProjectCellDelegate -
     
     func editPhotoTouched(sender: UIView) {
-//        let alert = UIAlertController(preferredStyle: .actionSheet, sourceView: sender)
-//        alert.add(action: NSLocalizedString("Choose from library", comment: "Open picker option"))
-//        {
-//            self.imagePicker.sourceType = .photoLibrary
-//            self.present(self.imagePicker, animated: true, completion: nil)
-//        }
+        let alert = UIAlertController(preferredStyle: .actionSheet, sourceView: sender)
+        alert.add(action: NSLocalizedString("Choose from library", comment: "Open picker option"))
+        {
+            self.present(self.imagePicker, animated: true, completion: nil)
+        }
 //        alert.add(action: NSLocalizedString("Take a photo", comment: "Open picker option"))
 //        {
 //            self.imagePicker.sourceType = .camera
 //            self.present(self.imagePicker, animated: true, completion: nil)
 //        }
-//        alert.addCancelButton()
-//        
-//        if project.tempImage != nil || project.imageKey != nil {
-//            alert.add(action: NSLocalizedString("Remove photo", comment: "Open picker option"))
-//            {
-//                self.project.tempImage = nil
-//                self.project.imageKey = nil
-//                self.reloadCell()
-//            }
-//        }
+        alert.addCancelButton()
         
-        present(imagePicker, animated: true, completion: nil)
+        if project.tempImage != nil || project.imageKey != nil {
+            alert.add(action: NSLocalizedString("Remove photo", comment: "Open picker option"))
+            {
+                self.project.tempImage = nil
+                self.project.imageKey = nil
+                self.reloadCell()
+            }
+        }
+        present(alert, animated: true, completion: nil)
     }
     
     func save(project: Project) {
@@ -122,17 +123,6 @@ class EditProjectController: UITableViewController, EditProjectCellDelegate, Pic
         }
     }
     
-    // MARK: - UIImagePickerControllerDelegate -
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
-            project.tempImage = pickedImage
-            reloadCell()
-        }
-        
-        dismiss(animated: true, completion: nil)
-    }
-    
     // MARK: - UITableViewDataSource -
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -156,7 +146,7 @@ class EditProjectController: UITableViewController, EditProjectCellDelegate, Pic
     
     fileprivate func setupImagePicker() {
         imagePicker.delegate = self
-//        imagePicker.allowsEditing = true
+        imagePicker.maximumNumberOfSelection = 1
     }
     
     fileprivate func reloadCell() {
