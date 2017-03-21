@@ -136,4 +136,5 @@ class AttachmentWrapperView: UIView, AttachmentViewDelegate {
             x = x + itemSize.width
         }
     }
+    
 }

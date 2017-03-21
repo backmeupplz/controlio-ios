@@ -7,12 +7,28 @@
 //
 
 import UIKit
+import NohanaImagePicker
+import Photos
+
 
 protocol AttachmentContainerViewDelegate: class {
     func closeImagePicker()
 }
 
 class AttachmentContainerView: UIView, PickerDelegate {
+    
+    // MARK: - NohanaImagePickerControllerDelegate -
+    
+    func nohanaImagePickerDidCancel(_ picker: NohanaImagePickerController){
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func nohanaImagePicker(_ picker: NohanaImagePickerController, didFinishPickingPhotoKitAssets pickedAssts: [PHAsset]){
+        for image in pickedAssts {
+            wrapperView.attachments.append(picker.getAssetUIImage(image))
+        }
+        picker.dismiss(animated: true, completion: nil)
+    }
     
     // MARK: - Variables -
     
@@ -30,15 +46,5 @@ class AttachmentContainerView: UIView, PickerDelegate {
         
         wrapperView.preferredMaxLayoutWidth = wrapperView.frame.width
         super.layoutSubviews()
-    }
-    
-    // MARK: - UIImagePickerControllerDelegate -
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            wrapperView.attachments.append(pickedImage)
-        }
-        
-        delegate?.closeImagePicker()
     }
 }

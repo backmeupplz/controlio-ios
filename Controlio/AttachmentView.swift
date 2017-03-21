@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NohanaImagePicker
 
 protocol AttachmentViewDelegate: class {
     func attachmentDidTouchCross(_ attachment: AttachmentView)
@@ -15,6 +16,8 @@ protocol AttachmentViewDelegate: class {
 
 class AttachmentView: UIView {
     
+    weak var imagePicker: NohanaImagePickerController?
+
     // MARK: - Variables -
     
     weak var delegate: AttachmentViewDelegate?
