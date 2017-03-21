@@ -501,8 +501,11 @@ class Server: NSObject {
         }
     }
     
-    class func editPost(post: Post, text: String, attachments: [String], completion: @escaping (NSError?)->()) {
+    class func editPost(project: Project, post: Post, text: String, attachments: [String], completion: @escaping (NSError?)->()) {
+        guard let id = project.id else { return }
+        
         let parameters: [String: Any] = [
+            "projectid": id,
             "postid": post.id,
             "text": text,
             "attachments": attachments
@@ -517,8 +520,11 @@ class Server: NSObject {
         }
     }
     
-    class func deletePost(post: Post, completion: @escaping (NSError?)->()) {
+    class func deletePost(project: Project, post: Post, completion: @escaping (NSError?)->()) {
+        guard let id = project.id else { return }
+        
         let parameters: [String: Any] = [
+            "projectid": id,
             "postid": post.id
         ]
         if isDemo() {

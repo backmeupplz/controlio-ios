@@ -33,7 +33,7 @@ class Post: NSObject {
         guard let array = json?.array else { return nil }
         return array.flatMap { Post(json: $0) }
     }
-    
+
     convenience init?(json: JSON?) {
         guard let json = json, !json.isEmpty, let id = json["_id"].string else { return nil }
         
