@@ -125,17 +125,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         }
     }
     
-    func validInputPost(text: String, attachments: [Any]) -> Bool {
-        return !text.isEmpty || attachments.count > 0
-    }
-    
-    func filterAttachments(attachments: [Any]) -> (completedKeys: [String], imagesToUpload: [UIImage]) {
-        let completedKeys = attachments.filter { $0 is String } as! [String]
-        let imagesToUpload = attachments.filter { $0 is UIImage } as! [UIImage]
-        return (completedKeys, imagesToUpload)
-    }
-    
-    func serverAddPost(text: String?, keys: [String]?, hud: MBProgressHUD){
+    func addPost(text: String?, keys: [String]?, hud: MBProgressHUD){
         hud.mode = .indeterminate
         hud.label.text = NSLocalizedString("Uploading new message...", comment: "New post upload message")
         Server.addPost(to: self.project, text: text!, attachmentKeys: keys!)
@@ -153,12 +143,12 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     }
     
     func shouldAddPost(text: String, attachments: [Any]) {
-        guard validInputPost(text: text, attachments: attachments) else {
-            self.snackbarController?.show(error: NSLocalizedString("Please provide at least one attachment or text", comment: "New post error"))
+        guard isValidPost(text: text, attachments: attachments) else {
+            snackbarController?.show(error: NSLocalizedString("Please provide at least one attachment or text", comment: "New post error"))
             return
         }
         guard let hud = MBProgressHUD.show() else { return }
-        let (completedKeys, imagesToUpload) = filterAttachments(attachments: attachments)
+        let (completedKeys, imagesToUpload) = filter(attachments: attachments)
         
         if imagesToUpload.count > 0 {
             hud.mode = .annularDeterminate
@@ -171,12 +161,12 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
                 if let error = error {
                     self.snackbarController?.show(error: error)
                     hud.hide(animated: true)
-                } else {
-                    self.serverAddPost(text: text, keys: keys!+completedKeys, hud: hud)
+                } else if let keys = keys {
+                    self.addPost(text: text, keys: keys+completedKeys, hud: hud)
                 }
             }
         } else {
-            self.serverAddPost(text: text, keys: completedKeys, hud: hud)
+            self.addPost(text: text, keys: completedKeys, hud: hud)
         }
     }
     
@@ -186,7 +176,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         self.tableView.endUpdates()
     }
     
-    func serverEditPost(post: Post, hud: MBProgressHUD){
+    func editPost(post: Post, hud: MBProgressHUD){
         hud.mode = .indeterminate
         hud.label.text = NSLocalizedString("Uploading data", comment: "Edit post upload message")
         Server.editPost(project: self.project, post: post, text: post.text, attachments: post.attachments)
@@ -196,19 +186,19 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
                 self.snackbarController?.show(error: error.domain)
             } else {
                 self.input?.post = nil
-                self.snackbarController?.show(text: "Message sent")
+                self.snackbarController?.show(text: post.type == .status ? "Status changed": "Message changed")
                 self.updateViewPost(post: post)
             }
         }
     }
     
     func shouldEditPost(post: Post, text: String, attachments: [Any]) {
-        guard validInputPost(text: text, attachments: attachments) else {
+        guard isValidPost(text: text, attachments: attachments) else {
             self.snackbarController?.show(error: NSLocalizedString("Please provide at least one attachment or text", comment: "New post error"))
             return
         }
         guard let hud = MBProgressHUD.show() else { return }
-        let (completedKeys, imagesToUpload) = filterAttachments(attachments: attachments)
+        let (completedKeys, imagesToUpload) = filter(attachments: attachments)
 
         if imagesToUpload.count > 0 {
             hud.mode = .annularDeterminate
@@ -224,13 +214,13 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
                 } else {
                     post.text = text
                     post.attachments = keys!+completedKeys
-                    self.serverEditPost(post: post, hud: hud)
+                    self.editPost(post: post, hud: hud)
                 }
             }
         } else {
             post.text = text
             post.attachments = completedKeys
-            serverEditPost(post: post, hud: hud)
+            editPost(post: post, hud: hud)
         }
     }
     
@@ -349,7 +339,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     
     fileprivate func delete(post: Post, cell: PostCell) {
         let hud = MBProgressHUD.showAdded(to: view, animated: true)
-        Server.deletePost(post: post)
+        Server.deletePost(project: project, post: post)
         { error in
             hud.hide(animated: true)
             if let error = error {
@@ -375,6 +365,16 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
                 Router(self).showInfo(for: project)
             }
         }
+    }
+    
+    fileprivate func isValidPost(text: String, attachments: [Any]) -> Bool {
+        return !text.isEmpty || attachments.count > 0
+    }
+    
+    fileprivate func filter(attachments: [Any]) -> (completedKeys: [String], imagesToUpload: [UIImage]) {
+        let completedKeys = attachments.filter { $0 is String } as! [String]
+        let imagesToUpload = attachments.filter { $0 is UIImage } as! [UIImage]
+        return (completedKeys, imagesToUpload)
     }
     
     // MARK: - Pagination -
