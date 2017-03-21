@@ -10,6 +10,7 @@ import UIKit
 import MBProgressHUD
 import Material
 import DZNEmptyDataSet
+import NohanaImagePicker
 
 class ProjectController: UITableViewController, PostCellDelegate, InputViewDelegate, DZNEmptyDataSetSource {
     
@@ -21,8 +22,8 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     // MARK: - Private Variables -
     
     fileprivate var input: InputView?
-    fileprivate let imagePicker = UIImagePickerController()
-    
+    fileprivate let imagePicker = NohanaImagePickerController()
+    fileprivate let maxCountAttachments: Int = 10
     fileprivate var currentGallery: ImageGallery?
     
     // MARK: - UITableViewDataSource -
@@ -82,25 +83,11 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     // MARK: - InputViewDelegate -
     
     func openPicker(with delegate: PickerDelegate, sender: UIView) {
-        imagePicker.allowsEditing = false
+        let count = input?.attachmentCount ?? 0
+        imagePicker.maximumNumberOfSelection = maxCountAttachments - count
+        imagePicker.dropAll()
         imagePicker.delegate = delegate
-        
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alert.add(sourceView: sender)
-        
-        alert.add(action: NSLocalizedString("Camera", comment: "Image picker button"))
-        {
-            self.imagePicker.sourceType = .camera
-            self.present(self.imagePicker, animated: true, completion: nil)
-        }
-        alert.add(action: NSLocalizedString("Library", comment: "Image picker button"))
-        {
-            self.imagePicker.sourceType = .photoLibrary
-            self.present(self.imagePicker, animated: true, completion: nil)
-        }
-        alert.addCancelButton()
-        
-        present(alert, animated: true) { }
+        present(imagePicker, animated: true){}
     }
     
     func closeImagePicker() {

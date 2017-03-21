@@ -47,6 +47,10 @@ class InputView: UIView, AttachmentContainerViewDelegate {
     
     @IBOutlet weak var cancelButton: UIButton!
     
+    var attachmentCount: Int {
+        return attachmentContainerView.wrapperView.attachments.count
+    }
+    
     // MARK: - Class Functions -
     
     class func view(_ superview: UIView, vc: UIViewController, delegate: InputViewDelegate? = nil, project: Project) -> InputView {

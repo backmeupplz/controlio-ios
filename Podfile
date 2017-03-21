@@ -19,4 +19,5 @@ target 'Controlio' do
     pod 'Material', '~> 2.0'
     pod 'R.swift'
     pod 'DZNEmptyDataSet'
+    pod 'NohanaImagePicker', :git => 'https://github.com/MixailE/NohanaImagePicker'
 end
