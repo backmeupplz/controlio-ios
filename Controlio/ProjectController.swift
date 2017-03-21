@@ -24,7 +24,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     fileprivate var input: InputView?
     fileprivate let imagePicker = NohanaImagePickerController()
     fileprivate let cameraPicker = UIImagePickerController()
-    fileprivate let maxCountAttachments: Int? = 10
+    fileprivate let maxCountAttachments: Int = 10
     fileprivate var currentGallery: ImageGallery?
     
     // MARK: - UITableViewDataSource -
@@ -81,6 +81,11 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     // MARK: - InputViewDelegate -
     
     func openPicker(with delegate: PickerDelegate, sender: UIView) {
+        guard (self.input?.attachmentCount ?? 0) < 10 else {
+            snackbarController?.show(error: "You can only upload 10 attachments in one post")
+            return
+        }
+        
         imagePicker.delegate = delegate
         cameraPicker.delegate = delegate
         
@@ -90,14 +95,13 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         alert.add(action: NSLocalizedString("Camera", comment: "Image picker button"))
         {
             self.cameraPicker.sourceType = .camera
-            self.present(self.imagePicker, animated: true, completion: nil)
+            self.cameraPicker.allowsEditing = false
+            self.present(self.cameraPicker, animated: true, completion: nil)
         }
         alert.add(action: NSLocalizedString("Library", comment: "Image picker button"))
         {
-            if self.maxCountAttachments! > 0 {
-                let count = self.input?.attachmentCount ?? 0
-                self.imagePicker.maximumNumberOfSelection = self.maxCountAttachments! - count
-            }
+            let count = self.input?.attachmentCount ?? 0
+            self.imagePicker.maximumNumberOfSelection = self.maxCountAttachments - count
             self.imagePicker.dropAll()
             self.imagePicker.delegate = delegate
             self.present(self.imagePicker, animated: true){}
