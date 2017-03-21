@@ -81,7 +81,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     
     func openPicker(with delegate: PickerDelegate, sender: UIView) {
         if maxCountAttachments! > 0 {
-            let count = input?.attachmentContainerView.wrapperView.attachments.count ?? 0
+            let count = input?.attachmentCount ?? 0
             imagePicker.maximumNumberOfSelection = maxCountAttachments! - count
         }
         imagePicker.dropAll()

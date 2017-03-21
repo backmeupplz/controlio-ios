@@ -39,13 +39,17 @@ class InputView: UIView, AttachmentContainerViewDelegate {
     
     @IBOutlet fileprivate weak var textView: SLKTextView!
     @IBOutlet fileprivate weak var textViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var attachmentContainerView: AttachmentContainerView!
+    @IBOutlet fileprivate weak var attachmentContainerView: AttachmentContainerView!
     @IBOutlet weak var sendButton: UIButton!
     
     @IBOutlet weak var clipImage: UIImageView!
     @IBOutlet weak var clipButton: UIButton!
     
     @IBOutlet weak var cancelButton: UIButton!
+    
+    var attachmentCount: Int {
+        return attachmentContainerView.wrapperView.attachments.count
+    }
     
     // MARK: - Class Functions -
     
