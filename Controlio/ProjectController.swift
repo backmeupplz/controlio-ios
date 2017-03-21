@@ -23,7 +23,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     
     fileprivate var input: InputView?
     fileprivate let imagePicker = NohanaImagePickerController()
-    fileprivate let maxCountAttachments: Int? = 10
+    fileprivate let maxCountAttachments: Int = 10
     fileprivate var currentGallery: ImageGallery?
     
     // MARK: - UITableViewDataSource -
@@ -83,10 +83,8 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     // MARK: - InputViewDelegate -
     
     func openPicker(with delegate: PickerDelegate, sender: UIView) {
-        if maxCountAttachments! > 0 {
-            let count = input?.attachmentCount ?? 0
-            imagePicker.maximumNumberOfSelection = maxCountAttachments! - count
-        }
+        let count = input?.attachmentCount ?? 0
+        imagePicker.maximumNumberOfSelection = maxCountAttachments - count
         imagePicker.dropAll()
         imagePicker.delegate = delegate
         present(imagePicker, animated: true){}
