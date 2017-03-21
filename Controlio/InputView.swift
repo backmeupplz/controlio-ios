@@ -39,7 +39,7 @@ class InputView: UIView, AttachmentContainerViewDelegate {
     
     @IBOutlet fileprivate weak var textView: SLKTextView!
     @IBOutlet fileprivate weak var textViewHeight: NSLayoutConstraint!
-    @IBOutlet fileprivate weak var attachmentContainerView: AttachmentContainerView!
+    @IBOutlet weak var attachmentContainerView: AttachmentContainerView!
     @IBOutlet weak var sendButton: UIButton!
     
     @IBOutlet weak var clipImage: UIImageView!
