@@ -47,4 +47,14 @@ class AttachmentContainerView: UIView, PickerDelegate {
         wrapperView.preferredMaxLayoutWidth = wrapperView.frame.width
         super.layoutSubviews()
     }
+    
+    // MARK: - UIImagePickerControllerDelegate -
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            wrapperView.attachments.append(pickedImage)
+        }
+        
+        delegate?.closeImagePicker()
+    }
 }
