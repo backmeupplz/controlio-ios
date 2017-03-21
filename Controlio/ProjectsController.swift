@@ -114,9 +114,11 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate, DZN
         setupBackButton()
         
         addInfiniteScrolling()
+        refreshControl?.beginRefreshing()
         loadInitialProjects()
         
         setupNotifications()
+        self.edgesForExtendedLayout = []
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -306,8 +308,9 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate, DZN
     }
     
     func verticalOffset(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat {
-        return -64.0
+        return 60
     }
+
     
     // MARK: - DZNEmptyDataSetDelegate -
     

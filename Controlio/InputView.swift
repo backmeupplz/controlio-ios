@@ -85,6 +85,9 @@ class InputView: UIView, AttachmentContainerViewDelegate {
     }
     
     @IBAction func sendTouched(_ sender: AnyObject) {
+        guard project.canEdit else {
+            return 
+        }
         textView.resignFirstResponder()
         if let post = post {
             delegate?.shouldEditPost(post: post, text: textView.text, attachments: attachmentContainerView.wrapperView.attachments)
