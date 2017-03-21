@@ -23,7 +23,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     
     fileprivate var input: InputView?
     fileprivate let imagePicker = NohanaImagePickerController()
-    fileprivate let maxCountAttachments: Int? = 3
+    fileprivate let maxCountAttachments: Int? = 10
     fileprivate var currentGallery: ImageGallery?
     
     // MARK: - UITableViewDataSource -
