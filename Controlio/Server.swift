@@ -501,8 +501,9 @@ class Server: NSObject {
         }
     }
     
-    class func editPost(post: Post, text: String, attachments: [String], completion: @escaping (NSError?)->()) {
+    class func editPost(project: Project, post: Post, text: String, attachments: [String], completion: @escaping (NSError?)->()) {
         let parameters: [String: Any] = [
+            "projectid": project.id!,
             "postid": post.id,
             "text": text,
             "attachments": attachments
