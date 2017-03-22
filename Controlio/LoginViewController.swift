@@ -15,7 +15,7 @@ enum LoginViewControllerState: Int {
     case signin = 1
 }
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, RecoveryViewControllerDelegate {
     
     // MARK: - Outlets -
     
@@ -31,6 +31,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordToRepeatPassword: NSLayoutConstraint!
     @IBOutlet weak var passwordToSignupButton: NSLayoutConstraint!
     
+    var email: String?
+    
     // MARK: - Variables -
     
     var state = LoginViewControllerState.signup
@@ -39,7 +41,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setup()
     }
     
@@ -55,7 +57,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func forgotPasswordTouched(_ sender: AnyObject) {
-        Router(self).showRecovery()
+        Router(self).showRecovery(email: emailTextField.text, delegate: self)
     }
     
     @IBAction func signupTouched(_ sender: Any) {
@@ -111,6 +113,14 @@ class LoginViewController: UIViewController {
         }
     }
     
+    // MARK: - RecoveryViewControllerDelegate -
+    
+    func didRecover(email: String) {
+        screenPicker.selectedSegmentIndex = 1
+        setup(for: .signin)
+        emailTextField.text = email
+    }
+    
     // MARK: - Private functions -
     
     fileprivate func enable(ui enable: Bool) {
@@ -144,6 +154,9 @@ class LoginViewController: UIViewController {
         setupEmailTextField()
         setupPasswordTextField()
         setupRepeatPasswordTextField()
+        setup(for: state)
+        screenPicker.selectedSegmentIndex = state.rawValue
+        emailTextField.text = email
     }
     
     fileprivate func setupBackButton() {
