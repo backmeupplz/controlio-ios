@@ -118,7 +118,7 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate, DZN
         loadInitialProjects()
         
         setupNotifications()
-        self.edgesForExtendedLayout = []
+        edgesForExtendedLayout = []
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -211,12 +211,14 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate, DZN
         }
         Server.getProjects
         { error, projects in
+            self.isLoading = false
             if let error = error {
                 self.snackbarController?.show(error: error.domain)
             } else if let projects = projects {
                 self.addInitialProjects(projects: projects)
+            } else {
+                self.tableView.reloadData()
             }
-            self.isLoading = false
             self.refreshControl?.endRefreshing()
         }
     }
