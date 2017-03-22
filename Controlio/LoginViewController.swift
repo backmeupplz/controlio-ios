@@ -31,6 +31,14 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordToRepeatPassword: NSLayoutConstraint!
     @IBOutlet weak var passwordToSignupButton: NSLayoutConstraint!
     
+    var setupEmail: String?;
+    
+    // MARK: - Puclic func -
+    
+    func setEmail(email: String){
+        setupEmail = email
+    }
+    
     // MARK: - Variables -
     
     var state = LoginViewControllerState.signup
@@ -39,8 +47,17 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setup()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setup(for: state)
+        screenPicker.selectedSegmentIndex = state.rawValue
+        if (setupEmail != nil) {
+            emailTextField.text = setupEmail ?? ""
+        }
     }
     
     // MARK: - Actions -
@@ -55,7 +72,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func forgotPasswordTouched(_ sender: AnyObject) {
-        Router(self).showRecovery()
+        Router(self).showRecovery(emailTextField.text)
     }
     
     @IBAction func signupTouched(_ sender: Any) {

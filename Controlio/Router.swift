@@ -28,6 +28,19 @@ class Router {
         show(vc: R.storyboard.login.loginViewController())
     }
     
+    func showLogin(_ email: String?, _ state: LoginViewControllerState?) {
+        let vc = R.storyboard.login.loginViewController()
+        vc?.setEmail(email: email ?? "")
+        vc?.state = state ?? .signup
+        show(vc: vc)
+    }
+    
+    func showRecovery(_ email: String?) {
+        let vc = R.storyboard.login.recoveryViewController()
+        vc?.setEmail(email: email ?? "")
+        show(vc: vc)
+    }
+    
     func showRecovery() {
         show(vc: R.storyboard.login.recoveryViewController())
     }

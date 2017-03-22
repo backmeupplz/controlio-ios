@@ -18,12 +18,27 @@ class RecoveryViewController: UIViewController {
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
+    var setupEmail: String?;
+    
+    // MARK: - Puclic func -
+    
+    func setEmail(email: String){
+        setupEmail = email
+    }
+    
     // MARK: - View Controller life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setup()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if (setupEmail != nil) {
+            emailTextField.text = setupEmail ?? ""
+        }
     }
     
     // MARK: - Actions -
@@ -43,6 +58,8 @@ class RecoveryViewController: UIViewController {
                     self.snackbarController?.show(error: error.domain)
                 } else {
                     self.snackbarController?.show(text: "Check your inbox. Reset password link is on it's way!")
+                    let email = self.emailTextField.text ?? ""
+                    Router(self).showLogin(email, LoginViewControllerState.signin)
                 }
             }
         } else {
