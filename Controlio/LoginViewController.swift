@@ -15,7 +15,7 @@ enum LoginViewControllerState: Int {
     case signin = 1
 }
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, RecoveryViewControllerDelegate {
     
     // MARK: - Outlets -
     
@@ -31,13 +31,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordToRepeatPassword: NSLayoutConstraint!
     @IBOutlet weak var passwordToSignupButton: NSLayoutConstraint!
     
-    var setupEmail: String?;
-    
-    // MARK: - Puclic func -
-    
-    func setEmail(email: String){
-        setupEmail = email
-    }
+    var email: String?
     
     // MARK: - Variables -
     
@@ -49,15 +43,6 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         setup()
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        setup(for: state)
-        screenPicker.selectedSegmentIndex = state.rawValue
-        if (setupEmail != nil) {
-            emailTextField.text = setupEmail ?? ""
-        }
     }
     
     // MARK: - Actions -
@@ -72,7 +57,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func forgotPasswordTouched(_ sender: AnyObject) {
-        Router(self).showRecovery(emailTextField.text)
+        Router(self).showRecovery(email: emailTextField.text, delegate: self)
     }
     
     @IBAction func signupTouched(_ sender: Any) {
@@ -128,6 +113,14 @@ class LoginViewController: UIViewController {
         }
     }
     
+    // MARK: - RecoveryViewControllerDelegate -
+    
+    func didRecover(email: String) {
+        screenPicker.selectedSegmentIndex = 1
+        setup(for: .signin)
+        emailTextField.text = email
+    }
+    
     // MARK: - Private functions -
     
     fileprivate func enable(ui enable: Bool) {
@@ -161,6 +154,9 @@ class LoginViewController: UIViewController {
         setupEmailTextField()
         setupPasswordTextField()
         setupRepeatPasswordTextField()
+        setup(for: state)
+        screenPicker.selectedSegmentIndex = state.rawValue
+        emailTextField.text = email
     }
     
     fileprivate func setupBackButton() {

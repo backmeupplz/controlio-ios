@@ -67,8 +67,7 @@ class MagicLinkViewController: UIViewController {
     }
     
     @IBAction func loginTouched(_ sender: Any) {
-        let email = emailTextField.text ?? ""
-        Router(self).showLogin(email, nil)
+        Router(self).showLogin(email: emailTextField.text)
     }
     
     // MARK: - Private functions -
