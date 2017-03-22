@@ -26,6 +26,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     fileprivate let cameraPicker = UIImagePickerController()
     fileprivate let maxCountAttachments: Int = 10
     fileprivate var currentGallery: ImageGallery?
+    fileprivate var isLoading = true
     
     // MARK: - UITableViewDataSource -
     
@@ -242,7 +243,9 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         setupInput()
         
         addInfiniteScrolling()
+        refreshControl?.beginRefreshing()
         loadInitialPosts()
+        edgesForExtendedLayout = []
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -393,11 +396,13 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     }
     
     @objc fileprivate func loadInitialPosts() {
+        isLoading = true
         Server.getPosts(for: project)
         { error, posts in
             if let error = error {
                 self.snackbarController?.show(error: error.domain)
             } else {
+                self.isLoading = false
                 self.addInitialPosts(posts: posts!)
             }
             self.refreshControl?.endRefreshing()
@@ -486,7 +491,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     // MARK: - DZNEmptyDataSet -
     
     func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
-        let text = "No posts yet"
+        let text = isLoading ? "Loading...": "No posts yet"
         let attributes = [
             NSFontAttributeName: Font.boldSystemFont(ofSize: 18.0),
             NSForegroundColorAttributeName: Color.darkGray
@@ -495,7 +500,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     }
     
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        let text = project.canEdit ? "Please create your first update" : "Managers should post updates here"
+        let text = isLoading ? "Let us get your posts from the cloud" : project.canEdit ? "Please create your first update" : "Managers should post updates here"
         
         let paragraph = NSMutableParagraphStyle()
         paragraph.lineBreakMode = .byWordWrapping;
