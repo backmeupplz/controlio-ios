@@ -379,7 +379,7 @@ class ProjectInfoController: UITableViewController {
                 self.present(alert, animated: true) {}
             }
         }
-        if project.canEdit {
+        if (project.canEdit && !project.isArchived) {
             alert.add(action: "Edit project")
             {
                 Router(self).showEdit(of: self.project)
