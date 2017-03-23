@@ -31,6 +31,9 @@ class ProjectCell: UITableViewCell {
     @IBOutlet fileprivate weak var projectTitleLabel: UILabel!
     @IBOutlet fileprivate weak var projectDescriptionLabel: UILabel!
     
+    @IBOutlet weak var view: UIView!
+    @IBOutlet weak var roundedView: UIView!
+    
     @IBOutlet fileprivate weak var projectImageViewLeft: NSLayoutConstraint!
     @IBOutlet fileprivate weak var projectImageViewWidth: NSLayoutConstraint!
     
@@ -77,7 +80,10 @@ class ProjectCell: UITableViewCell {
             projectDescriptionLabel.numberOfLines = 2
             projectTitleLabel.numberOfLines = 1
         }
-        
+        if project.isArchived == true {
+            self.view.backgroundColor = UIColor.init(white: 1, alpha: 0.5)
+            self.roundedView?.backgroundColor = UIColor.init(white: 1, alpha: 0.5)
+        }
     }
     
 }

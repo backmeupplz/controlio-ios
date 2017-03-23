@@ -120,6 +120,8 @@
                 <outlet property="projectImageViewLeft" destination="dck-6m-H3l" id="a4h-Hr-F6A"/>
                 <outlet property="projectImageViewWidth" destination="5rT-ht-XjE" id="ZO3-Ix-Opz"/>
                 <outlet property="projectTitleLabel" destination="8Pw-HE-oEt" id="Pg9-FU-RFS"/>
+                <outlet property="roundedView" destination="3pj-gS-WC7" id="Vjg-8Z-nJP"/>
+                <outlet property="view" destination="gIh-sA-nhF" id="Cqk-Xt-3JM"/>
             </connections>
             <point key="canvasLocation" x="476" y="506"/>
         </tableViewCell>
