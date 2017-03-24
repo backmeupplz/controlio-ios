@@ -12,7 +12,7 @@ import Material
 import DZNEmptyDataSet
 import NohanaImagePicker
 
-class ProjectController: UITableViewController, PostCellDelegate, InputViewDelegate, DZNEmptyDataSetSource {
+class ProjectController: UITableViewController, PostCellDelegate, InputViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
     // MARK: - Variables -
     
@@ -277,6 +277,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         tableView.estimatedRowHeight = 464.0
         tableView.register(UINib(nibName: "PostCell", bundle: nil), forCellReuseIdentifier: "PostCell")
         tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
         tableView.tableFooterView = UIView()
     }
     
@@ -516,5 +517,9 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     
     func verticalOffset(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat {
         return -64.0
+    }
+    
+    func emptyDataSetShouldAllowScroll(_ scrollView: UIScrollView!) -> Bool {
+        return true
     }
 }
