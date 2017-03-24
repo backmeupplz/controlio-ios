@@ -9,6 +9,10 @@
 import UIKit
 import Material
 
+protocol RecoveryViewControllerDelegate {
+    func didRecover(email: String)
+}
+
 class RecoveryViewController: UIViewController {
     
     // MARK: - Outlets -
@@ -18,6 +22,9 @@ class RecoveryViewController: UIViewController {
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
+    var email: String?
+    var delegate: RecoveryViewControllerDelegate?
+    
     // MARK: - View Controller life cycle
     
     override func viewDidLoad() {
@@ -25,6 +32,7 @@ class RecoveryViewController: UIViewController {
         
         setup()
     }
+
     
     // MARK: - Actions -
     
@@ -41,8 +49,10 @@ class RecoveryViewController: UIViewController {
                 self.enable(ui: true)
                 if let error = error {
                     self.snackbarController?.show(error: error.domain)
-                } else {
+                } else if let email = self.emailTextField.text {
                     self.snackbarController?.show(text: "Check your inbox. Reset password link is on it's way!")
+                    self.delegate?.didRecover(email: email)
+                    let _ = self.navigationController?.popViewController(animated: true)
                 }
             }
         } else {
@@ -67,6 +77,7 @@ class RecoveryViewController: UIViewController {
     // Mark: Setting up views
     
     fileprivate func setup() {
+        emailTextField.text = email
         setupBackButton()
         setupEmailTextField()
     }

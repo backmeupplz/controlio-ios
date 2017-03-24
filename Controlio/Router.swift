@@ -24,8 +24,17 @@ class Router {
     
     // MARK: - Public Functions -
     
-    func showLogin() {
-        show(vc: R.storyboard.login.loginViewController())
+    func showLogin(email: String? = nil) {
+        let vc = R.storyboard.login.loginViewController()
+        vc?.email = email
+        show(vc: vc)
+    }
+    
+    func showRecovery(email: String? = nil, delegate: RecoveryViewControllerDelegate? = nil) {
+        let vc = R.storyboard.login.recoveryViewController()
+        vc?.email = email
+        vc?.delegate = delegate
+        show(vc: vc)
     }
     
     func showRecovery() {
