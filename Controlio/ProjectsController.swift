@@ -319,4 +319,8 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate, DZN
     func emptyDataSet(_ scrollView: UIScrollView!, didTap button: UIButton!) {
         navigationController?.tabBarController?.selectedIndex = 1
     }
+    
+    func emptyDataSetShouldAllowScroll(_ scrollView: UIScrollView!) -> Bool {
+        return true
+    }
 }
