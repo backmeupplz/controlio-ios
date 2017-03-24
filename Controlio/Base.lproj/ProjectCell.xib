@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -23,27 +23,9 @@
             <rect key="frame" x="0.0" y="0.0" width="406" height="101"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="406" height="100"/>
+                <rect key="frame" x="0.0" y="0.0" width="406" height="100.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gIh-sA-nhF">
-                        <rect key="frame" x="13" y="8" width="381" height="85"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                <size key="value" width="0.0" height="2"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                <real key="value" value="1"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                <real key="value" value="5"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                    </view>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3pj-gS-WC7" userLabel="Rounded View">
                         <rect key="frame" x="10" y="5" width="386" height="90"/>
                         <subviews>
@@ -104,13 +86,9 @@
                 <color key="backgroundColor" red="0.95686274510000002" green="0.96470588239999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="3pj-gS-WC7" secondAttribute="trailing" constant="10" id="5xD-r5-Yuh"/>
-                    <constraint firstItem="gIh-sA-nhF" firstAttribute="centerX" secondItem="3pj-gS-WC7" secondAttribute="centerX" id="AY7-0s-o6J"/>
-                    <constraint firstItem="gIh-sA-nhF" firstAttribute="height" secondItem="3pj-gS-WC7" secondAttribute="height" constant="-5" id="Hac-Uh-b4B"/>
                     <constraint firstAttribute="bottom" secondItem="3pj-gS-WC7" secondAttribute="bottom" constant="5" id="SH8-HK-BDC"/>
                     <constraint firstItem="3pj-gS-WC7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="W8t-K8-HnB"/>
-                    <constraint firstItem="gIh-sA-nhF" firstAttribute="centerY" secondItem="3pj-gS-WC7" secondAttribute="centerY" id="X4T-rW-WBz"/>
                     <constraint firstItem="3pj-gS-WC7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="afK-ns-qak"/>
-                    <constraint firstItem="gIh-sA-nhF" firstAttribute="width" secondItem="3pj-gS-WC7" secondAttribute="width" constant="-5" id="fMw-VB-ioa"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -120,6 +98,7 @@
                 <outlet property="projectImageViewLeft" destination="dck-6m-H3l" id="a4h-Hr-F6A"/>
                 <outlet property="projectImageViewWidth" destination="5rT-ht-XjE" id="ZO3-Ix-Opz"/>
                 <outlet property="projectTitleLabel" destination="8Pw-HE-oEt" id="Pg9-FU-RFS"/>
+                <outlet property="roundedView" destination="3pj-gS-WC7" id="Vjg-8Z-nJP"/>
             </connections>
             <point key="canvasLocation" x="476" y="506"/>
         </tableViewCell>
