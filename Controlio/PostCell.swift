@@ -73,7 +73,7 @@ class PostCell: UITableViewCell {
         managerNameLabel.text = post.author.name ?? post.author.email
         dateLabel.text = DateFormatter.projectDateString(post.dateCreated)
         if post.isEdited {
-            dateLabel.text = "(edited) \(dateLabel.text)"
+            dateLabel.text = "(edited) \(dateLabel.text ?? "")"
         }
         postLabel.text = post.text
         if post.type == .status {
