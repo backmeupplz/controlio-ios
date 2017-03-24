@@ -72,6 +72,9 @@ class PostCell: UITableViewCell {
         }
         managerNameLabel.text = post.author.name ?? post.author.email
         dateLabel.text = DateFormatter.projectDateString(post.dateCreated)
+        if post.isEdited {
+            dateLabel.text = "(edited) \(dateLabel.text)"
+        }
         postLabel.text = post.text
         if post.type == .status {
             postLabel.text = NSLocalizedString("Status changed: \(postLabel.text ?? "")", comment: "Post cell status prefix")

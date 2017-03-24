@@ -26,6 +26,7 @@ class Post: NSObject {
     var dateCreated: Date!
     var author: User!
     var attachments: [String]!
+    var isEdited = false
     
     // MARK: - Functions -
     
@@ -46,5 +47,6 @@ class Post: NSObject {
         dateCreated = json["createdAt"].string!.dateFromISO8601
         author = User(json: json["author"])
         attachments = json["attachments"].array!.map { $0.string! }
+        isEdited = json["isEdited"].bool ?? false
     }
 }
