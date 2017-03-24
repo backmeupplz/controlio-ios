@@ -364,7 +364,7 @@ class ProjectInfoController: UITableViewController {
                 self.present(alert, animated: true) {}
             }
         } else if project.isOwner {
-            alert.add(action: project.isArchived ? "Unarchive project": "Archive project", style: .default)
+            alert.add(action: project.isArchived ? "Revive project": "Finish project", style: .default)
             {
                 self.toggleArchive(for: self.project)
             }
@@ -423,7 +423,7 @@ class ProjectInfoController: UITableViewController {
     
     fileprivate func toggleArchive(for project: Project) {
         guard let hud = MBProgressHUD.show() else { return }
-        hud.label.text = project.isArchived ? "Unarchiving the project...": "Archiving the project..."
+        hud.label.text = project.isArchived ? "Reviving the project...": "Finishing the project..."
         
         Server.toggleArchive(for: project)
         { error in
@@ -432,7 +432,7 @@ class ProjectInfoController: UITableViewController {
                 self.snackbarController?.show(error: error.domain)
             } else {
                 let _ = self.navigationController?.popToRootViewController(animated: true)
-                self.snackbarController?.show(text: project.isArchived ? "Project has been unarchived": "Project has been archived")
+                self.snackbarController?.show(text: project.isArchived ? "Project has been revived": "Project has been finished")
                 NotificationCenter.default.post(name: Notification.Name("ProjectIsArchivedChanged"), object:nil)
             }
         }
