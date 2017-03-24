@@ -764,7 +764,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upgrade" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dN-8p-3l6">
-                                            <rect key="frame" x="242" y="34" width="57" height="17"/>
+                                            <rect key="frame" x="242.5" y="34" width="56.5" height="17"/>
                                             <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="14"/>
                                             <color key="textColor" red="0.34509803919999998" green="0.36470588240000001" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -889,7 +889,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upgrade" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wh2-tG-JpF">
-                                            <rect key="frame" x="242" y="34" width="57" height="17"/>
+                                            <rect key="frame" x="242.5" y="34" width="56.5" height="17"/>
                                             <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="14"/>
                                             <color key="textColor" red="0.34509803921568627" green="0.36470588235294116" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -1020,7 +1020,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upgrade" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1tB-Nx-3vI">
-                                            <rect key="frame" x="242" y="34" width="57" height="17"/>
+                                            <rect key="frame" x="242.5" y="34" width="56.5" height="17"/>
                                             <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="14"/>
                                             <color key="textColor" red="0.34509803919999998" green="0.36470588240000001" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -1145,7 +1145,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50 active projects/month" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VFh-L2-vNl">
-                                            <rect key="frame" x="15" y="52" width="148" height="17"/>
+                                            <rect key="frame" x="15" y="52" width="147.5" height="17"/>
                                             <fontDescription key="fontDescription" name="SFUIDisplay-Light" family="SF UI Display" pointSize="14"/>
                                             <color key="textColor" red="0.34509803919999998" green="0.36470588240000001" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -1157,7 +1157,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upgrade" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JiL-o2-Hbi">
-                                            <rect key="frame" x="242" y="34" width="57" height="17"/>
+                                            <rect key="frame" x="242.5" y="34" width="56.5" height="17"/>
                                             <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="14"/>
                                             <color key="textColor" red="0.34509803919999998" green="0.36470588240000001" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
