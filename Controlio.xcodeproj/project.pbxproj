@@ -96,6 +96,7 @@
 		B3D8C6FA1CFC0A78001EE432 /* S3.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D8C6F91CFC0A78001EE432 /* S3.swift */; };
 		B3E57BF11D9602DB00F699F1 /* AddManagerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E57BEF1D9602DB00F699F1 /* AddManagerCell.swift */; };
 		B3E57BF21D9602DB00F699F1 /* AddManagerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3E57BF01D9602DB00F699F1 /* AddManagerCell.xib */; };
+		B3E60BAE1E86EFD900658D80 /* AllPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E60BAD1E86EFD900658D80 /* AllPickerDelegate.swift */; };
 		B3E634D31C91344400C0572A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E634D21C91344400C0572A /* Router.swift */; };
 		B3E634D51C91444700C0572A /* RecoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E634D41C91444700C0572A /* RecoveryViewController.swift */; };
 		B3E634DD1C914D6200C0572A /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E634DC1C914D6200C0572A /* MainController.swift */; };
@@ -229,6 +230,7 @@
 		B3D8C6F91CFC0A78001EE432 /* S3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = S3.swift; sourceTree = "<group>"; };
 		B3E57BEF1D9602DB00F699F1 /* AddManagerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddManagerCell.swift; sourceTree = "<group>"; };
 		B3E57BF01D9602DB00F699F1 /* AddManagerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddManagerCell.xib; sourceTree = "<group>"; };
+		B3E60BAD1E86EFD900658D80 /* AllPickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllPickerDelegate.swift; sourceTree = "<group>"; };
 		B3E634D21C91344400C0572A /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		B3E634D41C91444700C0572A /* RecoveryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecoveryViewController.swift; sourceTree = "<group>"; };
 		B3E634DC1C914D6200C0572A /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
@@ -472,6 +474,7 @@
 				B3E7B1291D9B969C004FBF86 /* String+EmailValidation.swift */,
 				B3E7B12B1D9F0DBC004FBF86 /* Date+ISO.swift */,
 				B30A42171DA6319C001FB870 /* UIApplication+TopVC.swift */,
+				B3E60BAD1E86EFD900658D80 /* AllPickerDelegate.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -784,6 +787,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3E60BAE1E86EFD900658D80 /* AllPickerDelegate.swift in Sources */,
 				B3E634D31C91344400C0572A /* Router.swift in Sources */,
 				B3D1692E1CDDC15F0080D748 /* SupportController.swift in Sources */,
 				B3FEB8441C9630BA0048B688 /* UIImageView+BeautifulWebImage.swift in Sources */,

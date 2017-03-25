@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import NohanaImagePicker
 
-protocol PickerDelegate: UIImagePickerControllerDelegate, UINavigationControllerDelegate, NohanaImagePickerControllerDelegate {
+protocol PickerDelegate: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
 }

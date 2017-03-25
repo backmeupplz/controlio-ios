@@ -12,7 +12,7 @@ import SlackTextViewController
 import CLTokenInputView
 
 protocol InputViewDelegate: class {
-    func openPicker(with delegate: PickerDelegate, sender: UIView)
+    func openPicker(with delegate: AllPickerDelegate, sender: UIView)
     func closeImagePicker()
     func shouldAddPost(text: String, attachments: [Any])
     func shouldChangeStatus(text: String)

@@ -84,7 +84,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     
     // MARK: - InputViewDelegate -
     
-    func openPicker(with delegate: PickerDelegate, sender: UIView) {
+    func openPicker(with delegate: AllPickerDelegate, sender: UIView) {
         imagePicker.delegate = delegate
         cameraPicker.delegate = delegate
         
