@@ -23,7 +23,6 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
         
         setupTableView()
         addRefreshControl()
-        setupBackButton()
         setupImagePicker()
     }
     
@@ -188,10 +187,6 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
     fileprivate func addRefreshControl() {
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(EditProfileViewController.loadData), for: .valueChanged)
-    }
-    
-    fileprivate func setupBackButton() {
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     fileprivate func setupImagePicker() {
