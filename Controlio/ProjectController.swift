@@ -364,7 +364,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     }
     
     @objc fileprivate func openProject() {
-        let hud = MBProgressHUD.showAdded(to: view, animated: true)
+        guard let hud = MBProgressHUD.show() else { return }
         hud.label.text = NSLocalizedString("Getting project info...", comment: "Getting project message")
         Server.get(project: project)
         { error, project in

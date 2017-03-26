@@ -76,6 +76,12 @@ class Router {
         show(vc: vc)
     }
     
+    func showEdit(user: User) {
+        let vc = R.storyboard.main.editProfileViewController()
+        vc?.user = user
+        show(vc: vc)
+    }
+    
     // MARK: - Private Functions -
     
     fileprivate func show(vc: UIViewController?, animated: Bool = true) {

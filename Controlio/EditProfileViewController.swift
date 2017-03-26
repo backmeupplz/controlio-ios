@@ -21,7 +21,6 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadData()
         setupTableView()
         addRefreshControl()
         setupBackButton()
