@@ -46,7 +46,7 @@ class Project: NSObject {
     var lastPost: Post?
     
     var canEdit: Bool = false
-    var isArchived = false
+    var isFinished = false
     var isOwner: Bool {
         get {
             return owner != nil && owner?.id == Server.currentUser?.id
@@ -91,6 +91,6 @@ class Project: NSObject {
         lastStatus = Post(json: json["lastStatus"])
         
         canEdit = json["canEdit"].bool ?? false
-        isArchived = json["isArchived"].bool ?? false
+        isFinished = json["isFinished"].bool ?? false
     }
 }

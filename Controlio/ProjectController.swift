@@ -332,7 +332,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     }
     
     fileprivate func showInput() {
-        if project.canEdit && !project.isArchived {
+        if project.canEdit && !project.isFinished {
             input?.show()
             setBottomScrollInset(input?.frame.height ?? 0)
         }
