@@ -117,9 +117,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         { error in
             hud.hide(animated: true)
             if let error = error {
-                PopupNotification.show(notification: error.domain)
+                topController.snackbarController?.show(error: error.domain)
             } else {
-                Router(topController).showMain()
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ShouldLogin"), object: nil)
             }
         }
     }

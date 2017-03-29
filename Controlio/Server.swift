@@ -125,6 +125,12 @@ class Server: NSObject {
     }
     
     class func loginMagicLink(token: String, completion:@escaping (NSError?)->()) {
+        
+        if currentUser != nil {
+            completion(NSError(domain: NSLocalizedString("Please logout first", comment: "Error"), code: 500, userInfo: nil))
+            return
+        }
+        
         var parameters = [
             "token": token
         ]
@@ -137,12 +143,8 @@ class Server: NSObject {
             if let error = error {
                 completion(error)
             } else {
-                if currentUser != nil {
-                    completion(NSError(domain: NSLocalizedString("Please logout first", comment: "Error"), code: 500, userInfo: nil))
-                } else {
-                    saveUser(json!)
-                    completion(nil)
-                }
+                saveUser(json!)
+                completion(nil)
             }
         }
     }

@@ -45,6 +45,18 @@ class LoginViewController: UIViewController, RecoveryViewControllerDelegate {
         setup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        subscribe()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        unsubscribe()
+    }
+    
     // MARK: - Actions -
     
     @IBAction func backTouched(_ sender: Any) {
@@ -226,6 +238,20 @@ class LoginViewController: UIViewController, RecoveryViewControllerDelegate {
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .lightContent
+    }
+    
+    // MARK: - Notifications -
+    
+    func subscribe() {
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.login), name: NSNotification.Name(rawValue: "ShouldLogin"), object: nil)
+    }
+    
+    func login() {
+        Router(self).showMain()
+    }
+    
+    func unsubscribe() {
+        NotificationCenter.default.removeObserver(self)
     }
 }
 
