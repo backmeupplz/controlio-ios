@@ -662,7 +662,7 @@ class Server: NSObject {
     
     fileprivate class func headers(needsToken: Bool) -> [String:String] {
         return needsToken ?
-            ["apiKey": apiKey, "token": currentUser?.token ?? "", "userId": currentUser?.id ?? ""] :
+            ["apiKey": apiKey, "token": currentUser?.token ?? ""] :
             ["apiKey": apiKey]
     }
 }
