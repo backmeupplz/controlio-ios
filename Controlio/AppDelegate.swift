@@ -105,16 +105,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         for item in queryItems {
             queryItemsDictionary[item.name] = item.value
         }
-        let userId = queryItemsDictionary["userid"]
         let token = queryItemsDictionary["token"]
         
-        guard let userIdUnwrapped = userId, let tokenUnwrapped = token else {
+        guard let tokenUnwrapped = token else {
             return
         }
         
         guard let topController = UIApplication.topViewController() else { return }
         guard let hud = MBProgressHUD.show() else { return }
-        Server.loginMagicLink(userid: userIdUnwrapped, token: tokenUnwrapped)
+        Server.loginMagicLink(token: tokenUnwrapped)
         { error in
             hud.hide(animated: true)
             if let error = error {

@@ -124,9 +124,8 @@ class Server: NSObject {
         }
     }
     
-    class func loginMagicLink(userid: String, token: String, completion:@escaping (NSError?)->()) {
+    class func loginMagicLink(token: String, completion:@escaping (NSError?)->()) {
         var parameters = [
-            "userid": userid,
             "token": token
         ]
         if let pushNotificationsToken = pushNotificationsToken {
