@@ -50,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     fileprivate func configureStripe() {
-        STPPaymentConfiguration.shared().publishableKey = "pk_test_MybaaRNvH9ndvmA5ty1atlGO"
+        STPPaymentConfiguration.shared().publishableKey = "pk_live_brweKfRgeq7Fe3PH4FScn99S"
         STPPaymentConfiguration.shared().companyName = "Controlio"
     }
     
