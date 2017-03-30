@@ -49,17 +49,11 @@ class UserViewController: UITableViewController, UserProfileCellDelegate, MFMail
             snackbarController?.show(error: "Cannot make calls on this device")
             return
         }
-        
-        let alert = UIAlertController(title: phone, message: "Call this number?", preferredStyle: .alert)
-        alert.add(action: "Call") {
-            if #available(iOS 10.0, *) {
-                UIApplication.shared.open(url)
-            } else {
-                // Fallback on earlier versions
-            }
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url)
+        } else {
+            // Fallback on earlier versions
         }
-        alert.addCancelButton()
-        present(alert, animated: true) { }
     }
     
     func emailTouched(for user: User) {
