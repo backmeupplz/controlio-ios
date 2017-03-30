@@ -87,6 +87,23 @@ class Server: NSObject {
             }
         }
     }
+
+
+    class func changePassword(token: String, password: String, completion:@escaping (NSError?)->()) {
+        let parameters = [
+            "token": token,
+            "password": password
+        ]
+
+        request(urlAddition: "users/resetPassword", method: .post, parameters: parameters, needsToken: false)
+        { json, error in
+            if let error = error {
+                completion(error)
+            } else {
+                completion(nil)
+            }
+        }
+    }
     
     class func recoverPassword(_ email: String, completion:@escaping (NSError?)->()) {
         let parameters = [
@@ -124,9 +141,8 @@ class Server: NSObject {
         }
     }
     
-    class func loginMagicLink(userid: String, token: String, completion:@escaping (NSError?)->()) {
+    class func loginMagicLink(token: String, completion:@escaping (NSError?)->()) {
         var parameters = [
-            "userid": userid,
             "token": token
         ]
         if let pushNotificationsToken = pushNotificationsToken {

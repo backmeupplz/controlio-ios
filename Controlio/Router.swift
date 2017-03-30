@@ -76,7 +76,22 @@ class Router {
         show(vc: vc)
     }
     
+    
+    func presentChangePassword( tokenUnwrapped: String?){
+        let vc = R.storyboard.login.changePasswordViewController()!
+
+        vc.delegate = controller
+        controller.modalPresentationStyle = .overFullScreen
+        vc.token = tokenUnwrapped
+        
+        present(vc: wrapSnackbarController(vc: vc), animated: true)
+    }
+    
     // MARK: - Private Functions -
+    
+    fileprivate func wrapSnackbarController(vc: UIViewController) -> UIViewController {
+        return AppSnackbarController(rootViewController: vc)
+    }
     
     fileprivate func show(vc: UIViewController?, animated: Bool = true) {
         guard let vc = vc else { return }
@@ -86,5 +101,10 @@ class Router {
         } else {
             controller.navigationController?.viewControllers.append(vc)
         }
+    }
+    
+    fileprivate func present(vc: UIViewController?, animated: Bool = true) {
+        guard let vc = vc else { return }
+        controller.present(vc, animated: true, completion: nil)
     }
 }

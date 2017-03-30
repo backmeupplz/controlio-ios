@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52B2C7B61E895926004CE9A0 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B2C7B51E895926004CE9A0 /* ChangePasswordViewController.swift */; };
 		98CE909FBC3BD5F65F168787 /* Pods_Controlio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FE83454A2E4F5D30F57FC0B /* Pods_Controlio.framework */; };
 		B301EFDD1CE59A0A0013CD4D /* UIImagePickerDelegate+UINavgiationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B301EFDC1CE59A0A0013CD4D /* UIImagePickerDelegate+UINavgiationControllerDelegate.swift */; };
 		B30A42161DA61FC6001FB870 /* MagicLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30A42151DA61FC6001FB870 /* MagicLinkViewController.swift */; };
@@ -133,6 +134,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		52B2C7B51E895926004CE9A0 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		78CB8BDD8D1FD1F9D323F17C /* Pods-Controlio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Controlio.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Controlio/Pods-Controlio.debug.xcconfig"; sourceTree = "<group>"; };
 		7FE83454A2E4F5D30F57FC0B /* Pods_Controlio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Controlio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E0CE87DC6458B1EA1E9217C /* Pods-Controlio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Controlio.release.xcconfig"; path = "Pods/Target Support Files/Pods-Controlio/Pods-Controlio.release.xcconfig"; sourceTree = "<group>"; };
@@ -493,6 +495,7 @@
 				B30A42151DA61FC6001FB870 /* MagicLinkViewController.swift */,
 				B3AA2F901C9110EF00FE7E54 /* LoginViewController.swift */,
 				B3E634D41C91444700C0572A /* RecoveryViewController.swift */,
+				52B2C7B51E895926004CE9A0 /* ChangePasswordViewController.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -832,6 +835,7 @@
 				B3AA2F911C9110EF00FE7E54 /* LoginViewController.swift in Sources */,
 				B3C03D1A1C90FF890096E04C /* UIAlertController+Additions.swift in Sources */,
 				B3E7B1281D9B3D40004FBF86 /* Platform.swift in Sources */,
+				52B2C7B61E895926004CE9A0 /* ChangePasswordViewController.swift in Sources */,
 				B3E67AAA1E36CEB30051EB89 /* ProjectInfoController.swift in Sources */,
 				B3D81ADB1E42A4810035C6E2 /* EditProjectCell.swift in Sources */,
 				B3D8C6F61CFBFC6B001EE432 /* Config.swift in Sources */,
