@@ -20,4 +20,5 @@ target 'Controlio' do
     pod 'R.swift'
     pod 'DZNEmptyDataSet'
     pod 'NohanaImagePicker', :git => 'https://github.com/MixailE/NohanaImagePicker'
+    pod 'SimulatorStatusMagic', :configurations => ['Debug']
 end

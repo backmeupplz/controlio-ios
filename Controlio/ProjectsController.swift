@@ -199,6 +199,7 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate, DZN
     }
     
     @objc fileprivate func loadInitialProjects() {
+        
         isLoading = true
         Server.getInvites
         { error, invites in
@@ -312,7 +313,6 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate, DZN
     func verticalOffset(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat {
         return 60
     }
-
     
     // MARK: - DZNEmptyDataSetDelegate -
     
