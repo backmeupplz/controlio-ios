@@ -76,6 +76,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerForRemoteNotifications()
     }
     
+    func handle(url: URL) {
+        guard let token = getToken(from: url) else { return }
+        guard let topController = UIApplication.topViewController() else { return }
+        
+        if url.path == "/public/resetPassword" {
+            Router(topController).presentChangePassword(with: token, type: .reset)
+        } else if url.path == "/public/setPassword" {
+            Router(topController).presentChangePassword(with: token, type: .set)
+        } else if url.path == "/magic" {
+            guard let hud = MBProgressHUD.show() else { return }
+            Server.loginMagicLink(token: token)
+            { error in
+                hud.hide(animated: true)
+                if let error = error {
+                    topController.snackbarController?.show(error: error.domain)
+                } else {
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ShouldLogin"), object: nil)
+                }
+            }
+        }
+    }
+    
+    func getToken(from url: URL) -> String? {
+        let queryItems = URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems ?? []
+        var queryItemsDictionary = [String: String]()
+        
+        for item in queryItems {
+            queryItemsDictionary[item.name] = item.value
+        }
+        return queryItemsDictionary["token"]
+    }
+    
     // MARK: - Push Notifications Delegate -
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
@@ -90,7 +122,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Universal links -
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        login(with: url)
+        handle(url: url)
         
         return true
     }
@@ -98,37 +130,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
         if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
             if let url = userActivity.webpageURL {
-                login(with: url)
+                handle(url: url)
             }
         }
         return true
     }
-    
-    func login(with url: URL) {
-        
-        let queryItems = URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems ?? []
-        var queryItemsDictionary = [String: String]()
-        
-        for item in queryItems {
-            queryItemsDictionary[item.name] = item.value
-        }
-        let token = queryItemsDictionary["token"]
-        
-        guard let tokenUnwrapped = token else {
-            return
-        }
-        
-        guard let topController = UIApplication.topViewController() else { return }
-        guard let hud = MBProgressHUD.show() else { return }
-        Server.loginMagicLink(token: tokenUnwrapped)
-        { error in
-            hud.hide(animated: true)
-            if let error = error {
-                topController.snackbarController?.show(error: error.domain)
-            } else {
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ShouldLogin"), object: nil)
-            }
-        }
-    }
 }
-

@@ -87,6 +87,18 @@ class Server: NSObject {
             }
         }
     }
+
+    class func resetPassword(token: String, password: String, completion:@escaping (NSError?)->()) {
+        let parameters = [
+            "token": token,
+            "password": password
+        ]
+
+        request(urlAddition: "users/resetPassword", method: .post, parameters: parameters, needsToken: false)
+        { json, error in
+            completion(error)
+        }
+    }
     
     class func recoverPassword(_ email: String, completion:@escaping (NSError?)->()) {
         let parameters = [
@@ -125,12 +137,10 @@ class Server: NSObject {
     }
     
     class func loginMagicLink(token: String, completion:@escaping (NSError?)->()) {
-        
         if currentUser != nil {
             completion(NSError(domain: NSLocalizedString("Please logout first", comment: "Error"), code: 500, userInfo: nil))
             return
         }
-        
         var parameters = [
             "token": token
         ]

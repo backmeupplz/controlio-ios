@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vxU-vq-VqA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vxU-vq-VqA">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -63,7 +63,7 @@
                                 </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I53-mO-5r4" userLabel="Password Recovery Button">
-                                <rect key="frame" x="115" y="482" width="146" height="29"/>
+                                <rect key="frame" x="113" y="482" width="150" height="29"/>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="14"/>
                                 <state key="normal" title="Forgot your password?">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -215,15 +215,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XAU-nW-z7l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1714.0929535232385" y="413.60000000000002"/>
+            <point key="canvasLocation" x="1798" y="413"/>
         </scene>
         <!--Custom Navigation Controller-->
         <scene sceneID="boq-AN-Htx">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="vxU-vq-VqA" customClass="CustomNavigationController" customModule="Controlio" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ChangePasswordSegue" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="vxU-vq-VqA" customClass="CustomNavigationController" customModule="Controlio" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="wDf-H7-mOf">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wDf-H7-mOf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -253,7 +253,7 @@
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password recovery" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hon-kO-p9d">
-                                <rect key="frame" x="42.5" y="244.5" width="290.5" height="40"/>
+                                <rect key="frame" x="53" y="244" width="270" height="41"/>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Light" family="SF UI Display" pointSize="34"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -350,7 +350,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C78-7c-e4x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2375.1999999999998" y="413.3433283358321"/>
+            <point key="canvasLocation" x="2463" y="412"/>
         </scene>
         <!--Magic Link View Controller-->
         <scene sceneID="h1A-rr-h6B">
@@ -369,7 +369,7 @@
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Chm-Ug-DPC" userLabel="Sign Up Button">
-                                <rect key="frame" x="68" y="400" width="240" height="53"/>
+                                <rect key="frame" x="68" y="401" width="240" height="53"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="Bhf-Cf-xeJ"/>
@@ -404,7 +404,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uUq-DV-nuG" userLabel="Demo Account Button">
-                                <rect key="frame" x="66.5" y="461" width="243" height="29"/>
+                                <rect key="frame" x="63" y="462" width="250" height="29"/>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="14"/>
                                 <state key="normal" title="Want to see how Controlio works first?">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -417,7 +417,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ydp-Tj-RsA" userLabel="Demo Account Button">
-                                <rect key="frame" x="117.5" y="490" width="140" height="29"/>
+                                <rect key="frame" x="116" y="491" width="143" height="29"/>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="14"/>
                                 <state key="normal" title="Or want a usual login?">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -430,23 +430,23 @@
                                 </connections>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="swI-iF-Pq9">
-                                <rect key="frame" x="316" y="408" width="37" height="37"/>
+                                <rect key="frame" x="316" y="409" width="37" height="37"/>
                             </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xe3-Zd-YZF" customClass="ErrorTextField" customModule="Material">
-                                <rect key="frame" x="68" y="336" width="240" height="32"/>
+                                <rect key="frame" x="68" y="337" width="240" height="32"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="Euo-rO-NEH"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Magic link" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nrX-p8-eFI" userLabel="Sign Up Title">
-                                <rect key="frame" x="111" y="247" width="154.5" height="40"/>
+                                <rect key="frame" x="116" y="247" width="144" height="41"/>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Light" family="SF UI Display" pointSize="34"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use it to login" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CpF-ue-2fx">
-                                <rect key="frame" x="145" y="295" width="86.5" height="17"/>
+                                <rect key="frame" x="148" y="296" width="80" height="17"/>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Light" family="SF UI Display" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -530,6 +530,136 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kSC-nZ-scK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1069.1154422788607" y="415.19999999999999"/>
+        </scene>
+        <!--Change Password View Controller-->
+        <scene sceneID="CWf-lA-r5e">
+            <objects>
+                <viewController storyboardIdentifier="ChangePasswordViewController" id="7F7-4o-pyx" customClass="ChangePasswordViewController" customModule="Controlio" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Kkc-yp-hoB"/>
+                        <viewControllerLayoutGuide type="bottom" id="Qpg-Da-6Ws"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="B25-ap-icc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aki-SN-gxZ" userLabel="Gradient" customClass="GradientView" customModule="Controlio" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oUc-1F-zQC" userLabel="Demo Account Button">
+                                <rect key="frame" x="0.0" y="28" width="53" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="53" id="cd2-K5-2VZ"/>
+                                    <constraint firstAttribute="height" constant="34" id="pdk-oe-kvj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="12"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="backTouched:" destination="7F7-4o-pyx" eventType="touchUpInside" id="gaB-9X-1ey"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YVw-3q-28U" userLabel="Sign Up Button">
+                                <rect key="frame" x="68" y="419" width="240" height="53"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="Gvb-re-eOg"/>
+                                    <constraint firstAttribute="height" constant="53" id="YWp-mf-36T"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="18"/>
+                                <state key="normal" title="Change password">
+                                    <color key="titleColor" red="0.34509803919999998" green="0.36470588240000001" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.20000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="resetTouched:" destination="7F7-4o-pyx" eventType="touchUpInside" id="VAK-Wc-vgi"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lx-8n-h6N">
+                                <rect key="frame" x="57" y="196" width="261" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="261" id="CeT-6a-E50"/>
+                                    <constraint firstAttribute="height" constant="41" id="FNW-RP-Yhg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFUIDisplay-Light" family="SF UI Display" pointSize="34"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mf0-NM-bxF" customClass="ErrorTextField" customModule="Material">
+                                <rect key="frame" x="68" y="267" width="240" height="32"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="T8b-mE-2aH"/>
+                                    <constraint firstAttribute="width" constant="240" id="n5i-7H-k2H"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J4I-yE-KSa" customClass="ErrorTextField" customModule="Material">
+                                <rect key="frame" x="68" y="343" width="240" height="32"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="pNU-3Q-2aL"/>
+                                    <constraint firstAttribute="height" constant="32" id="xFZ-cG-wre"/>
+                                </constraints>
+                            </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="uHY-sT-Q4c">
+                                <rect key="frame" x="315" y="427" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="2lx-8n-h6N" firstAttribute="centerY" secondItem="B25-ap-icc" secondAttribute="centerY" constant="-117" id="1y1-8f-q6S"/>
+                            <constraint firstItem="YVw-3q-28U" firstAttribute="centerX" secondItem="B25-ap-icc" secondAttribute="centerX" id="3r3-I6-Cb5"/>
+                            <constraint firstItem="oUc-1F-zQC" firstAttribute="top" secondItem="Kkc-yp-hoB" secondAttribute="bottom" constant="8" id="Erq-RT-MmE"/>
+                            <constraint firstItem="aki-SN-gxZ" firstAttribute="top" secondItem="B25-ap-icc" secondAttribute="top" id="GpI-cz-PRO"/>
+                            <constraint firstItem="YVw-3q-28U" firstAttribute="centerY" secondItem="B25-ap-icc" secondAttribute="centerY" constant="112" id="Nrd-Eq-jHl"/>
+                            <constraint firstItem="mf0-NM-bxF" firstAttribute="centerY" secondItem="B25-ap-icc" secondAttribute="centerY" constant="-50.5" id="RuQ-sV-RlB"/>
+                            <constraint firstItem="oUc-1F-zQC" firstAttribute="leading" secondItem="B25-ap-icc" secondAttribute="leading" id="TQI-V5-koE"/>
+                            <constraint firstItem="Qpg-Da-6Ws" firstAttribute="top" secondItem="aki-SN-gxZ" secondAttribute="bottom" id="XoZ-Dm-FGd"/>
+                            <constraint firstItem="mf0-NM-bxF" firstAttribute="centerX" secondItem="B25-ap-icc" secondAttribute="centerX" id="ZS4-f3-bva"/>
+                            <constraint firstItem="J4I-yE-KSa" firstAttribute="centerX" secondItem="B25-ap-icc" secondAttribute="centerX" id="chi-At-guF"/>
+                            <constraint firstAttribute="trailing" secondItem="aki-SN-gxZ" secondAttribute="trailing" id="gxB-an-XQt"/>
+                            <constraint firstItem="2lx-8n-h6N" firstAttribute="centerX" secondItem="B25-ap-icc" secondAttribute="centerX" id="iBr-Ew-50G"/>
+                            <constraint firstItem="aki-SN-gxZ" firstAttribute="leading" secondItem="B25-ap-icc" secondAttribute="leading" id="nfc-a2-anU"/>
+                            <constraint firstItem="J4I-yE-KSa" firstAttribute="centerY" secondItem="B25-ap-icc" secondAttribute="centerY" constant="25.5" id="x0B-OT-xy6"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="oUc-1F-zQC" id="egl-c7-x00"/>
+                        <outlet property="passwordTextField" destination="mf0-NM-bxF" id="LIH-jg-usi"/>
+                        <outlet property="repeatPasswordTextField" destination="J4I-yE-KSa" id="POL-ER-a3m"/>
+                        <outlet property="resetButton" destination="YVw-3q-28U" id="m60-Uo-QIK"/>
+                        <outlet property="spinner" destination="uHY-sT-Q4c" id="L8F-uA-42s"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sJY-p5-pt8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3196" y="413.3433283358321"/>
         </scene>
     </scenes>
     <resources>

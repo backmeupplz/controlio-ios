@@ -76,6 +76,16 @@ class Router {
         show(vc: vc)
     }
     
+    func presentChangePassword(with token: String, type: ChangePasswordViewControllerType) {
+        let vc = R.storyboard.login.changePasswordViewController()
+
+        vc?.parentVC = controller
+        vc?.type = type
+        vc?.token = token
+        
+        present(vc: vc?.snackbarred())
+    }
+  
     func showEdit(user: User) {
         let vc = R.storyboard.main.editProfileViewController()
         vc?.user = user
@@ -92,5 +102,17 @@ class Router {
         } else {
             controller.navigationController?.viewControllers.append(vc)
         }
+    }
+    
+    fileprivate func present(vc: UIViewController?) {
+        guard let vc = vc else { return }
+        
+        controller.present(vc, animated: true, completion: nil)
+    }
+}
+
+fileprivate extension UIViewController {
+    func snackbarred() -> AppSnackbarController {
+        return AppSnackbarController(rootViewController: self)
     }
 }
