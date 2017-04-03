@@ -364,9 +364,9 @@ class ProjectInfoController: UITableViewController {
                 self.present(alert, animated: true) {}
             }
         } else if project.isOwner {
-            alert.add(action: project.isArchived ? "Revive project": "Finish project", style: .default)
+            alert.add(action: project.isFinished ? "Revive project": "Finish project", style: .default)
             {
-                self.toggleArchive(for: self.project)
+                self.toggleFinished(for: self.project)
             }
             alert.add(action: "Delete project", style: .destructive)
             {
@@ -379,7 +379,7 @@ class ProjectInfoController: UITableViewController {
                 self.present(alert, animated: true) {}
             }
         }
-        if (project.canEdit && !project.isArchived) {
+        if (project.canEdit && !project.isFinished) {
             alert.add(action: "Edit project")
             {
                 Router(self).showEdit(of: self.project)
@@ -423,18 +423,18 @@ class ProjectInfoController: UITableViewController {
         }
     }
     
-    fileprivate func toggleArchive(for project: Project) {
+    fileprivate func toggleFinished(for project: Project) {
         guard let hud = MBProgressHUD.show() else { return }
-        hud.label.text = project.isArchived ? "Reviving the project...": "Finishing the project..."
+        hud.label.text = project.isFinished ? "Reviving the project...": "Finishing the project..."
         
-        Server.toggleArchive(for: project)
+        Server.toggleFinished(for: project)
         { error in
             hud.hide(animated: true)
             if let error = error {
                 self.snackbarController?.show(error: error.domain)
             } else {
                 let _ = self.navigationController?.popToRootViewController(animated: true)
-                self.snackbarController?.show(text: project.isArchived ? "Project has been revived": "Project has been finished")
+                self.snackbarController?.show(text: project.isFinished ? "Project has been revived": "Project has been finished")
                 NotificationCenter.default.post(name: Notification.Name("ProjectIsArchivedChanged"), object:nil)
             }
         }

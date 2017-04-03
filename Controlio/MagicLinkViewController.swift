@@ -31,6 +31,18 @@ class MagicLinkViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        subscribe()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        unsubscribe()
+    }
+    
     // MARK: - Actions -
     
     @IBAction func magicLinkTouched(_ sender: Any) {
@@ -112,6 +124,20 @@ class MagicLinkViewController: UIViewController {
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .lightContent
+    }
+    
+    // MARK: - Notifications -
+    
+    func subscribe() {
+        NotificationCenter.default.addObserver(self, selector: #selector(MagicLinkViewController.login), name: NSNotification.Name(rawValue: "ShouldLogin"), object: nil)
+    }
+    
+    func login() {
+        Router(self).showMain()
+    }
+    
+    func unsubscribe() {
+        NotificationCenter.default.removeObserver(self)
     }
 }
 

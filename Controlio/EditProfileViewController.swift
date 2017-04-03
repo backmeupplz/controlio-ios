@@ -8,38 +8,21 @@
 
 import UIKit
 import MBProgressHUD
-import NohanaImagePicker
-import Photos
 
 class EditProfileViewController: UITableViewController, EditProfileCellDelegate, PickerDelegate {
 
-    // MARK: - NohanaImagePickerControllerDelegate -
-    
-    func nohanaImagePickerDidCancel(_ picker: NohanaImagePickerController){
-        imagePicker.dismiss(animated: true, completion: nil)
-    }
-    
-    func nohanaImagePicker(_ picker: NohanaImagePickerController, didFinishPickingPhotoKitAssets pickedAssts: [PHAsset]){
-        if let image = pickedAssts.first {
-            setNewPhoto(image: picker.getAssetUIImage(image))
-        }
-        imagePicker.dismiss(animated: true, completion: nil)
-    }
-    
     // MARK: - Variables -
     
     var user: User!
-    let imagePicker = NohanaImagePickerController()
+    let imagePicker = UIImagePickerController()
     
     // MARK: - View Controller Life Cycle -
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadData()
         setupTableView()
         addRefreshControl()
-        setupBackButton()
         setupImagePicker()
     }
     
@@ -135,13 +118,14 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
         
         let library = UIAlertAction(title: NSLocalizedString("Choose from library", comment: "Open picker option"), style: .default)
         { action in
+            self.imagePicker.sourceType = .photoLibrary
             self.present(self.imagePicker, animated: true, completion: nil)
         }
-//        let camera = UIAlertAction(title: NSLocalizedString("Take a photo", comment: "Open picker option"), style: .default)
-//        { action in
-//            self.imagePicker.sourceType = .camera
-//            self.present(self.imagePicker, animated: true, completion: nil)
-//        }
+        let camera = UIAlertAction(title: NSLocalizedString("Take a photo", comment: "Open picker option"), style: .default)
+        { action in
+            self.imagePicker.sourceType = .camera
+            self.present(self.imagePicker, animated: true, completion: nil)
+        }
         let remove = UIAlertAction(title: NSLocalizedString("Remove photo", comment: "Open picker option"), style: .destructive)
         { action in
             self.user.profileImageKey = nil
@@ -153,7 +137,7 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
             // do nothing
         }
         alert.addAction(library)
-//        alert.addAction(camera)
+        alert.addAction(camera)
         alert.addAction(cancel)
         if user.profileImageKey != nil || user.tempProfileImage != nil {
             alert.addAction(remove)
@@ -163,6 +147,16 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
     
     func saveTouched() {
         saveTouched(self)
+    }
+    
+    // MARK: - UIImagePickerControllerDelegate -
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
+            setNewPhoto(image: pickedImage)
+        }
+        
+        dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Functions -
@@ -195,13 +189,9 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
         refreshControl?.addTarget(self, action: #selector(EditProfileViewController.loadData), for: .valueChanged)
     }
     
-    fileprivate func setupBackButton() {
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-    }
-    
     fileprivate func setupImagePicker() {
         imagePicker.delegate = self
-        imagePicker.maximumNumberOfSelection = 1
+        imagePicker.allowsEditing = true
     }
     
     fileprivate func setNewPhoto(image: UIImage) {

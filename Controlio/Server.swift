@@ -137,6 +137,10 @@ class Server: NSObject {
     }
     
     class func loginMagicLink(token: String, completion:@escaping (NSError?)->()) {
+        if currentUser != nil {
+            completion(NSError(domain: NSLocalizedString("Please logout first", comment: "Error"), code: 500, userInfo: nil))
+            return
+        }
         var parameters = [
             "token": token
         ]
@@ -149,12 +153,8 @@ class Server: NSObject {
             if let error = error {
                 completion(error)
             } else {
-                if currentUser != nil {
-                    completion(NSError(domain: NSLocalizedString("Please logout first", comment: "Error"), code: 500, userInfo: nil))
-                } else {
-                    saveUser(json!)
-                    completion(nil)
-                }
+                saveUser(json!)
+                completion(nil)
             }
         }
     }
@@ -417,7 +417,7 @@ class Server: NSObject {
         }
     }
     
-    class func toggleArchive(for project: Project, completion: @escaping (NSError?)->()) {
+    class func toggleFinished(for project: Project, completion: @escaping (NSError?)->()) {
         guard let id = project.id else {return }
         
         let parameters: Parameters = [
@@ -429,7 +429,7 @@ class Server: NSObject {
             return
         }
         
-        let urlAddition = project.isArchived ? "projects/unarchive" : "projects/archive"
+        let urlAddition = project.isFinished ? "projects/revive" : "projects/finish"
         request(urlAddition: urlAddition, method: .post, parameters: parameters, needsToken: true)
         { json, error in
             completion(error)
@@ -673,7 +673,7 @@ class Server: NSObject {
     
     fileprivate class func headers(needsToken: Bool) -> [String:String] {
         return needsToken ?
-            ["apiKey": apiKey, "token": currentUser?.token ?? "", "userId": currentUser?.id ?? ""] :
+            ["apiKey": apiKey, "token": currentUser?.token ?? ""] :
             ["apiKey": apiKey]
     }
 }

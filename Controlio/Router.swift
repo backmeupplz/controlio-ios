@@ -85,6 +85,12 @@ class Router {
         
         present(vc: vc?.snackbarred())
     }
+  
+    func showEdit(user: User) {
+        let vc = R.storyboard.main.editProfileViewController()
+        vc?.user = user
+        show(vc: vc)
+    }
     
     // MARK: - Private Functions -
     

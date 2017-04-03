@@ -49,7 +49,7 @@ class ProjectCell: UITableViewCell {
             projectImageViewLeft.constant = 0
             projectImageViewWidth.constant = 0
         }
-        if project.isArchived {
+        if project.isFinished {
             dateLabel.text = "Finished"
         } else if let date = project.dateUpdated {
             dateLabel.text = DateFormatter.projectDateString(date)
@@ -81,7 +81,7 @@ class ProjectCell: UITableViewCell {
             projectDescriptionLabel.numberOfLines = 2
             projectTitleLabel.numberOfLines = 1
         }
-        roundedView.alpha = project.isArchived ? 0.5 : 1.0
+        roundedView.alpha = project.isFinished ? 0.5 : 1.0
     }
     
 }

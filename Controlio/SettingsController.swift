@@ -10,6 +10,7 @@ import UIKit
 import SafariServices
 import Stripe
 import SDWebImage
+import MBProgressHUD
 
 class SettingsController: UITableViewController, STPPaymentContextDelegate {
     
@@ -61,6 +62,9 @@ class SettingsController: UITableViewController, STPPaymentContextDelegate {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch (indexPath.section, indexPath.row) {
+        case(0, 0):
+            tableView.deselectRow(at: indexPath, animated: true)
+            showEditProfile()
         case (0, 2):
             tableView.deselectRow(at: indexPath, animated: true)
             showPaymentMethods()
@@ -115,6 +119,21 @@ class SettingsController: UITableViewController, STPPaymentContextDelegate {
             showDemoMessage()
         } else {
             paymentContext.presentPaymentMethodsViewController()
+        }
+    }
+    
+    fileprivate func showEditProfile() {
+        guard let hud = MBProgressHUD.show() else { return }
+        
+        hud.label.text = NSLocalizedString("Getting the profile...", comment: "Getting profile message")
+        Server.getProfile
+        { error, user in
+            hud.hide(animated: true)
+            if let error = error {
+                self.snackbarController?.show(error: error.domain)
+            } else if let user = user {
+                Router(self).showEdit(user: user)
+            }
         }
     }
     

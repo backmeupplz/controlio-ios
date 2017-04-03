@@ -15,7 +15,7 @@ protocol AttachmentContainerViewDelegate: class {
     func closeImagePicker()
 }
 
-class AttachmentContainerView: UIView, PickerDelegate {
+class AttachmentContainerView: UIView, AllPickerDelegate {
     
     // MARK: - NohanaImagePickerControllerDelegate -
     

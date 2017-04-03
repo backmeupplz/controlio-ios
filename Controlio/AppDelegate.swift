@@ -12,6 +12,9 @@ import MBProgressHUD
 import CLTokenInputView
 import Stripe
 import Material
+#if DEBUG
+import SimulatorStatusMagic
+#endif
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -29,6 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         S3.setup()
         setupPushNotifications(application: application)
         FeatureList.fetchFeatureList()
+        #if DEBUG
+        SDStatusBarManager.sharedInstance().enableOverrides()
+        #endif
         
         return true
     }
@@ -40,6 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let bundle = Bundle.main.bundleIdentifier {
                 UserDefaults.standard.removePersistentDomain(forName: bundle)
             }
+            UIView.setAnimationsEnabled(false)
         }
     }
     
@@ -50,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     fileprivate func configureStripe() {
-        STPPaymentConfiguration.shared().publishableKey = "pk_test_MybaaRNvH9ndvmA5ty1atlGO"
+        STPPaymentConfiguration.shared().publishableKey = "pk_live_brweKfRgeq7Fe3PH4FScn99S"
         STPPaymentConfiguration.shared().companyName = "Controlio"
     }
     
@@ -129,4 +136,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 }
-

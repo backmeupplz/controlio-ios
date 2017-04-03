@@ -84,7 +84,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     
     // MARK: - InputViewDelegate -
     
-    func openPicker(with delegate: PickerDelegate, sender: UIView) {
+    func openPicker(with delegate: AllPickerDelegate, sender: UIView) {
         imagePicker.delegate = delegate
         cameraPicker.delegate = delegate
         
@@ -332,7 +332,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     }
     
     fileprivate func showInput() {
-        if project.canEdit && !project.isArchived {
+        if project.canEdit && !project.isFinished {
             input?.show()
             setBottomScrollInset(input?.frame.height ?? 0)
         }
@@ -364,7 +364,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     }
     
     @objc fileprivate func openProject() {
-        let hud = MBProgressHUD.showAdded(to: view, animated: true)
+        guard let hud = MBProgressHUD.show() else { return }
         hud.label.text = NSLocalizedString("Getting project info...", comment: "Getting project message")
         Server.get(project: project)
         { error, project in
