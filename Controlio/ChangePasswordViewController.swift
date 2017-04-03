@@ -10,6 +10,11 @@
 import UIKit
 import Material
 
+enum ChangePasswordViewControllerType {
+    case reset
+    case set
+}
+
 class ChangePasswordViewController: UIViewController {
     
     // MARK: - Outlets -
@@ -20,8 +25,9 @@ class ChangePasswordViewController: UIViewController {
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var repeatPasswordTextField: ErrorTextField!
     
-    var token: String?
-    var delegate: UIViewController?
+    var token: String!
+    var type = ChangePasswordViewControllerType.reset
+    var parentVC: UIViewController?
     
     // MARK: - View Controller life cycle
     
@@ -30,15 +36,15 @@ class ChangePasswordViewController: UIViewController {
         setup()
     }
     
-    
     // MARK: - Actions -
     
     @IBAction func backTouched(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func resetTouched(_ sender: Any) {
         var error = false
+        repeatPasswordTextField.isErrorRevealed = false
 
         let length = passwordTextField.text?.characters.count ?? 0
         if (length < 8 || length > 30) {
@@ -55,15 +61,15 @@ class ChangePasswordViewController: UIViewController {
         
         if !error {
             enable(ui: false)
-            Server.changePassword(token: token!, password: passwordTextField.text!)
+            Server.resetPassword(token: token, password: passwordTextField.text!)
             { error in
                 self.enable(ui: true)
                 if let error = error {
                     self.snackbarController?.show(error: error.domain)
                 } else {
-                    self.resetUI()
-                    self.dismiss(animated: true, completion: nil)
-                    self.delegate?.snackbarController?.show(text: "Password has been set!")
+                    self.dismiss(animated: true) {
+                        self.parentVC?.snackbarController?.show(text: "New password has been set")
+                    }
                 }
             }
         }
@@ -77,25 +83,17 @@ class ChangePasswordViewController: UIViewController {
         spinner.isHidden = enable
     }
     
-    fileprivate func resetUI() {
-        passwordTextField.text = ""
-        repeatPasswordTextField.text = ""
-        repeatPasswordTextField.isErrorRevealed = false
-    }
-    
     // Mark: Setting up views
     
     fileprivate func setup() {
-        passwordTextField?.text = ""
         setupBackButton()
         setupPasswordTextField()
         setupRepeatPasswordTextField()
     }
     
     fileprivate func setupBackButton() {
-        backButton.setImage(Icon.arrowBack, for: .normal)
+        backButton.setImage(Icon.close, for: .normal)
     }
-    
     
     fileprivate func setupPasswordTextField() {
         passwordTextField.placeholder = "Password"
@@ -146,8 +144,17 @@ class ChangePasswordViewController: UIViewController {
 
 extension ChangePasswordViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        resetTouched(resetButton)
+        let textFields: [TextField] = [passwordTextField, repeatPasswordTextField]
+        if let last = textFields.last,
+            let textField = textField as? TextField {
+            if textField == last {
+                textField.resignFirstResponder()
+                resetTouched(resetButton)
+            } else {
+                let index = textFields.index(of: textField) ?? 0
+                textFields[index + 1].becomeFirstResponder()
+            }
+        }
         return false
     }
 }

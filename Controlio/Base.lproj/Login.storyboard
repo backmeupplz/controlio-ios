@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vxU-vq-VqA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vxU-vq-VqA">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -223,7 +223,7 @@
                 <navigationController storyboardIdentifier="ChangePasswordSegue" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="vxU-vq-VqA" customClass="CustomNavigationController" customModule="Controlio" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="wDf-H7-mOf">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wDf-H7-mOf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -545,86 +545,13 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aki-SN-gxZ" userLabel="Gradient" customClass="GradientView" customModule="Controlio" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YVw-3q-28U" userLabel="Sign Up Button">
-                                        <rect key="frame" x="67" y="429" width="240" height="53"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="53" id="PaR-7A-dvj"/>
-                                            <constraint firstAttribute="width" constant="240" id="Qqt-gf-n9W"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="18"/>
-                                        <state key="normal" title="Change password">
-                                            <color key="titleColor" red="0.34509803919999998" green="0.36470588240000001" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="6"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                                <real key="value" value="0.20000000000000001"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                                <real key="value" value="3"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                                <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                                <size key="value" width="0.0" height="2"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="resetTouched:" destination="7F7-4o-pyx" eventType="touchUpInside" id="VAK-Wc-vgi"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Change Password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lx-8n-h6N">
-                                        <rect key="frame" x="57" y="207" width="261" height="41"/>
-                                        <fontDescription key="fontDescription" name="SFUIDisplay-Light" family="SF UI Display" pointSize="34"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mf0-NM-bxF" customClass="ErrorTextField" customModule="Material">
-                                        <rect key="frame" x="67" y="278" width="240" height="32"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="240" id="Fc8-Pc-0fl"/>
-                                            <constraint firstAttribute="height" constant="32" id="n2c-gl-7vf"/>
-                                        </constraints>
-                                    </view>
-                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="uHY-sT-Q4c">
-                                        <rect key="frame" x="315" y="437" width="37" height="37"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </activityIndicatorView>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J4I-yE-KSa" customClass="ErrorTextField" customModule="Material">
-                                        <rect key="frame" x="67" y="354" width="240" height="32"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="32" id="VJn-ML-r2f"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="J4I-yE-KSa" firstAttribute="top" secondItem="mf0-NM-bxF" secondAttribute="bottom" constant="42" id="Flm-OO-0nq"/>
-                                    <constraint firstItem="J4I-yE-KSa" firstAttribute="leading" secondItem="mf0-NM-bxF" secondAttribute="leading" id="GDj-eX-OCu"/>
-                                    <constraint firstItem="mf0-NM-bxF" firstAttribute="centerY" secondItem="aki-SN-gxZ" secondAttribute="centerY" constant="-39.5" id="RI3-YV-cUh"/>
-                                    <constraint firstItem="J4I-yE-KSa" firstAttribute="trailing" secondItem="mf0-NM-bxF" secondAttribute="trailing" id="SiY-uZ-G19"/>
-                                    <constraint firstItem="YVw-3q-28U" firstAttribute="centerX" secondItem="aki-SN-gxZ" secondAttribute="centerX" constant="-0.5" id="Vhk-HE-4eg"/>
-                                    <constraint firstItem="mf0-NM-bxF" firstAttribute="centerX" secondItem="aki-SN-gxZ" secondAttribute="centerX" constant="-0.5" id="WsD-Ox-S0c"/>
-                                    <constraint firstItem="2lx-8n-h6N" firstAttribute="centerY" secondItem="aki-SN-gxZ" secondAttribute="centerY" constant="-107" id="jIz-9h-b15"/>
-                                    <constraint firstItem="YVw-3q-28U" firstAttribute="centerY" secondItem="aki-SN-gxZ" secondAttribute="centerY" constant="122" id="pPL-Dq-apM"/>
-                                    <constraint firstItem="2lx-8n-h6N" firstAttribute="centerX" secondItem="aki-SN-gxZ" secondAttribute="centerX" id="pWS-w0-nbU"/>
-                                </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oUc-1F-zQC" userLabel="Demo Account Button">
                                 <rect key="frame" x="0.0" y="28" width="53" height="34"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="JYt-jU-wdM"/>
-                                    <constraint firstAttribute="width" constant="53" id="UGi-Mt-qqk"/>
+                                    <constraint firstAttribute="width" constant="53" id="cd2-K5-2VZ"/>
+                                    <constraint firstAttribute="height" constant="34" id="pdk-oe-kvj"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="12"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -638,15 +565,88 @@
                                     <action selector="backTouched:" destination="7F7-4o-pyx" eventType="touchUpInside" id="gaB-9X-1ey"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YVw-3q-28U" userLabel="Sign Up Button">
+                                <rect key="frame" x="68" y="419" width="240" height="53"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="Gvb-re-eOg"/>
+                                    <constraint firstAttribute="height" constant="53" id="YWp-mf-36T"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFUIDisplay-Bold" family="SF UI Display" pointSize="18"/>
+                                <state key="normal" title="Change password">
+                                    <color key="titleColor" red="0.34509803919999998" green="0.36470588240000001" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.20000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="resetTouched:" destination="7F7-4o-pyx" eventType="touchUpInside" id="VAK-Wc-vgi"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lx-8n-h6N">
+                                <rect key="frame" x="57" y="196" width="261" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="261" id="CeT-6a-E50"/>
+                                    <constraint firstAttribute="height" constant="41" id="FNW-RP-Yhg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFUIDisplay-Light" family="SF UI Display" pointSize="34"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mf0-NM-bxF" customClass="ErrorTextField" customModule="Material">
+                                <rect key="frame" x="68" y="267" width="240" height="32"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="T8b-mE-2aH"/>
+                                    <constraint firstAttribute="width" constant="240" id="n5i-7H-k2H"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J4I-yE-KSa" customClass="ErrorTextField" customModule="Material">
+                                <rect key="frame" x="68" y="343" width="240" height="32"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="pNU-3Q-2aL"/>
+                                    <constraint firstAttribute="height" constant="32" id="xFZ-cG-wre"/>
+                                </constraints>
+                            </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="uHY-sT-Q4c">
+                                <rect key="frame" x="315" y="427" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="aki-SN-gxZ" secondAttribute="trailing" id="2Bp-Y6-nOC"/>
-                            <constraint firstItem="aki-SN-gxZ" firstAttribute="leading" secondItem="B25-ap-icc" secondAttribute="leading" id="E1Z-QP-0b9"/>
-                            <constraint firstItem="oUc-1F-zQC" firstAttribute="leading" secondItem="B25-ap-icc" secondAttribute="leading" id="VKW-lH-IpP"/>
-                            <constraint firstItem="oUc-1F-zQC" firstAttribute="top" secondItem="Kkc-yp-hoB" secondAttribute="bottom" constant="8" id="Xsd-GY-RSi"/>
-                            <constraint firstItem="Qpg-Da-6Ws" firstAttribute="top" secondItem="aki-SN-gxZ" secondAttribute="bottom" id="bPG-Oa-026"/>
-                            <constraint firstItem="aki-SN-gxZ" firstAttribute="top" secondItem="B25-ap-icc" secondAttribute="top" id="vcB-Kw-h8a"/>
+                            <constraint firstItem="2lx-8n-h6N" firstAttribute="centerY" secondItem="B25-ap-icc" secondAttribute="centerY" constant="-117" id="1y1-8f-q6S"/>
+                            <constraint firstItem="YVw-3q-28U" firstAttribute="centerX" secondItem="B25-ap-icc" secondAttribute="centerX" id="3r3-I6-Cb5"/>
+                            <constraint firstItem="oUc-1F-zQC" firstAttribute="top" secondItem="Kkc-yp-hoB" secondAttribute="bottom" constant="8" id="Erq-RT-MmE"/>
+                            <constraint firstItem="aki-SN-gxZ" firstAttribute="top" secondItem="B25-ap-icc" secondAttribute="top" id="GpI-cz-PRO"/>
+                            <constraint firstItem="YVw-3q-28U" firstAttribute="centerY" secondItem="B25-ap-icc" secondAttribute="centerY" constant="112" id="Nrd-Eq-jHl"/>
+                            <constraint firstItem="mf0-NM-bxF" firstAttribute="centerY" secondItem="B25-ap-icc" secondAttribute="centerY" constant="-50.5" id="RuQ-sV-RlB"/>
+                            <constraint firstItem="oUc-1F-zQC" firstAttribute="leading" secondItem="B25-ap-icc" secondAttribute="leading" id="TQI-V5-koE"/>
+                            <constraint firstItem="Qpg-Da-6Ws" firstAttribute="top" secondItem="aki-SN-gxZ" secondAttribute="bottom" id="XoZ-Dm-FGd"/>
+                            <constraint firstItem="mf0-NM-bxF" firstAttribute="centerX" secondItem="B25-ap-icc" secondAttribute="centerX" id="ZS4-f3-bva"/>
+                            <constraint firstItem="J4I-yE-KSa" firstAttribute="centerX" secondItem="B25-ap-icc" secondAttribute="centerX" id="chi-At-guF"/>
+                            <constraint firstAttribute="trailing" secondItem="aki-SN-gxZ" secondAttribute="trailing" id="gxB-an-XQt"/>
+                            <constraint firstItem="2lx-8n-h6N" firstAttribute="centerX" secondItem="B25-ap-icc" secondAttribute="centerX" id="iBr-Ew-50G"/>
+                            <constraint firstItem="aki-SN-gxZ" firstAttribute="leading" secondItem="B25-ap-icc" secondAttribute="leading" id="nfc-a2-anU"/>
+                            <constraint firstItem="J4I-yE-KSa" firstAttribute="centerY" secondItem="B25-ap-icc" secondAttribute="centerY" constant="25.5" id="x0B-OT-xy6"/>
                         </constraints>
                     </view>
                     <connections>
@@ -659,7 +659,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sJY-p5-pt8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1798" y="-350"/>
+            <point key="canvasLocation" x="3196" y="413.3433283358321"/>
         </scene>
     </scenes>
     <resources>

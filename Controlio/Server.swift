@@ -88,8 +88,7 @@ class Server: NSObject {
         }
     }
 
-
-    class func changePassword(token: String, password: String, completion:@escaping (NSError?)->()) {
+    class func resetPassword(token: String, password: String, completion:@escaping (NSError?)->()) {
         let parameters = [
             "token": token,
             "password": password
@@ -97,11 +96,7 @@ class Server: NSObject {
 
         request(urlAddition: "users/resetPassword", method: .post, parameters: parameters, needsToken: false)
         { json, error in
-            if let error = error {
-                completion(error)
-            } else {
-                completion(nil)
-            }
+            completion(error)
         }
     }
     
