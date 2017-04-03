@@ -41,6 +41,11 @@ This will also make sure the profile is up to date
 fastlane ios release
 ```
 Deploy a new version to the App Store
+### ios screenshots
+```
+fastlane ios screenshots
+```
+Generate screenshots for all supported devices
 ### ios releasens
 ```
 fastlane ios releasens
