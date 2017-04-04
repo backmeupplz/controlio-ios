@@ -92,7 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 if let error = error {
                     topController.snackbarController?.show(error: error.domain)
                 } else {
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ShouldLogin"), object: nil)
+                    self.post(notification: .shouldLogin)
                 }
             }
         }

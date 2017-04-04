@@ -258,7 +258,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        unsubscribeFromNotifications()
+        unsubscribe()
         hideInput()
         view.endEditing(true)
     }
@@ -445,13 +445,10 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     // MARK: - Notifications -
     
     fileprivate func subcribeForNotifications() {
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(ProjectController.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(ProjectController.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    }
-    
-    fileprivate func unsubscribeFromNotifications() {
-        NotificationCenter.default.removeObserver(self)
+        subscribe(to: [
+            .UIKeyboardWillShow: #selector(ProjectController.keyboardWillShow(_:)),
+            .UIKeyboardWillHide: #selector(ProjectController.keyboardWillHide(_:))
+        ])
     }
     
     @objc fileprivate func keyboardWillShow(_ notification: Notification) {

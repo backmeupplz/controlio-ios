@@ -17,6 +17,7 @@
 		B321498E1E74A18E008127D4 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B321498D1E74A18E008127D4 /* SnapshotHelper.swift */; };
 		B33805C71E1F5BE70096B081 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33805C61E1F5BE70096B081 /* R.generated.swift */; };
 		B33EBFCE1E23FD3B00703285 /* MBProgressHUD+Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33EBFCD1E23FD3B00703285 /* MBProgressHUD+Window.swift */; };
+		B3702E511E93135400D95323 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3702E501E93135400D95323 /* Notifications.swift */; };
 		B37630511CE28737004FE1B7 /* AttachmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37630501CE28737004FE1B7 /* AttachmentView.swift */; };
 		B37630531CE28741004FE1B7 /* AttachmentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B37630521CE28741004FE1B7 /* AttachmentView.xib */; };
 		B37630551CE28CA4004FE1B7 /* AttachmentContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37630541CE28CA4004FE1B7 /* AttachmentContainerView.swift */; };
@@ -150,6 +151,7 @@
 		B32FE1C11DA301C6001A72B7 /* Controlio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Controlio.entitlements; sourceTree = "<group>"; };
 		B33805C61E1F5BE70096B081 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		B33EBFCD1E23FD3B00703285 /* MBProgressHUD+Window.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MBProgressHUD+Window.swift"; sourceTree = "<group>"; };
+		B3702E501E93135400D95323 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		B37630501CE28737004FE1B7 /* AttachmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentView.swift; sourceTree = "<group>"; };
 		B37630521CE28741004FE1B7 /* AttachmentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttachmentView.xib; sourceTree = "<group>"; };
 		B37630541CE28CA4004FE1B7 /* AttachmentContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentContainerView.swift; sourceTree = "<group>"; };
@@ -432,6 +434,7 @@
 				B3E7B1271D9B3D40004FBF86 /* Platform.swift */,
 				B3A89D531DB8069D00211EFF /* Payments.swift */,
 				B3C35B111DB9E50C00F941F8 /* FeatureList.swift */,
+				B3702E501E93135400D95323 /* Notifications.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -795,6 +798,7 @@
 				B3D1692E1CDDC15F0080D748 /* SupportController.swift in Sources */,
 				B3FEB8441C9630BA0048B688 /* UIImageView+BeautifulWebImage.swift in Sources */,
 				B37630581CE28E9B004FE1B7 /* AttachmentWrapperView.swift in Sources */,
+				B3702E511E93135400D95323 /* Notifications.swift in Sources */,
 				B3FEB8491C963E260048B688 /* CustomizableImageView.swift in Sources */,
 				B39E06541E331EEF003B5910 /* Invite.swift in Sources */,
 				B3D81AD41E4141B80035C6E2 /* UserViewController.swift in Sources */,

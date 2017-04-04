@@ -243,15 +243,13 @@ class LoginViewController: UIViewController, RecoveryViewControllerDelegate {
     // MARK: - Notifications -
     
     func subscribe() {
-        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.login), name: NSNotification.Name(rawValue: "ShouldLogin"), object: nil)
+        subscribe(to: [
+            .shouldLogin: #selector(LoginViewController.login)
+        ])
     }
     
     func login() {
         Router(self).showMain()
-    }
-    
-    func unsubscribe() {
-        NotificationCenter.default.removeObserver(self)
     }
 }
 

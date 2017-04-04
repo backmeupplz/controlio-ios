@@ -131,7 +131,11 @@ class InputView: UIView, AttachmentContainerViewDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        subscribeNotifications()
+        subscribe()
+    }
+    
+    deinit {
+        unsubscribe()
     }
     
     // MARK: - General Functions -
@@ -178,15 +182,11 @@ class InputView: UIView, AttachmentContainerViewDelegate {
     
     // MARK: - Private Functions -
     
-    fileprivate func subscribeNotifications() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(InputView.textViewChangedContentSize),
-                                               name: NSNotification.Name.SLKTextViewContentSizeDidChange,
-                                               object: nil)
-    }
-    
-    fileprivate func unsubscribeNotifications() {
-        NotificationCenter.default.removeObserver(self)
+    fileprivate func subscribe() {
+        subscribe(to: [
+            .SLKTextViewContentSizeDidChange:
+                #selector(InputView.textViewChangedContentSize)
+        ])
     }
     
     @objc fileprivate func textViewChangedContentSize() {

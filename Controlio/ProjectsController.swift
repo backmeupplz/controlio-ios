@@ -117,7 +117,7 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate, DZN
         refreshControl?.beginRefreshing()
         loadInitialProjects()
         
-        setupNotifications()
+        subscribe()
         edgesForExtendedLayout = []
     }
     
@@ -128,7 +128,7 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate, DZN
     }
 
     deinit {
-        removeNotifications()
+        unsubscribe()
     }
     
     // MARK: - Private Functions -
@@ -154,24 +154,12 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate, DZN
     
     // MARK: - Notifications -
     
-    fileprivate func setupNotifications() {
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(ProjectsController.projectCreated),
-            name: NSNotification.Name("ProjectCreated"),
-            object: nil)
-        NotificationCenter.default.addObserver(self,
-            selector: #selector(ProjectsController.projectDeleted),
-            name: NSNotification.Name("ProjectDeleted"),
-            object: nil)
-        NotificationCenter.default.addObserver(self,
-            selector: #selector(ProjectsController.projectIsArchivedChanged),
-            name: NSNotification.Name("ProjectIsArchivedChanged"),
-            object: nil)
-    }
-    
-    fileprivate func removeNotifications() {
-        NotificationCenter.default.removeObserver(self)
+    fileprivate func subscribe() {
+        subscribe(to: [
+            .projectCreated: #selector(ProjectsController.projectCreated),
+            .projectDeleted: #selector(ProjectsController.projectDeleted),
+            .projectArchivedChanged: #selector(ProjectsController.projectIsArchivedChanged)
+        ])
     }
     
     func projectCreated(){

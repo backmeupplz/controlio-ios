@@ -418,7 +418,7 @@ class ProjectInfoController: UITableViewController {
             } else {
                 let _ = self.navigationController?.popToRootViewController(animated: true)
                 self.snackbarController?.show(text: "Project has been deleted")
-                NotificationCenter.default.post(name: Notification.Name("ProjectDeleted"), object: nil)
+                self.post(notification: .projectDeleted)
             }
         }
     }
@@ -435,7 +435,7 @@ class ProjectInfoController: UITableViewController {
             } else {
                 let _ = self.navigationController?.popToRootViewController(animated: true)
                 self.snackbarController?.show(text: project.isFinished ? "Project has been revived": "Project has been finished")
-                NotificationCenter.default.post(name: Notification.Name("ProjectIsArchivedChanged"), object:nil)
+                self.post(notification: .projectArchivedChanged)
             }
         }
     }

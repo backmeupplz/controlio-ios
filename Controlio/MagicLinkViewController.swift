@@ -129,15 +129,13 @@ class MagicLinkViewController: UIViewController {
     // MARK: - Notifications -
     
     func subscribe() {
-        NotificationCenter.default.addObserver(self, selector: #selector(MagicLinkViewController.login), name: NSNotification.Name(rawValue: "ShouldLogin"), object: nil)
+        subscribe(to: [
+            .shouldLogin: #selector(MagicLinkViewController.login)
+        ])
     }
     
     func login() {
         Router(self).showMain()
-    }
-    
-    func unsubscribe() {
-        NotificationCenter.default.removeObserver(self)
     }
 }
 
