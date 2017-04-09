@@ -62,6 +62,36 @@ class Project: NSObject {
     var tempClientEmails = [String]()
     
     // MARK: - Functions -
+
+    func equals(compareTo: Project?) -> Bool {
+        guard compareTo != nil else {
+            return false
+        }
+        
+        print(compareTo?.title ?? "-", self.title ?? "-")
+        return
+            self.title == compareTo?.title &&
+            self.id == compareTo?.id &&
+            self.projectDescription == compareTo?.projectDescription &&
+            self.tempImage == compareTo?.tempImage
+    }
+    
+    func copy(zone: NSZone? = nil) -> Project {
+        let copy = Project()
+        copy.id = self.id
+        copy.title = self.title
+        copy.projectDescription = self.projectDescription
+        copy.imageKey = self.imageKey
+        copy.tempImage = self.tempImage
+        copy.dateCreated = self.dateCreated
+        copy.dateUpdated = self.dateUpdated
+        copy.managers = self.managers
+        copy.clients = self.clients
+        copy.owner = self.owner
+        copy.invites = self.invites
+        return copy
+    }
+    
     
     class func map(json: JSON?) -> [Project]? {
         guard let array = json?.array else { return nil }

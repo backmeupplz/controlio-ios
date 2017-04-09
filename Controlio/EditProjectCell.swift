@@ -10,7 +10,7 @@ import UIKit
 import Material
 
 protocol EditProjectCellDelegate {
-    func save(project: Project)
+    func save(project: Project, completion:((NSError?)->())!)
     func editPhotoTouched(sender: UIView)
 }
 
@@ -51,7 +51,7 @@ class EditProjectCell: UITableViewCell {
     }
     
     @IBAction func saveTouched(_ sender: AnyObject) {
-        delegate?.save(project: project)
+        delegate?.save(project: project, completion: nil)
     }
     
     // MARK: - Private functions -

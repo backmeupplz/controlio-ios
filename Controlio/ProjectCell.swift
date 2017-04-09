@@ -57,30 +57,27 @@ class ProjectCell: UITableViewCell {
             dateLabel.text = ""
         }
         projectTitleLabel.text = project.title
-        if type == .info {
-            if let text = project.projectDescription {
-                projectDescriptionLabel.alpha = 1
-                projectDescriptionLabel.text = text
-            } else if let text = project.lastPost?.text {
-                projectDescriptionLabel.alpha = 1
-                projectDescriptionLabel.text = text
-            } else {
-                projectDescriptionLabel.alpha = 0.5
-                projectDescriptionLabel.text = "Nothing here yet"
-            }
-            projectDescriptionLabel.numberOfLines = 0
-            projectTitleLabel.numberOfLines = 0
-        } else {
-            if let text = project.lastPost?.text {
-                projectDescriptionLabel.alpha = 1
-                projectDescriptionLabel.text = text
-            } else {
-                projectDescriptionLabel.alpha = 0.5
-                projectDescriptionLabel.text = "Nothing here yet"
-            }
-            projectDescriptionLabel.numberOfLines = 2
-            projectTitleLabel.numberOfLines = 1
+        
+        if type == .info, let text = project.projectDescription {
+            projectDescriptionLabel.alpha = 1
+            projectDescriptionLabel.text = text
         }
+        else if let post = project.lastPost {
+            if let text = post.text, text.characters.count > 0 {
+                projectDescriptionLabel.alpha = 1
+                projectDescriptionLabel.text = text
+            } else if post.attachments != nil {
+                projectDescriptionLabel.alpha = 1
+                let count = post.countAttachments()
+                projectDescriptionLabel.text = "Attachments(\(count))"
+            }
+        } else {
+            projectDescriptionLabel.alpha = 0.5
+            projectDescriptionLabel.text = "Nothing here yet"
+        }
+        projectDescriptionLabel.numberOfLines = 2
+        projectTitleLabel.numberOfLines = 1
+        
         roundedView.alpha = project.isFinished ? 0.5 : 1.0
     }
     

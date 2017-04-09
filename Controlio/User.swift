@@ -36,6 +36,36 @@ class User: NSObject, NSCoding {
     
     // MARK: - Functions -
     
+    func equals(compareTo: User?) -> Bool {
+        guard compareTo != nil else {
+            return false
+        }
+        return
+            self.email == compareTo?.email &&
+            self.name == compareTo?.name &&
+            self.phone == compareTo?.phone &&
+            self.tempProfileImage == compareTo?.tempProfileImage
+    }
+    
+    func copy(zone: NSZone? = nil) -> User {
+        let copy = User()
+        copy.email = self.email
+        copy.id = self.id
+        copy.name = self.name
+        copy.phone = self.phone
+        copy.profileImageKey = self.profileImageKey
+        copy.profileImageKey = self.profileImageKey
+        copy.isBusiness = self.isBusiness
+        copy.addedAsManager = self.addedAsManager
+        copy.addedAsClient = self.addedAsClient
+        copy.emailVerified = self.emailVerified
+        copy.profileCompleted = self.profileCompleted
+        copy.isAdmin = self.isAdmin
+        copy.isDemo = self.isDemo
+        
+        return copy
+    }
+    
     class func map(json: JSON?) -> [User]? {
         guard let array = json?.array else { return nil }
         return array.flatMap { User(json: $0) }

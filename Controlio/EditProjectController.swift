@@ -15,6 +15,7 @@ class EditProjectController: UITableViewController, EditProjectCellDelegate, Pic
     // MARK: - Variables -
     
     var project = Project()
+    var initProject: Project!
     let imagePicker = UIImagePickerController()
     var cell: EditProjectCell!
     
@@ -22,6 +23,7 @@ class EditProjectController: UITableViewController, EditProjectCellDelegate, Pic
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initProject = project.copy()
         
         setupTableView()
         setupImagePicker()
@@ -60,7 +62,24 @@ class EditProjectController: UITableViewController, EditProjectCellDelegate, Pic
         present(alert, animated: true, completion: nil)
     }
     
-    func save(project: Project) {
+    func back(sender: UIBarButtonItem){
+        
+        let alert = UIAlertController(title:"You have unsaved data", message: "Would you like to discard it?", preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addAction(UIAlertAction(title:"Discard", style: UIAlertActionStyle.default, handler: {(alert: UIAlertAction!) in
+            _ = self.navigationController?.popViewController(animated: true)
+        }))
+        
+        alert.addAction(UIAlertAction(title:"Save", style: UIAlertActionStyle.default, handler: {(alert: UIAlertAction!) in
+            self.save(project: self.project, completion: { error in
+                _ = self.navigationController?.popViewController(animated: true)
+            })
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func save(project: Project, completion:((NSError?)->())!) {
         view.endEditing(true)
         
         var allGood = true
@@ -86,8 +105,14 @@ class EditProjectController: UITableViewController, EditProjectCellDelegate, Pic
                     hud.hide(animated: true)
                     if let error = error {
                         self.snackbarController?.show(error: error.domain)
+                        if (completion != nil) {
+                            completion(error)
+                        }
                     } else {
                         self.snackbarController?.show(text: "Project info has been changed")
+                        if (completion != nil) {
+                            completion(nil)
+                        }
                     }
                 }
             } else {
@@ -99,8 +124,14 @@ class EditProjectController: UITableViewController, EditProjectCellDelegate, Pic
                     hud.hide(animated: true)
                     if let error = error {
                         self.snackbarController?.show(error: error.domain)
+                        if (completion != nil) {
+                            completion(error)
+                        }
                     } else {
                         self.snackbarController?.show(text: "Project info has been changed")
+                        if (completion != nil) {
+                            completion(nil)
+                        }
                     }
                 }
             }
@@ -132,6 +163,19 @@ class EditProjectController: UITableViewController, EditProjectCellDelegate, Pic
     }
     
     // MARK: - Private Functions -
+    
+    fileprivate func setupBackButton(){
+        self.navigationItem.hidesBackButton = true
+        let image = UIImage(named:"back_button") as UIImage!
+        let btnBack:UIButton = UIButton.init(type: .custom)
+        btnBack.addTarget(self, action: #selector(EditProjectController.back(sender:)), for: .touchUpInside)
+        btnBack.setImage(image, for: .normal)
+        btnBack.setTitleColor(UIColor.blue, for: .normal)
+        btnBack.sizeToFit()
+        let backButton:UIBarButtonItem = UIBarButtonItem(customView: btnBack)
+        
+        self.navigationItem.leftBarButtonItem = backButton
+    }
     
     fileprivate func setupTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
