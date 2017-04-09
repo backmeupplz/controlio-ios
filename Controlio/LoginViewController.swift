@@ -157,6 +157,8 @@ class LoginViewController: UIViewController, RecoveryViewControllerDelegate {
         view.layoutIfNeeded()
         
         signupButton.setTitle(state == .signin ? "Sign in" : "Sign up", for: .normal)
+        
+        passwordTextField.returnKeyType = state == .signin ? .done : .next
     }
     
     // Mark: Setting up views
@@ -189,6 +191,8 @@ class LoginViewController: UIViewController, RecoveryViewControllerDelegate {
         emailTextField.textColor = Color.white
         emailTextField.detailColor = Color.white
         
+        emailTextField.autocorrectionType = .no
+        
         emailTextField.keyboardType = .emailAddress
         
         emailTextField.delegate = self
@@ -211,6 +215,8 @@ class LoginViewController: UIViewController, RecoveryViewControllerDelegate {
         passwordTextField.keyboardType = .default
         passwordTextField.isSecureTextEntry = true
         
+        passwordTextField.autocorrectionType = .no
+        
         passwordTextField.delegate = self
     }
     
@@ -218,7 +224,7 @@ class LoginViewController: UIViewController, RecoveryViewControllerDelegate {
         repeatPasswordTextField.placeholder = "Repeat password"
         repeatPasswordTextField.detail = "Passwords don't match"
         
-        repeatPasswordTextField.returnKeyType = .continue
+        repeatPasswordTextField.returnKeyType = .done
         
         repeatPasswordTextField.placeholderNormalColor = Color.init(white: 1.0, alpha: 0.5)
         repeatPasswordTextField.placeholderActiveColor = Color.white
@@ -230,6 +236,8 @@ class LoginViewController: UIViewController, RecoveryViewControllerDelegate {
         
         repeatPasswordTextField.keyboardType = .default
         repeatPasswordTextField.isSecureTextEntry = true
+        
+        repeatPasswordTextField.autocorrectionType = .no
         
         repeatPasswordTextField.delegate = self
     }
@@ -255,12 +263,13 @@ class LoginViewController: UIViewController, RecoveryViewControllerDelegate {
 
 extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        let textFields: [TextField] = [emailTextField, passwordTextField, repeatPasswordTextField]
+        let textFields: [TextField] = state == .signin ?
+            [emailTextField, passwordTextField] :
+            [emailTextField, passwordTextField, repeatPasswordTextField]
         if let last = textFields.last,
             let textField = textField as? TextField {
             if textField == last {
                 textField.resignFirstResponder()
-                signupTouched(signupButton)
             } else {
                 let index = textFields.index(of: textField) ?? 0
                 textFields[index + 1].becomeFirstResponder()

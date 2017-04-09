@@ -101,7 +101,7 @@ class RecoveryViewController: UIViewController {
         emailTextField.placeholder = "Email"
         emailTextField.detail = "Should be a valid email"
         
-        emailTextField.returnKeyType = .continue
+        emailTextField.returnKeyType = .done
         
         emailTextField.placeholderNormalColor = Color.init(white: 1.0, alpha: 0.5)
         emailTextField.placeholderActiveColor = Color.white
@@ -112,6 +112,7 @@ class RecoveryViewController: UIViewController {
         emailTextField.detailColor = Color.white
         
         emailTextField.keyboardType = .emailAddress
+        emailTextField.autocorrectionType = .no
         
         emailTextField.delegate = self
     }
@@ -138,7 +139,6 @@ class RecoveryViewController: UIViewController {
 extension RecoveryViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        resetTouched(resetButton)
         return false
     }
 }

@@ -114,6 +114,7 @@ class ClientsTableViewController: UITableViewController {
         emailTextField.keyboardType = .emailAddress
         
         emailTextField.delegate = self
+        emailTextField.autocorrectionType = .no
     }
     
     fileprivate func setupAddButton() {

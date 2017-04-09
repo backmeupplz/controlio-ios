@@ -108,6 +108,7 @@ class ChangePasswordViewController: UIViewController {
         
         passwordTextField.textColor = Color.white
         passwordTextField.detailColor = Color.white
+        passwordTextField.autocorrectionType = .no
         
         passwordTextField.keyboardType = .default
         passwordTextField.isSecureTextEntry = true
@@ -119,7 +120,7 @@ class ChangePasswordViewController: UIViewController {
         repeatPasswordTextField.placeholder = "Repeat password"
         repeatPasswordTextField.detail = "Passwords don't match"
         
-        repeatPasswordTextField.returnKeyType = .continue
+        repeatPasswordTextField.returnKeyType = .done
         
         repeatPasswordTextField.placeholderNormalColor = Color.init(white: 1.0, alpha: 0.5)
         repeatPasswordTextField.placeholderActiveColor = Color.white
@@ -131,6 +132,7 @@ class ChangePasswordViewController: UIViewController {
         
         repeatPasswordTextField.keyboardType = .default
         repeatPasswordTextField.isSecureTextEntry = true
+        repeatPasswordTextField.autocorrectionType = .no
         
         repeatPasswordTextField.delegate = self
     }
@@ -149,7 +151,6 @@ extension ChangePasswordViewController: UITextFieldDelegate {
             let textField = textField as? TextField {
             if textField == last {
                 textField.resignFirstResponder()
-                resetTouched(resetButton)
             } else {
                 let index = textFields.index(of: textField) ?? 0
                 textFields[index + 1].becomeFirstResponder()

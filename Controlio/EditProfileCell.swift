@@ -77,6 +77,7 @@ class EditProfileCell: UITableViewCell {
         emailTextfield.tintColor = Color.controlioGreen()
         emailTextfield.dividerActiveColor = Color.controlioGreen()
         emailTextfield.placeholderActiveColor = Color.controlioGreen()
+        emailTextfield.autocorrectionType = .no
     }
     
     fileprivate func setupPhoneTextField() {
@@ -88,6 +89,7 @@ class EditProfileCell: UITableViewCell {
         phoneTextfield.tintColor = Color.controlioGreen()
         phoneTextfield.dividerActiveColor = Color.controlioGreen()
         phoneTextfield.placeholderActiveColor = Color.controlioGreen()
+        phoneTextfield.autocorrectionType = .no
     }
     
     fileprivate func configure() {
@@ -120,7 +122,6 @@ extension EditProfileCell: UITextFieldDelegate {
             let textField = textField as? TextField {
             if textField == last {
                 textField.resignFirstResponder()
-                delegate?.saveTouched()
             } else {
                 let index = textFields.index(of: textField) ?? 0
                 textFields[index + 1].becomeFirstResponder()

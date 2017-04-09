@@ -105,7 +105,7 @@ class MagicLinkViewController: UIViewController {
         emailTextField.placeholder = "Email"
         emailTextField.detail = "Should be a valid email"
         
-        emailTextField.returnKeyType = .continue
+        emailTextField.returnKeyType = .done
         
         emailTextField.placeholderNormalColor = Color.init(white: 1.0, alpha: 0.5)
         emailTextField.placeholderActiveColor = Color.white
@@ -116,6 +116,7 @@ class MagicLinkViewController: UIViewController {
         emailTextField.detailColor = Color.white
         
         emailTextField.keyboardType = .emailAddress
+        emailTextField.autocorrectionType = .no
         
         emailTextField.delegate = self
     }
@@ -142,7 +143,6 @@ class MagicLinkViewController: UIViewController {
 extension MagicLinkViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        magicLinkTouched(magicLinkButton)
         return false
     }
 }

@@ -139,6 +139,8 @@ class NewProjectCell: UITableViewCell {
         managerTextField.placeholderActiveColor = Color.controlioGreen()
         managerTextField.backgroundColor = Color.clear
         
+        managerTextField.autocorrectionType = .no
+        
         managerTextField.delegate = self
     }
     
