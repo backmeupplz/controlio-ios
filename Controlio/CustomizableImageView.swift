@@ -24,12 +24,13 @@ class CustomizableImageView: UIImageView {
     fileprivate func getImageFromS3() {
         let cache = SDImageCache.shared()
         
-        if let image = cache?.imageFromDiskCache(forKey: s3Key!) {
+        if let image = cache.imageFromDiskCache(forKey: s3Key!) {
             print("got image (\(s3Key!)) from memory cache")
             self.image = image
             return
         }
-        let _ = cache?.queryDiskCache(forKey: s3Key) { image, cacheType in
+        let _ = cache.queryCacheOperation(forKey: s3Key)
+        { image, data, cacheType in
             if let image = image {
                 print("got image (\(self.s3Key!)) from disk cache")
                 self.image = image
@@ -39,7 +40,7 @@ class CustomizableImageView: UIImageView {
                         PopupNotification.show(notification: error)
                     } else if let image = image {
                         print("got image (\(self.s3Key!)) from internet")
-                        cache?.store(image, forKey: self.s3Key!)
+                        cache.store(image, forKey: self.s3Key!)
                         self.image = image
                     }
                 }

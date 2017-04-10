@@ -61,9 +61,9 @@ class EditProfileCell: UITableViewCell {
         nameTextfield.returnKeyType = .continue
         nameTextfield.keyboardType = .default
         nameTextfield.delegate = self
-        nameTextfield.tintColor = Color.controlioGreen()
-        nameTextfield.dividerActiveColor = Color.controlioGreen()
-        nameTextfield.placeholderActiveColor = Color.controlioGreen()
+        nameTextfield.tintColor = Color.controlioGreen
+        nameTextfield.dividerActiveColor = Color.controlioGreen
+        nameTextfield.placeholderActiveColor = Color.controlioGreen
         nameTextfield.autocapitalizationType = .words
     }
     
@@ -74,9 +74,9 @@ class EditProfileCell: UITableViewCell {
         emailTextfield.keyboardType = .emailAddress
         emailTextfield.isEnabled = false
         emailTextfield.delegate = self
-        emailTextfield.tintColor = Color.controlioGreen()
-        emailTextfield.dividerActiveColor = Color.controlioGreen()
-        emailTextfield.placeholderActiveColor = Color.controlioGreen()
+        emailTextfield.tintColor = Color.controlioGreen
+        emailTextfield.dividerActiveColor = Color.controlioGreen
+        emailTextfield.placeholderActiveColor = Color.controlioGreen
         emailTextfield.autocorrectionType = .no
     }
     
@@ -86,9 +86,9 @@ class EditProfileCell: UITableViewCell {
         phoneTextfield.returnKeyType = .done
         phoneTextfield.keyboardType = .phonePad
         phoneTextfield.delegate = self
-        phoneTextfield.tintColor = Color.controlioGreen()
-        phoneTextfield.dividerActiveColor = Color.controlioGreen()
-        phoneTextfield.placeholderActiveColor = Color.controlioGreen()
+        phoneTextfield.tintColor = Color.controlioGreen
+        phoneTextfield.dividerActiveColor = Color.controlioGreen
+        phoneTextfield.placeholderActiveColor = Color.controlioGreen
         phoneTextfield.autocorrectionType = .no
     }
     

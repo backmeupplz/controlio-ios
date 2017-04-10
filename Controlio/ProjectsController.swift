@@ -7,18 +7,62 @@
 //
 
 import UIKit
-import UIScrollView_InfiniteScroll
 import MBProgressHUD
 import DZNEmptyDataSet
 import Material
+import AsyncDisplayKit
 
-class ProjectsController: UITableViewController, ProjectApproveCellDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDelegate {
     
     // MARK: - Variables -
     
+    fileprivate var tableNode: ASTableNode!
+    
     fileprivate var invites = [Invite]()
     fileprivate var projects = [Project]()
+    
     fileprivate var isLoading = true
+    fileprivate var needsMoreProjects = true
+    
+    fileprivate var refreshControl: UIRefreshControl?
+    
+    // MARK: - View Controller Life Cycle -
+    
+    init() {
+        let tableNode = ASTableNode(style: .plain)
+        
+        super.init(node: tableNode)
+        
+        self.tableNode = tableNode
+        self.tableNode.dataSource = self
+        self.tableNode.delegate = self
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupTabBar()
+        setupTableView()
+        addRefreshControl()
+        setupBackButton()
+
+        loadInitialProjects()
+        subscribe()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableNode.reloadData()
+    }
+    
+    deinit {
+        unsubscribe()
+    }
     
     // MARK: - ProjectControllerDelegate -
     
@@ -27,9 +71,9 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate, DZN
         
         projects.remove(at: index)
         
-        tableView.beginUpdates()
-        tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .right)
-        tableView.endUpdates()
+//        tableView.beginUpdates()
+//        tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .right)
+//        tableView.endUpdates()
     }
     
     // MARK: - ProjectApproveCell -
@@ -41,13 +85,13 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate, DZN
         { error in
             hud.hide(animated: true)
             if let error = error {
-                self.snackbarController?.show(error: error.domain)
+//                self.snackbarController?.show(error: error.domain)
             } else {
-                self.snackbarController?.show(text: "You have accepted the invite to \"\(cell.invite.project!.title ?? "")\"")
-                self.tableView.beginUpdates()
+//                self.snackbarController?.show(text: "You have accepted the invite to \"\(cell.invite.project!.title ?? "")\"")
+//                self.tableView.beginUpdates()
                 self.invites = self.invites.filter { $0 != cell.invite }
-                self.tableView.deleteRows(at: [self.tableView.indexPath(for: cell)!], with: .automatic)
-                self.tableView.endUpdates()
+//                self.tableView.deleteRows(at: [self.tableView.indexPath(for: cell)!], with: .automatic)
+//                self.tableView.endUpdates()
                 self.loadInitialOnlyProjects()
             }
         }
@@ -60,92 +104,39 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate, DZN
         { error in
             hud.hide(animated: true)
             if let error = error {
-                self.snackbarController?.show(error: error.domain)
+//                self.snackbarController?.show(error: error.domain)
             } else {
-                self.snackbarController?.show(text: "You have rejected the invite to \"\(cell.invite.project!.title ?? "")\"")
-                self.tableView.beginUpdates()
+//                self.snackbarController?.show(text: "You have rejected the invite to \"\(cell.invite.project!.title ?? "")\"")
+//                self.tableView.beginUpdates()
                 self.invites = self.invites.filter { $0 != cell.invite }
-                self.tableView.deleteRows(at: [self.tableView.indexPath(for: cell)!], with: .automatic)
-                self.tableView.endUpdates()
+//                self.tableView.deleteRows(at: [self.tableView.indexPath(for: cell)!], with: .automatic)
+//                self.tableView.endUpdates()
             }
         }
     }
     
-    // MARK: - UITableViewDataSource -
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 1 ? projects.count : invites.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectApproveCell", for: indexPath) as! ProjectApproveCell
-            cell.invite = invites[(indexPath as NSIndexPath).row]
-            cell.delegate = self
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectCell", for: indexPath) as! ProjectCell
-            cell.project = projects[(indexPath as NSIndexPath).row]
-            return cell
-        }
-    }
-    
-    // MARK: - UITableViewDelegate -
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 {
-            Router(self).show(project: invites[(indexPath as NSIndexPath).row].project!)
-        } else {
-            Router(self).show(project: projects[(indexPath as NSIndexPath).row])
-        }
-    }
-    
-    // MARK: - View Controller Life Cycle -
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        setupTableView()
-        addRefreshControl()
-        setupBackButton()
-        
-        addInfiniteScrolling()
-        refreshControl?.beginRefreshing()
-        loadInitialProjects()
-        
-        subscribe()
-        edgesForExtendedLayout = []
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        tableView.reloadData()
-    }
-
-    deinit {
-        unsubscribe()
-    }
-    
     // MARK: - Private Functions -
     
-    fileprivate func setupTableView() {
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 464.0
-        tableView.register(UINib(nibName: "ProjectCell", bundle: nil), forCellReuseIdentifier: "ProjectCell")
-        tableView.register(UINib(nibName: "ProjectApproveCell", bundle: nil), forCellReuseIdentifier: "ProjectApproveCell")
-        tableView.emptyDataSetSource = self
-        tableView.emptyDataSetDelegate = self
-        tableView.tableFooterView = UIView()
+    fileprivate func setupTabBar() {
+        navigationController?.tabBarItem.image = R.image.projects()
+        navigationController?.tabBarItem.title = "Projects"
     }
     
+    fileprivate func setupTableView() {
+//        tableNode.view.emptyDataSetSource = self
+//        tableNode.view.emptyDataSetDelegate = self
+        tableNode.view.tableFooterView = UIView()
+        tableNode.view.separatorStyle = .none
+        tableNode.view.backgroundColor = Color.controlioTableBackground
+        tableNode.view.contentInset = EdgeInsets(top: 5, left: 0, bottom: 0, right: 0)
+    }
+
     fileprivate func addRefreshControl() {
         refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(ProjectsController.loadInitialProjects), for: .valueChanged)
+        guard let refreshControl = refreshControl else { return }
+        tableNode.view.addSubview(refreshControl)
+        tableNode.view.sendSubview(toBack: refreshControl)
+        refreshControl.addTarget(self, action: #selector(ProjectsController.loadInitialProjects), for: .valueChanged)
     }
     
     fileprivate func setupBackButton() {
@@ -179,15 +170,7 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate, DZN
     
     // MARK: - Pagination -
     
-    fileprivate func addInfiniteScrolling() {
-        tableView.addInfiniteScroll
-        { tableView in
-            self.loadMoreProjects()
-        }
-    }
-    
     @objc fileprivate func loadInitialProjects() {
-        
         isLoading = true
         Server.getInvites
         { error, invites in
@@ -195,7 +178,7 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate, DZN
                 self.snackbarController?.show(error: error.domain)
             } else if let invites = invites {
                 self.invites = invites
-                self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+                self.tableNode.reloadSections(IndexSet(integer: 0), with: .fade)
             }
         }
         Server.getProjects
@@ -206,7 +189,7 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate, DZN
             } else if let projects = projects {
                 self.addInitialProjects(projects: projects)
             } else {
-                self.tableView.reloadData()
+                self.tableNode.reloadData()
             }
             self.refreshControl?.endRefreshing()
         }
@@ -217,7 +200,7 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate, DZN
         Server.getProjects
             { error, projects in
                 if let error = error {
-                    self.snackbarController?.show(error: error.domain)
+//                    self.snackbarController?.show(error: error.domain)
                 } else if let projects = projects {
                     self.addInitialProjects(projects: projects)
                 }
@@ -225,36 +208,33 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate, DZN
         }
     }
     
-    fileprivate func loadMoreProjects() {
+    fileprivate func loadMoreProjects(completion: @escaping ()->()) {
         Server.getProjects(skip: projects.count)
         { error, projects in
             if let error = error {
-                self.snackbarController?.show(error: error.domain)
-            } else {
-                self.addProjects(projects: projects!)
+//                self.snackbarController?.show(error: error.domain)
+            } else if let projects = projects {
+                self.addProjects(projects: projects)
             }
-            self.tableView.finishInfiniteScroll()
+            completion()
         }
     }
     
     fileprivate func addInitialProjects(projects: [Project]) {
-        let indexPathsToDelete = IndexPath.range(start: 0, length: self.projects.count, section: 1)
+        needsMoreProjects = true
         self.projects = projects
-        let indexPathsToAdd = IndexPath.range(start: 0, length: projects.count, section: 1)
         
-        tableView.beginUpdates()
-        tableView.deleteRows(at: indexPathsToDelete, with: .fade)
-        tableView.insertRows(at: indexPathsToAdd, with: .fade)
-        tableView.endUpdates()
+        tableNode.reloadSections(IndexSet(integer: 1), with: .fade)
     }
     
     fileprivate func addProjects(projects: [Project]) {
+        if projects.count == 0 {
+            needsMoreProjects = false
+        }
         let indexPaths = IndexPath.range(start: self.projects.count, length: projects.count, section: 1)
         self.projects += projects
         
-        tableView.beginUpdates()
-        tableView.insertRows(at: indexPaths, with: .bottom)
-        tableView.endUpdates()
+        tableNode.insertRows(at: indexPaths, with: .bottom)
     }
     
     // MARK: - Status Bar -
@@ -262,9 +242,55 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate, DZN
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .lightContent
     }
+}
+
+extension ProjectsController: ASTableDataSource {
+    func numberOfSections(in tableNode: ASTableNode) -> Int {
+        return 2
+    }
     
-    // MARK: - DZNEmptyDataSetSource -
+    func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {
+        return section == 1 ? projects.count : invites.count
+    }
     
+    func tableNode(_ tableNode: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
+        return {
+            if indexPath.section == 0 {
+                return ProjectApproveCell(with: self.invites[indexPath.row],
+                                          delegate: self)
+            } else {
+                return ProjectCell(with: self.projects[indexPath.row],
+                                   type: .list)
+            }
+        }
+    }
+    
+    func shouldBatchFetch(for tableNode: ASTableNode) -> Bool {
+        return needsMoreProjects
+    }
+    
+    func tableNode(_ tableNode: ASTableNode, willBeginBatchFetchWith context: ASBatchContext) {
+        loadMoreProjects
+        {
+            context.completeBatchFetching(true)
+        }
+        
+    }
+}
+
+extension ProjectsController: ASTableDelegate {
+    func tableNode(_ tableNode: ASTableNode, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            if let project = invites[indexPath.row].project {
+                Router(self).show(project: project)
+            }
+        } else {
+            Router(self).show(project: projects[indexPath.row])
+        }
+    }
+}
+
+extension ProjectsController: DZNEmptyDataSetSource {
     func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
         let text = isLoading ? "Loading...": "You don't have any projects yet"
         let attributes = [
@@ -292,8 +318,8 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate, DZN
     func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControlState) -> NSAttributedString! {
         let attributes = [
             NSFontAttributeName: Font.boldSystemFont(ofSize: 17.0),
-            NSForegroundColorAttributeName: Color.controlioGreen(),
-        ]
+            NSForegroundColorAttributeName: Color.controlioGreen,
+            ]
         
         return NSAttributedString(string: "Create project", attributes: attributes)
     }
@@ -301,9 +327,9 @@ class ProjectsController: UITableViewController, ProjectApproveCellDelegate, DZN
     func verticalOffset(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat {
         return 60
     }
-    
-    // MARK: - DZNEmptyDataSetDelegate -
-    
+}
+
+extension ProjectsController: DZNEmptyDataSetDelegate {
     func emptyDataSet(_ scrollView: UIScrollView!, didTap button: UIButton!) {
         navigationController?.tabBarController?.selectedIndex = 1
     }

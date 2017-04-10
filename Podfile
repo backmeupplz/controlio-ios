@@ -4,10 +4,11 @@ use_frameworks!
 inhibit_all_warnings!
 
 target 'Controlio' do
+    pod 'AsyncDisplayKit'
     pod 'Stripe', :git => 'https://github.com/stripe/stripe-ios'
     pod 'Alamofire', '~> 4.0'
     pod 'SwiftyJSON'
-    pod 'SDWebImage', '~> 3.7'
+    pod 'SDWebImage', '~> 4.0'
     pod 'SnapKit', '~> 3.0'
     pod 'UITextField+Shake', '~> 1.1'
     pod 'SlackTextViewController'
@@ -21,4 +22,6 @@ target 'Controlio' do
     pod 'DZNEmptyDataSet'
     pod 'NohanaImagePicker', :git => 'https://github.com/MixailE/NohanaImagePicker'
     pod 'SimulatorStatusMagic', :configurations => ['Debug']
+    pod 'DWURecyclingAlert', :configurations => ['Debug']
+    pod 'GDPerformanceView-Swift', '~> 1.2.0', :configurations => ['Debug']
 end

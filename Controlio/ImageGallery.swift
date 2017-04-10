@@ -15,8 +15,8 @@ class ImageGallery: SKPhotoDownloader {
         if let imageFromMemoryCache = SDImageCache.shared().imageFromMemoryCache(forKey: key) {
             completion(imageFromMemoryCache, nil)
         } else {
-            SDImageCache.shared().queryDiskCache(forKey: key)
-            { image, cacheType in
+            SDImageCache.shared().queryCacheOperation(forKey: key)
+            { image, data, cacheType in
                 if let image = image {
                     completion(image, nil)
                 } else {

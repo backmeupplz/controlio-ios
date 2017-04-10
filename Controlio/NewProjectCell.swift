@@ -92,8 +92,8 @@ class NewProjectCell: UITableViewCell {
         
         titleTextField.returnKeyType = .next
         
-        titleTextField.dividerActiveColor = Color.controlioGreen()
-        titleTextField.placeholderActiveColor = Color.controlioGreen()
+        titleTextField.dividerActiveColor = Color.controlioGreen
+        titleTextField.placeholderActiveColor = Color.controlioGreen
         titleTextField.autocapitalizationType = .sentences
         titleTextField.backgroundColor = Color.clear
         
@@ -106,8 +106,8 @@ class NewProjectCell: UITableViewCell {
         
         descriptionTextField.returnKeyType = .next
         
-        descriptionTextField.dividerActiveColor = Color.controlioGreen()
-        descriptionTextField.placeholderActiveColor = Color.controlioGreen()
+        descriptionTextField.dividerActiveColor = Color.controlioGreen
+        descriptionTextField.placeholderActiveColor = Color.controlioGreen
         descriptionTextField.autocapitalizationType = .sentences
         descriptionTextField.backgroundColor = Color.clear
         
@@ -120,8 +120,8 @@ class NewProjectCell: UITableViewCell {
         
         initialStatusTextField.returnKeyType = .next
         
-        initialStatusTextField.dividerActiveColor = Color.controlioGreen()
-        initialStatusTextField.placeholderActiveColor = Color.controlioGreen()
+        initialStatusTextField.dividerActiveColor = Color.controlioGreen
+        initialStatusTextField.placeholderActiveColor = Color.controlioGreen
         initialStatusTextField.autocapitalizationType = .sentences
         initialStatusTextField.backgroundColor = Color.clear
         
@@ -135,8 +135,8 @@ class NewProjectCell: UITableViewCell {
         managerTextField.returnKeyType = .done
         managerTextField.keyboardType = .emailAddress
         
-        managerTextField.dividerActiveColor = Color.controlioGreen()
-        managerTextField.placeholderActiveColor = Color.controlioGreen()
+        managerTextField.dividerActiveColor = Color.controlioGreen
+        managerTextField.placeholderActiveColor = Color.controlioGreen
         managerTextField.backgroundColor = Color.clear
         
         managerTextField.autocorrectionType = .no
@@ -151,8 +151,8 @@ class NewProjectCell: UITableViewCell {
         clientsTextField.returnKeyType = .done
         clientsTextField.keyboardType = .emailAddress
         
-        clientsTextField.dividerActiveColor = Color.controlioGreen()
-        clientsTextField.placeholderActiveColor = Color.controlioGreen()
+        clientsTextField.dividerActiveColor = Color.controlioGreen
+        clientsTextField.placeholderActiveColor = Color.controlioGreen
         clientsTextField.backgroundColor = Color.clear
         
         clientsTextField.delegate = self

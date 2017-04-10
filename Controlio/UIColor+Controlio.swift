@@ -7,20 +7,34 @@
 //
 
 import UIKit
+import Material
 
 extension UIColor {
     
     // MARK: - General Functions -
     
-    class func controlioViolet() -> UIColor {
-        return UIColor(red: 176.0/255, green: 164.0/255, blue: 253.0/255, alpha: 1.0)
+    static var controlioViolet: Color {
+        return Color(wholeRed: 176, green: 164, blue: 253, alpha: 1)
+    }
+    static var controlioGreen: Color {
+        return Color(wholeRed: 3, green: 195, blue: 134, alpha: 1)
+    }
+    static var controlioGradientGreen: Color {
+        return Color(wholeRed: 72, green: 207, blue: 170, alpha: 1)
+    }
+    static var controlioTableBackground: Color {
+        return Color(wholeRed: 244, green: 246, blue: 249, alpha: 1)
+    }
+    static var controlioGrayText: Color {
+        return Color(wholeRed: 88, green: 93, blue: 108, alpha: 0.5)
+    }
+    static var controlioBlackText: Color {
+        return Color(wholeRed: 88, green: 93, blue: 108, alpha: 1)
     }
     
-    class func controlioGreen() -> UIColor {
-        return UIColor(red: 3.0/255, green: 195.0/255, blue: 134.0/255, alpha: 1.0)
-    }
+    // MARK: - Private functions -
     
-    class func controlioGradientGreen() -> UIColor {
-        return UIColor(red: 72.0/255, green: 207.0/255, blue: 170.0/255, alpha: 1.0)
+    fileprivate convenience init(wholeRed: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
+        self.init(red: wholeRed/255.0, green: green/255.0, blue: blue/255.0, alpha: alpha)
     }
 }

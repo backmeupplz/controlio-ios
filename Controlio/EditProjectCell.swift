@@ -67,8 +67,8 @@ class EditProjectCell: UITableViewCell {
         
         titleTextField.returnKeyType = .next
         
-        titleTextField.dividerActiveColor = Color.controlioGreen()
-        titleTextField.placeholderActiveColor = Color.controlioGreen()
+        titleTextField.dividerActiveColor = Color.controlioGreen
+        titleTextField.placeholderActiveColor = Color.controlioGreen
         titleTextField.autocapitalizationType = .sentences
         titleTextField.backgroundColor = Color.clear
         
@@ -81,8 +81,8 @@ class EditProjectCell: UITableViewCell {
         
         descriptionTextField.returnKeyType = .done
         
-        descriptionTextField.dividerActiveColor = Color.controlioGreen()
-        descriptionTextField.placeholderActiveColor = Color.controlioGreen()
+        descriptionTextField.dividerActiveColor = Color.controlioGreen
+        descriptionTextField.placeholderActiveColor = Color.controlioGreen
         descriptionTextField.autocapitalizationType = .sentences
         descriptionTextField.backgroundColor = Color.clear
         

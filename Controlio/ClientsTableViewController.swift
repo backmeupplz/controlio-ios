@@ -107,8 +107,8 @@ class ClientsTableViewController: UITableViewController {
         
         emailTextField.returnKeyType = .done
         
-        emailTextField.placeholderActiveColor = Color.controlioGreen()
-        emailTextField.dividerActiveColor = Color.controlioGreen()
+        emailTextField.placeholderActiveColor = Color.controlioGreen
+        emailTextField.dividerActiveColor = Color.controlioGreen
         emailTextField.backgroundColor = Color.clear
         
         emailTextField.keyboardType = .emailAddress
@@ -119,7 +119,7 @@ class ClientsTableViewController: UITableViewController {
     
     fileprivate func setupAddButton() {
         addButton.setImage(Icon.add, for: .normal)
-        addButton.tintColor = Color.controlioGreen()
+        addButton.tintColor = Color.controlioGreen
     }
     
     fileprivate func addSaveButton() {

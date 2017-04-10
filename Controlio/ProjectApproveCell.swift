@@ -8,13 +8,14 @@
 
 import UIKit
 import Material
+import AsyncDisplayKit
 
 protocol ProjectApproveCellDelegate {
     func checkTouched(at cell: ProjectApproveCell)
     func crossTouched(at cell: ProjectApproveCell)
 }
 
-class ProjectApproveCell: UITableViewCell {
+class ProjectApproveCell: ASCellNode {
     
     // MARK: - Outlets -
     
@@ -30,14 +31,18 @@ class ProjectApproveCell: UITableViewCell {
     }
     
     // MARK: - View Life Cycle -
+    
+    init(with invite: Invite, delegate: ProjectApproveCellDelegate) {
+        super.init()
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
         
         checkButton.setImage(Icon.check, for: .normal)
-        checkButton.tintColor = Color.controlioGreen()
+        checkButton.tintColor = Color.controlioGreen
         crossButton.setImage(Icon.close, for: .normal)
-        crossButton.tintColor = Color.controlioGreen()
+        crossButton.tintColor = Color.controlioGreen
     }
     
     // MARK: - Actions -

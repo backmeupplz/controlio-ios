@@ -8,6 +8,5 @@
 
 import Foundation
 
-let apiUrl = "http://api.controlio.co:3001/"
-//let apiUrl = "http://localhost:8443/"
+let apiUrl = "https://api.controlio.co/"
 let apiKey = "p[oqkix=%FAi]&FMAYnLUJJWC,w"

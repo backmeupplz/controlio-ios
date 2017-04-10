@@ -28,6 +28,38 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     fileprivate var currentGallery: ImageGallery?
     fileprivate var isLoading = true
     
+    // MARK: - View Controller Life Cycle -
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupTableView()
+        addRefreshControl()
+        setupBackButton()
+        setupInfoButton()
+        setupInput()
+        
+        addInfiniteScrolling()
+        refreshControl?.beginRefreshing()
+        loadInitialPosts()
+        edgesForExtendedLayout = []
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        configure()
+        subcribeForNotifications()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        unsubscribe()
+        hideInput()
+        view.endEditing(true)
+    }
+    
     // MARK: - UITableViewDataSource -
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -231,38 +263,6 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         }
     }
     
-    // MARK: - View Controller Life Cycle -
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        setupTableView()
-        addRefreshControl()
-        setupBackButton()
-        setupInfoButton()
-        setupInput()
-        
-        addInfiniteScrolling()
-        refreshControl?.beginRefreshing()
-        loadInitialPosts()
-        edgesForExtendedLayout = []
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        configure()
-        subcribeForNotifications()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        unsubscribe()
-        hideInput()
-        view.endEditing(true)
-    }
-    
     // MARK: - Private Functions -
     
     fileprivate func configure() {
@@ -390,10 +390,10 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     // MARK: - Pagination -
     
     fileprivate func addInfiniteScrolling() {
-        tableView.addInfiniteScroll
-        { tableView in
-            self.loadMorePosts()
-        }
+//        tableView.addInfiniteScroll
+//        { tableView in
+//            self.loadMorePosts()
+//        }
     }
     
     @objc fileprivate func loadInitialPosts() {
@@ -402,34 +402,31 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         { error, posts in
             if let error = error {
                 self.snackbarController?.show(error: error.domain)
-            } else {
+            } else if let posts = posts {
                 self.isLoading = false
-                self.addInitialPosts(posts: posts!)
+                self.addInitialPosts(posts: posts)
             }
             self.refreshControl?.endRefreshing()
         }
     }
     
     fileprivate func loadMorePosts() {
-        Server.getPosts(for: project, skip: posts.count)
-        { error, posts in
-            if let error = error {
-                self.snackbarController?.show(error: error.domain)
-            } else {
-                self.addPosts(posts: posts!)
-            }
-            self.tableView.finishInfiniteScroll()
-        }
+//        Server.getPosts(for: project, skip: posts.count)
+//        { error, posts in
+//            if let error = error {
+//                self.snackbarController?.show(error: error.domain)
+//            } else if let posts = posts {
+//                self.addPosts(posts: posts)
+//            }
+//            self.tableView.finishInfiniteScroll()
+//        }
     }
     
     fileprivate func addInitialPosts(posts: [Post]) {
-        let indexPathsToDelete = IndexPath.range(start: 0, length: self.posts.count)
         self.posts = posts
-        let indexPathsToAdd = IndexPath.range(start: 0, length: posts.count)
         
         tableView.beginUpdates()
-        tableView.deleteRows(at: indexPathsToDelete, with: .fade)
-        tableView.insertRows(at: indexPathsToAdd, with: .fade)
+        tableView.reloadSections(IndexSet(integer: 0), with: .left)
         tableView.endUpdates()
     }
     
@@ -438,7 +435,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         self.posts += posts
         
         tableView.beginUpdates()
-        tableView.insertRows(at: indexPaths, with: .bottom)
+        tableView.insertRows(at: indexPaths, with: .left)
         tableView.endUpdates()
     }
     

@@ -42,7 +42,7 @@ class Router {
     }
     
     func showMain(animated: Bool = true) {
-        show(vc: R.storyboard.main.mainController(), animated: animated)
+        show(vc: MainTabBarController(), animated: animated)
     }
     
     func showClients(with project: Project, type: ClientsTableViewControllerType = .clients) {
@@ -65,9 +65,7 @@ class Router {
     }
     
     func showInfo(for project: Project) {
-        let vc = R.storyboard.main.projectInfoController()
-        vc?.project = project
-        show(vc: vc)
+        show(vc: ProjectInfoController(with: project))
     }
     
     func show(user: User) {

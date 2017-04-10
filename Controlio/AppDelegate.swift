@@ -12,9 +12,8 @@ import MBProgressHUD
 import CLTokenInputView
 import Stripe
 import Material
-#if DEBUG
-import SimulatorStatusMagic
-#endif
+import DWURecyclingAlert
+import GDPerformanceView_Swift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -32,9 +31,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         S3.setup()
         setupPushNotifications(application: application)
         FeatureList.fetchFeatureList()
-        #if DEBUG
-        SDStatusBarManager.sharedInstance().enableOverrides()
-        #endif
+        Appearance.setup()
+        
+        // DEBUG
+//        Inject_DWURecyclingAlert()
+//        GDPerformanceMonitor.sharedInstance.startMonitoring()
         
         return true
     }
