@@ -12,8 +12,8 @@ import MBProgressHUD
 import CLTokenInputView
 import Stripe
 import Material
-import DWURecyclingAlert
-import GDPerformanceView_Swift
+//import DWURecyclingAlert
+//import GDPerformanceView_Swift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
