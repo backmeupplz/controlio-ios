@@ -22,7 +22,7 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
     fileprivate var projects = [Project]()
     
     fileprivate var isLoading = true
-    fileprivate var needsMoreProjects = true
+    fileprivate var needsMoreProjects = false
     
     fileprivate var refreshControl: UIRefreshControl?
     
@@ -67,13 +67,11 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
     // MARK: - ProjectControllerDelegate -
     
     func didDeleteProject(project: Project) {
-        let index = projects.index(of: project)!
+        guard let index = projects.index(of: project) else { return }
         
         projects.remove(at: index)
         
-//        tableView.beginUpdates()
-//        tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .right)
-//        tableView.endUpdates()
+        tableNode.deleteRows(at: [IndexPath(row: index, section: 0)], with: .right)
     }
     
     // MARK: - ProjectApproveCell -
@@ -85,13 +83,12 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
         { error in
             hud.hide(animated: true)
             if let error = error {
-//                self.snackbarController?.show(error: error.domain)
+                self.snackbarController?.show(error: error.domain)
             } else {
-//                self.snackbarController?.show(text: "You have accepted the invite to \"\(cell.invite.project!.title ?? "")\"")
-//                self.tableView.beginUpdates()
+                guard let index = self.invites.index(of: cell.invite) else { return }
+                self.snackbarController?.show(text: "You have accepted the invite to \"\(cell.invite.project!.title ?? "")\"")
                 self.invites = self.invites.filter { $0 != cell.invite }
-//                self.tableView.deleteRows(at: [self.tableView.indexPath(for: cell)!], with: .automatic)
-//                self.tableView.endUpdates()
+                self.tableNode.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
                 self.loadInitialOnlyProjects()
             }
         }
@@ -104,13 +101,12 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
         { error in
             hud.hide(animated: true)
             if let error = error {
-//                self.snackbarController?.show(error: error.domain)
+                self.snackbarController?.show(error: error.domain)
             } else {
-//                self.snackbarController?.show(text: "You have rejected the invite to \"\(cell.invite.project!.title ?? "")\"")
-//                self.tableView.beginUpdates()
+                guard let index = self.invites.index(of: cell.invite) else { return }
+                self.snackbarController?.show(text: "You have rejected the invite to \"\(cell.invite.project!.title ?? "")\"")
                 self.invites = self.invites.filter { $0 != cell.invite }
-//                self.tableView.deleteRows(at: [self.tableView.indexPath(for: cell)!], with: .automatic)
-//                self.tableView.endUpdates()
+                self.tableNode.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
             }
         }
     }
@@ -123,8 +119,6 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
     }
     
     fileprivate func setupTableView() {
-//        tableNode.view.emptyDataSetSource = self
-//        tableNode.view.emptyDataSetDelegate = self
         tableNode.view.tableFooterView = UIView()
         tableNode.view.separatorStyle = .none
         tableNode.view.backgroundColor = Color.controlioTableBackground
@@ -154,17 +148,14 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
     }
     
     func projectCreated(){
-        refreshControl?.beginRefreshing()
         loadInitialProjects()
     }
 
     func projectDeleted(){
-        refreshControl?.beginRefreshing()
         loadInitialProjects()
     }
     
     func projectIsArchivedChanged(){
-        refreshControl?.beginRefreshing()
         loadInitialProjects()
     }
     
@@ -200,7 +191,7 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
         Server.getProjects
             { error, projects in
                 if let error = error {
-//                    self.snackbarController?.show(error: error.domain)
+                    self.snackbarController?.show(error: error.domain)
                 } else if let projects = projects {
                     self.addInitialProjects(projects: projects)
                 }
@@ -212,7 +203,7 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
         Server.getProjects(skip: projects.count)
         { error, projects in
             if let error = error {
-//                self.snackbarController?.show(error: error.domain)
+                self.snackbarController?.show(error: error.domain)
             } else if let projects = projects {
                 self.addProjects(projects: projects)
             }
@@ -250,6 +241,7 @@ extension ProjectsController: ASTableDataSource {
     }
     
     func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {
+        print(projects.count, invites.count)
         return section == 1 ? projects.count : invites.count
     }
     
@@ -274,7 +266,6 @@ extension ProjectsController: ASTableDataSource {
         {
             context.completeBatchFetching(true)
         }
-        
     }
 }
 

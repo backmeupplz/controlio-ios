@@ -23,7 +23,6 @@
 		B37630551CE28CA4004FE1B7 /* AttachmentContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37630541CE28CA4004FE1B7 /* AttachmentContainerView.swift */; };
 		B37630581CE28E9B004FE1B7 /* AttachmentWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37630571CE28E9B004FE1B7 /* AttachmentWrapperView.swift */; };
 		B37A96041E2A48610075C7A7 /* ProjectApproveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37A96021E2A48610075C7A7 /* ProjectApproveCell.swift */; };
-		B37A96051E2A48610075C7A7 /* ProjectApproveCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B37A96031E2A48610075C7A7 /* ProjectApproveCell.xib */; };
 		B37F10E21D962F2500CAA8D4 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37F10E11D962F2500CAA8D4 /* EditProfileViewController.swift */; };
 		B37F10E51D962F9A00CAA8D4 /* EditProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37F10E31D962F9A00CAA8D4 /* EditProfileCell.swift */; };
 		B38323651CDC3FB3004D0A1C /* SFUIDisplay-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = B383235C1CDC3FB2004D0A1C /* SFUIDisplay-Black.otf */; };
@@ -158,7 +157,6 @@
 		B37630541CE28CA4004FE1B7 /* AttachmentContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentContainerView.swift; sourceTree = "<group>"; };
 		B37630571CE28E9B004FE1B7 /* AttachmentWrapperView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentWrapperView.swift; sourceTree = "<group>"; };
 		B37A96021E2A48610075C7A7 /* ProjectApproveCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectApproveCell.swift; sourceTree = "<group>"; };
-		B37A96031E2A48610075C7A7 /* ProjectApproveCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectApproveCell.xib; sourceTree = "<group>"; };
 		B37F10E11D962F2500CAA8D4 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		B37F10E31D962F9A00CAA8D4 /* EditProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileCell.swift; sourceTree = "<group>"; };
 		B383235C1CDC3FB2004D0A1C /* SFUIDisplay-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIDisplay-Black.otf"; sourceTree = "<group>"; };
@@ -553,7 +551,6 @@
 				B37F10E31D962F9A00CAA8D4 /* EditProfileCell.swift */,
 				B3F3039E1DAF4B6700535FCD /* EditProfileCell.xib */,
 				B37A96021E2A48610075C7A7 /* ProjectApproveCell.swift */,
-				B37A96031E2A48610075C7A7 /* ProjectApproveCell.xib */,
 				B3D81AD51E4142080035C6E2 /* UserProfileCell.swift */,
 				B3D81AD61E4142080035C6E2 /* UserProfileCell.xib */,
 				B3D81AD91E42A4810035C6E2 /* EditProjectCell.swift */,
@@ -721,7 +718,6 @@
 				B38323921CDC409D004D0A1C /* SFUIText-Light.otf in Resources */,
 				B3F303971DAF4B1800535FCD /* NewProjectCell.xib in Resources */,
 				B38323891CDC409D004D0A1C /* SFUIText-BoldItalicG1.otf in Resources */,
-				B37A96051E2A48610075C7A7 /* ProjectApproveCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
