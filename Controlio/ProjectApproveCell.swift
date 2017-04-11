@@ -37,13 +37,9 @@ class ProjectApproveCell: ASCellNode {
         createTitleNode()
         createCheckNode()
         createCrossNode()
-    }
-    
-    override func didLoad() {
-        super.didLoad()
         
         [titleNode, checkNode, crossNode]
-            .forEach { view.addSubview($0.view) }
+            .forEach { addSubnode($0) }
     }
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {

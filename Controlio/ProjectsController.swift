@@ -54,12 +54,6 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
         subscribe()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        tableNode.reloadData()
-    }
-    
     deinit {
         unsubscribe()
     }
@@ -241,7 +235,6 @@ extension ProjectsController: ASTableDataSource {
     }
     
     func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {
-        print(projects.count, invites.count)
         return section == 1 ? projects.count : invites.count
     }
     
@@ -256,17 +249,6 @@ extension ProjectsController: ASTableDataSource {
             }
         }
     }
-    
-    func shouldBatchFetch(for tableNode: ASTableNode) -> Bool {
-        return needsMoreProjects
-    }
-    
-    func tableNode(_ tableNode: ASTableNode, willBeginBatchFetchWith context: ASBatchContext) {
-        loadMoreProjects
-        {
-            context.completeBatchFetching(true)
-        }
-    }
 }
 
 extension ProjectsController: ASTableDelegate {
@@ -277,6 +259,16 @@ extension ProjectsController: ASTableDelegate {
             }
         } else {
             Router(self).show(project: projects[indexPath.row])
+        }
+    }
+    func shouldBatchFetch(for tableNode: ASTableNode) -> Bool {
+        return needsMoreProjects
+    }
+    
+    func tableNode(_ tableNode: ASTableNode, willBeginBatchFetchWith context: ASBatchContext) {
+        loadMoreProjects
+            {
+                context.completeBatchFetching(true)
         }
     }
 }

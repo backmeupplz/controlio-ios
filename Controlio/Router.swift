@@ -53,9 +53,7 @@ class Router {
     }
     
     func show(project: Project) {
-//        let vc = R.storyboard.main.projectController()
-//        vc?.project = project
-//        show(vc: Project)
+        show(vc: ProjectController(with: project))
     }
     
     func showEdit(of project: Project) {

@@ -11,24 +11,48 @@ import MBProgressHUD
 import Material
 import DZNEmptyDataSet
 import NohanaImagePicker
+import AsyncDisplayKit
 
-class ProjectController: UITableViewController, PostCellDelegate, InputViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+class ProjectController: ASViewController<ASDisplayNode> {
     
     // MARK: - Variables -
     
     var project: Project!
     var posts = [Post]()
     
-    // MARK: - Private Variables -
+    // MARK: - Variables -
+    
+    fileprivate var tableNode: ASTableNode!
     
     fileprivate var input: InputView?
     fileprivate let imagePicker = NohanaImagePickerController()
     fileprivate let cameraPicker = UIImagePickerController()
     fileprivate let maxCountAttachments: Int = 10
     fileprivate var currentGallery: ImageGallery?
+    
     fileprivate var isLoading = true
+    fileprivate var needsMorePosts = false
+    
+    fileprivate var refreshControl: UIRefreshControl?
     
     // MARK: - View Controller Life Cycle -
+    
+    init(with project: Project) {
+        let tableNode = ASTableNode(style: .plain)
+        
+        super.init(node: tableNode)
+        
+        self.project = project
+        self.tableNode = tableNode
+        self.tableNode.dataSource = self
+        self.tableNode.delegate = self
+        
+        hidesBottomBarWhenPushed = true
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,8 +63,6 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         setupInfoButton()
         setupInput()
         
-        addInfiniteScrolling()
-        refreshControl?.beginRefreshing()
         loadInitialPosts()
         edgesForExtendedLayout = []
     }
@@ -60,22 +82,221 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         view.endEditing(true)
     }
     
-    // MARK: - UITableViewDataSource -
+    // MARK: - Private Functions -
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
+    fileprivate func configure() {
+        title = project.title
+        
+        showInput()
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
-        cell.post = posts[indexPath.row]
-        cell.delegate = self
-        return cell
+    fileprivate func setupTableView() {
+        tableNode.view.tableFooterView = UIView()
+        tableNode.view.separatorStyle = .none
+        tableNode.view.backgroundColor = Color.controlioTableBackground
+        tableNode.view.contentInset = EdgeInsets(top: 5, left: 0, bottom: 0, right: 0)
     }
     
-    // MARK: - PostCellDelegate -
+    fileprivate func addRefreshControl() {
+        refreshControl = UIRefreshControl()
+        guard let refreshControl = refreshControl else { return }
+        tableNode.view.addSubview(refreshControl)
+        tableNode.view.sendSubview(toBack: refreshControl)
+        refreshControl.addTarget(self, action: #selector(ProjectController.loadInitialPosts), for: .valueChanged)
+    }
     
-    func openAttachment(_ index: Int, post: Post, fromView: UIView) {
+    fileprivate func setupBackButton() {
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    }
+    
+    fileprivate func setupInfoButton() {
+        var customView: UIView!
+        if let imageKey = project.imageKey {
+            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+            imageView.backgroundColor = Color.white
+            imageView.cornerRadius = 6
+            imageView.load(key: imageKey)
+            imageView.clipsToBounds = true
+            imageView.contentMode = .scaleAspectFill
+            let container = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+            container.addSubview(imageView)
+            let button = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+            button.addTarget(self, action: #selector(ProjectController.openProject), for: .touchUpInside)
+            container.addSubview(button)
+            customView = container
+        } else {
+            let button = UIButton(type: .infoLight)
+            button.addTarget(self, action: #selector(ProjectController.openProject), for: .touchUpInside)
+            customView = button
+        }
+        let barItem = UIBarButtonItem(customView: customView)
+        navigationItem.rightBarButtonItem = barItem
+    }
+    
+    fileprivate func setBottomScrollInset(_ inset: CGFloat) {
+        let scrollIndicatorInsets = tableNode.view.scrollIndicatorInsets
+        let contentInset = tableNode.view.contentInset
+        tableNode.view.scrollIndicatorInsets = UIEdgeInsetsMake(scrollIndicatorInsets.top,
+                                                           scrollIndicatorInsets.left,
+                                                           inset,
+                                                           scrollIndicatorInsets.right)
+        tableNode.view.contentInset = UIEdgeInsetsMake(contentInset.top,
+                                                  contentInset.left,
+                                                  inset,
+                                                  contentInset.right)
+    }
+    
+    fileprivate func setupInput() {
+        input = InputView.view(navigationController!.view, delegate: self, project: project)
+    }
+    
+    fileprivate func showInput() {
+        if project.canEdit && !project.isFinished {
+            input?.show()
+            setBottomScrollInset(input?.frame.height ?? 0)
+        }
+    }
+    
+    fileprivate func hideInput() {
+        input?.hide()
+    }
+    
+    fileprivate func reloadAndCleanInput() {
+        input?.clean()
+        loadInitialPosts()
+    }
+    
+    fileprivate func delete(post: Post, cell: PostCell) {
+        let hud = MBProgressHUD.showAdded(to: view, animated: true)
+        Server.deletePost(project: project, post: post)
+        { error in
+            hud.hide(animated: true)
+            if let error = error {
+                PopupNotification.show(notification: error.domain)
+            } else {
+                guard let index = self.posts.index(of: post) else { return }
+                self.posts.remove(at: self.posts.index(of: post)!)
+                self.tableNode.deleteRows(at: [IndexPath(row: index, section: 0)], with: .right)
+            }
+        }
+    }
+    
+    @objc fileprivate func openProject() {
+        guard let hud = MBProgressHUD.show() else { return }
+        hud.label.text = NSLocalizedString("Getting project info...", comment: "Getting project message")
+        Server.get(project: project)
+        { error, project in
+            hud.hide(animated: true)
+            if let error = error {
+                self.snackbarController?.show(error: error.domain)
+            } else if let project = project {
+                Router(self).showInfo(for: project)
+            }
+        }
+    }
+    
+    fileprivate func isValidPost(text: String, attachments: [Any]) -> Bool {
+        return !text.isEmpty || attachments.count > 0
+    }
+    
+    fileprivate func filter(attachments: [Any]) -> (completedKeys: [String], imagesToUpload: [UIImage]) {
+        let completedKeys = attachments.filter { $0 is String } as! [String]
+        let imagesToUpload = attachments.filter { $0 is UIImage } as! [UIImage]
+        return (completedKeys, imagesToUpload)
+    }
+    
+    // MARK: - Pagination -
+    
+    @objc fileprivate func loadInitialPosts() {
+        isLoading = true
+        Server.getPosts(for: project)
+        { error, posts in
+            if let error = error {
+                self.snackbarController?.show(error: error.domain)
+            } else if let posts = posts {
+                self.isLoading = false
+                self.addInitialPosts(posts: posts)
+            }
+            self.refreshControl?.endRefreshing()
+        }
+    }
+    
+    fileprivate func loadMorePosts(completion: @escaping ()->()) {
+        Server.getPosts(for: project, skip: posts.count)
+        { error, posts in
+            if let error = error {
+                self.snackbarController?.show(error: error.domain)
+            } else if let posts = posts {
+                self.addPosts(posts: posts)
+            }
+            completion()
+        }
+    }
+    
+    fileprivate func addInitialPosts(posts: [Post]) {
+        needsMorePosts = true
+        self.posts = posts
+        
+        tableNode.reloadSections(IndexSet(integer: 0), with: .fade)
+    }
+    
+    fileprivate func addPosts(posts: [Post]) {
+        if posts.count == 0 {
+            needsMorePosts = false
+        }
+        let indexPaths = IndexPath.range(start: self.posts.count, length: posts.count)
+        self.posts += posts
+        
+        tableNode.insertRows(at: indexPaths, with: .fade)
+    }
+    
+    // MARK: - Notifications -
+    
+    fileprivate func subcribeForNotifications() {
+        subscribe(to: [
+            .UIKeyboardWillShow: #selector(ProjectController.keyboardWillShow(_:)),
+            .UIKeyboardWillHide: #selector(ProjectController.keyboardWillHide(_:))
+        ])
+    }
+    
+    @objc fileprivate func keyboardWillShow(_ notification: Notification) {
+        let userInfo = (notification as NSNotification).userInfo!
+        let keyboardHeight = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height
+        let options = UIViewAnimationOptions(rawValue: UInt((userInfo[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).uintValue))
+        let duration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
+        
+        input?.changeBottomSpacing(keyboardHeight)
+        UIView.animate(withDuration: duration,
+                                   delay: 0,
+                                   options: options,
+                                   animations: { 
+                                    self.input?.layoutIfNeeded()
+            }) { finished in }
+    }
+    
+    @objc fileprivate func keyboardWillHide(_ notification: Notification) {
+        let userInfo = (notification as NSNotification).userInfo!
+        let options = UIViewAnimationOptions(rawValue: UInt((userInfo[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).uintValue))
+        let duration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
+        
+        input?.changeBottomSpacing(0)
+        UIView.animate(withDuration: duration,
+                                   delay: 0,
+                                   options: options,
+                                   animations: {
+                                    self.input?.layoutIfNeeded()
+        }) { finished in }
+    }
+    
+    // MARK: - Status Bar -
+    
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
+    }
+}
+
+extension ProjectController: PostCellDelegate {
+    func openAttachment(at index: Int, post: Post, fromView: UIView) {
         currentGallery = ImageGallery()
         currentGallery?.showGallery(atViewController: self, index: index, imageKeys: post.attachments, fromView: fromView)
     }
@@ -85,7 +306,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
             return
         }
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alert.add(sourceView: cell)
+        alert.add(sourceView: cell.view)
         alert.add(action: NSLocalizedString("Edit", comment: "Edit post button"))
         {
             self.input?.post = post
@@ -113,9 +334,9 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
             }
         }
     }
-    
-    // MARK: - InputViewDelegate -
-    
+}
+
+extension ProjectController: InputViewDelegate {
     func openPicker(with delegate: AllPickerDelegate, sender: UIView) {
         imagePicker.delegate = delegate
         cameraPicker.delegate = delegate
@@ -145,7 +366,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     func closeImagePicker() {
         dismiss(animated: true) { }
     }
-
+    
     func shouldChangeStatus(text: String) {
         guard let hud = MBProgressHUD.show() else { return }
         hud.label.text = NSLocalizedString("Changing status...", comment: "Project change status message")
@@ -193,8 +414,8 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
             hud.mode = .annularDeterminate
             hud.label.text = NSLocalizedString("Uploading attachments...", comment: "New post upload message")
             S3.upload(images: imagesToUpload, progress:
-            { progress in
-                hud.progress = progress
+                { progress in
+                    hud.progress = progress
             })
             { keys, error in
                 if let error = error {
@@ -210,9 +431,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     }
     
     func updateViewPost(post: Post){
-        self.tableView.beginUpdates()
-        self.tableView.reloadRows(at: [IndexPath(row: self.posts.index(of: post)!, section: 0)], with: .fade)
-        self.tableView.endUpdates()
+        tableNode.reloadRows(at: [IndexPath(row: self.posts.index(of: post)!, section: 0)], with: .fade)
     }
     
     func editPost(post: Post, hud: MBProgressHUD){
@@ -238,14 +457,14 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         }
         guard let hud = MBProgressHUD.show() else { return }
         let (completedKeys, imagesToUpload) = filter(attachments: attachments)
-
+        
         if imagesToUpload.count > 0 {
             hud.mode = .annularDeterminate
             hud.label.text = NSLocalizedString("Uploading attachments", comment: "Edit post upload message")
             S3.upload(images: imagesToUpload, progress:
                 { progress in
                     hud.progress = progress
-                })
+            })
             { keys, error in
                 if let error = error {
                     self.snackbarController?.show(error: error)
@@ -262,229 +481,9 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
             editPost(post: post, hud: hud)
         }
     }
-    
-    // MARK: - Private Functions -
-    
-    fileprivate func configure() {
-        title = project.title
-        
-        tableView.reloadData()
-        showInput()
-    }
-    
-    fileprivate func setupTableView() {
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 464.0
-        tableView.register(UINib(nibName: "PostCell", bundle: nil), forCellReuseIdentifier: "PostCell")
-        tableView.emptyDataSetSource = self
-        tableView.emptyDataSetDelegate = self
-        tableView.tableFooterView = UIView()
-    }
-    
-    fileprivate func addRefreshControl() {
-        refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(ProjectController.loadInitialPosts), for: .valueChanged)
-    }
-    
-    fileprivate func setupBackButton() {
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-    }
-    
-    fileprivate func setupInfoButton() {
-        var customView: UIView!
-        if let imageKey = project.imageKey {
-            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-            imageView.backgroundColor = Color.white
-            imageView.cornerRadius = 6
-            imageView.load(key: imageKey)
-            imageView.clipsToBounds = true
-            imageView.contentMode = .scaleAspectFill
-            let container = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-            container.addSubview(imageView)
-            let button = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-            button.addTarget(self, action: #selector(ProjectController.openProject), for: .touchUpInside)
-            container.addSubview(button)
-            customView = container
-        } else {
-            let button = UIButton(type: .infoLight)
-            button.addTarget(self, action: #selector(ProjectController.openProject), for: .touchUpInside)
-            customView = button
-        }
-        let barItem = UIBarButtonItem(customView: customView)
-        navigationItem.rightBarButtonItem = barItem
-    }
-    
-    fileprivate func setBottomScrollInset(_ inset: CGFloat) {
-        let scrollIndicatorInsets = tableView.scrollIndicatorInsets
-        let contentInset = tableView.contentInset
-        tableView.scrollIndicatorInsets = UIEdgeInsetsMake(scrollIndicatorInsets.top,
-                                                           scrollIndicatorInsets.left,
-                                                           inset,
-                                                           scrollIndicatorInsets.right)
-        tableView.contentInset = UIEdgeInsetsMake(contentInset.top,
-                                                  contentInset.left,
-                                                  inset,
-                                                  contentInset.right)
-    }
-    
-    fileprivate func setupInput() {
-        input = InputView.view(navigationController!.view, vc: self, delegate: self, project: project)
-    }
-    
-    fileprivate func showInput() {
-        if project.canEdit && !project.isFinished {
-            input?.show()
-            setBottomScrollInset(input?.frame.height ?? 0)
-        }
-    }
-    
-    fileprivate func hideInput() {
-        input?.hide()
-    }
-    
-    fileprivate func reloadAndCleanInput() {
-        input?.clean()
-        loadInitialPosts()
-    }
-    
-    fileprivate func delete(post: Post, cell: PostCell) {
-        let hud = MBProgressHUD.showAdded(to: view, animated: true)
-        Server.deletePost(project: project, post: post)
-        { error in
-            hud.hide(animated: true)
-            if let error = error {
-                PopupNotification.show(notification: error.domain)
-            } else {
-                self.posts.remove(at: self.posts.index(of: post)!)
-                self.tableView.beginUpdates()
-                self.tableView.deleteRows(at: [self.tableView.indexPath(for: cell)!], with: .right)
-                self.tableView.endUpdates()
-            }
-        }
-    }
-    
-    @objc fileprivate func openProject() {
-        guard let hud = MBProgressHUD.show() else { return }
-        hud.label.text = NSLocalizedString("Getting project info...", comment: "Getting project message")
-        Server.get(project: project)
-        { error, project in
-            hud.hide(animated: true)
-            if let error = error {
-                self.snackbarController?.show(error: error.domain)
-            } else if let project = project {
-                Router(self).showInfo(for: project)
-            }
-        }
-    }
-    
-    fileprivate func isValidPost(text: String, attachments: [Any]) -> Bool {
-        return !text.isEmpty || attachments.count > 0
-    }
-    
-    fileprivate func filter(attachments: [Any]) -> (completedKeys: [String], imagesToUpload: [UIImage]) {
-        let completedKeys = attachments.filter { $0 is String } as! [String]
-        let imagesToUpload = attachments.filter { $0 is UIImage } as! [UIImage]
-        return (completedKeys, imagesToUpload)
-    }
-    
-    // MARK: - Pagination -
-    
-    fileprivate func addInfiniteScrolling() {
-//        tableView.addInfiniteScroll
-//        { tableView in
-//            self.loadMorePosts()
-//        }
-    }
-    
-    @objc fileprivate func loadInitialPosts() {
-        isLoading = true
-        Server.getPosts(for: project)
-        { error, posts in
-            if let error = error {
-                self.snackbarController?.show(error: error.domain)
-            } else if let posts = posts {
-                self.isLoading = false
-                self.addInitialPosts(posts: posts)
-            }
-            self.refreshControl?.endRefreshing()
-        }
-    }
-    
-    fileprivate func loadMorePosts() {
-//        Server.getPosts(for: project, skip: posts.count)
-//        { error, posts in
-//            if let error = error {
-//                self.snackbarController?.show(error: error.domain)
-//            } else if let posts = posts {
-//                self.addPosts(posts: posts)
-//            }
-//            self.tableView.finishInfiniteScroll()
-//        }
-    }
-    
-    fileprivate func addInitialPosts(posts: [Post]) {
-        self.posts = posts
-        
-        tableView.beginUpdates()
-        tableView.reloadSections(IndexSet(integer: 0), with: .left)
-        tableView.endUpdates()
-    }
-    
-    fileprivate func addPosts(posts: [Post]) {
-        let indexPaths = IndexPath.range(start: self.posts.count, length: posts.count)
-        self.posts += posts
-        
-        tableView.beginUpdates()
-        tableView.insertRows(at: indexPaths, with: .left)
-        tableView.endUpdates()
-    }
-    
-    // MARK: - Notifications -
-    
-    fileprivate func subcribeForNotifications() {
-        subscribe(to: [
-            .UIKeyboardWillShow: #selector(ProjectController.keyboardWillShow(_:)),
-            .UIKeyboardWillHide: #selector(ProjectController.keyboardWillHide(_:))
-        ])
-    }
-    
-    @objc fileprivate func keyboardWillShow(_ notification: Notification) {
-        let userInfo = (notification as NSNotification).userInfo!
-        let keyboardHeight = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height
-        let options = UIViewAnimationOptions(rawValue: UInt((userInfo[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).uintValue))
-        let duration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
-        
-        input?.changeBottomSpacing(keyboardHeight)
-        UIView.animate(withDuration: duration,
-                                   delay: 0,
-                                   options: options,
-                                   animations: { 
-                                    self.input?.layoutIfNeeded()
-            }) { finished in }
-    }
-    
-    @objc fileprivate func keyboardWillHide(_ notification: Notification) {
-        let userInfo = (notification as NSNotification).userInfo!
-        let options = UIViewAnimationOptions(rawValue: UInt((userInfo[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).uintValue))
-        let duration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
-        
-        input?.changeBottomSpacing(0)
-        UIView.animate(withDuration: duration,
-                                   delay: 0,
-                                   options: options,
-                                   animations: {
-                                    self.input?.layoutIfNeeded()
-        }) { finished in }
-    }
-    
-    // MARK: - Status Bar -
-    
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        return .lightContent
-    }
-    
-    // MARK: - DZNEmptyDataSet -
-    
+}
+
+extension ProjectController: DZNEmptyDataSetSource {
     func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
         let text = isLoading ? "Loading...": "No posts yet"
         let attributes = [
@@ -515,5 +514,28 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     
     func emptyDataSetShouldAllowScroll(_ scrollView: UIScrollView!) -> Bool {
         return true
+    }
+}
+
+extension ProjectController: ASTableDataSource, ASTableDelegate {
+    func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {
+        return posts.count
+    }
+    
+    func tableNode(_ tableNode: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
+        return {
+            return PostCell(with: self.posts[indexPath.row], delegate: self)
+        }
+    }
+    
+    func shouldBatchFetch(for tableNode: ASTableNode) -> Bool {
+        return needsMorePosts
+    }
+    
+    func tableNode(_ tableNode: ASTableNode, willBeginBatchFetchWith context: ASBatchContext) {
+        loadMorePosts
+        {
+            context.completeBatchFetching(true)
+        }
     }
 }

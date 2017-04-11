@@ -44,16 +44,16 @@ class ProjectCell: ASCellNode {
         dateNode = ASTextNode()
         titleNode = ASTextNode()
         descriptionNode = ASTextNode()
+        
+        [roundedNode, dateNode, titleNode, descriptionNode]
+            .forEach { addSubnode($0) }
+        if project.imageKey != nil {
+            addSubnode(imageNode)
+        }
     }
     
     override func didLoad() {
         super.didLoad()
-        
-        [roundedNode, dateNode, titleNode, descriptionNode]
-            .forEach { view.addSubview($0.view) }
-        if project.imageKey != nil {
-            view.addSubview(imageNode.view)
-        }
         
         configure()
     }

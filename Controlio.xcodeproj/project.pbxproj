@@ -114,7 +114,6 @@
 		B3E8157C1CE1603400E8F87B /* NewProjectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E8157B1CE1603400E8F87B /* NewProjectController.swift */; };
 		B3EA114C1D93A9740026658B /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EA114A1D93A9740026658B /* UserCell.swift */; };
 		B3F303881DAF491200535FCD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3F3038A1DAF491200535FCD /* Main.storyboard */; };
-		B3F303921DAF4B0500535FCD /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3F303941DAF4B0500535FCD /* PostCell.xib */; };
 		B3F303971DAF4B1800535FCD /* NewProjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3F303991DAF4B1800535FCD /* NewProjectCell.xib */; };
 		B3F3039C1DAF4B6700535FCD /* EditProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3F3039E1DAF4B6700535FCD /* EditProfileCell.xib */; };
 		B3F303A31DAF53B600535FCD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B3F303A51DAF53B600535FCD /* Localizable.strings */; };
@@ -250,7 +249,6 @@
 		B3E8157B1CE1603400E8F87B /* NewProjectController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProjectController.swift; sourceTree = "<group>"; };
 		B3EA114A1D93A9740026658B /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		B3F303891DAF491200535FCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B3F303931DAF4B0500535FCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PostCell.xib; sourceTree = "<group>"; };
 		B3F303981DAF4B1800535FCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NewProjectCell.xib; sourceTree = "<group>"; };
 		B3F3039D1DAF4B6700535FCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/EditProfileCell.xib; sourceTree = "<group>"; };
 		B3F303A41DAF53B600535FCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -542,7 +540,6 @@
 			children = (
 				B3FEB83D1C9630290048B688 /* ProjectCell.swift */,
 				B3C305AF1CDFFB5900C8E85F /* PostCell.swift */,
-				B3F303941DAF4B0500535FCD /* PostCell.xib */,
 				B3E815771CE1566900E8F87B /* NewProjectCell.swift */,
 				B3F303991DAF4B1800535FCD /* NewProjectCell.xib */,
 				B3EA114A1D93A9740026658B /* UserCell.swift */,
@@ -705,7 +702,6 @@
 				B383238A1CDC409D004D0A1C /* SFUIText-BoldItalicG2.otf in Resources */,
 				B38323861CDC409D004D0A1C /* SFUIText-BoldG1.otf in Resources */,
 				B3F3039C1DAF4B6700535FCD /* EditProfileCell.xib in Resources */,
-				B3F303921DAF4B0500535FCD /* PostCell.xib in Resources */,
 				B38323911CDC409D004D0A1C /* SFUIText-ItalicG3.otf in Resources */,
 				B3B2B9321C90CD1600468342 /* Login.storyboard in Resources */,
 				B383239A1CDC409D004D0A1C /* SFUIText-Semibold.otf in Resources */,
@@ -910,14 +906,6 @@
 				B3F303891DAF491200535FCD /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		B3F303941DAF4B0500535FCD /* PostCell.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B3F303931DAF4B0500535FCD /* Base */,
-			);
-			name = PostCell.xib;
 			sourceTree = "<group>";
 		};
 		B3F303991DAF4B1800535FCD /* NewProjectCell.xib */ = {

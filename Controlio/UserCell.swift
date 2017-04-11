@@ -32,13 +32,13 @@ class UserCell: ASCellNode {
         setupImageNode()
         nameNode = ASTextNode()
         nameNode.style.flexShrink = 1.0
+        
+        [imageNode, nameNode]
+            .forEach { addSubnode($0) }
     }
     
     override func didLoad() {
         super.didLoad()
-        
-        [imageNode, nameNode]
-            .forEach { view.addSubview($0.view) }
         
         configure()
     }
