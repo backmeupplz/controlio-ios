@@ -61,7 +61,7 @@ class RecoveryViewController: UIViewController {
                 if let error = error {
                     self.snackbarController?.show(error: error.domain)
                 } else if let email = self.emailTextField.text {
-                    self.snackbarController?.show(text: "Check your inbox. Reset password link is on it's way!")
+                    self.snackbarController?.show(text: NSLocalizedString("Check your inbox. Reset password link is on it's way!", comment: "reset password request success message"))
                     self.delegate?.didRecover(email: email)
                     let _ = self.navigationController?.popViewController(animated: true)
                 }
@@ -98,8 +98,8 @@ class RecoveryViewController: UIViewController {
     }
     
     fileprivate func setupEmailTextField() {
-        emailTextField.placeholder = "Email"
-        emailTextField.detail = "Should be a valid email"
+        emailTextField.placeholder = NSLocalizedString("Email", comment: "email textfield placeholder")
+        emailTextField.detail = NSLocalizedString("Should be a valid email", comment: "email textfield comment label")
         
         emailTextField.returnKeyType = .done
         

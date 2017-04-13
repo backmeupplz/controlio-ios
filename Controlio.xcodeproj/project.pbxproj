@@ -59,6 +59,7 @@
 		B383239B1CDC409D004D0A1C /* SFUIText-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = B38323841CDC409D004D0A1C /* SFUIText-SemiboldItalic.otf */; };
 		B390C7A31CDE96B800D5F021 /* DeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B390C7A21CDE96B800D5F021 /* DeepLink.swift */; };
 		B390C7A51CDE9B5400D5F021 /* IndexPath+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B390C7A41CDE9B5400D5F021 /* IndexPath+Additions.swift */; };
+		B3965BDB1EA0257C00B4071F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B3965BD91EA0257C00B4071F /* Localizable.strings */; };
 		B39E06541E331EEF003B5910 /* Invite.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39E06531E331EEF003B5910 /* Invite.swift */; };
 		B3A178D71DB2D12500C0E311 /* PlansController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A178D61DB2D12500C0E311 /* PlansController.swift */; };
 		B3A7460B1E9B25B3008F1D0D /* NSAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A7460A1E9B25B3008F1D0D /* NSAttributedString+Extensions.swift */; };
@@ -116,7 +117,6 @@
 		B3F303881DAF491200535FCD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3F3038A1DAF491200535FCD /* Main.storyboard */; };
 		B3F303971DAF4B1800535FCD /* NewProjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3F303991DAF4B1800535FCD /* NewProjectCell.xib */; };
 		B3F3039C1DAF4B6700535FCD /* EditProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3F3039E1DAF4B6700535FCD /* EditProfileCell.xib */; };
-		B3F303A31DAF53B600535FCD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B3F303A51DAF53B600535FCD /* Localizable.strings */; };
 		B3F65BA41E99FE5D008A20E6 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F65BA31E99FE5D008A20E6 /* Appearance.swift */; };
 		B3FEB83F1C9630290048B688 /* ProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FEB83D1C9630290048B688 /* ProjectCell.swift */; };
 		B3FEB8441C9630BA0048B688 /* ImageView+Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FEB8431C9630BA0048B688 /* ImageView+Network.swift */; };
@@ -192,6 +192,14 @@
 		B38323841CDC409D004D0A1C /* SFUIText-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFUIText-SemiboldItalic.otf"; sourceTree = "<group>"; };
 		B390C7A21CDE96B800D5F021 /* DeepLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeepLink.swift; sourceTree = "<group>"; };
 		B390C7A41CDE9B5400D5F021 /* IndexPath+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IndexPath+Additions.swift"; sourceTree = "<group>"; };
+		B3965BD21EA0224400B4071F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		B3965BD31EA0224500B4071F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Login.strings; sourceTree = "<group>"; };
+		B3965BD41EA0224500B4071F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		B3965BD51EA0224500B4071F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/NewProjectCell.strings; sourceTree = "<group>"; };
+		B3965BD61EA0224500B4071F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/EditProfileCell.strings; sourceTree = "<group>"; };
+		B3965BD71EA0224500B4071F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InputView.strings; sourceTree = "<group>"; };
+		B3965BDA1EA0257C00B4071F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B3965BDC1EA0259B00B4071F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B39E06531E331EEF003B5910 /* Invite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Invite.swift; sourceTree = "<group>"; };
 		B3A178D61DB2D12500C0E311 /* PlansController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlansController.swift; sourceTree = "<group>"; };
 		B3A7460A1E9B25B3008F1D0D /* NSAttributedString+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Extensions.swift"; sourceTree = "<group>"; };
@@ -251,7 +259,6 @@
 		B3F303891DAF491200535FCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B3F303981DAF4B1800535FCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NewProjectCell.xib; sourceTree = "<group>"; };
 		B3F3039D1DAF4B6700535FCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/EditProfileCell.xib; sourceTree = "<group>"; };
-		B3F303A41DAF53B600535FCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B3F65BA31E99FE5D008A20E6 /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		B3FEB83D1C9630290048B688 /* ProjectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCell.swift; sourceTree = "<group>"; };
 		B3FEB8431C9630BA0048B688 /* ImageView+Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ImageView+Network.swift"; sourceTree = "<group>"; };
@@ -394,10 +401,10 @@
 		B3C03D071C90CFB80096E04C /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				B3965BD91EA0257C00B4071F /* Localizable.strings */,
 				B383235B1CDC3F7A004D0A1C /* Fonts */,
 				B3B2B9331C90CD1600468342 /* Assets.xcassets */,
 				B3B2B9381C90CD1600468342 /* Info.plist */,
-				B3F303A51DAF53B600535FCD /* Localizable.strings */,
 				B33805C61E1F5BE70096B081 /* R.generated.swift */,
 			);
 			name = Assets;
@@ -646,6 +653,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = B3B2B9201C90CD1600468342;
 			productRefGroup = B3B2B92A1C90CD1600468342 /* Products */;
@@ -683,6 +691,7 @@
 				B3C35B0A1DB9D4F700F941F8 /* InputView.xib in Resources */,
 				B38323661CDC3FB3004D0A1C /* SFUIDisplay-Bold.otf in Resources */,
 				B38323971CDC409D004D0A1C /* SFUIText-RegularG1.otf in Resources */,
+				B3965BDB1EA0257C00B4071F /* Localizable.strings in Resources */,
 				B38323651CDC3FB3004D0A1C /* SFUIDisplay-Black.otf in Resources */,
 				B383236C1CDC3FB3004D0A1C /* SFUIDisplay-Thin.otf in Resources */,
 				B38323851CDC409D004D0A1C /* SFUIText-Bold.otf in Resources */,
@@ -709,7 +718,6 @@
 				B3D81AD81E4142080035C6E2 /* UserProfileCell.xib in Resources */,
 				B38323871CDC409D004D0A1C /* SFUIText-BoldG2.otf in Resources */,
 				B383238F1CDC409D004D0A1C /* SFUIText-ItalicG1.otf in Resources */,
-				B3F303A31DAF53B600535FCD /* Localizable.strings in Resources */,
 				B3F303881DAF491200535FCD /* Main.storyboard in Resources */,
 				B38323921CDC409D004D0A1C /* SFUIText-Light.otf in Resources */,
 				B3F303971DAF4B1800535FCD /* NewProjectCell.xib in Resources */,
@@ -876,10 +884,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		B3965BD91EA0257C00B4071F /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B3965BDA1EA0257C00B4071F /* Base */,
+				B3965BDC1EA0259B00B4071F /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		B3B2B9301C90CD1600468342 /* Login.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				B3B2B9311C90CD1600468342 /* Base */,
+				B3965BD31EA0224500B4071F /* ru */,
 			);
 			name = Login.storyboard;
 			sourceTree = "<group>";
@@ -888,6 +906,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B3B2B9361C90CD1600468342 /* Base */,
+				B3965BD21EA0224400B4071F /* ru */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -896,6 +915,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B3C35B0B1DB9D4F700F941F8 /* Base */,
+				B3965BD71EA0224500B4071F /* ru */,
 			);
 			name = InputView.xib;
 			sourceTree = "<group>";
@@ -904,6 +924,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B3F303891DAF491200535FCD /* Base */,
+				B3965BD41EA0224500B4071F /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -912,6 +933,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B3F303981DAF4B1800535FCD /* Base */,
+				B3965BD51EA0224500B4071F /* ru */,
 			);
 			name = NewProjectCell.xib;
 			sourceTree = "<group>";
@@ -920,16 +942,9 @@
 			isa = PBXVariantGroup;
 			children = (
 				B3F3039D1DAF4B6700535FCD /* Base */,
+				B3965BD61EA0224500B4071F /* ru */,
 			);
 			name = EditProfileCell.xib;
-			sourceTree = "<group>";
-		};
-		B3F303A51DAF53B600535FCD /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B3F303A41DAF53B600535FCD /* Base */,
-			);
-			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

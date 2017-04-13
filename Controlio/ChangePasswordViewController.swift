@@ -68,7 +68,7 @@ class ChangePasswordViewController: UIViewController {
                     self.snackbarController?.show(error: error.domain)
                 } else {
                     self.dismiss(animated: true) {
-                        self.parentVC?.snackbarController?.show(text: "New password has been set")
+                        self.parentVC?.snackbarController?.show(text: NSLocalizedString("New password has been set", comment: "password set success message"))
                     }
                 }
             }
@@ -96,8 +96,8 @@ class ChangePasswordViewController: UIViewController {
     }
     
     fileprivate func setupPasswordTextField() {
-        passwordTextField.placeholder = "Password"
-        passwordTextField.detail = "Should be between 8 and 30 characters"
+        passwordTextField.placeholder = NSLocalizedString("Password", comment: "password textfield placeholder")
+        passwordTextField.detail = NSLocalizedString("Should be between 8 and 30 characters", comment: "password textfield comment label")
         
         passwordTextField.returnKeyType = .next
         
@@ -117,8 +117,8 @@ class ChangePasswordViewController: UIViewController {
     }
     
     fileprivate func setupRepeatPasswordTextField() {
-        repeatPasswordTextField.placeholder = "Repeat password"
-        repeatPasswordTextField.detail = "Passwords don't match"
+        repeatPasswordTextField.placeholder = NSLocalizedString("Repeat password", comment: "repeat password textfield placeholder")
+        repeatPasswordTextField.detail = NSLocalizedString("Passwords don't match", comment: "repeat password textfield error label")
         
         repeatPasswordTextField.returnKeyType = .done
         

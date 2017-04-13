@@ -1,0 +1,12 @@
+
+/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "ILV-19-LIz"; */
+"ILV-19-LIz.normalTitle" = "Send";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "TYI-pq-70f"; */
+"TYI-pq-70f.normalTitle" = "Cancel";
+
+/* Class = "UISegmentedControl"; Yt2-0l-Ule.segmentTitles[0] = "New message"; ObjectID = "Yt2-0l-Ule"; */
+"Yt2-0l-Ule.segmentTitles[0]" = "New message";
+
+/* Class = "UISegmentedControl"; Yt2-0l-Ule.segmentTitles[1] = "Change status"; ObjectID = "Yt2-0l-Ule"; */
+"Yt2-0l-Ule.segmentTitles[1]" = "Change status";

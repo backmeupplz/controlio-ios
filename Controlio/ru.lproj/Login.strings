@@ -1,0 +1,39 @@
+
+/* Class = "UILabel"; text = "Change Password"; ObjectID = "2lx-8n-h6N"; */
+"2lx-8n-h6N.text" = "Поменять пароль";
+
+/* Class = "UIButton"; normalTitle = "Get magic link!"; ObjectID = "Chm-Ug-DPC"; */
+"Chm-Ug-DPC.normalTitle" = "Шлите ссылку!";
+
+/* Class = "UILabel"; text = "Use it to login"; ObjectID = "CpF-ue-2fx"; */
+"CpF-ue-2fx.text" = "Используется для входа";
+
+/* Class = "UILabel"; text = "Password recovery"; ObjectID = "Hon-kO-p9d"; */
+"Hon-kO-p9d.text" = "Восстановление пароля";
+
+/* Class = "UIButton"; normalTitle = "Forgot your password?"; ObjectID = "I53-mO-5r4"; */
+"I53-mO-5r4.normalTitle" = "Забыли пароль?";
+
+/* Class = "UISegmentedControl"; Jgy-ys-0M1.segmentTitles[0] = "Sign up"; ObjectID = "Jgy-ys-0M1"; */
+"Jgy-ys-0M1.segmentTitles[0]" = "Регистрация";
+
+/* Class = "UISegmentedControl"; Jgy-ys-0M1.segmentTitles[1] = "Sign in"; ObjectID = "Jgy-ys-0M1"; */
+"Jgy-ys-0M1.segmentTitles[1]" = "Вход";
+
+/* Class = "UIButton"; normalTitle = "Reset password"; ObjectID = "XjF-Aa-CwF"; */
+"XjF-Aa-CwF.normalTitle" = "Сбросить пароль";
+
+/* Class = "UIButton"; normalTitle = "Change password"; ObjectID = "YVw-3q-28U"; */
+"YVw-3q-28U.normalTitle" = "Поменять пароль";
+
+/* Class = "UIButton"; normalTitle = "Or want a usual login?"; ObjectID = "Ydp-Tj-RsA"; */
+"Ydp-Tj-RsA.normalTitle" = "Или обычный вход?";
+
+/* Class = "UILabel"; text = "Magic link"; ObjectID = "nrX-p8-eFI"; */
+"nrX-p8-eFI.text" = "Магическая ссылка";
+
+/* Class = "UIButton"; normalTitle = "Sign up"; ObjectID = "sDY-iN-Rao"; */
+"sDY-iN-Rao.normalTitle" = "Регистрация";
+
+/* Class = "UIButton"; normalTitle = "Want to see how Controlio works first?"; ObjectID = "uUq-DV-nuG"; */
+"uUq-DV-nuG.normalTitle" = "Посмотреть, как работает Contorlio?";

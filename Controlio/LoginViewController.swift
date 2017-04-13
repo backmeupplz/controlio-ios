@@ -156,7 +156,7 @@ class LoginViewController: UIViewController, RecoveryViewControllerDelegate {
         passwordToRepeatPassword.priority = state == .signin ? 500 : 750
         view.layoutIfNeeded()
         
-        signupButton.setTitle(state == .signin ? "Sign in" : "Sign up", for: .normal)
+        signupButton.setTitle(state == .signin ? NSLocalizedString("Sign in", comment: "signin button title") : NSLocalizedString("Sign up", comment: "signup button title"), for: .normal)
         
         passwordTextField.returnKeyType = state == .signin ? .done : .next
     }
@@ -178,8 +178,8 @@ class LoginViewController: UIViewController, RecoveryViewControllerDelegate {
     }
     
     fileprivate func setupEmailTextField() {
-        emailTextField.placeholder = "Email"
-        emailTextField.detail = "Should be a valid email"
+        emailTextField.placeholder = NSLocalizedString("Email", comment: "email textfield placeholder")
+        emailTextField.detail = NSLocalizedString("Should be a valid email", comment: "email textfield comment label")
         
         emailTextField.returnKeyType = .next
         
@@ -199,8 +199,8 @@ class LoginViewController: UIViewController, RecoveryViewControllerDelegate {
     }
     
     fileprivate func setupPasswordTextField() {
-        passwordTextField.placeholder = "Password"
-        passwordTextField.detail = "Should be between 8 and 30 characters"
+        passwordTextField.placeholder = NSLocalizedString("Password", comment: "password textfield placeholder")
+        passwordTextField.detail = NSLocalizedString("Should be between 8 and 30 characters", comment: "password textfield comment label")
         
         passwordTextField.returnKeyType = .next
         
@@ -221,8 +221,8 @@ class LoginViewController: UIViewController, RecoveryViewControllerDelegate {
     }
     
     fileprivate func setupRepeatPasswordTextField() {
-        repeatPasswordTextField.placeholder = "Repeat password"
-        repeatPasswordTextField.detail = "Passwords don't match"
+        repeatPasswordTextField.placeholder = NSLocalizedString("Repeat password", comment: "repeat password textfield placeholder")
+        repeatPasswordTextField.detail = NSLocalizedString("Passwords don't match", comment: "repeat password error label")
         
         repeatPasswordTextField.returnKeyType = .done
         
