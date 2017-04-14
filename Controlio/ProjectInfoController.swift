@@ -18,7 +18,15 @@ class ProjectInfoController: ASViewController<ASDisplayNode> {
     
     fileprivate var tableNode: ASTableNode!
     fileprivate var project: Project!
-    fileprivate var sections = ["Info", "Owner", "Managers", "Clients", "Managers invited", "Clients invited", "Owner invited"]
+    fileprivate var sections = [
+        NSLocalizedString("Info", comment: "project info section name"),
+        NSLocalizedString("Owner", comment: "project info section name"),
+        NSLocalizedString("Managers", comment: "project info section name"),
+        NSLocalizedString("Clients", comment: "project info section name"),
+        NSLocalizedString("Managers invited", comment: "project info section name"),
+        NSLocalizedString("Clients invited", comment: "project info section name"),
+        NSLocalizedString("Owner invited", comment: "project info section name")
+    ]
     fileprivate var refreshControl: UIRefreshControl?
     
     // MARK: - View Controller Life Cycle -
@@ -105,11 +113,11 @@ class ProjectInfoController: ASViewController<ASDisplayNode> {
     fileprivate func removeManager(from indexPath: IndexPath) {
         guard let user = object(for: indexPath) as? User
             else { return }
-        let alert = UIAlertController(title: "Would you like to remove \(user.name ?? user.email ?? "this user") from managers?", preferredStyle: .alert)
-        alert.add(action: "Remove", style: .destructive)
+        let alert = UIAlertController(title: NSLocalizedString("Would you like to remove \(user.name ?? user.email ?? "this user") from managers?", comment: "remove from maangers alert title"), preferredStyle: .alert)
+        alert.add(action: NSLocalizedString("Remove", comment: "remove from managers alert button"), style: .destructive)
         {
             guard let hud = MBProgressHUD.show() else { return }
-            hud.label.text = "Removing \(user.name ?? user.email ?? "user") from managers"
+            hud.label.text = NSLocalizedString("Removing \(user.name ?? user.email ?? "user") from managers", comment: "remove from managers hud title")
             Server.remove(manager: user, from: self.project)
             { error in
                 hud.hide(animated: true)
@@ -117,7 +125,7 @@ class ProjectInfoController: ASViewController<ASDisplayNode> {
                     self.snackbarController?.show(error: error.domain)
                 } else {
                     self.removeCellAt(indexPath: indexPath)
-                    self.snackbarController?.show(text: "\(user.name ?? user.email ?? "This user") has been removed from managers")
+                    self.snackbarController?.show(text: NSLocalizedString("\(user.name ?? user.email ?? "This user") has been removed from managers", comment: "remove from managers success message"))
                 }
             }
         }
@@ -128,11 +136,11 @@ class ProjectInfoController: ASViewController<ASDisplayNode> {
     fileprivate func removeClient(from indexPath: IndexPath) {
         guard let user = object(for: indexPath) as? User
             else { return }
-        let alert = UIAlertController(title: "Would you like to remove \(user.name ?? user.email ?? "this user") from clients?", preferredStyle: .alert)
-        alert.add(action: "Remove", style: .destructive)
+        let alert = UIAlertController(title: NSLocalizedString("Would you like to remove \(user.name ?? user.email ?? "this user") from clients?", comment: "remove from clients alert title"), preferredStyle: .alert)
+        alert.add(action: NSLocalizedString("Remove", comment: "remove from clients alert button"), style: .destructive)
         {
             guard let hud = MBProgressHUD.show() else { return }
-            hud.label.text = "Removing \(user.name ?? user.email ?? "user") from clients"
+            hud.label.text = NSLocalizedString("Removing \(user.name ?? user.email ?? "user") from clients", comment: "remove from clients hud title")
             Server.remove(client: user, from: self.project)
             { error in
                 hud.hide(animated: true)
@@ -140,7 +148,7 @@ class ProjectInfoController: ASViewController<ASDisplayNode> {
                     self.snackbarController?.show(error: error.domain)
                 } else {
                     self.removeCellAt(indexPath: indexPath)
-                    self.snackbarController?.show(text: "\(user.name ?? user.email ?? "This user") has been removed from clients")
+                    self.snackbarController?.show(text: NSLocalizedString("\(user.name ?? user.email ?? "This user") has been removed from clients", comment: "remove from clients success message"))
                 }
             }
         }
@@ -151,11 +159,11 @@ class ProjectInfoController: ASViewController<ASDisplayNode> {
     fileprivate func removeInvite(from indexPath: IndexPath) {
         guard let invite = object(for: indexPath) as? Invite
             else { return }
-        let alert = UIAlertController(title: "Would you like to revoke invite to \(invite.invitee?.name ?? invite.invitee?.email ?? "this user")?", preferredStyle: .alert)
-        alert.add(action: "Revoke", style: .destructive)
+        let alert = UIAlertController(title: NSLocalizedString("Would you like to revoke invite to \(invite.invitee?.name ?? invite.invitee?.email ?? "this user")?", comment: "revoke invite alert title"), preferredStyle: .alert)
+        alert.add(action: NSLocalizedString("Revoke", comment: "revoke invite alert button"), style: .destructive)
         {
             guard let hud = MBProgressHUD.show() else { return }
-            hud.label.text = "Revoking invite for \(invite.invitee?.name ?? invite.invitee?.email ?? "this user")"
+            hud.label.text = NSLocalizedString("Revoking invite for \(invite.invitee?.name ?? invite.invitee?.email ?? "this user")", comment: "revoke invite hud title")
             Server.remove(invite: invite)
             { error in
                 hud.hide(animated: true)
@@ -163,7 +171,7 @@ class ProjectInfoController: ASViewController<ASDisplayNode> {
                     self.snackbarController?.show(error: error.domain)
                 } else {
                     self.removeCellAt(indexPath: indexPath)
-                    self.snackbarController?.show(text: "Invite for \(invite.invitee?.name ?? invite.invitee?.email ?? "this user") has been revoked")
+                    self.snackbarController?.show(text: NSLocalizedString("Invite for \(invite.invitee?.name ?? invite.invitee?.email ?? "this user") has been revoked", comment: "revoke invite success message"))
                 }
             }
         }
@@ -202,8 +210,8 @@ class ProjectInfoController: ASViewController<ASDisplayNode> {
         if !project.isOwner {
             alert.add(action: "Leave project", style: .destructive)
             {
-                let alert = UIAlertController(title: "Are you sure you want to leave \(self.project.title ?? "this project")?", message: "You will not be able to get back unless you get invited", sourceView: sender)
-                alert.add(action: "Leave", style: .destructive)
+                let alert = UIAlertController(title: NSLocalizedString("Are you sure you want to leave \(self.project.title ?? "this project")?", comment: "leave project alert title"), message: NSLocalizedString("You will not be able to get back unless you get invited", comment: "leave project alert message"), sourceView: sender)
+                alert.add(action: NSLocalizedString("Leave", comment: "leave project alert button"), style: .destructive)
                 {
                     self.leave(project: self.project)
                 }
@@ -211,14 +219,14 @@ class ProjectInfoController: ASViewController<ASDisplayNode> {
                 self.present(alert, animated: true) {}
             }
         } else if project.isOwner {
-            alert.add(action: project.isFinished ? "Revive project": "Finish project", style: .default)
+            alert.add(action: project.isFinished ? NSLocalizedString("Revive project", comment: "revive project alert button"): NSLocalizedString("Finish project", comment: "finish project alert button"), style: .default)
             {
                 self.toggleFinished(for: self.project)
             }
-            alert.add(action: "Delete project", style: .destructive)
+            alert.add(action: NSLocalizedString("Delete project", comment: "delete project alert button"), style: .destructive)
             {
-                let alert = UIAlertController(title: "Are you sure you want to delete \(self.project.title ?? "this project")?", message: "This action cannot be undone", sourceView: sender)
-                alert.add(action: "Delete", style: .destructive)
+                let alert = UIAlertController(title: NSLocalizedString("Are you sure you want to delete \(self.project.title ?? "this project")?", comment: "delete project alert title"), message: NSLocalizedString("This action cannot be undone", comment: "delete project alert message"), sourceView: sender)
+                alert.add(action: NSLocalizedString("Delete", comment: "delete project alert button"), style: .destructive)
                 {
                     self.delete(project: self.project)
                 }
@@ -227,7 +235,7 @@ class ProjectInfoController: ASViewController<ASDisplayNode> {
             }
         }
         if (project.canEdit && !project.isFinished) {
-            alert.add(action: "Edit project")
+            alert.add(action: NSLocalizedString("Edit project", comment: "edit project alert button"))
             {
                 Router(self).showEdit(of: self.project)
             }
@@ -238,7 +246,7 @@ class ProjectInfoController: ASViewController<ASDisplayNode> {
     
     fileprivate func leave(project: Project) {
         guard let hud = MBProgressHUD.show() else { return }
-        hud.label.text = "Leaving the project..."
+        hud.label.text = NSLocalizedString("Leaving the project...", comment: "leave project hud message")
         
         Server.leave(project: project)
         { error in
@@ -247,7 +255,7 @@ class ProjectInfoController: ASViewController<ASDisplayNode> {
                 self.snackbarController?.show(error: error.domain)
             } else {
                 let _ = self.navigationController?.popToRootViewController(animated: true)
-                self.snackbarController?.show(text: "You have left the project")
+                self.snackbarController?.show(text: NSLocalizedString("You have left the project", comment: "leave project success message"))
             }
         }
     }
@@ -255,7 +263,7 @@ class ProjectInfoController: ASViewController<ASDisplayNode> {
     
     fileprivate func delete(project: Project) {
         guard let hud = MBProgressHUD.show() else { return }
-        hud.label.text = "Deleting the project..."
+        hud.label.text = NSLocalizedString("Deleting the project...", comment: "delete project hud title")
         
         Server.delete(project: project)
         { error in
@@ -264,7 +272,7 @@ class ProjectInfoController: ASViewController<ASDisplayNode> {
                 self.snackbarController?.show(error: error.domain)
             } else {
                 let _ = self.navigationController?.popToRootViewController(animated: true)
-                self.snackbarController?.show(text: "Project has been deleted")
+                self.snackbarController?.show(text: NSLocalizedString("Project has been deleted", comment: "delete project success message"))
                 self.post(notification: .projectDeleted)
             }
         }
@@ -272,7 +280,7 @@ class ProjectInfoController: ASViewController<ASDisplayNode> {
     
     fileprivate func toggleFinished(for project: Project) {
         guard let hud = MBProgressHUD.show() else { return }
-        hud.label.text = project.isFinished ? "Reviving the project...": "Finishing the project..."
+        hud.label.text = project.isFinished ? NSLocalizedString("Reviving the project...", comment: "revive project hud title"): NSLocalizedString("Finishing the project...", comment: "finish project hud titile")
         
         Server.toggleFinished(for: project)
         { error in
@@ -281,7 +289,7 @@ class ProjectInfoController: ASViewController<ASDisplayNode> {
                 self.snackbarController?.show(error: error.domain)
             } else {
                 let _ = self.navigationController?.popToRootViewController(animated: true)
-                self.snackbarController?.show(text: project.isFinished ? "Project has been revived": "Project has been finished")
+                self.snackbarController?.show(text: project.isFinished ? NSLocalizedString("Project has been revived", comment: "revive project success message"): NSLocalizedString("Project has been finished", comment: "finish project success message"))
                 self.post(notification: .projectArchivedChanged)
             }
         }
@@ -383,7 +391,7 @@ extension ProjectInfoController: ASTableDelegate {
         if section == 5 && project.canEdit {
             // add button to edit clients
             let button = UIButton(type: .system)
-            button.setTitle("Invite more clients", for: .normal)
+            button.setTitle(NSLocalizedString("Invite more clients", comment: "invite more clients header button title"), for: .normal)
             button.setTitleColor(UIColor.controlioGreen, for: .normal)
             button.addTarget(self, action: #selector(ProjectInfoController.addClientsTouched), for: .touchUpInside)
             header.addSubview(button)
@@ -396,7 +404,7 @@ extension ProjectInfoController: ASTableDelegate {
         if section == 4 && project.isOwner {
             // add button to edit clients
             let button = UIButton(type: .system)
-            button.setTitle("Invite more managers", for: .normal)
+            button.setTitle(NSLocalizedString("Invite more managers", comment: "invite more managers header button title"), for: .normal)
             button.setTitleColor(UIColor.controlioGreen, for: .normal)
             button.addTarget(self, action: #selector(ProjectInfoController.addManagersTouched), for: .touchUpInside)
             header.addSubview(button)
@@ -476,13 +484,13 @@ extension ProjectInfoController: ASTableDelegate {
             }
             guard let user = optionalUser else { return }
             guard let hud = MBProgressHUD.show() else { return }
-            hud.label.text = "Getting user profile..."
+            hud.label.text = NSLocalizedString("Getting user profile...", comment: "get user profile hud title")
             
             Server.getProfile(for: user)
             { error, user in
                 hud.hide(animated: true)
                 if let error = error {
-//                    self.snackbarController?.show(error: error.domain)
+                    self.snackbarController?.show(error: error.domain)
                 } else if let user = user {
                     Router(self).show(user: user)
                 }

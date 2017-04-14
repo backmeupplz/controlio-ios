@@ -1,105 +1,105 @@
 
 /* Class = "UILabel"; text = "Your plan"; ObjectID = "1qc-vb-K4M"; */
-"1qc-vb-K4M.text" = "Your plan";
+"1qc-vb-K4M.text" = "Ваш план";
 
 /* Class = "UILabel"; text = "Upgrade"; ObjectID = "1tB-Nx-3vI"; */
-"1tB-Nx-3vI.text" = "Upgrade";
+"1tB-Nx-3vI.text" = "Увеличить";
 
 /* Class = "UILabel"; text = "Upgrade"; ObjectID = "5dN-8p-3l6"; */
-"5dN-8p-3l6.text" = "Upgrade";
+"5dN-8p-3l6.text" = "Увеличить";
 
 /* Class = "UILabel"; text = "$50/month"; ObjectID = "6PC-dJ-rUq"; */
-"6PC-dJ-rUq.text" = "$50/month";
+"6PC-dJ-rUq.text" = "$50/месяц";
 
 /* Class = "UILabel"; text = "$20/month"; ObjectID = "71v-JR-hAo"; */
-"71v-JR-hAo.text" = "$20/month";
+"71v-JR-hAo.text" = "$20/месяц";
 
 /* Class = "UIButton"; normalTitle = "If you need more than 50 projects, please contact us at: sales@controlio.co\nAnd don‘t worry, you can upgrade, downgrade or cancel your plan at any time!"; ObjectID = "9MY-iU-Qaj"; */
-"9MY-iU-Qaj.normalTitle" = "If you need more than 50 projects, please contact us at: sales@controlio.co\nAnd don‘t worry, you can upgrade, downgrade or cancel your plan at any time!";
+"9MY-iU-Qaj.normalTitle" = "Если вам нужно больше 50 проектов, напишите нам на sales@controlio.co\nВы можете увеличить или уменьшить свой план в любое время!";
 
 /* Class = "UILabel"; text = "Your plan"; ObjectID = "Bbh-vG-b3W"; */
-"Bbh-vG-b3W.text" = "Your plan";
+"Bbh-vG-b3W.text" = "Ваш план";
 
 /* Class = "UILabel"; text = "Log out"; ObjectID = "C0R-g0-qnG"; */
-"C0R-g0-qnG.text" = "Log out";
+"C0R-g0-qnG.text" = "Выйти";
 
 /* Class = "UINavigationItem"; title = "Edit profile"; ObjectID = "E2w-wT-ARS"; */
-"E2w-wT-ARS.title" = "Edit profile";
+"E2w-wT-ARS.title" = "Редактировать профиль";
 
 /* Class = "UILabel"; text = "Upgrade"; ObjectID = "JiL-o2-Hbi"; */
-"JiL-o2-Hbi.text" = "Upgrade";
+"JiL-o2-Hbi.text" = "Увеличить";
 
 /* Class = "UILabel"; text = "20 active projects/month"; ObjectID = "L4I-p9-PDw"; */
-"L4I-p9-PDw.text" = "20 active projects/month";
+"L4I-p9-PDw.text" = "20 активных проектов/месяц";
 
 /* Class = "UILabel"; text = "$100/month"; ObjectID = "LHQ-iy-khC"; */
-"LHQ-iy-khC.text" = "$100/month";
+"LHQ-iy-khC.text" = "$100/месяц";
 
 /* Class = "UINavigationItem"; title = "Plans"; ObjectID = "LbP-m7-f9l"; */
-"LbP-m7-f9l.title" = "Plans";
+"LbP-m7-f9l.title" = "Планы";
 
 /* Class = "UILabel"; text = "If you have any questions or suggestions for our platform – don't hesitate to contact me"; ObjectID = "SKU-ge-Jua"; */
-"SKU-ge-Jua.text" = "If you have any questions or suggestions for our platform – don't hesitate to contact me";
+"SKU-ge-Jua.text" = "По всем вопросам и обращениям — пишите мне напрямую";
 
 /* Class = "UILabel"; text = "50 active projects/month"; ObjectID = "VFh-L2-vNl"; */
-"VFh-L2-vNl.text" = "50 active projects/month";
+"VFh-L2-vNl.text" = "50 активных проектов/месяц";
 
 /* Class = "UILabel"; text = "1 active project/month"; ObjectID = "VyE-ps-bHl"; */
-"VyE-ps-bHl.text" = "1 active project/month";
+"VyE-ps-bHl.text" = "1 активный проект/месяц";
 
 /* Class = "UILabel"; text = "Clean image cache"; ObjectID = "WLi-wK-RzT"; */
-"WLi-wK-RzT.text" = "Clean image cache";
+"WLi-wK-RzT.text" = "Очистить кэш картинок";
 
 /* Class = "UILabel"; text = "Upgrade"; ObjectID = "Wh2-tG-JpF"; */
-"Wh2-tG-JpF.text" = "Upgrade";
+"Wh2-tG-JpF.text" = "Увеличить";
 
 /* Class = "UILabel"; text = "@borodutch"; ObjectID = "YZ9-f0-w5a"; */
 "YZ9-f0-w5a.text" = "@borodutch";
 
 /* Class = "UILabel"; text = "Your plan"; ObjectID = "Zos-n2-AuI"; */
-"Zos-n2-AuI.text" = "Your plan";
+"Zos-n2-AuI.text" = "Ваш план";
 
 /* Class = "UINavigationItem"; title = "New project"; ObjectID = "eP9-4v-7rE"; */
-"eP9-4v-7rE.title" = "New project";
+"eP9-4v-7rE.title" = "Новый проект";
 
 /* Class = "UINavigationItem"; title = "Settings"; ObjectID = "fLA-7B-DX0"; */
-"fLA-7B-DX0.title" = "Settings";
+"fLA-7B-DX0.title" = "Настройки";
 
 /* Class = "UILabel"; text = "Founder at Controlio"; ObjectID = "ff1-rm-RqM"; */
-"ff1-rm-RqM.text" = "Founder at Controlio";
+"ff1-rm-RqM.text" = "Основатель Controlio";
 
 /* Class = "UILabel"; text = "15mb"; ObjectID = "hy9-if-TKb"; */
 "hy9-if-TKb.text" = "15mb";
 
 /* Class = "UILabel"; text = "Edit profile"; ObjectID = "iUX-uF-nG6"; */
-"iUX-uF-nG6.text" = "Edit profile";
+"iUX-uF-nG6.text" = "Редактировать профиль";
 
 /* Class = "UILabel"; text = "Plans"; ObjectID = "kZh-pu-hDg"; */
-"kZh-pu-hDg.text" = "Plans";
+"kZh-pu-hDg.text" = "Планы";
 
 /* Class = "UITableViewSection"; headerTitle = "ACCOUNT"; ObjectID = "lOy-co-JAf"; */
-"lOy-co-JAf.headerTitle" = "ACCOUNT";
+"lOy-co-JAf.headerTitle" = "АККАУНТ";
 
 /* Class = "UILabel"; text = "Your plan"; ObjectID = "pBD-Gf-Sgh"; */
-"pBD-Gf-Sgh.text" = "Your plan";
+"pBD-Gf-Sgh.text" = "Ваш план";
 
 /* Class = "UILabel"; text = "Nikita Kolmogorov"; ObjectID = "qWg-ei-8Pi"; */
-"qWg-ei-8Pi.text" = "Nikita Kolmogorov";
+"qWg-ei-8Pi.text" = "Никита Колмогоров";
 
 /* Class = "UIBarButtonItem"; title = "Redeem"; ObjectID = "qrE-Hs-v9p"; */
-"qrE-Hs-v9p.title" = "Redeem";
+"qrE-Hs-v9p.title" = "Купон";
 
 /* Class = "UILabel"; text = "5 active projects/month"; ObjectID = "r4a-xa-1na"; */
-"r4a-xa-1na.text" = "5 active projects/month";
+"r4a-xa-1na.text" = "5 активных проектов/месяц";
 
 /* Class = "UILabel"; text = "Payment methods"; ObjectID = "rbB-31-1VA"; */
-"rbB-31-1VA.text" = "Payment methods";
+"rbB-31-1VA.text" = "Методы оплаты";
 
 /* Class = "UINavigationItem"; title = "Support"; ObjectID = "sFv-9q-VHp"; */
-"sFv-9q-VHp.title" = "Support";
+"sFv-9q-VHp.title" = "Поддержка";
 
 /* Class = "UILabel"; text = "Free"; ObjectID = "ygW-0U-06s"; */
-"ygW-0U-06s.text" = "Free";
+"ygW-0U-06s.text" = "Бесплатно";
 
 /* Class = "UILabel"; text = "borodutch"; ObjectID = "zeO-hr-gv3"; */
 "zeO-hr-gv3.text" = "borodutch";

@@ -24,16 +24,16 @@ class MainTabBarController: ASTabBarController {
         viewControllers = [
             navigationController(with: ProjectsController(),
                                  image: R.image.projects(),
-                                 title: "Projects"),
+                                 title: NSLocalizedString("Projects", comment: "tabbar title")),
             navigationController(with: newProjectController,
                                  image: R.image.newProject(),
-                                 title: "New Project"),
+                                 title: NSLocalizedString("New Project", comment: "tabbar title")),
             navigationController(with: supportController,
                                  image: R.image.support(),
-                                 title: "Support"),
+                                 title: NSLocalizedString("Support", comment: "tabbar title")),
             navigationController(with: settingsController,
                                  image: R.image.settings(),
-                                 title: "Settings"),
+                                 title: NSLocalizedString("Settings", comment: "tabbar title")),
         ]
         
         tabBar.tintColor = UIColor.controlioGreen

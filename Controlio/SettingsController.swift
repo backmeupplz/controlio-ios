@@ -138,8 +138,8 @@ class SettingsController: UITableViewController, STPPaymentContextDelegate {
     }
     
     fileprivate func logout() {
-        let alert = UIAlertController(title: "Would you like to log out?", preferredStyle: .alert)
-        alert.add(action: "Log out") {
+        let alert = UIAlertController(title: NSLocalizedString("Would you like to log out?", comment: "logout alert title"), preferredStyle: .alert)
+        alert.add(action: NSLocalizedString("Log out", comment: "logout alert button")) {
             Server.logout()
             let _ = self.navigationController?.tabBarController?.navigationController?.popToRootViewController(animated: true)
         }
@@ -173,6 +173,6 @@ class SettingsController: UITableViewController, STPPaymentContextDelegate {
     
     fileprivate func updateCacheSizeView() {
         let count = round(getCacheSize() * 10) / 10
-        self.memoryCacheSize.text = "\(count) Mb"
+        self.memoryCacheSize.text = NSLocalizedString("\(count) Mb", comment: "image cache size label")
     }
 }

@@ -40,7 +40,7 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
         
         guard (name?.characters.count ?? 0) < 50 else {
             cell.nameTextfield.shake()
-            snackbarController?.show(error: "Name should be less than 50 chars")
+            snackbarController?.show(error: NSLocalizedString("Name should be less than 50 chars", comment: "snackbar error"))
             return
         }
 
@@ -51,7 +51,7 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
         
         guard (phone?.characters.count ?? 0) < 20 else {
             cell.phoneTextfield.shake()
-            snackbarController?.show(error: "Phone should be less than 20 chars")
+            snackbarController?.show(error: NSLocalizedString("Phone should be less than 20 chars", comment: "snackbar error"))
             return
         }
 
@@ -74,7 +74,7 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
                         if let error = error {
                             self.snackbarController?.show(error: error.domain)
                         } else {
-                            self.snackbarController?.show(text: "Your profile has been updated")
+                            self.snackbarController?.show(text: NSLocalizedString("Your profile has been updated", comment: "snackbar message"))
                         }
                     }
                 }
@@ -87,7 +87,7 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
                 if let error = error {
                     self.snackbarController?.show(error: error.domain)
                 } else {
-                    self.snackbarController?.show(text: "Your profile has been updated")
+                    self.snackbarController?.show(text: NSLocalizedString("Your profile has been updated", comment: "snackbar message"))
                 }
             }
         }

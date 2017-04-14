@@ -322,7 +322,7 @@ extension ProjectController: PostCellDelegate {
     
     func open(user: User) {
         guard let hud = MBProgressHUD.show() else { return }
-        hud.label.text = "Getting user profile..."
+        hud.label.text = NSLocalizedString("Getting user profile...", comment: "getting user profile hud message")
         
         Server.getProfile(for: user)
         { error, user in
@@ -369,7 +369,7 @@ extension ProjectController: InputViewDelegate {
     
     func shouldChangeStatus(text: String) {
         guard let hud = MBProgressHUD.show() else { return }
-        hud.label.text = NSLocalizedString("Changing status...", comment: "Project change status message")
+        hud.label.text = NSLocalizedString("Changing status...", comment: "project change status message")
         Server.change(status: text, project: project)
         { error, status in
             hud.hide(animated: true)
@@ -380,14 +380,14 @@ extension ProjectController: InputViewDelegate {
                 self.project.lastPost = status
                 self.configure()
                 self.reloadAndCleanInput()
-                self.snackbarController?.show(text: "Status has been changed")
+                self.snackbarController?.show(text: NSLocalizedString("Status has been changed", comment: "project chande status success message"))
             }
         }
     }
     
     func addPost(text: String?, keys: [String]?, hud: MBProgressHUD){
         hud.mode = .indeterminate
-        hud.label.text = NSLocalizedString("Uploading new message...", comment: "New post upload message")
+        hud.label.text = NSLocalizedString("Uploading new message...", comment: "new post upload message")
         Server.addPost(to: self.project, text: text!, attachmentKeys: keys!)
         { error, post in
             hud.hide(animated: true)
@@ -397,14 +397,14 @@ extension ProjectController: InputViewDelegate {
                 self.project.lastPost = post
                 self.configure()
                 self.reloadAndCleanInput()
-                self.snackbarController?.show(text: "Message sent")
+                self.snackbarController?.show(text: NSLocalizedString("Message sent", comment: "new post upload success message"))
             }
         }
     }
     
     func shouldAddPost(text: String, attachments: [Any]) {
         guard isValidPost(text: text, attachments: attachments) else {
-            snackbarController?.show(error: NSLocalizedString("Please provide at least one attachment or text", comment: "New post error"))
+            snackbarController?.show(error: NSLocalizedString("Please provide at least one attachment or text", comment: "new post error"))
             return
         }
         guard let hud = MBProgressHUD.show() else { return }
@@ -412,7 +412,7 @@ extension ProjectController: InputViewDelegate {
         
         if imagesToUpload.count > 0 {
             hud.mode = .annularDeterminate
-            hud.label.text = NSLocalizedString("Uploading attachments...", comment: "New post upload message")
+            hud.label.text = NSLocalizedString("Uploading attachments...", comment: "new post upload message")
             S3.upload(images: imagesToUpload, progress:
                 { progress in
                     hud.progress = progress
@@ -436,7 +436,7 @@ extension ProjectController: InputViewDelegate {
     
     func editPost(post: Post, hud: MBProgressHUD){
         hud.mode = .indeterminate
-        hud.label.text = NSLocalizedString("Uploading data", comment: "Edit post upload message")
+        hud.label.text = NSLocalizedString("Uploading data", comment: "edit post upload message")
         Server.editPost(project: self.project, post: post, text: post.text, attachments: post.attachments)
         { error in
             hud.hide(animated: true)
@@ -444,7 +444,7 @@ extension ProjectController: InputViewDelegate {
                 self.snackbarController?.show(error: error.domain)
             } else {
                 self.input?.post = nil
-                self.snackbarController?.show(text: post.type == .status ? "Status changed": "Message changed")
+                self.snackbarController?.show(text: post.type == .status ? NSLocalizedString("Status changed", comment: "edit post success message"): NSLocalizedString("Message changed", comment: "edit post success message"))
                 self.updateViewPost(post: post)
             }
         }
@@ -485,7 +485,7 @@ extension ProjectController: InputViewDelegate {
 
 extension ProjectController: DZNEmptyDataSetSource {
     func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
-        let text = isLoading ? "Loading...": "No posts yet"
+        let text = isLoading ? NSLocalizedString("Loading...", comment: "empty view placeholder"): NSLocalizedString("No posts yet", comment: "empty view placeholder")
         let attributes = [
             NSFontAttributeName: Font.boldSystemFont(ofSize: 18.0),
             NSForegroundColorAttributeName: Color.darkGray
@@ -494,7 +494,7 @@ extension ProjectController: DZNEmptyDataSetSource {
     }
     
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        let text = isLoading ? "Let us get your posts from the cloud" : project.canEdit ? "Please create your first update" : "Managers should post updates here"
+        let text = isLoading ? NSLocalizedString("Let us get your posts from the cloud", comment: "empty view placeholder") : project.canEdit ? NSLocalizedString("Please create your first update", comment: "empty view placeholder") : NSLocalizedString("Managers should post updates here", comment: "empty view placeholder")
         
         let paragraph = NSMutableParagraphStyle()
         paragraph.lineBreakMode = .byWordWrapping;

@@ -72,7 +72,7 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
     
     func checkTouched(at cell: ProjectApproveCell) {
         guard let hud = MBProgressHUD.show() else { return }
-        hud.label.text = "Accepting the invite..."
+        hud.label.text = NSLocalizedString("Accepting the invite...", comment: "invite accept message")
         Server.invite(approve: true, invite: cell.invite)
         { error in
             hud.hide(animated: true)
@@ -80,7 +80,7 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
                 self.snackbarController?.show(error: error.domain)
             } else {
                 guard let index = self.invites.index(of: cell.invite) else { return }
-                self.snackbarController?.show(text: "You have accepted the invite to \"\(cell.invite.project!.title ?? "")\"")
+                self.snackbarController?.show(text: NSLocalizedString("You have accepted the invite to \"\(cell.invite.project!.title ?? "")\"", comment: "invite accept success message"))
                 self.invites = self.invites.filter { $0 != cell.invite }
                 self.tableNode.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
                 self.loadInitialOnlyProjects()
@@ -90,7 +90,7 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
     
     func crossTouched(at cell: ProjectApproveCell) {
         guard let hud = MBProgressHUD.show() else { return }
-        hud.label.text = "Rejecting the invite..."
+        hud.label.text = NSLocalizedString("Rejecting the invite...", comment: "invite reject message")
         Server.invite(approve: false, invite: cell.invite)
         { error in
             hud.hide(animated: true)
@@ -98,7 +98,7 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
                 self.snackbarController?.show(error: error.domain)
             } else {
                 guard let index = self.invites.index(of: cell.invite) else { return }
-                self.snackbarController?.show(text: "You have rejected the invite to \"\(cell.invite.project!.title ?? "")\"")
+                self.snackbarController?.show(text: NSLocalizedString("You have rejected the invite to \"\(cell.invite.project!.title ?? "")\"", comment: "invite reject success message"))
                 self.invites = self.invites.filter { $0 != cell.invite }
                 self.tableNode.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
             }
@@ -109,7 +109,7 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
     
     fileprivate func setupTabBar() {
         navigationController?.tabBarItem.image = R.image.projects()
-        navigationController?.tabBarItem.title = "Projects"
+        navigationController?.tabBarItem.title = NSLocalizedString("Projects", comment: "tabbar title")
     }
     
     fileprivate func setupTableView() {
@@ -275,7 +275,7 @@ extension ProjectsController: ASTableDelegate {
 
 extension ProjectsController: DZNEmptyDataSetSource {
     func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
-        let text = isLoading ? "Loading...": "You don't have any projects yet"
+        let text = isLoading ? NSLocalizedString("Loading...", comment: "empty view placeholder"): NSLocalizedString("You don't have any projects yet", comment: "empty view placeholder")
         let attributes = [
             NSFontAttributeName: Font.boldSystemFont(ofSize: 18.0),
             NSForegroundColorAttributeName: Color.darkGray
@@ -284,7 +284,7 @@ extension ProjectsController: DZNEmptyDataSetSource {
     }
     
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        let text = isLoading ? "Let us get your projects from the cloud": "You can create your first project"
+        let text = isLoading ? NSLocalizedString("Let us get your projects from the cloud", comment: "empty view placeholder"): NSLocalizedString("You can create your first project", comment: "empty view placeholder")
         
         let paragraph = NSMutableParagraphStyle()
         paragraph.lineBreakMode = .byWordWrapping;
@@ -304,7 +304,7 @@ extension ProjectsController: DZNEmptyDataSetSource {
             NSForegroundColorAttributeName: Color.controlioGreen,
             ]
         
-        return NSAttributedString(string: "Create project", attributes: attributes)
+        return NSAttributedString(string: NSLocalizedString("Create project", comment: "empty view button title"), attributes: attributes)
     }
     
     func verticalOffset(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat {
