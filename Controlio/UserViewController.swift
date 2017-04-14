@@ -35,18 +35,18 @@ class UserViewController: UITableViewController, UserProfileCellDelegate, MFMail
     func phoneTouched(for user: User) {
         guard let phone = user.phone,
             !phone.isEmpty else {
-            snackbarController?.show(error: "Wrong phone format")
+            snackbarController?.show(error: NSLocalizedString("Wrong phone format", comment: "snackbar error"))
             return
         }
         let number = String(phone.characters.filter {![" ", "\t", "\n"].contains($0)})
         
         guard let url = URL(string: "tel://\(number)") else {
-            snackbarController?.show(error: "Wrong phone format")
+            snackbarController?.show(error: NSLocalizedString("Wrong phone format", comment: "snackbar error"))
             return
         }
         
         if !UIApplication.shared.canOpenURL(url) {
-            snackbarController?.show(error: "Cannot make calls on this device")
+            snackbarController?.show(error: NSLocalizedString("Cannot make calls on this device", comment: "snackbar error"))
             return
         }
         if #available(iOS 10.0, *) {
@@ -59,7 +59,7 @@ class UserViewController: UITableViewController, UserProfileCellDelegate, MFMail
     func emailTouched(for user: User) {
         guard let email = user.email,
             email.isEmail else {
-            snackbarController?.show(error: "Wrong email format")
+            snackbarController?.show(error: NSLocalizedString("Wrong email format", comment: "snackbar error"))
             return
         }
         if MFMailComposeViewController.canSendMail() {
@@ -68,7 +68,7 @@ class UserViewController: UITableViewController, UserProfileCellDelegate, MFMail
             mail.setToRecipients([email])
             present(mail, animated: true)
         } else {
-            snackbarController?.show(error: "Cannot send mail on this device")
+            snackbarController?.show(error: NSLocalizedString("Cannot send mail on this device", comment: "snackbar error"))
         }
     }
     

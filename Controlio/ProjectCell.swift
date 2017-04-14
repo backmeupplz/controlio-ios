@@ -131,7 +131,7 @@ class ProjectCell: ASCellNode {
     fileprivate func configureDateNode() {
         var text = ""
         if project.isFinished {
-            text = "Finished"
+            text = NSLocalizedString("Finished", comment: "finished project cell label")
         } else if let date = project.dateUpdated {
             text = DateFormatter.projectDateString(date)
         }
@@ -160,7 +160,7 @@ class ProjectCell: ASCellNode {
                 string = text
             } else {
                 descriptionNode.alpha = 0.5
-                string = "Nothing here yet"
+                string = NSLocalizedString("Nothing here yet", "project cell placeholder")
             }
         } else {
             if let text = project.lastPost?.text {
@@ -168,7 +168,7 @@ class ProjectCell: ASCellNode {
                 string = text
             } else {
                 descriptionNode.alpha = 0.5
-                string = "Nothing here yet"
+                string = NSLocalizedString("Nothing here yet", comment: "project cell placeholder")
             }
         }
         descriptionNode.attributedText =

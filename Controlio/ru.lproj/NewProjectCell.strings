@@ -1,15 +1,15 @@
 
 /* Class = "UISegmentedControl"; 2C4-1E-LKQ.segmentTitles[0] = "Client"; ObjectID = "2C4-1E-LKQ"; */
-"2C4-1E-LKQ.segmentTitles[0]" = "Client";
+"2C4-1E-LKQ.segmentTitles[0]" = "Клиент";
 
 /* Class = "UISegmentedControl"; 2C4-1E-LKQ.segmentTitles[1] = "Business"; ObjectID = "2C4-1E-LKQ"; */
-"2C4-1E-LKQ.segmentTitles[1]" = "Business";
+"2C4-1E-LKQ.segmentTitles[1]" = "Бизнес";
 
 /* Class = "UILabel"; text = "Add photo"; ObjectID = "Ej7-Cv-TKa"; */
-"Ej7-Cv-TKa.text" = "Add photo";
+"Ej7-Cv-TKa.text" = "Добавить фото";
 
 /* Class = "UIButton"; normalTitle = "Create"; ObjectID = "eC6-fg-N3J"; */
-"eC6-fg-N3J.normalTitle" = "Create";
+"eC6-fg-N3J.normalTitle" = "Создать";
 
 /* Class = "UILabel"; text = "I am a:"; ObjectID = "f4e-x0-5Gi"; */
-"f4e-x0-5Gi.text" = "I am a:";
+"f4e-x0-5Gi.text" = "Я:";

@@ -202,7 +202,7 @@ class PostCell: ASCellNode {
         
         var text: String = post.text
         if post.type == .status {
-            text = "Status changed: \(text)"
+            text = NSLocalizedString("Status changed: \(text)", comment "post cell status text")
         }
         
         textNode.attributedText =

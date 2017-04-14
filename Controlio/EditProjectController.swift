@@ -74,12 +74,12 @@ class EditProjectController: UITableViewController, EditProjectCellDelegate, Pic
             guard let hud = MBProgressHUD.show() else { return }
             if project.tempImage != nil {
                 hud.mode = .annularDeterminate
-                hud.label.text = "Uploading image"
+                hud.label.text = NSLocalizedString("Uploading image", comment: "hud title")
                 Server.edit(project: project, progress: { progress in
                     hud.progress = progress
                     if progress >= 1 {
                         hud.mode = .indeterminate
-                        hud.label.text = "Editing the project..."
+                        hud.label.text = NSLocalizedString("Editing the project...", comment: "hud title")
                     }
                 })
                 { error in
@@ -87,12 +87,11 @@ class EditProjectController: UITableViewController, EditProjectCellDelegate, Pic
                     if let error = error {
                         self.snackbarController?.show(error: error.domain)
                     } else {
-                        self.snackbarController?.show(text: "Project info has been changed")
+                        self.snackbarController?.show(text: NSLocalizedString("Project info has been changed", comment: "snackbar message"))
                     }
                 }
             } else {
-                
-                hud.label.text = "Editing the project..."
+                hud.label.text = NSLocalizedString("Editing the project...", comment: "hud title")
                 Server.edit(project: project, progress: { progress in })
                 { error in
                     
@@ -100,7 +99,7 @@ class EditProjectController: UITableViewController, EditProjectCellDelegate, Pic
                     if let error = error {
                         self.snackbarController?.show(error: error.domain)
                     } else {
-                        self.snackbarController?.show(text: "Project info has been changed")
+                        self.snackbarController?.show(text: NSLocalizedString("Project info has been changed", comment: "snackbar message"))
                     }
                 }
             }

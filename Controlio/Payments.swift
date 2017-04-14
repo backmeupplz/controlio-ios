@@ -22,7 +22,7 @@ class Payments: NSObject, STPBackendAPIAdapter {
                     } else if let customer = deserializer.customer {
                         completion(customer, nil)
                     } else {
-                        completion(nil, NSError(domain: NSLocalizedString("Something went wrong", comment: "Payments error"), code: 500, userInfo: nil))
+                        completion(nil, NSError(domain: NSLocalizedString("Something went wrong", comment: "payments error"), code: 500, userInfo: nil))
                     }
                 }
         }

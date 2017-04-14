@@ -107,7 +107,7 @@ class S3: NSObject {
             let path = saveImage(image)
             if path == nil {
                 DispatchQueue.main.async {
-                    completion(nil, NSLocalizedString("Could not save image to file system", comment: "Error"))
+                    completion(nil, NSLocalizedString("Could not save image to file system", comment: "error"))
                 }
                 return
             }
@@ -142,7 +142,7 @@ class S3: NSObject {
                     }
                 } else {
                     DispatchQueue.main.async {
-                        completion(nil, NSLocalizedString("Unexpected empty result", comment: "Error"))
+                        completion(nil, NSLocalizedString("Unexpected empty result", comment: "error"))
                     }
                 }
                 

@@ -76,11 +76,11 @@ class ProjectApproveCell: ASCellNode {
         var inviteString = ""
         switch invite.type {
         case .manage:
-            inviteString = "invited you to manage"
+            inviteString = NSLocalizedString("invited you to manage", comment: "invite string start")
         case .own:
-            inviteString = "invited you as an owner to"
+            inviteString = NSLocalizedString("invited you as an owner to", comment: "invite string start")
         case .client:
-            inviteString = "invited you as a client to"
+            inviteString = NSLocalizedString("invited you as a client to", comment: "invite string start")
         }
         let projectTitle = invite.project!.title ?? ""
         

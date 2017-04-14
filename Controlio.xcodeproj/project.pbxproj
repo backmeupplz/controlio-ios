@@ -60,6 +60,9 @@
 		B390C7A31CDE96B800D5F021 /* DeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B390C7A21CDE96B800D5F021 /* DeepLink.swift */; };
 		B390C7A51CDE9B5400D5F021 /* IndexPath+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B390C7A41CDE9B5400D5F021 /* IndexPath+Additions.swift */; };
 		B3965BDB1EA0257C00B4071F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B3965BD91EA0257C00B4071F /* Localizable.strings */; };
+		B3965BDD1EA0862900B4071F /* AddManagerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3965BDF1EA0862900B4071F /* AddManagerCell.xib */; };
+		B3965BE21EA086C000B4071F /* UserProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3965BE41EA086C000B4071F /* UserProfileCell.xib */; };
+		B3965BE71EA0870B00B4071F /* EditProjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3965BE91EA0870B00B4071F /* EditProjectCell.xib */; };
 		B39E06541E331EEF003B5910 /* Invite.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39E06531E331EEF003B5910 /* Invite.swift */; };
 		B3A178D71DB2D12500C0E311 /* PlansController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A178D61DB2D12500C0E311 /* PlansController.swift */; };
 		B3A7460B1E9B25B3008F1D0D /* NSAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A7460A1E9B25B3008F1D0D /* NSAttributedString+Extensions.swift */; };
@@ -73,7 +76,6 @@
 		B3BA9C311CE18ED300647470 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BA9C301CE18ED300647470 /* InputView.swift */; };
 		B3C03D0E1C90D70A0096E04C /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C03D0D1C90D70A0096E04C /* GradientView.swift */; };
 		B3C03D101C90DAA60096E04C /* UIColor+Controlio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C03D0F1C90DAA60096E04C /* UIColor+Controlio.swift */; };
-		B3C03D171C90FEB70096E04C /* DemoAccountLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C03D161C90FEB70096E04C /* DemoAccountLanguage.swift */; };
 		B3C03D1A1C90FF890096E04C /* UIAlertController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C03D191C90FF890096E04C /* UIAlertController+Additions.swift */; };
 		B3C1408F1E218E9D00FBE8EE /* AppSnackbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C1408E1E218E9D00FBE8EE /* AppSnackbarController.swift */; };
 		B3C305A11CDFD79500C8E85F /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C305A01CDFD79500C8E85F /* SettingsController.swift */; };
@@ -90,16 +92,13 @@
 		B3D1692E1CDDC15F0080D748 /* SupportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D1692D1CDDC15F0080D748 /* SupportController.swift */; };
 		B3D81AD41E4141B80035C6E2 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D81AD31E4141B80035C6E2 /* UserViewController.swift */; };
 		B3D81AD71E4142080035C6E2 /* UserProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D81AD51E4142080035C6E2 /* UserProfileCell.swift */; };
-		B3D81AD81E4142080035C6E2 /* UserProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3D81AD61E4142080035C6E2 /* UserProfileCell.xib */; };
 		B3D81ADB1E42A4810035C6E2 /* EditProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D81AD91E42A4810035C6E2 /* EditProjectCell.swift */; };
-		B3D81ADC1E42A4810035C6E2 /* EditProjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3D81ADA1E42A4810035C6E2 /* EditProjectCell.xib */; };
 		B3D81ADE1E42AA400035C6E2 /* EditProjectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D81ADD1E42AA400035C6E2 /* EditProjectController.swift */; };
 		B3D8C6F41CFBFBF4001EE432 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D8C6F31CFBFBF4001EE432 /* Server.swift */; };
 		B3D8C6F61CFBFC6B001EE432 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D8C6F51CFBFC6B001EE432 /* Config.swift */; };
 		B3D8C6F81CFBFD7E001EE432 /* NSUserDefaults+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D8C6F71CFBFD7E001EE432 /* NSUserDefaults+extensions.swift */; };
 		B3D8C6FA1CFC0A78001EE432 /* S3.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D8C6F91CFC0A78001EE432 /* S3.swift */; };
 		B3E57BF11D9602DB00F699F1 /* AddManagerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E57BEF1D9602DB00F699F1 /* AddManagerCell.swift */; };
-		B3E57BF21D9602DB00F699F1 /* AddManagerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3E57BF01D9602DB00F699F1 /* AddManagerCell.xib */; };
 		B3E60BAE1E86EFD900658D80 /* AllPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E60BAD1E86EFD900658D80 /* AllPickerDelegate.swift */; };
 		B3E634D31C91344400C0572A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E634D21C91344400C0572A /* Router.swift */; };
 		B3E634D51C91444700C0572A /* RecoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E634D41C91444700C0572A /* RecoveryViewController.swift */; };
@@ -200,6 +199,12 @@
 		B3965BD71EA0224500B4071F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InputView.strings; sourceTree = "<group>"; };
 		B3965BDA1EA0257C00B4071F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B3965BDC1EA0259B00B4071F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B3965BDE1EA0862900B4071F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AddManagerCell.xib; sourceTree = "<group>"; };
+		B3965BE11EA0862D00B4071F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/AddManagerCell.strings; sourceTree = "<group>"; };
+		B3965BE31EA086C000B4071F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/UserProfileCell.xib; sourceTree = "<group>"; };
+		B3965BE61EA086C300B4071F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/UserProfileCell.strings; sourceTree = "<group>"; };
+		B3965BE81EA0870B00B4071F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/EditProjectCell.xib; sourceTree = "<group>"; };
+		B3965BEB1EA0870F00B4071F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/EditProjectCell.strings; sourceTree = "<group>"; };
 		B39E06531E331EEF003B5910 /* Invite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Invite.swift; sourceTree = "<group>"; };
 		B3A178D61DB2D12500C0E311 /* PlansController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlansController.swift; sourceTree = "<group>"; };
 		B3A7460A1E9B25B3008F1D0D /* NSAttributedString+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Extensions.swift"; sourceTree = "<group>"; };
@@ -215,7 +220,6 @@
 		B3BA9C301CE18ED300647470 /* InputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		B3C03D0D1C90D70A0096E04C /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		B3C03D0F1C90DAA60096E04C /* UIColor+Controlio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Controlio.swift"; sourceTree = "<group>"; };
-		B3C03D161C90FEB70096E04C /* DemoAccountLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoAccountLanguage.swift; sourceTree = "<group>"; };
 		B3C03D191C90FF890096E04C /* UIAlertController+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Additions.swift"; sourceTree = "<group>"; };
 		B3C1408E1E218E9D00FBE8EE /* AppSnackbarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSnackbarController.swift; sourceTree = "<group>"; };
 		B3C305A01CDFD79500C8E85F /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
@@ -232,16 +236,13 @@
 		B3D1692D1CDDC15F0080D748 /* SupportController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportController.swift; sourceTree = "<group>"; };
 		B3D81AD31E4141B80035C6E2 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		B3D81AD51E4142080035C6E2 /* UserProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileCell.swift; sourceTree = "<group>"; };
-		B3D81AD61E4142080035C6E2 /* UserProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileCell.xib; sourceTree = "<group>"; };
 		B3D81AD91E42A4810035C6E2 /* EditProjectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProjectCell.swift; sourceTree = "<group>"; };
-		B3D81ADA1E42A4810035C6E2 /* EditProjectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProjectCell.xib; sourceTree = "<group>"; };
 		B3D81ADD1E42AA400035C6E2 /* EditProjectController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProjectController.swift; sourceTree = "<group>"; };
 		B3D8C6F31CFBFBF4001EE432 /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		B3D8C6F51CFBFC6B001EE432 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		B3D8C6F71CFBFD7E001EE432 /* NSUserDefaults+extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSUserDefaults+extensions.swift"; sourceTree = "<group>"; };
 		B3D8C6F91CFC0A78001EE432 /* S3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = S3.swift; sourceTree = "<group>"; };
 		B3E57BEF1D9602DB00F699F1 /* AddManagerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddManagerCell.swift; sourceTree = "<group>"; };
-		B3E57BF01D9602DB00F699F1 /* AddManagerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddManagerCell.xib; sourceTree = "<group>"; };
 		B3E60BAD1E86EFD900658D80 /* AllPickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllPickerDelegate.swift; sourceTree = "<group>"; };
 		B3E634D21C91344400C0572A /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		B3E634D41C91444700C0572A /* RecoveryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecoveryViewController.swift; sourceTree = "<group>"; };
@@ -429,7 +430,6 @@
 			children = (
 				B3C305A41CDFE5DF00C8E85F /* Objects */,
 				B3C03D181C90FF7C0096E04C /* Extensions */,
-				B3C03D151C90FEA50096E04C /* Enums */,
 				B3D8C6F51CFBFC6B001EE432 /* Config.swift */,
 				B3B2B92C1C90CD1600468342 /* AppDelegate.swift */,
 				B3E634D21C91344400C0572A /* Router.swift */,
@@ -463,14 +463,6 @@
 				B3F3038A1DAF491200535FCD /* Main.storyboard */,
 			);
 			name = UI;
-			sourceTree = "<group>";
-		};
-		B3C03D151C90FEA50096E04C /* Enums */ = {
-			isa = PBXGroup;
-			children = (
-				B3C03D161C90FEB70096E04C /* DemoAccountLanguage.swift */,
-			);
-			name = Enums;
 			sourceTree = "<group>";
 		};
 		B3C03D181C90FF7C0096E04C /* Extensions */ = {
@@ -551,14 +543,14 @@
 				B3F303991DAF4B1800535FCD /* NewProjectCell.xib */,
 				B3EA114A1D93A9740026658B /* UserCell.swift */,
 				B3E57BEF1D9602DB00F699F1 /* AddManagerCell.swift */,
-				B3E57BF01D9602DB00F699F1 /* AddManagerCell.xib */,
+				B3965BDF1EA0862900B4071F /* AddManagerCell.xib */,
 				B37F10E31D962F9A00CAA8D4 /* EditProfileCell.swift */,
 				B3F3039E1DAF4B6700535FCD /* EditProfileCell.xib */,
 				B37A96021E2A48610075C7A7 /* ProjectApproveCell.swift */,
 				B3D81AD51E4142080035C6E2 /* UserProfileCell.swift */,
-				B3D81AD61E4142080035C6E2 /* UserProfileCell.xib */,
+				B3965BE41EA086C000B4071F /* UserProfileCell.xib */,
 				B3D81AD91E42A4810035C6E2 /* EditProjectCell.swift */,
-				B3D81ADA1E42A4810035C6E2 /* EditProjectCell.xib */,
+				B3965BE91EA0870B00B4071F /* EditProjectCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -679,7 +671,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B383236B1CDC3FB3004D0A1C /* SFUIDisplay-Semibold.otf in Resources */,
-				B3E57BF21D9602DB00F699F1 /* AddManagerCell.xib in Resources */,
+				B3965BDD1EA0862900B4071F /* AddManagerCell.xib in Resources */,
 				B383238E1CDC409D004D0A1C /* SFUIText-Italic.otf in Resources */,
 				B3B2B9371C90CD1600468342 /* LaunchScreen.storyboard in Resources */,
 				B38323681CDC3FB3004D0A1C /* SFUIDisplay-Light.otf in Resources */,
@@ -696,7 +688,7 @@
 				B383236C1CDC3FB3004D0A1C /* SFUIDisplay-Thin.otf in Resources */,
 				B38323851CDC409D004D0A1C /* SFUIText-Bold.otf in Resources */,
 				B383238D1CDC409D004D0A1C /* SFUIText-HeavyItalic.otf in Resources */,
-				B3D81ADC1E42A4810035C6E2 /* EditProjectCell.xib in Resources */,
+				B3965BE71EA0870B00B4071F /* EditProjectCell.xib in Resources */,
 				B38323931CDC409D004D0A1C /* SFUIText-LightItalic.otf in Resources */,
 				B38323991CDC409D004D0A1C /* SFUIText-RegularG3.otf in Resources */,
 				B38323671CDC3FB3004D0A1C /* SFUIDisplay-Heavy.otf in Resources */,
@@ -715,7 +707,7 @@
 				B3B2B9321C90CD1600468342 /* Login.storyboard in Resources */,
 				B383239A1CDC409D004D0A1C /* SFUIText-Semibold.otf in Resources */,
 				B38323901CDC409D004D0A1C /* SFUIText-ItalicG2.otf in Resources */,
-				B3D81AD81E4142080035C6E2 /* UserProfileCell.xib in Resources */,
+				B3965BE21EA086C000B4071F /* UserProfileCell.xib in Resources */,
 				B38323871CDC409D004D0A1C /* SFUIText-BoldG2.otf in Resources */,
 				B383238F1CDC409D004D0A1C /* SFUIText-ItalicG1.otf in Resources */,
 				B3F303881DAF491200535FCD /* Main.storyboard in Resources */,
@@ -836,7 +828,6 @@
 				B3D8C6F81CFBFD7E001EE432 /* NSUserDefaults+extensions.swift in Sources */,
 				B3E57BF11D9602DB00F699F1 /* AddManagerCell.swift in Sources */,
 				B390C7A51CDE9B5400D5F021 /* IndexPath+Additions.swift in Sources */,
-				B3C03D171C90FEB70096E04C /* DemoAccountLanguage.swift in Sources */,
 				B30FC18D1E25907B00FEB944 /* ClientsTableViewController.swift in Sources */,
 				B301EFDD1CE59A0A0013CD4D /* UIImagePickerDelegate+UINavgiationControllerDelegate.swift in Sources */,
 				B3E8157C1CE1603400E8F87B /* NewProjectController.swift in Sources */,
@@ -891,6 +882,33 @@
 				B3965BDC1EA0259B00B4071F /* ru */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		B3965BDF1EA0862900B4071F /* AddManagerCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B3965BDE1EA0862900B4071F /* Base */,
+				B3965BE11EA0862D00B4071F /* ru */,
+			);
+			name = AddManagerCell.xib;
+			sourceTree = "<group>";
+		};
+		B3965BE41EA086C000B4071F /* UserProfileCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B3965BE31EA086C000B4071F /* Base */,
+				B3965BE61EA086C300B4071F /* ru */,
+			);
+			name = UserProfileCell.xib;
+			sourceTree = "<group>";
+		};
+		B3965BE91EA0870B00B4071F /* EditProjectCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B3965BE81EA0870B00B4071F /* Base */,
+				B3965BEB1EA0870F00B4071F /* ru */,
+			);
+			name = EditProjectCell.xib;
 			sourceTree = "<group>";
 		};
 		B3B2B9301C90CD1600468342 /* Login.storyboard */ = {
