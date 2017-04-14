@@ -160,7 +160,7 @@ class ProjectCell: ASCellNode {
                 string = text
             } else {
                 descriptionNode.alpha = 0.5
-                string = NSLocalizedString("Nothing here yet", "project cell placeholder")
+                string = NSLocalizedString("Nothing here yet", comment: "project cell placeholder")
             }
         } else {
             if let text = project.lastPost?.text {
