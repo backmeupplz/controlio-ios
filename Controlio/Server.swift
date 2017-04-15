@@ -608,10 +608,26 @@ class Server: NSObject {
         }
     }
     
-    // MARK: - Features -
+    // MARK: - Misc -
     
     class func features(completion: @escaping (JSON?, NSError?)->()) {
         request(urlAddition: "feature_list", method: .get, needsToken: false)
+        { json, error in
+            completion(json, error)
+        }
+    }
+    
+    class func fetchErrorsLocalizations() {
+        errorsLocalizations
+        { json, error in
+            if let json = json {
+                UserDefaults.set(json.dictionaryObject, key: "localizedErrors")
+            }
+        }
+    }
+    
+    class func errorsLocalizations(completion: @escaping (JSON?, NSError?)->()) {
+        request(urlAddition: "error_list", method: .get, needsToken: false)
         { json, error in
             completion(json, error)
         }
@@ -660,10 +676,12 @@ class Server: NSObject {
     }
     
     fileprivate class func checkForErrors(json: JSON) -> NSError? {
-        if let error = json["errors"].array?.first {
-            return NSError(domain: error["messages"].array?.first?.string ?? NSLocalizedString("Something went wrong", comment: "Error"), code: error["status"].int ?? 500, userInfo: nil)
-        } else if let errorName = json["errors"].dictionary?.keys.first {
-            return NSError(domain: json["errors"][errorName]["message"].string ?? NSLocalizedString("Something went wrong", comment: "Error"), code: 500, userInfo: nil)
+        let langCode = Locale.current.languageCode ?? "en"
+        if let type = json["type"].string,
+            let errors = UserDefaults.get("localizedErrors") as? [String: Any],
+            let messageDictionary = errors[type] as? [String: String],
+            let message = messageDictionary[langCode] {
+            return NSError(domain: message, code: json["status"].int ?? 500, userInfo: nil)
         } else if let message = json["message"].string {
             return NSError(domain: message, code: json["status"].int ?? 500, userInfo: nil)
         } else {

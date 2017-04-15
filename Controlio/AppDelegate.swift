@@ -31,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         S3.setup()
         setupPushNotifications(application: application)
         FeatureList.fetchFeatureList()
+        Server.fetchErrorsLocalizations()
         Appearance.setup()
         
         // DEBUG
