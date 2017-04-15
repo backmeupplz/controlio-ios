@@ -58,6 +58,9 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
 
         loadInitialProjects()
         subscribe()
+        
+        setupSearchController()
+        setupScopeBar()
     }
     
     deinit {
@@ -118,10 +121,10 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
         searchController.searchBar.delegate = self
         definesPresentationContext = true
         searchController.dimsBackgroundDuringPresentation = false
-        searchController.searchBar.barTintColor = UIColor.controlioViolet
-        searchController.searchBar.tintColor = UIColor.white
-        searchController.searchBar.sizeToFit()
-        tableNode.view.setContentOffset(CGPoint(x:0, y:searchController.searchBar.frame.height), animated: false)
+        //searchController.searchBar.barTintColor = UIColor.controlioViolet
+        //searchController.searchBar.tintColor = UIColor.white
+        //searchController.searchBar.sizeToFit()
+        //tableNode.view.setContentOffset(CGPoint(x:0, y:searchController.searchBar.frame.height), animated: false)
     }
     
     fileprivate func setupScopeBar(){
@@ -215,7 +218,7 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
     
     fileprivate func loadInitialOnlyProjects() {
         refreshControl?.beginRefreshing()
-        Server.getProjects
+        Server.getProjects()
             { error, projects in
                 if let error = error {
                     self.snackbarController?.show(error: error.domain)
@@ -227,11 +230,13 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
     }
     
     fileprivate func loadMoreProjects(completion: @escaping ()->()) {
-        Server.getProjects(skip: projects.count)
+        let tempQuery = query
+        let tempScope = scope
+        Server.getProjects(skip: projects.count,type: scope, query: query)
         { error, projects in
             if let error = error {
                 self.snackbarController?.show(error: error.domain)
-            } else if let projects = projects {
+            } else if let projects = projects, tempQuery == self.query, tempScope == self.scope {
                 self.addProjects(projects: projects)
             }
             completion()
