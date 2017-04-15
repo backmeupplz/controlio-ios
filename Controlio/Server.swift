@@ -12,6 +12,12 @@ import SwiftyJSON
 import CLTokenInputView
 import Stripe
 
+enum ProjectSearchType: String {
+    case all = "all"
+    case live = "live"
+    case finished = "finished"
+}
+
 class Server: NSObject {
     
     // MARK: - Properties -
@@ -248,12 +254,13 @@ class Server: NSObject {
         }
     }
     
-    class func getProjects(skip: Int = 0, limit: Int = 20, completion:@escaping (NSError?, [Project]?)->()) {
-        let parameters = [
+    class func getProjects(skip: Int = 0, limit: Int = 20, type: ProjectSearchType = .all, query: String = "", completion:@escaping (NSError?, [Project]?)->()) {
+        let parameters: Parameters = [
             "skip": skip,
-            "limit": limit
+            "limit": limit,
+            "query": query,
+            "type": type.rawValue
         ]
-        
         request(urlAddition: "projects", method: .get, parameters: parameters, needsToken: true)
         { json, error in
             completion(error, Project.map(json: json))
