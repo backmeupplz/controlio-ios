@@ -280,7 +280,11 @@ extension ProjectsController: ASTableDataSource {
     }
     
     func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {
-        return section == 1 ? projects.count : invites.count
+        if section == 0 {
+            return searchController.isActive ? 0 : invites.count
+        } else {
+            return projects.count
+        }
     }
     
     func tableNode(_ tableNode: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
@@ -373,7 +377,7 @@ extension ProjectsController: UISearchResultsUpdating {
         query = searchBar.text ?? ""
         let scopeTitle = searchBar.scopeButtonTitles?[searchBar.selectedScopeButtonIndex].lowercased() ?? ""
         scope = ProjectSearchType(rawValue: scopeTitle) ?? .all
-        //loadInitial(silent: true)
+        loadInitialProjects(silent: true)
     }
 }
 
@@ -382,7 +386,7 @@ extension ProjectsController: UISearchBarDelegate {
         query = searchBar.text ?? ""
         let scopeTitle = searchBar.scopeButtonTitles?[selectedScope].lowercased() ?? ""
         scope = ProjectSearchType(rawValue: scopeTitle) ?? .all
-        //loadInitial(silent: true)
+        loadInitialProjects(silent: true)
     }
 }
 
