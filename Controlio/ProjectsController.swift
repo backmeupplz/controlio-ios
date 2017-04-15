@@ -24,6 +24,12 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
     fileprivate var isLoading = true
     fileprivate var needsMoreProjects = false
     
+    fileprivate let searchController = UISearchController(searchResultsController: nil)
+    
+    fileprivate var scope = ProjectSearchType.all
+    fileprivate var query = ""
+
+    
     fileprivate var refreshControl: UIRefreshControl?
     
     // MARK: - View Controller Life Cycle -
@@ -107,6 +113,26 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
     
     // MARK: - Private Functions -
     
+    fileprivate func setupSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        definesPresentationContext = true
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.barTintColor = UIColor.controlioViolet
+        searchController.searchBar.tintColor = UIColor.white
+        searchController.searchBar.sizeToFit()
+        tableNode.view.setContentOffset(CGPoint(x:0, y:searchController.searchBar.frame.height), animated: false)
+    }
+    
+    fileprivate func setupScopeBar(){
+        searchController.searchBar.scopeButtonTitles = [
+            ProjectSearchType.all.rawValue.capitalized,
+            ProjectSearchType.live.rawValue.capitalized,
+            ProjectSearchType.finished.rawValue.capitalized
+        ]
+        tableNode.view.tableHeaderView = searchController.searchBar
+    }
+    
     fileprivate func setupTabBar() {
         navigationController?.tabBarItem.image = R.image.projects()
         navigationController?.tabBarItem.title = NSLocalizedString("Projects", comment: "tabbar title")
@@ -155,8 +181,15 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
     
     // MARK: - Pagination -
     
-    @objc fileprivate func loadInitialProjects() {
+    @objc fileprivate func loadInitialProjects(silent: Bool = false) {
         isLoading = true
+        cleanTableView()
+        if !silent {
+            refreshControl?.beginRefreshing()
+        }
+        let tempQuery = query
+        let tempScope = scope
+        
         Server.getInvites
         { error, invites in
             if let error = error {
@@ -166,12 +199,12 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
                 self.tableNode.reloadSections(IndexSet(integer: 0), with: .fade)
             }
         }
-        Server.getProjects
+        Server.getProjects(type: scope, query: query)
         { error, projects in
             self.isLoading = false
             if let error = error {
                 self.snackbarController?.show(error: error.domain)
-            } else if let projects = projects {
+            } else if let projects = projects, tempQuery == self.query, tempScope == self.scope {
                 self.addInitialProjects(projects: projects)
             } else {
                 self.tableNode.reloadData()
@@ -220,6 +253,18 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
         self.projects += projects
         
         tableNode.insertRows(at: indexPaths, with: .bottom)
+    }
+    
+    fileprivate func cleanTableView() {
+        var indexPathsToDelete = IndexPath.range(start: 0, length: projects.count, section: 1)
+        if !searchController.isActive {
+            indexPathsToDelete += IndexPath.range(start: 0, length: invites.count, section: 0)
+            invites = []
+        }
+        projects = []
+        tableNode.view.beginUpdates()
+        tableNode.view.deleteRows(at: indexPathsToDelete, with: .fade)
+        tableNode.view.endUpdates()
     }
     
     // MARK: - Status Bar -
@@ -321,3 +366,23 @@ extension ProjectsController: DZNEmptyDataSetDelegate {
         return true
     }
 }
+
+extension ProjectsController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        query = searchBar.text ?? ""
+        let scopeTitle = searchBar.scopeButtonTitles?[searchBar.selectedScopeButtonIndex].lowercased() ?? ""
+        scope = ProjectSearchType(rawValue: scopeTitle) ?? .all
+        //loadInitial(silent: true)
+    }
+}
+
+extension ProjectsController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        query = searchBar.text ?? ""
+        let scopeTitle = searchBar.scopeButtonTitles?[selectedScope].lowercased() ?? ""
+        scope = ProjectSearchType(rawValue: scopeTitle) ?? .all
+        //loadInitial(silent: true)
+    }
+}
+
