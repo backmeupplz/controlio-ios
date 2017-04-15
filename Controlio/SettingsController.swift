@@ -125,7 +125,7 @@ class SettingsController: UITableViewController, STPPaymentContextDelegate {
     fileprivate func showEditProfile() {
         guard let hud = MBProgressHUD.show() else { return }
         
-        hud.label.text = NSLocalizedString("Getting the profile...", comment: "Getting profile message")
+        hud.detailsLabel.text = NSLocalizedString("Getting the profile...", comment: "Getting profile message")
         Server.getProfile
         { error, user in
             hud.hide(animated: true)
@@ -173,6 +173,6 @@ class SettingsController: UITableViewController, STPPaymentContextDelegate {
     
     fileprivate func updateCacheSizeView() {
         let count = round(getCacheSize() * 10) / 10
-        self.memoryCacheSize.text = NSLocalizedString("\(count) Mb", comment: "image cache size label")
+        memoryCacheSize.text = String(format: NSLocalizedString("%.2f Mb", comment: "image cache size label"), count)
     }
 }

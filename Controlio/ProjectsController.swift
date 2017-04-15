@@ -72,7 +72,7 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
     
     func checkTouched(at cell: ProjectApproveCell) {
         guard let hud = MBProgressHUD.show() else { return }
-        hud.label.text = NSLocalizedString("Accepting the invite...", comment: "invite accept message")
+        hud.detailsLabel.text = NSLocalizedString("Accepting the invite...", comment: "invite accept message")
         Server.invite(approve: true, invite: cell.invite)
         { error in
             hud.hide(animated: true)
@@ -80,7 +80,7 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
                 self.snackbarController?.show(error: error.domain)
             } else {
                 guard let index = self.invites.index(of: cell.invite) else { return }
-                self.snackbarController?.show(text: NSLocalizedString("You have accepted the invite to \"\(cell.invite.project!.title ?? "")\"", comment: "invite accept success message"))
+                self.snackbarController?.show(text: String(format: NSLocalizedString("You have accepted the invite to \"%@\"", comment: "invite accept success message"), cell.invite.project!.title ?? ""))
                 self.invites = self.invites.filter { $0 != cell.invite }
                 self.tableNode.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
                 self.loadInitialOnlyProjects()
@@ -90,7 +90,7 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
     
     func crossTouched(at cell: ProjectApproveCell) {
         guard let hud = MBProgressHUD.show() else { return }
-        hud.label.text = NSLocalizedString("Rejecting the invite...", comment: "invite reject message")
+        hud.detailsLabel.text = NSLocalizedString("Rejecting the invite...", comment: "invite reject message")
         Server.invite(approve: false, invite: cell.invite)
         { error in
             hud.hide(animated: true)
@@ -98,7 +98,7 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
                 self.snackbarController?.show(error: error.domain)
             } else {
                 guard let index = self.invites.index(of: cell.invite) else { return }
-                self.snackbarController?.show(text: NSLocalizedString("You have rejected the invite to \"\(cell.invite.project!.title ?? "")\"", comment: "invite reject success message"))
+                self.snackbarController?.show(text: String(format: NSLocalizedString("You have rejected the invite to \"%@\"", comment: "invite reject success message"), cell.invite.project!.title ?? ""))
                 self.invites = self.invites.filter { $0 != cell.invite }
                 self.tableNode.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
             }

@@ -74,12 +74,12 @@ class EditProjectController: UITableViewController, EditProjectCellDelegate, Pic
             guard let hud = MBProgressHUD.show() else { return }
             if project.tempImage != nil {
                 hud.mode = .annularDeterminate
-                hud.label.text = NSLocalizedString("Uploading image", comment: "hud title")
+                hud.detailsLabel.text = NSLocalizedString("Uploading image", comment: "hud title")
                 Server.edit(project: project, progress: { progress in
                     hud.progress = progress
                     if progress >= 1 {
                         hud.mode = .indeterminate
-                        hud.label.text = NSLocalizedString("Editing the project...", comment: "hud title")
+                        hud.detailsLabel.text = NSLocalizedString("Editing the project...", comment: "hud title")
                     }
                 })
                 { error in
@@ -91,7 +91,7 @@ class EditProjectController: UITableViewController, EditProjectCellDelegate, Pic
                     }
                 }
             } else {
-                hud.label.text = NSLocalizedString("Editing the project...", comment: "hud title")
+                hud.detailsLabel.text = NSLocalizedString("Editing the project...", comment: "hud title")
                 Server.edit(project: project, progress: { progress in })
                 { error in
                     

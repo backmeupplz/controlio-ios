@@ -178,7 +178,7 @@ class PostCell: ASCellNode {
         
         var text = DateFormatter.projectDateString(post.dateCreated) 
         if post.isEdited {
-            text = "(edited) \(text)"
+            text = String(format: NSLocalizedString("(edited) %@", comment: "edited label addition"), text)
         }
         dateNode.attributedText =
             NSAttributedString(string: text,
@@ -202,7 +202,7 @@ class PostCell: ASCellNode {
         
         var text: String = post.text
         if post.type == .status {
-            text = NSLocalizedString("Status changed: \(text)", comment: "post cell status text")
+            text = String(format: NSLocalizedString("Status changed: %@", comment: "post cell status text"), text)
         }
         
         textNode.attributedText =

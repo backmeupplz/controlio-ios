@@ -92,12 +92,12 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate, Picke
             guard let hud = MBProgressHUD.show() else { return }
             if project.tempImage != nil {
                 hud.mode = .annularDeterminate
-                hud.label.text = NSLocalizedString("Uploading image", comment: "hud title")
+                hud.detailsLabel.text = NSLocalizedString("Uploading image", comment: "hud title")
                 Server.add(project: project, progress: { progress in
                     hud.progress = progress
                     if progress >= 1 {
                         hud.mode = .indeterminate
-                        hud.label.text = NSLocalizedString("Adding new project", comment: "hud title")
+                        hud.detailsLabel.text = NSLocalizedString("Adding new project", comment: "hud title")
                     }
                 })
                 { error in
@@ -111,7 +111,7 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate, Picke
                     }
                 }
             } else {
-                hud.label.text = NSLocalizedString("Adding new project", comment: "hud title")
+                hud.detailsLabel.text = NSLocalizedString("Adding new project", comment: "hud title")
                 Server.add(project: project, progress: { progress in })
                 { error in
                     hud.hide(animated: true)

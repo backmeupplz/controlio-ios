@@ -41,7 +41,7 @@ class SupportController: UITableViewController {
     }
     
     fileprivate func showNoApppInstalledAlert(_ type: DeepLinkType) {
-        let alert = UIAlertController(title: NSLocalizedString("Looks like \(type.name) isn't installed", comment: "No app install alert title"), message: NSLocalizedString("Would you like to install \(type.name)?", comment: "No app install alert message"), preferredStyle: .alert)
+        let alert = UIAlertController(title: String(format: NSLocalizedString("Looks like %@ isn't installed", comment: "No app install alert title"), type.name), message: String(format: NSLocalizedString("Would you like to install %@?", comment: "No app install alert message"), type.name), preferredStyle: .alert)
         alert.add(sourceView: tableView.cellForRow(at: IndexPath(row: type.rawValue, section: 0))!)
         alert.addCancelButton()
         alert.add(action: NSLocalizedString("Install", comment: "No app install alert button")) {

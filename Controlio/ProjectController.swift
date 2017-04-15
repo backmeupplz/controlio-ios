@@ -183,7 +183,7 @@ class ProjectController: ASViewController<ASDisplayNode> {
     
     @objc fileprivate func openProject() {
         guard let hud = MBProgressHUD.show() else { return }
-        hud.label.text = NSLocalizedString("Getting project info...", comment: "Getting project message")
+        hud.detailsLabel.text = NSLocalizedString("Getting project info...", comment: "Getting project message")
         Server.get(project: project)
         { error, project in
             hud.hide(animated: true)
@@ -322,7 +322,7 @@ extension ProjectController: PostCellDelegate {
     
     func open(user: User) {
         guard let hud = MBProgressHUD.show() else { return }
-        hud.label.text = NSLocalizedString("Getting user profile...", comment: "getting user profile hud message")
+        hud.detailsLabel.text = NSLocalizedString("Getting user profile...", comment: "getting user profile hud message")
         
         Server.getProfile(for: user)
         { error, user in
@@ -369,7 +369,7 @@ extension ProjectController: InputViewDelegate {
     
     func shouldChangeStatus(text: String) {
         guard let hud = MBProgressHUD.show() else { return }
-        hud.label.text = NSLocalizedString("Changing status...", comment: "project change status message")
+        hud.detailsLabel.text = NSLocalizedString("Changing status...", comment: "project change status message")
         Server.change(status: text, project: project)
         { error, status in
             hud.hide(animated: true)
@@ -387,7 +387,7 @@ extension ProjectController: InputViewDelegate {
     
     func addPost(text: String?, keys: [String]?, hud: MBProgressHUD){
         hud.mode = .indeterminate
-        hud.label.text = NSLocalizedString("Uploading new message...", comment: "new post upload message")
+        hud.detailsLabel.text = NSLocalizedString("Uploading new message...", comment: "new post upload message")
         Server.addPost(to: self.project, text: text!, attachmentKeys: keys!)
         { error, post in
             hud.hide(animated: true)
@@ -412,7 +412,7 @@ extension ProjectController: InputViewDelegate {
         
         if imagesToUpload.count > 0 {
             hud.mode = .annularDeterminate
-            hud.label.text = NSLocalizedString("Uploading attachments...", comment: "new post upload message")
+            hud.detailsLabel.text = NSLocalizedString("Uploading attachments...", comment: "new post upload message")
             S3.upload(images: imagesToUpload, progress:
                 { progress in
                     hud.progress = progress
@@ -436,7 +436,7 @@ extension ProjectController: InputViewDelegate {
     
     func editPost(post: Post, hud: MBProgressHUD){
         hud.mode = .indeterminate
-        hud.label.text = NSLocalizedString("Uploading data", comment: "edit post upload message")
+        hud.detailsLabel.text = NSLocalizedString("Uploading data", comment: "edit post upload message")
         Server.editPost(project: self.project, post: post, text: post.text, attachments: post.attachments)
         { error in
             hud.hide(animated: true)
@@ -460,7 +460,7 @@ extension ProjectController: InputViewDelegate {
         
         if imagesToUpload.count > 0 {
             hud.mode = .annularDeterminate
-            hud.label.text = NSLocalizedString("Uploading attachments", comment: "Edit post upload message")
+            hud.detailsLabel.text = NSLocalizedString("Uploading attachments", comment: "Edit post upload message")
             S3.upload(images: imagesToUpload, progress:
                 { progress in
                     hud.progress = progress

@@ -24,13 +24,13 @@
 "C0R-g0-qnG.text" = "Выйти";
 
 /* Class = "UINavigationItem"; title = "Edit profile"; ObjectID = "E2w-wT-ARS"; */
-"E2w-wT-ARS.title" = "Редактировать профиль";
+"E2w-wT-ARS.title" = "Профиль";
 
 /* Class = "UILabel"; text = "Upgrade"; ObjectID = "JiL-o2-Hbi"; */
 "JiL-o2-Hbi.text" = "Увеличить";
 
 /* Class = "UILabel"; text = "20 active projects/month"; ObjectID = "L4I-p9-PDw"; */
-"L4I-p9-PDw.text" = "20 активных проектов/месяц";
+"L4I-p9-PDw.text" = "20 проектов/месяц";
 
 /* Class = "UILabel"; text = "$100/month"; ObjectID = "LHQ-iy-khC"; */
 "LHQ-iy-khC.text" = "$100/месяц";
@@ -42,10 +42,10 @@
 "SKU-ge-Jua.text" = "По всем вопросам и обращениям — пишите мне напрямую";
 
 /* Class = "UILabel"; text = "50 active projects/month"; ObjectID = "VFh-L2-vNl"; */
-"VFh-L2-vNl.text" = "50 активных проектов/месяц";
+"VFh-L2-vNl.text" = "50 проектов/месяц";
 
 /* Class = "UILabel"; text = "1 active project/month"; ObjectID = "VyE-ps-bHl"; */
-"VyE-ps-bHl.text" = "1 активный проект/месяц";
+"VyE-ps-bHl.text" = "1 проект/месяц";
 
 /* Class = "UILabel"; text = "Clean image cache"; ObjectID = "WLi-wK-RzT"; */
 "WLi-wK-RzT.text" = "Очистить кэш картинок";
@@ -90,7 +90,7 @@
 "qrE-Hs-v9p.title" = "Купон";
 
 /* Class = "UILabel"; text = "5 active projects/month"; ObjectID = "r4a-xa-1na"; */
-"r4a-xa-1na.text" = "5 активных проектов/месяц";
+"r4a-xa-1na.text" = "5 проектов/месяц";
 
 /* Class = "UILabel"; text = "Payment methods"; ObjectID = "rbB-31-1VA"; */
 "rbB-31-1VA.text" = "Методы оплаты";

@@ -207,7 +207,7 @@ class PlansController: UITableViewController, MFMailComposeViewControllerDelegat
         case .hundred:
             message = NSLocalizedString("Hundred", comment: "Plan name")
         }
-        message = NSLocalizedString("Would you like to switch to \"\(message)\" plan?", comment: "Alert message stub for purchase")
+        message = String(format: NSLocalizedString("Would you like to switch to \"%@\" plan?", comment: "Alert message stub for purchase"), message)
         let alert = UIAlertController(title: NSLocalizedString("Confirmation", comment: "Alert title for purchase"), message: message, preferredStyle: .alert)
         alert.addCancelButton()
         alert.add(action: NSLocalizedString("Switch!", comment: "Alert ok button title for purchase")) {

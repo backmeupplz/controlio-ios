@@ -65,17 +65,17 @@ class ClientsTableViewController: UITableViewController {
             
             if clientsEmails.contains(where: { $0 == email }) {
                 emailTextField.shake()
-                snackbarController?.show(error: NSLocalizedString("\(email) is already a client", comment: "snackbar error"))
+                snackbarController?.show(error: String(format: NSLocalizedString("%@ is already a client", comment: "snackbar error"), email))
                 return
             }
             if managersEmails.contains(where: { $0 == email }) {
                 emailTextField.shake()
-                snackbarController?.show(error: NSLocalizedString("\(email) is already a manager", comment: "snackbar error"))
+                snackbarController?.show(error: String(format: NSLocalizedString("%@ is already a manager", comment: "snackbar error"), email))
                 return
             }
             if ownerEmail == email {
                 emailTextField.shake()
-                snackbarController?.show(error: NSLocalizedString("\(email) is already the owner", comment: "snackbar error"))
+                snackbarController?.show(error: String(format: NSLocalizedString("%@ is already the owner", comment: "snackbar error"), email))
                 return
             }
             emailTextField.text = ""
@@ -132,7 +132,7 @@ class ClientsTableViewController: UITableViewController {
         let emails = project.tempClientEmails
         
         if type == .addManagers {
-            hud.label.text = NSLocalizedString("Adding managers...", comment: "hud title")
+            hud.detailsLabel.text = NSLocalizedString("Adding managers...", comment: "hud title")
             Server.add(managers: emails, to: project)
             { error in
                 hud.hide(animated: true)
@@ -144,7 +144,7 @@ class ClientsTableViewController: UITableViewController {
                 }
             }
         } else if type == .addClients {
-            hud.label.text = NSLocalizedString("Adding clients...", comment: "hud title")
+            hud.detailsLabel.text = NSLocalizedString("Adding clients...", comment: "hud title")
             Server.add(clients: emails, to: project)
             { error in
                 hud.hide(animated: true)

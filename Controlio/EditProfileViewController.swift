@@ -59,7 +59,7 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
         
         if let tempPorfileImage = user.tempProfileImage {
             hud.mode = .annularDeterminate
-            hud.label.text = NSLocalizedString("Uploading image", comment: "Edit profile upload message")
+            hud.detailsLabel.text = NSLocalizedString("Uploading image", comment: "Edit profile upload message")
             S3.upload(image: tempPorfileImage, progress: { progress in
                 hud.progress = progress
             })
@@ -80,7 +80,7 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
                 }
             }
         } else {
-            hud.label.text = NSLocalizedString("Uploading data", comment: "Edit profile upload message")
+            hud.detailsLabel.text = NSLocalizedString("Uploading data", comment: "Edit profile upload message")
             Server.editProfile(name: name, phone: phone, profileImage: user.profileImageKey)
             { error in
                 hud.hide(animated: true)
