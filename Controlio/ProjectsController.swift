@@ -50,17 +50,17 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addRefreshControl()
+        
+        setupSearchController()
+        setupScopeBar()
         
         setupTabBar()
         setupTableView()
-        addRefreshControl()
         setupBackButton()
 
         loadInitialProjects()
         subscribe()
-        
-        setupSearchController()
-        setupScopeBar()
     }
     
     deinit {
@@ -121,10 +121,9 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
         searchController.searchBar.delegate = self
         definesPresentationContext = true
         searchController.dimsBackgroundDuringPresentation = false
-        //searchController.searchBar.barTintColor = UIColor.controlioViolet
-        //searchController.searchBar.tintColor = UIColor.white
-        //searchController.searchBar.sizeToFit()
-        //tableNode.view.setContentOffset(CGPoint(x:0, y:searchController.searchBar.frame.height), animated: false)
+        searchController.searchBar.barTintColor = Color.controlioViolet
+        searchController.searchBar.tintColor = Color.white
+        searchController.searchBar.backgroundColor = Color.controlioTableBackground
     }
     
     fileprivate func setupScopeBar(){
@@ -142,10 +141,12 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
     }
     
     fileprivate func setupTableView() {
+        tableNode.backgroundColor = Color.controlioTableBackground
         tableNode.view.tableFooterView = UIView()
         tableNode.view.separatorStyle = .none
         tableNode.view.backgroundColor = Color.controlioTableBackground
-        tableNode.view.contentInset = EdgeInsets(top: 5, left: 0, bottom: 0, right: 0)
+        tableNode.view.contentOffset = CGPoint(x: 0, y: 44)
+        tableNode.view.backgroundView = UIView()
     }
 
     fileprivate func addRefreshControl() {
@@ -184,12 +185,9 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
     
     // MARK: - Pagination -
     
-    @objc fileprivate func loadInitialProjects(silent: Bool = false) {
+    @objc fileprivate func loadInitialProjects() {
         isLoading = true
         cleanTableView()
-        if !silent {
-            refreshControl?.beginRefreshing()
-        }
         let tempQuery = query
         let tempScope = scope
         
@@ -217,7 +215,6 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
     }
     
     fileprivate func loadInitialOnlyProjects() {
-        refreshControl?.beginRefreshing()
         Server.getProjects()
             { error, projects in
                 if let error = error {
@@ -328,70 +325,70 @@ extension ProjectsController: ASTableDelegate {
 }
 
 extension ProjectsController: DZNEmptyDataSetSource {
-    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
-        let text = isLoading ? NSLocalizedString("Loading...", comment: "empty view placeholder"): NSLocalizedString("You don't have any projects yet", comment: "empty view placeholder")
-        let attributes = [
-            NSFontAttributeName: Font.boldSystemFont(ofSize: 18.0),
-            NSForegroundColorAttributeName: Color.darkGray
-        ]
-        return NSAttributedString(string: text, attributes: attributes)
-    }
-    
-    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        let text = isLoading ? NSLocalizedString("Let us get your projects from the cloud", comment: "empty view placeholder"): NSLocalizedString("You can create your first project", comment: "empty view placeholder")
-        
-        let paragraph = NSMutableParagraphStyle()
-        paragraph.lineBreakMode = .byWordWrapping;
-        paragraph.alignment = .center;
-        
-        let attributes = [
-            NSFontAttributeName: Font.boldSystemFont(ofSize: 14.0),
-            NSForegroundColorAttributeName: Color.lightGray,
-            NSParagraphStyleAttributeName: paragraph
-        ]
-        return NSAttributedString(string: text, attributes: attributes)
-    }
-    
-    func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControlState) -> NSAttributedString! {
-        let attributes = [
-            NSFontAttributeName: Font.boldSystemFont(ofSize: 17.0),
-            NSForegroundColorAttributeName: Color.controlioGreen,
-            ]
-        
-        return NSAttributedString(string: NSLocalizedString("Create project", comment: "empty view button title"), attributes: attributes)
-    }
-    
-    func verticalOffset(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat {
-        return 60
-    }
+//    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+//        let text = isLoading ? NSLocalizedString("Loading...", comment: "empty view placeholder"): NSLocalizedString("You don't have any projects yet", comment: "empty view placeholder")
+//        let attributes = [
+//            NSFontAttributeName: Font.boldSystemFont(ofSize: 18.0),
+//            NSForegroundColorAttributeName: Color.darkGray
+//        ]
+//        return NSAttributedString(string: text, attributes: attributes)
+//    }
+//    
+//    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+//        let text = isLoading ? NSLocalizedString("Let us get your projects from the cloud", comment: "empty view placeholder"): NSLocalizedString("You can create your first project", comment: "empty view placeholder")
+//        
+//        let paragraph = NSMutableParagraphStyle()
+//        paragraph.lineBreakMode = .byWordWrapping;
+//        paragraph.alignment = .center;
+//        
+//        let attributes = [
+//            NSFontAttributeName: Font.boldSystemFont(ofSize: 14.0),
+//            NSForegroundColorAttributeName: Color.lightGray,
+//            NSParagraphStyleAttributeName: paragraph
+//        ]
+//        return NSAttributedString(string: text, attributes: attributes)
+//    }
+//    
+//    func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControlState) -> NSAttributedString! {
+//        let attributes = [
+//            NSFontAttributeName: Font.boldSystemFont(ofSize: 17.0),
+//            NSForegroundColorAttributeName: Color.controlioGreen,
+//            ]
+//        
+//        return NSAttributedString(string: NSLocalizedString("Create project", comment: "empty view button title"), attributes: attributes)
+//    }
+//    
+//    func verticalOffset(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat {
+//        return 60
+//    }
 }
 
 extension ProjectsController: DZNEmptyDataSetDelegate {
-    func emptyDataSet(_ scrollView: UIScrollView!, didTap button: UIButton!) {
-        navigationController?.tabBarController?.selectedIndex = 1
-    }
-    
-    func emptyDataSetShouldAllowScroll(_ scrollView: UIScrollView!) -> Bool {
-        return true
-    }
+//    func emptyDataSet(_ scrollView: UIScrollView!, didTap button: UIButton!) {
+//        navigationController?.tabBarController?.selectedIndex = 1
+//    }
+//    
+//    func emptyDataSetShouldAllowScroll(_ scrollView: UIScrollView!) -> Bool {
+//        return true
+//    }
 }
 
 extension ProjectsController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
         query = searchBar.text ?? ""
-        let scopeTitle = searchBar.scopeButtonTitles?[searchBar.selectedScopeButtonIndex].lowercased() ?? ""
+        let scopeTitle = searchBar.scopeButtonTitles?[searchBar.selectedScopeButtonIndex].lowercased() ?? "all"
         scope = ProjectSearchType(rawValue: scopeTitle) ?? .all
-        loadInitialProjects(silent: true)
+        loadInitialProjects()
     }
 }
 
 extension ProjectsController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         query = searchBar.text ?? ""
-        let scopeTitle = searchBar.scopeButtonTitles?[selectedScope].lowercased() ?? ""
+        let scopeTitle = searchBar.scopeButtonTitles?[selectedScope].lowercased() ?? "all"
         scope = ProjectSearchType(rawValue: scopeTitle) ?? .all
-        loadInitialProjects(silent: true)
+        loadInitialProjects()
     }
 }
 

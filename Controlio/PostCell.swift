@@ -90,6 +90,9 @@ class PostCell: ASCellNode {
         if post.attachments.count > 0 {
             configureAttachmentNodes()
         }
+        
+        longPressGR = UILongPressGestureRecognizer(target: self, action: #selector(PostCell.longPressed))
+        view.addGestureRecognizer(longPressGR!)
     }
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
