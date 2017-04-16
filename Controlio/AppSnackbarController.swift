@@ -27,7 +27,7 @@ class AppSnackbarController: SnackbarController {
     // MARK: - Private functions -
     
     fileprivate func setupHideButton() {
-        hideButton = FlatButton(title: "Hide", titleColor: Color.white)
+        hideButton = FlatButton(title: NSLocalizedString("Hide", comment: "snackbar button"), titleColor: Color.white)
         hideButton.pulseAnimation = .backing
         hideButton.titleLabel?.font = snackbarController?.snackbar.textLabel.font
         hideButton.addTarget(self, action: #selector(AppSnackbarController.hideSnackbar), for: .touchUpInside)

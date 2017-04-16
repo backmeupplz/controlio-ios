@@ -156,7 +156,9 @@ class LoginViewController: UIViewController, RecoveryViewControllerDelegate {
         passwordToRepeatPassword.priority = state == .signin ? 500 : 750
         view.layoutIfNeeded()
         
-        signupButton.setTitle(state == .signin ? "Sign in" : "Sign up", for: .normal)
+        signupButton.setTitle(state == .signin ? NSLocalizedString("Sign in", comment: "signin button title") : NSLocalizedString("Sign up", comment: "signup button title"), for: .normal)
+        
+        passwordTextField.returnKeyType = state == .signin ? .done : .next
     }
     
     // Mark: Setting up views
@@ -176,8 +178,8 @@ class LoginViewController: UIViewController, RecoveryViewControllerDelegate {
     }
     
     fileprivate func setupEmailTextField() {
-        emailTextField.placeholder = "Email"
-        emailTextField.detail = "Should be a valid email"
+        emailTextField.placeholder = NSLocalizedString("Email", comment: "email textfield placeholder")
+        emailTextField.detail = NSLocalizedString("Should be a valid email", comment: "email textfield comment label")
         
         emailTextField.returnKeyType = .next
         
@@ -189,14 +191,16 @@ class LoginViewController: UIViewController, RecoveryViewControllerDelegate {
         emailTextField.textColor = Color.white
         emailTextField.detailColor = Color.white
         
+        emailTextField.autocorrectionType = .no
+        
         emailTextField.keyboardType = .emailAddress
         
         emailTextField.delegate = self
     }
     
     fileprivate func setupPasswordTextField() {
-        passwordTextField.placeholder = "Password"
-        passwordTextField.detail = "Should be between 8 and 30 characters"
+        passwordTextField.placeholder = NSLocalizedString("Password", comment: "password textfield placeholder")
+        passwordTextField.detail = NSLocalizedString("Should be between 8 and 30 characters", comment: "password textfield comment label")
         
         passwordTextField.returnKeyType = .next
         
@@ -211,14 +215,16 @@ class LoginViewController: UIViewController, RecoveryViewControllerDelegate {
         passwordTextField.keyboardType = .default
         passwordTextField.isSecureTextEntry = true
         
+        passwordTextField.autocorrectionType = .no
+        
         passwordTextField.delegate = self
     }
     
     fileprivate func setupRepeatPasswordTextField() {
-        repeatPasswordTextField.placeholder = "Repeat password"
-        repeatPasswordTextField.detail = "Passwords don't match"
+        repeatPasswordTextField.placeholder = NSLocalizedString("Repeat password", comment: "repeat password textfield placeholder")
+        repeatPasswordTextField.detail = NSLocalizedString("Passwords don't match", comment: "repeat password error label")
         
-        repeatPasswordTextField.returnKeyType = .continue
+        repeatPasswordTextField.returnKeyType = .done
         
         repeatPasswordTextField.placeholderNormalColor = Color.init(white: 1.0, alpha: 0.5)
         repeatPasswordTextField.placeholderActiveColor = Color.white
@@ -230,6 +236,8 @@ class LoginViewController: UIViewController, RecoveryViewControllerDelegate {
         
         repeatPasswordTextField.keyboardType = .default
         repeatPasswordTextField.isSecureTextEntry = true
+        
+        repeatPasswordTextField.autocorrectionType = .no
         
         repeatPasswordTextField.delegate = self
     }
@@ -243,26 +251,25 @@ class LoginViewController: UIViewController, RecoveryViewControllerDelegate {
     // MARK: - Notifications -
     
     func subscribe() {
-        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.login), name: NSNotification.Name(rawValue: "ShouldLogin"), object: nil)
+        subscribe(to: [
+            .shouldLogin: #selector(LoginViewController.login)
+        ])
     }
     
     func login() {
         Router(self).showMain()
     }
-    
-    func unsubscribe() {
-        NotificationCenter.default.removeObserver(self)
-    }
 }
 
 extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        let textFields: [TextField] = [emailTextField, passwordTextField, repeatPasswordTextField]
+        let textFields: [TextField] = state == .signin ?
+            [emailTextField, passwordTextField] :
+            [emailTextField, passwordTextField, repeatPasswordTextField]
         if let last = textFields.last,
             let textField = textField as? TextField {
             if textField == last {
                 textField.resignFirstResponder()
-                signupTouched(signupButton)
             } else {
                 let index = textFields.index(of: textField) ?? 0
                 textFields[index + 1].becomeFirstResponder()

@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import Material
 
 class GradientView: UIView {
     
     // MARK: - Variables -
     
-    @IBInspectable var startColor: UIColor = UIColor.controlioViolet()
-    @IBInspectable var endColor: UIColor = UIColor.controlioGradientGreen()
+    @IBInspectable var startColor: Color = Color.controlioViolet
+    @IBInspectable var endColor: Color = Color.controlioGradientGreen
     
     @IBInspectable var startPoint: CGPoint = CGPoint(x: 0.0, y: 0.0)
     @IBInspectable var endPoint: CGPoint = CGPoint(x: 1.0, y: 1.0)

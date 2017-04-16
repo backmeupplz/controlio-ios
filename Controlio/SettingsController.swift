@@ -125,7 +125,7 @@ class SettingsController: UITableViewController, STPPaymentContextDelegate {
     fileprivate func showEditProfile() {
         guard let hud = MBProgressHUD.show() else { return }
         
-        hud.label.text = NSLocalizedString("Getting the profile...", comment: "Getting profile message")
+        hud.detailsLabel.text = NSLocalizedString("Getting the profile...", comment: "Getting profile message")
         Server.getProfile
         { error, user in
             hud.hide(animated: true)
@@ -138,8 +138,8 @@ class SettingsController: UITableViewController, STPPaymentContextDelegate {
     }
     
     fileprivate func logout() {
-        let alert = UIAlertController(title: "Would you like to log out?", preferredStyle: .alert)
-        alert.add(action: "Log out") {
+        let alert = UIAlertController(title: NSLocalizedString("Would you like to log out?", comment: "logout alert title"), preferredStyle: .alert)
+        alert.add(action: NSLocalizedString("Log out", comment: "logout alert button")) {
             Server.logout()
             let _ = self.navigationController?.tabBarController?.navigationController?.popToRootViewController(animated: true)
         }
@@ -173,6 +173,6 @@ class SettingsController: UITableViewController, STPPaymentContextDelegate {
     
     fileprivate func updateCacheSizeView() {
         let count = round(getCacheSize() * 10) / 10
-        self.memoryCacheSize.text = "\(count) Mb"
+        memoryCacheSize.text = String(format: NSLocalizedString("%.2f Mb", comment: "image cache size label"), count)
     }
 }

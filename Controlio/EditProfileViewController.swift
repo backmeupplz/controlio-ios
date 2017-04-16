@@ -85,13 +85,13 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
         
         guard (name?.characters.count ?? 0) < 50 else {
             cell.nameTextfield.shake()
-            snackbarController?.show(error: "Name should be less than 50 chars")
+            snackbarController?.show(error: NSLocalizedString("Name should be less than 50 chars", comment: "snackbar error"))
             return
         }
         
         guard (phone?.characters.count ?? 0) < 20 else {
             cell.phoneTextfield.shake()
-            snackbarController?.show(error: "Phone should be less than 20 chars")
+            snackbarController?.show(error: NSLocalizedString("Phone should be less than 20 chars", comment: "snackbar error"))
             return
         }
         
@@ -99,7 +99,7 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
         
         if let tempPorfileImage = user.tempProfileImage {
             hud.mode = .annularDeterminate
-            hud.label.text = NSLocalizedString("Uploading image", comment: "Edit profile upload message")
+            hud.detailsLabel.text = NSLocalizedString("Uploading image", comment: "Edit profile upload message")
             S3.upload(image: tempPorfileImage, progress: { progress in
                 hud.progress = progress
             })
@@ -122,7 +122,7 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
                 }
             }
         } else {
-            hud.label.text = NSLocalizedString("Uploading data", comment: "Edit profile upload message")
+            hud.detailsLabel.text = NSLocalizedString("Uploading data", comment: "Edit profile upload message")
             Server.editProfile(name: name, phone: phone, profileImage: user.profileImageKey)
             { error in
                 hud.hide(animated: true)

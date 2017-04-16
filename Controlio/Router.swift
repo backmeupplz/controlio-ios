@@ -42,7 +42,7 @@ class Router {
     }
     
     func showMain(animated: Bool = true) {
-        show(vc: R.storyboard.main.mainController(), animated: animated)
+        show(vc: MainTabBarController(), animated: animated)
     }
     
     func showClients(with project: Project, type: ClientsTableViewControllerType = .clients) {
@@ -53,9 +53,7 @@ class Router {
     }
     
     func show(project: Project) {
-        let vc = R.storyboard.main.projectController()
-        vc?.project = project
-        show(vc: vc)
+        show(vc: ProjectController(with: project))
     }
     
     func showEdit(of project: Project) {
@@ -65,9 +63,7 @@ class Router {
     }
     
     func showInfo(for project: Project) {
-        let vc = R.storyboard.main.projectInfoController()
-        vc?.project = project
-        show(vc: vc)
+        show(vc: ProjectInfoController(with: project))
     }
     
     func show(user: User) {
@@ -76,6 +72,16 @@ class Router {
         show(vc: vc)
     }
     
+    func presentChangePassword(with token: String, type: ChangePasswordViewControllerType) {
+        let vc = R.storyboard.login.changePasswordViewController()
+
+        vc?.parentVC = controller
+        vc?.type = type
+        vc?.token = token
+        
+        present(vc: vc?.snackbarred())
+    }
+  
     func showEdit(user: User) {
         let vc = R.storyboard.main.editProfileViewController()
         vc?.user = user
@@ -92,5 +98,17 @@ class Router {
         } else {
             controller.navigationController?.viewControllers.append(vc)
         }
+    }
+    
+    fileprivate func present(vc: UIViewController?) {
+        guard let vc = vc else { return }
+        
+        controller.present(vc, animated: true, completion: nil)
+    }
+}
+
+fileprivate extension UIViewController {
+    func snackbarred() -> AppSnackbarController {
+        return AppSnackbarController(rootViewController: self)
     }
 }

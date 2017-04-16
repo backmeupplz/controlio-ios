@@ -65,17 +65,17 @@ class ClientsTableViewController: UITableViewController {
             
             if clientsEmails.contains(where: { $0 == email }) {
                 emailTextField.shake()
-                snackbarController?.show(error: "\(email) is already a client")
+                snackbarController?.show(error: String(format: NSLocalizedString("%@ is already a client", comment: "snackbar error"), email))
                 return
             }
             if managersEmails.contains(where: { $0 == email }) {
                 emailTextField.shake()
-                snackbarController?.show(error: "\(email) is already a manager")
+                snackbarController?.show(error: String(format: NSLocalizedString("%@ is already a manager", comment: "snackbar error"), email))
                 return
             }
             if ownerEmail == email {
                 emailTextField.shake()
-                snackbarController?.show(error: "\(email) is already the owner")
+                snackbarController?.show(error: String(format: NSLocalizedString("%@ is already the owner", comment: "snackbar error"), email))
                 return
             }
             emailTextField.text = ""
@@ -98,27 +98,28 @@ class ClientsTableViewController: UITableViewController {
             addSaveButton()
         }
         
-        title = type == .addManagers ? "Add managers" : "Add clients" 
+        title = type == .addManagers ? NSLocalizedString("Add managers", comment: "vc title") : NSLocalizedString("Add clients", comment: "vc title")
     }
     
     fileprivate func setupEmailTextField() {
-        emailTextField.placeholder = "Email"
-        emailTextField.detail = type == .addManagers ? "Email of the manager to add" : "Email of the client to add"
+        emailTextField.placeholder = NSLocalizedString("Email", comment: "textfield placeholder")
+        emailTextField.detail = type == .addManagers ? NSLocalizedString("Email of the manager to add", comment: "textfield detail") : NSLocalizedString("Email of the client to add", comment: "textfield detail")
         
         emailTextField.returnKeyType = .done
         
-        emailTextField.placeholderActiveColor = Color.controlioGreen()
-        emailTextField.dividerActiveColor = Color.controlioGreen()
+        emailTextField.placeholderActiveColor = Color.controlioGreen
+        emailTextField.dividerActiveColor = Color.controlioGreen
         emailTextField.backgroundColor = Color.clear
         
         emailTextField.keyboardType = .emailAddress
         
         emailTextField.delegate = self
+        emailTextField.autocorrectionType = .no
     }
     
     fileprivate func setupAddButton() {
         addButton.setImage(Icon.add, for: .normal)
-        addButton.tintColor = Color.controlioGreen()
+        addButton.tintColor = Color.controlioGreen
     }
     
     fileprivate func addSaveButton() {
@@ -131,7 +132,7 @@ class ClientsTableViewController: UITableViewController {
         let emails = project.tempClientEmails
         
         if type == .addManagers {
-            hud.label.text = "Adding managers..."
+            hud.detailsLabel.text = NSLocalizedString("Adding managers...", comment: "hud title")
             Server.add(managers: emails, to: project)
             { error in
                 hud.hide(animated: true)
@@ -139,11 +140,11 @@ class ClientsTableViewController: UITableViewController {
                     self.snackbarController?.show(error: error.domain)
                 } else {
                     let _ = self.navigationController?.popViewController(animated: true)
-                    self.snackbarController?.show(text: "Managers were successfully added")
+                    self.snackbarController?.show(text: NSLocalizedString("Managers were successfully added", comment: "snackbar message"))
                 }
             }
         } else if type == .addClients {
-            hud.label.text = "Adding clients..."
+            hud.detailsLabel.text = NSLocalizedString("Adding clients...", comment: "hud title")
             Server.add(clients: emails, to: project)
             { error in
                 hud.hide(animated: true)
@@ -151,7 +152,7 @@ class ClientsTableViewController: UITableViewController {
                     self.snackbarController?.show(error: error.domain)
                 } else {
                     let _ = self.navigationController?.popViewController(animated: true)
-                    self.snackbarController?.show(text: "Clients were successfully added")
+                    self.snackbarController?.show(text: NSLocalizedString("Clients were successfully added", comment: "snackbar message"))
                 }
             }
         }

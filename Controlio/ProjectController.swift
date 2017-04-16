@@ -11,227 +11,48 @@ import MBProgressHUD
 import Material
 import DZNEmptyDataSet
 import NohanaImagePicker
+import AsyncDisplayKit
 
-class ProjectController: UITableViewController, PostCellDelegate, InputViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+class ProjectController: ASViewController<ASDisplayNode> {
     
     // MARK: - Variables -
     
     var project: Project!
     var posts = [Post]()
     
-    // MARK: - Private Variables -
+    // MARK: - Variables -
+    
+    fileprivate var tableNode: ASTableNode!
     
     fileprivate var input: InputView?
     fileprivate let imagePicker = NohanaImagePickerController()
     fileprivate let cameraPicker = UIImagePickerController()
     fileprivate let maxCountAttachments: Int = 10
     fileprivate var currentGallery: ImageGallery?
+    
     fileprivate var isLoading = true
+    fileprivate var needsMorePosts = false
     
-    // MARK: - UITableViewDataSource -
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
-        cell.post = posts[indexPath.row]
-        cell.delegate = self
-        return cell
-    }
-    
-    // MARK: - PostCellDelegate -
-    
-    func openAttachment(_ index: Int, post: Post, fromView: UIView) {
-        currentGallery = ImageGallery()
-        currentGallery?.showGallery(atViewController: self, index: index, imageKeys: post.attachments, fromView: fromView)
-    }
-    
-    func edit(post: Post, cell: PostCell) {
-        guard project.canEdit else {
-            return
-        }
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alert.add(sourceView: cell)
-        alert.add(action: NSLocalizedString("Edit", comment: "Edit post button"))
-        {
-            self.input?.post = post
-        }
-        alert.add(action: NSLocalizedString("Delete", comment: "Edit post button"), style: .destructive)
-        {
-            self.delete(post: post, cell: cell)
-        }
-        alert.addCancelButton()
-        
-        present(alert, animated: true, completion: nil)
-    }
-    
-    func open(user: User) {
-        guard let hud = MBProgressHUD.show() else { return }
-        hud.label.text = "Getting user profile..."
-        
-        Server.getProfile(for: user)
-        { error, user in
-            hud.hide(animated: true)
-            if let error = error {
-                self.snackbarController?.show(error: error.domain)
-            } else if let user = user {
-                Router(self).show(user: user)
-            }
-        }
-    }
-    
-    // MARK: - InputViewDelegate -
-    
-    func openPicker(with delegate: AllPickerDelegate, sender: UIView) {
-        imagePicker.delegate = delegate
-        cameraPicker.delegate = delegate
-        
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alert.add(sourceView: sender)
-        
-        alert.add(action: NSLocalizedString("Camera", comment: "Image picker button"))
-        {
-            self.cameraPicker.sourceType = .camera
-            self.cameraPicker.allowsEditing = false
-            self.present(self.cameraPicker, animated: true, completion: nil)
-        }
-        alert.add(action: NSLocalizedString("Library", comment: "Image picker button"))
-        {
-            let count = self.input?.attachmentCount ?? 0
-            self.imagePicker.maximumNumberOfSelection = self.maxCountAttachments - count
-            self.imagePicker.dropAll()
-            self.imagePicker.delegate = delegate
-            self.present(self.imagePicker, animated: true){}
-        }
-        alert.addCancelButton()
-        
-        present(alert, animated: true) { }
-    }
-    
-    func closeImagePicker() {
-        dismiss(animated: true) { }
-    }
-
-    func shouldChangeStatus(text: String) {
-        guard let hud = MBProgressHUD.show() else { return }
-        hud.label.text = NSLocalizedString("Changing status...", comment: "Project change status message")
-        Server.change(status: text, project: project)
-        { error, status in
-            hud.hide(animated: true)
-            if let error = error {
-                self.snackbarController?.show(error: error.domain)
-            } else {
-                self.project.lastStatus = status
-                self.project.lastPost = status
-                self.configure()
-                self.reloadAndCleanInput()
-                self.snackbarController?.show(text: "Status has been changed")
-            }
-        }
-    }
-    
-    func addPost(text: String?, keys: [String]?, hud: MBProgressHUD){
-        hud.mode = .indeterminate
-        hud.label.text = NSLocalizedString("Uploading new message...", comment: "New post upload message")
-        Server.addPost(to: self.project, text: text!, attachmentKeys: keys!)
-        { error, post in
-            hud.hide(animated: true)
-            if let error = error {
-                self.snackbarController?.show(error: error.domain)
-            } else {
-                self.project.lastPost = post
-                self.configure()
-                self.reloadAndCleanInput()
-                self.snackbarController?.show(text: "Message sent")
-            }
-        }
-    }
-    
-    func shouldAddPost(text: String, attachments: [Any]) {
-        guard isValidPost(text: text, attachments: attachments) else {
-            snackbarController?.show(error: NSLocalizedString("Please provide at least one attachment or text", comment: "New post error"))
-            return
-        }
-        guard let hud = MBProgressHUD.show() else { return }
-        let (completedKeys, imagesToUpload) = filter(attachments: attachments)
-        
-        if imagesToUpload.count > 0 {
-            hud.mode = .annularDeterminate
-            hud.label.text = NSLocalizedString("Uploading attachments...", comment: "New post upload message")
-            S3.upload(images: imagesToUpload, progress:
-            { progress in
-                hud.progress = progress
-            })
-            { keys, error in
-                if let error = error {
-                    self.snackbarController?.show(error: error)
-                    hud.hide(animated: true)
-                } else if let keys = keys {
-                    self.addPost(text: text, keys: keys+completedKeys, hud: hud)
-                }
-            }
-        } else {
-            self.addPost(text: text, keys: completedKeys, hud: hud)
-        }
-    }
-    
-    func updateViewPost(post: Post){
-        self.tableView.beginUpdates()
-        self.tableView.reloadRows(at: [IndexPath(row: self.posts.index(of: post)!, section: 0)], with: .fade)
-        self.tableView.endUpdates()
-    }
-    
-    func editPost(post: Post, hud: MBProgressHUD){
-        hud.mode = .indeterminate
-        hud.label.text = NSLocalizedString("Uploading data", comment: "Edit post upload message")
-        Server.editPost(project: self.project, post: post, text: post.text, attachments: post.attachments)
-        { error in
-            hud.hide(animated: true)
-            if let error = error {
-                self.snackbarController?.show(error: error.domain)
-            } else {
-                self.input?.post = nil
-                self.snackbarController?.show(text: post.type == .status ? "Status changed": "Message changed")
-                self.updateViewPost(post: post)
-            }
-        }
-    }
-    
-    func shouldEditPost(post: Post, text: String, attachments: [Any]) {
-        guard isValidPost(text: text, attachments: attachments) else {
-            self.snackbarController?.show(error: NSLocalizedString("Please provide at least one attachment or text", comment: "New post error"))
-            return
-        }
-        guard let hud = MBProgressHUD.show() else { return }
-        let (completedKeys, imagesToUpload) = filter(attachments: attachments)
-
-        if imagesToUpload.count > 0 {
-            hud.mode = .annularDeterminate
-            hud.label.text = NSLocalizedString("Uploading attachments", comment: "Edit post upload message")
-            S3.upload(images: imagesToUpload, progress:
-                { progress in
-                    hud.progress = progress
-                })
-            { keys, error in
-                if let error = error {
-                    self.snackbarController?.show(error: error)
-                    hud.hide(animated: true)
-                } else {
-                    post.text = text
-                    post.attachments = keys!+completedKeys
-                    self.editPost(post: post, hud: hud)
-                }
-            }
-        } else {
-            post.text = text
-            post.attachments = completedKeys
-            editPost(post: post, hud: hud)
-        }
-    }
+    fileprivate var refreshControl: UIRefreshControl?
     
     // MARK: - View Controller Life Cycle -
+    
+    init(with project: Project) {
+        let tableNode = ASTableNode(style: .plain)
+        
+        super.init(node: tableNode)
+        
+        self.project = project
+        self.tableNode = tableNode
+        self.tableNode.dataSource = self
+        self.tableNode.delegate = self
+        
+        hidesBottomBarWhenPushed = true
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -242,8 +63,6 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
         setupInfoButton()
         setupInput()
         
-        addInfiniteScrolling()
-        refreshControl?.beginRefreshing()
         loadInitialPosts()
         edgesForExtendedLayout = []
     }
@@ -258,7 +77,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        unsubscribeFromNotifications()
+        unsubscribe()
         hideInput()
         view.endEditing(true)
     }
@@ -268,22 +87,22 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     fileprivate func configure() {
         title = project.title
         
-        tableView.reloadData()
         showInput()
     }
     
     fileprivate func setupTableView() {
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 464.0
-        tableView.register(UINib(nibName: "PostCell", bundle: nil), forCellReuseIdentifier: "PostCell")
-        tableView.emptyDataSetSource = self
-        tableView.emptyDataSetDelegate = self
-        tableView.tableFooterView = UIView()
+        tableNode.view.tableFooterView = UIView()
+        tableNode.view.separatorStyle = .none
+        tableNode.view.backgroundColor = Color.controlioTableBackground
+        tableNode.view.contentInset = EdgeInsets(top: 5, left: 0, bottom: 0, right: 0)
     }
     
     fileprivate func addRefreshControl() {
         refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(ProjectController.loadInitialPosts), for: .valueChanged)
+        guard let refreshControl = refreshControl else { return }
+        tableNode.view.addSubview(refreshControl)
+        tableNode.view.sendSubview(toBack: refreshControl)
+        refreshControl.addTarget(self, action: #selector(ProjectController.loadInitialPosts), for: .valueChanged)
     }
     
     fileprivate func setupBackButton() {
@@ -315,20 +134,20 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     }
     
     fileprivate func setBottomScrollInset(_ inset: CGFloat) {
-        let scrollIndicatorInsets = tableView.scrollIndicatorInsets
-        let contentInset = tableView.contentInset
-        tableView.scrollIndicatorInsets = UIEdgeInsetsMake(scrollIndicatorInsets.top,
+        let scrollIndicatorInsets = tableNode.view.scrollIndicatorInsets
+        let contentInset = tableNode.view.contentInset
+        tableNode.view.scrollIndicatorInsets = UIEdgeInsetsMake(scrollIndicatorInsets.top,
                                                            scrollIndicatorInsets.left,
                                                            inset,
                                                            scrollIndicatorInsets.right)
-        tableView.contentInset = UIEdgeInsetsMake(contentInset.top,
+        tableNode.view.contentInset = UIEdgeInsetsMake(contentInset.top,
                                                   contentInset.left,
                                                   inset,
                                                   contentInset.right)
     }
     
     fileprivate func setupInput() {
-        input = InputView.view(navigationController!.view, vc: self, delegate: self, project: project)
+        input = InputView.view(navigationController!.view, delegate: self, project: project)
     }
     
     fileprivate func showInput() {
@@ -355,17 +174,16 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
             if let error = error {
                 PopupNotification.show(notification: error.domain)
             } else {
+                guard let index = self.posts.index(of: post) else { return }
                 self.posts.remove(at: self.posts.index(of: post)!)
-                self.tableView.beginUpdates()
-                self.tableView.deleteRows(at: [self.tableView.indexPath(for: cell)!], with: .right)
-                self.tableView.endUpdates()
+                self.tableNode.deleteRows(at: [IndexPath(row: index, section: 0)], with: .right)
             }
         }
     }
     
     @objc fileprivate func openProject() {
         guard let hud = MBProgressHUD.show() else { return }
-        hud.label.text = NSLocalizedString("Getting project info...", comment: "Getting project message")
+        hud.detailsLabel.text = NSLocalizedString("Getting project info...", comment: "Getting project message")
         Server.get(project: project)
         { error, project in
             hud.hide(animated: true)
@@ -389,69 +207,56 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     
     // MARK: - Pagination -
     
-    fileprivate func addInfiniteScrolling() {
-        tableView.addInfiniteScroll
-        { tableView in
-            self.loadMorePosts()
-        }
-    }
-    
     @objc fileprivate func loadInitialPosts() {
         isLoading = true
         Server.getPosts(for: project)
         { error, posts in
             if let error = error {
                 self.snackbarController?.show(error: error.domain)
-            } else {
+            } else if let posts = posts {
                 self.isLoading = false
-                self.addInitialPosts(posts: posts!)
+                self.addInitialPosts(posts: posts)
             }
             self.refreshControl?.endRefreshing()
         }
     }
     
-    fileprivate func loadMorePosts() {
+    fileprivate func loadMorePosts(completion: @escaping ()->()) {
         Server.getPosts(for: project, skip: posts.count)
         { error, posts in
             if let error = error {
                 self.snackbarController?.show(error: error.domain)
-            } else {
-                self.addPosts(posts: posts!)
+            } else if let posts = posts {
+                self.addPosts(posts: posts)
             }
-            self.tableView.finishInfiniteScroll()
+            completion()
         }
     }
     
     fileprivate func addInitialPosts(posts: [Post]) {
-        let indexPathsToDelete = IndexPath.range(start: 0, length: self.posts.count)
+        needsMorePosts = true
         self.posts = posts
-        let indexPathsToAdd = IndexPath.range(start: 0, length: posts.count)
         
-        tableView.beginUpdates()
-        tableView.deleteRows(at: indexPathsToDelete, with: .fade)
-        tableView.insertRows(at: indexPathsToAdd, with: .fade)
-        tableView.endUpdates()
+        tableNode.reloadSections(IndexSet(integer: 0), with: .fade)
     }
     
     fileprivate func addPosts(posts: [Post]) {
+        if posts.count == 0 {
+            needsMorePosts = false
+        }
         let indexPaths = IndexPath.range(start: self.posts.count, length: posts.count)
         self.posts += posts
         
-        tableView.beginUpdates()
-        tableView.insertRows(at: indexPaths, with: .bottom)
-        tableView.endUpdates()
+        tableNode.insertRows(at: indexPaths, with: .fade)
     }
     
     // MARK: - Notifications -
     
     fileprivate func subcribeForNotifications() {
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(ProjectController.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(ProjectController.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    }
-    
-    fileprivate func unsubscribeFromNotifications() {
-        NotificationCenter.default.removeObserver(self)
+        subscribe(to: [
+            .UIKeyboardWillShow: #selector(ProjectController.keyboardWillShow(_:)),
+            .UIKeyboardWillHide: #selector(ProjectController.keyboardWillHide(_:))
+        ])
     }
     
     @objc fileprivate func keyboardWillShow(_ notification: Notification) {
@@ -488,11 +293,199 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .lightContent
     }
+}
+
+extension ProjectController: PostCellDelegate {
+    func openAttachment(at index: Int, post: Post, fromView: UIView) {
+        currentGallery = ImageGallery()
+        currentGallery?.showGallery(atViewController: self, index: index, imageKeys: post.attachments, fromView: fromView)
+    }
     
-    // MARK: - DZNEmptyDataSet -
+    func edit(post: Post, cell: PostCell) {
+        guard project.canEdit else {
+            return
+        }
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.add(sourceView: cell.view)
+        alert.add(action: NSLocalizedString("Edit", comment: "Edit post button"))
+        {
+            self.input?.post = post
+        }
+        alert.add(action: NSLocalizedString("Delete", comment: "Edit post button"), style: .destructive)
+        {
+            self.delete(post: post, cell: cell)
+        }
+        alert.addCancelButton()
+        
+        present(alert, animated: true, completion: nil)
+    }
     
+    func open(user: User) {
+        guard let hud = MBProgressHUD.show() else { return }
+        hud.detailsLabel.text = NSLocalizedString("Getting user profile...", comment: "getting user profile hud message")
+        
+        Server.getProfile(for: user)
+        { error, user in
+            hud.hide(animated: true)
+            if let error = error {
+                self.snackbarController?.show(error: error.domain)
+            } else if let user = user {
+                Router(self).show(user: user)
+            }
+        }
+    }
+}
+
+extension ProjectController: InputViewDelegate {
+    func openPicker(with delegate: AllPickerDelegate, sender: UIView) {
+        imagePicker.delegate = delegate
+        cameraPicker.delegate = delegate
+        
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.add(sourceView: sender)
+        
+        alert.add(action: NSLocalizedString("Camera", comment: "Image picker button"))
+        {
+            self.cameraPicker.sourceType = .camera
+            self.cameraPicker.allowsEditing = false
+            self.present(self.cameraPicker, animated: true, completion: nil)
+        }
+        alert.add(action: NSLocalizedString("Library", comment: "Image picker button"))
+        {
+            let count = self.input?.attachmentCount ?? 0
+            self.imagePicker.maximumNumberOfSelection = self.maxCountAttachments - count
+            self.imagePicker.dropAll()
+            self.imagePicker.delegate = delegate
+            self.present(self.imagePicker, animated: true){}
+        }
+        alert.addCancelButton()
+        
+        present(alert, animated: true) { }
+    }
+    
+    func closeImagePicker() {
+        dismiss(animated: true) { }
+    }
+    
+    func shouldChangeStatus(text: String) {
+        guard let hud = MBProgressHUD.show() else { return }
+        hud.detailsLabel.text = NSLocalizedString("Changing status...", comment: "project change status message")
+        Server.change(status: text, project: project)
+        { error, status in
+            hud.hide(animated: true)
+            if let error = error {
+                self.snackbarController?.show(error: error.domain)
+            } else {
+                self.project.lastStatus = status
+                self.project.lastPost = status
+                self.configure()
+                self.reloadAndCleanInput()
+                self.snackbarController?.show(text: NSLocalizedString("Status has been changed", comment: "project chande status success message"))
+            }
+        }
+    }
+    
+    func addPost(text: String?, keys: [String]?, hud: MBProgressHUD){
+        hud.mode = .indeterminate
+        hud.detailsLabel.text = NSLocalizedString("Uploading new message...", comment: "new post upload message")
+        Server.addPost(to: self.project, text: text!, attachmentKeys: keys!)
+        { error, post in
+            hud.hide(animated: true)
+            if let error = error {
+                self.snackbarController?.show(error: error.domain)
+            } else {
+                self.project.lastPost = post
+                self.configure()
+                self.reloadAndCleanInput()
+                self.snackbarController?.show(text: NSLocalizedString("Message sent", comment: "new post upload success message"))
+            }
+        }
+    }
+    
+    func shouldAddPost(text: String, attachments: [Any]) {
+        guard isValidPost(text: text, attachments: attachments) else {
+            snackbarController?.show(error: NSLocalizedString("Please provide at least one attachment or text", comment: "new post error"))
+            return
+        }
+        guard let hud = MBProgressHUD.show() else { return }
+        let (completedKeys, imagesToUpload) = filter(attachments: attachments)
+        
+        if imagesToUpload.count > 0 {
+            hud.mode = .annularDeterminate
+            hud.detailsLabel.text = NSLocalizedString("Uploading attachments...", comment: "new post upload message")
+            S3.upload(images: imagesToUpload, progress:
+                { progress in
+                    hud.progress = progress
+            })
+            { keys, error in
+                if let error = error {
+                    self.snackbarController?.show(error: error)
+                    hud.hide(animated: true)
+                } else if let keys = keys {
+                    self.addPost(text: text, keys: keys+completedKeys, hud: hud)
+                }
+            }
+        } else {
+            self.addPost(text: text, keys: completedKeys, hud: hud)
+        }
+    }
+    
+    func updateViewPost(post: Post){
+        tableNode.reloadRows(at: [IndexPath(row: self.posts.index(of: post)!, section: 0)], with: .fade)
+    }
+    
+    func editPost(post: Post, hud: MBProgressHUD){
+        hud.mode = .indeterminate
+        hud.detailsLabel.text = NSLocalizedString("Uploading data", comment: "edit post upload message")
+        Server.editPost(project: self.project, post: post, text: post.text, attachments: post.attachments)
+        { error in
+            hud.hide(animated: true)
+            if let error = error {
+                self.snackbarController?.show(error: error.domain)
+            } else {
+                self.input?.post = nil
+                self.snackbarController?.show(text: post.type == .status ? NSLocalizedString("Status changed", comment: "edit post success message"): NSLocalizedString("Message changed", comment: "edit post success message"))
+                self.updateViewPost(post: post)
+            }
+        }
+    }
+    
+    func shouldEditPost(post: Post, text: String, attachments: [Any]) {
+        guard isValidPost(text: text, attachments: attachments) else {
+            self.snackbarController?.show(error: NSLocalizedString("Please provide at least one attachment or text", comment: "New post error"))
+            return
+        }
+        guard let hud = MBProgressHUD.show() else { return }
+        let (completedKeys, imagesToUpload) = filter(attachments: attachments)
+        
+        if imagesToUpload.count > 0 {
+            hud.mode = .annularDeterminate
+            hud.detailsLabel.text = NSLocalizedString("Uploading attachments", comment: "Edit post upload message")
+            S3.upload(images: imagesToUpload, progress:
+                { progress in
+                    hud.progress = progress
+            })
+            { keys, error in
+                if let error = error {
+                    self.snackbarController?.show(error: error)
+                    hud.hide(animated: true)
+                } else {
+                    post.text = text
+                    post.attachments = keys!+completedKeys
+                    self.editPost(post: post, hud: hud)
+                }
+            }
+        } else {
+            post.text = text
+            post.attachments = completedKeys
+            editPost(post: post, hud: hud)
+        }
+    }
+}
+
+extension ProjectController: DZNEmptyDataSetSource {
     func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
-        let text = isLoading ? "Loading...": "No posts yet"
+        let text = isLoading ? NSLocalizedString("Loading...", comment: "empty view placeholder"): NSLocalizedString("No posts yet", comment: "empty view placeholder")
         let attributes = [
             NSFontAttributeName: Font.boldSystemFont(ofSize: 18.0),
             NSForegroundColorAttributeName: Color.darkGray
@@ -501,7 +494,7 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     }
     
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        let text = isLoading ? "Let us get your posts from the cloud" : project.canEdit ? "Please create your first update" : "Managers should post updates here"
+        let text = isLoading ? NSLocalizedString("Let us get your posts from the cloud", comment: "empty view placeholder") : project.canEdit ? NSLocalizedString("Please create your first update", comment: "empty view placeholder") : NSLocalizedString("Managers should post updates here", comment: "empty view placeholder")
         
         let paragraph = NSMutableParagraphStyle()
         paragraph.lineBreakMode = .byWordWrapping;
@@ -521,5 +514,28 @@ class ProjectController: UITableViewController, PostCellDelegate, InputViewDeleg
     
     func emptyDataSetShouldAllowScroll(_ scrollView: UIScrollView!) -> Bool {
         return true
+    }
+}
+
+extension ProjectController: ASTableDataSource, ASTableDelegate {
+    func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {
+        return posts.count
+    }
+    
+    func tableNode(_ tableNode: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
+        return {
+            return PostCell(with: self.posts[indexPath.row], delegate: self)
+        }
+    }
+    
+    func shouldBatchFetch(for tableNode: ASTableNode) -> Bool {
+        return needsMorePosts
+    }
+    
+    func tableNode(_ tableNode: ASTableNode, willBeginBatchFetchWith context: ASBatchContext) {
+        loadMorePosts
+        {
+            context.completeBatchFetching(true)
+        }
     }
 }

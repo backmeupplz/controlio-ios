@@ -53,7 +53,7 @@ class InputView: UIView, AttachmentContainerViewDelegate {
     
     // MARK: - Class Functions -
     
-    class func view(_ superview: UIView, vc: UIViewController, delegate: InputViewDelegate? = nil, project: Project) -> InputView {
+    class func view(_ superview: UIView, delegate: InputViewDelegate? = nil, project: Project) -> InputView {
         let result = Bundle.main.loadNibNamed("InputView", owner: nil, options: [:])?.last as! InputView
         result.delegate = delegate
         
@@ -131,7 +131,11 @@ class InputView: UIView, AttachmentContainerViewDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        subscribeNotifications()
+        subscribe()
+    }
+    
+    deinit {
+        unsubscribe()
     }
     
     // MARK: - General Functions -
@@ -178,15 +182,11 @@ class InputView: UIView, AttachmentContainerViewDelegate {
     
     // MARK: - Private Functions -
     
-    fileprivate func subscribeNotifications() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(InputView.textViewChangedContentSize),
-                                               name: NSNotification.Name.SLKTextViewContentSizeDidChange,
-                                               object: nil)
-    }
-    
-    fileprivate func unsubscribeNotifications() {
-        NotificationCenter.default.removeObserver(self)
+    fileprivate func subscribe() {
+        subscribe(to: [
+            .SLKTextViewContentSizeDidChange:
+                #selector(InputView.textViewChangedContentSize)
+        ])
     }
     
     @objc fileprivate func textViewChangedContentSize() {

@@ -10,15 +10,41 @@ import UIKit
 import SnapKit
 import MBProgressHUD
 import Material
+import AsyncDisplayKit
 
-class ProjectInfoController: UITableViewController {
+class ProjectInfoController: ASViewController<ASDisplayNode> {
     
     // MARK: - Variables -
     
-    var project: Project!
-    var sections = ["Info", "Owner", "Managers", "Clients", "Managers invited", "Clients invited", "Owner invited"]
+    fileprivate var tableNode: ASTableNode!
+    fileprivate var project: Project!
+    fileprivate var sections = [
+        NSLocalizedString("Info", comment: "project info section name"),
+        NSLocalizedString("Owner", comment: "project info section name"),
+        NSLocalizedString("Managers", comment: "project info section name"),
+        NSLocalizedString("Clients", comment: "project info section name"),
+        NSLocalizedString("Managers invited", comment: "project info section name"),
+        NSLocalizedString("Clients invited", comment: "project info section name"),
+        NSLocalizedString("Owner invited", comment: "project info section name")
+    ]
+    fileprivate var refreshControl: UIRefreshControl?
     
     // MARK: - View Controller Life Cycle -
+    
+    init(with project: Project) {
+        let tableNode = ASTableNode(style: .plain)
+        
+        super.init(node: tableNode)
+        
+        self.tableNode = tableNode
+        self.tableNode.dataSource = self
+        self.tableNode.delegate = self
+        self.project = project
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,13 +62,267 @@ class ProjectInfoController: UITableViewController {
         reload()
     }
     
-    // MARK: - UITableViewDataSource -
+    // MARK: - Private functions -
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    fileprivate func configure() {
+        title = project.title
+    }
+    
+    fileprivate func setupTableView() {
+        tableNode.view.tableFooterView = UIView()
+        tableNode.view.backgroundColor = Color.controlioTableBackground
+        tableNode.view.contentInset = EdgeInsets(top: 5, left: 0, bottom: 0, right: 0)
+        tableNode.view.separatorStyle = .none
+    }
+    
+    fileprivate func setupBackButton() {
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    }
+    
+    fileprivate func addRefreshControl() {
+        refreshControl = UIRefreshControl()
+        guard let refreshControl = refreshControl else { return }
+        tableNode.view.addSubview(refreshControl)
+        tableNode.view.sendSubview(toBack: refreshControl)
+        refreshControl.addTarget(self, action: #selector(ProjectInfoController.reload), for: .valueChanged)
+    }
+    
+    fileprivate func addRightButton() {
+        let button = UIButton(type: .custom)
+        button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        button.setImage(Icon.moreHorizontal, for: .normal)
+        button.addTarget(self, action: #selector(ProjectInfoController.moreTouched(sender:)), for: .touchUpInside)
+        let rightView = UIBarButtonItem(customView: button)
+        navigationItem.rightBarButtonItem = rightView
+    }
+    
+    @objc fileprivate func reload() {
+        Server.get(project: project)
+        { error, project in
+            if let error = error {
+                self.snackbarController?.show(error: error.domain)
+            } else {
+                self.project = project
+                self.configure()
+                self.tableNode.reloadSections(IndexSet(0...6), with: .fade)
+            }
+            self.refreshControl?.endRefreshing()
+        }
+    }
+    
+    fileprivate func removeManager(from indexPath: IndexPath) {
+        guard let user = object(for: indexPath) as? User
+            else { return }
+        let alert = UIAlertController(title: String(format: NSLocalizedString("Would you like to remove %@ from managers?", comment: "remove from maangers alert title"), user.name ?? user.email ?? "this user"), preferredStyle: .alert)
+        alert.add(action: NSLocalizedString("Remove", comment: "remove from managers alert button"), style: .destructive)
+        {
+            guard let hud = MBProgressHUD.show() else { return }
+            hud.detailsLabel.text = String(format: NSLocalizedString("Removing %@ from managers", comment: "remove from managers hud title"), user.name ?? user.email ?? "user")
+            Server.remove(manager: user, from: self.project)
+            { error in
+                hud.hide(animated: true)
+                if let error = error {
+                    self.snackbarController?.show(error: error.domain)
+                } else {
+                    self.removeCellAt(indexPath: indexPath)
+                    self.snackbarController?.show(text: String(format: NSLocalizedString("%@ has been removed from managers", comment: "remove from managers success message"), user.name ?? user.email ?? "This user"))
+                }
+            }
+        }
+        alert.addCancelButton()
+        present(alert, animated: true) {}
+    }
+    
+    fileprivate func removeClient(from indexPath: IndexPath) {
+        guard let user = object(for: indexPath) as? User
+            else { return }
+        let alert = UIAlertController(title: String(format: NSLocalizedString("Would you like to remove %@ from clients?", comment: "remove from clients alert title"), user.name ?? user.email ?? "this user"), preferredStyle: .alert)
+        alert.add(action: NSLocalizedString("Remove", comment: "remove from clients alert button"), style: .destructive)
+        {
+            guard let hud = MBProgressHUD.show() else { return }
+            hud.detailsLabel.text = String(format: NSLocalizedString("Removing %@ from clients", comment: "remove from clients hud title"), user.name ?? user.email ?? "user")
+            Server.remove(client: user, from: self.project)
+            { error in
+                hud.hide(animated: true)
+                if let error = error {
+                    self.snackbarController?.show(error: error.domain)
+                } else {
+                    self.removeCellAt(indexPath: indexPath)
+                    self.snackbarController?.show(text: String(format: NSLocalizedString("%@ has been removed from clients", comment: "remove from clients success message"), user.name ?? user.email ?? "This user"))
+                }
+            }
+        }
+        alert.addCancelButton()
+        present(alert, animated: true) {}
+    }
+    
+    fileprivate func removeInvite(from indexPath: IndexPath) {
+        guard let invite = object(for: indexPath) as? Invite
+            else { return }
+        let alert = UIAlertController(title: String(format: NSLocalizedString("Would you like to revoke invite to %@?", comment: "revoke invite alert title"), invite.invitee?.name ?? invite.invitee?.email ?? "this user"), preferredStyle: .alert)
+        alert.add(action: NSLocalizedString("Revoke", comment: "revoke invite alert button"), style: .destructive)
+        {
+            guard let hud = MBProgressHUD.show() else { return }
+            hud.detailsLabel.text = String(format: NSLocalizedString("Revoking invite for %@", comment: "revoke invite hud title"), invite.invitee?.name ?? invite.invitee?.email ?? "this user")
+            Server.remove(invite: invite)
+            { error in
+                hud.hide(animated: true)
+                if let error = error {
+                    self.snackbarController?.show(error: error.domain)
+                } else {
+                    self.removeCellAt(indexPath: indexPath)
+                    self.snackbarController?.show(text: String(format: NSLocalizedString("Invite for %@ has been revoked", comment: "revoke invite success message"), invite.invitee?.name ?? invite.invitee?.email ?? "this user"))
+                }
+            }
+        }
+        alert.addCancelButton()
+        present(alert, animated: true) {}
+    }
+    
+    fileprivate func removeCellAt(indexPath: IndexPath) {
+        switch indexPath.section {
+        case 2:
+            project.managers.remove(at: indexPath.row)
+        case 3:
+            project.clients.remove(at: indexPath.row)
+        case 4:
+            let invite = project.managersInvited[indexPath.row]
+            project.invites = project.invites.filter { $0 != invite }
+        case 5:
+            let invite = project.clientsInvited[indexPath.row]
+            project.invites = project.invites.filter { $0 != invite }
+        default:
+            break
+        }
+        tableNode.deleteRows(at: [indexPath], with: .automatic)
+    }
+    
+    @objc fileprivate func addClientsTouched() {
+        Router(self).showClients(with: project, type: .addClients)
+    }
+    
+    @objc fileprivate func addManagersTouched() {
+        Router(self).showClients(with: project, type: .addManagers)
+    }
+    
+    @objc fileprivate func moreTouched(sender: UIButton) {
+        let alert = UIAlertController(sourceView: sender)
+        if !project.isOwner {
+            alert.add(action: NSLocalizedString("Leave project", comment: "alert button"), style: .destructive)
+            {
+                let alert = UIAlertController(title: String(format: NSLocalizedString("Are you sure you want to leave %@?", comment: "leave project alert title"), self.project.title ?? "this project"), message: NSLocalizedString("You will not be able to get back unless you get invited", comment: "leave project alert message"), sourceView: sender)
+                alert.add(action: NSLocalizedString("Leave", comment: "leave project alert button"), style: .destructive)
+                {
+                    self.leave(project: self.project)
+                }
+                alert.addCancelButton()
+                self.present(alert, animated: true) {}
+            }
+        } else if project.isOwner {
+            alert.add(action: project.isFinished ? NSLocalizedString("Revive project", comment: "revive project alert button"): NSLocalizedString("Finish project", comment: "finish project alert button"), style: .default)
+            {
+                self.toggleFinished(for: self.project)
+            }
+            alert.add(action: NSLocalizedString("Delete project", comment: "delete project alert button"), style: .destructive)
+            {
+                let alert = UIAlertController(title: String(format: NSLocalizedString("Are you sure you want to delete %@?", comment: "delete project alert title"), self.project.title ?? "this project"), message: NSLocalizedString("This action cannot be undone", comment: "delete project alert message"), sourceView: sender)
+                alert.add(action: NSLocalizedString("Delete", comment: "delete project alert button"), style: .destructive)
+                {
+                    self.delete(project: self.project)
+                }
+                alert.addCancelButton()
+                self.present(alert, animated: true) {}
+            }
+        }
+        if (project.canEdit && !project.isFinished) {
+            alert.add(action: NSLocalizedString("Edit project", comment: "edit project alert button"))
+            {
+                Router(self).showEdit(of: self.project)
+            }
+        }
+        alert.addCancelButton()
+        present(alert, animated: true) {}
+    }
+    
+    fileprivate func leave(project: Project) {
+        guard let hud = MBProgressHUD.show() else { return }
+        hud.detailsLabel.text = NSLocalizedString("Leaving the project...", comment: "leave project hud message")
+        
+        Server.leave(project: project)
+        { error in
+            hud.hide(animated: true)
+            if let error = error {
+                self.snackbarController?.show(error: error.domain)
+            } else {
+                let _ = self.navigationController?.popToRootViewController(animated: true)
+                self.snackbarController?.show(text: NSLocalizedString("You have left the project", comment: "leave project success message"))
+            }
+        }
+    }
+    
+    
+    fileprivate func delete(project: Project) {
+        guard let hud = MBProgressHUD.show() else { return }
+        hud.detailsLabel.text = NSLocalizedString("Deleting the project...", comment: "delete project hud title")
+        
+        Server.delete(project: project)
+        { error in
+            hud.hide(animated: true)
+            if let error = error {
+                self.snackbarController?.show(error: error.domain)
+            } else {
+                let _ = self.navigationController?.popToRootViewController(animated: true)
+                self.snackbarController?.show(text: NSLocalizedString("Project has been deleted", comment: "delete project success message"))
+                self.post(notification: .projectDeleted)
+            }
+        }
+    }
+    
+    fileprivate func toggleFinished(for project: Project) {
+        guard let hud = MBProgressHUD.show() else { return }
+        hud.detailsLabel.text = project.isFinished ? NSLocalizedString("Reviving the project...", comment: "revive project hud title"): NSLocalizedString("Finishing the project...", comment: "finish project hud titile")
+        
+        Server.toggleFinished(for: project)
+        { error in
+            hud.hide(animated: true)
+            if let error = error {
+                self.snackbarController?.show(error: error.domain)
+            } else {
+                let _ = self.navigationController?.popToRootViewController(animated: true)
+                self.snackbarController?.show(text: project.isFinished ? NSLocalizedString("Project has been revived", comment: "revive project success message"): NSLocalizedString("Project has been finished", comment: "finish project success message"))
+                self.post(notification: .projectArchivedChanged)
+            }
+        }
+    }
+    
+    fileprivate func object(for indexPath: IndexPath) -> Any? {
+        var result: Any?
+        switch indexPath.section {
+        case 1:
+            result = self.project.owner
+        case 2:
+            result = self.project.managers[indexPath.row]
+        case 3:
+            result = self.project.clients[indexPath.row]
+        case 4:
+            result = self.project.managersInvited[indexPath.row]
+        case 5:
+            result = self.project.clientsInvited[indexPath.row]
+        case 6:
+            result = self.project.ownerInvited
+        default:
+            break
+        }
+        return result
+    }
+}
+
+extension ProjectInfoController: ASTableDataSource {
+    func numberOfSections(in tableNode: ASTableNode) -> Int {
         return sections.count
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
             return 1
@@ -63,38 +343,34 @@ class ProjectInfoController: UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            let projectCell = tableView.dequeueReusableCell(withIdentifier: "ProjectCell", for: indexPath) as! ProjectCell
-            projectCell.type = .info
-            projectCell.project = project
-            return projectCell
-        } else {
-            let userCell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserCell
-            switch indexPath.section {
-            case 1:
-                userCell.user = project.owner
-            case 2:
-                userCell.user = project.managers[indexPath.row]
-            case 3:
-                userCell.user = project.clients[indexPath.row]
-            case 4:
-                userCell.invite = project.managersInvited[indexPath.row]
-            case 5:
-                userCell.invite = project.clientsInvited[indexPath.row]
-            case 6:
-                userCell.invite = project.ownerInvited
-            default:
-                userCell.user = nil
-                userCell.invite = nil
+    func tableNode(_ tableNode: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
+        return {
+            if indexPath.section == 0 {
+                return ProjectCell(with: self.project,
+                                   type: .info)
+            } else {
+                switch indexPath.section {
+                case 1:
+                    return UserCell(with: self.project.owner)
+                case 2:
+                    return UserCell(with: self.project.managers[indexPath.row])
+                case 3:
+                    return UserCell(with: self.project.clients[indexPath.row])
+                case 4:
+                    return UserCell(invite: self.project.managersInvited[indexPath.row])
+                case 5:
+                    return UserCell(invite: self.project.clientsInvited[indexPath.row])
+                case 6:
+                    return UserCell(invite: self.project.ownerInvited)
+                default:
+                    return UserCell()
+                }
             }
-            return userCell
         }
     }
-    
-    // MARK: - UITableViewDelegate -
-    
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+}
+extension ProjectInfoController: ASTableDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
             return nil
         }
@@ -115,8 +391,8 @@ class ProjectInfoController: UITableViewController {
         if section == 5 && project.canEdit {
             // add button to edit clients
             let button = UIButton(type: .system)
-            button.setTitle("Invite more clients", for: .normal)
-            button.setTitleColor(UIColor.controlioGreen(), for: .normal)
+            button.setTitle(NSLocalizedString("Invite more clients", comment: "invite more clients header button title"), for: .normal)
+            button.setTitleColor(UIColor.controlioGreen, for: .normal)
             button.addTarget(self, action: #selector(ProjectInfoController.addClientsTouched), for: .touchUpInside)
             header.addSubview(button)
             button.snp.makeConstraints { make in
@@ -128,8 +404,8 @@ class ProjectInfoController: UITableViewController {
         if section == 4 && project.isOwner {
             // add button to edit clients
             let button = UIButton(type: .system)
-            button.setTitle("Invite more managers", for: .normal)
-            button.setTitleColor(UIColor.controlioGreen(), for: .normal)
+            button.setTitle(NSLocalizedString("Invite more managers", comment: "invite more managers header button title"), for: .normal)
+            button.setTitleColor(UIColor.controlioGreen, for: .normal)
             button.addTarget(self, action: #selector(ProjectInfoController.addManagersTouched), for: .touchUpInside)
             header.addSubview(button)
             button.snp.makeConstraints { make in
@@ -141,10 +417,10 @@ class ProjectInfoController: UITableViewController {
         return header
     }
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
         case 0:
-            return 1
+            return 0
         case 1:
             return project.owner == nil ? 0 : 44
         case 2:
@@ -162,7 +438,7 @@ class ProjectInfoController: UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         if indexPath.section <= 1 { // info and owner
             return .none
         } else if indexPath.section <= 2 && !project.isOwner { // managers
@@ -174,7 +450,7 @@ class ProjectInfoController: UITableViewController {
         return .delete
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 2:
             removeManager(from: indexPath)
@@ -187,12 +463,28 @@ class ProjectInfoController: UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableNode(_ tableNode: ASTableNode, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section > 0 {
-            let userCell = tableView.cellForRow(at: indexPath) as! UserCell
-            guard let user = userCell.user ?? userCell.invite?.invitee else { return }
+            var optionalUser: User?
+            switch indexPath.section {
+            case 1:
+                optionalUser = self.project.owner
+            case 2:
+                optionalUser = self.project.managers[indexPath.row]
+            case 3:
+                optionalUser = self.project.clients[indexPath.row]
+            case 4:
+                optionalUser = self.project.managersInvited[indexPath.row].invitee
+            case 5:
+                optionalUser = self.project.clientsInvited[indexPath.row].invitee
+            case 6:
+                optionalUser = self.project.ownerInvited?.invitee
+            default:
+                break
+            }
+            guard let user = optionalUser else { return }
             guard let hud = MBProgressHUD.show() else { return }
-            hud.label.text = "Getting user profile..."
+            hud.detailsLabel.text = NSLocalizedString("Getting user profile...", comment: "get user profile hud title")
             
             Server.getProfile(for: user)
             { error, user in
@@ -202,240 +494,6 @@ class ProjectInfoController: UITableViewController {
                 } else if let user = user {
                     Router(self).show(user: user)
                 }
-            }
-        }
-    }
-    
-    // MARK: - Private functions -
-    
-    fileprivate func configure() {
-        title = project.title
-    }
-    
-    fileprivate func setupTableView() {
-        tableView.tableFooterView = UIView()
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 464.0
-        tableView.register(UINib(nibName: "ProjectCell", bundle: nil), forCellReuseIdentifier: "ProjectCell")
-        tableView.register(UINib(nibName: "UserCell", bundle: nil), forCellReuseIdentifier: "UserCell")
-    }
-    
-    fileprivate func setupBackButton() {
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-    }
-    
-    fileprivate func addRefreshControl() {
-        refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(ProjectInfoController.reload), for: .valueChanged)
-    }
-    
-    fileprivate func addRightButton() {
-        let button = UIButton(type: .custom)
-        button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        button.setImage(Icon.moreHorizontal, for: .normal)
-        button.addTarget(self, action: #selector(ProjectInfoController.moreTouched(sender:)), for: .touchUpInside)
-        let rightView = UIBarButtonItem(customView: button)
-        navigationItem.rightBarButtonItem = rightView
-    }
-    
-    @objc fileprivate func reload() {
-        Server.get(project: project)
-        { error, project in
-            if let error = error {
-                self.snackbarController?.show(error: error.domain)
-            } else {
-                self.project = project
-                self.configure()
-                self.tableView.reloadData()
-            }
-            self.refreshControl?.endRefreshing()
-        }
-    }
-    
-    fileprivate func removeManager(from indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as! UserCell
-        guard let user = cell.user else { return }
-        let alert = UIAlertController(title: "Would you like to remove \(user.name ?? user.email ?? "this user") from managers?", preferredStyle: .alert, sourceView: cell)
-        alert.add(action: "Remove", style: .destructive)
-        {
-            guard let hud = MBProgressHUD.show() else { return }
-            hud.label.text = "Removing \(user.name ?? user.email ?? "user") from managers"
-            Server.remove(manager: user, from: self.project)
-            { error in
-                hud.hide(animated: true)
-                if let error = error {
-                    self.snackbarController?.show(error: error.domain)
-                } else {
-                    self.removeCellAt(indexPath: indexPath)
-                    self.snackbarController?.show(text: "\(user.name ?? user.email ?? "This user") has been removed from managers")
-                }
-            }
-        }
-        alert.addCancelButton()
-        present(alert, animated: true) {}
-    }
-    
-    fileprivate func removeClient(from indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as! UserCell
-        guard let user = cell.user else { return }
-        let alert = UIAlertController(title: "Would you like to remove \(user.name ?? user.email ?? "this user") from clients?", preferredStyle: .alert, sourceView: cell)
-        alert.add(action: "Remove", style: .destructive)
-        {
-            guard let hud = MBProgressHUD.show() else { return }
-            hud.label.text = "Removing \(user.name ?? user.email ?? "user") from clients"
-            Server.remove(client: user, from: self.project)
-            { error in
-                hud.hide(animated: true)
-                if let error = error {
-                    self.snackbarController?.show(error: error.domain)
-                } else {
-                    self.removeCellAt(indexPath: indexPath)
-                    self.snackbarController?.show(text: "\(user.name ?? user.email ?? "This user") has been removed from clients")
-                }
-            }
-        }
-        alert.addCancelButton()
-        present(alert, animated: true) {}
-    }
-    
-    fileprivate func removeInvite(from indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as! UserCell
-        guard let invite = cell.invite else { return }
-        let alert = UIAlertController(title: "Would you like to revoke invite to \(invite.invitee?.name ?? invite.invitee?.email ?? "this user")?", preferredStyle: .alert, sourceView: cell)
-        alert.add(action: "Revoke", style: .destructive)
-        {
-            guard let hud = MBProgressHUD.show() else { return }
-            hud.label.text = "Revoking invite for \(invite.invitee?.name ?? invite.invitee?.email ?? "this user")"
-            Server.remove(invite: invite)
-            { error in
-                hud.hide(animated: true)
-                if let error = error {
-                    self.snackbarController?.show(error: error.domain)
-                } else {
-                    self.removeCellAt(indexPath: indexPath)
-                    self.snackbarController?.show(text: "Invite for \(invite.invitee?.name ?? invite.invitee?.email ?? "this user") has been revoked")
-                }
-            }
-        }
-        alert.addCancelButton()
-        present(alert, animated: true) {}
-    }
-    
-    fileprivate func removeCellAt(indexPath: IndexPath) {
-        tableView.beginUpdates()
-        switch indexPath.section {
-        case 2:
-            project.managers.remove(at: indexPath.row)
-        case 3:
-            project.clients.remove(at: indexPath.row)
-        case 4:
-            let invite = project.managersInvited[indexPath.row]
-            project.invites = project.invites.filter { $0 != invite }
-        case 5:
-            let invite = project.clientsInvited[indexPath.row]
-            project.invites = project.invites.filter { $0 != invite }
-        default:
-            tableView.endUpdates()
-            return
-        }
-        tableView.deleteRows(at: [indexPath], with: .automatic)
-        tableView.endUpdates()
-    }
-    
-    @objc fileprivate func addClientsTouched() {
-        Router(self).showClients(with: project, type: .addClients)
-    }
-    
-    @objc fileprivate func addManagersTouched() {
-        Router(self).showClients(with: project, type: .addManagers)
-    }
-    
-    @objc fileprivate func moreTouched(sender: UIButton) {
-        let alert = UIAlertController(sourceView: sender)
-        if !project.isOwner {
-            alert.add(action: "Leave project", style: .destructive)
-            {
-                let alert = UIAlertController(title: "Are you sure you want to leave \(self.project.title ?? "this project")?", message: "You will not be able to get back unless you get invited", sourceView: sender)
-                alert.add(action: "Leave", style: .destructive)
-                {
-                    self.leave(project: self.project)
-                }
-                alert.addCancelButton()
-                self.present(alert, animated: true) {}
-            }
-        } else if project.isOwner {
-            alert.add(action: project.isFinished ? "Revive project": "Finish project", style: .default)
-            {
-                self.toggleFinished(for: self.project)
-            }
-            alert.add(action: "Delete project", style: .destructive)
-            {
-                let alert = UIAlertController(title: "Are you sure you want to delete \(self.project.title ?? "this project")?", message: "This action cannot be undone", sourceView: sender)
-                alert.add(action: "Delete", style: .destructive)
-                {
-                    self.delete(project: self.project)
-                }
-                alert.addCancelButton()
-                self.present(alert, animated: true) {}
-            }
-        }
-        if (project.canEdit && !project.isFinished) {
-            alert.add(action: "Edit project")
-            {
-                Router(self).showEdit(of: self.project)
-            }
-        }
-        alert.addCancelButton()
-        present(alert, animated: true) {}
-    }
-    
-    fileprivate func leave(project: Project) {
-        guard let hud = MBProgressHUD.show() else { return }
-        hud.label.text = "Leaving the project..."
-        
-        Server.leave(project: project)
-        { error in
-            hud.hide(animated: true)
-            if let error = error {
-                self.snackbarController?.show(error: error.domain)
-            } else {
-                let _ = self.navigationController?.popToRootViewController(animated: true)
-                self.snackbarController?.show(text: "You have left the project")
-            }
-        }
-    }
-    
-    
-    fileprivate func delete(project: Project) {
-        guard let hud = MBProgressHUD.show() else { return }
-        hud.label.text = "Deleting the project..."
-        
-        Server.delete(project: project)
-        { error in
-            hud.hide(animated: true)
-            if let error = error {
-                self.snackbarController?.show(error: error.domain)
-            } else {
-                let _ = self.navigationController?.popToRootViewController(animated: true)
-                self.snackbarController?.show(text: "Project has been deleted")
-                NotificationCenter.default.post(name: Notification.Name("ProjectDeleted"), object: nil)
-            }
-        }
-    }
-    
-    fileprivate func toggleFinished(for project: Project) {
-        guard let hud = MBProgressHUD.show() else { return }
-        hud.label.text = project.isFinished ? "Reviving the project...": "Finishing the project..."
-        
-        Server.toggleFinished(for: project)
-        { error in
-            hud.hide(animated: true)
-            if let error = error {
-                self.snackbarController?.show(error: error.domain)
-            } else {
-                let _ = self.navigationController?.popToRootViewController(animated: true)
-                self.snackbarController?.show(text: project.isFinished ? "Project has been revived": "Project has been finished")
-                NotificationCenter.default.post(name: Notification.Name("ProjectIsArchivedChanged"), object:nil)
             }
         }
     }

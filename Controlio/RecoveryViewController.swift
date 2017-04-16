@@ -61,7 +61,7 @@ class RecoveryViewController: UIViewController {
                 if let error = error {
                     self.snackbarController?.show(error: error.domain)
                 } else if let email = self.emailTextField.text {
-                    self.snackbarController?.show(text: "Check your inbox. Reset password link is on it's way!")
+                    self.snackbarController?.show(text: NSLocalizedString("Check your inbox. Reset password link is on it's way!", comment: "reset password request success message"))
                     self.delegate?.didRecover(email: email)
                     let _ = self.navigationController?.popViewController(animated: true)
                 }
@@ -98,10 +98,10 @@ class RecoveryViewController: UIViewController {
     }
     
     fileprivate func setupEmailTextField() {
-        emailTextField.placeholder = "Email"
-        emailTextField.detail = "Should be a valid email"
+        emailTextField.placeholder = NSLocalizedString("Email", comment: "email textfield placeholder")
+        emailTextField.detail = NSLocalizedString("Should be a valid email", comment: "email textfield comment label")
         
-        emailTextField.returnKeyType = .continue
+        emailTextField.returnKeyType = .done
         
         emailTextField.placeholderNormalColor = Color.init(white: 1.0, alpha: 0.5)
         emailTextField.placeholderActiveColor = Color.white
@@ -112,6 +112,7 @@ class RecoveryViewController: UIViewController {
         emailTextField.detailColor = Color.white
         
         emailTextField.keyboardType = .emailAddress
+        emailTextField.autocorrectionType = .no
         
         emailTextField.delegate = self
     }
@@ -125,22 +126,19 @@ class RecoveryViewController: UIViewController {
     // MARK: - Notifications -
     
     func subscribe() {
-        NotificationCenter.default.addObserver(self, selector: #selector(RecoveryViewController.login), name: NSNotification.Name(rawValue: "ShouldLogin"), object: nil)
+        subscribe(to: [
+            .shouldLogin: #selector(RecoveryViewController.login)
+        ])
     }
     
     func login() {
         Router(self).showMain()
-    }
-    
-    func unsubscribe() {
-        NotificationCenter.default.removeObserver(self)
     }
 }
 
 extension RecoveryViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        resetTouched(resetButton)
         return false
     }
 }

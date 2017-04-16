@@ -87,13 +87,13 @@ class NewProjectCell: UITableViewCell {
     }
     
     fileprivate func setupTitleTextField() {
-        titleTextField.placeholder = "* Project title"
-        titleTextField.detail = "How will you name your project?"
+        titleTextField.placeholder = NSLocalizedString("* Project title", comment: "new project textfield placeholder")
+        titleTextField.detail = NSLocalizedString("How will you name your project?", comment: "new project textfield detail")
         
         titleTextField.returnKeyType = .next
         
-        titleTextField.dividerActiveColor = Color.controlioGreen()
-        titleTextField.placeholderActiveColor = Color.controlioGreen()
+        titleTextField.dividerActiveColor = Color.controlioGreen
+        titleTextField.placeholderActiveColor = Color.controlioGreen
         titleTextField.autocapitalizationType = .sentences
         titleTextField.backgroundColor = Color.clear
         
@@ -101,13 +101,13 @@ class NewProjectCell: UITableViewCell {
     }
     
     fileprivate func setupDescriptionTextField() {
-        descriptionTextField.placeholder = "Project description"
-        descriptionTextField.detail = "What is your project about?"
+        descriptionTextField.placeholder = NSLocalizedString("Project description", comment: "new project textfield placeholder")
+        descriptionTextField.detail = NSLocalizedString("What is your project about?", comment: "new project textfield detail")
         
         descriptionTextField.returnKeyType = .next
         
-        descriptionTextField.dividerActiveColor = Color.controlioGreen()
-        descriptionTextField.placeholderActiveColor = Color.controlioGreen()
+        descriptionTextField.dividerActiveColor = Color.controlioGreen
+        descriptionTextField.placeholderActiveColor = Color.controlioGreen
         descriptionTextField.autocapitalizationType = .sentences
         descriptionTextField.backgroundColor = Color.clear
         
@@ -115,13 +115,13 @@ class NewProjectCell: UITableViewCell {
     }
     
     fileprivate func setupInitialStatusTextField() {
-        initialStatusTextField.placeholder = "Initial status"
-        initialStatusTextField.detail = "What is the current status of the project"
+        initialStatusTextField.placeholder = NSLocalizedString("Initial status", comment: "new project textfield placeholder")
+        initialStatusTextField.detail = NSLocalizedString("What is the current status of the project", comment: "new project textfield detail")
         
         initialStatusTextField.returnKeyType = .next
         
-        initialStatusTextField.dividerActiveColor = Color.controlioGreen()
-        initialStatusTextField.placeholderActiveColor = Color.controlioGreen()
+        initialStatusTextField.dividerActiveColor = Color.controlioGreen
+        initialStatusTextField.placeholderActiveColor = Color.controlioGreen
         initialStatusTextField.autocapitalizationType = .sentences
         initialStatusTextField.backgroundColor = Color.clear
         
@@ -129,28 +129,30 @@ class NewProjectCell: UITableViewCell {
     }
     
     fileprivate func setupManagerTextField() {
-        managerTextField.placeholder = "* Manager's email"
-        managerTextField.detail = "Email of the manager who will send you updates"
+        managerTextField.placeholder = NSLocalizedString("* Manager's email", comment: "new project textfield placeholder")
+        managerTextField.detail = NSLocalizedString("Email of the manager who will send you updates", comment: "new project textfield detail")
         
         managerTextField.returnKeyType = .done
         managerTextField.keyboardType = .emailAddress
         
-        managerTextField.dividerActiveColor = Color.controlioGreen()
-        managerTextField.placeholderActiveColor = Color.controlioGreen()
+        managerTextField.dividerActiveColor = Color.controlioGreen
+        managerTextField.placeholderActiveColor = Color.controlioGreen
         managerTextField.backgroundColor = Color.clear
+        
+        managerTextField.autocorrectionType = .no
         
         managerTextField.delegate = self
     }
     
     fileprivate func setupClientsTextField() {
-        clientsTextField.placeholder = "* Clients' emails"
-        clientsTextField.detail = "Emails of your clients relevant to this project"
+        clientsTextField.placeholder = NSLocalizedString("* Clients' emails", comment: "new project textfield placeholder")
+        clientsTextField.detail = NSLocalizedString("Emails of your clients relevant to this project", comment: "new project textfield detail")
         
         clientsTextField.returnKeyType = .done
         clientsTextField.keyboardType = .emailAddress
         
-        clientsTextField.dividerActiveColor = Color.controlioGreen()
-        clientsTextField.placeholderActiveColor = Color.controlioGreen()
+        clientsTextField.dividerActiveColor = Color.controlioGreen
+        clientsTextField.placeholderActiveColor = Color.controlioGreen
         clientsTextField.backgroundColor = Color.clear
         
         clientsTextField.delegate = self
@@ -166,15 +168,15 @@ class NewProjectCell: UITableViewCell {
     fileprivate func configure() {
         if let image = project.tempImage {
             cameraImage.isHidden = true
-            photoLabel.text = "Edit"
+            photoLabel.text = NSLocalizedString("Edit", comment: "new project button title")
             photoImage.image = image
         } else if let key = project.imageKey {
             cameraImage.isHidden = true
-            photoLabel.text = "Edit"
+            photoLabel.text = NSLocalizedString("Edit", comment: "new project button title")
             photoImage.load(key: key)
         } else {
             cameraImage.isHidden = false
-            photoLabel.text = "Add"
+            photoLabel.text = NSLocalizedString("Add", comment: "new project button title")
             photoImage.image = UIImage(named: "photo-background-placeholder")
         }
         

@@ -55,7 +55,7 @@ class UserProfileCell: UITableViewCell {
             nameLabel.text  = name
         } else {
             nameLabel.alpha = 0.5
-            nameLabel.text = "No name provided"
+            nameLabel.text = NSLocalizedString("No name provided", comment: "label placeholder")
         }
         
         emailButton.setTitle(user.email, for: .normal)
@@ -65,7 +65,7 @@ class UserProfileCell: UITableViewCell {
             phoneButton.setTitle(phone, for: .normal)
         } else {
             phoneButton.isEnabled = false
-            phoneButton.setTitle("No phone provided", for: .normal)
+            phoneButton.setTitle(NSLocalizedString("No phone provided", comment: "label placeholder"), for: .normal)
         }
     }
 }

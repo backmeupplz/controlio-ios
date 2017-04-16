@@ -62,13 +62,13 @@ class EditProjectCell: UITableViewCell {
     }
     
     fileprivate func setupTitleTextField() {
-        titleTextField.placeholder = "Project title"
-        titleTextField.detail = "How do you name this project?"
+        titleTextField.placeholder = NSLocalizedString("Project title", comment: "textfield placeholder")
+        titleTextField.detail = NSLocalizedString("How do you name this project?", comment: "textfield detail")
         
         titleTextField.returnKeyType = .next
         
-        titleTextField.dividerActiveColor = Color.controlioGreen()
-        titleTextField.placeholderActiveColor = Color.controlioGreen()
+        titleTextField.dividerActiveColor = Color.controlioGreen
+        titleTextField.placeholderActiveColor = Color.controlioGreen
         titleTextField.autocapitalizationType = .sentences
         titleTextField.backgroundColor = Color.clear
         
@@ -76,13 +76,13 @@ class EditProjectCell: UITableViewCell {
     }
     
     fileprivate func setupDescriptionTextField() {
-        descriptionTextField.placeholder = "Project description"
-        descriptionTextField.detail = "What is this project about?"
+        descriptionTextField.placeholder = NSLocalizedString("Project description", comment: "textfield placeholder")
+        descriptionTextField.detail = NSLocalizedString("What is this project about?", comment: "textfield detail")
         
         descriptionTextField.returnKeyType = .done
         
-        descriptionTextField.dividerActiveColor = Color.controlioGreen()
-        descriptionTextField.placeholderActiveColor = Color.controlioGreen()
+        descriptionTextField.dividerActiveColor = Color.controlioGreen
+        descriptionTextField.placeholderActiveColor = Color.controlioGreen
         descriptionTextField.autocapitalizationType = .sentences
         descriptionTextField.backgroundColor = Color.clear
         
@@ -92,15 +92,15 @@ class EditProjectCell: UITableViewCell {
     fileprivate func configure() {
         if let image = project.tempImage {
             cameraImage.isHidden = true
-            photoLabel.text = "Edit"
+            photoLabel.text = NSLocalizedString("Edit", comment: "button")
             photoImage.image = image
         } else if let key = project.imageKey {
             cameraImage.isHidden = true
-            photoLabel.text = "Edit"
+            photoLabel.text = NSLocalizedString("Edit", comment: "button")
             photoImage.load(key: key)
         } else {
             cameraImage.isHidden = false
-            photoLabel.text = "Add"
+            photoLabel.text = NSLocalizedString("Add", comment: "button")
             photoImage.image = UIImage(named: "photo-background-placeholder")
         }
         

@@ -12,6 +12,8 @@ import MBProgressHUD
 import CLTokenInputView
 import Stripe
 import Material
+//import DWURecyclingAlert
+//import GDPerformanceView_Swift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -29,6 +31,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         S3.setup()
         setupPushNotifications(application: application)
         FeatureList.fetchFeatureList()
+        Server.fetchErrorsLocalizations()
+        Appearance.setup()
+        
+        // DEBUG
+//        Inject_DWURecyclingAlert()
+//        GDPerformanceMonitor.sharedInstance.startMonitoring()
         
         return true
     }
@@ -40,6 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let bundle = Bundle.main.bundleIdentifier {
                 UserDefaults.standard.removePersistentDomain(forName: bundle)
             }
+            UIView.setAnimationsEnabled(false)
         }
     }
     
@@ -50,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     fileprivate func configureStripe() {
-        STPPaymentConfiguration.shared().publishableKey = "pk_test_MybaaRNvH9ndvmA5ty1atlGO"
+        STPPaymentConfiguration.shared().publishableKey = "pk_live_brweKfRgeq7Fe3PH4FScn99S"
         STPPaymentConfiguration.shared().companyName = "Controlio"
     }
     
@@ -69,6 +78,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerForRemoteNotifications()
     }
     
+    func handle(url: URL) {
+        guard let token = getToken(from: url) else { return }
+        guard let topController = UIApplication.topViewController() else { return }
+        
+        if url.path == "/public/resetPassword" {
+            Router(topController).presentChangePassword(with: token, type: .reset)
+        } else if url.path == "/public/setPassword" {
+            Router(topController).presentChangePassword(with: token, type: .set)
+        } else if url.path == "/magic" {
+            guard let hud = MBProgressHUD.show() else { return }
+            Server.loginMagicLink(token: token)
+            { error in
+                hud.hide(animated: true)
+                if let error = error {
+                    topController.snackbarController?.show(error: error.domain)
+                } else {
+                    self.post(notification: .shouldLogin)
+                }
+            }
+        }
+    }
+    
+    func getToken(from url: URL) -> String? {
+        let queryItems = URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems ?? []
+        var queryItemsDictionary = [String: String]()
+        
+        for item in queryItems {
+            queryItemsDictionary[item.name] = item.value
+        }
+        return queryItemsDictionary["token"]
+    }
+    
     // MARK: - Push Notifications Delegate -
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
@@ -83,7 +124,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Universal links -
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        login(with: url)
+        handle(url: url)
         
         return true
     }
@@ -91,37 +132,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
         if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
             if let url = userActivity.webpageURL {
-                login(with: url)
+                handle(url: url)
             }
         }
         return true
     }
-    
-    func login(with url: URL) {
-        
-        let queryItems = URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems ?? []
-        var queryItemsDictionary = [String: String]()
-        
-        for item in queryItems {
-            queryItemsDictionary[item.name] = item.value
-        }
-        let token = queryItemsDictionary["token"]
-        
-        guard let tokenUnwrapped = token else {
-            return
-        }
-        
-        guard let topController = UIApplication.topViewController() else { return }
-        guard let hud = MBProgressHUD.show() else { return }
-        Server.loginMagicLink(token: tokenUnwrapped)
-        { error in
-            hud.hide(animated: true)
-            if let error = error {
-                topController.snackbarController?.show(error: error.domain)
-            } else {
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ShouldLogin"), object: nil)
-            }
-        }
-    }
 }
-

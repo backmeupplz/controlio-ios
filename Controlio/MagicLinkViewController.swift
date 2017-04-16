@@ -55,7 +55,7 @@ class MagicLinkViewController: UIViewController {
                 if let error = error {
                     self.snackbarController?.show(error: error.domain)
                 } else {
-                    self.snackbarController?.show(text: "Check your inbox. Magic link is on it's way!")
+                    self.snackbarController?.show(text: NSLocalizedString("Check your inbox. Magic link is on it's way!", comment: "magic link request success message"))
                 }
             }
         } else {
@@ -66,7 +66,7 @@ class MagicLinkViewController: UIViewController {
     
     @IBAction func demoTouched(_ sender: Any) {
         enable(ui: false)
-        Server.login(email: "awesome@controlio.co", password: "DeepFriedPotato")
+        Server.login(email: NSLocalizedString("awesome@controlio.co", comment: "demo user login"), password: NSLocalizedString("DeepFriedPotato", comment: "demo user password"))
         { error in
             self.enable(ui: true)
             if let error = error {
@@ -102,10 +102,10 @@ class MagicLinkViewController: UIViewController {
     }
     
     fileprivate func setupEmailTextField() {
-        emailTextField.placeholder = "Email"
-        emailTextField.detail = "Should be a valid email"
+        emailTextField.placeholder = NSLocalizedString("Email", comment: "email textfield placeholder")
+        emailTextField.detail = NSLocalizedString("Should be a valid email", comment: "email textfield comment line")
         
-        emailTextField.returnKeyType = .continue
+        emailTextField.returnKeyType = .done
         
         emailTextField.placeholderNormalColor = Color.init(white: 1.0, alpha: 0.5)
         emailTextField.placeholderActiveColor = Color.white
@@ -116,6 +116,7 @@ class MagicLinkViewController: UIViewController {
         emailTextField.detailColor = Color.white
         
         emailTextField.keyboardType = .emailAddress
+        emailTextField.autocorrectionType = .no
         
         emailTextField.delegate = self
     }
@@ -129,22 +130,19 @@ class MagicLinkViewController: UIViewController {
     // MARK: - Notifications -
     
     func subscribe() {
-        NotificationCenter.default.addObserver(self, selector: #selector(MagicLinkViewController.login), name: NSNotification.Name(rawValue: "ShouldLogin"), object: nil)
+        subscribe(to: [
+            .shouldLogin: #selector(MagicLinkViewController.login)
+        ])
     }
     
     func login() {
         Router(self).showMain()
-    }
-    
-    func unsubscribe() {
-        NotificationCenter.default.removeObserver(self)
     }
 }
 
 extension MagicLinkViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        magicLinkTouched(magicLinkButton)
         return false
     }
 }

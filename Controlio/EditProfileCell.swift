@@ -57,37 +57,39 @@ class EditProfileCell: UITableViewCell {
     }
     
     fileprivate func setupNameTextField() {
-        nameTextfield.placeholder = "Name"
+        nameTextfield.placeholder = NSLocalizedString("Name", comment: "textfield palceholder")
         nameTextfield.returnKeyType = .continue
         nameTextfield.keyboardType = .default
         nameTextfield.delegate = self
-        nameTextfield.tintColor = Color.controlioGreen()
-        nameTextfield.dividerActiveColor = Color.controlioGreen()
-        nameTextfield.placeholderActiveColor = Color.controlioGreen()
+        nameTextfield.tintColor = Color.controlioGreen
+        nameTextfield.dividerActiveColor = Color.controlioGreen
+        nameTextfield.placeholderActiveColor = Color.controlioGreen
         nameTextfield.autocapitalizationType = .words
     }
     
     fileprivate func setupEmailTextField() {
-        emailTextfield.placeholder = "Email"
-        emailTextfield.detail = "You cannot change the email yet"
+        emailTextfield.placeholder = NSLocalizedString("Email", comment: "textfield placeholder")
+        emailTextfield.detail = NSLocalizedString("You cannot change the email yet", comment: "textfield detail")
         emailTextfield.returnKeyType = .continue
         emailTextfield.keyboardType = .emailAddress
         emailTextfield.isEnabled = false
         emailTextfield.delegate = self
-        emailTextfield.tintColor = Color.controlioGreen()
-        emailTextfield.dividerActiveColor = Color.controlioGreen()
-        emailTextfield.placeholderActiveColor = Color.controlioGreen()
+        emailTextfield.tintColor = Color.controlioGreen
+        emailTextfield.dividerActiveColor = Color.controlioGreen
+        emailTextfield.placeholderActiveColor = Color.controlioGreen
+        emailTextfield.autocorrectionType = .no
     }
     
     fileprivate func setupPhoneTextField() {
-        phoneTextfield.placeholder = "Phone"
-        phoneTextfield.detail = "Visible to your clients and project managers"
+        phoneTextfield.placeholder = NSLocalizedString("Phone", comment: "textfield placeholder")
+        phoneTextfield.detail = NSLocalizedString("Visible to your clients and project managers", comment: "textfield detail")
         phoneTextfield.returnKeyType = .done
         phoneTextfield.keyboardType = .phonePad
         phoneTextfield.delegate = self
-        phoneTextfield.tintColor = Color.controlioGreen()
-        phoneTextfield.dividerActiveColor = Color.controlioGreen()
-        phoneTextfield.placeholderActiveColor = Color.controlioGreen()
+        phoneTextfield.tintColor = Color.controlioGreen
+        phoneTextfield.dividerActiveColor = Color.controlioGreen
+        phoneTextfield.placeholderActiveColor = Color.controlioGreen
+        phoneTextfield.autocorrectionType = .no
     }
     
     fileprivate func configure() {
@@ -120,7 +122,6 @@ extension EditProfileCell: UITextFieldDelegate {
             let textField = textField as? TextField {
             if textField == last {
                 textField.resignFirstResponder()
-                delegate?.saveTouched()
             } else {
                 let index = textFields.index(of: textField) ?? 0
                 textFields[index + 1].becomeFirstResponder()
