@@ -22,7 +22,7 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         initUser = user.copy()
-        
+        setupBackButton()
         setupTableView()
         addRefreshControl()
         setupImagePicker()

@@ -24,7 +24,7 @@ class EditProjectController: UITableViewController, EditProjectCellDelegate, Pic
     override func viewDidLoad() {
         super.viewDidLoad()
         initProject = project.copy()
-        
+        setupBackButton()
         setupTableView()
         setupImagePicker()
     }
