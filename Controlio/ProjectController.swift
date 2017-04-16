@@ -13,7 +13,7 @@ import DZNEmptyDataSet
 import NohanaImagePicker
 import AsyncDisplayKit
 
-class ProjectController: ASViewController<ASDisplayNode> {
+class ProjectController: ASViewController<ASDisplayNode>, DZNEmptyDataSetDelegate {
     
     // MARK: - Variables -
     
@@ -62,7 +62,7 @@ class ProjectController: ASViewController<ASDisplayNode> {
         setupBackButton()
         setupInfoButton()
         setupInput()
-        
+        setupEmptyView()
         loadInitialPosts()
         edgesForExtendedLayout = []
     }
@@ -107,6 +107,12 @@ class ProjectController: ASViewController<ASDisplayNode> {
     
     fileprivate func setupBackButton() {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    }
+    
+    fileprivate func setupEmptyView() {
+        self.tableNode.view.emptyDataSetDelegate = self
+        self.tableNode.view.emptyDataSetSource = self
+        self.tableNode.view.tableFooterView = UIView()
     }
     
     fileprivate func setupInfoButton() {
@@ -506,10 +512,6 @@ extension ProjectController: DZNEmptyDataSetSource {
             NSParagraphStyleAttributeName: paragraph
         ]
         return NSAttributedString(string: text, attributes: attributes)
-    }
-    
-    func verticalOffset(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat {
-        return -64.0
     }
     
     func emptyDataSetShouldAllowScroll(_ scrollView: UIScrollView!) -> Bool {
