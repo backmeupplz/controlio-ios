@@ -14,6 +14,7 @@ import Stripe
 import Material
 //import DWURecyclingAlert
 //import GDPerformanceView_Swift
+import SimulatorStatusMagic
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -44,11 +45,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Private Functions -
     
     fileprivate func checkIfUITests() {
-        if ProcessInfo.processInfo.arguments.contains("isUITesting") {
+        if UserDefaults.standard.bool(forKey: "FASTLANE_SNAPSHOT") {
             if let bundle = Bundle.main.bundleIdentifier {
                 UserDefaults.standard.removePersistentDomain(forName: bundle)
             }
             UIView.setAnimationsEnabled(false)
+            
+            SDStatusBarManager.sharedInstance().enableOverrides()
         }
     }
     

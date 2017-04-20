@@ -117,6 +117,8 @@
 		B3F303971DAF4B1800535FCD /* NewProjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3F303991DAF4B1800535FCD /* NewProjectCell.xib */; };
 		B3F3039C1DAF4B6700535FCD /* EditProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3F3039E1DAF4B6700535FCD /* EditProfileCell.xib */; };
 		B3F611DB1EA83BEF006B0F40 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F611DA1EA83BEF006B0F40 /* CustomButton.swift */; };
+		B3F611E11EA85F55006B0F40 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B3F611E31EA85F55006B0F40 /* InfoPlist.strings */; };
+		B3F611E61EA860C1006B0F40 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B3F611E51EA860C1006B0F40 /* Info.plist */; };
 		B3F65BA41E99FE5D008A20E6 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F65BA31E99FE5D008A20E6 /* Appearance.swift */; };
 		B3FEB83F1C9630290048B688 /* ProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FEB83D1C9630290048B688 /* ProjectCell.swift */; };
 		B3FEB8441C9630BA0048B688 /* ImageView+Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FEB8431C9630BA0048B688 /* ImageView+Network.swift */; };
@@ -261,7 +263,9 @@
 		B3F303981DAF4B1800535FCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NewProjectCell.xib; sourceTree = "<group>"; };
 		B3F3039D1DAF4B6700535FCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/EditProfileCell.xib; sourceTree = "<group>"; };
 		B3F611DA1EA83BEF006B0F40 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		B3F611DC1EA85A21006B0F40 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/Info.plist; sourceTree = "<group>"; };
+		B3F611E21EA85F55006B0F40 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B3F611E41EA85F57006B0F40 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B3F611E51EA860C1006B0F40 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3F65BA31E99FE5D008A20E6 /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		B3FEB83D1C9630290048B688 /* ProjectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCell.swift; sourceTree = "<group>"; };
 		B3FEB8431C9630BA0048B688 /* ImageView+Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ImageView+Network.swift"; sourceTree = "<group>"; };
@@ -407,8 +411,9 @@
 				B3965BD91EA0257C00B4071F /* Localizable.strings */,
 				B383235B1CDC3F7A004D0A1C /* Fonts */,
 				B3B2B9331C90CD1600468342 /* Assets.xcassets */,
-				B3F611DD1EA85A21006B0F40 /* Info.plist */,
+				B3F611E31EA85F55006B0F40 /* InfoPlist.strings */,
 				B33805C61E1F5BE70096B081 /* R.generated.swift */,
+				B3F611E51EA860C1006B0F40 /* Info.plist */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -683,6 +688,7 @@
 				B38323961CDC409D004D0A1C /* SFUIText-Regular.otf in Resources */,
 				B38323981CDC409D004D0A1C /* SFUIText-RegularG2.otf in Resources */,
 				B38323691CDC3FB3004D0A1C /* SFUIDisplay-Medium.otf in Resources */,
+				B3F611E61EA860C1006B0F40 /* Info.plist in Resources */,
 				B3C35B0A1DB9D4F700F941F8 /* InputView.xib in Resources */,
 				B38323661CDC3FB3004D0A1C /* SFUIDisplay-Bold.otf in Resources */,
 				B38323971CDC409D004D0A1C /* SFUIText-RegularG1.otf in Resources */,
@@ -707,6 +713,7 @@
 				B38323861CDC409D004D0A1C /* SFUIText-BoldG1.otf in Resources */,
 				B3F3039C1DAF4B6700535FCD /* EditProfileCell.xib in Resources */,
 				B38323911CDC409D004D0A1C /* SFUIText-ItalicG3.otf in Resources */,
+				B3F611E11EA85F55006B0F40 /* InfoPlist.strings in Resources */,
 				B3B2B9321C90CD1600468342 /* Login.storyboard in Resources */,
 				B383239A1CDC409D004D0A1C /* SFUIText-Semibold.otf in Resources */,
 				B38323901CDC409D004D0A1C /* SFUIText-ItalicG2.otf in Resources */,
@@ -969,12 +976,13 @@
 			name = EditProfileCell.xib;
 			sourceTree = "<group>";
 		};
-		B3F611DD1EA85A21006B0F40 /* Info.plist */ = {
+		B3F611E31EA85F55006B0F40 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				B3F611DC1EA85A21006B0F40 /* Base */,
+				B3F611E21EA85F55006B0F40 /* Base */,
+				B3F611E41EA85F57006B0F40 /* ru */,
 			);
-			name = Info.plist;
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

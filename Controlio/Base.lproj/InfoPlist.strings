@@ -1,0 +1,11 @@
+/*
+ InfoPlist.strings
+ Controlio
+ 
+ Created by Nikita Kolmogorov on 19/04/2017.
+ Copyright © 2017 Nikita Kolmogorov. All rights reserved.
+ */
+
+"NSCameraUsageDescription" = "Please allow us to access your camera";
+
+"NSPhotoLibraryUsageDescription" = "Please allow us to access your library";
