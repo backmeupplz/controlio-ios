@@ -23,25 +23,24 @@ class ControlioUITests: XCTestCase {
     
     func testSnapshots() {
         let app = XCUIApplication()
-        app.buttons["Want to see how Controlio works first?"].tap()
+        app.buttons.element(matching: .button, identifier: "Demo button")
         snapshot("0ProjectsController")
         
-        app.tables.cells.staticTexts["Building the Death Star"].tap()
+        app.tables.children(matching:.any).element(boundBy: 0).tap()
         snapshot("1ProjectController")
         
-        let houseCleaningNavigationBar = app.navigationBars["Building the Death Star"]
-        houseCleaningNavigationBar.otherElements.children(matching: .button).element.tap()
+        app.navigationBars.otherElements.children(matching: .button).element.tap()
         snapshot("2ProjectInfoController")
         
-        let backButton = houseCleaningNavigationBar.buttons["Back"]
+        let backButton = app.navigationBars.element(boundBy: 0)
         backButton.tap()
         backButton.tap()
         
         let tabBarsQuery = app.tabBars
-        tabBarsQuery.buttons["New Project"].tap()
+        tabBarsQuery.buttons.element(boundBy: 1).tap()
         snapshot("3NewProjectController")
         
-        tabBarsQuery.buttons["Support"].tap()
+        tabBarsQuery.element(boundBy: 2).tap()
         snapshot("4SupportController")
     }
     
