@@ -58,7 +58,8 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
         setupTabBar()
         setupTableView()
         setupBackButton()
-
+        setupEmptyView()
+        
         loadInitialProjects()
         subscribe()
     }
@@ -124,6 +125,12 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
         searchController.searchBar.barTintColor = Color.controlioViolet
         searchController.searchBar.tintColor = Color.white
         searchController.searchBar.backgroundColor = Color.controlioTableBackground
+    }
+    
+    fileprivate func setupEmptyView() {
+        self.tableNode.view.emptyDataSetDelegate = self
+        self.tableNode.view.emptyDataSetSource = self
+        self.tableNode.view.tableFooterView = UIView()
     }
     
     fileprivate func setupScopeBar(){
@@ -319,52 +326,52 @@ extension ProjectsController: ASTableDelegate {
 }
 
 extension ProjectsController: DZNEmptyDataSetSource {
-//    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
-//        let text = isLoading ? NSLocalizedString("Loading...", comment: "empty view placeholder"): NSLocalizedString("You don't have any projects yet", comment: "empty view placeholder")
-//        let attributes = [
-//            NSFontAttributeName: Font.boldSystemFont(ofSize: 18.0),
-//            NSForegroundColorAttributeName: Color.darkGray
-//        ]
-//        return NSAttributedString(string: text, attributes: attributes)
-//    }
-//    
-//    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-//        let text = isLoading ? NSLocalizedString("Let us get your projects from the cloud", comment: "empty view placeholder"): NSLocalizedString("You can create your first project", comment: "empty view placeholder")
-//        
-//        let paragraph = NSMutableParagraphStyle()
-//        paragraph.lineBreakMode = .byWordWrapping;
-//        paragraph.alignment = .center;
-//        
-//        let attributes = [
-//            NSFontAttributeName: Font.boldSystemFont(ofSize: 14.0),
-//            NSForegroundColorAttributeName: Color.lightGray,
-//            NSParagraphStyleAttributeName: paragraph
-//        ]
-//        return NSAttributedString(string: text, attributes: attributes)
-//    }
-//    
-//    func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControlState) -> NSAttributedString! {
-//        let attributes = [
-//            NSFontAttributeName: Font.boldSystemFont(ofSize: 17.0),
-//            NSForegroundColorAttributeName: Color.controlioGreen,
-//            ]
-//        
-//        return NSAttributedString(string: NSLocalizedString("Create project", comment: "empty view button title"), attributes: attributes)
-//    }
-//    
-//    func verticalOffset(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat {
-//        return 60
-//    }
+    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        let text = isLoading ? NSLocalizedString("Loading...", comment: "empty view placeholder"): NSLocalizedString("You don't have any projects yet", comment: "empty view placeholder")
+        let attributes = [
+            NSFontAttributeName: Font.boldSystemFont(ofSize: 18.0),
+            NSForegroundColorAttributeName: Color.darkGray
+        ]
+        return NSAttributedString(string: text, attributes: attributes)
+    }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let text = isLoading ? NSLocalizedString("Let us get your projects from the cloud", comment: "empty view placeholder"): NSLocalizedString("You can create your first project", comment: "empty view placeholder")
+        
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.lineBreakMode = .byWordWrapping;
+        paragraph.alignment = .center;
+        
+        let attributes = [
+            NSFontAttributeName: Font.boldSystemFont(ofSize: 14.0),
+            NSForegroundColorAttributeName: Color.lightGray,
+            NSParagraphStyleAttributeName: paragraph
+        ]
+        return NSAttributedString(string: text, attributes: attributes)
+    }
+    
+    func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControlState) -> NSAttributedString! {
+        let attributes = [
+            NSFontAttributeName: Font.boldSystemFont(ofSize: 17.0),
+            NSForegroundColorAttributeName: Color.controlioGreen,
+            ]
+        
+        return isLoading ? NSAttributedString() : NSAttributedString(string: NSLocalizedString("Create project", comment: "empty view button title"), attributes: attributes)
+    }
+    
+    func verticalOffset(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat {
+        return -60
+    }
 }
 
 extension ProjectsController: DZNEmptyDataSetDelegate {
-//    func emptyDataSet(_ scrollView: UIScrollView!, didTap button: UIButton!) {
-//        navigationController?.tabBarController?.selectedIndex = 1
-//    }
-//    
-//    func emptyDataSetShouldAllowScroll(_ scrollView: UIScrollView!) -> Bool {
-//        return true
-//    }
+    func emptyDataSet(_ scrollView: UIScrollView!, didTap button: UIButton!) {
+        navigationController?.tabBarController?.selectedIndex = 1
+    }
+    
+    func emptyDataSetShouldAllowScroll(_ scrollView: UIScrollView!) -> Bool {
+        return true
+    }
 }
 
 extension ProjectsController: UISearchResultsUpdating {
