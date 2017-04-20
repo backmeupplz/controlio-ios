@@ -124,7 +124,7 @@ extension EditProfileCell: UITextFieldDelegate {
                 textField.resignFirstResponder()
             } else {
                 let index = textFields.index(of: textField) ?? 0
-                textFields[index + 1].becomeFirstResponder()
+                let _ = textFields[index + 1].becomeFirstResponder()
             }
         }
         return false

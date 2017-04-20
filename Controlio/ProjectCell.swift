@@ -160,10 +160,14 @@ class ProjectCell: ASCellNode {
             if let text = post.text, text.characters.count > 0 {
                 descriptionNode.alpha = 1
                 string = text
-            } else if post.attachments != nil {
-                descriptionNode.alpha = 1
-                let count = post.countAttachments()
-                string = "Attachments(\(count))"
+            } else if post.attachments.count > 0 {
+                descriptionNode.alpha = 0.5
+                let count = post.attachments.count
+                if count == 1 {
+                    string = String(format: NSLocalizedString("%d attachment", comment: "singular attachments placeholder"), count)
+                } else {
+                    string = String(format: NSLocalizedString("%d attachments", comment: "plural attachments placeholder"), count)
+                }
             }
         } else {
             descriptionNode.alpha = 0.5
