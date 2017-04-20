@@ -92,7 +92,7 @@ class ClientsTableViewController: UITableViewController {
         tableView.tableFooterView = UIView()
         setupEmailTextField()
         setupAddButton()
-        emailTextField.becomeFirstResponder()
+        let _ = emailTextField.becomeFirstResponder()
         
         if type != .clients {
             addSaveButton()

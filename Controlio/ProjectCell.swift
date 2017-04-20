@@ -151,26 +151,29 @@ class ProjectCell: ASCellNode {
     
     fileprivate func configureDescriptionNode() {
         var string = ""
-        if type == .info {
-            if let text = project.projectDescription {
+        
+        if type == .info, let text = project.projectDescription {
+            descriptionNode.alpha = 1
+            string = text
+        }
+        else if let post = project.lastPost {
+            if let text = post.text, text.characters.count > 0 {
                 descriptionNode.alpha = 1
                 string = text
-            } else if let text = project.lastPost?.text {
-                descriptionNode.alpha = 1
-                string = text
-            } else {
+            } else if post.attachments.count > 0 {
                 descriptionNode.alpha = 0.5
-                string = NSLocalizedString("Nothing here yet", comment: "project cell placeholder")
+                let count = post.attachments.count
+                if count == 1 {
+                    string = String(format: NSLocalizedString("%d attachment", comment: "singular attachments placeholder"), count)
+                } else {
+                    string = String(format: NSLocalizedString("%d attachments", comment: "plural attachments placeholder"), count)
+                }
             }
         } else {
-            if let text = project.lastPost?.text {
-                descriptionNode.alpha = 1
-                string = text
-            } else {
-                descriptionNode.alpha = 0.5
-                string = NSLocalizedString("Nothing here yet", comment: "project cell placeholder")
-            }
+            descriptionNode.alpha = 0.5
+            string = NSLocalizedString("Nothing here yet", comment: "project cell placeholder")
         }
+        
         descriptionNode.attributedText =
             NSAttributedString(string: string,
                                font: R.font.sFUIDisplayRegular(size: 14),

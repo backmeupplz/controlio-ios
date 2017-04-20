@@ -104,8 +104,8 @@ class EditProjectCell: UITableViewCell {
             photoImage.image = UIImage(named: "photo-background-placeholder")
         }
         
-        titleTextField.text = project.tempTitle ?? project.title
-        descriptionTextField.text = project.tempProjectDescription ?? project.projectDescription
+        titleTextField.text = project.title
+        descriptionTextField.text = project.projectDescription
     }
 }
 
@@ -118,7 +118,7 @@ extension EditProjectCell: UITextFieldDelegate {
                 textField.resignFirstResponder()
             } else {
                 let index = textFields.index(of: textField) ?? 0
-                textFields[index + 1].becomeFirstResponder()
+                let _ = textFields[index + 1].becomeFirstResponder()
             }
         }
         return false
@@ -129,9 +129,9 @@ extension EditProjectCell: UITextFieldDelegate {
         let resultString = text.replacingCharacters(in: range, with: string)
         
         if textField == titleTextField {
-            project.tempTitle = resultString
+            project.title = resultString
         } else if textField == descriptionTextField {
-            project.tempProjectDescription = resultString
+            project.projectDescription = resultString
         }
         
         return true

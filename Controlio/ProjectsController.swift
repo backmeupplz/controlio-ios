@@ -254,19 +254,13 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
         let indexPaths = IndexPath.range(start: self.projects.count, length: projects.count, section: 1)
         self.projects += projects
         
-        tableNode.insertRows(at: indexPaths, with: .bottom)
+        tableNode.insertRows(at: indexPaths, with: .fade)
     }
     
     fileprivate func cleanTableView() {
-        var indexPathsToDelete = IndexPath.range(start: 0, length: projects.count, section: 1)
-        if !searchController.isActive {
-            indexPathsToDelete += IndexPath.range(start: 0, length: invites.count, section: 0)
-            invites = []
-        }
+        invites = []
         projects = []
-        tableNode.view.beginUpdates()
-        tableNode.view.deleteRows(at: indexPathsToDelete, with: .fade)
-        tableNode.view.endUpdates()
+        tableNode.reloadSections(IndexSet(integersIn: 0...1), with: .fade)
     }
     
     // MARK: - Status Bar -

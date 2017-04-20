@@ -53,8 +53,6 @@ class Project: NSObject {
         }
     }
     
-    var tempTitle: String?
-    var tempProjectDescription: String?
     var tempType = NewProjectCellType.client
     var tempImage: UIImage?
     var tempInitialStatus: String?
@@ -62,6 +60,35 @@ class Project: NSObject {
     var tempClientEmails = [String]()
     
     // MARK: - Functions -
+
+    func isEqual(to project: Project?) -> Bool {
+        guard let project = project else {
+            return false
+        }
+        
+        return
+            title == project.title &&
+            id == project.id &&
+            projectDescription == project.projectDescription &&
+            tempImage == project.tempImage
+    }
+    
+    func copy(zone: NSZone? = nil) -> Project {
+        let copy = Project()
+        copy.id = id
+        copy.title = title
+        copy.projectDescription = projectDescription
+        copy.imageKey = imageKey
+        copy.tempImage = tempImage
+        copy.dateCreated = dateCreated
+        copy.dateUpdated = dateUpdated
+        copy.managers = managers
+        copy.clients = clients
+        copy.owner = owner
+        copy.invites = invites
+        return copy
+    }
+    
     
     class func map(json: JSON?) -> [Project]? {
         guard let array = json?.array else { return nil }
