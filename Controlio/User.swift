@@ -41,28 +41,28 @@ class User: NSObject, NSCoding {
             return false
         }
         return
-            self.email == user.email &&
-            self.name == user.name &&
-            self.phone == user.phone &&
-            self.tempProfileImage == user.tempProfileImage &&
-            self.profileImageKey == user.profileImageKey
+            email == user.email &&
+            name == user.name &&
+            phone == user.phone &&
+            tempProfileImage == user.tempProfileImage &&
+            profileImageKey == user.profileImageKey
     }
     
     func copy(zone: NSZone? = nil) -> User {
         let copy = User()
-        copy.email = self.email
-        copy.id = self.id
-        copy.name = self.name
-        copy.phone = self.phone
-        copy.profileImageKey = self.profileImageKey
-        copy.tempProfileImage = self.tempProfileImage
-        copy.isBusiness = self.isBusiness
-        copy.addedAsManager = self.addedAsManager
-        copy.addedAsClient = self.addedAsClient
-        copy.emailVerified = self.emailVerified
-        copy.profileCompleted = self.profileCompleted
-        copy.isAdmin = self.isAdmin
-        copy.isDemo = self.isDemo
+        copy.email = email
+        copy.id = id
+        copy.name = name
+        copy.phone = phone
+        copy.profileImageKey = profileImageKey
+        copy.tempProfileImage = tempProfileImage
+        copy.isBusiness = isBusiness
+        copy.addedAsManager = addedAsManager
+        copy.addedAsClient = addedAsClient
+        copy.emailVerified = emailVerified
+        copy.profileCompleted = profileCompleted
+        copy.isAdmin = isAdmin
+        copy.isDemo = isDemo
         
         return copy
     }
