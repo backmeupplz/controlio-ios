@@ -29,6 +29,7 @@ class ProjectController: ASViewController<ASDisplayNode>, DZNEmptyDataSetDelegat
     fileprivate let cameraPicker = UIImagePickerController()
     fileprivate let maxCountAttachments: Int = 10
     fileprivate var currentGallery: ImageGallery?
+    fileprivate var user: User?
     
     fileprivate var isLoading = true
     fileprivate var needsMorePosts = false
@@ -56,7 +57,7 @@ class ProjectController: ASViewController<ASDisplayNode>, DZNEmptyDataSetDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupUser()
         setupTableView()
         addRefreshControl()
         setupBackButton()
@@ -88,6 +89,10 @@ class ProjectController: ASViewController<ASDisplayNode>, DZNEmptyDataSetDelegat
         title = project.title
         
         showInput()
+    }
+    
+    fileprivate func setupUser() {
+        self.user = Server.currentUser
     }
     
     fileprivate func setupTableView() {
@@ -308,22 +313,28 @@ extension ProjectController: PostCellDelegate {
     }
     
     func edit(post: Post, cell: PostCell) {
-        guard project.canEdit else {
-            return
+        if let user = user {
+            guard project.canEdit && (post.author.id == user.id || project.owner?.id == user.id ) else {
+                return
+            }
+            let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            alert.add(sourceView: cell.view)
+            
+            if post.author.id == user.id {
+                alert.add(action: NSLocalizedString("Edit", comment: "Edit post button"))
+                {
+                    self.input?.post = post
+                }
+            }
+            
+            alert.add(action: NSLocalizedString("Delete", comment: "Delete post button"), style: .destructive)
+            {
+                self.delete(post: post, cell: cell)
+            }
+            alert.addCancelButton()
+            
+            present(alert, animated: true, completion: nil)
         }
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alert.add(sourceView: cell.view)
-        alert.add(action: NSLocalizedString("Edit", comment: "Edit post button"))
-        {
-            self.input?.post = post
-        }
-        alert.add(action: NSLocalizedString("Delete", comment: "Edit post button"), style: .destructive)
-        {
-            self.delete(post: post, cell: cell)
-        }
-        alert.addCancelButton()
-        
-        present(alert, animated: true, completion: nil)
     }
     
     func open(user: User) {
