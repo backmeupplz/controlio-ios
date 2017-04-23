@@ -13,35 +13,35 @@ class ControlioUITests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        continueAfterFailure = false
-        
         let app = XCUIApplication()
-        app.launchArguments = ["isUITesting"]
         setupSnapshot(app)
         app.launch()
     }
     
     func testSnapshots() {
         let app = XCUIApplication()
-        app.buttons["Want to see how Controlio works first?"].tap()
+        app.buttons.element(matching: .button, identifier: "Demo button").tap()
+        let firstCell = app.tables.children(matching: .cell).element(boundBy: 0)
+        let start = firstCell.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 0))
+        let finish = firstCell.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: -6))
+            start.press(forDuration: 0, thenDragTo: finish)
         snapshot("0ProjectsController")
         
-        app.tables.cells.staticTexts["Building the Death Star"].tap()
+        app.tables.children(matching: .cell).element(boundBy: 0).tap()
         snapshot("1ProjectController")
         
-        let houseCleaningNavigationBar = app.navigationBars["Building the Death Star"]
-        houseCleaningNavigationBar.otherElements.children(matching: .button).element.tap()
+        app.navigationBars.otherElements.children(matching: .button).element.tap()
         snapshot("2ProjectInfoController")
         
-        let backButton = houseCleaningNavigationBar.buttons["Back"]
+        let backButton = app.navigationBars.buttons.element(boundBy: 0)
         backButton.tap()
         backButton.tap()
         
         let tabBarsQuery = app.tabBars
-        tabBarsQuery.buttons["New Project"].tap()
+        tabBarsQuery.buttons.element(boundBy: 1).tap()
         snapshot("3NewProjectController")
         
-        tabBarsQuery.buttons["Support"].tap()
+        tabBarsQuery.buttons.element(boundBy: 2).tap()
         snapshot("4SupportController")
     }
     

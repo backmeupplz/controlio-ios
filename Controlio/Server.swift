@@ -385,16 +385,16 @@ class Server: NSObject {
         }
     }
     
-    class func edit(project: Project, progress:@escaping (Float)->(), completion:@escaping (NSError?)->()) {
+    class func edit(project: Project, progress:@escaping (Float)->(), completion:@escaping (NSError?, String?)->()) {
         if isDemo() {
-            completion(NSError(domain: "You can't do that in demo account", code: 403, userInfo: nil))
+            completion(NSError(domain: "You can't do that in demo account", code: 403, userInfo: nil), nil)
             return
         }
         
         var parameters: Parameters = [
             "projectid": project.id!,
-            "title": project.tempTitle ?? project.title ?? "",
-            "description": project.tempProjectDescription ?? project.projectDescription ?? "",
+            "title": project.title ?? "",
+            "description": project.projectDescription ?? "",
         ]
         
         if let key = project.imageKey {
@@ -405,12 +405,12 @@ class Server: NSObject {
             S3.upload(image: image, progress: progress)
             { key, error in
                 if let error = error {
-                    completion(NSError(domain: error, code: 500, userInfo: nil))
+                    completion(NSError(domain: error, code: 500, userInfo: nil), nil)
                 } else if let key = key {
                     parameters["image"] = key
                     request(urlAddition: "projects", method: .put, parameters: parameters, needsToken: true)
                     { json, error in
-                        completion(error)
+                        completion(error, key)
                     }
                 }
             }
@@ -418,8 +418,7 @@ class Server: NSObject {
             
             request(urlAddition: "projects", method: .put, parameters: parameters, needsToken: true)
             { json, error in
-                
-                completion(error)
+                completion(error, nil)
             }
         }
     }

@@ -36,16 +36,16 @@ class User: NSObject, NSCoding {
     
     // MARK: - Functions -
     
-    func equals(compareTo: User?) -> Bool {
-        guard compareTo != nil else {
+    func isEqual(to user: User?) -> Bool {
+        guard let user = user else {
             return false
         }
         return
-            self.email == compareTo?.email &&
-            self.name == compareTo?.name &&
-            self.phone == compareTo?.phone &&
-            self.tempProfileImage == compareTo?.tempProfileImage &&
-            self.profileImageKey == compareTo?.profileImageKey
+            self.email == user.email &&
+            self.name == user.name &&
+            self.phone == user.phone &&
+            self.tempProfileImage == user.tempProfileImage &&
+            self.profileImageKey == user.profileImageKey
     }
     
     func copy(zone: NSZone? = nil) -> User {

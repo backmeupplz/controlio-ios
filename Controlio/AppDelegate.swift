@@ -12,8 +12,9 @@ import MBProgressHUD
 import CLTokenInputView
 import Stripe
 import Material
-//import DWURecyclingAlert
-//import GDPerformanceView_Swift
+#if DEBUG
+import SimulatorStatusMagic
+#endif
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -34,21 +35,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Server.fetchErrorsLocalizations()
         Appearance.setup()
         
-        // DEBUG
-//        Inject_DWURecyclingAlert()
-//        GDPerformanceMonitor.sharedInstance.startMonitoring()
-        
         return true
     }
     
     // MARK: - Private Functions -
     
     fileprivate func checkIfUITests() {
-        if ProcessInfo.processInfo.arguments.contains("isUITesting") {
+        if UserDefaults.standard.bool(forKey: "FASTLANE_SNAPSHOT") {
             if let bundle = Bundle.main.bundleIdentifier {
                 UserDefaults.standard.removePersistentDomain(forName: bundle)
             }
             UIView.setAnimationsEnabled(false)
+            #if DEBUG
+            SDStatusBarManager.sharedInstance().enableOverrides()
+            #endif
         }
     }
     

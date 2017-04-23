@@ -14,7 +14,7 @@ class EditProjectController: UITableViewController, EditProjectCellDelegate, Pic
 
     // MARK: - Variables -
     
-    var project = Project()
+    var project: Project!
     var initProject: Project!
     let imagePicker = UIImagePickerController()
     var cell: EditProjectCell!
@@ -62,29 +62,30 @@ class EditProjectController: UITableViewController, EditProjectCellDelegate, Pic
         present(alert, animated: true, completion: nil)
     }
     
-    func back(sender: UIBarButtonItem){
-        
-        let alert = UIAlertController(title:"You have unsaved data", message: "Would you like to discard it?", preferredStyle: UIAlertControllerStyle.alert)
-        
-        alert.addAction(UIAlertAction(title:"Discard", style: UIAlertActionStyle.default, handler: {(alert: UIAlertAction!) in
+    func backTouched() {
+        if project.isEqual(to: initProject) {
             _ = self.navigationController?.popViewController(animated: true)
-        }))
+            return
+        }
         
-        alert.addAction(UIAlertAction(title:"Save", style: UIAlertActionStyle.default, handler: {(alert: UIAlertAction!) in
-            self.save(project: self.project, completion: { error in
-                _ = self.navigationController?.popViewController(animated: true)
-            })
-        }))
+        let alert = UIAlertController(title: NSLocalizedString("You have unsaved data", comment: "alert title"), message: NSLocalizedString("Would you like to discard it?", comment: "alert message"), preferredStyle: UIAlertControllerStyle.alert)
         
-        self.present(alert, animated: true, completion: nil)
+        alert.add(action: NSLocalizedString("Discard", comment: "alert button"), style: .destructive)
+        {
+            _ = self.navigationController?.popViewController(animated: true)
+        }
+        
+        alert.addCancelButton()
+        
+        present(alert, animated: true, completion: nil)
     }
     
-    func save(project: Project, completion:((NSError?)->())!) {
+    func save(project: Project) {
         view.endEditing(true)
         
         var allGood = true
         
-        if (project.title?.isEmpty ?? true) && (project.tempTitle?.isEmpty ?? true) {
+        if project.title?.isEmpty ?? true {
             cell.titleTextField.shake()
             allGood = false
         }
@@ -101,36 +102,27 @@ class EditProjectController: UITableViewController, EditProjectCellDelegate, Pic
                         hud.detailsLabel.text = NSLocalizedString("Editing the project...", comment: "hud title")
                     }
                 })
-                { error in
+                { error, key in
                     hud.hide(animated: true)
                     if let error = error {
                         self.snackbarController?.show(error: error.domain)
-                        if (completion != nil) {
-                            completion(error)
-                        }
                     } else {
+                        self.project.imageKey = key
+                        self.initProject = self.project.copy()
                         self.snackbarController?.show(text: "Project info has been changed")
-                        if (completion != nil) {
-                            completion(nil)
-                        }
                     }
                 }
             } else {
                 hud.detailsLabel.text = NSLocalizedString("Editing the project...", comment: "hud title")
                 Server.edit(project: project, progress: { progress in })
-                { error in
-                    
+                { error, key in
                     hud.hide(animated: true)
                     if let error = error {
                         self.snackbarController?.show(error: error.domain)
-                        if (completion != nil) {
-                            completion(error)
-                        }
                     } else {
+                        self.project.imageKey = key
+                        self.initProject = self.project.copy()
                         self.snackbarController?.show(text: "Project info has been changed")
-                        if (completion != nil) {
-                            completion(nil)
-                        }
                     }
                 }
             }
@@ -164,16 +156,16 @@ class EditProjectController: UITableViewController, EditProjectCellDelegate, Pic
     // MARK: - Private Functions -
     
     fileprivate func setupBackButton(){
-        self.navigationItem.hidesBackButton = true
-        let image = UIImage(named:"back_button") as UIImage!
-        let btnBack:UIButton = UIButton.init(type: .custom)
-        btnBack.addTarget(self, action: #selector(EditProjectController.back(sender:)), for: .touchUpInside)
-        btnBack.setImage(image, for: .normal)
+        navigationItem.hidesBackButton = true
+        let btnBack = CustomButton(type: .custom)
+        btnBack.addTarget(self, action: #selector(EditProjectController.backTouched), for: .touchUpInside)
+        btnBack.setImage(R.image.back_button(), for: .normal)
         btnBack.setTitleColor(UIColor.blue, for: .normal)
         btnBack.sizeToFit()
-        let backButton:UIBarButtonItem = UIBarButtonItem(customView: btnBack)
+        btnBack.adjustsImageWhenHighlighted = false
+        let backButton = UIBarButtonItem(customView: btnBack)
         
-        self.navigationItem.leftBarButtonItem = backButton
+        navigationItem.leftBarButtonItem = backButton
     }
     
     fileprivate func setupTableView() {

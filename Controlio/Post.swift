@@ -30,10 +30,6 @@ class Post: NSObject {
     
     // MARK: - Functions -
     
-    func countAttachments() -> Int {
-        return self.attachments.count
-    }
-    
     class func map(json: JSON?) -> [Post]? {
         guard let array = json?.array else { return nil }
         return array.flatMap { Post(json: $0) }

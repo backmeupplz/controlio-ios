@@ -14,55 +14,50 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
     // MARK: - Variables -
     
     var user: User!
-    var initUser: User!
+    var newUser: User!
     let imagePicker = UIImagePickerController()
     
     // MARK: - View Controller Life Cycle -
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initUser = user.copy()
+        newUser = user.copy()
         setupBackButton()
         setupTableView()
         addRefreshControl()
         setupImagePicker()
-        
     }
     
     // MARK: - Actions -
     
     @IBAction func saveTouched(_ sender: AnyObject) {
-        save(completion: nil)
+        save()
     }
     
-    func back(sender: UIBarButtonItem){
-        
+    func backTouched() {
         let (_, name, phone) = formData()
         
-        initUser.name = name
-        initUser.phone = phone
+        newUser.name = name
+        newUser.phone = phone
         
-        if user.equals(compareTo: initUser) {
+        if user.isEqual(to: newUser) {
             _ = self.navigationController?.popViewController(animated: true)
             return
         }
         
-        let alert = UIAlertController(title:"You have unsaved data", message: "Would you like to discard it?", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: NSLocalizedString("You have unsaved data", comment: "alert title"), message: NSLocalizedString("Would you like to discard it?", comment: "alert message"), preferredStyle: UIAlertControllerStyle.alert)
         
-        alert.addAction(UIAlertAction(title:"Discard", style: UIAlertActionStyle.default, handler: {(alert: UIAlertAction!) in
+        alert.add(action: NSLocalizedString("Discard", comment: "alert button"), style: .destructive)
+        {
             _ = self.navigationController?.popViewController(animated: true)
-        }))
+        }
         
-        alert.addAction(UIAlertAction(title:"Save", style: UIAlertActionStyle.default, handler: {(alert: UIAlertAction!) in
-            self.save(completion: { error in
-                _ = self.navigationController?.popViewController(animated: true)
-            })
-        }))
+        alert.addCancelButton()
         
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
     
-    func formData() ->(cell: EditProfileCell, name: String?, phone: String?) {
+    func formData() -> (cell: EditProfileCell, name: String?, phone: String?) {
         let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! EditProfileCell
         
         var name = cell.nameTextfield.text
@@ -78,7 +73,7 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
         return (cell, name, phone)
     }
     
-    func save(completion:((NSError?)->())!){
+    func save() {
         view.endEditing(true)
 
         let (cell, name, phone) = formData()
@@ -113,10 +108,11 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
                         hud.hide(animated: true)
                         if let error = error {
                             self.snackbarController?.show(error: error.domain)
-                            completion(error)
                         } else {
+                            self.user.name = name
+                            self.user.phone = phone
+                            self.user.profileImageKey = key
                             self.snackbarController?.show(text: "Your profile has been updated")
-                            completion(nil)
                         }
                     }
                 }
@@ -128,10 +124,10 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
                 hud.hide(animated: true)
                 if let error = error {
                     self.snackbarController?.show(error: error.domain)
-                    completion(error)
                 } else {
+                    self.user.name = name
+                    self.user.phone = phone
                     self.snackbarController?.show(text: "Your profile has been updated")
-                    completion(nil)
                 }
             }
         }
@@ -214,7 +210,7 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
                 self.snackbarController?.show(error: error.domain)
             } else {
                 self.user = user
-                self.initUser = user
+                self.newUser = user
                 self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
             }
             self.refreshControl?.endRefreshing()
@@ -224,16 +220,16 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
     // MARK: - Private functions -
     
     fileprivate func setupBackButton(){
-        self.navigationItem.hidesBackButton = true
-        let image = UIImage(named:"back_button") as UIImage!
-        let btnBack:UIButton = UIButton.init(type: .custom)
-        btnBack.addTarget(self, action: #selector(EditProfileViewController.back(sender:)), for: .touchUpInside)
-        btnBack.setImage(image, for: .normal)
+        navigationItem.hidesBackButton = true
+        let btnBack = CustomButton(type: .custom)
+        btnBack.addTarget(self, action: #selector(EditProfileViewController.backTouched), for: .touchUpInside)
+        btnBack.setImage(R.image.back_button(), for: .normal)
         btnBack.setTitleColor(UIColor.blue, for: .normal)
         btnBack.sizeToFit()
-        let backButton:UIBarButtonItem = UIBarButtonItem(customView: btnBack)
+        btnBack.adjustsImageWhenHighlighted = false
+        let backButton = UIBarButtonItem(customView: btnBack)
         
-        self.navigationItem.leftBarButtonItem = backButton
+        navigationItem.leftBarButtonItem = backButton
     }
     
     fileprivate func setupTableView() {
