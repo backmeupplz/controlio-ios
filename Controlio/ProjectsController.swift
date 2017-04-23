@@ -328,7 +328,7 @@ extension ProjectsController: ASTableDelegate {
 extension ProjectsController: DZNEmptyDataSetSource {
     func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
         let text = isLoading ? NSLocalizedString("Loading...", comment: "empty view placeholder"):
-        (scope == .all && query == "" ? NSLocalizedString("You don't have any projects yet", comment: "empty view placeholder"): NSLocalizedString("No results", comment: "empty view placeholder"))
+        (scope == .all && query == "" ? NSLocalizedString("You don't have any projects yet", comment: "empty view placeholder"): NSLocalizedString("No search results", comment: "empty view placeholder"))
         let attributes = [
             NSFontAttributeName: Font.boldSystemFont(ofSize: 18.0),
             NSForegroundColorAttributeName: Color.darkGray
@@ -338,7 +338,7 @@ extension ProjectsController: DZNEmptyDataSetSource {
     
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         let text = isLoading ? NSLocalizedString("Let us get your projects from the cloud", comment: "empty view placeholder"):
-        (scope == .all && query == "" ? NSLocalizedString("You can create your first project", comment: "empty view placeholder"): NSLocalizedString("No results", comment: "empty view placeholder"))
+        (scope == .all && query == "" ? NSLocalizedString("You can create your first project", comment: "empty view placeholder"): "")
         
         let paragraph = NSMutableParagraphStyle()
         paragraph.lineBreakMode = .byWordWrapping;
@@ -358,7 +358,7 @@ extension ProjectsController: DZNEmptyDataSetSource {
             NSForegroundColorAttributeName: Color.controlioGreen,
             ]
         
-        return isLoading ? NSAttributedString() : NSAttributedString(string: NSLocalizedString("Create project", comment: "empty view button title"), attributes: attributes)
+        return (isLoading || !(scope == .all && query == "")) ? NSAttributedString() : NSAttributedString(string: NSLocalizedString("Create project", comment: "empty view button title"), attributes: attributes)
     }
     
     func verticalOffset(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat {
