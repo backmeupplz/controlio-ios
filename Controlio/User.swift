@@ -44,7 +44,8 @@ class User: NSObject, NSCoding {
             self.email == compareTo?.email &&
             self.name == compareTo?.name &&
             self.phone == compareTo?.phone &&
-            self.tempProfileImage == compareTo?.tempProfileImage
+            self.tempProfileImage == compareTo?.tempProfileImage &&
+            self.profileImageKey == compareTo?.profileImageKey
     }
     
     func copy(zone: NSZone? = nil) -> User {
@@ -54,7 +55,7 @@ class User: NSObject, NSCoding {
         copy.name = self.name
         copy.phone = self.phone
         copy.profileImageKey = self.profileImageKey
-        copy.profileImageKey = self.profileImageKey
+        copy.tempProfileImage = self.tempProfileImage
         copy.isBusiness = self.isBusiness
         copy.addedAsManager = self.addedAsManager
         copy.addedAsClient = self.addedAsClient
