@@ -162,6 +162,9 @@ extension EditProfileCell: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if textField == phoneTextfield{
+            
         let validationSet = CharacterSet.decimalDigits.inverted
         let components = string.components(separatedBy: validationSet)
         
@@ -231,7 +234,12 @@ extension EditProfileCell: UITextFieldDelegate {
         
         textField.text = resultString
         
+        
         return false
+        }else {
+             return true
+        }
+       
     }
 
 }
