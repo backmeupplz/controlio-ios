@@ -4,7 +4,7 @@ use_frameworks!
 inhibit_all_warnings!
 
 target 'Controlio' do
-    pod 'AsyncDisplayKit'
+    pod 'Texture'
     pod 'Stripe', :git => 'https://github.com/stripe/stripe-ios'
     pod 'Alamofire', '~> 4.0'
     pod 'SwiftyJSON'
@@ -24,5 +24,5 @@ target 'Controlio' do
     pod 'SimulatorStatusMagic', :configurations => ['Debug']
     pod 'DWURecyclingAlert', :configurations => ['Debug']
     pod 'GDPerformanceView-Swift', '~> 1.2.0', :configurations => ['Debug']
-    pod 'IQKeyboardManagerSwift', '4.0.8'
+    pod 'IQKeyboardManagerSwift'
 end
