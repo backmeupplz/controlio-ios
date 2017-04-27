@@ -14,10 +14,18 @@ protocol EditProfileCellDelegate: class {
     func saveTouched()
 }
 
+enum Codes: Int {
+    case area
+    case country
+}
+
 class EditProfileCell: UITableViewCell {
     
     // MARK: - Variables -
-    
+    let localNumberMaxLength = 7
+    let areaCodeMaxLength = 3
+    let countryCodeMaxLength = 3
+
     weak var delegate: EditProfileCellDelegate?
     var user: User? {
         didSet {
@@ -113,6 +121,29 @@ class EditProfileCell: UITableViewCell {
         emailTextfield.text = user.email
         phoneTextfield.text = user.phone
     }
+    func makeSubRange(of string: String, withStartPoint startPoint: Int, andEndPoint endPoint: Int, forCode code: Codes) -> String {
+        
+        if let range = string.range(of: string) {
+            
+            let startRange = string.index(range.lowerBound,
+                                          offsetBy: startPoint)
+            let lastRange = string.index(range.lowerBound,
+                                         offsetBy: startPoint + endPoint)
+            
+            let subRange = startRange..<lastRange
+            
+            var form = string.substring(with: subRange)
+            
+            if code == .area {
+                form = "(\(form)) "
+            } else {
+                form = "+\(form) "
+            }
+            
+            return form
+        }
+        return ""
+    }
 }
 
 extension EditProfileCell: UITextFieldDelegate {
@@ -129,4 +160,86 @@ extension EditProfileCell: UITextFieldDelegate {
         }
         return false
     }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if textField == phoneTextfield{
+            
+        let validationSet = CharacterSet.decimalDigits.inverted
+        let components = string.components(separatedBy: validationSet)
+        
+        if components.count > 1 {
+            return false
+        }
+        var newString = textField.text! + string
+        
+        let newComponents = newString.components(separatedBy: validationSet)
+        newString = newComponents.joined(separator: "")
+        
+        if string == "" {
+            
+            newString = newString.substring(to: newString.index(before: newString.endIndex))
+        }
+        
+        var resultString = ""
+        
+        if newString.characters.count > localNumberMaxLength + areaCodeMaxLength + countryCodeMaxLength  {
+            return false
+        }
+        
+        let localNumberLength = min(newString.characters.count, localNumberMaxLength)
+        
+        if localNumberLength >= 0 {
+            
+            let number = newString.substring(from:
+                newString.index(newString.startIndex,
+                                offsetBy: newString.characters.count - localNumberLength))
+            
+            resultString += number
+            
+            if resultString.characters.count > 3 {
+                resultString.insert("-", at: resultString.index(resultString.startIndex, offsetBy: 3))
+            }
+            
+            if resultString.characters.count > 6 {
+                resultString.insert("-", at: resultString.index(resultString.startIndex, offsetBy: 6))
+            }
+        }
+        
+        if newString.characters.count > localNumberMaxLength {
+            
+            let areaCodeLength = min(newString.characters.count - localNumberMaxLength, areaCodeMaxLength)
+            
+            let area = makeSubRange(of: newString,
+                                    withStartPoint: newString.characters.count - localNumberMaxLength - areaCodeLength,
+                                    andEndPoint: areaCodeLength,
+                                    forCode: .area)
+            
+            resultString = area + resultString
+        }
+        
+        if newString.characters.count > localNumberMaxLength + areaCodeMaxLength {
+            
+            let countryCodeLength = min(newString.characters.count - localNumberMaxLength - areaCodeMaxLength,
+                                        countryCodeMaxLength)
+            
+            let country = makeSubRange(of: newString,
+                                       withStartPoint: newString.characters.count - localNumberMaxLength -
+                                        areaCodeMaxLength - countryCodeLength,
+                                       andEndPoint: countryCodeLength,
+                                       forCode: .country)
+            
+            resultString = country + resultString
+        }
+        
+        textField.text = resultString
+        
+        
+        return false
+        }else {
+             return true
+        }
+       
+    }
+
 }

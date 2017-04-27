@@ -12,6 +12,7 @@ import Material
 import DZNEmptyDataSet
 import NohanaImagePicker
 import AsyncDisplayKit
+import IQKeyboardManagerSwift
 
 class ProjectController: ASViewController<ASDisplayNode>, DZNEmptyDataSetDelegate {
     
@@ -65,6 +66,7 @@ class ProjectController: ASViewController<ASDisplayNode>, DZNEmptyDataSetDelegat
         setupEmptyView()
         loadInitialPosts()
         edgesForExtendedLayout = []
+        IQKeyboardManager.sharedManager().enable = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,6 +82,7 @@ class ProjectController: ASViewController<ASDisplayNode>, DZNEmptyDataSetDelegat
         unsubscribe()
         hideInput()
         view.endEditing(true)
+        IQKeyboardManager.sharedManager().enable = true
     }
     
     // MARK: - Private Functions -
