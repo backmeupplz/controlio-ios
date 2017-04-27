@@ -68,6 +68,11 @@
 		B3A7460B1E9B25B3008F1D0D /* NSAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A7460A1E9B25B3008F1D0D /* NSAttributedString+Extensions.swift */; };
 		B3A7460D1E9B6FB5008F1D0D /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A7460C1E9B6FB5008F1D0D /* NavigationController.swift */; };
 		B3A89D541DB8069D00211EFF /* Payments.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A89D531DB8069D00211EFF /* Payments.swift */; };
+		B3A96D3B1EB2B11100F58A9F /* Server+Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A96D3A1EB2B11100F58A9F /* Server+Login.swift */; };
+		B3A96D3D1EB2B15100F58A9F /* Server+Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A96D3C1EB2B15100F58A9F /* Server+Profile.swift */; };
+		B3A96D3F1EB2B19D00F58A9F /* Server+Projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A96D3E1EB2B19D00F58A9F /* Server+Projects.swift */; };
+		B3A96D411EB2B1C700F58A9F /* Server+Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A96D401EB2B1C700F58A9F /* Server+Posts.swift */; };
+		B3A96D431EB2B20400F58A9F /* Server+Payments.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A96D421EB2B20400F58A9F /* Server+Payments.swift */; };
 		B3AA2F911C9110EF00FE7E54 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AA2F901C9110EF00FE7E54 /* LoginViewController.swift */; };
 		B3B2B92D1C90CD1600468342 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B2B92C1C90CD1600468342 /* AppDelegate.swift */; };
 		B3B2B9321C90CD1600468342 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3B2B9301C90CD1600468342 /* Login.storyboard */; };
@@ -213,6 +218,11 @@
 		B3A7460A1E9B25B3008F1D0D /* NSAttributedString+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Extensions.swift"; sourceTree = "<group>"; };
 		B3A7460C1E9B6FB5008F1D0D /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		B3A89D531DB8069D00211EFF /* Payments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payments.swift; sourceTree = "<group>"; };
+		B3A96D3A1EB2B11100F58A9F /* Server+Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Server+Login.swift"; sourceTree = "<group>"; };
+		B3A96D3C1EB2B15100F58A9F /* Server+Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Server+Profile.swift"; sourceTree = "<group>"; };
+		B3A96D3E1EB2B19D00F58A9F /* Server+Projects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Server+Projects.swift"; sourceTree = "<group>"; };
+		B3A96D401EB2B1C700F58A9F /* Server+Posts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Server+Posts.swift"; sourceTree = "<group>"; };
+		B3A96D421EB2B20400F58A9F /* Server+Payments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Server+Payments.swift"; sourceTree = "<group>"; };
 		B3AA2F901C9110EF00FE7E54 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B3B2B9291C90CD1600468342 /* Controlio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Controlio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3B2B92C1C90CD1600468342 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -372,6 +382,19 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		B3A96D391EB2B0FA00F58A9F /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				B3D8C6F31CFBFBF4001EE432 /* Server.swift */,
+				B3A96D3A1EB2B11100F58A9F /* Server+Login.swift */,
+				B3A96D3C1EB2B15100F58A9F /* Server+Profile.swift */,
+				B3A96D3E1EB2B19D00F58A9F /* Server+Projects.swift */,
+				B3A96D401EB2B1C700F58A9F /* Server+Posts.swift */,
+				B3A96D421EB2B20400F58A9F /* Server+Payments.swift */,
+			);
+			name = Server;
+			sourceTree = "<group>";
+		};
 		B3B2B9201C90CD1600468342 = {
 			isa = PBXGroup;
 			children = (
@@ -436,13 +459,13 @@
 		B3C03D091C90CFC20096E04C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B3A96D391EB2B0FA00F58A9F /* Server */,
 				B3C305A41CDFE5DF00C8E85F /* Objects */,
 				B3C03D181C90FF7C0096E04C /* Extensions */,
 				B3D8C6F51CFBFC6B001EE432 /* Config.swift */,
 				B3B2B92C1C90CD1600468342 /* AppDelegate.swift */,
 				B3E634D21C91344400C0572A /* Router.swift */,
 				B390C7A21CDE96B800D5F021 /* DeepLink.swift */,
-				B3D8C6F31CFBFBF4001EE432 /* Server.swift */,
 				B3D8C6F91CFC0A78001EE432 /* S3.swift */,
 				B3E7B1271D9B3D40004FBF86 /* Platform.swift */,
 				B3A89D531DB8069D00211EFF /* Payments.swift */,
@@ -818,12 +841,15 @@
 				B3EA114C1D93A9740026658B /* UserCell.swift in Sources */,
 				B3D8C6F41CFBFBF4001EE432 /* Server.swift in Sources */,
 				B3C305A11CDFD79500C8E85F /* SettingsController.swift in Sources */,
+				B3A96D3F1EB2B19D00F58A9F /* Server+Projects.swift in Sources */,
 				B3E634DD1C914D6200C0572A /* MainTabBarController.swift in Sources */,
+				B3A96D411EB2B1C700F58A9F /* Server+Posts.swift in Sources */,
 				B3E634D51C91444700C0572A /* RecoveryViewController.swift in Sources */,
 				B3FEB83F1C9630290048B688 /* ProjectCell.swift in Sources */,
 				B3D8C6FA1CFC0A78001EE432 /* S3.swift in Sources */,
 				B33EBFCE1E23FD3B00703285 /* MBProgressHUD+Window.swift in Sources */,
 				B37630551CE28CA4004FE1B7 /* AttachmentContainerView.swift in Sources */,
+				B3A96D3D1EB2B15100F58A9F /* Server+Profile.swift in Sources */,
 				B3D81AD71E4142080035C6E2 /* UserProfileCell.swift in Sources */,
 				B3FFC6C71CE6894C00595E85 /* CustomNavigationController.swift in Sources */,
 				B3E634DF1C91514D00C0572A /* ProjectsController.swift in Sources */,
@@ -838,6 +864,7 @@
 				B3D8C6F81CFBFD7E001EE432 /* NSUserDefaults+extensions.swift in Sources */,
 				B3E57BF11D9602DB00F699F1 /* AddManagerCell.swift in Sources */,
 				B390C7A51CDE9B5400D5F021 /* IndexPath+Additions.swift in Sources */,
+				B3A96D3B1EB2B11100F58A9F /* Server+Login.swift in Sources */,
 				B30FC18D1E25907B00FEB944 /* ClientsTableViewController.swift in Sources */,
 				B301EFDD1CE59A0A0013CD4D /* UIImagePickerDelegate+UINavgiationControllerDelegate.swift in Sources */,
 				B3E8157C1CE1603400E8F87B /* NewProjectController.swift in Sources */,
@@ -857,6 +884,7 @@
 				B3E7B1281D9B3D40004FBF86 /* Platform.swift in Sources */,
 				52B2C7B61E895926004CE9A0 /* ChangePasswordViewController.swift in Sources */,
 				B3E67AAA1E36CEB30051EB89 /* ProjectInfoController.swift in Sources */,
+				B3A96D431EB2B20400F58A9F /* Server+Payments.swift in Sources */,
 				B3D81ADB1E42A4810035C6E2 /* EditProjectCell.swift in Sources */,
 				B3D8C6F61CFBFC6B001EE432 /* Config.swift in Sources */,
 				B3A89D541DB8069D00211EFF /* Payments.swift in Sources */,
