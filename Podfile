@@ -24,4 +24,5 @@ target 'Controlio' do
     pod 'SimulatorStatusMagic', :configurations => ['Debug']
     pod 'DWURecyclingAlert', :configurations => ['Debug']
     pod 'GDPerformanceView-Swift', '~> 1.2.0', :configurations => ['Debug']
+    pod 'IQKeyboardManagerSwift', '4.0.8'
 end

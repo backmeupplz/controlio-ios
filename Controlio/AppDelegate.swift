@@ -12,6 +12,7 @@ import MBProgressHUD
 import CLTokenInputView
 import Stripe
 import Material
+import IQKeyboardManagerSwift
 #if DEBUG
 import SimulatorStatusMagic
 #endif
@@ -34,6 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FeatureList.fetchFeatureList()
         Server.fetchErrorsLocalizations()
         Appearance.setup()
+        IQKeyboardManager.sharedManager().enable = true
+        IQKeyboardManager.sharedManager().enableAutoToolbar = false
         
         return true
     }
