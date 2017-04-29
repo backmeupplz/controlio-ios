@@ -28,6 +28,7 @@ class ProjectInfoController: ASViewController<ASDisplayNode> {
         NSLocalizedString("Owner invited", comment: "project info section name")
     ]
     fileprivate var refreshControl: UIRefreshControl?
+    fileprivate var currentGallery: ImageGallery?
     
     // MARK: - View Controller Life Cycle -
     
@@ -347,7 +348,8 @@ extension ProjectInfoController: ASTableDataSource {
         return {
             if indexPath.section == 0 {
                 return ProjectCell(with: self.project,
-                                   type: .info)
+                                   type: .info,
+                                   delegate: self)
             } else {
                 switch indexPath.section {
                 case 1:
@@ -495,6 +497,15 @@ extension ProjectInfoController: ASTableDelegate {
                     Router(self).show(user: user)
                 }
             }
+        }
+    }
+}
+
+extension ProjectInfoController: ProjectCellDelegate {
+    func projectPhotoTouched(at node: ProjectCell) {
+        if let key = project.imageKey {
+            currentGallery = ImageGallery()
+            currentGallery?.showGallery(atViewController: self, index: 0, imageKeys: [key], fromView: node.view)
         }
     }
 }

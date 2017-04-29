@@ -15,10 +15,15 @@ enum ProjectCellType {
     case info
 }
 
+protocol ProjectCellDelegate: class {
+    func projectPhotoTouched(at node: ProjectCell)
+}
+
 class ProjectCell: ASCellNode {
     
     // MARK: - Variables -
     
+    weak var delegate: ProjectCellDelegate?
     var project: Project!
     var type = ProjectCellType.list
     
@@ -30,11 +35,12 @@ class ProjectCell: ASCellNode {
     
     // MARK: - Node life cycle -
     
-    required init(with project: Project, type: ProjectCellType) {
+    required init(with project: Project, type: ProjectCellType, delegate: ProjectCellDelegate? = nil) {
         super.init()
         
         self.project = project
         self.type = type
+        self.delegate = delegate
         
         setupStyle()
         createRoundedNode()
@@ -111,6 +117,9 @@ class ProjectCell: ASCellNode {
         imageNode.clipsToBounds = true
         imageNode.style.preferredSize = CGSize(width: 60, height: 60)
         imageNode.contentMode = .scaleAspectFill
+        if delegate != nil {
+            imageNode.addTarget(self, action: #selector(ProjectCell.photoTapped), forControlEvents: .touchUpInside)
+        }
     }
     
     fileprivate func configure() {
@@ -179,5 +188,9 @@ class ProjectCell: ASCellNode {
                                font: R.font.sFUIDisplayRegular(size: 14),
                                color: Color.controlioBlackText)
         descriptionNode.maximumNumberOfLines = type == .info ? 0 : 2
+    }
+    
+    @objc fileprivate func photoTapped() {
+        delegate?.projectPhotoTouched(at: self)
     }
 }
