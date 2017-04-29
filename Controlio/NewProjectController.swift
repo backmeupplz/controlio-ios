@@ -83,10 +83,6 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate, Picke
             cell.managerTextField.shake()
             allGood = false
         }
-        if cell.type == .business && project.tempClientEmails.count <= 0 {
-            cell.clientsTextField.shake()
-            allGood = false
-        }
         
         if allGood {
             guard let hud = MBProgressHUD.show() else { return }
