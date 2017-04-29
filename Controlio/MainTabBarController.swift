@@ -33,7 +33,7 @@ class MainTabBarController: ASTabBarController {
                                  title: NSLocalizedString("Support", comment: "tabbar title")),
             navigationController(with: settingsController,
                                  image: R.image.settings(),
-                                 title: NSLocalizedString("Settings", comment: "tabbar title")),
+                                 title: NSLocalizedString("Settings", comment: "tabbar title"))
         ]
         
         tabBar.tintColor = UIColor.controlioGreen
