@@ -14,6 +14,7 @@ class UserViewController: UITableViewController, UserProfileCellDelegate, MFMail
     // MARK: - Variables -
     
     var user: User!
+    var currentGallery: ImageGallery?
     
     // MARK: - View Controller Life Cycle -
     
@@ -69,6 +70,13 @@ class UserViewController: UITableViewController, UserProfileCellDelegate, MFMail
             present(mail, animated: true)
         } else {
             snackbarController?.show(error: NSLocalizedString("Cannot send mail on this device", comment: "snackbar error"))
+        }
+    }
+    
+    func photoTouched(at cell: UserProfileCell) {
+        if let key = cell.user.profileImageKey {
+            currentGallery = ImageGallery()
+            currentGallery?.showGallery(atViewController: self, index: 0, imageKeys: [key], fromView: cell)
         }
     }
     

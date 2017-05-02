@@ -11,6 +11,7 @@ import UIKit
 protocol UserProfileCellDelegate {
     func emailTouched(for user: User)
     func phoneTouched(for user: User)
+    func photoTouched(at cell: UserProfileCell)
 }
 
 class UserProfileCell: UITableViewCell {
@@ -30,6 +31,16 @@ class UserProfileCell: UITableViewCell {
             configure()
         }
     }
+    fileprivate var imageGR: UITapGestureRecognizer?
+    
+    // MARK: - View life cycle -
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        imageGR = UITapGestureRecognizer(target: self, action: #selector(UserProfileCell.photoTapped))
+        photoImageView.addGestureRecognizer(imageGR!)
+    }
     
     // MARK: - Actions -
     
@@ -39,6 +50,10 @@ class UserProfileCell: UITableViewCell {
     
     @IBAction func phoneTouched(_ sender: Any) {
         delegate?.phoneTouched(for: user)
+    }
+    
+    func photoTapped() {
+        delegate?.photoTouched(at: self)
     }
     
     // MARK: - Private functions -
