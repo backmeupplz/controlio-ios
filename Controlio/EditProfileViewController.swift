@@ -15,7 +15,7 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
     
     var user: User!
     var newUser: User!
-    let imagePicker = UIImagePickerController()
+    let imagePicker = ImagePicker()
     
     // MARK: - View Controller Life Cycle -
     

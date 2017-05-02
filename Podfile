@@ -20,7 +20,7 @@ target 'Controlio' do
     pod 'Material', '~> 2.0'
     pod 'R.swift'
     pod 'DZNEmptyDataSet'
-    pod 'NohanaImagePicker', :git => 'https://github.com/MixailE/NohanaImagePicker'
+    pod 'NohanaImagePicker', :git => 'https://github.com/backmeupplz/NohanaImagePicker'
     pod 'SimulatorStatusMagic', :configurations => ['Debug']
     pod 'DWURecyclingAlert', :configurations => ['Debug']
     pod 'GDPerformanceView-Swift', '~> 1.2.0', :configurations => ['Debug']

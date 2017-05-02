@@ -16,7 +16,7 @@ class EditProjectController: UITableViewController, EditProjectCellDelegate, Pic
     
     var project: Project!
     var initProject: Project!
-    let imagePicker = UIImagePickerController()
+    let imagePicker = ImagePicker()
     var cell: EditProjectCell!
     
     // MARK: - View Controller Life Cycle -

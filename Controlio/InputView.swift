@@ -116,7 +116,6 @@ class InputView: UIView, AttachmentContainerViewDelegate {
     
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
         let index = sender.selectedSegmentIndex
-        sendButton.setTitle(index == 0 ? NSLocalizedString("Send", comment: "Input view button") : NSLocalizedString("Save", comment: "Input view button"), for: .normal)
         textView.placeholder = index == 0 ? NSLocalizedString("Type new message...", comment: "Input view placeholder") : NSLocalizedString("Type new status...", comment: "Input view placeholder")
         
         clipImage.isHidden = index != 0
@@ -132,6 +131,7 @@ class InputView: UIView, AttachmentContainerViewDelegate {
         super.awakeFromNib()
         
         subscribe()
+        sendButton.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
     }
     
     deinit {

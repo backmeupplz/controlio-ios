@@ -103,6 +103,7 @@
 		B3D8C6F61CFBFC6B001EE432 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D8C6F51CFBFC6B001EE432 /* Config.swift */; };
 		B3D8C6F81CFBFD7E001EE432 /* NSUserDefaults+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D8C6F71CFBFD7E001EE432 /* NSUserDefaults+extensions.swift */; };
 		B3D8C6FA1CFC0A78001EE432 /* S3.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D8C6F91CFC0A78001EE432 /* S3.swift */; };
+		B3D9B23E1EB862540011348E /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D9B23D1EB862540011348E /* ImagePicker.swift */; };
 		B3E57BF11D9602DB00F699F1 /* AddManagerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E57BEF1D9602DB00F699F1 /* AddManagerCell.swift */; };
 		B3E60BAE1E86EFD900658D80 /* AllPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E60BAD1E86EFD900658D80 /* AllPickerDelegate.swift */; };
 		B3E634D31C91344400C0572A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E634D21C91344400C0572A /* Router.swift */; };
@@ -254,6 +255,7 @@
 		B3D8C6F51CFBFC6B001EE432 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		B3D8C6F71CFBFD7E001EE432 /* NSUserDefaults+extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSUserDefaults+extensions.swift"; sourceTree = "<group>"; };
 		B3D8C6F91CFC0A78001EE432 /* S3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = S3.swift; sourceTree = "<group>"; };
+		B3D9B23D1EB862540011348E /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		B3E57BEF1D9602DB00F699F1 /* AddManagerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddManagerCell.swift; sourceTree = "<group>"; };
 		B3E60BAD1E86EFD900658D80 /* AllPickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllPickerDelegate.swift; sourceTree = "<group>"; };
 		B3E634D21C91344400C0572A /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -452,6 +454,7 @@
 				B3D1692B1CDDA5950080D748 /* PopupNotification.swift */,
 				B3E7B12D1DA08857004FBF86 /* ImageGallery.swift */,
 				B3F611DA1EA83BEF006B0F40 /* CustomButton.swift */,
+				B3D9B23D1EB862540011348E /* ImagePicker.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -872,6 +875,7 @@
 				B3D81ADE1E42AA400035C6E2 /* EditProjectController.swift in Sources */,
 				B3E634E11C915B9300C0572A /* UISearchBar+CursorTint.swift in Sources */,
 				B3E815791CE1566900E8F87B /* NewProjectCell.swift in Sources */,
+				B3D9B23E1EB862540011348E /* ImagePicker.swift in Sources */,
 				B3D1692C1CDDA5950080D748 /* PopupNotification.swift in Sources */,
 				B3C03D101C90DAA60096E04C /* UIColor+Controlio.swift in Sources */,
 				B37630511CE28737004FE1B7 /* AttachmentView.swift in Sources */,

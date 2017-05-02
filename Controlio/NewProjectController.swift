@@ -15,7 +15,7 @@ class NewProjectController: UITableViewController, NewProjectCellDelegate, Picke
     // MARK: - Variables -
     
     var project = Project()
-    let imagePicker = UIImagePickerController()
+    let imagePicker = ImagePicker()
     var cell: NewProjectCell!
     
     // MARK: - View Controller Life Cycle -
