@@ -316,9 +316,11 @@ extension ProjectController: PostCellDelegate {
         }
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alert.add(sourceView: cell.view)
-        alert.add(action: NSLocalizedString("Edit", comment: "Edit post button"))
-        {
-            self.input?.post = post
+        if post.author.id == Server.currentUser?.id {
+            alert.add(action: NSLocalizedString("Edit", comment: "Edit post button"))
+            {
+                self.input?.post = post
+            }
         }
         alert.add(action: NSLocalizedString("Delete", comment: "Edit post button"), style: .destructive)
         {

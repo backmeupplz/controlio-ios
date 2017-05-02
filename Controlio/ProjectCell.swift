@@ -164,11 +164,10 @@ class ProjectCell: ASCellNode {
         if type == .info, let text = project.projectDescription {
             descriptionNode.alpha = 1
             string = text
-        }
-        else if let post = project.lastPost {
-            if let text = post.text, text.characters.count > 0 {
+        } else if let post = project.lastPost {
+            if let text = post.text, let name = post.author.name ?? post.author.email, text.characters.count > 0 {
                 descriptionNode.alpha = 1
-                string = text
+                string = "\(name): \(text)"
             } else if post.attachments.count > 0 {
                 descriptionNode.alpha = 0.5
                 let count = post.attachments.count
@@ -187,7 +186,7 @@ class ProjectCell: ASCellNode {
             NSAttributedString(string: string,
                                font: R.font.sFUIDisplayRegular(size: 14),
                                color: Color.controlioBlackText)
-        descriptionNode.maximumNumberOfLines = type == .info ? 0 : 2
+        descriptionNode.maximumNumberOfLines = type == .info ? 0 : 3
     }
     
     @objc fileprivate func photoTapped() {
