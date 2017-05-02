@@ -85,7 +85,7 @@ class SettingsController: UITableViewController, STPPaymentContextDelegate {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch (indexPath.section, indexPath.row) {
         case (0, 1), (0, 2):
-            return (FeatureList.payments && Server.isDemo()) ? 46 : 0
+            return (!FeatureList.payments && Server.isDemo()) ? 0 : 46
         default:
             return 46
         }
