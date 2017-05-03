@@ -56,14 +56,14 @@ class Server: NSObject {
     }
     
     class func features(completion: @escaping (JSON?, NSError?)->()) {
-        request(urlAddition: "feature_list", method: .get, needsToken: false)
+        let _ = request(urlAddition: "feature_list", method: .get, needsToken: false)
         { json, error in
             completion(json, error)
         }
     }
     
     class func fetchErrorsLocalizations() {
-        errorsLocalizations
+        let _ = errorsLocalizations
         { json, error in
             if let json = json {
                 UserDefaults.set(json.dictionaryObject, key: "localizedErrors")
@@ -72,14 +72,14 @@ class Server: NSObject {
     }
     
     class func errorsLocalizations(completion: @escaping (JSON?, NSError?)->()) {
-        request(urlAddition: "error_list", method: .get, needsToken: false)
+        let _ = request(urlAddition: "error_list", method: .get, needsToken: false)
         { json, error in
             completion(json, error)
         }
     }
     
-    class func request(urlAddition: String, method: HTTPMethod, parameters: [String:Any]? = nil, needsToken: Bool, completion: @escaping (JSON?, NSError?)->()) {
-        Alamofire.request(apiUrl + urlAddition, method: method, parameters: parameters, encoding: method == .get ? URLEncoding.default : JSONEncoding.default, headers: headers(needsToken: needsToken))
+    @discardableResult class func request(urlAddition: String, method: HTTPMethod, parameters: [String:Any]? = nil, needsToken: Bool, completion: @escaping (JSON?, NSError?)->()) -> DataRequest {
+        return Alamofire.request(apiUrl + urlAddition, method: method, parameters: parameters, encoding: method == .get ? URLEncoding.default : JSONEncoding.default, headers: headers(needsToken: needsToken))
             .responseJSON { response in
                 DispatchQueue.main.async {
                     if let errorString = response.result.error?.localizedDescription {

@@ -13,6 +13,7 @@ import DZNEmptyDataSet
 import NohanaImagePicker
 import AsyncDisplayKit
 import IQKeyboardManagerSwift
+import Alamofire
 
 class ProjectController: ASViewController<ASDisplayNode>, DZNEmptyDataSetDelegate {
     
@@ -37,6 +38,8 @@ class ProjectController: ASViewController<ASDisplayNode>, DZNEmptyDataSetDelegat
     fileprivate var progressView: ProgressView?
     
     fileprivate var refreshControl: UIRefreshControl?
+    
+    fileprivate var progressRequest: DataRequest?
     
     // MARK: - View Controller Life Cycle -
     
@@ -564,6 +567,12 @@ extension ProjectController: ASTableDataSource, ASTableDelegate {
 
 extension ProjectController: ProgressViewDelegate {
     func progressViewChanged(value: Int) {
-        print(value)
+        progressRequest?.cancel()
+        progressRequest = Server.update(progress: value, project: project)
+        { error in
+            if error == nil {
+                self.project.progress = value
+            }
+        }
     }
 }

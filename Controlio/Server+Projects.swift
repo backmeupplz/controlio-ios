@@ -264,7 +264,7 @@ extension Server {
     
     class func leave(project: Project, completion: @escaping (NSError?)->()) {
         guard let id = project.id else { return }
-        let parameters: [String: String] = [
+        let parameters: Parameters = [
             "projectid": id
         ]
         
@@ -283,6 +283,18 @@ extension Server {
         { json, error in
             completion(error)
         }
+    }
+    
+    class func update(progress: Int, project: Project, completion: @escaping (NSError?)->()) -> DataRequest? {
+        guard let id = project.id else { return nil }
         
+        let parameters: Parameters = [
+            "projectid": id,
+            "progress": progress
+        ]
+        return request(urlAddition: "projects/progress", method: .put, parameters: parameters, needsToken: true)
+        { json, error in
+            completion(error)
+        }
     }
 }
