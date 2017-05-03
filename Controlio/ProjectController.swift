@@ -34,6 +34,8 @@ class ProjectController: ASViewController<ASDisplayNode>, DZNEmptyDataSetDelegat
     fileprivate var isLoading = true
     fileprivate var needsMorePosts = false
     
+    fileprivate var progressView: ProgressView?
+    
     fileprivate var refreshControl: UIRefreshControl?
     
     // MARK: - View Controller Life Cycle -
@@ -63,7 +65,7 @@ class ProjectController: ASViewController<ASDisplayNode>, DZNEmptyDataSetDelegat
         setupBackButton()
         setupInfoButton()
         setupInput()
-        setupEmptyView()
+        setupProgressBar()
         loadInitialPosts()
         edgesForExtendedLayout = []
         IQKeyboardManager.sharedManager().enable = false
@@ -91,6 +93,7 @@ class ProjectController: ASViewController<ASDisplayNode>, DZNEmptyDataSetDelegat
         title = project.title
         
         showInput()
+        setupEmptyView()
     }
     
     fileprivate func setupTableView() {
@@ -157,6 +160,18 @@ class ProjectController: ASViewController<ASDisplayNode>, DZNEmptyDataSetDelegat
     
     fileprivate func setupInput() {
         input = InputView.view(navigationController!.view, delegate: self, project: project)
+    }
+    
+    fileprivate func setupProgressBar() {
+        if project.progressEnabled {
+            progressView = R.nib.progressView.firstView(owner: nil)
+            progressView?.delegate = self
+            progressView?.canEdit = project.canEdit
+            progressView?.progress = project.progress
+            tableNode.view.tableHeaderView = progressView
+        } else {
+            tableNode.view.tableHeaderView = nil
+        }
     }
     
     fileprivate func showInput() {
@@ -544,5 +559,11 @@ extension ProjectController: ASTableDataSource, ASTableDelegate {
         {
             context.completeBatchFetching(true)
         }
+    }
+}
+
+extension ProjectController: ProgressViewDelegate {
+    func progressViewChanged(value: Int) {
+        print(value)
     }
 }

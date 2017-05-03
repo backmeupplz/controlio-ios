@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SFUIDisplay-Light.otf">
+            <string>SFUIDisplay-Light</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="LB1-PA-Ovt" customClass="ProgressView" customModule="Controlio" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="350" height="41"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VXz-Ro-oAU">
+                    <rect key="frame" x="304" y="0.0" width="46" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="lDt-jG-4fG"/>
+                        <constraint firstAttribute="width" constant="46" id="s1U-Od-gYh"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <state key="normal" title="+">
+                        <color key="titleColor" red="0.011764705882352941" green="0.76470588235294112" blue="0.52549019607843139" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="plusDown:" destination="LB1-PA-Ovt" eventType="touchDown" id="d6Q-0e-GeS"/>
+                        <action selector="plusUp:" destination="LB1-PA-Ovt" eventType="touchUpOutside" id="72e-ki-8Ym"/>
+                        <action selector="plusUp:" destination="LB1-PA-Ovt" eventType="touchUpInside" id="aOM-df-Jbb"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PHd-qY-nLA">
+                    <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="46" id="BTl-aX-YMO"/>
+                        <constraint firstAttribute="height" constant="30" id="kHr-c1-aLJ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <state key="normal" title="-">
+                        <color key="titleColor" red="0.01176470588" green="0.76470588240000004" blue="0.52549019610000003" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="minusDown:" destination="LB1-PA-Ovt" eventType="touchDown" id="Meh-jL-mDQ"/>
+                        <action selector="minusUp:" destination="LB1-PA-Ovt" eventType="touchUpInside" id="MtH-Mb-tWh"/>
+                        <action selector="minusUp:" destination="LB1-PA-Ovt" eventType="touchUpOutside" id="Rr3-JQ-DHC"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3UJ-ou-5ur">
+                    <rect key="frame" x="160" y="20" width="30" height="21"/>
+                    <fontDescription key="fontDescription" name="SFUIDisplay-Light" family="SF UI Display" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xoq-L9-pgW">
+                    <rect key="frame" x="54" y="14" width="242" height="2"/>
+                    <color key="progressTintColor" red="0.01176470588" green="0.76470588240000004" blue="0.52549019610000003" alpha="1" colorSpace="calibratedRGB"/>
+                </progressView>
+            </subviews>
+            <color key="backgroundColor" red="0.95686274509803915" green="0.96470588235294119" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="3UJ-ou-5ur" firstAttribute="centerX" secondItem="LB1-PA-Ovt" secondAttribute="centerX" id="3PO-7n-THO"/>
+                <constraint firstAttribute="bottom" secondItem="3UJ-ou-5ur" secondAttribute="bottom" id="CEC-d1-wwg"/>
+                <constraint firstItem="VXz-Ro-oAU" firstAttribute="leading" secondItem="xoq-L9-pgW" secondAttribute="trailing" priority="750" constant="8" id="IHB-i7-Oi3"/>
+                <constraint firstAttribute="trailing" secondItem="xoq-L9-pgW" secondAttribute="trailing" priority="500" constant="12" id="KFK-vF-i7y"/>
+                <constraint firstItem="PHd-qY-nLA" firstAttribute="top" secondItem="LB1-PA-Ovt" secondAttribute="top" id="Tai-sY-xB9"/>
+                <constraint firstItem="xoq-L9-pgW" firstAttribute="leading" secondItem="LB1-PA-Ovt" secondAttribute="leading" priority="500" constant="12" id="Xvr-v9-bvD"/>
+                <constraint firstItem="VXz-Ro-oAU" firstAttribute="top" secondItem="LB1-PA-Ovt" secondAttribute="top" id="bGn-MV-Az6"/>
+                <constraint firstAttribute="trailing" secondItem="VXz-Ro-oAU" secondAttribute="trailing" id="c8Y-gN-QG4"/>
+                <constraint firstItem="xoq-L9-pgW" firstAttribute="leading" secondItem="PHd-qY-nLA" secondAttribute="trailing" priority="750" constant="8" id="gdg-pJ-v5r"/>
+                <constraint firstItem="xoq-L9-pgW" firstAttribute="top" secondItem="LB1-PA-Ovt" secondAttribute="top" constant="14" id="mwB-Gy-Fn0"/>
+                <constraint firstItem="PHd-qY-nLA" firstAttribute="leading" secondItem="LB1-PA-Ovt" secondAttribute="leading" id="nNs-EG-bir"/>
+                <constraint firstItem="3UJ-ou-5ur" firstAttribute="top" secondItem="xoq-L9-pgW" secondAttribute="bottom" constant="4" id="qmI-ki-PLl"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="minusButton" destination="PHd-qY-nLA" id="sfi-hU-M4Y"/>
+                <outlet property="percentLabel" destination="3UJ-ou-5ur" id="pW6-r3-vbX"/>
+                <outlet property="plusButton" destination="VXz-Ro-oAU" id="Hvr-ib-WfK"/>
+                <outlet property="progressView" destination="xoq-L9-pgW" id="Gxs-JU-764"/>
+                <outlet property="progressViewLeading" destination="Xvr-v9-bvD" id="0ht-7Q-u3B"/>
+                <outlet property="progressViewTrailing" destination="KFK-vF-i7y" id="KaT-Yt-kOg"/>
+            </connections>
+            <point key="canvasLocation" x="-83" y="-799.5"/>
+        </view>
+    </objects>
+</document>

@@ -104,6 +104,8 @@
 		B3D8C6F81CFBFD7E001EE432 /* NSUserDefaults+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D8C6F71CFBFD7E001EE432 /* NSUserDefaults+extensions.swift */; };
 		B3D8C6FA1CFC0A78001EE432 /* S3.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D8C6F91CFC0A78001EE432 /* S3.swift */; };
 		B3D9B23E1EB862540011348E /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D9B23D1EB862540011348E /* ImagePicker.swift */; };
+		B3D9B2431EB9815F0011348E /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D9B2421EB9815F0011348E /* ProgressView.swift */; };
+		B3D9B2451EB981720011348E /* ProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3D9B2441EB981720011348E /* ProgressView.xib */; };
 		B3E57BF11D9602DB00F699F1 /* AddManagerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E57BEF1D9602DB00F699F1 /* AddManagerCell.swift */; };
 		B3E60BAE1E86EFD900658D80 /* AllPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E60BAD1E86EFD900658D80 /* AllPickerDelegate.swift */; };
 		B3E634D31C91344400C0572A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E634D21C91344400C0572A /* Router.swift */; };
@@ -256,6 +258,8 @@
 		B3D8C6F91CFC0A78001EE432 /* S3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = S3.swift; sourceTree = "<group>"; };
 		B3D9B23D1EB862540011348E /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		B3D9B2411EB977A70011348E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/NewProjectCell.strings; sourceTree = "<group>"; };
+		B3D9B2421EB9815F0011348E /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		B3D9B2441EB981720011348E /* ProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressView.xib; sourceTree = "<group>"; };
 		B3E57BEF1D9602DB00F699F1 /* AddManagerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddManagerCell.swift; sourceTree = "<group>"; };
 		B3E60BAD1E86EFD900658D80 /* AllPickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllPickerDelegate.swift; sourceTree = "<group>"; };
 		B3E634D21C91344400C0572A /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -455,6 +459,8 @@
 				B3E7B12D1DA08857004FBF86 /* ImageGallery.swift */,
 				B3F611DA1EA83BEF006B0F40 /* CustomButton.swift */,
 				B3D9B23D1EB862540011348E /* ImagePicker.swift */,
+				B3D9B2421EB9815F0011348E /* ProgressView.swift */,
+				B3D9B2441EB981720011348E /* ProgressView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -741,6 +747,7 @@
 				B38323911CDC409D004D0A1C /* SFUIText-ItalicG3.otf in Resources */,
 				B3F611E11EA85F55006B0F40 /* InfoPlist.strings in Resources */,
 				B3B2B9321C90CD1600468342 /* Login.storyboard in Resources */,
+				B3D9B2451EB981720011348E /* ProgressView.xib in Resources */,
 				B383239A1CDC409D004D0A1C /* SFUIText-Semibold.otf in Resources */,
 				B38323901CDC409D004D0A1C /* SFUIText-ItalicG2.otf in Resources */,
 				B3965BE21EA086C000B4071F /* UserProfileCell.xib in Resources */,
@@ -892,6 +899,7 @@
 				B3D81ADB1E42A4810035C6E2 /* EditProjectCell.swift in Sources */,
 				B3D8C6F61CFBFC6B001EE432 /* Config.swift in Sources */,
 				B3A89D541DB8069D00211EFF /* Payments.swift in Sources */,
+				B3D9B2431EB9815F0011348E /* ProgressView.swift in Sources */,
 				B30A42161DA61FC6001FB870 /* MagicLinkViewController.swift in Sources */,
 				B37A96041E2A48610075C7A7 /* ProjectApproveCell.swift in Sources */,
 				B3E7B12C1D9F0DBC004FBF86 /* Date+ISO.swift in Sources */,
