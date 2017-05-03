@@ -17,7 +17,8 @@ extension Server {
         }
         
         var parameters: Parameters = [
-            "title": project.title!
+            "title": project.title!,
+            "progressEnabled": project.tempProgressEnabled
         ]
         if project.tempType == .client {
             parameters["type"] = "client"
@@ -195,7 +196,8 @@ extension Server {
             "projectid": project.id!,
             "title": project.title ?? "",
             "description": project.projectDescription ?? "",
-            ]
+            "progressEnabled": project.progressEnabled
+        ]
         
         if let key = project.imageKey {
             parameters["image"] = key
