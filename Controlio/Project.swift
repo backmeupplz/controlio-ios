@@ -46,6 +46,7 @@ class Project: NSObject {
     var lastPost: Post?
     
     var progressEnabled = false
+    var progress: Int = 0
     
     var canEdit: Bool = false
     var isFinished = false
@@ -126,5 +127,6 @@ class Project: NSObject {
         isFinished = json["isFinished"].bool ?? false
         
         progressEnabled = json["progressEnabled"].bool ?? false
+        progress = json["progress"].int ?? 0
     }
 }
