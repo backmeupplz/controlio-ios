@@ -45,6 +45,7 @@ class NewProjectCell: UITableViewCell {
     @IBOutlet weak var managerTextField: TextField!
     @IBOutlet weak var clientsTextField: TextField!
     @IBOutlet weak var clientsButton: UIButton!
+    @IBOutlet weak var progressBarSwitch: UISwitch!
     
     @IBOutlet weak var createButton: UIButton!
     
@@ -70,6 +71,10 @@ class NewProjectCell: UITableViewCell {
     
     @IBAction func choosePeopleTouched(_ sender: AnyObject) {
         delegate?.choosePeopleTouched()
+    }
+    
+    @IBAction func progressBarSwitchChanged(_ sender: UISwitch) {
+        project.tempProgressEnabled = sender.isOn
     }
     
     @IBAction func createTouched(_ sender: AnyObject) {
@@ -188,6 +193,7 @@ class NewProjectCell: UITableViewCell {
         initialStatusTextField.text = project.tempInitialStatus
         managerTextField.text = project.tempManagerEmail
         clientsTextField.text = project.tempClientEmails.joined(separator: ", ")
+        progressBarSwitch.isOn = project.tempProgressEnabled
     }
 }
 

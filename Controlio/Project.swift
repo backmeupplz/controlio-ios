@@ -58,6 +58,7 @@ class Project: NSObject {
     var tempInitialStatus: String?
     var tempManagerEmail: String?
     var tempClientEmails = [String]()
+    var tempProgressEnabled = false
     
     // MARK: - Functions -
 

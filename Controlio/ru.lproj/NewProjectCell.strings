@@ -13,3 +13,6 @@
 
 /* Class = "UILabel"; text = "I am a:"; ObjectID = "f4e-x0-5Gi"; */
 "f4e-x0-5Gi.text" = "Я:";
+
+/* Class = "UILabel"; text = "Progress bar enabled"; ObjectID = "xzL-44-Mrx"; */
+"xzL-44-Mrx.text" = "Включить прогресс-бар";
