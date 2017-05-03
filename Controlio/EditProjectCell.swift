@@ -33,6 +33,7 @@ class EditProjectCell: UITableViewCell {
 
     @IBOutlet weak var titleTextField: TextField!
     @IBOutlet weak var descriptionTextField: TextField!
+    @IBOutlet weak var progressBarSwitch: UISwitch!
     
     @IBOutlet weak var saveButton: UIButton!
     
@@ -52,6 +53,10 @@ class EditProjectCell: UITableViewCell {
     
     @IBAction func saveTouched(_ sender: AnyObject) {
         delegate?.save(project: project)
+    }
+    
+    @IBAction func progressBarSwitchChanged(_ sender: UISwitch) {
+        project.progressEnabled = sender.isOn
     }
     
     // MARK: - Private functions -
@@ -106,6 +111,7 @@ class EditProjectCell: UITableViewCell {
         
         titleTextField.text = project.title
         descriptionTextField.text = project.projectDescription
+        progressBarSwitch.isOn = project.progressEnabled
     }
 }
 

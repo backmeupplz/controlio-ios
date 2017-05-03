@@ -45,6 +45,8 @@ class Project: NSObject {
     var lastStatus: Post?
     var lastPost: Post?
     
+    var progressEnabled = false
+    
     var canEdit: Bool = false
     var isFinished = false
     var isOwner: Bool {
@@ -71,7 +73,8 @@ class Project: NSObject {
             title == project.title &&
             id == project.id &&
             projectDescription == project.projectDescription &&
-            tempImage == project.tempImage
+            tempImage == project.tempImage &&
+            progressEnabled == project.progressEnabled
     }
     
     func copy(zone: NSZone? = nil) -> Project {
@@ -87,6 +90,7 @@ class Project: NSObject {
         copy.clients = clients
         copy.owner = owner
         copy.invites = invites
+        copy.progressEnabled = progressEnabled
         return copy
     }
     

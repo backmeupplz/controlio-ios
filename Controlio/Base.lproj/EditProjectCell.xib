@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <array key="SFUIDisplay-Medium.otf">
             <string>SFUIDisplay-Medium</string>
+        </array>
+        <array key="SFUIDisplay-Regular.otf">
+            <string>SFUIDisplay-Regular</string>
         </array>
         <array key="SFUIText-Regular.otf">
             <string>SFUIText-Regular</string>
@@ -19,11 +22,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="251" id="KGk-i7-Jjw" customClass="EditProjectCell" customModule="Controlio" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="363" height="251"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="289" id="KGk-i7-Jjw" customClass="EditProjectCell" customModule="Controlio" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="363" height="289"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="363" height="250"/>
+                <rect key="frame" x="0.0" y="0.0" width="363" height="288"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nYG-yQ-sTB" customClass="TextField" customModule="Material">
@@ -82,7 +85,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BOl-57-x0V" userLabel="Create Button">
-                        <rect key="frame" x="30" y="181" width="303" height="54"/>
+                        <rect key="frame" x="30" y="219" width="303" height="54"/>
                         <color key="backgroundColor" red="0.01176470588" green="0.76470588240000004" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="54" id="tXY-PW-oOM"/>
@@ -98,10 +101,23 @@
                             <action selector="saveTouched:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Ek9-yQ-U1N"/>
                         </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Progress bar enabled" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O3t-Ey-w7n">
+                        <rect key="frame" x="15" y="181" width="156" height="21"/>
+                        <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="YEA-we-ztC">
+                        <rect key="frame" x="183" y="176" width="51" height="31"/>
+                        <connections>
+                            <action selector="progressBarSwitchChanged:" destination="KGk-i7-Jjw" eventType="valueChanged" id="uOV-Sg-PhF"/>
+                        </connections>
+                    </switch>
                 </subviews>
                 <constraints>
                     <constraint firstItem="oYL-QQ-Puw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="0lU-n6-HOY"/>
                     <constraint firstAttribute="trailing" secondItem="Pdz-WN-Lxt" secondAttribute="trailing" constant="20" id="8w8-wO-X47"/>
+                    <constraint firstItem="YEA-we-ztC" firstAttribute="leading" secondItem="O3t-Ey-w7n" secondAttribute="trailing" constant="12" id="AYs-L4-jnJ"/>
                     <constraint firstItem="T5r-iq-4Pj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="FFv-8s-qGR"/>
                     <constraint firstAttribute="trailing" secondItem="cba-Yy-NTn" secondAttribute="trailing" constant="35" id="FQv-wC-Gph"/>
                     <constraint firstItem="nYG-yQ-sTB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="G8p-Lf-Ptk"/>
@@ -111,12 +127,15 @@
                     <constraint firstItem="nYG-yQ-sTB" firstAttribute="top" secondItem="T5r-iq-4Pj" secondAttribute="bottom" constant="19" id="SuJ-im-Chb"/>
                     <constraint firstItem="cba-Yy-NTn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="35" id="U7N-4H-1Zz"/>
                     <constraint firstItem="Pdz-WN-Lxt" firstAttribute="top" secondItem="oYL-QQ-Puw" secondAttribute="bottom" constant="6" id="Uhh-S9-h49"/>
+                    <constraint firstItem="O3t-Ey-w7n" firstAttribute="top" secondItem="nYG-yQ-sTB" secondAttribute="bottom" constant="36" id="XXW-lg-7nW"/>
+                    <constraint firstItem="BOl-57-x0V" firstAttribute="top" secondItem="YEA-we-ztC" secondAttribute="bottom" constant="12" id="aCX-ad-gDX"/>
                     <constraint firstAttribute="trailing" secondItem="nYG-yQ-sTB" secondAttribute="trailing" constant="15" id="atx-8H-jjj"/>
                     <constraint firstItem="yZ2-3e-Rkq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="dEm-wX-Tdq"/>
+                    <constraint firstItem="YEA-we-ztC" firstAttribute="centerY" secondItem="O3t-Ey-w7n" secondAttribute="centerY" id="f5J-Qw-Kf9"/>
                     <constraint firstAttribute="trailing" secondItem="T5r-iq-4Pj" secondAttribute="trailing" constant="15" id="gHP-Xc-Bqa"/>
                     <constraint firstAttribute="trailing" secondItem="oYL-QQ-Puw" secondAttribute="trailing" constant="15" id="pt4-pT-4TE"/>
-                    <constraint firstItem="BOl-57-x0V" firstAttribute="top" secondItem="nYG-yQ-sTB" secondAttribute="bottom" constant="36" id="sLG-4N-2ti"/>
                     <constraint firstItem="BOl-57-x0V" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="sbf-c9-YF4"/>
+                    <constraint firstItem="O3t-Ey-w7n" firstAttribute="leading" secondItem="nYG-yQ-sTB" secondAttribute="leading" id="tPH-xp-TBU"/>
                     <constraint firstItem="yZ2-3e-Rkq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="tlK-ln-hQ5"/>
                 </constraints>
             </tableViewCellContentView>
@@ -125,10 +144,11 @@
                 <outlet property="descriptionTextField" destination="nYG-yQ-sTB" id="A2o-kW-Ndh"/>
                 <outlet property="photoImage" destination="oYL-QQ-Puw" id="bYX-Zr-msi"/>
                 <outlet property="photoLabel" destination="Pdz-WN-Lxt" id="IkN-Ce-XqK"/>
+                <outlet property="progressBarSwitch" destination="YEA-we-ztC" id="fgc-2j-ww5"/>
                 <outlet property="saveButton" destination="BOl-57-x0V" id="v7k-Yv-kwR"/>
                 <outlet property="titleTextField" destination="yZ2-3e-Rkq" id="rFd-YZ-enC"/>
             </connections>
-            <point key="canvasLocation" x="5.5" y="157.5"/>
+            <point key="canvasLocation" x="5.5" y="277.5"/>
         </tableViewCell>
     </objects>
     <resources>
