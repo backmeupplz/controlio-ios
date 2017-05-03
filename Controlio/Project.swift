@@ -124,5 +124,7 @@ class Project: NSObject {
         
         canEdit = json["canEdit"].bool ?? false
         isFinished = json["isFinished"].bool ?? false
+        
+        progressEnabled = json["progressEnabled"].bool ?? false
     }
 }
