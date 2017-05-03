@@ -52,8 +52,8 @@ class Router {
         show(vc: vc)
     }
     
-    func show(project: Project) {
-        show(vc: ProjectController(with: project))
+    func show(project: Project, delegate: ProjectControllerDelegate? = nil) {
+        show(vc: ProjectController(with: project, delegate: delegate))
     }
     
     func showEdit(of project: Project) {

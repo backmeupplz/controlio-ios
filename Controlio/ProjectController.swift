@@ -15,10 +15,15 @@ import AsyncDisplayKit
 import IQKeyboardManagerSwift
 import Alamofire
 
+protocol ProjectControllerDelegate: class {
+    func didUpdate(project: Project)
+}
+
 class ProjectController: ASViewController<ASDisplayNode>, DZNEmptyDataSetDelegate {
     
     // MARK: - Variables -
     
+    var delegate: ProjectControllerDelegate?
     var project: Project!
     var posts = [Post]()
     
@@ -43,11 +48,12 @@ class ProjectController: ASViewController<ASDisplayNode>, DZNEmptyDataSetDelegat
     
     // MARK: - View Controller Life Cycle -
     
-    init(with project: Project) {
+    init(with project: Project, delegate: ProjectControllerDelegate? = nil) {
         let tableNode = ASTableNode(style: .plain)
         
         super.init(node: tableNode)
         
+        self.delegate = delegate
         self.project = project
         self.tableNode = tableNode
         self.tableNode.dataSource = self
@@ -572,6 +578,7 @@ extension ProjectController: ProgressViewDelegate {
         { error in
             if error == nil {
                 self.project.progress = value
+                self.delegate?.didUpdate(project: self.project)
             }
         }
     }

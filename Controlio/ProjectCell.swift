@@ -32,6 +32,7 @@ class ProjectCell: ASCellNode {
     fileprivate var dateNode: ASTextNode!
     fileprivate var titleNode: ASTextNode!
     fileprivate var descriptionNode: ASTextNode!
+    fileprivate var progressNode: ASDisplayNode!
     
     // MARK: - Node life cycle -
     
@@ -56,6 +57,12 @@ class ProjectCell: ASCellNode {
         if project.imageKey != nil {
             addSubnode(imageNode)
         }
+        if project.progressEnabled {
+            progressNode = ASDisplayNode()
+            progressNode.backgroundColor = Color.controlioGreen
+            progressNode.alpha = 0.7
+            addSubnode(progressNode)
+        }
     }
     
     override func didLoad() {
@@ -65,8 +72,16 @@ class ProjectCell: ASCellNode {
     }
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
+        if project.progressEnabled {
+            var padding: CGFloat = 50
+            if project.imageKey != nil {
+                padding += 75
+            }
+            progressNode.style.preferredSize = CGSize(width: (constrainedSize.max.width - padding) * CGFloat(project.progress)/100.0, height: 1.0)
+        }
         // [Text nodes] vertical stack
-        let textNodes: [ASTextNode] =
+        let textNodes: [ASDisplayNode] = project.progressEnabled ?
+            [progressNode, dateNode, titleNode, descriptionNode] :
             [dateNode, titleNode, descriptionNode]
         let textStack = ASStackLayoutSpec(direction: .vertical,
                                           spacing: 5,

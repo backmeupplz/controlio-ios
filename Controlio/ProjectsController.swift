@@ -310,9 +310,10 @@ extension ProjectsController: ASTableDelegate {
                 Router(self).show(project: project)
             }
         } else {
-            Router(self).show(project: projects[indexPath.row])
+            Router(self).show(project: projects[indexPath.row], delegate: self)
         }
     }
+    
     func shouldBatchFetch(for tableNode: ASTableNode) -> Bool {
         return needsMoreProjects
     }
@@ -395,3 +396,10 @@ extension ProjectsController: UISearchBarDelegate {
     }
 }
 
+extension ProjectsController: ProjectControllerDelegate {
+    func didUpdate(project: Project) {
+        if let index = projects.index(of: project) {
+            tableNode.reloadRows(at: [IndexPath(row: index, section: 1)], with: .fade)
+        }
+    }
+}
