@@ -53,39 +53,47 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3UJ-ou-5ur">
-                    <rect key="frame" x="160" y="20" width="30" height="21"/>
+                    <rect key="frame" x="160.5" y="20" width="29.5" height="21"/>
                     <fontDescription key="fontDescription" name="SFUIDisplay-Light" family="SF UI Display" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xoq-L9-pgW">
-                    <rect key="frame" x="54" y="14" width="242" height="2"/>
+                    <rect key="frame" x="12" y="15" width="326" height="2"/>
                     <color key="progressTintColor" red="0.01176470588" green="0.76470588240000004" blue="0.52549019610000003" alpha="1" colorSpace="calibratedRGB"/>
                 </progressView>
+                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" continuous="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JuI-5Z-HLr">
+                    <rect key="frame" x="56" y="1" width="238" height="31"/>
+                    <color key="minimumTrackTintColor" red="0.01176470588" green="0.76470588240000004" blue="0.52549019610000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <action selector="sliderChanged:" destination="LB1-PA-Ovt" eventType="valueChanged" id="oVF-kE-PT2"/>
+                    </connections>
+                </slider>
             </subviews>
             <color key="backgroundColor" red="0.95686274509803915" green="0.96470588235294119" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="3UJ-ou-5ur" firstAttribute="centerX" secondItem="LB1-PA-Ovt" secondAttribute="centerX" id="3PO-7n-THO"/>
+                <constraint firstItem="VXz-Ro-oAU" firstAttribute="leading" secondItem="JuI-5Z-HLr" secondAttribute="trailing" constant="12" id="AcJ-4f-7sh"/>
+                <constraint firstItem="JuI-5Z-HLr" firstAttribute="centerY" secondItem="xoq-L9-pgW" secondAttribute="centerY" id="AwA-KL-yzs"/>
                 <constraint firstAttribute="bottom" secondItem="3UJ-ou-5ur" secondAttribute="bottom" id="CEC-d1-wwg"/>
-                <constraint firstItem="VXz-Ro-oAU" firstAttribute="leading" secondItem="xoq-L9-pgW" secondAttribute="trailing" priority="750" constant="8" id="IHB-i7-Oi3"/>
-                <constraint firstAttribute="trailing" secondItem="xoq-L9-pgW" secondAttribute="trailing" priority="500" constant="12" id="KFK-vF-i7y"/>
+                <constraint firstAttribute="trailing" secondItem="xoq-L9-pgW" secondAttribute="trailing" constant="12" id="KFK-vF-i7y"/>
+                <constraint firstItem="JuI-5Z-HLr" firstAttribute="leading" secondItem="PHd-qY-nLA" secondAttribute="trailing" constant="12" id="Kby-D2-btq"/>
                 <constraint firstItem="PHd-qY-nLA" firstAttribute="top" secondItem="LB1-PA-Ovt" secondAttribute="top" id="Tai-sY-xB9"/>
-                <constraint firstItem="xoq-L9-pgW" firstAttribute="leading" secondItem="LB1-PA-Ovt" secondAttribute="leading" priority="500" constant="12" id="Xvr-v9-bvD"/>
+                <constraint firstItem="xoq-L9-pgW" firstAttribute="leading" secondItem="LB1-PA-Ovt" secondAttribute="leading" constant="12" id="Xvr-v9-bvD"/>
                 <constraint firstItem="VXz-Ro-oAU" firstAttribute="top" secondItem="LB1-PA-Ovt" secondAttribute="top" id="bGn-MV-Az6"/>
                 <constraint firstAttribute="trailing" secondItem="VXz-Ro-oAU" secondAttribute="trailing" id="c8Y-gN-QG4"/>
-                <constraint firstItem="xoq-L9-pgW" firstAttribute="leading" secondItem="PHd-qY-nLA" secondAttribute="trailing" priority="750" constant="8" id="gdg-pJ-v5r"/>
-                <constraint firstItem="xoq-L9-pgW" firstAttribute="top" secondItem="LB1-PA-Ovt" secondAttribute="top" constant="14" id="mwB-Gy-Fn0"/>
+                <constraint firstItem="xoq-L9-pgW" firstAttribute="top" secondItem="LB1-PA-Ovt" secondAttribute="top" constant="15" id="mwB-Gy-Fn0"/>
                 <constraint firstItem="PHd-qY-nLA" firstAttribute="leading" secondItem="LB1-PA-Ovt" secondAttribute="leading" id="nNs-EG-bir"/>
-                <constraint firstItem="3UJ-ou-5ur" firstAttribute="top" secondItem="xoq-L9-pgW" secondAttribute="bottom" constant="4" id="qmI-ki-PLl"/>
+                <constraint firstItem="3UJ-ou-5ur" firstAttribute="top" secondItem="xoq-L9-pgW" secondAttribute="bottom" constant="3" id="qmI-ki-PLl"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="minusButton" destination="PHd-qY-nLA" id="sfi-hU-M4Y"/>
                 <outlet property="percentLabel" destination="3UJ-ou-5ur" id="pW6-r3-vbX"/>
+                <outlet property="percentLabelTop" destination="qmI-ki-PLl" id="U6O-LS-YOI"/>
                 <outlet property="plusButton" destination="VXz-Ro-oAU" id="Hvr-ib-WfK"/>
                 <outlet property="progressView" destination="xoq-L9-pgW" id="Gxs-JU-764"/>
-                <outlet property="progressViewLeading" destination="Xvr-v9-bvD" id="0ht-7Q-u3B"/>
-                <outlet property="progressViewTrailing" destination="KFK-vF-i7y" id="KaT-Yt-kOg"/>
+                <outlet property="slider" destination="JuI-5Z-HLr" id="Nk4-IF-sZb"/>
             </connections>
             <point key="canvasLocation" x="-83" y="-799.5"/>
         </view>

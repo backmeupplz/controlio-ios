@@ -27,13 +27,13 @@ class ProgressView: UIView {
     // MARK: - Outlets -
     
     @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var slider: UISlider!
     
     @IBOutlet fileprivate weak var plusButton: UIButton!
     @IBOutlet fileprivate weak var minusButton: UIButton!
     @IBOutlet fileprivate weak var percentLabel: UILabel!
     
-    @IBOutlet fileprivate weak var progressViewLeading: NSLayoutConstraint!
-    @IBOutlet fileprivate weak var progressViewTrailing: NSLayoutConstraint!
+    @IBOutlet weak var percentLabelTop: NSLayoutConstraint!
     
     // MARK: - Actions -
     
@@ -69,15 +69,25 @@ class ProgressView: UIView {
         delegate?.progressViewChanged(value: progress)
     }
     
+    @IBAction func sliderChanged(_ sender: UISlider) {
+        progress = Int(sender.value * 100)
+        delegate?.progressViewChanged(value: progress)
+    }
+    
     // MARK: - Private functions -
     
     fileprivate func configure() {
+        height = canEdit ? 58.0 : 41.0
         progressView.progress = Float(progress)/100.0
+        slider.value = Float(progress)/100.0
         percentLabel.text = "\(progress)%"
         minusButton.isHidden = !canEdit
         plusButton.isHidden = !canEdit
-        progressViewLeading.priority = canEdit ? 500 : 800
-        progressViewTrailing.priority = canEdit ? 500 : 800
+        
+        progressView.isHidden = canEdit
+        slider.isHidden = !canEdit
+        
+        percentLabelTop.constant = canEdit ? 20 : 3
     }
     
     @objc fileprivate func incrementProgress() {
