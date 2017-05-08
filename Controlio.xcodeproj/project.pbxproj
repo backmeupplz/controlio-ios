@@ -165,6 +165,7 @@
 		B37630521CE28741004FE1B7 /* AttachmentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttachmentView.xib; sourceTree = "<group>"; };
 		B37630541CE28CA4004FE1B7 /* AttachmentContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentContainerView.swift; sourceTree = "<group>"; };
 		B37630571CE28E9B004FE1B7 /* AttachmentWrapperView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentWrapperView.swift; sourceTree = "<group>"; };
+		B37919371EC0155600FF97B7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/EditProjectCell.strings; sourceTree = "<group>"; };
 		B37A96021E2A48610075C7A7 /* ProjectApproveCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectApproveCell.swift; sourceTree = "<group>"; };
 		B37F10E11D962F2500CAA8D4 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		B37F10E31D962F9A00CAA8D4 /* EditProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileCell.swift; sourceTree = "<group>"; };
@@ -213,7 +214,6 @@
 		B3965BE31EA086C000B4071F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/UserProfileCell.xib; sourceTree = "<group>"; };
 		B3965BE61EA086C300B4071F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/UserProfileCell.strings; sourceTree = "<group>"; };
 		B3965BE81EA0870B00B4071F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/EditProjectCell.xib; sourceTree = "<group>"; };
-		B3965BEB1EA0870F00B4071F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/EditProjectCell.strings; sourceTree = "<group>"; };
 		B3965BEC1EA0886B00B4071F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B39E06531E331EEF003B5910 /* Invite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Invite.swift; sourceTree = "<group>"; };
 		B3A178D61DB2D12500C0E311 /* PlansController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlansController.swift; sourceTree = "<group>"; };
@@ -957,7 +957,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B3965BE81EA0870B00B4071F /* Base */,
-				B3965BEB1EA0870F00B4071F /* ru */,
+				B37919371EC0155600FF97B7 /* ru */,
 			);
 			name = EditProjectCell.xib;
 			sourceTree = "<group>";

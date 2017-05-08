@@ -1,4 +1,7 @@
 
+/* Class = "UILabel"; text = "Progress bar enabled"; ObjectID = "O3t-Ey-w7n"; */
+"O3t-Ey-w7n.text" = "Включить прогресс-бар";
+
 /* Class = "UIButton"; normalTitle = "Save"; ObjectID = "BOl-57-x0V"; */
 "BOl-57-x0V.normalTitle" = "Сохранить";
 
