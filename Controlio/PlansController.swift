@@ -201,11 +201,11 @@ class PlansController: UITableViewController, MFMailComposeViewControllerDelegat
         case .free:
             message = NSLocalizedString("Free", comment: "Plan name")
         case .twenty:
-            message = NSLocalizedString("Twenty", comment: "Plan name")
+            message = NSLocalizedString("Five", comment: "Plan name")
         case .fifty:
-            message = NSLocalizedString("Fifty", comment: "Plan name")
+            message = NSLocalizedString("Twenty", comment: "Plan name")
         case .hundred:
-            message = NSLocalizedString("Hundred", comment: "Plan name")
+            message = NSLocalizedString("Fifty", comment: "Plan name")
         }
         message = String(format: NSLocalizedString("Would you like to switch to \"%@\" plan?", comment: "Alert message stub for purchase"), message)
         let alert = UIAlertController(title: NSLocalizedString("Confirmation", comment: "Alert title for purchase"), message: message, preferredStyle: .alert)

@@ -9,10 +9,10 @@
 "5dN-8p-3l6.text" = "Увеличить";
 
 /* Class = "UILabel"; text = "$50/month"; ObjectID = "6PC-dJ-rUq"; */
-"6PC-dJ-rUq.text" = "$50/месяц";
+"6PC-dJ-rUq.text" = "$19.99/месяц";
 
 /* Class = "UILabel"; text = "$20/month"; ObjectID = "71v-JR-hAo"; */
-"71v-JR-hAo.text" = "$20/месяц";
+"71v-JR-hAo.text" = "$4.99/месяц";
 
 /* Class = "UIButton"; normalTitle = "If you need more than 50 projects, please contact us at: sales@controlio.co\nAnd don‘t worry, you can upgrade, downgrade or cancel your plan at any time!"; ObjectID = "9MY-iU-Qaj"; */
 "9MY-iU-Qaj.normalTitle" = "Если вам нужно больше 50 проектов, напишите нам на sales@controlio.co\nВы можете увеличить или уменьшить свой план в любое время!";
@@ -33,7 +33,7 @@
 "L4I-p9-PDw.text" = "20 проектов/месяц";
 
 /* Class = "UILabel"; text = "$100/month"; ObjectID = "LHQ-iy-khC"; */
-"LHQ-iy-khC.text" = "$100/месяц";
+"LHQ-iy-khC.text" = "$49.99/месяц";
 
 /* Class = "UINavigationItem"; title = "Plans"; ObjectID = "LbP-m7-f9l"; */
 "LbP-m7-f9l.title" = "Планы";
