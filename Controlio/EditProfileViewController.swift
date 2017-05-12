@@ -112,6 +112,8 @@ class EditProfileViewController: UITableViewController, EditProfileCellDelegate,
                             self.user.name = name
                             self.user.phone = phone
                             self.user.profileImageKey = key
+                            self.newUser = self.user.copy()
+                            
                             self.snackbarController?.show(text: "Your profile has been updated")
                         }
                     }
