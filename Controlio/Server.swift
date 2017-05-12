@@ -80,6 +80,7 @@ class Server: NSObject {
     
     @discardableResult class func request(urlAddition: String, method: HTTPMethod, parameters: [String:Any]? = nil, needsToken: Bool, completion: @escaping (JSON?, NSError?)->()) -> DataRequest {
         return Alamofire.request(apiUrl + urlAddition, method: method, parameters: parameters, encoding: method == .get ? URLEncoding.default : JSONEncoding.default, headers: headers(needsToken: needsToken))
+            .debugLog()
             .responseJSON { response in
                 DispatchQueue.main.async {
                     if let errorString = response.result.error?.localizedDescription {
@@ -97,6 +98,7 @@ class Server: NSObject {
     
     class func requestData(urlAddition: String, method: HTTPMethod, parameters: [String:Any]? = nil, needsToken: Bool, completion: @escaping (DefaultDataResponse?, NSError?)->()) {
         Alamofire.request(apiUrl + urlAddition, method: method, parameters: parameters, encoding: method == .get ? URLEncoding.default : JSONEncoding.default, headers: headers(needsToken: needsToken))
+            .debugLog()
             .response { response in
                 DispatchQueue.main.async {
                     if let errorString = response.error?.localizedDescription {

@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let bundle = Bundle.main.bundleIdentifier {
                 UserDefaults.standard.removePersistentDomain(forName: bundle)
             }
-            UIView.setAnimationsEnabled(false)
+//            UIView.setAnimationsEnabled(false)
             #if DEBUG
             SDStatusBarManager.sharedInstance().enableOverrides()
             #endif

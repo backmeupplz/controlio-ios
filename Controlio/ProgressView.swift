@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Material
 
 protocol ProgressViewDelegate: class {
     func progressViewChanged(value: Int)
@@ -77,6 +78,8 @@ class ProgressView: UIView {
     // MARK: - Private functions -
     
     fileprivate func configure() {
+        backgroundColor = Color.controlioTableBackground
+        
         height = canEdit ? 58.0 : 41.0
         progressView.progress = Float(progress)/100.0
         slider.value = Float(progress)/100.0

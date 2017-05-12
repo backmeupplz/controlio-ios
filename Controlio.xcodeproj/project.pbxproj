@@ -74,6 +74,7 @@
 		B3A96D411EB2B1C700F58A9F /* Server+Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A96D401EB2B1C700F58A9F /* Server+Posts.swift */; };
 		B3A96D431EB2B20400F58A9F /* Server+Payments.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A96D421EB2B20400F58A9F /* Server+Payments.swift */; };
 		B3AA2F911C9110EF00FE7E54 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AA2F901C9110EF00FE7E54 /* LoginViewController.swift */; };
+		B3ACDF8D1EC58478009C9137 /* Alamofire+Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ACDF8C1EC58478009C9137 /* Alamofire+Log.swift */; };
 		B3B2B92D1C90CD1600468342 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B2B92C1C90CD1600468342 /* AppDelegate.swift */; };
 		B3B2B9321C90CD1600468342 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3B2B9301C90CD1600468342 /* Login.storyboard */; };
 		B3B2B9341C90CD1600468342 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3B2B9331C90CD1600468342 /* Assets.xcassets */; };
@@ -226,6 +227,7 @@
 		B3A96D401EB2B1C700F58A9F /* Server+Posts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Server+Posts.swift"; sourceTree = "<group>"; };
 		B3A96D421EB2B20400F58A9F /* Server+Payments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Server+Payments.swift"; sourceTree = "<group>"; };
 		B3AA2F901C9110EF00FE7E54 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B3ACDF8C1EC58478009C9137 /* Alamofire+Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire+Log.swift"; sourceTree = "<group>"; };
 		B3B2B9291C90CD1600468342 /* Controlio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Controlio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3B2B92C1C90CD1600468342 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3B2B9311C90CD1600468342 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
@@ -481,6 +483,7 @@
 				B3C35B111DB9E50C00F941F8 /* FeatureList.swift */,
 				B3702E501E93135400D95323 /* Notifications.swift */,
 				B3F65BA31E99FE5D008A20E6 /* Appearance.swift */,
+				B3ACDF8C1EC58478009C9137 /* Alamofire+Log.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -900,6 +903,7 @@
 				B3D8C6F61CFBFC6B001EE432 /* Config.swift in Sources */,
 				B3A89D541DB8069D00211EFF /* Payments.swift in Sources */,
 				B3D9B2431EB9815F0011348E /* ProgressView.swift in Sources */,
+				B3ACDF8D1EC58478009C9137 /* Alamofire+Log.swift in Sources */,
 				B30A42161DA61FC6001FB870 /* MagicLinkViewController.swift in Sources */,
 				B37A96041E2A48610075C7A7 /* ProjectApproveCell.swift in Sources */,
 				B3E7B12C1D9F0DBC004FBF86 /* Date+ISO.swift in Sources */,

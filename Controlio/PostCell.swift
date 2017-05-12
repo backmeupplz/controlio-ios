@@ -203,7 +203,7 @@ class PostCell: ASCellNode {
     fileprivate func createTextNode() {
         textNode = ASTextNode()
         
-        var text: String = post.text
+        var text: String = post.text ?? ""
         if post.type == .status {
             text = String(format: NSLocalizedString("Status changed: %@", comment: "post cell status text"), text)
         }

@@ -22,7 +22,7 @@ class Post: NSObject {
     var id: String!
     var type: PostType = .post
     
-    var text: String!
+    var text: String?
     var dateCreated: Date!
     var author: User!
     var attachments: [String]!

@@ -25,4 +25,5 @@ target 'Controlio' do
     pod 'DWURecyclingAlert', :configurations => ['Debug']
     pod 'GDPerformanceView-Swift', '~> 1.2.0', :configurations => ['Debug']
     pod 'IQKeyboardManagerSwift'
+    pod 'KeyboardObserver', '~>1.0.0'
 end

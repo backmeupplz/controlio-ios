@@ -14,6 +14,7 @@ import NohanaImagePicker
 import AsyncDisplayKit
 import IQKeyboardManagerSwift
 import Alamofire
+import KeyboardObserver
 
 protocol ProjectControllerDelegate: class {
     func didUpdate(project: Project)
@@ -27,7 +28,7 @@ class ProjectController: ASViewController<ASDisplayNode>, DZNEmptyDataSetDelegat
     var project: Project!
     var posts = [Post]()
     
-    // MARK: - Variables -
+    // MARK: - Private variables -
     
     fileprivate var tableNode: ASTableNode!
     
@@ -45,6 +46,8 @@ class ProjectController: ASViewController<ASDisplayNode>, DZNEmptyDataSetDelegat
     fileprivate var refreshControl: UIRefreshControl?
     
     fileprivate var progressRequest: DataRequest?
+    
+    fileprivate let keyboard = KeyboardObserver()
     
     // MARK: - View Controller Life Cycle -
     
@@ -76,24 +79,27 @@ class ProjectController: ASViewController<ASDisplayNode>, DZNEmptyDataSetDelegat
         setupInput()
         setupProgressBar()
         loadInitialPosts()
+        setupKeyboard()
         edgesForExtendedLayout = []
-        IQKeyboardManager.sharedManager().enable = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         configure()
-        subcribeForNotifications()
+        IQKeyboardManager.sharedManager().enable = false
+        
+        keyboard.enabled = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        unsubscribe()
         hideInput()
         view.endEditing(true)
         IQKeyboardManager.sharedManager().enable = true
+        
+        keyboard.enabled = false
     }
     
     // MARK: - Private Functions -
@@ -238,6 +244,30 @@ class ProjectController: ASViewController<ASDisplayNode>, DZNEmptyDataSetDelegat
         return (completedKeys, imagesToUpload)
     }
     
+    fileprivate func setupKeyboard() {
+        keyboard.observe
+        { [weak self] event in
+            guard let s = self else { return }
+            switch event.type {
+            case .willShow, .willHide, .willChangeFrame:
+                let distance = UIScreen.main.bounds.height - event.keyboardFrameEnd.origin.y
+                let bottom = distance >= s.bottomLayoutGuide.length ? distance : s.bottomLayoutGuide.length
+                
+                s.input?.changeBottomSpacing(bottom)
+                
+                s.setBottomScrollInset((s.input?.frame.height ?? 0.0) + bottom)
+                
+                UIView.animate(withDuration: event.duration, delay: 0.0, options: [event.options], animations:
+                { [weak self] () -> Void in
+                    guard let s = self else { return }
+                    s.input?.superview?.layoutIfNeeded()
+                }, completion: nil)
+            default:
+                break
+            }
+        }
+    }
+    
     // MARK: - Pagination -
     
     @objc fileprivate func loadInitialPosts() {
@@ -285,41 +315,38 @@ class ProjectController: ASViewController<ASDisplayNode>, DZNEmptyDataSetDelegat
     
     // MARK: - Notifications -
     
-    fileprivate func subcribeForNotifications() {
-        subscribe(to: [
-            .UIKeyboardWillShow: #selector(ProjectController.keyboardWillShow(_:)),
-            .UIKeyboardWillHide: #selector(ProjectController.keyboardWillHide(_:))
-        ])
-    }
-    
-    @objc fileprivate func keyboardWillShow(_ notification: Notification) {
-        let userInfo = (notification as NSNotification).userInfo!
-        let keyboardHeight = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height
-        let options = UIViewAnimationOptions(rawValue: UInt((userInfo[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).uintValue))
-        let duration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
-        
-        input?.changeBottomSpacing(keyboardHeight)
-        UIView.animate(withDuration: duration,
-                                   delay: 0,
-                                   options: options,
-                                   animations: { 
-                                    self.input?.layoutIfNeeded()
-            }) { finished in }
-    }
-    
-    @objc fileprivate func keyboardWillHide(_ notification: Notification) {
-        let userInfo = (notification as NSNotification).userInfo!
-        let options = UIViewAnimationOptions(rawValue: UInt((userInfo[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).uintValue))
-        let duration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
-        
-        input?.changeBottomSpacing(0)
-        UIView.animate(withDuration: duration,
-                                   delay: 0,
-                                   options: options,
-                                   animations: {
-                                    self.input?.layoutIfNeeded()
-        }) { finished in }
-    }
+//    @objc fileprivate func keyboardWillShow(_ notification: Notification) {
+//        let userInfo = (notification as NSNotification).userInfo!
+//        let keyboardHeight = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height
+//        
+//        let curveNumber = (userInfo[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).intValue
+//        let curve = UIViewAnimationCurve(rawValue: curveNumber)!
+//        
+//        let options = UIViewAnimationOptions(rawValue: curve)
+//        let duration = TimeInterval(userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber)
+//        
+//        input?.changeBottomSpacing(keyboardHeight)
+//        UIView.animate(withDuration: duration,
+//                                   delay: 0,
+//                                   options: options,
+//                                   animations: { 
+//                                    self.input?.layoutIfNeeded()
+//            }) { finished in }
+//    }
+//    
+//    @objc fileprivate func keyboardWillHide(_ notification: Notification) {
+//        let userInfo = (notification as NSNotification).userInfo!
+//        let options = UIViewAnimationOptions(rawValue: UInt((userInfo[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).uintValue))
+//        let duration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
+//        
+//        input?.changeBottomSpacing(0)
+//        UIView.animate(withDuration: duration,
+//                                   delay: 0,
+//                                   options: options,
+//                                   animations: {
+//                                    self.input?.layoutIfNeeded()
+//        }) { finished in }
+//    }
     
     // MARK: - Status Bar -
     
@@ -472,7 +499,7 @@ extension ProjectController: InputViewDelegate {
     func editPost(post: Post, hud: MBProgressHUD){
         hud.mode = .indeterminate
         hud.detailsLabel.text = NSLocalizedString("Uploading data", comment: "edit post upload message")
-        Server.editPost(project: self.project, post: post, text: post.text, attachments: post.attachments)
+        Server.editPost(project: self.project, post: post, text: post.text ?? "", attachments: post.attachments)
         { error in
             hud.hide(animated: true)
             if let error = error {
