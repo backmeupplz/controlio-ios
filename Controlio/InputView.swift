@@ -9,7 +9,6 @@
 import UIKit
 import SnapKit
 import SlackTextViewController
-import CLTokenInputView
 
 protocol InputViewDelegate: class {
     func openPicker(with delegate: AllPickerDelegate, sender: UIView)

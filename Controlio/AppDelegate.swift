@@ -9,7 +9,6 @@
 import UIKit
 import UserNotifications
 import MBProgressHUD
-import CLTokenInputView
 import Stripe
 import Material
 import IQKeyboardManagerSwift
