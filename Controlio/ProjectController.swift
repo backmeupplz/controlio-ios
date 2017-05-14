@@ -181,7 +181,7 @@ class ProjectController: ASViewController<ASDisplayNode>, DZNEmptyDataSetDelegat
         if project.progressEnabled {
             progressView = R.nib.progressView.firstView(owner: nil)
             progressView?.delegate = self
-            progressView?.canEdit = project.canEdit
+            progressView?.canEdit = project.canEdit && !project.isFinished
             progressView?.progress = project.progress
             tableNode.view.tableHeaderView = progressView
         } else {
@@ -268,6 +268,36 @@ class ProjectController: ASViewController<ASDisplayNode>, DZNEmptyDataSetDelegat
         }
     }
     
+    fileprivate func suggestFinishing() {
+        let alert = UIAlertController(title: NSLocalizedString("Project progress is at 100%", comment: "Finish project suggestion alert title"), message: NSLocalizedString("Would you like to mark it as finished?", comment: "Finish project suggestion alert comment"), preferredStyle: .alert)
+        alert.add(action: NSLocalizedString("Yes", comment: "Finish project suggestion alert button"))
+        {
+            self.finishProject()
+        }
+        alert.add(action: NSLocalizedString("No", comment: "Finish project suggestion alert button"), style: .cancel)
+        {
+            // Do nothing
+        }
+        present(alert, animated: true) {}
+    }
+    
+    fileprivate func finishProject() {
+        guard let hud = MBProgressHUD.show() else { return }
+        hud.detailsLabel.text = NSLocalizedString("Finishing the project...", comment: "finish project hud titile")
+        
+        Server.toggleFinished(for: project)
+        { error in
+            hud.hide(animated: true)
+            if let error = error {
+                self.snackbarController?.show(error: error.domain)
+            } else {
+                let _ = self.navigationController?.popToRootViewController(animated: true)
+                self.snackbarController?.show(text: NSLocalizedString("Project has been finished", comment: "finish project success message"))
+                self.post(notification: .projectArchivedChanged)
+            }
+        }
+    }
+    
     // MARK: - Pagination -
     
     @objc fileprivate func loadInitialPosts() {
@@ -312,42 +342,7 @@ class ProjectController: ASViewController<ASDisplayNode>, DZNEmptyDataSetDelegat
         
         tableNode.insertRows(at: indexPaths, with: .fade)
     }
-    
-    // MARK: - Notifications -
-    
-//    @objc fileprivate func keyboardWillShow(_ notification: Notification) {
-//        let userInfo = (notification as NSNotification).userInfo!
-//        let keyboardHeight = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height
-//        
-//        let curveNumber = (userInfo[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).intValue
-//        let curve = UIViewAnimationCurve(rawValue: curveNumber)!
-//        
-//        let options = UIViewAnimationOptions(rawValue: curve)
-//        let duration = TimeInterval(userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber)
-//        
-//        input?.changeBottomSpacing(keyboardHeight)
-//        UIView.animate(withDuration: duration,
-//                                   delay: 0,
-//                                   options: options,
-//                                   animations: { 
-//                                    self.input?.layoutIfNeeded()
-//            }) { finished in }
-//    }
-//    
-//    @objc fileprivate func keyboardWillHide(_ notification: Notification) {
-//        let userInfo = (notification as NSNotification).userInfo!
-//        let options = UIViewAnimationOptions(rawValue: UInt((userInfo[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).uintValue))
-//        let duration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
-//        
-//        input?.changeBottomSpacing(0)
-//        UIView.animate(withDuration: duration,
-//                                   delay: 0,
-//                                   options: options,
-//                                   animations: {
-//                                    self.input?.layoutIfNeeded()
-//        }) { finished in }
-//    }
-    
+
     // MARK: - Status Bar -
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
@@ -606,6 +601,9 @@ extension ProjectController: ProgressViewDelegate {
             if error == nil {
                 self.project.progress = value
                 self.delegate?.didUpdate(project: self.project)
+                if value == 100 {
+                    self.suggestFinishing()
+                }
             }
         }
     }
