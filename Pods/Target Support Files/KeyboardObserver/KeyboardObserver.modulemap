@@ -1,0 +1,6 @@
+framework module KeyboardObserver {
+  umbrella header "KeyboardObserver-umbrella.h"
+
+  export *
+  module * { export * }
+}

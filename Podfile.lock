@@ -1,0 +1,148 @@
+PODS:
+  - Alamofire (4.4.0)
+  - AWSCore (2.3.6)
+  - AWSS3 (2.3.6):
+    - AWSCore (= 2.3.6)
+  - Bolts (1.8.4):
+    - Bolts/AppLinks (= 1.8.4)
+    - Bolts/Tasks (= 1.8.4)
+  - Bolts/AppLinks (1.8.4):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.8.4)
+  - DWURecyclingAlert (1.0.2)
+  - DZNEmptyDataSet (1.8.1)
+  - FacebookCore (0.2.0):
+    - Bolts (~> 1.8)
+    - FBSDKCoreKit (~> 4.15)
+  - FacebookLogin (0.2.0):
+    - Bolts (~> 1.8)
+    - FacebookCore (~> 0.2)
+    - FBSDKCoreKit (~> 4.15)
+    - FBSDKLoginKit (~> 4.15)
+  - FBSDKCoreKit (4.22.0):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.22.0):
+    - FBSDKCoreKit
+  - GDPerformanceView-Swift (1.2.0)
+  - IQKeyboardManagerSwift (4.0.9)
+  - KeyboardObserver (1.0.1)
+  - Material (2.6.3):
+    - Material/Core (= 2.6.3)
+  - Material/Core (2.6.3)
+  - MBProgressHUD (1.0.0)
+  - NohanaImagePicker (0.7.1)
+  - PINCache (3.0.1-beta.4):
+    - PINCache/Arc-exception-safe (= 3.0.1-beta.4)
+    - PINCache/Core (= 3.0.1-beta.4)
+  - PINCache/Arc-exception-safe (3.0.1-beta.4):
+    - PINCache/Core
+  - PINCache/Core (3.0.1-beta.4):
+    - PINOperation (= 1.0.3)
+  - PINOperation (1.0.3)
+  - PINRemoteImage/Core (3.0.0-beta.9):
+    - PINOperation
+  - PINRemoteImage/iOS (3.0.0-beta.9):
+    - PINRemoteImage/Core
+  - PINRemoteImage/PINCache (3.0.0-beta.9):
+    - PINCache (= 3.0.1-beta.4)
+    - PINRemoteImage/Core
+  - R.swift (3.2.0):
+    - R.swift.Library (~> 3.0.2)
+  - R.swift.Library (3.0.2)
+  - SDWebImage (4.0.0):
+    - SDWebImage/Core (= 4.0.0)
+  - SDWebImage/Core (4.0.0)
+  - SimulatorStatusMagic (1.9.4)
+  - SKPhotoBrowser (3.1.0)
+  - SlackTextViewController (1.9.5)
+  - SnapKit (3.2.0)
+  - Stripe (10.0.1)
+  - SwiftyJSON (3.1.4)
+  - Texture (2.3.1):
+    - Texture/PINRemoteImage (= 2.3.1)
+  - Texture/Core (2.3.1)
+  - Texture/PINRemoteImage (2.3.1):
+    - PINRemoteImage/iOS (= 3.0.0-beta.9)
+    - PINRemoteImage/PINCache
+    - Texture/Core
+  - UITextField+Shake (1.1.2)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.0)
+  - AWSS3 (~> 2.3.3)
+  - DWURecyclingAlert
+  - DZNEmptyDataSet
+  - FacebookCore
+  - FacebookLogin
+  - GDPerformanceView-Swift (~> 1.2.0)
+  - IQKeyboardManagerSwift
+  - KeyboardObserver (~> 1.0.0)
+  - Material (~> 2.0)
+  - MBProgressHUD (~> 1.0.0)
+  - NohanaImagePicker (from `https://github.com/backmeupplz/NohanaImagePicker`)
+  - R.swift
+  - SDWebImage (~> 4.0)
+  - SimulatorStatusMagic
+  - SKPhotoBrowser (from `https://github.com/backmeupplz/SKPhotoBrowser.git`, branch `swift3`)
+  - SlackTextViewController
+  - SnapKit (~> 3.0)
+  - Stripe (from `https://github.com/stripe/stripe-ios`)
+  - SwiftyJSON
+  - Texture
+  - UITextField+Shake (~> 1.1)
+
+EXTERNAL SOURCES:
+  NohanaImagePicker:
+    :git: https://github.com/backmeupplz/NohanaImagePicker
+  SKPhotoBrowser:
+    :branch: swift3
+    :git: https://github.com/backmeupplz/SKPhotoBrowser.git
+  Stripe:
+    :git: https://github.com/stripe/stripe-ios
+
+CHECKOUT OPTIONS:
+  NohanaImagePicker:
+    :commit: 8c1d2da55b4dd7678538332c43c742804e2649dc
+    :git: https://github.com/backmeupplz/NohanaImagePicker
+  SKPhotoBrowser:
+    :commit: 8382bc2fc5de0b28ff1d3746451b633e6ffc192b
+    :git: https://github.com/backmeupplz/SKPhotoBrowser.git
+  Stripe:
+    :commit: a2aa63ac4b11cf1438b17b09e7a0abda97562614
+    :git: https://github.com/stripe/stripe-ios
+
+SPEC CHECKSUMS:
+  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  AWSCore: 917d84b32974136194a905b98c0ae25c9f3350b8
+  AWSS3: 1caaf6b45100503fecf3d418c394519a89409a74
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  DWURecyclingAlert: 02d8ba56b2082c08c6bc2645cc2cc445f307817d
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  FacebookCore: 2cb3f0fbff218e9d3119cec84bae983b232412de
+  FacebookLogin: c9d606504735780a9e3002465a615512e0a691a5
+  FBSDKCoreKit: c693bad19feb225469eeff14452ba364522ee48b
+  FBSDKLoginKit: 1fa529fc622d7b32ebeaffbecd377180833c6d30
+  GDPerformanceView-Swift: 5f12f13dcdca4cb87f91ef91ba6b50981421c57f
+  IQKeyboardManagerSwift: 2eefe6c429b86aa08bfbc1b5c891164d754adf91
+  KeyboardObserver: b74a483236861c63a29a18b5b617f63313f04eef
+  Material: af607a7ec0e9978ef85cf189a3d8ceeeb650400f
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  NohanaImagePicker: ae909c23150c30e29ab2c5d48766c39eef21d790
+  PINCache: a89c8f609232afac77128557bd12c861844423d7
+  PINOperation: ac23db44796d4a564ecf9b5ea7163510f579b71d
+  PINRemoteImage: e4e02e15a6f96cedbcef2abf1c9c1228dc9897d7
+  R.swift: 207a372a2b5977caef440c696a368009460641d1
+  R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
+  SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
+  SimulatorStatusMagic: db93f00d164d854cd5ed7b5c75f48fba3b698c20
+  SKPhotoBrowser: 48717c1e2602e6e99a5b1df9d6b43889aaa70e9f
+  SlackTextViewController: fbcdadbb8090673f604484ff5b6eb8d77baed42a
+  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
+  Stripe: ad4f78621b74503606275b40a95f52684bf08c6e
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  Texture: 839c52ecab07007fade582a01f77224b076ad960
+  UITextField+Shake: 47cc0429dafb3da580686339ad2da091249a8ea2
+
+PODFILE CHECKSUM: e7702966b76b08859dface102cffe4e1cc5089dc
+
+COCOAPODS: 1.2.0

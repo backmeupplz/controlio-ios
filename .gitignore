@@ -1,7 +1,7 @@
 # Pods
-Podfile.lock
-Pods/
-*.xcworkspace
+#Podfile.lock
+#Pods/
+#*.xcworkspace
 
 # Misc
 *.xcuserstate
