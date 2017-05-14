@@ -50,6 +50,25 @@ extension Server {
         }
     }
     
+    class func loginFacebook(accessToken: String, completion:@escaping (NSError?)->()) {
+        var parameters = [
+            "access_token": accessToken
+        ]
+        if let pushNotificationsToken = pushNotificationsToken {
+            parameters["iosPushToken"] = pushNotificationsToken
+        }
+        
+        request(urlAddition: "users/loginFacebook", method: .post, parameters: parameters, needsToken: false)
+        { json, error in
+            if let error = error {
+                completion(error)
+            } else {
+                saveUser(json!)
+                completion(nil)
+            }
+        }
+    }
+    
     class func resetPassword(token: String, password: String, completion:@escaping (NSError?)->()) {
         let parameters = [
             "token": token,

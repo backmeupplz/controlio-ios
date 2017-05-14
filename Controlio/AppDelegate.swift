@@ -12,6 +12,7 @@ import MBProgressHUD
 import Stripe
 import Material
 import IQKeyboardManagerSwift
+import FBSDKLoginKit
 #if DEBUG
 import SimulatorStatusMagic
 #endif
@@ -36,8 +37,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Appearance.setup()
         IQKeyboardManager.sharedManager().enable = true
         IQKeyboardManager.sharedManager().enableAutoToolbar = false
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         return true
+    }
+    
+    func applicationWillResignActive(_ application: UIApplication) {
+        FBSDKAppEvents.activateApp()
     }
     
     // MARK: - Private Functions -
@@ -128,7 +134,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         handle(url: url)
         
-        return true
+        return FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
     }
     
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {

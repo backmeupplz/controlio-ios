@@ -9,16 +9,19 @@
 import UIKit
 import Material
 import UITextField_Shake
+import FacebookLogin
+import SnapKit
 
 class MagicLinkViewController: UIViewController {
     
     // MARK: - Outlets -
     
-    @IBOutlet weak var emailTextField: ErrorTextField!
-    @IBOutlet weak var magicLinkButton: UIButton!
-    @IBOutlet weak var spinner: UIActivityIndicatorView!
-    @IBOutlet weak var demoButton: UIButton!
-    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet fileprivate weak var emailTextField: ErrorTextField!
+    @IBOutlet fileprivate weak var magicLinkButton: UIButton!
+    @IBOutlet fileprivate weak var spinner: UIActivityIndicatorView!
+    @IBOutlet fileprivate weak var demoButton: UIButton!
+    @IBOutlet fileprivate weak var loginButton: UIButton!
+    fileprivate var facebookLoginButton: LoginButton!
     
     // MARK: - View Controller life cycle
     
@@ -87,6 +90,7 @@ class MagicLinkViewController: UIViewController {
     fileprivate func enable(ui enable: Bool) {
         [emailTextField, magicLinkButton, demoButton, loginButton]
             .forEach { $0.isEnabled = enable }
+        facebookLoginButton.isUserInteractionEnabled = enable
         spinner.isHidden = enable
     }
     
@@ -98,6 +102,7 @@ class MagicLinkViewController: UIViewController {
     // Mark: Setting up views
     
     fileprivate func setup() {
+        setupFacebookLogin()
         setupEmailTextField()
     }
     
@@ -119,6 +124,17 @@ class MagicLinkViewController: UIViewController {
         emailTextField.autocorrectionType = .no
         
         emailTextField.delegate = self
+    }
+    
+    fileprivate func setupFacebookLogin() {
+        facebookLoginButton = LoginButton(readPermissions: [.publicProfile, .email])
+        facebookLoginButton.delegate = self
+        view.addSubview(facebookLoginButton)
+        facebookLoginButton.snp.makeConstraints
+        { make in
+            make.centerX.equalTo(magicLinkButton)
+            make.top.equalTo(magicLinkButton.snp.bottom).offset(16)
+        }
     }
     
     // MARK: - Status Bar -
@@ -144,5 +160,32 @@ extension MagicLinkViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return false
+    }
+}
+
+extension MagicLinkViewController: LoginButtonDelegate {
+    func loginButtonDidLogOut(_ loginButton: LoginButton) {
+        
+    }
+
+    func loginButtonDidCompleteLogin(_ loginButton: LoginButton, result: LoginResult) {
+        switch result {
+        case .success(_, _, let token):
+            LoginManager().logOut()
+            enable(ui: false)
+            Server.loginFacebook(accessToken: token.authenticationToken)
+            { error in
+                self.enable(ui: true)
+                if let error = error {
+                    self.snackbarController?.show(error: error.domain)
+                } else {
+                    self.resetUI()
+                    Router(self).showMain()
+                }
+            }
+            break
+        default:
+            break
+        }
     }
 }

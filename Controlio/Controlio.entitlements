@@ -8,5 +8,9 @@
 	<array>
 		<string>applinks:api.controlio.co</string>
 	</array>
+	<key>keychain-access-groups</key>
+	<array>
+		<string>$(AppIdentifierPrefix)BorodutchStudio.Controlio</string>
+	</array>
 </dict>
 </plist>
