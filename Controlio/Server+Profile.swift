@@ -20,7 +20,11 @@ extension Server {
             if let error = error {
                 completion(error, nil)
             } else {
-                completion(nil, User(json: json!))
+                let user = User(json: json!)
+                completion(nil, user)
+                if let user = user {
+                    save(profile: user)
+                }
             }
         }
     }
@@ -49,5 +53,14 @@ extension Server {
                 completion(nil)
             }
         }
+    }
+    
+    class func save(profile: User) {
+        guard let tempCurrentUser = currentUser else { return }
+        tempCurrentUser.email = profile.email
+        tempCurrentUser.name = profile.name
+        tempCurrentUser.phone = profile.phone
+        tempCurrentUser.profileImageKey = profile.profileImageKey
+        currentUser = tempCurrentUser
     }
 }
