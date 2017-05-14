@@ -121,7 +121,7 @@ class InputView: UIView, AttachmentContainerViewDelegate {
         clipButton.isEnabled = index == 0
         attachmentContainerView.wrapperView.isHidden = index != 0
         
-        setNeedsLayout()
+        attachmentContainerView.wrapperView.invalidateIntrinsicContentSize()
     }
     
     // MARK: - View Life Cycle -

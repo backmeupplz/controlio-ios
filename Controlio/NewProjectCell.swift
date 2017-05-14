@@ -150,7 +150,7 @@ class NewProjectCell: UITableViewCell {
     }
     
     fileprivate func setupClientsTextField() {
-        clientsTextField.placeholder = NSLocalizedString("* Clients' emails", comment: "new project textfield placeholder")
+        clientsTextField.placeholder = NSLocalizedString("Clients' emails", comment: "new project textfield placeholder")
         clientsTextField.detail = NSLocalizedString("Emails of your clients relevant to this project", comment: "new project textfield detail")
         
         clientsTextField.returnKeyType = .done
