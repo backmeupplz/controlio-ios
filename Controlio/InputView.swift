@@ -154,7 +154,7 @@ class InputView: UIView, AttachmentContainerViewDelegate {
         UIView.animate(withDuration: 0.3, animations: {
             self.layoutIfNeeded()
             self.alpha = 1.0
-        }) 
+        })
     }
 
     func hide() {

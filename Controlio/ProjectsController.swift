@@ -28,7 +28,6 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
     
     fileprivate var scope = ProjectSearchType.all
     fileprivate var query = ""
-
     
     fileprivate var refreshControl: UIRefreshControl?
     
@@ -315,7 +314,7 @@ extension ProjectsController: ASTableDelegate {
     }
     
     func shouldBatchFetch(for tableNode: ASTableNode) -> Bool {
-        return needsMoreProjects
+        return needsMoreProjects && !isLoading
     }
     
     func tableNode(_ tableNode: ASTableNode, willBeginBatchFetchWith context: ASBatchContext) {
