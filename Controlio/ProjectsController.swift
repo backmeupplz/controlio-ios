@@ -208,7 +208,6 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
         }
         Server.getProjects(type: scope, query: query)
         { error, projects in
-            self.isLoading = false
             if let error = error {
                 self.snackbarController?.show(error: error.domain)
             } else if let projects = projects, tempQuery == self.query, tempScope == self.scope {
@@ -217,6 +216,7 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
                 self.tableNode.reloadData()
             }
             self.refreshControl?.endRefreshing()
+            self.isLoading = false
         }
     }
     
@@ -235,7 +235,7 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
     fileprivate func loadMoreProjects(completion: @escaping ()->()) {
         let tempQuery = query
         let tempScope = scope
-        Server.getProjects(skip: projects.count,type: scope, query: query)
+        Server.getProjects(skip: projects.count, type: scope, query: query)
         { error, projects in
             if let error = error {
                 self.snackbarController?.show(error: error.domain)
@@ -247,7 +247,9 @@ class ProjectsController: ASViewController<ASDisplayNode>, ProjectApproveCellDel
     }
     
     fileprivate func addInitialProjects(projects: [Project]) {
-        needsMoreProjects = true
+        if projects.count >= 20 {
+            needsMoreProjects = true
+        }
         self.projects = projects
         
         tableNode.reloadSections(IndexSet(integer: 1), with: .fade)
@@ -319,8 +321,8 @@ extension ProjectsController: ASTableDelegate {
     
     func tableNode(_ tableNode: ASTableNode, willBeginBatchFetchWith context: ASBatchContext) {
         loadMoreProjects
-            {
-                context.completeBatchFetching(true)
+        {
+            context.completeBatchFetching(true)
         }
     }
 }
