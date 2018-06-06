@@ -8,6 +8,7 @@ This is a repository for the iOS code of Controlio client that connected to the 
 * [Landing](https://github.com/backmeupplz/controlio-landing) — landing front page of the former controlio.co website
 * [Web client](https://github.com/backmeupplz/controlio-web) — frontend of the web app connected to the backend
 * [iOS client](https://github.com/backmeupplz/controlio-ios) — iOS client app connected to the backend 
+* [Android client](https://github.com/adonixis/controlio-android/) — Android client connected to the server
 
 ## License
 MIT — use for any purpose. Would be great if you could leave a note about the original developers. Thanks!
