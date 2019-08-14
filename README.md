@@ -1,6 +1,6 @@
 ![Controlio](/designs/github_header.png?raw=true)
 # Controlio iOS client
-Controlio is an extremely simple status report system. It's like twitter but intended for your subcontractors. This is a pretty old project, not supported or live anymore but has been published publically as a tribute to the legacy left after Controlio ahs been created. Enjoy!
+Controlio is an extremely simple status report system. It's like twitter but intended for your subcontractors. This is a pretty old project, not supported or live anymore but has been published publically as a tribute to the legacy left after Controlio has been created. Enjoy!
 
 This is a repository for the iOS code of Controlio client that connected to the backend
 ## List of repositories
